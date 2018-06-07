@@ -344,7 +344,10 @@
 <h1 id="原型设计"><a href="#原型设计" class="headerlink" title="原型设计"></a>原型设计</h1><blockquote>
 <p><a href="https://pro.modao.cc/app/yNV6IjXGdgKjzuzbWWoCESKpAsUV3a1#screen=sACD9810F7B1527599208486" target="_blank" rel="noopener">世界杯</a></p>
 </blockquote>
-<h1 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h1><h2 id="用户表"><a href="#用户表" class="headerlink" title="用户表"></a>用户表</h2><p>表名：my_user</p>
+<h1 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h1><blockquote>
+<p><a href="https://gz-dmc.cloud.tencent.com/v2/login" target="_blank" rel="noopener">数据库</a></p>
+</blockquote>
+<h2 id="用户表"><a href="#用户表" class="headerlink" title="用户表"></a>用户表</h2><p>表名：my_user</p>
 <table>
 <thead>
 <tr>
@@ -860,7 +863,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="用户相关信息"><a href="#用户相关信息" class="headerlink" title="用户相关信息"></a>用户相关信息</h1><h2 id="登陆接口"><a href="#登陆接口" class="headerlink" title="登陆接口"></a>登陆接口</h2><h3 id="接口概述"><a href="#接口概述" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明"><a href="#URL说明" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://localhost:8090/worldCup/user/login</code></p>
+<h1 id="用户相关信息"><a href="#用户相关信息" class="headerlink" title="用户相关信息"></a>用户相关信息</h1><h2 id="登陆接口"><a href="#登陆接口" class="headerlink" title="登陆接口"></a>登陆接口</h2><h3 id="接口概述"><a href="#接口概述" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明"><a href="#URL说明" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>https://api.99yhrc.com/worldCup_test/user/login</code></p>
 <p>请求方式：POST</p>
 <h3 id="请求参数"><a href="#请求参数" class="headerlink" title="请求参数"></a>请求参数</h3><table>
 <thead>
@@ -929,7 +932,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="获取用户信息"><a href="#获取用户信息" class="headerlink" title="获取用户信息"></a>获取用户信息</h2><h3 id="接口概述-1"><a href="#接口概述-1" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-1"><a href="#URL说明-1" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://localhost:8090/worldCup/user/userInf</code></p>
+<h2 id="获取用户信息"><a href="#获取用户信息" class="headerlink" title="获取用户信息"></a>获取用户信息</h2><h3 id="接口概述-1"><a href="#接口概述-1" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-1"><a href="#URL说明-1" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>https://api.99yhrc.com/worldCup_test/user/userInf</code></p>
 <p>请求方式：POST</p>
 <h3 id="请求参数-1"><a href="#请求参数-1" class="headerlink" title="请求参数"></a>请求参数</h3><table>
 <thead>
@@ -994,8 +997,8 @@
 </tbody>
 </table>
 <h1 id="为喜欢的球队加油"><a href="#为喜欢的球队加油" class="headerlink" title="为喜欢的球队加油"></a>为喜欢的球队加油</h1><h2 id="生成海报"><a href="#生成海报" class="headerlink" title="生成海报"></a>生成海报</h2><h3 id="接口概述-2"><a href="#接口概述-2" class="headerlink" title="接口概述"></a>接口概述</h3><p>根据用户选择的球队生成海报。</p>
-<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><p>URL地址：<code>http://localhost:8090/worldCup/poster/makePoster</code></p>
-<p>请求方式：GET</p>
+<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><p>URL地址：<code>https://api.99yhrc.com/worldCup_test/poster/makePoster</code></p>
+<p>请求方式：POST</p>
 <h3 id="请求参数-2"><a href="#请求参数-2" class="headerlink" title="请求参数"></a>请求参数</h3><table>
 <thead>
 <tr>
@@ -1037,50 +1040,38 @@
 </thead>
 <tbody>
 <tr>
-<td>success</td>
+<td>result</td>
+<td>Result&lt;Map&lt;String, String&gt;&gt;</td>
+<td>请求结果封装</td>
+</tr>
+<tr>
+<td>++success</td>
 <td>boolean</td>
 <td>请求是否成功</td>
 </tr>
 <tr>
-<td>data</td>
-<td>Map</td>
-<td>请求成功时返回的数据封装</td>
-</tr>
-<tr>
-<td>error</td>
+<td>++error</td>
 <td>String</td>
 <td>请求失败时的提示信息</td>
 </tr>
-</tbody>
-</table>
-<p>data说明</p>
-<table>
-<thead>
 <tr>
-<th>字段</th>
-<th>类型</th>
-<th>说明</th>
+<td>++data</td>
+<td>Map&lt;String, String&gt;</td>
+<td>请求成功时返回的数据封装</td>
 </tr>
-</thead>
-<tbody>
 <tr>
-<td>poster</td>
+<td>++++posterUrl</td>
 <td>String</td>
 <td>海报链接</td>
 </tr>
 <tr>
-<td>slogan</td>
+<td>++++templateName</td>
 <td>String</td>
-<td>加油标语</td>
-</tr>
-<tr>
-<td>musics</td>
-<td>List</td>
-<td>音乐链接</td>
+<td>使用的模板名（”template1“—“template6”）</td>
 </tr>
 </tbody>
 </table>
-<h1 id="分享集球衣"><a href="#分享集球衣" class="headerlink" title="分享集球衣"></a>分享集球衣</h1><h2 id="分享集球衣-1"><a href="#分享集球衣-1" class="headerlink" title="分享集球衣"></a>分享集球衣</h2><h3 id="接口概述-3"><a href="#接口概述-3" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-2"><a href="#URL说明-2" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://localhost:8090/worldCup/collection/getPoloShirt</code></p>
+<h1 id="分享集球衣"><a href="#分享集球衣" class="headerlink" title="分享集球衣"></a>分享集球衣</h1><h2 id="分享集球衣-1"><a href="#分享集球衣-1" class="headerlink" title="分享集球衣"></a>分享集球衣</h2><h3 id="接口概述-3"><a href="#接口概述-3" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-2"><a href="#URL说明-2" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>https://api.99yhrc.com/worldCup_test/collection/getPoloShirt</code></p>
 <p>请求方式：GET</p>
 <h3 id="请求参数-3"><a href="#请求参数-3" class="headerlink" title="请求参数"></a>请求参数</h3><table>
 <thead>
@@ -1184,7 +1175,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="赠送球衣"><a href="#赠送球衣" class="headerlink" title="赠送球衣"></a>赠送球衣</h2><h3 id="接口概述-5"><a href="#接口概述-5" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-4"><a href="#URL说明-4" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://localhost:8090/worldCup/poloShirt/sendShirt</code></p>
+<h2 id="赠送球衣"><a href="#赠送球衣" class="headerlink" title="赠送球衣"></a>赠送球衣</h2><h3 id="接口概述-5"><a href="#接口概述-5" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-4"><a href="#URL说明-4" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>https://api.99yhrc.com/worldCup_test/poloShirt/sendShirt</code></p>
 <p>请求方式：POST</p>
 <h3 id="请求参数-5"><a href="#请求参数-5" class="headerlink" title="请求参数"></a>请求参数</h3><table>
 <thead>
@@ -1228,7 +1219,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="领取球衣"><a href="#领取球衣" class="headerlink" title="领取球衣"></a>领取球衣</h2><h3 id="接口概述-6"><a href="#接口概述-6" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-5"><a href="#URL说明-5" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://localhost:8090/worldCup/poloShirt/receiveShirt</code></p>
+<h2 id="领取球衣"><a href="#领取球衣" class="headerlink" title="领取球衣"></a>领取球衣</h2><h3 id="接口概述-6"><a href="#接口概述-6" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-5"><a href="#URL说明-5" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>https://api.99yhrc.com/worldCup_test/poloShirt/receiveShirt</code></p>
 <p>请求方式：POST</p>
 <h3 id="请求参数-6"><a href="#请求参数-6" class="headerlink" title="请求参数"></a>请求参数</h3><table>
 <thead>
@@ -1277,7 +1268,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="活动奖品"><a href="#活动奖品" class="headerlink" title="活动奖品"></a>活动奖品</h2><h3 id="接口概述-7"><a href="#接口概述-7" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-6"><a href="#URL说明-6" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://localhost:8090/worldCup/collection/awards</code></p>
+<h2 id="活动奖品"><a href="#活动奖品" class="headerlink" title="活动奖品"></a>活动奖品</h2><h3 id="接口概述-7"><a href="#接口概述-7" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-6"><a href="#URL说明-6" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>https://api.99yhrc.com/worldCup_test/collection/awards</code></p>
 <p>请求方式：GET</p>
 <h3 id="请求参数-7"><a href="#请求参数-7" class="headerlink" title="请求参数"></a>请求参数</h3><p>无</p>
 <h3 id="返回内容-7"><a href="#返回内容-7" class="headerlink" title="返回内容"></a>返回内容</h3><table>
@@ -1338,7 +1329,7 @@
 </tr>
 </tbody>
 </table>
-<h1 id="赛程数据"><a href="#赛程数据" class="headerlink" title="赛程数据"></a>赛程数据</h1><h1 id="接口模板"><a href="#接口模板" class="headerlink" title="接口模板"></a>接口模板</h1><h2 id="接口名"><a href="#接口名" class="headerlink" title="接口名"></a>接口名</h2><h3 id="接口概述-8"><a href="#接口概述-8" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-7"><a href="#URL说明-7" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://localhost:8090/worldCup/</code></p>
+<h1 id="赛程数据"><a href="#赛程数据" class="headerlink" title="赛程数据"></a>赛程数据</h1><h1 id="接口模板"><a href="#接口模板" class="headerlink" title="接口模板"></a>接口模板</h1><h2 id="接口名"><a href="#接口名" class="headerlink" title="接口名"></a>接口名</h2><h3 id="接口概述-8"><a href="#接口概述-8" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-7"><a href="#URL说明-7" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>https://api.99yhrc.com/worldCup_test/</code></p>
 <p>请求方式：GET/POST</p>
 <h3 id="请求参数-8"><a href="#请求参数-8" class="headerlink" title="请求参数"></a>请求参数</h3><table>
 <thead>
