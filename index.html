@@ -1102,6 +1102,11 @@
 <td>int</td>
 <td>用户id</td>
 </tr>
+<tr>
+<td>openId</td>
+<td>String</td>
+<td>微信小程序中用于唯一标识一个用户</td>
+</tr>
 </tbody>
 </table>
 <h3 id="返回内容-3"><a href="#返回内容-3" class="headerlink" title="返回内容"></a>返回内容</h3><table>
@@ -1146,6 +1151,16 @@
 <td>int</td>
 <td>用户自增id</td>
 </tr>
+<tr>
+<td>openId</td>
+<td>String</td>
+<td>微信小程序中用于唯一标识一个用户</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>String</td>
+<td>加盐后的小程序密钥</td>
+</tr>
 </tbody>
 </table>
 <h3 id="返回内容-4"><a href="#返回内容-4" class="headerlink" title="返回内容"></a>返回内容</h3><table>
@@ -1159,7 +1174,7 @@
 <tbody>
 <tr>
 <td>result</td>
-<td>Result&lt;Map&lt;String, Integer&gt;&gt;</td>
+<td>Result&lt;List<shirtrecord>&gt;</shirtrecord></td>
 <td>请求结果封装</td>
 </tr>
 <tr>
@@ -1174,8 +1189,30 @@
 </tr>
 <tr>
 <td>++data</td>
-<td>Map&lt;String, Integer&gt;</td>
-<td>key为球队名，value为集到的球衣数量</td>
+<td>List<shirtrecord></shirtrecord></td>
+<td>按集到的球衣数量从大到小排好序的记录列表</td>
+</tr>
+</tbody>
+</table>
+<p>ShirtRecord说明</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>teamName</td>
+<td>String</td>
+<td>球队名</td>
+</tr>
+<tr>
+<td>count</td>
+<td>int</td>
+<td>集到的数量</td>
 </tr>
 </tbody>
 </table>
@@ -1194,6 +1231,11 @@
 <td>openId</td>
 <td>String</td>
 <td>微信小程序中用于唯一标识一个用户</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>String</td>
+<td>加盐后的小程序密钥</td>
 </tr>
 <tr>
 <td>teamName</td>

@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="[TOC] 原型设计 世界杯  建表 数据库  用户表表名：my_user    列名 类型 说明     id int(11) 用户自增id   open_id varchar(100) 用户在小程序中的唯一识别id   union_id varchar(100) 用户在同一主体的多个小程序中的唯一识别id   nick_name varchar(50) 用户昵称，由于用户的昵称中可能包含表情，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-08T13:23:50.522Z">
+<meta property="og:updated_time" content="2018-06-08T13:43:08.666Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="世界杯程序接口文档">
 <meta name="twitter:description" content="[TOC] 原型设计 世界杯  建表 数据库  用户表表名：my_user    列名 类型 说明     id int(11) 用户自增id   open_id varchar(100) 用户在小程序中的唯一识别id   union_id varchar(100) 用户在同一主体的多个小程序中的唯一识别id   nick_name varchar(50) 用户昵称，由于用户的昵称中可能包含表情，">
@@ -1101,6 +1101,11 @@
 <td>int</td>
 <td>用户id</td>
 </tr>
+<tr>
+<td>openId</td>
+<td>String</td>
+<td>微信小程序中用于唯一标识一个用户</td>
+</tr>
 </tbody>
 </table>
 <h3 id="返回内容-3"><a href="#返回内容-3" class="headerlink" title="返回内容"></a>返回内容</h3><table>
@@ -1145,6 +1150,16 @@
 <td>int</td>
 <td>用户自增id</td>
 </tr>
+<tr>
+<td>openId</td>
+<td>String</td>
+<td>微信小程序中用于唯一标识一个用户</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>String</td>
+<td>加盐后的小程序密钥</td>
+</tr>
 </tbody>
 </table>
 <h3 id="返回内容-4"><a href="#返回内容-4" class="headerlink" title="返回内容"></a>返回内容</h3><table>
@@ -1158,7 +1173,7 @@
 <tbody>
 <tr>
 <td>result</td>
-<td>Result&lt;Map&lt;String, Integer&gt;&gt;</td>
+<td>Result&lt;List<shirtrecord>&gt;</shirtrecord></td>
 <td>请求结果封装</td>
 </tr>
 <tr>
@@ -1173,8 +1188,30 @@
 </tr>
 <tr>
 <td>++data</td>
-<td>Map&lt;String, Integer&gt;</td>
-<td>key为球队名，value为集到的球衣数量</td>
+<td>List<shirtrecord></shirtrecord></td>
+<td>按集到的球衣数量从大到小排好序的记录列表</td>
+</tr>
+</tbody>
+</table>
+<p>ShirtRecord说明</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>teamName</td>
+<td>String</td>
+<td>球队名</td>
+</tr>
+<tr>
+<td>count</td>
+<td>int</td>
+<td>集到的数量</td>
 </tr>
 </tbody>
 </table>
@@ -1193,6 +1230,11 @@
 <td>openId</td>
 <td>String</td>
 <td>微信小程序中用于唯一标识一个用户</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>String</td>
+<td>加盐后的小程序密钥</td>
 </tr>
 <tr>
 <td>teamName</td>
