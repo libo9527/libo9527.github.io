@@ -269,6 +269,148 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/09/MySQL笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/09/MySQL笔记/" itemprop="url">MySQL笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-09T15:10:40+08:00">
+                2018-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="mysql自增ID起始值修改方法"><a href="#mysql自增ID起始值修改方法" class="headerlink" title="mysql自增ID起始值修改方法"></a>mysql自增ID起始值修改方法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table tablename AUTO_INCREMENT=1;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/06/世界杯小程序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -820,6 +962,11 @@
 <td>标价</td>
 </tr>
 <tr>
+<td>award_img_url</td>
+<td>varchar(255)</td>
+<td>奖品图片链接地址</td>
+</tr>
+<tr>
 <td>award_url</td>
 <td>varchar(255)</td>
 <td>奖品详情链接地址</td>
@@ -1259,14 +1406,24 @@
 </thead>
 <tbody>
 <tr>
-<td>success</td>
+<td>result</td>
+<td>Result<integer></integer></td>
+<td>请求结果封装</td>
+</tr>
+<tr>
+<td>++success</td>
 <td>boolean</td>
 <td>请求是否成功</td>
 </tr>
 <tr>
-<td>error</td>
+<td>++error</td>
 <td>String</td>
 <td>请求失败时的提示信息</td>
+</tr>
+<tr>
+<td>++data</td>
+<td>Integer</td>
+<td>赠送记录Id</td>
 </tr>
 </tbody>
 </table>
@@ -1282,12 +1439,7 @@
 </thead>
 <tbody>
 <tr>
-<td>sharerId</td>
-<td>int</td>
-<td>球衣分享者的id</td>
-</tr>
-<tr>
-<td>userId</td>
+<td>uID</td>
 <td>int</td>
 <td>当前用户id</td>
 </tr>
@@ -1302,9 +1454,19 @@
 <td>加盐后的小程序密钥</td>
 </tr>
 <tr>
+<td>sharerId</td>
+<td>int</td>
+<td>球衣分享者的id</td>
+</tr>
+<tr>
 <td>teamName</td>
 <td>String</td>
 <td>球衣所属球队名</td>
+</tr>
+<tr>
+<td>sendRecordId</td>
+<td>int</td>
+<td>赠送记录id</td>
 </tr>
 </tbody>
 </table>
@@ -1318,21 +1480,90 @@
 </thead>
 <tbody>
 <tr>
-<td>success</td>
+<td>result</td>
+<td>Result</td>
+<td>请求结果封装</td>
+</tr>
+<tr>
+<td>++success</td>
 <td>boolean</td>
 <td>请求是否成功</td>
 </tr>
 <tr>
-<td>error</td>
+<td>++error</td>
 <td>String</td>
 <td>请求失败时的提示信息</td>
 </tr>
 </tbody>
 </table>
-<h2 id="活动奖品"><a href="#活动奖品" class="headerlink" title="活动奖品"></a>活动奖品</h2><h3 id="接口概述-7"><a href="#接口概述-7" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-6"><a href="#URL说明-6" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/collection/awards</code></p>
-<p>请求方式：GET</p>
-<h3 id="请求参数-7"><a href="#请求参数-7" class="headerlink" title="请求参数"></a>请求参数</h3><p>无</p>
+<h2 id="索要球衣"><a href="#索要球衣" class="headerlink" title="索要球衣"></a>索要球衣</h2><h3 id="接口概述-7"><a href="#接口概述-7" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-6"><a href="#URL说明-6" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/poloShirt/chargeShirt</code></p>
+<p>请求方式：POST</p>
+<h3 id="请求参数-7"><a href="#请求参数-7" class="headerlink" title="请求参数"></a>请求参数</h3><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uID</td>
+<td>int</td>
+<td>当前用户ID</td>
+</tr>
+<tr>
+<td>openId</td>
+<td>String</td>
+<td>微信小程序中用于唯一标识一个用户</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>String</td>
+<td>加盐后的小程序密钥</td>
+</tr>
+<tr>
+<td>chargerId</td>
+<td>int</td>
+<td>索要者的ID</td>
+</tr>
+<tr>
+<td>teamName</td>
+<td>String</td>
+<td>球衣所属球队名称</td>
+</tr>
+</tbody>
+</table>
 <h3 id="返回内容-7"><a href="#返回内容-7" class="headerlink" title="返回内容"></a>返回内容</h3><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Result&lt;Map&lt;String, Object&gt;&gt;</td>
+<td>请求结果封装</td>
+</tr>
+<tr>
+<td>++success</td>
+<td>boolean</td>
+<td>请求是否成功</td>
+</tr>
+<tr>
+<td>++error</td>
+<td>String</td>
+<td>请求失败时的提示信息</td>
+</tr>
+</tbody>
+</table>
+<h2 id="活动奖品"><a href="#活动奖品" class="headerlink" title="活动奖品"></a>活动奖品</h2><h3 id="接口概述-8"><a href="#接口概述-8" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-7"><a href="#URL说明-7" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/collection/awards</code></p>
+<p>请求方式：GET</p>
+<h3 id="请求参数-8"><a href="#请求参数-8" class="headerlink" title="请求参数"></a>请求参数</h3><p>无</p>
+<h3 id="返回内容-8"><a href="#返回内容-8" class="headerlink" title="返回内容"></a>返回内容</h3><table>
 <thead>
 <tr>
 <th>字段</th>
@@ -1383,9 +1614,12 @@
 </tr>
 </tbody>
 </table>
-<h1 id="赛程数据"><a href="#赛程数据" class="headerlink" title="赛程数据"></a>赛程数据</h1><h1 id="接口模板"><a href="#接口模板" class="headerlink" title="接口模板"></a>接口模板</h1><h2 id="接口名"><a href="#接口名" class="headerlink" title="接口名"></a>接口名</h2><h3 id="接口概述-8"><a href="#接口概述-8" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-7"><a href="#URL说明-7" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/</code></p>
+<h1 id="赛程数据"><a href="#赛程数据" class="headerlink" title="赛程数据"></a>赛程数据</h1><blockquote>
+<p><a href="http://data.2018.163.com/" target="_blank" rel="noopener">世界杯数据中心</a></p>
+</blockquote>
+<h1 id="接口模板"><a href="#接口模板" class="headerlink" title="接口模板"></a>接口模板</h1><h2 id="接口名"><a href="#接口名" class="headerlink" title="接口名"></a>接口名</h2><h3 id="接口概述-9"><a href="#接口概述-9" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-8"><a href="#URL说明-8" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/</code></p>
 <p>请求方式：GET/POST</p>
-<h3 id="请求参数-8"><a href="#请求参数-8" class="headerlink" title="请求参数"></a>请求参数</h3><table>
+<h3 id="请求参数-9"><a href="#请求参数-9" class="headerlink" title="请求参数"></a>请求参数</h3><table>
 <thead>
 <tr>
 <th>参数名</th>
@@ -1406,7 +1640,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="返回内容-8"><a href="#返回内容-8" class="headerlink" title="返回内容"></a>返回内容</h3><table>
+<h3 id="返回内容-9"><a href="#返回内容-9" class="headerlink" title="返回内容"></a>返回内容</h3><table>
 <thead>
 <tr>
 <th>字段</th>
@@ -1930,7 +2164,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1941,12 +2175,21 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>

@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="[TOC] 原型设计 世界杯  建表 数据库  用户表表名：my_user    列名 类型 说明     id int(11) 用户自增id   open_id varchar(100) 用户在小程序中的唯一识别id   union_id varchar(100) 用户在同一主体的多个小程序中的唯一识别id   nick_name varchar(50) 用户昵称，由于用户的昵称中可能包含表情，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-09T07:07:38.578Z">
+<meta property="og:updated_time" content="2018-06-09T13:00:09.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="世界杯程序接口文档">
 <meta name="twitter:description" content="[TOC] 原型设计 世界杯  建表 数据库  用户表表名：my_user    列名 类型 说明     id int(11) 用户自增id   open_id varchar(100) 用户在小程序中的唯一识别id   union_id varchar(100) 用户在同一主体的多个小程序中的唯一识别id   nick_name varchar(50) 用户昵称，由于用户的昵称中可能包含表情，">
@@ -819,6 +819,11 @@
 <td>标价</td>
 </tr>
 <tr>
+<td>award_img_url</td>
+<td>varchar(255)</td>
+<td>奖品图片链接地址</td>
+</tr>
+<tr>
 <td>award_url</td>
 <td>varchar(255)</td>
 <td>奖品详情链接地址</td>
@@ -1258,14 +1263,24 @@
 </thead>
 <tbody>
 <tr>
-<td>success</td>
+<td>result</td>
+<td>Result<integer></integer></td>
+<td>请求结果封装</td>
+</tr>
+<tr>
+<td>++success</td>
 <td>boolean</td>
 <td>请求是否成功</td>
 </tr>
 <tr>
-<td>error</td>
+<td>++error</td>
 <td>String</td>
 <td>请求失败时的提示信息</td>
+</tr>
+<tr>
+<td>++data</td>
+<td>Integer</td>
+<td>赠送记录Id</td>
 </tr>
 </tbody>
 </table>
@@ -1281,12 +1296,7 @@
 </thead>
 <tbody>
 <tr>
-<td>sharerId</td>
-<td>int</td>
-<td>球衣分享者的id</td>
-</tr>
-<tr>
-<td>userId</td>
+<td>uID</td>
 <td>int</td>
 <td>当前用户id</td>
 </tr>
@@ -1301,9 +1311,19 @@
 <td>加盐后的小程序密钥</td>
 </tr>
 <tr>
+<td>sharerId</td>
+<td>int</td>
+<td>球衣分享者的id</td>
+</tr>
+<tr>
 <td>teamName</td>
 <td>String</td>
 <td>球衣所属球队名</td>
+</tr>
+<tr>
+<td>sendRecordId</td>
+<td>int</td>
+<td>赠送记录id</td>
 </tr>
 </tbody>
 </table>
@@ -1317,21 +1337,90 @@
 </thead>
 <tbody>
 <tr>
-<td>success</td>
+<td>result</td>
+<td>Result</td>
+<td>请求结果封装</td>
+</tr>
+<tr>
+<td>++success</td>
 <td>boolean</td>
 <td>请求是否成功</td>
 </tr>
 <tr>
-<td>error</td>
+<td>++error</td>
 <td>String</td>
 <td>请求失败时的提示信息</td>
 </tr>
 </tbody>
 </table>
-<h2 id="活动奖品"><a href="#活动奖品" class="headerlink" title="活动奖品"></a>活动奖品</h2><h3 id="接口概述-7"><a href="#接口概述-7" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-6"><a href="#URL说明-6" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/collection/awards</code></p>
-<p>请求方式：GET</p>
-<h3 id="请求参数-7"><a href="#请求参数-7" class="headerlink" title="请求参数"></a>请求参数</h3><p>无</p>
+<h2 id="索要球衣"><a href="#索要球衣" class="headerlink" title="索要球衣"></a>索要球衣</h2><h3 id="接口概述-7"><a href="#接口概述-7" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-6"><a href="#URL说明-6" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/poloShirt/chargeShirt</code></p>
+<p>请求方式：POST</p>
+<h3 id="请求参数-7"><a href="#请求参数-7" class="headerlink" title="请求参数"></a>请求参数</h3><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uID</td>
+<td>int</td>
+<td>当前用户ID</td>
+</tr>
+<tr>
+<td>openId</td>
+<td>String</td>
+<td>微信小程序中用于唯一标识一个用户</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>String</td>
+<td>加盐后的小程序密钥</td>
+</tr>
+<tr>
+<td>chargerId</td>
+<td>int</td>
+<td>索要者的ID</td>
+</tr>
+<tr>
+<td>teamName</td>
+<td>String</td>
+<td>球衣所属球队名称</td>
+</tr>
+</tbody>
+</table>
 <h3 id="返回内容-7"><a href="#返回内容-7" class="headerlink" title="返回内容"></a>返回内容</h3><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Result&lt;Map&lt;String, Object&gt;&gt;</td>
+<td>请求结果封装</td>
+</tr>
+<tr>
+<td>++success</td>
+<td>boolean</td>
+<td>请求是否成功</td>
+</tr>
+<tr>
+<td>++error</td>
+<td>String</td>
+<td>请求失败时的提示信息</td>
+</tr>
+</tbody>
+</table>
+<h2 id="活动奖品"><a href="#活动奖品" class="headerlink" title="活动奖品"></a>活动奖品</h2><h3 id="接口概述-8"><a href="#接口概述-8" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-7"><a href="#URL说明-7" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/collection/awards</code></p>
+<p>请求方式：GET</p>
+<h3 id="请求参数-8"><a href="#请求参数-8" class="headerlink" title="请求参数"></a>请求参数</h3><p>无</p>
+<h3 id="返回内容-8"><a href="#返回内容-8" class="headerlink" title="返回内容"></a>返回内容</h3><table>
 <thead>
 <tr>
 <th>字段</th>
@@ -1382,9 +1471,12 @@
 </tr>
 </tbody>
 </table>
-<h1 id="赛程数据"><a href="#赛程数据" class="headerlink" title="赛程数据"></a>赛程数据</h1><h1 id="接口模板"><a href="#接口模板" class="headerlink" title="接口模板"></a>接口模板</h1><h2 id="接口名"><a href="#接口名" class="headerlink" title="接口名"></a>接口名</h2><h3 id="接口概述-8"><a href="#接口概述-8" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-7"><a href="#URL说明-7" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/</code></p>
+<h1 id="赛程数据"><a href="#赛程数据" class="headerlink" title="赛程数据"></a>赛程数据</h1><blockquote>
+<p><a href="http://data.2018.163.com/" target="_blank" rel="noopener">世界杯数据中心</a></p>
+</blockquote>
+<h1 id="接口模板"><a href="#接口模板" class="headerlink" title="接口模板"></a>接口模板</h1><h2 id="接口名"><a href="#接口名" class="headerlink" title="接口名"></a>接口名</h2><h3 id="接口概述-9"><a href="#接口概述-9" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-8"><a href="#URL说明-8" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/</code></p>
 <p>请求方式：GET/POST</p>
-<h3 id="请求参数-8"><a href="#请求参数-8" class="headerlink" title="请求参数"></a>请求参数</h3><table>
+<h3 id="请求参数-9"><a href="#请求参数-9" class="headerlink" title="请求参数"></a>请求参数</h3><table>
 <thead>
 <tr>
 <th>参数名</th>
@@ -1405,7 +1497,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="返回内容-8"><a href="#返回内容-8" class="headerlink" title="返回内容"></a>返回内容</h3><table>
+<h3 id="返回内容-9"><a href="#返回内容-9" class="headerlink" title="返回内容"></a>返回内容</h3><table>
 <thead>
 <tr>
 <th>字段</th>
@@ -1469,6 +1561,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/09/MySQL笔记/" rel="prev" title="MySQL笔记">
+                MySQL笔记 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -1545,7 +1641,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1556,12 +1652,21 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
             
 
           </nav>
@@ -1591,7 +1696,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#原型设计"><span class="nav-number">1.</span> <span class="nav-text">原型设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#建表"><span class="nav-number">2.</span> <span class="nav-text">建表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户表"><span class="nav-number">2.1.</span> <span class="nav-text">用户表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#海报表"><span class="nav-number">2.2.</span> <span class="nav-text">海报表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板表"><span class="nav-number">2.3.</span> <span class="nav-text">模板表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加油词表"><span class="nav-number">2.4.</span> <span class="nav-text">加油词表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#音乐表"><span class="nav-number">2.5.</span> <span class="nav-text">音乐表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#球队表"><span class="nav-number">2.6.</span> <span class="nav-text">球队表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赛程表"><span class="nav-number">2.7.</span> <span class="nav-text">赛程表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预约表"><span class="nav-number">2.8.</span> <span class="nav-text">预约表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#球衣表"><span class="nav-number">2.9.</span> <span class="nav-text">球衣表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#球衣收集记录表"><span class="nav-number">2.10.</span> <span class="nav-text">球衣收集记录表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#球衣赠送记录表"><span class="nav-number">2.11.</span> <span class="nav-text">球衣赠送记录表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#奖品表"><span class="nav-number">2.12.</span> <span class="nav-text">奖品表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#兑换记录表"><span class="nav-number">2.13.</span> <span class="nav-text">兑换记录表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用户相关信息"><span class="nav-number">3.</span> <span class="nav-text">用户相关信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#登陆接口"><span class="nav-number">3.1.</span> <span class="nav-text">登陆接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述"><span class="nav-number">3.1.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明"><span class="nav-number">3.1.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数"><span class="nav-number">3.1.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容"><span class="nav-number">3.1.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取用户信息"><span class="nav-number">3.2.</span> <span class="nav-text">获取用户信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-1"><span class="nav-number">3.2.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-1"><span class="nav-number">3.2.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为喜欢的球队加油"><span class="nav-number">4.</span> <span class="nav-text">为喜欢的球队加油</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生成海报"><span class="nav-number">4.1.</span> <span class="nav-text">生成海报</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-2"><span class="nav-number">4.1.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL"><span class="nav-number">4.1.2.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-2"><span class="nav-number">4.1.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-2"><span class="nav-number">4.1.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分享集球衣"><span class="nav-number">5.</span> <span class="nav-text">分享集球衣</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分享集球衣-1"><span class="nav-number">5.1.</span> <span class="nav-text">分享集球衣</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-3"><span class="nav-number">5.1.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-2"><span class="nav-number">5.1.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-3"><span class="nav-number">5.1.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-3"><span class="nav-number">5.1.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集球衣记录"><span class="nav-number">5.2.</span> <span class="nav-text">集球衣记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-4"><span class="nav-number">5.2.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-3"><span class="nav-number">5.2.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-4"><span class="nav-number">5.2.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-4"><span class="nav-number">5.2.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赠送球衣"><span class="nav-number">5.3.</span> <span class="nav-text">赠送球衣</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-5"><span class="nav-number">5.3.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-4"><span class="nav-number">5.3.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-5"><span class="nav-number">5.3.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-5"><span class="nav-number">5.3.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#领取球衣"><span class="nav-number">5.4.</span> <span class="nav-text">领取球衣</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-6"><span class="nav-number">5.4.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-5"><span class="nav-number">5.4.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-6"><span class="nav-number">5.4.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-6"><span class="nav-number">5.4.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#活动奖品"><span class="nav-number">5.5.</span> <span class="nav-text">活动奖品</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-7"><span class="nav-number">5.5.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-6"><span class="nav-number">5.5.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-7"><span class="nav-number">5.5.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-7"><span class="nav-number">5.5.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#赛程数据"><span class="nav-number">6.</span> <span class="nav-text">赛程数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口模板"><span class="nav-number">7.</span> <span class="nav-text">接口模板</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#接口名"><span class="nav-number">7.1.</span> <span class="nav-text">接口名</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-8"><span class="nav-number">7.1.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-7"><span class="nav-number">7.1.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-8"><span class="nav-number">7.1.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-8"><span class="nav-number">7.1.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#原型设计"><span class="nav-number">1.</span> <span class="nav-text">原型设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#建表"><span class="nav-number">2.</span> <span class="nav-text">建表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户表"><span class="nav-number">2.1.</span> <span class="nav-text">用户表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#海报表"><span class="nav-number">2.2.</span> <span class="nav-text">海报表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板表"><span class="nav-number">2.3.</span> <span class="nav-text">模板表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加油词表"><span class="nav-number">2.4.</span> <span class="nav-text">加油词表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#音乐表"><span class="nav-number">2.5.</span> <span class="nav-text">音乐表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#球队表"><span class="nav-number">2.6.</span> <span class="nav-text">球队表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赛程表"><span class="nav-number">2.7.</span> <span class="nav-text">赛程表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预约表"><span class="nav-number">2.8.</span> <span class="nav-text">预约表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#球衣表"><span class="nav-number">2.9.</span> <span class="nav-text">球衣表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#球衣收集记录表"><span class="nav-number">2.10.</span> <span class="nav-text">球衣收集记录表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#球衣赠送记录表"><span class="nav-number">2.11.</span> <span class="nav-text">球衣赠送记录表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#奖品表"><span class="nav-number">2.12.</span> <span class="nav-text">奖品表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#兑换记录表"><span class="nav-number">2.13.</span> <span class="nav-text">兑换记录表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用户相关信息"><span class="nav-number">3.</span> <span class="nav-text">用户相关信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#登陆接口"><span class="nav-number">3.1.</span> <span class="nav-text">登陆接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述"><span class="nav-number">3.1.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明"><span class="nav-number">3.1.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数"><span class="nav-number">3.1.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容"><span class="nav-number">3.1.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取用户信息"><span class="nav-number">3.2.</span> <span class="nav-text">获取用户信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-1"><span class="nav-number">3.2.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-1"><span class="nav-number">3.2.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为喜欢的球队加油"><span class="nav-number">4.</span> <span class="nav-text">为喜欢的球队加油</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生成海报"><span class="nav-number">4.1.</span> <span class="nav-text">生成海报</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-2"><span class="nav-number">4.1.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL"><span class="nav-number">4.1.2.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-2"><span class="nav-number">4.1.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-2"><span class="nav-number">4.1.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分享集球衣"><span class="nav-number">5.</span> <span class="nav-text">分享集球衣</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分享集球衣-1"><span class="nav-number">5.1.</span> <span class="nav-text">分享集球衣</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-3"><span class="nav-number">5.1.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-2"><span class="nav-number">5.1.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-3"><span class="nav-number">5.1.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-3"><span class="nav-number">5.1.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集球衣记录"><span class="nav-number">5.2.</span> <span class="nav-text">集球衣记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-4"><span class="nav-number">5.2.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-3"><span class="nav-number">5.2.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-4"><span class="nav-number">5.2.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-4"><span class="nav-number">5.2.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赠送球衣"><span class="nav-number">5.3.</span> <span class="nav-text">赠送球衣</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-5"><span class="nav-number">5.3.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-4"><span class="nav-number">5.3.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-5"><span class="nav-number">5.3.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-5"><span class="nav-number">5.3.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#领取球衣"><span class="nav-number">5.4.</span> <span class="nav-text">领取球衣</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-6"><span class="nav-number">5.4.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-5"><span class="nav-number">5.4.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-6"><span class="nav-number">5.4.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-6"><span class="nav-number">5.4.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索要球衣"><span class="nav-number">5.5.</span> <span class="nav-text">索要球衣</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-7"><span class="nav-number">5.5.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-6"><span class="nav-number">5.5.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-7"><span class="nav-number">5.5.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-7"><span class="nav-number">5.5.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#活动奖品"><span class="nav-number">5.6.</span> <span class="nav-text">活动奖品</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-8"><span class="nav-number">5.6.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-7"><span class="nav-number">5.6.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-8"><span class="nav-number">5.6.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-8"><span class="nav-number">5.6.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#赛程数据"><span class="nav-number">6.</span> <span class="nav-text">赛程数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口模板"><span class="nav-number">7.</span> <span class="nav-text">接口模板</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#接口名"><span class="nav-number">7.1.</span> <span class="nav-text">接口名</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-9"><span class="nav-number">7.1.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-8"><span class="nav-number">7.1.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-9"><span class="nav-number">7.1.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-9"><span class="nav-number">7.1.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
