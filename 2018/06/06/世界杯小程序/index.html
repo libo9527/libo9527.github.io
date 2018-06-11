@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="[TOC] 原型设计 世界杯  建表 数据库  用户表表名：my_user    列名 类型 说明     id int(11) 用户自增id   open_id varchar(100) 用户在小程序中的唯一识别id   union_id varchar(100) 用户在同一主体的多个小程序中的唯一识别id   nick_name varchar(50) 用户昵称，由于用户的昵称中可能包含表情，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-09T13:00:09.236Z">
+<meta property="og:updated_time" content="2018-06-11T07:33:14.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="世界杯程序接口文档">
 <meta name="twitter:description" content="[TOC] 原型设计 世界杯  建表 数据库  用户表表名：my_user    列名 类型 说明     id int(11) 用户自增id   open_id varchar(100) 用户在小程序中的唯一识别id   union_id varchar(100) 用户在同一主体的多个小程序中的唯一识别id   nick_name varchar(50) 用户昵称，由于用户的昵称中可能包含表情，">
@@ -845,7 +845,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="兑换记录表"><a href="#兑换记录表" class="headerlink" title="兑换记录表"></a>兑换记录表</h2><p>表名：exchange </p>
+<h2 id="兑换记录表"><a href="#兑换记录表" class="headerlink" title="兑换记录表"></a>兑换记录表</h2><p>表名：convert_record</p>
 <table>
 <thead>
 <tr>
@@ -866,9 +866,19 @@
 <td>中奖用户id</td>
 </tr>
 <tr>
+<td>user_name</td>
+<td>String</td>
+<td>中奖用户名</td>
+</tr>
+<tr>
 <td>a_id</td>
 <td>int</td>
 <td>中将奖品id</td>
+</tr>
+<tr>
+<td>award_name</td>
+<td>String</td>
+<td>中奖奖品名称</td>
 </tr>
 <tr>
 <td>win_time</td>
