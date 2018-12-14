@@ -79,14 +79,17 @@
 
 
 
+<meta name="description" content="Spring Boot项目中设置Content-Type的方法一种比较简单优雅的方法是在注解@RequestMapping中添加produces参数即可 1234567@RestController@RequestMapping(&quot;/api&quot;)public class ApiController &amp;#123;    @RequestMapping(value = &quot;/collection&quot;, pr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot学习笔记一">
 <meta property="og:url" content="http://yoursite.com/2018/05/31/SpringBoot学习笔记一/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Spring Boot项目中设置Content-Type的方法一种比较简单优雅的方法是在注解@RequestMapping中添加produces参数即可 1234567@RestController@RequestMapping(&quot;/api&quot;)public class ApiController &amp;#123;    @RequestMapping(value = &quot;/collection&quot;, pr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-31T03:19:50.622Z">
+<meta property="og:updated_time" content="2018-07-23T13:12:10.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot学习笔记一">
+<meta name="twitter:description" content="Spring Boot项目中设置Content-Type的方法一种比较简单优雅的方法是在注解@RequestMapping中添加produces参数即可 1234567@RestController@RequestMapping(&quot;/api&quot;)public class ApiController &amp;#123;    @RequestMapping(value = &quot;/collection&quot;, pr">
 
 
 
@@ -358,7 +361,9 @@
       
 
       
-        
+        <h1 id="Spring-Boot项目中设置Content-Type的方法"><a href="#Spring-Boot项目中设置Content-Type的方法" class="headerlink" title="Spring Boot项目中设置Content-Type的方法"></a>Spring Boot项目中设置Content-Type的方法</h1><p><strong>一种比较简单优雅的方法是在注解@RequestMapping中添加produces参数即可</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/api"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/collection"</span>, produces=<span class="string">"application/json;charset=UTF-8"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">home</span><span class="params">(String op)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -381,10 +386,6 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/05/31/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
-              </a>
             
           </div>
 
@@ -446,8 +447,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -462,7 +472,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -484,7 +494,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -507,6 +517,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Boot项目中设置Content-Type的方法"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot项目中设置Content-Type的方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
