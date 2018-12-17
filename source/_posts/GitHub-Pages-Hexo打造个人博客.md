@@ -16,6 +16,8 @@ tags:
 >
 >
 
+<!-- more -->
+
 ## GitHub创建Github Pages项目
 
 创建一个名称为`username.github.io`的新仓库。username为你的GitHub账号用户名。
@@ -176,6 +178,20 @@ cache:
   directories:  #缓存特定目录, 加快构建速度
     - node_modules
 ```
+
+## 主题优化
+
+> [NexT使用文档](http://theme-next.iissnan.com/)
+
+### 文章预览
+
+> [如何设置「阅读全文」？](http://theme-next.iissnan.com/faqs.html#read-more)
+
+### 评论系统
+
+> [Hexo-Next 添加 Gitment 评论系统](https://ryanluoxu.github.io/2017/11/27/Hexo-Next-%E6%B7%BB%E5%8A%A0-Gitment-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/)
+
+
 
 ## 填坑记录
 

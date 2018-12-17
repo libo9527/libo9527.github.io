@@ -10,6 +10,8 @@ tags:
 
 本文记录我使用Chrome的一些习惯
 
+<!-- more -->
+
 ## Chrome快捷键
 
 > [Chrome 键盘快捷键](https://support.google.com/chrome/answer/157179?hl=zh-Hans)
