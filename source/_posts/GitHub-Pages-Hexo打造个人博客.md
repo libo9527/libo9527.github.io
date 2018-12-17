@@ -190,6 +190,16 @@ cache:
 ### 评论系统
 
 > [Hexo-Next 添加 Gitment 评论系统](https://ryanluoxu.github.io/2017/11/27/Hexo-Next-%E6%B7%BB%E5%8A%A0-Gitment-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/)
+>
+> [hexo博客配置-添加评论系统-gitment和valine-需注册](https://xiaotiandi.github.io/publicBlog/2018-09-19-d196c9ad.html)
+>
+> [为 hexo NexT 添加 Gitment 评论插件](https://meesong.github.io/StaticBlog/2017/NexT+Gitment/)
+>
+>[在hexo next主题上使用gitalk](https://github.com/gitalk/gitalk/wiki/%E5%9C%A8hexo-next%E4%B8%BB%E9%A2%98%E4%B8%8A%E4%BD%BF%E7%94%A8gitalk)
+
+![](https://i.loli.net/2018/12/17/5c171d0e2a281.jpg)
+
+![](https://i.loli.net/2018/12/17/5c171f261cf6c.jpg)
 
 
 
@@ -206,3 +216,4 @@ cache:
         git add 主题目录
         git push
         ```
+

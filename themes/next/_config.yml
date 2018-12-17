@@ -401,7 +401,7 @@ valine:
 # Introduction: https://imsun.net/posts/gitment-introduction/
 # You can get your Github ID from https://api.github.com/users/<Github username>
 gitment:
-  enable: true
+  enable: false
   mint: true # RECOMMEND, A mint on Gitment, to support count, language and proxy_gateway
   count: true # Show comments count in post meta area
   lazy: false # Comments lazy loading with a button
@@ -413,6 +413,17 @@ gitment:
   client_secret: b47861d71d5d5221e9939778bda74f968271f0a3 # EITHER this or proxy_gateway, Github access secret token for the Gitment
   proxy_gateway: # Address of api proxy, See: https://github.com/aimingoo/intersect
   redirect_protocol: # Protocol of redirect_uri with force_redirect_protocol when mint enabled
+
+# Gitalk
+# more info please open https://github.com/gitalk/gitalk
+gitalk:
+  enable: true
+  clientID: a75f33d0d54ca58ac001
+  clientSecret: 02675748bae6c8068856bcd57d23a6835a8928a8
+  repo: gitalk-comments
+  owner: libo9527
+  admin: libo9527
+  pagerDirection: first
 
 # Baidu Share
 # Available value:
