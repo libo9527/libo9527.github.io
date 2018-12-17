@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="mysql自增ID起始值修改方法1alter table tablename AUTO_INCREMENT=1;">
 <meta property="og:locale" content="zh_Hans">
-<meta property="og:updated_time" content="2018-12-17T03:46:57.001Z">
+<meta property="og:updated_time" content="2018-12-17T07:26:41.114Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL笔记">
 <meta name="twitter:description" content="mysql自增ID起始值修改方法1alter table tablename AUTO_INCREMENT=1;">
@@ -348,16 +348,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/06/09/MySQL笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/06/09/MySQL笔记/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -455,12 +445,8 @@
           
 
   
-    <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
-    </div>
-
+	<div id="gitalk-container"></div>
+	<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
   
 
 
@@ -752,47 +738,30 @@
 
 
 
-<!-- LOCAL: You can save these files to your site and update links -->
-    
-        
-        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-    
-<!-- END LOCAL -->
-
-    
-
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname, 
-            owner: 'libo9527',
-            repo: 'gitment-comments',
-            
-            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: 'b47861d71d5d5221e9939778bda74f968271f0a3',
-            
-                client_id: '463872e38efffa18688e'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
-    
 
 
 
 
 
-
+	
+		
+			<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+			<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+			<script type="text/javascript">
+				const gitalk = new Gitalk({
+					clientID: 'a75f33d0d54ca58ac001',
+					clientSecret: '02675748bae6c8068856bcd57d23a6835a8928a8',
+					repo: 'gitalk-comments',
+					owner: 'libo9527',
+					admin: 'libo9527'.split(','),
+					pagerDirection: 'first',
+					id: md5(window.location.pathname),
+					distractionFreeMode: false
+				})
+				gitalk.render('gitalk-container')
+			</script>		
+		
+	
 
   
 
