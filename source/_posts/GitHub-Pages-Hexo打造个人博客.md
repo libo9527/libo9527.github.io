@@ -195,13 +195,52 @@ cache:
 >
 > [为 hexo NexT 添加 Gitment 评论插件](https://meesong.github.io/StaticBlog/2017/NexT+Gitment/)
 >
->[在hexo next主题上使用gitalk](https://github.com/gitalk/gitalk/wiki/%E5%9C%A8hexo-next%E4%B8%BB%E9%A2%98%E4%B8%8A%E4%BD%BF%E7%94%A8gitalk)
+> [在hexo next主题上使用gitalk](https://github.com/gitalk/gitalk/wiki/%E5%9C%A8hexo-next%E4%B8%BB%E9%A2%98%E4%B8%8A%E4%BD%BF%E7%94%A8gitalk)
+>
+> [为你的Hexo加上评论系统-Valine](https://www.bluelzy.com/articles/use_valine_for_your_blog.html)
 
 ![](https://i.loli.net/2018/12/17/5c171d0e2a281.jpg)
 
 ![](https://i.loli.net/2018/12/17/5c171f261cf6c.jpg)
 
+由于gitment长期未维护,所有最后使用gitalk,之后可以增加其他三方的评论插件更加灵活.
 
+### 自定义内建标签
+
+> [Hexo next博客添加折叠块功能添加折叠代码块](https://blog.rmiao.top/hexo-fold-block/)
+
+### 进度条
+
+> [**theme-next-pace**](https://github.com/theme-next/theme-next-pace)
+
+### 自定义页面样式
+
+> [2017年最新基于hexo搭建个人免费博客——自定义页面样式一](http://www.cduyzh.com/hexo-settings-3/)
+>
+> [优化 网页样式布局](https://reuixiy.github.io/technology/computer/computer-aided-art/2017/06/09/hexo-next-optimization.html#%E4%BC%98%E5%8C%96-%E7%BD%91%E9%A1%B5%E6%A0%B7%E5%BC%8F%E5%B8%83%E5%B1%80)
+
+### 显示文章更新时间
+
+> [~~hexo添加文章更新时间~~](https://blog.csdn.net/ganzhilin520/article/details/79053399)
+
+修改主题配置文件的
+
+```yaml
+post_meta:
+  updated_at: true
+```
+
+要想具体显示到时分秒,则修改站点配置文件的
+
+```yaml
+date_format: YYYY-MM-DD HH:mm:ss
+```
+
+### 复制代码按钮
+
+> [~~HEXO优化之（二）----添加复制功能~~](https://www.ofind.cn/blog/HEXO/HEXO%E4%BC%98%E5%8C%96%E4%B9%8B%EF%BC%88%E4%BA%8C%EF%BC%89-%E6%B7%BB%E5%8A%A0%E5%A4%8D%E5%88%B6%E5%8A%9F%E8%83%BD.html)
+>
+>
 
 ## 填坑记录
 
@@ -216,4 +255,3 @@ cache:
         git add 主题目录
         git push
         ```
-
