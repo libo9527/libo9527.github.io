@@ -14,6 +14,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-atom.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -91,7 +98,7 @@
 <meta property="og:image" content="https://i.loli.net/2018/12/15/5c14c305516b7.jpg">
 <meta property="og:image" content="https://i.loli.net/2018/12/17/5c171d0e2a281.jpg">
 <meta property="og:image" content="https://i.loli.net/2018/12/17/5c171f261cf6c.jpg">
-<meta property="og:updated_time" content="2018-12-17T07:26:41.114Z">
+<meta property="og:updated_time" content="2018-12-17T15:22:29.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitHub Pages+Hexo打造个人博客">
 <meta name="twitter:description" content="GitHub Pages+Hexo打造个人博客 环境： Windows 10，x64 node.js v10.14.2 npm 6.5.0">
@@ -323,7 +330,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-12-17T23:22:29+08:00">
+                2018-12-17
+              </time>
             
           </span>
 
@@ -424,9 +443,31 @@
 <p><a href="https://xiaotiandi.github.io/publicBlog/2018-09-19-d196c9ad.html" target="_blank" rel="noopener">hexo博客配置-添加评论系统-gitment和valine-需注册</a></p>
 <p><a href="https://meesong.github.io/StaticBlog/2017/NexT+Gitment/" target="_blank" rel="noopener">为 hexo NexT 添加 Gitment 评论插件</a></p>
 <p><a href="https://github.com/gitalk/gitalk/wiki/%E5%9C%A8hexo-next%E4%B8%BB%E9%A2%98%E4%B8%8A%E4%BD%BF%E7%94%A8gitalk" target="_blank" rel="noopener">在hexo next主题上使用gitalk</a></p>
+<p><a href="https://www.bluelzy.com/articles/use_valine_for_your_blog.html" target="_blank" rel="noopener">为你的Hexo加上评论系统-Valine</a></p>
 </blockquote>
 <p><img src="https://i.loli.net/2018/12/17/5c171d0e2a281.jpg" alt=""></p>
 <p><img src="https://i.loli.net/2018/12/17/5c171f261cf6c.jpg" alt=""></p>
+<p>由于gitment长期未维护,所有最后使用gitalk,之后可以增加其他三方的评论插件更加灵活.</p>
+<h3 id="自定义内建标签"><a href="#自定义内建标签" class="headerlink" title="自定义内建标签"></a>自定义内建标签</h3><blockquote>
+<p><a href="https://blog.rmiao.top/hexo-fold-block/" target="_blank" rel="noopener">Hexo next博客添加折叠块功能添加折叠代码块</a></p>
+</blockquote>
+<h3 id="进度条"><a href="#进度条" class="headerlink" title="进度条"></a>进度条</h3><blockquote>
+<p><a href="https://github.com/theme-next/theme-next-pace" target="_blank" rel="noopener"><strong>theme-next-pace</strong></a></p>
+</blockquote>
+<h3 id="自定义页面样式"><a href="#自定义页面样式" class="headerlink" title="自定义页面样式"></a>自定义页面样式</h3><blockquote>
+<p><a href="http://www.cduyzh.com/hexo-settings-3/" target="_blank" rel="noopener">2017年最新基于hexo搭建个人免费博客——自定义页面样式一</a></p>
+<p><a href="https://reuixiy.github.io/technology/computer/computer-aided-art/2017/06/09/hexo-next-optimization.html#%E4%BC%98%E5%8C%96-%E7%BD%91%E9%A1%B5%E6%A0%B7%E5%BC%8F%E5%B8%83%E5%B1%80" target="_blank" rel="noopener">优化 网页样式布局</a></p>
+</blockquote>
+<h3 id="显示文章更新时间"><a href="#显示文章更新时间" class="headerlink" title="显示文章更新时间"></a>显示文章更新时间</h3><blockquote>
+<p><a href="https://blog.csdn.net/ganzhilin520/article/details/79053399" target="_blank" rel="noopener"><del>hexo添加文章更新时间</del></a></p>
+</blockquote>
+<p>修改主题配置文件的</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_meta:</span></span><br><span class="line"><span class="attr">  updated_at:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>要想具体显示到时分秒,则修改站点配置文件的</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">date_format:</span> <span class="string">YYYY-MM-DD</span> <span class="attr">HH:mm:ss</span></span><br></pre></td></tr></table></figure>
+<h3 id="复制代码按钮"><a href="#复制代码按钮" class="headerlink" title="复制代码按钮"></a>复制代码按钮</h3><blockquote>
+<p><a href="https://www.ofind.cn/blog/HEXO/HEXO%E4%BC%98%E5%8C%96%E4%B9%8B%EF%BC%88%E4%BA%8C%EF%BC%89-%E6%B7%BB%E5%8A%A0%E5%A4%8D%E5%88%B6%E5%8A%9F%E8%83%BD.html" target="_blank" rel="noopener"><del>HEXO优化之（二）—-添加复制功能</del></a></p>
+</blockquote>
 <h2 id="填坑记录"><a href="#填坑记录" class="headerlink" title="填坑记录"></a>填坑记录</h2><h3 id="选用主题后页面空白"><a href="#选用主题后页面空白" class="headerlink" title="选用主题后页面空白"></a>选用主题后页面空白</h3><p>原因：themes目录下主题相关文件未正确提交到远程仓库</p>
 <p>解决：1. 删除主题目录下的<code>.git</code>目录和<code>.gitignore</code>文件</p>
 <pre><code>2. <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached 主题目录</span><br><span class="line">git add 主题目录</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
@@ -603,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub-Pages-Hexo打造个人博客"><span class="nav-number">1.</span> <span class="nav-text">GitHub Pages+Hexo打造个人博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub创建Github-Pages项目"><span class="nav-number">1.1.</span> <span class="nav-text">GitHub创建Github Pages项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建Hexo环境"><span class="nav-number">1.2.</span> <span class="nav-text">搭建Hexo环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装node-js"><span class="nav-number">1.2.1.</span> <span class="nav-text">安装node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下载与安装"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">下载与安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装npm"><span class="nav-number">1.2.2.</span> <span class="nav-text">安装npm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介-1"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Hexo"><span class="nav-number">1.2.3.</span> <span class="nav-text">安装Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">初始化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用Travis-CI自动发布博客"><span class="nav-number">1.3.</span> <span class="nav-text">利用Travis-CI自动发布博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#远程仓库创建hexo分支对hexo源码进行版本控制"><span class="nav-number">1.3.1.</span> <span class="nav-text">远程仓库创建hexo分支对hexo源码进行版本控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub生成Access-Token"><span class="nav-number">1.3.2.</span> <span class="nav-text">GitHub生成Access Token</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置Travis-CI"><span class="nav-number">1.3.3.</span> <span class="nav-text">设置Travis-CI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo源码仓库中添加Travis-CI的配置文件-travis-yml"><span class="nav-number">1.3.4.</span> <span class="nav-text">hexo源码仓库中添加Travis-CI的配置文件.travis.yml</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题优化"><span class="nav-number">1.4.</span> <span class="nav-text">主题优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文章预览"><span class="nav-number">1.4.1.</span> <span class="nav-text">文章预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评论系统"><span class="nav-number">1.4.2.</span> <span class="nav-text">评论系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#填坑记录"><span class="nav-number">1.5.</span> <span class="nav-text">填坑记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选用主题后页面空白"><span class="nav-number">1.5.1.</span> <span class="nav-text">选用主题后页面空白</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GitHub-Pages-Hexo打造个人博客"><span class="nav-number">1.</span> <span class="nav-text">GitHub Pages+Hexo打造个人博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub创建Github-Pages项目"><span class="nav-number">1.1.</span> <span class="nav-text">GitHub创建Github Pages项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建Hexo环境"><span class="nav-number">1.2.</span> <span class="nav-text">搭建Hexo环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装node-js"><span class="nav-number">1.2.1.</span> <span class="nav-text">安装node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下载与安装"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">下载与安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装npm"><span class="nav-number">1.2.2.</span> <span class="nav-text">安装npm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介-1"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Hexo"><span class="nav-number">1.2.3.</span> <span class="nav-text">安装Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">初始化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用Travis-CI自动发布博客"><span class="nav-number">1.3.</span> <span class="nav-text">利用Travis-CI自动发布博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#远程仓库创建hexo分支对hexo源码进行版本控制"><span class="nav-number">1.3.1.</span> <span class="nav-text">远程仓库创建hexo分支对hexo源码进行版本控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub生成Access-Token"><span class="nav-number">1.3.2.</span> <span class="nav-text">GitHub生成Access Token</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置Travis-CI"><span class="nav-number">1.3.3.</span> <span class="nav-text">设置Travis-CI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo源码仓库中添加Travis-CI的配置文件-travis-yml"><span class="nav-number">1.3.4.</span> <span class="nav-text">hexo源码仓库中添加Travis-CI的配置文件.travis.yml</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主题优化"><span class="nav-number">1.4.</span> <span class="nav-text">主题优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文章预览"><span class="nav-number">1.4.1.</span> <span class="nav-text">文章预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评论系统"><span class="nav-number">1.4.2.</span> <span class="nav-text">评论系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义内建标签"><span class="nav-number">1.4.3.</span> <span class="nav-text">自定义内建标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进度条"><span class="nav-number">1.4.4.</span> <span class="nav-text">进度条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义页面样式"><span class="nav-number">1.4.5.</span> <span class="nav-text">自定义页面样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示文章更新时间"><span class="nav-number">1.4.6.</span> <span class="nav-text">显示文章更新时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制代码按钮"><span class="nav-number">1.4.7.</span> <span class="nav-text">复制代码按钮</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#填坑记录"><span class="nav-number">1.5.</span> <span class="nav-text">填坑记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选用主题后页面空白"><span class="nav-number">1.5.1.</span> <span class="nav-text">选用主题后页面空白</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -835,5 +876,9 @@
 
   
 
+  
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
 </body>
 </html>
