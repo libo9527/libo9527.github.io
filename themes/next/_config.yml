@@ -194,7 +194,7 @@ sidebar:
   b2t: false
 
   # Scroll percent label in b2t button.
-  scrollpercent: false
+  scrollpercent: true
 
   # Enable sidebar on narrow view (only for Muse | Mist).
   onmobile: false
@@ -823,3 +823,21 @@ images: images
 
 # Theme version
 version: 5.1.4
+	
+# hexo-helper-live2d https://github.com/EYHN/hexo-helper-live2d
+live2d:
+  enable: false
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  debug: false
+  model:
+    use: live2d-widget-model-z16
+  display:
+    position: right
+    width: 150
+    height: 300
+  mobile:
+    show: true

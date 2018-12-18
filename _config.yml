@@ -81,3 +81,9 @@ deploy:
   type: git
   repository: https://github.com/libo9527/libo9527.github.io.git
   branch: master
+
+
+# Security https://github.com/MikeCoder/hexo-blog-encrypt
+##
+encrypt:
+    enable: true

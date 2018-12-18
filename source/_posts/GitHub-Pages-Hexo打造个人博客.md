@@ -2,6 +2,9 @@
 title: GitHub Pages+Hexo打造个人博客
 date: 2018-12-15 14:34:32
 tags:
+password: Mike
+abstract: Welcome to my blog, enter password to read.
+message: Welcome to my blog, enter password to read.
 ---
 
 # GitHub Pages+Hexo打造个人博客
@@ -240,7 +243,34 @@ date_format: YYYY-MM-DD HH:mm:ss
 
 > [~~HEXO优化之（二）----添加复制功能~~](https://www.ofind.cn/blog/HEXO/HEXO%E4%BC%98%E5%8C%96%E4%B9%8B%EF%BC%88%E4%BA%8C%EF%BC%89-%E6%B7%BB%E5%8A%A0%E5%A4%8D%E5%88%B6%E5%8A%9F%E8%83%BD.html)
 >
->
+> [Hexo NexT主题代码块添加复制功能](http://www.missfli.com/2018/06/19/github-hexo-next-08.html)
+
+
+
+### 显示当前浏览进度
+
+> [7.浏览页面的时候显示当前浏览进度](https://www.jianshu.com/p/3ff20be8574c)
+
+### 背景图片
+
+> [添加背景图](https://www.simon96.online/2018/10/12/hexo-tutorial/#%E6%B7%BB%E5%8A%A0%E8%83%8C%E6%99%AF%E5%9B%BE)
+
+### 文章加密
+
+> [hexo-blog-encrypt](https://github.com/MikeCoder/hexo-blog-encrypt/blob/master/ReadMe.zh.md)
+
+注意实在站点配置文件中添加
+
+```yaml
+# Security
+##
+encrypt:
+    enable: true
+```
+
+### 二次元看板娘
+
+> [hexo-helper-live2d](https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md)
 
 ## 填坑记录
 
