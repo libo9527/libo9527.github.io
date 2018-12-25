@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="[TOC] 原型设计 世界杯  建表 数据库  用户表表名：my_user    列名 类型 说明     id int(11) 用户自增id   open_id varchar(100) 用户在小程序中的唯一识别id   union_id varchar(100) 用户在同一主体的多个小程序中的唯一识别id   nick_name varchar(50) 用户昵称，由于用户的昵称中可能包含表情，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="世界杯程序接口文档">
+<meta property="og:url" content="http://yoursite.com/2018/06/06/世界杯小程序/index.html">
+<meta property="og:site_name" content="LiBo">
+<meta property="og:description" content="[TOC] 原型设计 世界杯  建表 数据库  用户表表名：my_user    列名 类型 说明     id int(11) 用户自增id   open_id varchar(100) 用户在小程序中的唯一识别id   union_id varchar(100) 用户在同一主体的多个小程序中的唯一识别id   nick_name varchar(50) 用户昵称，由于用户的昵称中可能包含表情，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-25T02:55:27.793Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="世界杯程序接口文档">
+<meta name="twitter:description" content="[TOC] 原型设计 世界杯  建表 数据库  用户表表名：my_user    列名 类型 说明     id int(11) 用户自增id   open_id varchar(100) 用户在小程序中的唯一识别id   union_id varchar(100) 用户在同一主体的多个小程序中的唯一识别id   nick_name varchar(50) 用户昵称，由于用户的昵称中可能包含表情，">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/06/世界杯小程序/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>世界杯程序接口文档 | LiBo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LiBo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/06/世界杯小程序/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Bo">
+      <meta itemprop="description" content="我不怕千万人阻挡，只怕自己投降">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiBo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">世界杯程序接口文档
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-06 17:55:11" itemprop="dateCreated datePublished" datetime="2018-06-06T17:55:11+08:00">2018-06-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-12-25 10:55:27" itemprop="dateModified" datetime="2018-12-25T10:55:27+08:00">2018-12-25</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/06/世界杯小程序/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/06/06/世界杯小程序/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h1 id="原型设计"><a href="#原型设计" class="headerlink" title="原型设计"></a>原型设计</h1><blockquote>
+<p><a href="http://pro.modao.cc/app/yNV6IjXGdgKjzuzbWWoCESKpAsUV3a1#screen=sACD9810F7B1527599208486" target="_blank" rel="noopener">世界杯</a></p>
+</blockquote>
+<h1 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h1><blockquote>
+<p><a href="http://gz-dmc.cloud.tencent.com/v2/login" target="_blank" rel="noopener">数据库</a></p>
+</blockquote>
+<h2 id="用户表"><a href="#用户表" class="headerlink" title="用户表"></a>用户表</h2><p>表名：my_user</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int(11)</td>
+<td>用户自增id</td>
+</tr>
+<tr>
+<td>open_id</td>
+<td>varchar(100)</td>
+<td>用户在小程序中的唯一识别id</td>
+</tr>
+<tr>
+<td>union_id</td>
+<td>varchar(100)</td>
+<td>用户在同一主体的多个小程序中的唯一识别id</td>
+</tr>
+<tr>
+<td>nick_name</td>
+<td>varchar(50)</td>
+<td>用户昵称，由于用户的昵称中可能包含表情，所以要用UTF8MB4编码</td>
+</tr>
+<tr>
+<td>head_img_url</td>
+<td>varchar(255)</td>
+<td>用户头像地址</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>enum</td>
+<td>性别(1：男，2：女)</td>
+</tr>
+<tr>
+<td>source</td>
+<td>tinyint</td>
+<td>用户来源，从分享进来或者直接搜索等</td>
+</tr>
+<tr>
+<td>region</td>
+<td>varchar</td>
+<td>用户所在地区</td>
+</tr>
+<tr>
+<td>first_login_time</td>
+<td>timestamp</td>
+<td>用户第一次登录的时间</td>
+</tr>
+<tr>
+<td>last_login_time</td>
+<td>timestamp</td>
+<td>用户最后一次登录时间</td>
+</tr>
+<tr>
+<td>collection_count</td>
+<td>int</td>
+<td>今日集球衣的次数</td>
+</tr>
+<tr>
+<td>collection_shirts</td>
+<td>varchar(255)</td>
+<td>今日可收集的候选集合（球队名之间用”_”连接）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="海报表"><a href="#海报表" class="headerlink" title="海报表"></a>海报表</h2><p>表名：poster</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>海报自增id</td>
+</tr>
+<tr>
+<td>template_id</td>
+<td>int</td>
+<td>模板id</td>
+</tr>
+<tr>
+<td>team_name</td>
+<td>varchar(50)</td>
+<td>球队名</td>
+</tr>
+<tr>
+<td>music_url</td>
+<td>varchar(255)</td>
+<td>海报背景音乐的链接地址</td>
+</tr>
+<tr>
+<td>slogan_id</td>
+<td>int</td>
+<td>标语id</td>
+</tr>
+<tr>
+<td>poster_url</td>
+<td>varchar(255)</td>
+<td>生成后的海报图片链接地址</td>
+</tr>
+</tbody>
+</table>
+<h2 id="模板表"><a href="#模板表" class="headerlink" title="模板表"></a>模板表</h2><p>表名：template</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>模板自增id</td>
+</tr>
+<tr>
+<td>template_url</td>
+<td>varchar(255)</td>
+<td>模板图片的链接地址</td>
+</tr>
+<tr>
+<td>music_url</td>
+<td>varchar(255)</td>
+<td>海报背景音乐链接地址</td>
+</tr>
+</tbody>
+</table>
+<h2 id="加油词表"><a href="#加油词表" class="headerlink" title="加油词表"></a>加油词表</h2><p>表名：slogan</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>标语自增id</td>
+</tr>
+<tr>
+<td>content</td>
+<td>varchar(100)</td>
+<td>标语内容</td>
+</tr>
+</tbody>
+</table>
+<h2 id="音乐表"><a href="#音乐表" class="headerlink" title="音乐表"></a><del>音乐表</del></h2><p>表名：music</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>音乐自增id</td>
+</tr>
+<tr>
+<td>music_url</td>
+<td>varchar(255)</td>
+<td>音乐链接地址</td>
+</tr>
+</tbody>
+</table>
+<h2 id="球队表"><a href="#球队表" class="headerlink" title="球队表"></a><del>球队表</del></h2><p>表名：team</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>球队自增id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>varchar(50)</td>
+<td>球队名</td>
+</tr>
+</tbody>
+</table>
+<h2 id="赛程表"><a href="#赛程表" class="headerlink" title="赛程表"></a>赛程表</h2><p>表名：match_schedule</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>赛程自增id</td>
+</tr>
+<tr>
+<td>match_type</td>
+<td>varchar(10)</td>
+<td>比赛类型</td>
+</tr>
+<tr>
+<td>group</td>
+<td>varchar(10)</td>
+<td>分组情况</td>
+</tr>
+<tr>
+<td>home_team</td>
+<td>varchar(10)</td>
+<td>主队</td>
+</tr>
+<tr>
+<td>away_team</td>
+<td>varchar(10)</td>
+<td>客队</td>
+</tr>
+<tr>
+<td>begin_time</td>
+<td>timestamp</td>
+<td>比赛开始时间</td>
+</tr>
+<tr>
+<td>state</td>
+<td>int</td>
+<td>比赛状态（0：未开始；1：已开始；2：已结束）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="预约表"><a href="#预约表" class="headerlink" title="预约表"></a>预约表</h2><p>表名：subscribe</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>u_id</td>
+<td>int</td>
+<td>用户id</td>
+</tr>
+<tr>
+<td>m_id</td>
+<td>int</td>
+<td>赛程id</td>
+</tr>
+</tbody>
+</table>
+<h2 id="球衣表"><a href="#球衣表" class="headerlink" title="球衣表"></a><del>球衣表</del></h2><p>表名：polo_shirt</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>球衣自增id</td>
+</tr>
+<tr>
+<td>team_name</td>
+<td>varchar(50)</td>
+<td>所属球队名称</td>
+</tr>
+<tr>
+<td>repertory</td>
+<td>int</td>
+<td>库存</td>
+</tr>
+<tr>
+<td>probability</td>
+<td>double</td>
+<td>概率</td>
+</tr>
+<tr>
+<td></td>
+<td>String</td>
+<td>注释</td>
+</tr>
+</tbody>
+</table>
+<h2 id="球衣收集记录表"><a href="#球衣收集记录表" class="headerlink" title="球衣收集记录表"></a>球衣收集记录表</h2><p>表名：collection_record</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>集到的球衣记录id</td>
+</tr>
+<tr>
+<td>u_id</td>
+<td>int</td>
+<td>用户id</td>
+</tr>
+<tr>
+<td>argentina</td>
+<td>int</td>
+<td>集到阿根廷队球衣的数量</td>
+</tr>
+<tr>
+<td>belgium</td>
+<td>int</td>
+<td>集到比利时队球衣的数量</td>
+</tr>
+<tr>
+<td>brazil</td>
+<td>int</td>
+<td>集到巴西队球衣的数量</td>
+</tr>
+<tr>
+<td>england</td>
+<td>int</td>
+<td>集到英国队球衣的数量</td>
+</tr>
+<tr>
+<td>france</td>
+<td>int</td>
+<td>集到法国队球衣的数量</td>
+</tr>
+<tr>
+<td>germany</td>
+<td>int</td>
+<td>集到德国队球衣的数量</td>
+</tr>
+<tr>
+<td>mexico</td>
+<td>int</td>
+<td>集到墨西哥队球衣的数量</td>
+</tr>
+<tr>
+<td>poland</td>
+<td>int</td>
+<td>集到波兰队球衣的数量</td>
+</tr>
+<tr>
+<td>portugal</td>
+<td>int</td>
+<td>集到葡萄牙队球衣的数量</td>
+</tr>
+<tr>
+<td>russia</td>
+<td>int</td>
+<td>集到俄罗斯队球衣的数量</td>
+</tr>
+<tr>
+<td>serbia</td>
+<td>int</td>
+<td>集到塞尔维亚队球衣的数量</td>
+</tr>
+<tr>
+<td>south_korea</td>
+<td>int</td>
+<td>集到韩国队球衣的数量</td>
+</tr>
+<tr>
+<td>spain</td>
+<td>int</td>
+<td>集到西班牙队球衣的数量</td>
+</tr>
+<tr>
+<td>sweden</td>
+<td>int</td>
+<td>集到瑞典队球衣的数量</td>
+</tr>
+<tr>
+<td>switzerland</td>
+<td>int</td>
+<td>集到瑞士队球衣的数量</td>
+</tr>
+</tbody>
+</table>
+<h2 id="球衣赠送记录表"><a href="#球衣赠送记录表" class="headerlink" title="球衣赠送记录表"></a>球衣赠送记录表</h2><p>表名：shirt_share</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>球衣分享记录id</td>
+</tr>
+<tr>
+<td>sharer_id</td>
+<td>int</td>
+<td>分享者id</td>
+</tr>
+<tr>
+<td>receiver_id</td>
+<td>int</td>
+<td>领取者id（-1代表没有人领取）</td>
+</tr>
+<tr>
+<td>team_name</td>
+<td>varchar(50)</td>
+<td>分享的球衣所属球队名</td>
+</tr>
+</tbody>
+</table>
+<h2 id="奖品表"><a href="#奖品表" class="headerlink" title="奖品表"></a>奖品表</h2><p>表名：award </p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>奖品自增id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>varchar(50)</td>
+<td>奖品名称</td>
+</tr>
+<tr>
+<td>real_price</td>
+<td>varchar(50)</td>
+<td>真实价格</td>
+</tr>
+<tr>
+<td>price</td>
+<td>double</td>
+<td>标价</td>
+</tr>
+<tr>
+<td>award_img_url</td>
+<td>varchar(255)</td>
+<td>奖品图片链接地址</td>
+</tr>
+<tr>
+<td>award_url</td>
+<td>varchar(255)</td>
+<td>奖品详情链接地址</td>
+</tr>
+<tr>
+<td>win_condition</td>
+<td>varchar(255)</td>
+<td>获取条件（所需球衣id拼接字符串，例如：1_2_3）</td>
+</tr>
+<tr>
+<td>v_repertory</td>
+<td>int</td>
+<td>虚拟库存</td>
+</tr>
+<tr>
+<td>repertory</td>
+<td>int</td>
+<td>真实库存</td>
+</tr>
+</tbody>
+</table>
+<h2 id="兑换记录表"><a href="#兑换记录表" class="headerlink" title="兑换记录表"></a>兑换记录表</h2><p>表名：convert_record</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>兑换记录id</td>
+</tr>
+<tr>
+<td>u_id</td>
+<td>int</td>
+<td>中奖用户id</td>
+</tr>
+<tr>
+<td>user_name</td>
+<td>String</td>
+<td>中奖用户名</td>
+</tr>
+<tr>
+<td>a_id</td>
+<td>int</td>
+<td>中将奖品id</td>
+</tr>
+<tr>
+<td>award_name</td>
+<td>String</td>
+<td>中奖奖品名称</td>
+</tr>
+<tr>
+<td>win_time</td>
+<td>timestamp</td>
+<td>中奖时间</td>
+</tr>
+</tbody>
+</table>
+<h1 id="用户相关信息"><a href="#用户相关信息" class="headerlink" title="用户相关信息"></a>用户相关信息</h1><h2 id="登陆接口"><a href="#登陆接口" class="headerlink" title="登陆接口"></a>登陆接口</h2><h3 id="接口概述"><a href="#接口概述" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明"><a href="#URL说明" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/user/login</code></p>
+<p>请求方式：POST</p>
+<h3 id="请求参数"><a href="#请求参数" class="headerlink" title="请求参数"></a>请求参数</h3><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>String</td>
+<td>登陆码</td>
+</tr>
+</tbody>
+</table>
+<h3 id="返回内容"><a href="#返回内容" class="headerlink" title="返回内容"></a>返回内容</h3><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Result&lt;Map&lt;String, Object&gt;&gt;</td>
+<td>请求结果封装</td>
+</tr>
+<tr>
+<td>++success</td>
+<td>boolean</td>
+<td>请求是否成功</td>
+</tr>
+<tr>
+<td>++error</td>
+<td>String</td>
+<td>请求失败时的提示信息</td>
+</tr>
+<tr>
+<td>++data</td>
+<td>Map&lt;String, Object&gt;</td>
+<td>请求成功时返回的数据封装</td>
+</tr>
+<tr>
+<td>++++userId</td>
+<td>int</td>
+<td>用户自增id</td>
+</tr>
+<tr>
+<td>++++loginResult</td>
+<td>LoginResult</td>
+<td>登陆结果集封装</td>
+</tr>
+<tr>
+<td>++++++openId</td>
+<td>String</td>
+<td>用户在小程序中的唯一识别id</td>
+</tr>
+<tr>
+<td>++++++sessionId</td>
+<td>String</td>
+<td>加盐后的小程序密钥</td>
+</tr>
+</tbody>
+</table>
+<h2 id="获取用户信息"><a href="#获取用户信息" class="headerlink" title="获取用户信息"></a>获取用户信息</h2><h3 id="接口概述-1"><a href="#接口概述-1" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-1"><a href="#URL说明-1" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/user/userInf</code></p>
+<p>请求方式：POST</p>
+<h3 id="请求参数-1"><a href="#请求参数-1" class="headerlink" title="请求参数"></a>请求参数</h3><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>openId</td>
+<td>String</td>
+<td>微信小程序中用于唯一标识一个用户</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>String</td>
+<td>加盐后的小程序密钥</td>
+</tr>
+<tr>
+<td>uID</td>
+<td>int</td>
+<td>用户自增id</td>
+</tr>
+<tr>
+<td>nick_name</td>
+<td>String</td>
+<td>用户昵称，由于用户的昵称中可能包含表情，所以要用UTF8MB4编码</td>
+</tr>
+<tr>
+<td>head_img_url</td>
+<td>String</td>
+<td>用户头像地址</td>
+</tr>
+</tbody>
+</table>
+<h3 id="返回内容-1"><a href="#返回内容-1" class="headerlink" title="返回内容"></a>返回内容</h3><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Result&lt;Map&lt;String, Object&gt;&gt;</td>
+<td>请求结果封装</td>
+</tr>
+<tr>
+<td>++success</td>
+<td>boolean</td>
+<td>请求是否成功</td>
+</tr>
+<tr>
+<td>++error</td>
+<td>String</td>
+<td>请求失败时的提示信息</td>
+</tr>
+</tbody>
+</table>
+<h1 id="为喜欢的球队加油"><a href="#为喜欢的球队加油" class="headerlink" title="为喜欢的球队加油"></a>为喜欢的球队加油</h1><h2 id="生成海报"><a href="#生成海报" class="headerlink" title="生成海报"></a>生成海报</h2><h3 id="接口概述-2"><a href="#接口概述-2" class="headerlink" title="接口概述"></a>接口概述</h3><p>根据用户选择的球队生成海报。</p>
+<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/poster/makePoster</code></p>
+<p>请求方式：POST</p>
+<h3 id="请求参数-2"><a href="#请求参数-2" class="headerlink" title="请求参数"></a>请求参数</h3><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>openId</td>
+<td>String</td>
+<td>微信小程序中用于唯一标识一个用户</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>String</td>
+<td>加盐后的小程序密钥</td>
+</tr>
+<tr>
+<td>uID</td>
+<td>int</td>
+<td>用户id</td>
+</tr>
+<tr>
+<td>teamName</td>
+<td>String</td>
+<td>球队名</td>
+</tr>
+<tr>
+<td>templateName</td>
+<td>String</td>
+<td>使用的模板名（”template1“—“template6”）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="返回内容-2"><a href="#返回内容-2" class="headerlink" title="返回内容"></a>返回内容</h3><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Result&lt;Map&lt;String, String&gt;&gt;</td>
+<td>请求结果封装</td>
+</tr>
+<tr>
+<td>++success</td>
+<td>boolean</td>
+<td>请求是否成功</td>
+</tr>
+<tr>
+<td>++error</td>
+<td>String</td>
+<td>请求失败时的提示信息</td>
+</tr>
+<tr>
+<td>++data</td>
+<td>Map&lt;String, String&gt;</td>
+<td>请求成功时返回的数据封装</td>
+</tr>
+<tr>
+<td>++++posterUrl</td>
+<td>String</td>
+<td>海报链接</td>
+</tr>
+<tr>
+<td>++++templateName</td>
+<td>String</td>
+<td>使用的模板名（”template1“—“template6”）</td>
+</tr>
+</tbody>
+</table>
+<h1 id="分享集球衣"><a href="#分享集球衣" class="headerlink" title="分享集球衣"></a>分享集球衣</h1><h2 id="分享集球衣-1"><a href="#分享集球衣-1" class="headerlink" title="分享集球衣"></a>分享集球衣</h2><h3 id="接口概述-3"><a href="#接口概述-3" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-2"><a href="#URL说明-2" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/collection/getPoloShirt</code></p>
+<p>请求方式：GET</p>
+<h3 id="请求参数-3"><a href="#请求参数-3" class="headerlink" title="请求参数"></a>请求参数</h3><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uID</td>
+<td>int</td>
+<td>用户id</td>
+</tr>
+<tr>
+<td>openId</td>
+<td>String</td>
+<td>微信小程序中用于唯一标识一个用户</td>
+</tr>
+</tbody>
+</table>
+<h3 id="返回内容-3"><a href="#返回内容-3" class="headerlink" title="返回内容"></a>返回内容</h3><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>success</td>
+<td>boolean</td>
+<td>请求是否成功</td>
+</tr>
+<tr>
+<td>error</td>
+<td>String</td>
+<td>请求失败时的提示信息</td>
+</tr>
+<tr>
+<td>data</td>
+<td>String</td>
+<td>请求成功时返回的数据（球衣所属球队名称）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="集球衣记录"><a href="#集球衣记录" class="headerlink" title="集球衣记录"></a>集球衣记录</h2><h3 id="接口概述-4"><a href="#接口概述-4" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-3"><a href="#URL说明-3" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://localhost:8090/world_cup_test/collection/records</code></p>
+<p>请求方式：GET</p>
+<h3 id="请求参数-4"><a href="#请求参数-4" class="headerlink" title="请求参数"></a>请求参数</h3><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uID</td>
+<td>int</td>
+<td>用户自增id</td>
+</tr>
+<tr>
+<td>openId</td>
+<td>String</td>
+<td>微信小程序中用于唯一标识一个用户</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>String</td>
+<td>加盐后的小程序密钥</td>
+</tr>
+</tbody>
+</table>
+<h3 id="返回内容-4"><a href="#返回内容-4" class="headerlink" title="返回内容"></a>返回内容</h3><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Result&lt;List<shirtrecord>&gt;</shirtrecord></td>
+<td>请求结果封装</td>
+</tr>
+<tr>
+<td>++success</td>
+<td>boolean</td>
+<td>请求是否成功</td>
+</tr>
+<tr>
+<td>++error</td>
+<td>String</td>
+<td>请求失败时的提示信息</td>
+</tr>
+<tr>
+<td>++data</td>
+<td>List<shirtrecord></shirtrecord></td>
+<td>按集到的球衣数量从大到小排好序的记录列表</td>
+</tr>
+</tbody>
+</table>
+<p>ShirtRecord说明</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>teamName</td>
+<td>String</td>
+<td>球队名</td>
+</tr>
+<tr>
+<td>count</td>
+<td>int</td>
+<td>集到的数量</td>
+</tr>
+</tbody>
+</table>
+<h2 id="赠送球衣"><a href="#赠送球衣" class="headerlink" title="赠送球衣"></a>赠送球衣</h2><h3 id="接口概述-5"><a href="#接口概述-5" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-4"><a href="#URL说明-4" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/poloShirt/sendShirt</code></p>
+<p>请求方式：POST</p>
+<h3 id="请求参数-5"><a href="#请求参数-5" class="headerlink" title="请求参数"></a>请求参数</h3><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uID</td>
+<td>int</td>
+<td>用户自增id</td>
+</tr>
+<tr>
+<td>openId</td>
+<td>String</td>
+<td>微信小程序中用于唯一标识一个用户</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>String</td>
+<td>加盐后的小程序密钥</td>
+</tr>
+<tr>
+<td>teamName</td>
+<td>String</td>
+<td>球衣所属球队的名称</td>
+</tr>
+</tbody>
+</table>
+<h3 id="返回内容-5"><a href="#返回内容-5" class="headerlink" title="返回内容"></a>返回内容</h3><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Result<integer></integer></td>
+<td>请求结果封装</td>
+</tr>
+<tr>
+<td>++success</td>
+<td>boolean</td>
+<td>请求是否成功</td>
+</tr>
+<tr>
+<td>++error</td>
+<td>String</td>
+<td>请求失败时的提示信息</td>
+</tr>
+<tr>
+<td>++data</td>
+<td>Integer</td>
+<td>赠送记录Id</td>
+</tr>
+</tbody>
+</table>
+<h2 id="领取球衣"><a href="#领取球衣" class="headerlink" title="领取球衣"></a>领取球衣</h2><h3 id="接口概述-6"><a href="#接口概述-6" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-5"><a href="#URL说明-5" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/poloShirt/receiveShirt</code></p>
+<p>请求方式：POST</p>
+<h3 id="请求参数-6"><a href="#请求参数-6" class="headerlink" title="请求参数"></a>请求参数</h3><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uID</td>
+<td>int</td>
+<td>当前用户id</td>
+</tr>
+<tr>
+<td>openId</td>
+<td>String</td>
+<td>微信小程序中用于唯一标识一个用户</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>String</td>
+<td>加盐后的小程序密钥</td>
+</tr>
+<tr>
+<td>sharerId</td>
+<td>int</td>
+<td>球衣分享者的id</td>
+</tr>
+<tr>
+<td>teamName</td>
+<td>String</td>
+<td>球衣所属球队名</td>
+</tr>
+<tr>
+<td>sendRecordId</td>
+<td>int</td>
+<td>赠送记录id</td>
+</tr>
+</tbody>
+</table>
+<h3 id="返回内容-6"><a href="#返回内容-6" class="headerlink" title="返回内容"></a>返回内容</h3><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Result</td>
+<td>请求结果封装</td>
+</tr>
+<tr>
+<td>++success</td>
+<td>boolean</td>
+<td>请求是否成功</td>
+</tr>
+<tr>
+<td>++error</td>
+<td>String</td>
+<td>请求失败时的提示信息</td>
+</tr>
+</tbody>
+</table>
+<h2 id="索要球衣"><a href="#索要球衣" class="headerlink" title="索要球衣"></a>索要球衣</h2><h3 id="接口概述-7"><a href="#接口概述-7" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-6"><a href="#URL说明-6" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/poloShirt/chargeShirt</code></p>
+<p>请求方式：POST</p>
+<h3 id="请求参数-7"><a href="#请求参数-7" class="headerlink" title="请求参数"></a>请求参数</h3><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>uID</td>
+<td>int</td>
+<td>当前用户ID</td>
+</tr>
+<tr>
+<td>openId</td>
+<td>String</td>
+<td>微信小程序中用于唯一标识一个用户</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>String</td>
+<td>加盐后的小程序密钥</td>
+</tr>
+<tr>
+<td>chargerId</td>
+<td>int</td>
+<td>索要者的ID</td>
+</tr>
+<tr>
+<td>teamName</td>
+<td>String</td>
+<td>球衣所属球队名称</td>
+</tr>
+</tbody>
+</table>
+<h3 id="返回内容-7"><a href="#返回内容-7" class="headerlink" title="返回内容"></a>返回内容</h3><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Result&lt;Map&lt;String, Object&gt;&gt;</td>
+<td>请求结果封装</td>
+</tr>
+<tr>
+<td>++success</td>
+<td>boolean</td>
+<td>请求是否成功</td>
+</tr>
+<tr>
+<td>++error</td>
+<td>String</td>
+<td>请求失败时的提示信息</td>
+</tr>
+</tbody>
+</table>
+<h2 id="活动奖品"><a href="#活动奖品" class="headerlink" title="活动奖品"></a>活动奖品</h2><h3 id="接口概述-8"><a href="#接口概述-8" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-7"><a href="#URL说明-7" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/collection/awards</code></p>
+<p>请求方式：GET</p>
+<h3 id="请求参数-8"><a href="#请求参数-8" class="headerlink" title="请求参数"></a>请求参数</h3><p>无</p>
+<h3 id="返回内容-8"><a href="#返回内容-8" class="headerlink" title="返回内容"></a>返回内容</h3><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Result&lt;List<award>&gt;</award></td>
+<td>请求结果封装</td>
+</tr>
+<tr>
+<td>++success</td>
+<td>boolean</td>
+<td>请求是否成功</td>
+</tr>
+<tr>
+<td>++error</td>
+<td>String</td>
+<td>请求失败时的提示信息</td>
+</tr>
+<tr>
+<td>++data</td>
+<td>List<award></award></td>
+<td>请求成功时返回的数据封装</td>
+</tr>
+<tr>
+<td>++++name</td>
+<td>String</td>
+<td>奖品名称</td>
+</tr>
+<tr>
+<td>++++price</td>
+<td>double</td>
+<td>标价</td>
+</tr>
+<tr>
+<td>++++awardUrl</td>
+<td>String</td>
+<td>奖品链接地址</td>
+</tr>
+<tr>
+<td>++++winCondition</td>
+<td>String</td>
+<td>获取条件</td>
+</tr>
+</tbody>
+</table>
+<h1 id="赛程数据"><a href="#赛程数据" class="headerlink" title="赛程数据"></a>赛程数据</h1><blockquote>
+<p><a href="http://data.2018.163.com/" target="_blank" rel="noopener">世界杯数据中心</a></p>
+</blockquote>
+<h1 id="接口模板"><a href="#接口模板" class="headerlink" title="接口模板"></a>接口模板</h1><h2 id="接口名"><a href="#接口名" class="headerlink" title="接口名"></a>接口名</h2><h3 id="接口概述-9"><a href="#接口概述-9" class="headerlink" title="接口概述"></a>接口概述</h3><h3 id="URL说明-8"><a href="#URL说明-8" class="headerlink" title="URL说明"></a>URL说明</h3><p>URL地址：<code>http://api.99yhrc.com/worldCup_test/</code></p>
+<p>请求方式：GET/POST</p>
+<h3 id="请求参数-9"><a href="#请求参数-9" class="headerlink" title="请求参数"></a>请求参数</h3><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>openId</td>
+<td>String</td>
+<td>微信小程序中用于唯一标识一个用户</td>
+</tr>
+<tr>
+<td>sessionId</td>
+<td>String</td>
+<td>加盐后的小程序密钥</td>
+</tr>
+</tbody>
+</table>
+<h3 id="返回内容-9"><a href="#返回内容-9" class="headerlink" title="返回内容"></a>返回内容</h3><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Result&lt;Map&lt;String, Object&gt;&gt;</td>
+<td>请求结果封装</td>
+</tr>
+<tr>
+<td>++success</td>
+<td>boolean</td>
+<td>请求是否成功</td>
+</tr>
+<tr>
+<td>++error</td>
+<td>String</td>
+<td>请求失败时的提示信息</td>
+</tr>
+<tr>
+<td>++data</td>
+<td>Map&lt;String, Object&gt;</td>
+<td>请求成功时返回的数据封装</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+	<div>
+		
+			<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+		
+	</div>
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/01/markdown语法/" rel="next" title="markdown语法">
+                <i class="fa fa-chevron-left"></i> markdown语法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/09/MySQL笔记/" rel="prev" title="MySQL笔记">
+                MySQL笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div id="gitalk-container">
+    </div>
+	
+		<div class="comments" id="comments">
+		</div>
+	
+    
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Li Bo">
+            
+              <p class="site-author-name" itemprop="name">Li Bo</p>
+              <p class="site-description motion-element" itemprop="description">我不怕千万人阻挡，只怕自己投降</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/libo9527" title="GitHub &rarr; https://github.com/libo9527" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#原型设计"><span class="nav-number">1.</span> <span class="nav-text">原型设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#建表"><span class="nav-number">2.</span> <span class="nav-text">建表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户表"><span class="nav-number">2.1.</span> <span class="nav-text">用户表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#海报表"><span class="nav-number">2.2.</span> <span class="nav-text">海报表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板表"><span class="nav-number">2.3.</span> <span class="nav-text">模板表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加油词表"><span class="nav-number">2.4.</span> <span class="nav-text">加油词表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#音乐表"><span class="nav-number">2.5.</span> <span class="nav-text">音乐表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#球队表"><span class="nav-number">2.6.</span> <span class="nav-text">球队表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赛程表"><span class="nav-number">2.7.</span> <span class="nav-text">赛程表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预约表"><span class="nav-number">2.8.</span> <span class="nav-text">预约表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#球衣表"><span class="nav-number">2.9.</span> <span class="nav-text">球衣表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#球衣收集记录表"><span class="nav-number">2.10.</span> <span class="nav-text">球衣收集记录表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#球衣赠送记录表"><span class="nav-number">2.11.</span> <span class="nav-text">球衣赠送记录表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#奖品表"><span class="nav-number">2.12.</span> <span class="nav-text">奖品表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#兑换记录表"><span class="nav-number">2.13.</span> <span class="nav-text">兑换记录表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用户相关信息"><span class="nav-number">3.</span> <span class="nav-text">用户相关信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#登陆接口"><span class="nav-number">3.1.</span> <span class="nav-text">登陆接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述"><span class="nav-number">3.1.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明"><span class="nav-number">3.1.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数"><span class="nav-number">3.1.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容"><span class="nav-number">3.1.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取用户信息"><span class="nav-number">3.2.</span> <span class="nav-text">获取用户信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-1"><span class="nav-number">3.2.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-1"><span class="nav-number">3.2.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为喜欢的球队加油"><span class="nav-number">4.</span> <span class="nav-text">为喜欢的球队加油</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生成海报"><span class="nav-number">4.1.</span> <span class="nav-text">生成海报</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-2"><span class="nav-number">4.1.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL"><span class="nav-number">4.1.2.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-2"><span class="nav-number">4.1.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-2"><span class="nav-number">4.1.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分享集球衣"><span class="nav-number">5.</span> <span class="nav-text">分享集球衣</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分享集球衣-1"><span class="nav-number">5.1.</span> <span class="nav-text">分享集球衣</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-3"><span class="nav-number">5.1.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-2"><span class="nav-number">5.1.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-3"><span class="nav-number">5.1.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-3"><span class="nav-number">5.1.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集球衣记录"><span class="nav-number">5.2.</span> <span class="nav-text">集球衣记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-4"><span class="nav-number">5.2.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-3"><span class="nav-number">5.2.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-4"><span class="nav-number">5.2.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-4"><span class="nav-number">5.2.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赠送球衣"><span class="nav-number">5.3.</span> <span class="nav-text">赠送球衣</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-5"><span class="nav-number">5.3.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-4"><span class="nav-number">5.3.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-5"><span class="nav-number">5.3.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-5"><span class="nav-number">5.3.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#领取球衣"><span class="nav-number">5.4.</span> <span class="nav-text">领取球衣</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-6"><span class="nav-number">5.4.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-5"><span class="nav-number">5.4.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-6"><span class="nav-number">5.4.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-6"><span class="nav-number">5.4.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索要球衣"><span class="nav-number">5.5.</span> <span class="nav-text">索要球衣</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-7"><span class="nav-number">5.5.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-6"><span class="nav-number">5.5.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-7"><span class="nav-number">5.5.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-7"><span class="nav-number">5.5.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#活动奖品"><span class="nav-number">5.6.</span> <span class="nav-text">活动奖品</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-8"><span class="nav-number">5.6.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-7"><span class="nav-number">5.6.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-8"><span class="nav-number">5.6.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-8"><span class="nav-number">5.6.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#赛程数据"><span class="nav-number">6.</span> <span class="nav-text">赛程数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口模板"><span class="nav-number">7.</span> <span class="nav-text">接口模板</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#接口名"><span class="nav-number">7.1.</span> <span class="nav-text">接口名</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口概述-9"><span class="nav-number">7.1.1.</span> <span class="nav-text">接口概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL说明-8"><span class="nav-number">7.1.2.</span> <span class="nav-text">URL说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求参数-9"><span class="nav-number">7.1.3.</span> <span class="nav-text">请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回内容-9"><span class="nav-number">7.1.4.</span> <span class="nav-text">返回内容</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Bo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Dkf5QXLDAXop5aEnIVYqtN2Y-gzGzoHsz',
+        appKey: 'wGjvGOUY5eohtITkt1ydIMUF',
+        placeholder: 'Just BB',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+
+  
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+
+  
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.css">
+
+  
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+    
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'a75f33d0d54ca58ac001',
+          clientSecret: '02675748bae6c8068856bcd57d23a6835a8928a8',
+          repo: 'gitalk',
+          owner: 'libo9527',
+          admin: ['libo9527'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+	<!-- 代码块复制功能 -->
+	<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+	<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
