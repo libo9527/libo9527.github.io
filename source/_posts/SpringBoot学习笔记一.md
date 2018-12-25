@@ -1,9 +1,14 @@
 ---
 title: SpringBoot学习笔记一
-date: 2018-05-31 10:17:55
-categories: SpringBoot学习笔记 
+categories:
+  - Java
+  - SpringBoot
 tags:
+  - SpringBoot
+comments: false
+date: 2018-05-31 10:17:55
 ---
+
 
 # Spring Boot项目中设置Content-Type的方法
 

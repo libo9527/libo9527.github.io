@@ -1,8 +1,14 @@
 ---
 title: 剑指Offer_编程题
-date: 2018-12-15 14:49:40
+categories:
+  - Algorithm
 tags:
+  - Algorithm
+date: 2018-12-15 14:49:40
 ---
+
+
+<!-- more -->
 
 # 数组中重复的数字
 

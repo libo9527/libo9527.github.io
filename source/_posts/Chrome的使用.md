@@ -1,8 +1,13 @@
 ---
 title: Chrome的使用
-date: 2018-12-15 14:49:40
+categories:
+  - Chrome
 tags:
+  - Chrome
+date: 2018-12-15 14:49:40
 ---
+
+
 
 # Chrome的使用
 

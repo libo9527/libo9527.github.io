@@ -1,9 +1,11 @@
 ---
 title: Wget for windows
-date: 2018-12-24 19:01:03
 tags:
- - Wget
+  - Wget
+date: 2018-12-24 19:01:03
+categories:
 ---
+
 
 > [Wget for windows——优雅地实现批量下载](https://zhuanlan.zhihu.com/p/28826000)
 

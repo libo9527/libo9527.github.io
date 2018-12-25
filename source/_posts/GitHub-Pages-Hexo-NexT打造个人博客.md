@@ -1,12 +1,14 @@
 ---
-title: GitHub Pages+Hexo打造个人博客
+title: GitHub Pages+Hexo+NexT 打造个人博客
 date: 2018-12-15 14:34:32
+categories:
+ - Blog
 tags:
-password: Mike
-abstract: Welcome to my blog, enter password to read.
-message: Welcome to my blog, enter password to read.
----
+ - GitHub Pages
+ - Hexo
+ - NexT
 
+---
 
 > 环境：
 >
@@ -15,8 +17,6 @@ message: Welcome to my blog, enter password to read.
 > node.js v10.14.2
 >
 > npm 6.5.0
->
->
 
 <!-- more -->
 
@@ -181,6 +181,10 @@ cache:
     - node_modules
 ```
 
+> 原理图
+>
+> ![](https://i.loli.net/2018/12/25/5c219ecc93bcd.png)
+
 # 主题优化
 
 > [NexT使用文档](http://theme-next.iissnan.com/)
@@ -206,6 +210,8 @@ cache:
 ![](https://i.loli.net/2018/12/17/5c171f261cf6c.jpg)
 
 由于gitment长期未维护,所有最后使用gitalk,之后可以增加其他三方的评论插件更加灵活.
+
+如需取消某个 页面/文章 的评论，在 md 文件的 [front-matter ](https://hexo.io/docs/front-matter.html)中增加 `comments: false`
 
 ## 自定义内建标签
 
@@ -259,7 +265,7 @@ date_format: YYYY-MM-DD HH:mm:ss
 
 > [hexo-blog-encrypt](https://github.com/MikeCoder/hexo-blog-encrypt/blob/master/ReadMe.zh.md)
 
-注意实在站点配置文件中添加
+注意实在**站点配置文件**中添加
 
 ```yaml
 # Security
@@ -268,20 +274,92 @@ encrypt:
     enable: true
 ```
 
+### 给文章添加密码：
+
+```
+---
+title: hello world
+date: 2016-03-30 21:18:02
+tags:
+    - fdsfadsfa
+    - fdsafsdaf
+password: Mike
+abstract: Welcome to my blog, enter password to read.
+message: Welcome to my blog, enter password to read.
+---
+```
+
+- password: 是该博客加密使用的密码
+- abstract: 是该博客的摘要，会显示在博客的列表页
+- message: 这个是博客查看时，密码输入框上面的描述性文字
+
 ## 二次元看板娘
 
 > [hexo-helper-live2d](https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md)
 
-## 填坑记录
+# 填坑记录
 
 ## 选用主题后页面空白
 
 原因：themes目录下主题相关文件未正确提交到远程仓库
 
-解决：1. 删除主题目录下的`.git`目录和`.gitignore`文件
+解决：
 
-     2. ```shell
-        git rm --cached 主题目录
-        git add 主题目录
-        git push
-        ```
+1. 删除主题目录下的`.git`目录和`.gitignore`文件
+
+2. `git rm --cached 主题目录`
+3. `git add 主题目录`
+4. `git push`
+
+# 写作
+
+## 布局
+
+> [布局](https://hexo.io/zh-cn/docs/writing.html)
+
+Hexo 有三种默认布局：`post`、`page` 和 `draft`，它们分别对应不同的路径，而您自定义的其他布局和 `post` 相同，都将储存到 `source/_posts` 文件夹。
+
+| 布局  | 路径           |
+| ----- | -------------- |
+| post  | source/_posts  |
+| page  | source         |
+| draft | source/_drafts |
+
+### 草稿
+
+Hexo 的一种特殊布局：`draft`，这种布局在建立文章时会被保存到 `source/_drafts` 文件夹，您可通过 `publish` 命令将草稿移动到 `source/_posts` 文件夹。
+
+```shell
+$ hexo publish [layout] <filename>
+```
+
+注意：
+
+1. `hexo new`命令新建文章时会将特殊字符（空格、加号等）转化为`-`
+
+   eg：
+
+   ```shell
+    $ hexo new "GitHub Pages+Hexo+NexT"
+    INFO  Created: E:\xxx\Hexo\source\_posts\GitHub-Pages-Hexo-NexT.md
+   ```
+
+2. 在使用`publish`命令发布草稿时需要用**文件名**，而不是文章标题
+
+   eg：
+
+   ```shell
+   $ hexo publish post GitHub-Pages-Hexo-NexT # post可以省略，因为layout默认就是post
+   INFO  Published: E:\Github\Hexo\source\_posts\GitHub-Pages-Hexo-NexT.md
+   ```
+
+3. 文件名为空时默认发布第一篇草稿
+
+   eg：
+
+   ```shell
+   $ hexo publish post .
+   # 或者
+   $ hexo publish post ""
+   ```
+
