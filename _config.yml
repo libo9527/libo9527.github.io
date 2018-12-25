@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: LiBo
 subtitle:
-description:
+description: 我不怕千万人阻挡，只怕自己投降
 keywords:
 author: Li Bo
-language: zh_Hans
+language: zh-CN
 timezone:
 
 # URL
@@ -78,12 +78,26 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repository: https://github.com/libo9527/libo9527.github.io.git
-  branch: master
+  type:
 
-
-# Security https://github.com/MikeCoder/hexo-blog-encrypt
-##
+# 文章加密 https://github.com/MikeCoder/hexo-blog-encrypt/blob/master/ReadMe.zh.md
 encrypt:
     enable: true
+
+# 二次元看板娘 hexo-helper-live2d https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md
+live2d:
+  enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  debug: false
+  model:
+    use: live2d-widget-model-z16
+  display:
+    position: right
+    width: 150
+    height: 300
+  mobile:
+    show: true
