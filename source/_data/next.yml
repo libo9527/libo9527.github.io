@@ -562,7 +562,7 @@ gitment:
 gitalk:
   enable: true
   github_id: libo9527 # Github repo owner
-  repo: gitalk # Repository name to store issues.
+  repo: gitalk-comments # Repository name to store issues.
   client_id: a75f33d0d54ca58ac001 # Github Application Client ID
   client_secret: 02675748bae6c8068856bcd57d23a6835a8928a8 # Github Application Client Secret
   admin_user: libo9527 # GitHub repo owner and collaborators, only these guys can initialize github issues
