@@ -21,7 +21,7 @@ after_script:
   - mv .deploy_git/.git/ ./public/
   - cd ./public
   - git config user.name "libo9527"  #用户名
-  - git config user.email "18629374709@163.com"  #邮箱
+  - git config user.email "18692374709@163.com"  #邮箱
   - git add .
   - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"  #提交Commit时的说明
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master  #GH_TOKEN是在Travis中配置Token的名称
@@ -34,6 +34,6 @@ env:
  global:
    - GH_REF: github.com/libo9527/libo9527.github.io.git  #设置GH_REF
 
-# cache:
-#   directories:  #缓存特定目录, 加快构建速度
-#     - node_modules
+cache:
+  directories:  #缓存特定目录, 加快构建速度
+    - node_modules
