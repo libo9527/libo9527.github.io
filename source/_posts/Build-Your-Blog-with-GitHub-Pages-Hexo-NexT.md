@@ -1,5 +1,5 @@
 ---
-title: GitHub Pages+Hexo+NexT 打造个人博客
+title: Build Your Blog with GitHub Pages+Hexo+NexT
 date: 2018-12-15 14:34:32
 categories:
  - Blog
@@ -7,8 +7,11 @@ tags:
  - GitHub Pages
  - Hexo
  - NexT
-
 ---
+
+![NexT](https://i.loli.net/2018/12/26/5c231d3ac8a4c.jpg)
+
+<!-- more -->
 
 > 环境：
 >
@@ -17,8 +20,6 @@ tags:
 > node.js v10.14.2
 >
 > npm 6.5.0
-
-<!-- more -->
 
 # GitHub创建Github Pages项目
 
@@ -193,6 +194,28 @@ cache:
 
 > [如何设置「阅读全文」？](http://theme-next.iissnan.com/faqs.html#read-more)
 
+### 文章封面
+
+1. 关闭**主体配置文件**中的`Automatically Excerpt`
+
+   ```yaml
+   # Automatically excerpt description in homepage as preamble text.
+   excerpt_description: false
+   
+   # Automatically Excerpt. Not recommend.
+   # Please use <!-- more --> in the post to control excerpt accurately.
+   auto_excerpt:
+     enable: false
+     length: 150
+   ```
+
+2. 在`手动截断标签`上只放一张图片即可
+
+   ```html
+   ![NexT](https://i.loli.net/2018/12/26/5c231d3ac8a4c.jpg)
+   <!-- more -->
+   ```
+
 ## 评论系统
 
 > [Hexo-Next 添加 Gitment 评论系统](https://ryanluoxu.github.io/2017/11/27/Hexo-Next-%E6%B7%BB%E5%8A%A0-Gitment-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/)
@@ -226,6 +249,30 @@ cache:
 > [2017年最新基于hexo搭建个人免费博客——自定义页面样式一](http://www.cduyzh.com/hexo-settings-3/)
 >
 > [优化 网页样式布局](https://reuixiy.github.io/technology/computer/computer-aided-art/2017/06/09/hexo-next-optimization.html#%E4%BC%98%E5%8C%96-%E7%BD%91%E9%A1%B5%E6%A0%B7%E5%BC%8F%E5%B8%83%E5%B1%80)
+
+### 调整文章元信息区域离文章主体的间距
+
+一般文章都会添加`description`和一张图片作为封面，但元信息离正文太远视野上不舒服，故做如下调整。
+
+![Before](https://i.loli.net/2018/12/26/5c23347219069.jpg)
+
+修改`themes\next\source\css\_common\components\post\post-meta.styl`如下：
+
+```css
+// before
+.posts-expand .post-meta {
+  margin: 3px 0 60px 0;
+  ...
+}
+
+// after
+.posts-expand .post-meta {
+  margin: 3px 0 10px 0;
+  ...
+}
+```
+
+
 
 ## 显示文章更新时间
 

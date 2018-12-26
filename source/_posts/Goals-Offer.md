@@ -1,12 +1,15 @@
 ---
-title: 剑指Offer_编程题
-categories:
-  - Algorithm
-tags:
-  - Algorithm
+title: Goals Offer
+description: 名企面试官精讲典型编程题
 date: 2018-12-15 14:49:40
+categories:
+ - Algorithm
+tags:
+ - Offer
+ - Algorithm
 ---
 
+![](https://mahatest.com/img/Uploads/special-offer.gif)
 
 <!-- more -->
 

@@ -1,15 +1,19 @@
 ---
 title: Wget for windows
+date: 2018-12-24 19:01:03
+description: A non-interactive commandline tool.
+categories:
+ - Tools
+ - Download
 tags:
   - Wget
-date: 2018-12-24 19:01:03
-categories:
 ---
 
-
-> [Wget for windows——优雅地实现批量下载](https://zhuanlan.zhihu.com/p/28826000)
+<img src="https://pic1.zhimg.com/v2-960a7c134df6ced7af1234005e68fa76_1200x500.jpg" width="100%"/>
 
 <!-- more -->
+
+> [Wget for windows——优雅地实现批量下载](https://zhuanlan.zhihu.com/p/28826000)
 
 # 下载与安装
 

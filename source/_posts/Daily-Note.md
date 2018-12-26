@@ -1,12 +1,10 @@
 ---
 title: Daily Note
+date: 2018-12-25 10:56:30
 comments: false
 password: 20181225
-abstract: 工作中遗留的问题汇总，待处理
+abstract: Summary of problems left over from work.
 message: enter password to read.
-date: 2018-12-25 10:56:30
-categories:
-tags:
 ---
 
 
@@ -736,4 +734,10 @@ Sysytem.out.println函数在打印时间时，会取操作系统当前所设置�
 
 
 [mybatis中大于等于小于等于的写法- chenxingde的博客- CSDN博客](https://blog.csdn.net/xuanzhangran/article/details/60329357)
+
+
+
+什么是js中的闭包？
+
+[学习Javascript闭包（Closure） - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html)
 

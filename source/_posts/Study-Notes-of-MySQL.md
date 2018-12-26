@@ -1,12 +1,16 @@
 ---
-title: MySQL笔记
+title: Study Notes of MySQL
+description: 最流行的开源数据库服务器
 categories: 
- - 笔记
+ - Notes
+ - MySQL
 tags:
  - MySQL
 date: 2018-06-09 15:10:40
 comments: false
 ---
+
+![](https://upload.wikimedia.org/wikipedia/zh/thumb/6/62/MySQL.svg/1200px-MySQL.svg.png)
 
 <!-- more -->
 

@@ -1,14 +1,18 @@
 ---
-title: SpringBoot学习笔记一
+title: Study Notes of Spring Boot
+description: Makes it easy to create stand-alone, production-grade Spring-based Applications
+date: 2018-05-31 10:17:55
 categories:
   - Java
   - SpringBoot
 tags:
   - SpringBoot
 comments: false
-date: 2018-05-31 10:17:55
 ---
 
+<img src="https://www.zuojl.com/content/images/2018/11/spring-boot.png" width="100%"/>
+
+<!-- more -->
 
 # Spring Boot项目中设置Content-Type的方法
 

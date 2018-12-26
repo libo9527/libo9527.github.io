@@ -1,11 +1,9 @@
 ---
-title: 世界杯程序接口文档
+title: World Cup Mini Programe
 date: 2018-06-06 17:55:11
-categories:
-tags:
 password: 20180606
 abstract: Interface doc for mini program at company.
-message: It is useless for you.
+message: It is useless for you, so don`t waste you time.
 ---
 
 [TOC]

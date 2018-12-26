@@ -1,5 +1,6 @@
 ---
-title: Chrome的使用
+title: Use of Chrome
+description: Chrome的使用
 categories:
   - Chrome
 tags:
@@ -7,15 +8,13 @@ tags:
 date: 2018-12-15 14:49:40
 ---
 
+![](https://images.pexels.com/photos/67112/pexels-photo-67112.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
 
-
-# Chrome的使用
+<!-- more -->
 
 > Windows 10 x64
 
 本文记录我使用Chrome的一些习惯
-
-<!-- more -->
 
 ## Chrome快捷键
 

@@ -1,8 +1,6 @@
 ---
 title: {{ title }}
-description: 一句话描述这篇文章
 date: {{ date }}
-updated: {{ updated }}
 comments: false
 password: {{ date }}
 abstract: 文章列表显示的信息
