@@ -297,6 +297,10 @@ message: Welcome to my blog, enter password to read.
 
 > [hexo-helper-live2d](https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md)
 
+## 站内搜索
+
+
+
 # 填坑记录
 
 ## 选用主题后页面空白
