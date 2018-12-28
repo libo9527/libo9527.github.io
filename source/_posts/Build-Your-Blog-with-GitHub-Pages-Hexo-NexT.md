@@ -346,6 +346,28 @@ message: Welcome to my blog, enter password to read.
 
 ## 站内搜索
 
+> [theme-next/**hexo-generator-searchdb**](https://github.com/theme-next/hexo-generator-searchdb)
+
+1. `npm install hexo-generator-searchdb --save`
+
+2. **站点配置文件**中添加如下配置：
+
+   ```yaml
+   search:
+     path: search.xml
+     field: post
+     format: html
+     limit: 10000
+   ```
+
+3. **主题配置文件**中打开如下配置：
+
+   ```yaml
+   # Local search
+   # Dependencies: https://github.com/theme-next/hexo-generator-searchdb
+   local_search:
+     enable: true
+   ```
 
 
 # 填坑记录
