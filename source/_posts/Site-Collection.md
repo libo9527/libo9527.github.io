@@ -12,7 +12,9 @@ tags:
 
 <!-- more -->
 
-# 10 Sites for Free Stock Photos
+# 图片
+
+## 10 Sites for Free Stock Photos
 
 1. [Unsplash](https://unsplash.com/)
 2. [Gratisography](https://gratisography.com/)
@@ -24,3 +26,16 @@ tags:
 8. [Pikwizard](https://www.pikwizard.com/)
 9. [Rawpixel](https://www.rawpixel.com/)
 10. [Reshot](https://www.reshot.com/)
+
+## Wallroom
+
+> [高质量壁纸网站](https://wallroom.io/)
+
+# 资源分享
+
+[不死鸟 - 分享为王](https://lai.yuweining.cn/)
+
+# wikeHow
+
+> [任何人做任何事](https://zh.wikihow.com)
+
