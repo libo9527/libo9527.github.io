@@ -9,7 +9,7 @@ tags:
   - Wget
 ---
 
-<img src="https://pic1.zhimg.com/v2-960a7c134df6ced7af1234005e68fa76_1200x500.jpg" width="100%"/>
+<img src="https://i.loli.net/2018/12/29/5c274920e1243.jpg" width="100%"/>
 
 <!-- more -->
 
