@@ -373,6 +373,8 @@ message: Welcome to my blog, enter password to read.
 ### 文章置顶+置顶标签
 
 > [hexo博客优化之文章置顶+置顶标签](https://blog.csdn.net/qwerty200696/article/details/79010629)
+>
+> [Swig » 文档 » 注释](https://github.mayuxiao.com/swig.zh-CN/docs/index.html)
 
 1. 使用插件[hexo-generator-index-pin-top](https://github.com/netcan/hexo-generator-index-pin-top)
 
@@ -393,13 +395,13 @@ message: Welcome to my blog, enter password to read.
                {% set time_diff = time(post.date) != time(post.updated) %}
                {% set datetime_diff = date_diff or time_diff %}
    
-   			{# 置顶标签 #}
-   		    {% if post.top %}
-   		      <i class="fa fa-thumb-tack"></i>
-   		      <font color=FFC0CB>置顶</font>
-   		      <span class="post-meta-divider">|</span>
-   		    {% endif %}
-   			{# 置顶标签 #}
+               {# 置顶标签 #}
+               {% if post.top %}
+                 <i class="fa fa-thumb-tack"></i>
+                 <font color=FFC0CB>置顶</font>
+                 <span class="post-meta-divider">|</span>
+               {% endif %}
+               {# 置顶标签 #}
                ...
        </span>
    </div>
@@ -471,4 +473,10 @@ $ hexo publish [layout] <filename>
    # 或者
    $ hexo publish post ""
    ```
+
+
+
+## 底层原理
+
+> [next主题的模板引擎swig语法介绍](https://www.jianshu.com/p/c5d333e6353c)
 
