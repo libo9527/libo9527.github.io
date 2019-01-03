@@ -74,6 +74,14 @@
             {% set time_diff = time(post.date) != time(post.updated) %}
             {% set datetime_diff = date_diff or time_diff %}
 
+			{# 置顶标签 #}
+		    {% if post.top %}
+		      <i class="fa fa-thumb-tack"></i>
+		      <font color=FFC0CB>置顶</font>
+		      <span class="post-meta-divider">|</span>
+		    {% endif %}
+			{# 置顶标签 #}
+		  
             {% if theme.post_meta.created_at %}
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -268,7 +276,7 @@
                 #}{{ post.description }}{#
             #}</div>
           {% endif %}
-
+		  
         </div>
       </header>
     {% endif %}

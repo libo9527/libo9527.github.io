@@ -1,6 +1,7 @@
 ---
 title: Build Your Blog with GitHub Pages+Hexo+NexT
 date: 2018-12-15 14:34:32
+top: true
 categories:
  - Blog
 tags:
@@ -21,21 +22,21 @@ tags:
 >
 > npm 6.5.0
 
-# GitHub创建Github Pages项目
+## GitHub创建Github Pages项目
 
 创建一个名称为`username.github.io`的新仓库。username为你的GitHub账号用户名。
 
-# 搭建Hexo环境
+## 搭建Hexo环境
 
-## 安装node.js
+### 安装node.js
 
-### 简介
+#### 简介
 
 > [Node.js是用来做什么的？ - 知乎](https://www.zhihu.com/question/33578075)
 
 **Node.js**是一个 JavaScript 运行环境。
 
-### 下载与安装
+#### 下载与安装
 
 去[官网](https://nodejs.org/zh-cn/)下载对应版本
 
@@ -43,9 +44,9 @@ tags:
 
 安装完后**win+R** 输入**cmd**打开终端，然后输入`node -v`即可查看Node版本
 
-## 安装npm
+### 安装npm
 
-### 简介
+#### 简介
 
 npm是Node.js的包管理工具
 
@@ -55,19 +56,19 @@ npm是Node.js的包管理工具
 >
 > 更重要的是，如果我们要使用模块A，而模块A又依赖于模块B，模块B又依赖于模块X和模块Y，npm可以根据依赖关系，把所有依赖的包都下载下来并管理起来。否则，靠我们自己手动管理，肯定既麻烦又容易出错。
 
-### 安装
+#### 安装
 
 安装完Node.js以后npm已经顺带被安装了。
 
 命令行输入`npm -v`即可查看npm版本信息。
 
-## 安装Hexo
+### 安装Hexo
 
 ```SHELL
 npm install -g hexo
 ```
 
-### 初始化
+#### 初始化
 
 新建一个空文件夹，在该目录下右键选择`Git Bash Here`（需要安装[Git客户端](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)）
 
@@ -83,13 +84,13 @@ hexo init
 npm install
 ```
 
-# 利用Travis-CI自动发布博客
+## 利用Travis-CI自动发布博客
 
 > hexo生成的静态文件统一存放在public目录下，其余的文件都是hexo用来生成静态网页的。
 >
 > 为了能够适应不同环境（不同主机、不同系统、甚至在GitHub网页端操作等），可以利用Travis-CI对hexo进行[持续集成](http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html) 。
 
-## 远程仓库创建hexo分支对hexo源码进行版本控制
+### 远程仓库创建hexo分支对hexo源码进行版本控制
 
 1. 将远程仓库clone到本地
 
@@ -118,7 +119,7 @@ npm install
    git push --set-upstream origin hexo　
    ```
 
-## GitHub生成Access Token
+### GitHub生成Access Token
 
 头像>Settings>Developer settings>Personal access tokens
 
@@ -128,7 +129,7 @@ npm install
 
 注意：token生成后只又一次查看的机会，一定要保存好，否则要删掉重新生成
 
-## 设置Travis-CI
+### 设置Travis-CI
 
 使用GitHub账号登录[Travis-CI](https://travis-ci.org/)
 
@@ -138,14 +139,14 @@ npm install
 
 ![](https://i.loli.net/2018/12/15/5c14c305516b7.jpg)
 
-## hexo源码仓库中添加Travis-CI的配置文件`.travis.yml`
+### hexo源码仓库中添加Travis-CI的配置文件`.travis.yml`
 
 ```yml
 language: node_js  #设置语言
 
 node_js: stable  #设置相应的版本
 
-# 开始构建
+## 开始构建
 before_install:
   - export TZ='Asia/Shanghai'  #统一构建环境和博客配置的时区, 防止文章时间错误
   
@@ -168,7 +169,7 @@ after_script:
   - git add .
   - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"  #提交时的说明
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master  #GH_TOKEN是在Travis中配置Token的名称
-# 结束构建
+## 结束构建
 
 branches:
   only:
@@ -186,15 +187,15 @@ cache:
 >
 > ![](https://i.loli.net/2018/12/25/5c219ecc93bcd.png)
 
-# 主题优化
+## 主题优化
 
 > [NexT使用文档](http://theme-next.iissnan.com/)
 
-## 文章预览
+### 文章预览
 
 > [如何设置「阅读全文」？](http://theme-next.iissnan.com/faqs.html#read-more)
 
-### 文章封面
+#### 文章封面
 
 1. 关闭**主体配置文件**中的`Automatically Excerpt`
 
@@ -216,7 +217,7 @@ cache:
    <!-- more -->
    ```
 
-## 评论系统
+### 评论系统
 
 > [Hexo-Next 添加 Gitment 评论系统](https://ryanluoxu.github.io/2017/11/27/Hexo-Next-%E6%B7%BB%E5%8A%A0-Gitment-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/)
 >
@@ -236,21 +237,21 @@ cache:
 
 如需取消某个 页面/文章 的评论，在 md 文件的 [front-matter ](https://hexo.io/docs/front-matter.html)中增加 `comments: false`
 
-## 自定义内建标签
+### 自定义内建标签
 
 > [Hexo next博客添加折叠块功能添加折叠代码块](https://blog.rmiao.top/hexo-fold-block/)
 
-## 进度条
+### 进度条
 
 > [**theme-next-pace**](https://github.com/theme-next/theme-next-pace)
 
-## 自定义页面样式
+### 自定义页面样式
 
 > [2017年最新基于hexo搭建个人免费博客——自定义页面样式一](http://www.cduyzh.com/hexo-settings-3/)
 >
 > [优化 网页样式布局](https://reuixiy.github.io/technology/computer/computer-aided-art/2017/06/09/hexo-next-optimization.html#%E4%BC%98%E5%8C%96-%E7%BD%91%E9%A1%B5%E6%A0%B7%E5%BC%8F%E5%B8%83%E5%B1%80)
 
-### 调整文章元信息区域离文章主体的间距
+#### 调整文章元信息区域离文章主体的间距
 
 一般文章都会添加`description`和一张图片作为封面，但元信息离正文太远视野上不舒服，故做如下调整。
 
@@ -274,7 +275,7 @@ cache:
 
 
 
-## 显示文章更新时间
+### 显示文章更新时间
 
 > [~~hexo添加文章更新时间~~](https://blog.csdn.net/ganzhilin520/article/details/79053399)
 
@@ -292,7 +293,7 @@ post_meta:
 date_format: YYYY-MM-DD HH:mm:ss
 ```
 
-## 复制代码按钮
+### 复制代码按钮
 
 > [~~HEXO优化之（二）----添加复制功能~~](https://www.ofind.cn/blog/HEXO/HEXO%E4%BC%98%E5%8C%96%E4%B9%8B%EF%BC%88%E4%BA%8C%EF%BC%89-%E6%B7%BB%E5%8A%A0%E5%A4%8D%E5%88%B6%E5%8A%9F%E8%83%BD.html)
 >
@@ -300,15 +301,15 @@ date_format: YYYY-MM-DD HH:mm:ss
 
 
 
-## 显示当前浏览进度
+### 显示当前浏览进度
 
 > [7.浏览页面的时候显示当前浏览进度](https://www.jianshu.com/p/3ff20be8574c)
 
-## 背景图片
+### 背景图片
 
 > [添加背景图](https://www.simon96.online/2018/10/12/hexo-tutorial/#%E6%B7%BB%E5%8A%A0%E8%83%8C%E6%99%AF%E5%9B%BE)
 
-## 文章加密
+### 文章加密
 
 > [hexo-blog-encrypt](https://github.com/MikeCoder/hexo-blog-encrypt/blob/master/ReadMe.zh.md)
 
@@ -321,7 +322,7 @@ encrypt:
     enable: true
 ```
 
-### 给文章添加密码：
+#### 给文章添加密码：
 
 ```
 ---
@@ -340,11 +341,11 @@ message: Welcome to my blog, enter password to read.
 - abstract: 是该博客的摘要，会显示在博客的列表页
 - message: 这个是博客查看时，密码输入框上面的描述性文字
 
-## 二次元看板娘
+### 二次元看板娘
 
 > [hexo-helper-live2d](https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md)
 
-## 站内搜索
+### 站内搜索
 
 > [theme-next/**hexo-generator-searchdb**](https://github.com/theme-next/hexo-generator-searchdb)
 
@@ -369,10 +370,45 @@ message: Welcome to my blog, enter password to read.
      enable: true
    ```
 
+### 文章置顶+置顶标签
 
-# 填坑记录
+> [hexo博客优化之文章置顶+置顶标签](https://blog.csdn.net/qwerty200696/article/details/79010629)
 
-## 选用主题后页面空白
+1. 使用插件[hexo-generator-index-pin-top](https://github.com/netcan/hexo-generator-index-pin-top)
+
+   ```shell
+   $ npm uninstall hexo-generator-index --save
+   $ npm install hexo-generator-index-pin-top --save
+   ```
+
+2. 在需要置顶的文章的`Front-matter`中加上`top: true`
+
+3. `/blog/themes/next/layout/_macro` 目录下的`post.swig`文件，定位到`<div class="post-meta">`标签下，做如下修改：
+
+   ```html
+   <div class="post-meta">
+             <span class="post-time">
+   
+               {% set date_diff = date(post.date) != date(post.updated) %}
+               {% set time_diff = time(post.date) != time(post.updated) %}
+               {% set datetime_diff = date_diff or time_diff %}
+   
+   			{# 置顶标签 #}
+   		    {% if post.top %}
+   		      <i class="fa fa-thumb-tack"></i>
+   		      <font color=FFC0CB>置顶</font>
+   		      <span class="post-meta-divider">|</span>
+   		    {% endif %}
+   			{# 置顶标签 #}
+               ...
+       </span>
+   </div>
+   ```
+
+
+## 填坑记录
+
+### 选用主题后页面空白
 
 原因：themes目录下主题相关文件未正确提交到远程仓库
 
@@ -384,9 +420,9 @@ message: Welcome to my blog, enter password to read.
 3. `git add 主题目录`
 4. `git push`
 
-# 写作
+## 写作
 
-## 布局
+### 布局
 
 > [布局](https://hexo.io/zh-cn/docs/writing.html)
 
@@ -398,7 +434,7 @@ Hexo 有三种默认布局：`post`、`page` 和 `draft`，它们分别对应不
 | page  | source         |
 | draft | source/_drafts |
 
-### 草稿
+#### 草稿
 
 Hexo 的一种特殊布局：`draft`，这种布局在建立文章时会被保存到 `source/_drafts` 文件夹，您可通过 `publish` 命令将草稿移动到 `source/_posts` 文件夹。
 
