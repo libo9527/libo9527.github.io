@@ -28,3 +28,12 @@ tags:
 >
 > [Adobe Premiere Pro CC 2018 v12.1.2 特别破解版](http://www.carrotchou.blog/7783.html)
 
+## 下载
+
+## IDM
+
+> [配置IDM不限速下载百度云的大文件](https://blog.csdn.net/miao_9/article/details/72852903)
+>
+> [下载最新版本IDM](https://www.internetdownloadmanager.com/) 
+
+Internet Download Manager（简称IDM）是一个用于Windows系统的下载管理器，它是共享软件，免费试用期为30天，但是每月均有一段时间优惠。

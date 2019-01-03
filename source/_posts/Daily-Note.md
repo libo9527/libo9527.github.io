@@ -741,3 +741,19 @@ Sysytem.out.println函数在打印时间时，会取操作系统当前所设置�
 
 [学习Javascript闭包（Closure） - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html)
 
+
+
+[Spring Boot Controller - 小单的博客专栏- CSDN博客 - CSDN Blog](https://blog.csdn.net/catoop/article/details/50501676)
+
+[Spring Boot 静态资源处理](https://blog.csdn.net/isea533/article/details/50412212)
+
+[spring boot(4)-html和templates](https://blog.csdn.net/wangb_java/article/details/71775637)
+
+
+
+[微信内置浏览器是什么？](https://blog.csdn.net/tim_yip/article/details/43466451)
+
+[判断微信客户端的那些坑](https://www.jianshu.com/p/6a10f833b099)
+
+[如何区分客户端是手机端还是PC端](https://blog.csdn.net/Q389281541/article/details/76502158)
+

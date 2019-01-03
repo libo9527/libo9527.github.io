@@ -55,3 +55,8 @@ tags:
 >
 > [每周分享第 37 期](http://www.ruanyifeng.com/blog/2018/12/weekly-issue-37.html)
 
+## 博客
+
+[不死鸟 - 分享为王](https://lai.yuweining.cn/)
+
+[当然我在扯淡](http://www.yinwang.org/#)
