@@ -757,3 +757,5 @@ Sysytem.out.println函数在打印时间时，会取操作系统当前所设置�
 
 [如何区分客户端是手机端还是PC端](https://blog.csdn.net/Q389281541/article/details/76502158)
 
+[java request判断是否是微信客户端访问](https://blog.csdn.net/chendeyou5/article/details/79722731)
+
