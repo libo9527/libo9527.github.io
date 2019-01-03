@@ -24,16 +24,6 @@ https://www.cnblogs.com/zhengyun_ustc/archive/2010/12/15/amir.html
 
 
 
-# [从MYSQL数据库查出指的日期](https://www.cnblogs.com/mingyue1818/p/3702876.html)
-
-
-
-# CONCAT函数的介绍及mybatis 中模糊查询
-
-> https://blog.csdn.net/layman1024/article/details/73732831
-
-
-
 # BootstrapValidator的使用
 
 > https://blog.csdn.net/fengsheng5210/article/details/78753329
@@ -759,3 +749,8 @@ Sysytem.out.println函数在打印时间时，会取操作系统当前所设置�
 
 [java request判断是否是微信客户端访问](https://blog.csdn.net/chendeyou5/article/details/79722731)
 
+
+
+[移动端监听安卓手机返回键](https://segmentfault.com/a/1190000014517685)
+
+[移动端web开发，页面如何监听安卓手机物理返回键的回退事件](http://phpstudy.php.cn/c.php/41712.html)

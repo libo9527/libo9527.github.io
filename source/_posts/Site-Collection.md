@@ -60,3 +60,8 @@ tags:
 [不死鸟 - 分享为王](https://lai.yuweining.cn/)
 
 [当然我在扯淡](http://www.yinwang.org/#)
+
+## 开发者站点
+
+[Android 开发中文站](http://www.androidchina.net/)
+
