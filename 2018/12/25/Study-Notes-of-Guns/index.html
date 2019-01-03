@@ -124,7 +124,7 @@
 <meta property="og:description" content="更简洁的后台管理系统">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2018/12/26/5c23433372f23.jpg">
-<meta property="og:updated_time" content="2019-01-03T08:18:37.240Z">
+<meta property="og:updated_time" content="2019-01-03T12:07:53.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of Guns">
 <meta name="twitter:description" content="更简洁的后台管理系统">
@@ -470,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-03 16:18:37" itemprop="dateModified" datetime="2019-01-03T16:18:37+08:00">2019-01-03</time>
+                <time title="修改时间：2019-01-03 20:07:53" itemprop="dateModified" datetime="2019-01-03T20:07:53+08:00">2019-01-03</time>
               
             
           </span>
@@ -546,19 +546,31 @@
 <p>Guns基于SpringBoot 2，致力于做更简洁的后台管理系统，完美整合springmvc + shiro + mybatis-plus + beetl!Guns项目代码简洁，注释丰富，上手容易，同时Guns包含许多基础模块(用户管理，角色管理，部门管理，字典管理等10个模块)，可以直接作为一个后台管理系统的脚手架!</p>
 <p><a href="http://stylefeng.cn/" target="_blank" rel="noopener">http://stylefeng.cn</a></p>
 </blockquote>
-<h1 id="后端分页"><a href="#后端分页" class="headerlink" title="后端分页"></a>后端分页</h1><blockquote>
-<p>可参考Guns的【日志管理】模块</p>
+<h2 id="后端分页"><a href="#后端分页" class="headerlink" title="后端分页"></a>后端分页</h2><blockquote>
+<p>可参考 Guns 的【日志管理】模块</p>
 <p><a href="https://mp.baomidou.com/guide/page.html" target="_blank" rel="noopener">分页插件| MyBatis-Plus</a></p>
 </blockquote>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ol>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol>
 <li>前端初始化<a href="http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/" target="_blank" rel="noopener">Bootstrap Table</a>时设置分页方式为服务端分页。（<code>static/modular/system/log/log.js</code>）</li>
 <li>后端接口使用<code>Guns</code>提供的工具类<code>common.constant.factory.PageFactory</code>来获取<a href="https://mp.baomidou.com/guide/page.html" target="_blank" rel="noopener"><code>MyBatis-Plus</code>分页插件</a>所需的<code>Page</code>对象。</li>
 <li>然后将<code>Page</code>对象传递到<code>Mapper</code>层进行查询，<a href="https://mp.baomidou.com/guide/page.html" target="_blank" rel="noopener"><code>MyBatis-Plus</code>分页插件</a>会自动帮你实现分页。</li>
 <li>将查询结果放入<code>Page</code>对象的<code>records</code>属性中。</li>
 <li>使用<code>Guns</code>的<code>core.common.page.PageInfoBT</code>对分页结果进行封装后返回给前端。</li>
 </ol>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><ol>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ol>
 <li>Guns配置分页插件的地方在<code>com.dubbo.pay.config.datasource</code></li>
+</ol>
+<h2 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h2><blockquote>
+<p>参考 Guns 的【用户管理】模块</p>
+<p><a href="http://bootstrapvalidator.votintsev.ru/" target="_blank" rel="noopener">BootstrapValidator</a></p>
+<p><a href="https://mrbird.cc/BootstrapValidator%E6%8C%87%E5%8D%97.html" target="_blank" rel="noopener">BootstrapValidator指南</a></p>
+</blockquote>
+<ol>
+<li><p>必要的<code>css</code>和<code>js</code>文件在<code>src\main\webapp\WEB-INF\view\common\_container.html</code>文件中引入。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 全局css --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"$&#123;ctxPath&#125;/static/css/bootstrap.min.css?v=3.3.6"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"$&#123;ctxPath&#125;/static/css/plugins/validate/bootstrapValidator.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 全局js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"$&#123;ctxPath&#125;/static/js/jquery.min.js?v=2.1.4"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"$&#123;ctxPath&#125;/static/js/bootstrap.min.js?v=3.3.6"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"$&#123;ctxPath&#125;/static/js/plugins/validate/bootstrapValidator.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HTML 表单</p>
+</li>
 </ol>
 
       
@@ -696,7 +708,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -745,7 +757,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">分类</span>
                   
                 </div>
@@ -796,7 +814,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">19</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -846,7 +868,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#后端分页"><span class="nav-number">1.</span> <span class="nav-text">后端分页</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">1.1.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">1.2.</span> <span class="nav-text">分析</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#后端分页"><span class="nav-number">1.</span> <span class="nav-text">后端分页</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">1.1.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">1.2.</span> <span class="nav-text">分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单验证"><span class="nav-number">2.</span> <span class="nav-text">表单验证</span></a></li></ol></div>
             
 
           </div>

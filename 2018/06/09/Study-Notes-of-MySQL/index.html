@@ -124,7 +124,7 @@
 <meta property="og:description" content="最流行的开源数据库服务器">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/zh/thumb/6/62/MySQL.svg/1200px-MySQL.svg.png">
-<meta property="og:updated_time" content="2019-01-03T08:18:37.240Z">
+<meta property="og:updated_time" content="2019-01-03T12:07:53.698Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of MySQL">
 <meta name="twitter:description" content="最流行的开源数据库服务器">
@@ -470,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-03 16:18:37" itemprop="dateModified" datetime="2019-01-03T16:18:37+08:00">2019-01-03</time>
+                <time title="修改时间：2019-01-03 20:07:53" itemprop="dateModified" datetime="2019-01-03T20:07:53+08:00">2019-01-03</time>
               
             
           </span>
@@ -530,7 +530,157 @@
       
         <p><img src="https://upload.wikimedia.org/wikipedia/zh/thumb/6/62/MySQL.svg/1200px-MySQL.svg.png" alt=""></p>
 <a id="more"></a>
-<h1 id="mysql自增ID起始值修改方法"><a href="#mysql自增ID起始值修改方法" class="headerlink" title="mysql自增ID起始值修改方法"></a>mysql自增ID起始值修改方法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table tablename AUTO_INCREMENT=1;</span><br></pre></td></tr></table></figure>
+<h2 id="mysql自增ID起始值修改方法"><a href="#mysql自增ID起始值修改方法" class="headerlink" title="mysql自增ID起始值修改方法"></a>mysql自增ID起始值修改方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table tablename AUTO_INCREMENT=1;</span><br></pre></td></tr></table></figure>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h3><h4 id="DATE-FORMAT"><a href="#DATE-FORMAT" class="headerlink" title="DATE_FORMAT"></a>DATE_FORMAT</h4><blockquote>
+<p><a href="http://www.w3school.com.cn/sql/func_date_format.asp" target="_blank" rel="noopener">MySQL DATE_FORMAT() 函数</a></p>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_date-format" target="_blank" rel="noopener">DATE_FORMAT(date,format)</a></p>
+</blockquote>
+<p>DATE_FORMAT() 函数用于以不同的格式显示日期/时间数据。</p>
+<p>eg: 输出格式为：YYYY-mm-dd HH:ss</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line"><span class="keyword">DATE_FORMAT</span>(startTime,<span class="string">"%Y-%m-%d %H:%i"</span>) <span class="keyword">AS</span> startTime,</span><br><span class="line"><span class="keyword">DATE_FORMAT</span>(endTime,<span class="string">"%Y-%m-%d %H:%i"</span>) <span class="keyword">AS</span> endTime</span><br><span class="line"><span class="keyword">from</span> tableName;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%a</td>
+<td>缩写星期名</td>
+</tr>
+<tr>
+<td>%b</td>
+<td>缩写月名</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>月，数值</td>
+</tr>
+<tr>
+<td>%D</td>
+<td>带有英文前缀的月中的天</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>月的天，数值(00-31)</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>月的天，数值(0-31)</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>微秒</td>
+</tr>
+<tr>
+<td>%H</td>
+<td>小时 (00-23)</td>
+</tr>
+<tr>
+<td>%h</td>
+<td>小时 (01-12)</td>
+</tr>
+<tr>
+<td>%I</td>
+<td>小时 (01-12)</td>
+</tr>
+<tr>
+<td>%i</td>
+<td>分钟，数值(00-59)</td>
+</tr>
+<tr>
+<td>%j</td>
+<td>年的天 (001-366)</td>
+</tr>
+<tr>
+<td>%k</td>
+<td>小时 (0-23)</td>
+</tr>
+<tr>
+<td>%l</td>
+<td>小时 (1-12)</td>
+</tr>
+<tr>
+<td>%M</td>
+<td>月名</td>
+</tr>
+<tr>
+<td>%m</td>
+<td>月，数值(00-12)</td>
+</tr>
+<tr>
+<td>%p</td>
+<td>AM 或 PM</td>
+</tr>
+<tr>
+<td>%r</td>
+<td>时间，12-小时（hh:mm:ss AM 或 PM）</td>
+</tr>
+<tr>
+<td>%S</td>
+<td>秒(00-59)</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>秒(00-59)</td>
+</tr>
+<tr>
+<td>%T</td>
+<td>时间, 24-小时 (hh:mm:ss)</td>
+</tr>
+<tr>
+<td>%U</td>
+<td>周 (00-53) 星期日是一周的第一天</td>
+</tr>
+<tr>
+<td>%u</td>
+<td>周 (00-53) 星期一是一周的第一天</td>
+</tr>
+<tr>
+<td>%V</td>
+<td>周 (01-53) 星期日是一周的第一天，与 %X 使用</td>
+</tr>
+<tr>
+<td>%v</td>
+<td>周 (01-53) 星期一是一周的第一天，与 %x 使用</td>
+</tr>
+<tr>
+<td>%W</td>
+<td>星期名</td>
+</tr>
+<tr>
+<td>%w</td>
+<td>周的天 （0=星期日, 6=星期六）</td>
+</tr>
+<tr>
+<td>%X</td>
+<td>年，其中的星期日是周的第一天，4 位，与 %V 使用</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>年，其中的星期一是周的第一天，4 位，与 %v 使用</td>
+</tr>
+<tr>
+<td>%Y</td>
+<td>年，4 位</td>
+</tr>
+<tr>
+<td>%y</td>
+<td>年，2 位</td>
+</tr>
+</tbody>
+</table>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><h4 id="CONCAT"><a href="#CONCAT" class="headerlink" title="CONCAT"></a>CONCAT</h4><blockquote>
+<p><a href="https://www.w3cschool.cn/sql/sz8w1ozt.html" target="_blank" rel="noopener">SQL CONCAT() 函数</a></p>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/string-functions.html#function_concat" target="_blank" rel="noopener">CONCAT(str1,str2,…)</a></p>
+</blockquote>
+<p><strong>CONCAT</strong> 函数用于将两个字符串连接为一个字符串</p>
+<p>eg: </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; SELECT CONCAT('FIRST ', 'SECOND');</span><br><span class="line">+<span class="comment">----------------------------+</span></span><br><span class="line">| CONCAT('FIRST ', 'SECOND') |</span><br><span class="line">+<span class="comment">----------------------------+</span></span><br><span class="line">| FIRST SECOND               |</span><br><span class="line">+<span class="comment">----------------------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+<p>在 MyBatis 中常用于编写模糊查询语句：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"list"</span> <span class="attr">resultType</span>=<span class="string">"map"</span>&gt;</span></span><br><span class="line">    select * from tableName</span><br><span class="line">    <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"condition != null and condition != ''"</span>&gt;</span></span><br><span class="line">        where fieldName like CONCAT('%',#&#123;condition&#125;,'%')</span><br><span class="line">    <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -655,7 +805,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -704,7 +854,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">分类</span>
                   
                 </div>
@@ -755,7 +911,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">19</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -805,7 +965,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql自增ID起始值修改方法"><span class="nav-number">1.</span> <span class="nav-text">mysql自增ID起始值修改方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql自增ID起始值修改方法"><span class="nav-number">1.</span> <span class="nav-text">mysql自增ID起始值修改方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">2.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#日期"><span class="nav-number">2.1.</span> <span class="nav-text">日期</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DATE-FORMAT"><span class="nav-number">2.1.1.</span> <span class="nav-text">DATE_FORMAT</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串"><span class="nav-number">2.2.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CONCAT"><span class="nav-number">2.2.1.</span> <span class="nav-text">CONCAT</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
