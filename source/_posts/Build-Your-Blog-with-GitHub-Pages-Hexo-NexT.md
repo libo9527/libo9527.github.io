@@ -409,17 +409,28 @@ message: Welcome to my blog, enter password to read.
 
 ### 版权声明
 
-修改**主题配置文件**中如下配置：
+> [“知识共享”（CC协议）简单介绍](https://zhuanlan.zhihu.com/p/20641764)
 
-```yaml \source\_data
-# Creative Commons 4.0 International License.
-# https://creativecommons.org/share-your-work/licensing-types-examples
-# Available: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero
-creative_commons:
-  license: by-nc-sa
-  sidebar: false
-  post: true
-```
+1. 修改**主题配置文件**中如下配置：
+
+	```yaml \source\_data
+	# Creative Commons 4.0 International License.
+	# https://creativecommons.org/share-your-work/licensing-types-examples
+	# Available: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero
+	creative_commons:
+	  license: by-nc-sa
+	  sidebar: false
+	  post: true
+	```
+
+2. 修改**站点配置文件**中如下配置：
+
+   ```yml _config.yml
+   # URL
+   ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+   url: http://username.github.io
+   ```
+
 
 ## 填坑记录
 
