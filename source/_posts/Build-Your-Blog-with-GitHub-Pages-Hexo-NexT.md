@@ -503,7 +503,7 @@ $ hexo publish [layout] <filename>
    public static void main(String[] args) {
    	...
    }
-   ​```
+   ​
    ```
 
    样式：
