@@ -2,6 +2,7 @@
 title: Build Your Blog with GitHub Pages+Hexo+NexT
 date: 2018-12-15 14:34:32
 top: true
+hidden: false
 categories:
  - Blog
 tags:
@@ -374,7 +375,7 @@ message: Welcome to my blog, enter password to read.
 
 > [hexo博客优化之文章置顶+置顶标签](https://blog.csdn.net/qwerty200696/article/details/79010629)
 >
-> [Swig » 文档 » 注释](https://github.mayuxiao.com/swig.zh-CN/docs/index.html)
+> [Swig » 文档 » 注释](https://github.mayuxiao.com/swig.zh-CN/docs/index.html#comments)
 
 1. 使用插件[hexo-generator-index-pin-top](https://github.com/netcan/hexo-generator-index-pin-top)
 
@@ -431,6 +432,23 @@ message: Welcome to my blog, enter password to read.
    url: http://username.github.io
    ```
 
+### 首页隐藏指定文章
+
+> [Hexo 设置首页隐藏指定文章](https://blog.csdn.net/m0_37323771/article/details/80672271)
+
+1. 对主题 index.swig 文件做如下修改
+
+   ```javascript Hexo\themes\next\layout
+   {% for post in page.posts %}
+   	{# 首页隐藏指定文章 #}
+   	{% if post.hidden != true %}
+           {{ post_template.render(post, true) }}
+   	{% endif %}
+   	{# 首页隐藏指定文章 #}
+   {% endfor %}
+   ```
+
+2. 在需要首页隐藏的文章 front-matter 中添加 `hidden: true`
 
 ## 填坑记录
 

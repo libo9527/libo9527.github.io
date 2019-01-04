@@ -11,7 +11,10 @@
 {% block content %}
   <section id="posts" class="posts-expand">
     {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
+		{# 首页隐藏指定文章 #}
+		{% if post.hidden != true %}
+            {{ post_template.render(post, true) }}
+		{% endif %}
     {% endfor %}
   </section>
 
