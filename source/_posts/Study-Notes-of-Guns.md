@@ -60,7 +60,7 @@ tags:
 
    - 表单要指定 ID
 
-     ```html
+     ```html WEB-INF/view/system/user/user_add.html
      <div class="form-horizontal" id="userInfoForm">
          ...
      </div>
@@ -68,13 +68,13 @@ tags:
 
    - 需验证的字段，默认需要以`<div class=”form-group”></div>`包裹（对应错误提示会根据该class值定位），内部`<input class="form-control" />`标签必须有name属性值（作为验证匹配字段）。
 
-     ```html
+     ```html WEB-INF/view/system/user/user_add.html
      <#input id="account" name="账户" underline="true"/>
      ```
 
-     自定义标签 input(`WEB-INF/view/common/tags/input.tag`) ：
+     自定义标签 input ：
 
-     ```html
+     ```html WEB-INF/view/common/tags/input.tag
      <div class="form-group">
          <label class="col-sm-3 control-label">${name}</label>
          <div class="col-sm-9">
@@ -84,7 +84,7 @@ tags:
 
    - 表单域配置（[官方默认验证](http://bootstrapvalidator.votintsev.ru/validators/)）
 
-     ```js
+     ```js static/modular/system/user/user_info.js
      var UserInfoDlg = {
          ...
          validateFields: {
@@ -102,7 +102,7 @@ tags:
 
    - js 入口函数中初始化验证器
 
-     ```js
+     ```js static/modular/system/user/user_info.js
      $(function () {
          Feng.initValidator("userInfoForm", UserInfoDlg.validateFields);
      	...
@@ -110,7 +110,7 @@ tags:
 
    - 提交时手动触发
 
-     ```js
+     ```js static/modular/system/user/user_info.js
      UserInfoDlg.validate = function () {
          // 重置表单所有验证规则
          $('#userInfoForm').data("bootstrapValidator").resetForm();
@@ -123,7 +123,7 @@ tags:
 
      - 当提交按钮的`type=”submit”`时，会在 success 之前自动触发表单验证，Guns 提交按钮为普通按钮，故需要手动触发。
 
-       ```html
+       ```html WEB-INF/view/common/tags/button.tag
        <button type="button" ...>
            ...
        </button>
