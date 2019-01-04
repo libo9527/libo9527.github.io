@@ -407,6 +407,19 @@ message: Welcome to my blog, enter password to read.
    </div>
    ```
 
+### 版权声明
+
+修改**主题配置文件**中如下配置：
+
+```yaml \source\_data
+# Creative Commons 4.0 International License.
+# https://creativecommons.org/share-your-work/licensing-types-examples
+# Available: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero
+creative_commons:
+  license: by-nc-sa
+  sidebar: false
+  post: true
+```
 
 ## 填坑记录
 
@@ -440,7 +453,7 @@ Hexo 有三种默认布局：`post`、`page` 和 `draft`，它们分别对应不
 
 Hexo 的一种特殊布局：`draft`，这种布局在建立文章时会被保存到 `source/_drafts` 文件夹，您可通过 `publish` 命令将草稿移动到 `source/_posts` 文件夹。
 
-```shell
+​```shell
 $ hexo publish [layout] <filename>
 ```
 
@@ -453,7 +466,7 @@ $ hexo publish [layout] <filename>
    ```shell
     $ hexo new "GitHub Pages+Hexo+NexT"
     INFO  Created: E:\xxx\Hexo\source\_posts\GitHub-Pages-Hexo-NexT.md
-   ```
+```
 
 2. 在使用`publish`命令发布草稿时需要用**文件名**，而不是文章标题
 
