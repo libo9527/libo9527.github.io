@@ -22,4 +22,20 @@ tags:
 > [BootstrapValidator](http://bootstrapvalidator.votintsev.ru/)
 >
 > [BootstrapValidator指南](https://mrbird.cc/BootstrapValidator%E6%8C%87%E5%8D%97.html)
+>
+> [BootstrapValidator超详细教程](https://blog.csdn.net/u013938465/article/details/53507109)
+
+```javascript
+$(document).ready(function() {
+    $(formSelector).bootstrapValidator({
+        excluded: ..., // 指定不验证的情况
+        feedbackIcons: ...,	// 指定验证后验证字段的提示字体图标。（默认是bootstrap风格）
+        live: 'enabled', // 生效规则
+        message: 'This value is not valid',	// 通用错误提示语
+        submitButtons: 'button[type="submit"]', // 指定提交的按钮
+        trigger: null, // 统一触发验证方式
+        fields: ... // 表单域配置
+    });
+});
+```
 

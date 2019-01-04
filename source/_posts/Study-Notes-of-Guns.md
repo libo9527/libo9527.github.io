@@ -57,3 +57,75 @@ tags:
    ```
 
 2. HTML 表单
+
+   - 表单要指定 ID
+
+     ```html
+     <div class="form-horizontal" id="userInfoForm">
+         ...
+     </div>
+     ```
+
+   - 需验证的字段，默认需要以`<div class=”form-group”></div>`包裹（对应错误提示会根据该class值定位），内部`<input class="form-control" />`标签必须有name属性值（作为验证匹配字段）。
+
+     ```html
+     <#input id="account" name="账户" underline="true"/>
+     ```
+
+     自定义标签 input(`WEB-INF/view/common/tags/input.tag`) ：
+
+     ```html
+     <div class="form-group">
+         <label class="col-sm-3 control-label">${name}</label>
+         <div class="col-sm-9">
+             <input class="form-control" id="${id}" name="${id}"
+                    ...
+     ```
+
+   - 表单域配置（[官方默认验证](http://bootstrapvalidator.votintsev.ru/validators/)）
+
+     ```js
+     var UserInfoDlg = {
+         ...
+         validateFields: {
+             account: {
+                 validators: {
+                     notEmpty: {
+                         message: '账户不能为空'
+                     }
+                 }
+             }
+             ...
+         }
+     };
+     ```
+
+   - js 入口函数中初始化验证器
+
+     ```js
+     $(function () {
+         Feng.initValidator("userInfoForm", UserInfoDlg.validateFields);
+     	...
+     ```
+
+   - 提交时手动触发
+
+     ```js
+     UserInfoDlg.validate = function () {
+         // 重置表单所有验证规则
+         $('#userInfoForm').data("bootstrapValidator").resetForm();
+         // 触发全部验证
+         $('#userInfoForm').bootstrapValidator('validate');
+         // 获取当前表单验证状态
+         return $("#userInfoForm").data('bootstrapValidator').isValid();
+     };
+     ```
+
+     - 当提交按钮的`type=”submit”`时，会在 success 之前自动触发表单验证，Guns 提交按钮为普通按钮，故需要手动触发。
+
+       ```html
+       <button type="button" ...>
+           ...
+       </button>
+       ```
+

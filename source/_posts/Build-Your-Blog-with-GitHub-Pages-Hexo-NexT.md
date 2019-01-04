@@ -474,6 +474,42 @@ $ hexo publish [layout] <filename>
    $ hexo publish post ""
    ```
 
+### 代码块
+
+[**指定语言，附加说明和网址**](https://hexo.io/zh-cn/docs/tag-plugins.html#%E4%BB%A3%E7%A0%81%E5%9D%97)
+
+1. Hexo 格式
+
+   代码：
+
+   ```js
+   {% codeblock lang:java title http://www.baidu.com link test %}
+   public static void main(String[] args) {
+   	...
+   }
+   {% endcodeblock %}
+   ```
+
+   样式：
+
+   ![](https://i.loli.net/2019/01/04/5c2ec9c02da97.jpg)
+
+2. Markdown 格式
+
+   代码：
+
+   ```markdown
+   ​``` java title http://www.baidu.com link test
+   public static void main(String[] args) {
+   	...
+   }
+   ​```
+   ```
+
+   样式：
+
+   ![](https://i.loli.net/2019/01/04/5c2ec9c02da97.jpg)
+
 
 
 ## 底层原理
