@@ -15,6 +15,7 @@
 		{% if post.hidden != true %}
             {{ post_template.render(post, true) }}
 		{% endif %}
+		{# 首页隐藏指定文章 #}
     {% endfor %}
   </section>
 

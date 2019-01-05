@@ -71,3 +71,17 @@ tags:
 
 [awesome-algorithm](https://github.com/apachecn/awesome-algorithm)
 
+### RESTful
+
+[restcookbook](https://github.com/restcookbook/restcookbook)
+
+## GitBook
+
+### 设计模式
+
+> [Java Design Patterns](https://www.gitbook.com/book/alleniverson/java-design-patterns)
+
+### Docker
+
+> [Docker —— 从入门到实践](https://legacy.gitbook.com/book/yeasy/docker_practice)
+
