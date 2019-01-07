@@ -124,7 +124,7 @@
 <meta property="og:description" content="Makes it easy to create stand-alone, production-grade Spring-based Applications">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.zuojl.com/content/images/2018/11/spring-boot.png">
-<meta property="og:updated_time" content="2019-01-05T10:09:22.213Z">
+<meta property="og:updated_time" content="2019-01-07T09:03:06.361Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of Spring Boot">
 <meta name="twitter:description" content="Makes it easy to create stand-alone, production-grade Spring-based Applications">
@@ -470,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-05 18:09:22" itemprop="dateModified" datetime="2019-01-05T18:09:22+08:00">2019-01-05</time>
+                <time title="修改时间：2019-01-07 17:03:06" itemprop="dateModified" datetime="2019-01-07T17:03:06+08:00">2019-01-07</time>
               
             
           </span>
@@ -530,7 +530,28 @@
       
         <p><img src="https://www.zuojl.com/content/images/2018/11/spring-boot.png" width="100%"></p>
 <a id="more"></a>
-<h1 id="Spring-Boot项目中设置Content-Type的方法"><a href="#Spring-Boot项目中设置Content-Type的方法" class="headerlink" title="Spring Boot项目中设置Content-Type的方法"></a>Spring Boot项目中设置Content-Type的方法</h1><p><strong>一种比较简单优雅的方法是在注解@RequestMapping中添加produces参数即可</strong></p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h3><blockquote>
+<p><a href="https://blog.csdn.net/qq_42564846/article/details/84566822" target="_blank" rel="noopener">史上最全面的Spring Boot配置文件详解</a></p>
+</blockquote>
+<p>配置文件中的字符串尽量不要有下划线。配置中 key 不能带下划线，value 可以。</p>
+<h3 id="多环境配置"><a href="#多环境配置" class="headerlink" title="多环境配置"></a>多环境配置</h3><blockquote>
+<p><a href="https://yulaiz.com/spring-boot-maven-profiles/" target="_blank" rel="noopener">Spring-Boot application.yml 文件拆分，实现 maven 多环境动态启用 Profiles</a></p>
+<p><a href="https://blog.csdn.net/qq_42564846/article/details/84566822#t12" target="_blank" rel="noopener">多配置文件</a></p>
+</blockquote>
+<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><h3 id="CrossOrigin"><a href="#CrossOrigin" class="headerlink" title="@CrossOrigin"></a>@CrossOrigin</h3><blockquote>
+<p><a href="http://www.spring4all.com/article/177" target="_blank" rel="noopener">SpringBoot 实现前后端分离的跨域访问（CORS）</a></p>
+</blockquote>
+<p><strong>什么是跨域HTTP请求</strong></p>
+<blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/28562290" target="_blank" rel="noopener">跨域的那些事儿</a></p>
+</blockquote>
+<p>浏览器的同源策略会导致跨域，这里同源策略又分为以下两种</p>
+<ol>
+<li>DOM 同源策略：禁止对不同源页面 DOM 进行操作。这里主要场景是 iframe 跨域的情况，不同域名的 iframe 是限制互相访问的。</li>
+<li>XmlHttpRequest 同源策略：禁止使用 XHR 对象向不同源的服务器地址发起 HTTP 请求。</li>
+</ol>
+<p>只要协议、域名、端口有任何一个不同，都被当作是不同的域，之间的请求就是跨域操作。</p>
+<h2 id="数据源"><a href="#数据源" class="headerlink" title="数据源"></a>数据源</h2><h3 id="SpringBoot-中-JPA-的使用"><a href="#SpringBoot-中-JPA-的使用" class="headerlink" title="SpringBoot 中 JPA 的使用"></a><a href="">SpringBoot 中 JPA 的使用</a></h3><h2 id="Spring-Boot项目中设置Content-Type的方法"><a href="#Spring-Boot项目中设置Content-Type的方法" class="headerlink" title="Spring Boot项目中设置Content-Type的方法"></a>Spring Boot项目中设置Content-Type的方法</h2><p><strong>一种比较简单优雅的方法是在注解@RequestMapping中添加produces参数即可</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/api"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/collection"</span>, produces=<span class="string">"application/json;charset=UTF-8"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">home</span><span class="params">(String op)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -586,7 +607,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/SpringBoot/" rel="tag"># SpringBoot</a>
+            <a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
           
         </div>
       
@@ -675,7 +696,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -732,7 +753,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">分类</span>
                   
                 </div>
@@ -791,7 +820,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -841,7 +874,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Boot项目中设置Content-Type的方法"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot项目中设置Content-Type的方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">1.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#规范"><span class="nav-number">1.1.</span> <span class="nav-text">规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多环境配置"><span class="nav-number">1.2.</span> <span class="nav-text">多环境配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注解"><span class="nav-number">2.</span> <span class="nav-text">注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CrossOrigin"><span class="nav-number">2.1.</span> <span class="nav-text">@CrossOrigin</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据源"><span class="nav-number">3.</span> <span class="nav-text">数据源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot-中-JPA-的使用"><span class="nav-number">3.1.</span> <span class="nav-text">SpringBoot 中 JPA 的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot项目中设置Content-Type的方法"><span class="nav-number">4.</span> <span class="nav-text">Spring Boot项目中设置Content-Type的方法</span></a></li></ol></div>
             
 
           </div>
