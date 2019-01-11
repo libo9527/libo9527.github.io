@@ -14,6 +14,16 @@ tags:
 
 <!-- more -->
 
+## 图片
+
+### 截屏
+
+**FastStone**
+
+> [FastStone Capture(FSCapture) 注册码](https://blog.csdn.net/moxiaoya1314/article/details/79952787)
+
+
+
 ## 视频
 
 ### 录屏
@@ -30,7 +40,7 @@ tags:
 
 ## 下载
 
-## IDM
+### IDM
 
 > [配置IDM不限速下载百度云的大文件](https://blog.csdn.net/miao_9/article/details/72852903)
 >

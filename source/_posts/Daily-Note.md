@@ -754,3 +754,29 @@ Sysytem.out.println函数在打印时间时，会取操作系统当前所设置�
 [移动端监听安卓手机返回键](https://segmentfault.com/a/1190000014517685)
 
 [移动端web开发，页面如何监听安卓手机物理返回键的回退事件](http://phpstudy.php.cn/c.php/41712.html)
+
+
+
+@Value默认值
+
+```java
+@Value("${spring.datasource.db-name:guns}")
+```
+
+
+
+[使用AOP处理注解时出现error Type referred to is not an annotation type:xxx](https://blog.csdn.net/thekenofDIS/article/details/75116580)
+
+[error Type referred to is not an annotation type:](https://stackoverflow.com/questions/8574348/error-type-referred-to-is-not-an-annotation-type)
+
+
+
+Excel 怎么实现让部分内容滚动，比如表头不动，只又表体跟着鼠标滚轮滚动。
+
+> [冻结窗格以锁定行和列](https://support.office.com/zh-cn/article/%E5%86%BB%E7%BB%93%E7%AA%97%E6%A0%BC%E4%BB%A5%E9%94%81%E5%AE%9A%E8%A1%8C%E5%92%8C%E5%88%97-dab2ffc9-020d-4026-8121-67dd25f2508f)
+
+Excel怎么设置时间间隔
+
+
+
+[@Transactional(rollbackFor=Exception.class)的使用- Mint6的博客 ...](https://blog.csdn.net/Mint6/article/details/78363761)

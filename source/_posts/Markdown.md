@@ -1,10 +1,9 @@
 ---
-title: Markdown
+title: Use of Markdown
 categories:
   - Markdown
 tags:
   - Markdown
-comments: false
 date: 2018-06-01 10:13:36
 description: Markdown
 ---
@@ -17,7 +16,7 @@ description: Markdown
 >
 > [Markdown](http://www.markdown.cn/)
 
-# 生成目录
+## 生成目录
 
 TOC：table of contents
 
@@ -25,7 +24,7 @@ TOC：table of contents
 [TOC]
 ```
 
-# 修改图片尺寸
+## 修改图片尺寸
 
 > [Typora-Resize Images](https://support.typora.io/Resize-Image/)
 
@@ -34,4 +33,42 @@ TOC：table of contents
 ```html
 <img src="https://www.google.com/doodles/kamma-rahbeks-241st-birthday" width="100%" />
 ```
+
+## 表格
+
+> [表格](http://xianbai.me/learn-md/article/extension/table.html)
+
+### 单元格和表头
+
+使用 `|` 来分隔不同的单元格，使用 `-` 来分隔表头和其他行：
+
+```markdown
+列名 | 列名
+--- | ---
+列值 | 列值
+```
+
+| 列名 | 列名 |
+| ---- | ---- |
+| 列值 | 列值 |
+
+### 对齐方式
+
+在表头下方的分隔线标记中加入 `:`，即可标记下方单元格内容的对齐方式：
+
+- `:---` 代表左对齐
+- `:--:` 代表居中对齐
+- `---:` 代表右对齐
+
+```markdown
+| left | center | right |
+| :--- | :----: | ----: |
+| aaaa | bbbbbb | ccccc |
+| a    | b      | c     |
+```
+
+| left | center | right |
+| :--- | :----: | ----: |
+| aaaa | bbbbbb | ccccc |
+| a    |   b    |     c |
 
