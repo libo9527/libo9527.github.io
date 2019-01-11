@@ -129,3 +129,47 @@ tags:
        </button>
        ```
 
+### 正整数
+
+方式一：
+
+用 BootstrapValidator 验证正整数时需要适用正则表达式：
+
+```js
+validateFields: {
+        count: {
+            validators: {
+                regexp: {
+                    regexp: /^[1-9]\d*$ /,
+                    message: '格式错误，请输入正整数'
+                }
+            }
+        }
+    }
+```
+
+方式二：
+
+H5 提供了 number 的[表单类型](http://www.w3school.com.cn/html5/html_5_form_input_types.asp)，用来控制数字输入。
+
+将 input.tag 复制到对应 html 文件，该填的填，该删的删。
+
+```html
+<div class="row">
+    <div class="col-sm-6 b-r">
+        <#input id="name" name="姓名" underline="true"/>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">数量</label>
+            <div class="col-sm-9">
+                <input class="form-control" id="count" name="count" type="number" min="1">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <#input id="age" name="年龄"/>
+    </div>
+</div>
+```
+

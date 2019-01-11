@@ -31,29 +31,13 @@ tags:
 
 > [高质量壁纸网站](https://wallroom.io/)
 
-## 资源分享
+## 网站
 
-[不死鸟 - 分享为王](https://lai.yuweining.cn/)
-
-## wikeHow
+### wikeHow
 
 > [任何人做任何事](https://zh.wikihow.com)
 
-## 书单
-
-[Linux 内核揭密](https://xinqiu.gitbooks.io/linux-insides-cn/content/index.html)（中文）
-
-本书是[《Linux inside》](https://github.com/0xAX/linux-insides)一书的中译，介绍 Linux 内核知识，从计算机通电讲起，需要 C 语言和汇编语言的知识。
-
-## [Best-websites-a-programmer-should-visit](https://github.com/sdmg15/Best-websites-a-programmer-should-visit)
-
-该仓库收集对程序员有用的网址，包含问题查找、技术新闻、技术博客、开源社区、英文提升、新奇的玩意儿、视频教程、在线工具等数十个方向的内容。
-
-
-
-> 本文部分内容引自一下网址：
->
-> [每周分享第 37 期](http://www.ruanyifeng.com/blog/2018/12/weekly-issue-37.html)
+### [程序员的个性化网址导航：GitNavi.com](http://www.gitnavi.com/u/judasn/)
 
 ## 博客
 
@@ -62,6 +46,8 @@ tags:
 [当然我在扯淡](http://www.yinwang.org/#)
 
 [柳婼 の blog](https://www.liuchuo.net/) ——浙大柳神
+
+[YouMeek](http://www.youmeek.com/)
 
 ## 开发者站点
 
@@ -77,6 +63,16 @@ tags:
 
 [restcookbook](https://github.com/restcookbook/restcookbook)
 
+### [Best-websites-a-programmer-should-visit](https://github.com/sdmg15/Best-websites-a-programmer-should-visit)
+
+该仓库收集对程序员有用的网址，包含问题查找、技术新闻、技术博客、开源社区、英文提升、新奇的玩意儿、视频教程、在线工具等数十个方向的内容。
+
+### [适合后端开发者的前端 React-Admin](https://github.com/satan31415/umi-admin)
+
+### [List of Free Learning Resources](https://github.com/EbookFoundation/free-programming-books)
+
+### [Coding Interview University](https://github.com/jwasham/coding-interview-university)
+
 ## GitBook
 
 ### 设计模式
@@ -86,6 +82,14 @@ tags:
 ### Docker
 
 > [Docker —— 从入门到实践](https://legacy.gitbook.com/book/yeasy/docker_practice)
+
+### [Linux 内核揭密](https://xinqiu.gitbooks.io/linux-insides-cn/content/index.html)（中文）
+
+本书是[《Linux inside》](https://github.com/0xAX/linux-insides)一书的中译，介绍 Linux 内核知识，从计算机通电讲起，需要 C 语言和汇编语言的知识。
+
+## 教程
+
+### [IntelliJ IDEA 使用教程](http://wiki.jikexueyuan.com/project/intellij-idea-tutorial)
 
 ## 模板
 
