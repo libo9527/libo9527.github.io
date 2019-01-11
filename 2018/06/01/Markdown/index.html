@@ -118,15 +118,15 @@
   <meta name="description" content="Markdown">
 <meta name="keywords" content="Markdown">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Markdown">
+<meta property="og:title" content="Use of Markdown">
 <meta property="og:url" content="http://libo9527.github.io/2018/06/01/Markdown/index.html">
 <meta property="og:site_name" content="LiBo">
 <meta property="og:description" content="Markdown">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2018/12/26/5c23262feb7b6.jpg">
-<meta property="og:updated_time" content="2019-01-07T09:03:06.361Z">
+<meta property="og:updated_time" content="2019-01-11T04:04:21.268Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Markdown">
+<meta name="twitter:title" content="Use of Markdown">
 <meta name="twitter:description" content="Markdown">
 <meta name="twitter:image" content="https://i.loli.net/2018/12/26/5c23262feb7b6.jpg">
 
@@ -145,7 +145,7 @@
   };
 </script>
 
-  <title>Markdown | LiBo</title>
+  <title>Use of Markdown | LiBo</title>
   
 
 
@@ -424,7 +424,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Markdown
+          <h1 class="post-title" itemprop="name headline">Use of Markdown
               
             
           </h1>
@@ -470,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-07 17:03:06" itemprop="dateModified" datetime="2019-01-07T17:03:06+08:00">2019-01-07</time>
+                <time title="修改时间：2019-01-11 12:04:21" itemprop="dateModified" datetime="2019-01-11T12:04:21+08:00">2019-01-11</time>
               
             
           </span>
@@ -495,6 +495,18 @@
             </span>
           
 
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/01/Markdown/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/06/01/Markdown/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -527,13 +539,60 @@
 <p>Markdown 是一个 Web 上使用的文本到HTML的转换工具，可以通过简单、易读易写的文本格式生成结构化的HTML文档。目前 github、Stackoverflow 等网站均支持这种格式。</p>
 <p><a href="http://www.markdown.cn/" target="_blank" rel="noopener">Markdown</a></p>
 </blockquote>
-<h1 id="生成目录"><a href="#生成目录" class="headerlink" title="生成目录"></a>生成目录</h1><p>TOC：table of contents</p>
+<h2 id="生成目录"><a href="#生成目录" class="headerlink" title="生成目录"></a>生成目录</h2><p>TOC：table of contents</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[TOC]</span><br></pre></td></tr></table></figure>
-<h1 id="修改图片尺寸"><a href="#修改图片尺寸" class="headerlink" title="修改图片尺寸"></a>修改图片尺寸</h1><blockquote>
+<h2 id="修改图片尺寸"><a href="#修改图片尺寸" class="headerlink" title="修改图片尺寸"></a>修改图片尺寸</h2><blockquote>
 <p><a href="https://support.typora.io/Resize-Image/" target="_blank" rel="noopener">Typora-Resize Images</a></p>
 </blockquote>
 <p>使用<code>img</code>标签指定图片样式，eg：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"https://www.google.com/doodles/kamma-rahbeks-241st-birthday"</span> <span class="attr">width</span>=<span class="string">"100%"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><blockquote>
+<p><a href="http://xianbai.me/learn-md/article/extension/table.html" target="_blank" rel="noopener">表格</a></p>
+</blockquote>
+<h3 id="单元格和表头"><a href="#单元格和表头" class="headerlink" title="单元格和表头"></a>单元格和表头</h3><p>使用 <code>|</code> 来分隔不同的单元格，使用 <code>-</code> 来分隔表头和其他行：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">列名 | 列名</span><br><span class="line">--- | ---</span><br><span class="line">列值 | 列值</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>列名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>列值</td>
+<td>列值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="对齐方式"><a href="#对齐方式" class="headerlink" title="对齐方式"></a>对齐方式</h3><p>在表头下方的分隔线标记中加入 <code>:</code>，即可标记下方单元格内容的对齐方式：</p>
+<ul>
+<li><code>:---</code> 代表左对齐</li>
+<li><code>:--:</code> 代表居中对齐</li>
+<li><code>---:</code> 代表右对齐</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| left | center | right |</span><br><span class="line">| :--- | :----: | ----: |</span><br><span class="line">| aaaa | bbbbbb | ccccc |</span><br><span class="line">| a    | b      | c     |</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">left</th>
+<th style="text-align:center">center</th>
+<th style="text-align:right">right</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">aaaa</td>
+<td style="text-align:center">bbbbbb</td>
+<td style="text-align:right">ccccc</td>
+</tr>
+<tr>
+<td style="text-align:left">a</td>
+<td style="text-align:center">b</td>
+<td style="text-align:right">c</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -575,7 +634,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://libo9527.github.io/2018/06/01/Markdown/" title="Markdown">http://libo9527.github.io/2018/06/01/Markdown/</a>
+    <a href="http://libo9527.github.io/2018/06/01/Markdown/" title="Use of Markdown">http://libo9527.github.io/2018/06/01/Markdown/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -601,8 +660,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/31/Study-Notes-of-Spring-Boot/" rel="next" title="Study Notes of Spring Boot">
-                <i class="fa fa-chevron-left"></i> Study Notes of Spring Boot
+              <a href="/2018/06/01/Use-of-Markdown/" rel="next" title="Use of Markdown">
+                <i class="fa fa-chevron-left"></i> Use of Markdown
               </a>
             
           </div>
@@ -634,6 +693,18 @@
 
           </div>
           
+
+  
+    <div id="gitalk-container">
+    </div>
+	
+		<div class="comments" id="comments">
+		</div>
+	
+    
+  
+
+
 
         </div>
         
@@ -681,7 +752,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -746,7 +817,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">26</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">分类</span>
                   
                 </div>
@@ -809,7 +884,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -859,7 +938,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#生成目录"><span class="nav-number">1.</span> <span class="nav-text">生成目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改图片尺寸"><span class="nav-number">2.</span> <span class="nav-text">修改图片尺寸</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#生成目录"><span class="nav-number">1.</span> <span class="nav-text">生成目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改图片尺寸"><span class="nav-number">2.</span> <span class="nav-text">修改图片尺寸</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表格"><span class="nav-number">3.</span> <span class="nav-text">表格</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单元格和表头"><span class="nav-number">3.1.</span> <span class="nav-text">单元格和表头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对齐方式"><span class="nav-number">3.2.</span> <span class="nav-text">对齐方式</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1053,6 +1132,32 @@
   </script>
 
 
+
+
+  
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+
+  
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.css">
+
+  
+  
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+    
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'a75f33d0d54ca58ac001',
+          clientSecret: '02675748bae6c8068856bcd57d23a6835a8928a8',
+          repo: 'gitalk-comments',
+          owner: 'libo9527',
+          admin: ['libo9527'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
   
 
