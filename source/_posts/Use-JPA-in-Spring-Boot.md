@@ -163,3 +163,14 @@ tags:
        }
    }
    ```
+
+### 事务
+
+> [JPA事务问题Executing an update/delete query](https://blog.csdn.net/moshowgame/article/details/80090453)
+>
+> [用Spring boot jpa update modify delete 数据和事务管理的那些坑](https://blog.csdn.net/hanghangde/article/details/53241150)
+
+JPA 要求**没有事务支持，不能执行更新和删除操作**。
+
+所以在 Service 层上必须加上事务注解`@Transactional`，如果没加则会报如下异常：`Executing an update/delete query`
+

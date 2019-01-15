@@ -787,3 +787,7 @@ Excel怎么设置时间间隔
 
 [App开放接口api安全性—Token签名sign的设计与实现](https://blog.csdn.net/fengshizty/article/details/48754609)
 
+
+
+[PAT——甲级1042：Shuffling Mashine](http://www.morecoder.com/article/1115597.html)
+

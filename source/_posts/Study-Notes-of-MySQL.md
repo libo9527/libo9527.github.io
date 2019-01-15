@@ -19,13 +19,22 @@ date: 2018-06-09 15:10:40
 
 多行注释：/* */
 
-## mysql自增ID起始值修改方法
+## 主键
+
+**修改自增 ID 起始值**
 
 ```mysql
 alter table tablename AUTO_INCREMENT=1;
 ```
 
+## 优化
+
+1. `IN`运算符不要嵌套使用，效率会急剧下降。因此一般使用连接查询，而不使用子查询。
+
+   执行子查询时，MYSQL 需要创建临时表，查询完毕后再删除这些临时表，所以，子查询的速度慢。
+
 ## 函数
+
 ### 日期
 
 #### DATE_FORMAT
@@ -112,3 +121,6 @@ SQL> SELECT CONCAT('FIRST ', 'SECOND');
 </select>
 ```
 
+## 注意
+
+- MySql 中`select null + 1`的结果是`null`

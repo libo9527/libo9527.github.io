@@ -65,3 +65,14 @@ if(a1 + b1 == a2 && a1 + b1 != b2){
 }
 ```
 
+
+
+[PAT——甲级1042：Shuffling Mashine](http://www.morecoder.com/article/1115597.html)
+
+
+
+段错误：
+
+段错误是访问了不能访问的内存，
+
+大概率数组越界
