@@ -291,5 +291,171 @@ eg:  5 位二进制最大值为 31
 = 31(D)
 ```
 
+## 签名算法
 
+### 排序加密签名算法
+
+> [App开放接口api安全性—Token签名sign的设计与实现](https://blog.csdn.net/fengshizty/article/details/48754609)
+
+1. 按照参数名ASCII码从小到大排序（字典序）
+2. 使用URL键值对的格式（即key1=value1&key2=value2…）拼接成字符串。
+3. 加密算法对字符串进行加密，得到签名。
+
+```java
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * @description：
+ * @author： libo
+ * @date： 2019/1/14:15:58
+ */
+public class SignUtil {
+    
+    public static String createSign(Map<String, String> params, boolean encode) throws UnsupportedEncodingException {
+        Set<String> keysSet = params.keySet();
+        Object[] keys = keysSet.toArray();
+        Arrays.sort(keys);
+        StringBuffer sb = new StringBuffer();
+        boolean first = true;
+        for (Object key : keys) {
+            if (first) {
+                first = false;
+            } else {
+                sb.append("&");
+            }
+            sb.append(key).append("=");
+            Object value = params.get(key);
+            String valueString = "";
+            if (null != value) {
+                valueString = String.valueOf(value);
+            }
+            if (encode) {
+                sb.append(URLEncoder.encode(valueString, "UTF-8"));
+            } else {
+                sb.append(valueString);
+            }
+        }
+
+        return md5(sb.toString()).toUpperCase();
+    }
+
+    public static String md5(String value) {
+        MessageDigest md = null;
+        try {
+            byte[] data = value.getBytes("utf-8");
+            md = MessageDigest.getInstance("MD5");
+            byte[] digestData = md.digest(data);
+            return toHex(digestData);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static String toHex(byte input[]) {
+        if (input == null) {
+            return null;
+        }
+        StringBuffer output = new StringBuffer(input.length * 2);
+        for (int i = 0; i < input.length; i++) {
+            int current = input[i] & 0xff;
+            if (current < 16)
+                output.append("0");
+            output.append(Integer.toString(current, 16));
+        }
+
+        return output.toString();
+    }
+}
+```
+
+### RC4算法
+
+> [【密码学】RC4加解密原理及其Java和C实现算法](https://blog.csdn.net/White_Idiot/article/details/65937877)
+>
+> [RC4加密解密算法原理与完整源代码实例演示](https://www.cnblogs.com/zwios/p/4196836.html)
+>
+> [RC4加密算法](https://www.cnblogs.com/zibility/p/5404478.html)
+
+**加密原理**
+
+![](http://upload-images.jianshu.io/upload_images/2482101-2c5eb05fcc70d1fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
+
+![](https://images2015.cnblogs.com/blog/889809/201604/889809-20160418145446757-1328061961.png)
+
+```java
+public class RC4 {
+
+    public static void main(String[] args) {
+        RC4 rc4 = new RC4();
+
+        String plaintext = "helloworld";
+        String key = "key";
+
+        String ciphertext = rc4.encrypt(plaintext, key);
+        String decryptText = rc4.encrypt(ciphertext, key);
+
+        System.out.println("明文为：" + plaintext);
+        System.out.println("密钥为：" + key);
+        System.out.println("密文为：" + ciphertext);
+        System.out.println("解密为：" + decryptText);
+    }
+
+    // 1 加密
+    public String encrypt(final String plaintext, final String key) {
+        Integer[] S = new Integer[256]; // S盒
+        Character[] keySchedule = new Character[plaintext.length()]; // 生成的密钥流
+        StringBuffer ciphertext = new StringBuffer();
+
+        ksa(S, key);
+        rpga(S, keySchedule, plaintext.length());
+
+        for (int i = 0; i < plaintext.length(); ++i) {
+            ciphertext.append((char) (plaintext.charAt(i) ^ keySchedule[i]));
+        }
+
+        return ciphertext.toString();
+    }
+
+    // 1.1 KSA--密钥调度算法--利用key来对S盒做一个置换，也就是对S盒重新排列
+    public void ksa(Integer[] s, String key) {
+        for (int i = 0; i < 256; ++i) {
+            s[i] = i;
+        }
+
+        int j = 0;
+        for (int i = 0; i < 256; ++i) {
+            j = (j + s[i] + key.charAt(i % key.length())) % 256;
+            swap(s, i, j);
+        }
+    }
+
+    // 1.2 RPGA--伪随机生成算法--利用上面重新排列的S盒来产生任意长度的密钥流
+    public void rpga(Integer[] s, Character[] keySchedule, int plaintextLength) {
+        int i = 0, j = 0;
+        for (int k = 0; k < plaintextLength; ++k) {
+            i = (i + 1) % 256;
+            j = (j + s[i]) % 256;
+            swap(s, i, j);
+            keySchedule[k] = (char) (s[(s[i] + s[j]) % 256]).intValue();
+        }
+    }
+
+    // 1.3 置换
+    public void swap(Integer[] s, int i, int j) {
+        Integer mTemp = s[i];
+        s[i] = s[j];
+        s[j] = mTemp;
+    }
+}
+```
 

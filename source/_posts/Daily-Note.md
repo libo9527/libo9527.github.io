@@ -780,3 +780,10 @@ Excel怎么设置时间间隔
 
 
 [@Transactional(rollbackFor=Exception.class)的使用- Mint6的博客 ...](https://blog.csdn.net/Mint6/article/details/78363761)
+
+
+
+[RC4加密算法 - 维基百科](https://zh.wikipedia.org/zh-hans/RC4)
+
+[App开放接口api安全性—Token签名sign的设计与实现](https://blog.csdn.net/fengshizty/article/details/48754609)
+
