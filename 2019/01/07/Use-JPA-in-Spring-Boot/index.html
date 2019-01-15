@@ -124,7 +124,7 @@
 <meta property="og:description" content="JPA的使用">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://javadeveloperzone.com/wp-content/uploads/2018/02/Spring-boot-jpa-mysql-example-1024x488.jpg">
-<meta property="og:updated_time" content="2019-01-15T03:39:09.008Z">
+<meta property="og:updated_time" content="2019-01-15T10:10:49.813Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Use JPA in Spring Boot">
 <meta name="twitter:description" content="JPA的使用">
@@ -470,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-15 11:39:09" itemprop="dateModified" datetime="2019-01-15T11:39:09+08:00">2019-01-15</time>
+                <time title="修改时间：2019-01-15 18:10:49" itemprop="dateModified" datetime="2019-01-15T18:10:49+08:00">2019-01-15</time>
               
             
           </span>
@@ -599,6 +599,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Page&lt;User&gt; <span class="title">selectAll</span><span class="params">(<span class="keyword">int</span> pageNum, <span class="keyword">int</span> pageSize)</span> </span>&#123;</span><br><span class="line">    Pageable pageable = <span class="keyword">new</span> PageRequest(pageNum, pageSize);</span><br><span class="line">    Page&lt;User&gt; users = userRepository.findAll(<span class="keyword">new</span> Specification&lt;Student&gt;()&#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root&lt;Student&gt; root, CriteriaQuery&lt;?&gt; query, CriteriaBuilder cb)</span> </span>&#123;</span><br><span class="line">            List&lt;Predicate&gt; predicatesList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">if</span> (!StringUtils.isEmpty(name))&#123;</span><br><span class="line">                Predicate namePredicate = cb.equal(root.get(<span class="string">"name"</span>), name);</span><br><span class="line">                predicatesList.add(namePredicate);</span><br><span class="line">            &#125;</span><br><span class="line">            Predicate[] predicates = <span class="keyword">new</span> Predicate[predicatesList.size()];</span><br><span class="line">            <span class="keyword">return</span> cb.and(predicatesList.toArray(predicates));</span><br><span class="line">        &#125;, pageable);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><blockquote>
+<p><a href="https://blog.csdn.net/moshowgame/article/details/80090453" target="_blank" rel="noopener">JPA事务问题Executing an update/delete query</a></p>
+<p><a href="https://blog.csdn.net/hanghangde/article/details/53241150" target="_blank" rel="noopener">用Spring boot jpa update modify delete 数据和事务管理的那些坑</a></p>
+</blockquote>
+<p>JPA 要求<strong>没有事务支持，不能执行更新和删除操作</strong>。</p>
+<p>所以在 Service 层上必须加上事务注解<code>@Transactional</code>，如果没加则会报如下异常：<code>Executing an update/delete query</code></p>
 
       
     </div>
@@ -946,7 +952,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是JPA"><span class="nav-number">1.</span> <span class="nav-text">什么是JPA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多条件查询"><span class="nav-number">3.1.</span> <span class="nav-text">多条件查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分页"><span class="nav-number">3.2.</span> <span class="nav-text">分页</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是JPA"><span class="nav-number">1.</span> <span class="nav-text">什么是JPA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多条件查询"><span class="nav-number">3.1.</span> <span class="nav-text">多条件查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分页"><span class="nav-number">3.2.</span> <span class="nav-text">分页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务"><span class="nav-number">3.3.</span> <span class="nav-text">事务</span></a></li></ol></li></ol></div>
             
 
           </div>
