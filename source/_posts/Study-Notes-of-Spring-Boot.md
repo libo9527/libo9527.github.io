@@ -49,7 +49,31 @@ comments: false
 
 ### [SpringBoot 中 JPA 的使用]()
 
+## Spring Cache
 
+1. @EnableCaching
+
+   启动类上加该注解
+
+2. 查询方法上添加注解`@Cacheable(value = "cacheName", key="#id")`，缓存本质是一个 map。
+
+   ```java
+   @Cacheable(value = "cacheName", key="#id")
+   public String getXXX(int id) {
+       ...
+   }
+   ```
+
+3. 更新和删除方法上添加注解`@CacheEvict(value = “cacheName”, key = “#id”)`
+
+   ```java
+   @CacheEvict(value = "cacheName", key="#id")
+   public void deleteXXX(int id) {
+       ...
+   }
+   ```
+
+**使用原则**：需要过期时间使用 redis，不需要过期时间使用 spring cache
 
 ## Spring Boot项目中设置Content-Type的方法
 
