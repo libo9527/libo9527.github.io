@@ -49,6 +49,8 @@ tags:
 
 [YouMeek](http://www.youmeek.com/)
 
+[Freud's Blog](https://www.hifreud.com/)
+
 ## 开发者站点
 
 [Android 开发中文站](http://www.androidchina.net/)

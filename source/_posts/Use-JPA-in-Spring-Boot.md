@@ -58,6 +58,8 @@ int getTotalRow();
 Collection<User> findAllActiveUsers();
 ```
 
+**JPQL 不支持使用 INSERT**
+
 ### 多条件查询
 
 > [【一目了然】Spring Data JPA使用Specification动态构建多表查询、复杂查询及排序示例](https://www.jianshu.com/p/659e9715d01d)
@@ -189,7 +191,10 @@ Collection<User> findAllActiveUsers();
 >
 > [用Spring boot jpa update modify delete 数据和事务管理的那些坑](https://blog.csdn.net/hanghangde/article/details/53241150)
 
-JPA 要求**没有事务支持，不能执行更新和删除操作**。
+JPA 要求**没有事务支持，不能执行更新和删除操作**。默认情况下， SpringData 的每个方法上有事务， 但都是一个**只读事务**。
 
 所以在 Service 层上必须加上事务注解`@Transactional`，如果没加则会报如下异常：`Executing an update/delete query`
 
+**@Modifyig**
+
+在 @Query 注解中编写 JPQL 语句时，必须使用 @Modifying 进行修饰。以通知 SpringData，这是一个 UPDATE 或 DELETE 操作。同时需要在 service 层的方法上添加事务注解。
