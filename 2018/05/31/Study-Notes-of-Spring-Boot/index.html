@@ -124,7 +124,7 @@
 <meta property="og:description" content="Makes it easy to create stand-alone, production-grade Spring-based Applications">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.zuojl.com/content/images/2018/11/spring-boot.png">
-<meta property="og:updated_time" content="2019-01-18T10:08:20.400Z">
+<meta property="og:updated_time" content="2019-01-18T10:20:09.361Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of Spring Boot">
 <meta name="twitter:description" content="Makes it easy to create stand-alone, production-grade Spring-based Applications">
@@ -470,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-18 18:08:20" itemprop="dateModified" datetime="2019-01-18T18:08:20+08:00">2019-01-18</time>
+                <time title="修改时间：2019-01-18 18:20:09" itemprop="dateModified" datetime="2019-01-18T18:20:09+08:00">2019-01-18</time>
               
             
           </span>
@@ -551,7 +551,19 @@
 <li>XmlHttpRequest 同源策略：禁止使用 XHR 对象向不同源的服务器地址发起 HTTP 请求。</li>
 </ol>
 <p>只要协议、域名、端口有任何一个不同，都被当作是不同的域，之间的请求就是跨域操作。</p>
-<h2 id="数据源"><a href="#数据源" class="headerlink" title="数据源"></a>数据源</h2><h3 id="SpringBoot-中-JPA-的使用"><a href="#SpringBoot-中-JPA-的使用" class="headerlink" title="SpringBoot 中 JPA 的使用"></a><a href="">SpringBoot 中 JPA 的使用</a></h3><h2 id="Spring-Boot项目中设置Content-Type的方法"><a href="#Spring-Boot项目中设置Content-Type的方法" class="headerlink" title="Spring Boot项目中设置Content-Type的方法"></a>Spring Boot项目中设置Content-Type的方法</h2><p><strong>一种比较简单优雅的方法是在注解@RequestMapping中添加produces参数即可</strong></p>
+<h2 id="数据源"><a href="#数据源" class="headerlink" title="数据源"></a>数据源</h2><h3 id="SpringBoot-中-JPA-的使用"><a href="#SpringBoot-中-JPA-的使用" class="headerlink" title="SpringBoot 中 JPA 的使用"></a><a href="">SpringBoot 中 JPA 的使用</a></h3><h2 id="Spring-Cache"><a href="#Spring-Cache" class="headerlink" title="Spring Cache"></a>Spring Cache</h2><ol>
+<li><p>@EnableCaching</p>
+<p>启动类上加该注解</p>
+</li>
+<li><p>查询方法上添加注解<code>@Cacheable(value = &quot;cacheName&quot;, key=&quot;#id&quot;)</code>，缓存本质是一个 map。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Cacheable</span>(value = <span class="string">"cacheName"</span>, key=<span class="string">"#id"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getXXX</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新和删除方法上添加注解<code>@CacheEvict(value = “cacheName”, key = “#id”)</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@CacheEvict</span>(value = <span class="string">"cacheName"</span>, key=<span class="string">"#id"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteXXX</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>使用原则</strong>：需要过期时间使用 redis，不需要过期时间使用 spring cache</p>
+<h2 id="Spring-Boot项目中设置Content-Type的方法"><a href="#Spring-Boot项目中设置Content-Type的方法" class="headerlink" title="Spring Boot项目中设置Content-Type的方法"></a>Spring Boot项目中设置Content-Type的方法</h2><p><strong>一种比较简单优雅的方法是在注解@RequestMapping中添加produces参数即可</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/api"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/collection"</span>, produces=<span class="string">"application/json;charset=UTF-8"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">home</span><span class="params">(String op)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -888,7 +900,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">1.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#规范"><span class="nav-number">1.1.</span> <span class="nav-text">规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多环境配置"><span class="nav-number">1.2.</span> <span class="nav-text">多环境配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注解"><span class="nav-number">2.</span> <span class="nav-text">注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CrossOrigin"><span class="nav-number">2.1.</span> <span class="nav-text">@CrossOrigin</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据源"><span class="nav-number">3.</span> <span class="nav-text">数据源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot-中-JPA-的使用"><span class="nav-number">3.1.</span> <span class="nav-text">SpringBoot 中 JPA 的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot项目中设置Content-Type的方法"><span class="nav-number">4.</span> <span class="nav-text">Spring Boot项目中设置Content-Type的方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">1.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#规范"><span class="nav-number">1.1.</span> <span class="nav-text">规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多环境配置"><span class="nav-number">1.2.</span> <span class="nav-text">多环境配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注解"><span class="nav-number">2.</span> <span class="nav-text">注解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CrossOrigin"><span class="nav-number">2.1.</span> <span class="nav-text">@CrossOrigin</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据源"><span class="nav-number">3.</span> <span class="nav-text">数据源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringBoot-中-JPA-的使用"><span class="nav-number">3.1.</span> <span class="nav-text">SpringBoot 中 JPA 的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Cache"><span class="nav-number">4.</span> <span class="nav-text">Spring Cache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot项目中设置Content-Type的方法"><span class="nav-number">5.</span> <span class="nav-text">Spring Boot项目中设置Content-Type的方法</span></a></li></ol></div>
             
 
           </div>
