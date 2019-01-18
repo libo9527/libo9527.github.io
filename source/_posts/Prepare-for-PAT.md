@@ -76,3 +76,47 @@ if(a1 + b1 == a2 && a1 + b1 != b2){
 段错误是访问了不能访问的内存，
 
 大概率数组越界
+
+
+
+long long 类型在 C++(g++) 下错误 C++(clang++) 下正确。
+
+```c++ PAT-1065.cpp
+#include <cstdio>
+
+int main(){
+  int t;
+  scanf("%d", &t);
+  for (int i = 0; i < t; i++){
+    long long a, b, c;
+    scanf("%lld%lld%lld", &a, &b, &c);
+    if(a > 0 && b > 0 && a + b < 0){
+      printf("Case #%d: true\n", i+1);
+    }else if(a < 0 && b < 0 && a + b >= 0){
+      printf("Case #%d: false\n", i+1);
+    }else if(a + b > c){
+      printf("Case #%d: true\n", i+1);
+    }else {
+      printf("Case #%d: false\n", i+1);
+    }
+  }
+  return 0;
+}
+```
+
+
+
+注意计数器自增自减和条件判断的前后顺序。
+
+```c++
+count--;
+if(count > 0){
+    ...
+}
+////
+if(count > 0){
+    ...
+}
+count--;
+```
+

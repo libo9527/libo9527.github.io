@@ -791,3 +791,14 @@ Excel怎么设置时间间隔
 
 [PAT——甲级1042：Shuffling Mashine](http://www.morecoder.com/article/1115597.html)
 
+
+
+jQuery 去掉字符串前后空格
+
+```
+$.trim(str) 
+```
+
+
+
+mybatis 不能将string类型的时间 插入到数据库。

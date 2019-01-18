@@ -18,7 +18,7 @@ tags:
 
 ## 什么是JPA
 
-​	JPA 的全称叫做 Java Persistence API，是一个基于 O/R 映射的标准规范。目前 JPA 的主要实现有Hibernate、EclipseLink、OpenJPA等，事实上，由于 Hibernate 在数据访问解决技术领域的绝对霸主地位，JPA的标准基本是由 Hibernate 来主导的。Spring 框架为我们提供了 Spring Data JPA，可以减少我们使用 JPA 时的代码量。
+​	JPA 的全称叫做 Java Persistence API，是一个基于 O/R 映射的标准**规范**。目前 JPA 的主要实现有Hibernate、EclipseLink、OpenJPA等，事实上，由于 Hibernate 在数据访问解决技术领域的绝对霸主地位，JPA的标准基本是由 Hibernate 来主导的。Spring 框架为我们提供了 Spring Data JPA，可以减少我们使用 JPA 时的代码量。
 
 ## 配置
 
@@ -33,11 +33,30 @@ tags:
 
 3. `spring.jpa.database-platform=org.hibernate.dialect.MySQL5InnoDBDialect`
 
-   在 SrpingBoot 2.0 版本中，Hibernate 创建数据表的时候，默认的数据库存储引擎选择的是 MyISAM （之前好像是 InnoDB，这点比较诡异）。这个参数是在建表的时候，将默认的存储引擎切换为 InnoDB 用的。
+   在 SrpingBoot 2.0 版本中，Hibernate 创建数据表的时候，默认的数据库存储引擎选择的是 MyISAM 。这个参数是在建表的时候，将默认的存储引擎切换为 InnoDB 用的。
+
+4. `jpa.generate-ddl=true`：开启 DDL 功能。[Initialize a Database Using JPA](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html#howto-initialize-a-database-using-jpa)
 
 ## 使用
 
 > [Spring Data JPA 2.1.0.RELEASE API](https://docs.spring.io/spring-data/jpa/docs/2.1.0.RELEASE/api/)
+
+### 原生SQL语句
+
+1. 使用`@Query`注解
+2. 设置 nativeQuery 属性值为 true
+
+```java
+@Query(value="SELECT count(*) FROM user", nativeQuery=true)
+int getTotalRow();
+```
+
+### JPQL
+
+```java
+@Query("SELECT u FROM User u WHERE u.status = 1")
+Collection<User> findAllActiveUsers();
+```
 
 ### 多条件查询
 
