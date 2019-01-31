@@ -5,7 +5,7 @@ hidden: true
 top: true
 date: 2019-01-28 20:15:59
 categories:
- - Plan
+ - Strategy
 tags:
  - Tour
 ---
