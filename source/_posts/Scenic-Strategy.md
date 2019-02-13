@@ -3,10 +3,9 @@ title: Scenic Strategy
 description: 景点攻略
 comments: false
 hidden: true
-top: true
 date: 2019-02-03 19:39:14
-categories:
-tags:
+password: 2019-02-03 19:39:14
+message: 暗号……
 ---
 
 <img src="http://staticnew.mayi.com/resourcesWeb/travel/images/zixun/201509030020127533.jpg" width="100%"/>
@@ -58,7 +57,7 @@ tags:
 7、持有苏州市环卫工人“荣誉证书”的市区居民，凭证书可免票入园。
 8、全国残疾人员凭有效证件免票入园。
 9、导游人员持有导游证和旅行社委派行程单带团实行免票。
- 
+
 
 以上政策规定自2014年6月30日起执行。
 
