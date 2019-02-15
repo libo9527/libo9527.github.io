@@ -33,6 +33,8 @@ tags:
 
 ## 总结
 
+> [Summary of PAT](https://libo9527.github.io/2019/02/15/Summary-of-PAT/)
+
 1. 注意审题
    - 输入变量名，顺序，格式...
    - 输出格式
@@ -119,4 +121,10 @@ if(count > 0){
 }
 count--;
 ```
+
+
+
+PTA网站如果使用C++(g++)编译不能使用get(),如果使用c(gcc)编译不能使用C++头文件
+
+**PAT的编译器在C++编译环境下不能使用gets(),我们用fgets(char\* a,int maxlens,stdin)替代。(注意，前面需要用getchar()接收一下换行符，因为大部分题目在接收整行数据前，有一个数据个数的输入)**。
 
