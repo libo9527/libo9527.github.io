@@ -108,5 +108,40 @@ count--;
 
 
 
+sort() 函数的使用
 
 
+
+### [*C++* error 2872:*不明确的符号* - code_nie的博客 - CSDN博客](https://www.baidu.com/link?url=HvAoxxP6Vh5jlJN6_5JVIgqn4V5H04hTcU8KEF6ctZDJEEgE7k-y7GsouW6h_IlqUgHTgYR1YWeomMvxU3_yM0_i8Lmz4EJGseKSohh6zR_&wd=&eqid=eec0d1d100080620000000065c6bbaed)
+
+简单地说，出现这种情况是因为程序使用的命名空间里已经有这个变量名了
+
+namespace std,  "rank"
+
+
+
+vs2010 报错：
+
+1>MSVCRTD.lib(crtexe.obj) : error LNK2019: 无法解析的外部符号 _main，该符号在函数 ___tmainCRTStartup 中被引用
+1>f:\visual studio 2010\Projects\pat\Debug\pat.exe : fatal error LNK1120: 1 个无法解析的外部命令
+
+
+
+原因：main 拼错了，拼成了 mian
+
+
+
+strcpy() 函数
+
+## 考点
+
+深圳大学： 白鉴聪, szubjc@szu.edu.cn
+Dev C++ 5.10; Code::Blocks16.01; Java SE Development Kit9.0.1; Eclipse Oxygen.2 版本 4.7.2; Python解释器（3.6.5）; PyCharm Community Edition
+
+
+
+求余（%）和取整（/）优先级相同。
+
+
+
+> [PAT备考经验&相关信息](https://blog.csdn.net/qq_38658814/article/details/82534765?utm_source=blogxgwz2)
