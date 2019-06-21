@@ -5,7 +5,7 @@ node_js: stable  #设置相应的版本
 # 开始构建
 before_install:
   - export TZ='Asia/Shanghai'  #统一构建环境和博客配置的时区, 防止文章时间错误
-  
+
 install:
   - npm install  #配置Hexo环境
 
@@ -34,6 +34,6 @@ env:
  global:
    - GH_REF: github.com/libo9527/libo9527.github.io.git  #设置GH_REF
 
-cache:
-  directories:  #缓存特定目录, 加快构建速度
-    - node_modules
+# cache:
+#   directories:  #缓存特定目录, 加快构建速度
+#     - node_modules
