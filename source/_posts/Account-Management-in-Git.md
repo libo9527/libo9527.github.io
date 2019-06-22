@@ -1,5 +1,5 @@
 ---
-title: {{ Account Management in Git }}
+title: Account Management in Git
 description: Git 中的账号管理
 date: {{ date }}
 categories: Git
