@@ -15,7 +15,7 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -125,7 +125,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.paradigmadigital.com/wp-content/uploads/2017/08/intellijVSeclipse.jpg">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/130410-06580ab3367355e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
-<meta property="og:updated_time" content="2019-06-22T02:53:35.470Z">
+<meta property="og:updated_time" content="2019-07-31T07:03:40.774Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Use of IDEA">
 <meta name="twitter:description" content="IDEA 的使用">
@@ -188,7 +188,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -198,7 +198,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -403,20 +403,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://libo9527.github.io/2019/01/05/Use-of-IDEA/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Li Bo">
       <meta itemprop="description" content="我不怕千万人阻挡，只怕自己投降">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="LiBo">
     </span>
 
@@ -471,7 +471,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-22 10:53:35" itemprop="dateModified" datetime="2019-06-22T10:53:35+08:00">2019-06-22</time>
+                <time title="修改时间：2019-07-31 15:03:40" itemprop="dateModified" datetime="2019-07-31T15:03:40+08:00">2019-07-31</time>
               
             
           </span>
@@ -488,7 +488,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a></span>
 
                 
                 
@@ -545,7 +545,7 @@
 <p>​    IDEA 根据 maven archetype 的本质，其实是执行 <code>mvn archetype:generate</code> 命令，该命令执行时，需要指定一个<code>archetype-catalog.xml</code>文件。</p>
 <p>​    该命令的参数<code>-DarchetypeCatalog</code>，可选值为：remote，internal  ，local等，用来指定archetype-catalog.xml文件从哪里获取。默认为remote，即从 <a href="http://repo1.maven.org/maven2/archetype-catalog.xml" target="_blank" rel="noopener">http://repo1.maven.org/maven2/archetype-catalog.xml</a> 路径下载<code>archetype-catalog.xml</code>文件。<a href="http://repo1.maven.org/maven2/archetype-catalog.xml" target="_blank" rel="noopener">http://repo1.maven.org/maven2/archetype-catalog.xml</a> 文件约为3-4M，下载速度很慢，所以导致创建过程缓慢。</p>
 <p>​    可以在 <code>settings&gt;Building,Exceptiong,Deployment&gt;Maven&gt;Runner</code> 中配置 <code>VM Options</code> 来指定使用本地文件。如下图所示：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/130410-06580ab3367355e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/130410-06580ab3367355e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt></p>
 <h2 id="推荐做法"><a href="#推荐做法" class="headerlink" title="推荐做法"></a>推荐做法</h2><ol>
 <li>项目、模块等命名时，尽量使用下划线（避免用横杠）来连接多个单词。</li>
 </ol>
@@ -693,7 +693,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Li Bo">
             
@@ -708,7 +708,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -718,7 +718,7 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  
+                  <a href="/categories/index.html">
                     
                     
                       
@@ -789,9 +789,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">34</span>
+                      
+                    
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">分类</span>
-                  
+                  </a>
                 </div>
               
 
@@ -862,7 +864,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -951,7 +955,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 
