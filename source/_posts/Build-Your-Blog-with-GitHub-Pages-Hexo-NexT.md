@@ -482,7 +482,7 @@ Hexo 有三种默认布局：`post`、`page` 和 `draft`，它们分别对应不
 
 Hexo 的一种特殊布局：`draft`，这种布局在建立文章时会被保存到 `source/_drafts` 文件夹，您可通过 `publish` 命令将草稿移动到 `source/_posts` 文件夹。
 
-​```shell
+```shell
 $ hexo publish [layout] <filename>
 ```
 
@@ -552,7 +552,14 @@ $ hexo publish [layout] <filename>
 
    ![](https://i.loli.net/2019/01/04/5c2ec9c02da97.jpg)
 
+#### 嵌入 CodePen
 
+<iframe height="265" style="width: 100%;" scrolling="no" title="Tree Sort" src="//codepen.io/libo9527/embed/gVjedo/?height=265&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/libo9527/pen/gVjedo/'>Tree Sort</a> by libo9527
+  (<a href='https://codepen.io/libo9527'>@libo9527</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+在 Codepen 中编辑好之后点击页面底部的 `Embed`，复制 `iframe` 的代码，贴到博客中即可。
 
 ## 底层原理
 

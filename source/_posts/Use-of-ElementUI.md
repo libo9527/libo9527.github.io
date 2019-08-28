@@ -11,7 +11,7 @@ tags: ElementUI
 
 <!-- more -->
 
-> [ElementUI]([https://element.eleme.cn](https://element.eleme.cn/))
+> [ElementUI](https://element.eleme.cn)
 
 ## Scrollbar 滚动条
 
@@ -20,4 +20,3 @@ tags: ElementUI
 ![项目中的使用](https://i.loli.net/2019/07/31/5d4135303465a78467.png)
 
 注：如果不需要横向滚动条，将 wrap 层的 `overflow-x` 置为 `hidden` 即可。
-

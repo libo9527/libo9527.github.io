@@ -16,7 +16,7 @@ description: Markdown
 >
 > [Markdown](http://www.markdown.cn/)
 
-# 生成目录
+## 生成目录
 
 TOC：table of contents
 
@@ -24,7 +24,7 @@ TOC：table of contents
 [TOC]
 ```
 
-# 修改图片尺寸
+## 修改图片尺寸
 
 > [Typora-Resize Images](https://support.typora.io/Resize-Image/)
 
@@ -33,4 +33,10 @@ TOC：table of contents
 ```html
 <img src="https://www.google.com/doodles/kamma-rahbeks-241st-birthday" width="100%" />
 ```
+
+## 数学公式
+
+> [Markdown数学公式语法](https://www.jianshu.com/p/e74eb43960a1)
+
+1. 开二次方运算，符号：`\sqrt`，如：$\sqrt x$
 

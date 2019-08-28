@@ -28,6 +28,58 @@ comments: false
 >
 > [多配置文件](https://blog.csdn.net/qq_42564846/article/details/84566822#t12)
 
+### 修改 Spring Boot 中的 JSON
+
+> [FastJson与Jackson，修改SpringBoot默认的JSON](https://blog.csdn.net/With_Her/article/details/81979550)
+
+SpringBoot 默认内置的是 jackson
+
+方式一：启动类继承 WebMvcConfigurerAdapter ,复写 configureMessageConverters 方法
+
+```java
+@Configuration
+public class WebMvcConfig extends WebMvcConfigurerAdapter {
+
+  @Override
+	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+    	super.configureMessageConverters(converters);
+		
+        FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
+ 
+        FastJsonConfig fastJsonConfig = new FastJsonConfig();
+        fastJsonConfig.setSerializerFeatures(
+                SerializerFeature.PrettyFormat
+        );
+        fastConverter.setFastJsonConfig(fastJsonConfig);
+		
+    	converters.add(fastConverter);
+	}
+}
+```
+
+方式二：注入配置类到Spring容器
+
+```java
+@Configuration
+public class ResponseDateFormatConfig {
+    @Bean
+    public HttpMessageConverters customConverters() {
+        FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
+
+        FastJsonConfig config = new FastJsonConfig();
+        config.setSerializerFeatures(
+                SerializerFeature.WriteNullListAsEmpty,
+                SerializerFeature.WriteMapNullValue,
+                SerializerFeature.WriteNullStringAsEmpty
+        );
+        config.setDateFormat(CdConstants.DATETIME_FORMATTER);
+        fastConverter.setFastJsonConfig(config);
+
+        return new HttpMessageConverters(fastConverter);
+    }
+}
+```
+
 ## 注解
 
 ### @CrossOrigin

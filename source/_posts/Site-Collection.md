@@ -14,6 +14,14 @@ tags:
 
 ## 图片
 
+### 图床
+
+[SM.MS](https://sm.ms/)
+
+### 图床工具
+
+[uPic](https://github.com/gee1k/uPic) | 简洁的 Mac 图床客户端
+
 ### 10 Sites for Free Stock Photos
 
 1. [Unsplash](https://unsplash.com/)
@@ -33,11 +41,15 @@ tags:
 
 ## 网站
 
-### wikeHow
-
-> [任何人做任何事](https://zh.wikihow.com)
+### [wikeHow | 任何人做任何事](https://zh.wikihow.com)
 
 ### [程序员的个性化网址导航：GitNavi.com](http://www.gitnavi.com/u/judasn/)
+
+### [Serveo | 内网穿透](https://serveo.net/)
+
+> Serveo 是一个将本地计算机暴露在互联网上的服务。它的原理很简单，你在本地通过 SSH 与该网站建立远程代理，该网站会生成一个 URL，通过这个 URL 其他人就能访问你的本地计算机。
+
+### [NATAPP | 内网穿透](https://natapp.cn/)
 
 ## 博客
 
@@ -93,7 +105,15 @@ tags:
 
 ### [IntelliJ IDEA 使用教程](http://wiki.jikexueyuan.com/project/intellij-idea-tutorial)
 
+### [Spring Boot中文官方文档](https://www.breakyizhan.com/springboot/3028.html)
+
+> 文档基于Spring Boot2.0.1的英文文档翻译
+
 ## 模板
 
 ### [Office 模板和主题](https://templates.office.com/)
+
+## 库
+
+[JExcel](https://www.teamdev.com/jexcel)——JExcel is a library (API) to read, write, display, and modify Excel files with .xls or .xlsx formats.
 
