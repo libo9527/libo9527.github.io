@@ -97,6 +97,23 @@ public class ResponseDateFormatConfig {
 
 只要协议、域名、端口有任何一个不同，都被当作是不同的域，之间的请求就是跨域操作。
 
+### @RequestPart
+
+> [RequestPart | Spring](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/RequestPart.html)
+>
+> [权威分析@RequestParam和@RequestPart 的区别（官方文档）](https://blog.csdn.net/wd2014610/article/details/79727061)
+
+### @RequestMapping
+
+#### consumes与produces的区别
+
+> [RequestMapping注解中consumes与produces的区别](https://yxjajl.iteye.com/blog/2410047)
+
+在 HTTP Request 中 ContentType 用来告诉服务器当前发送的数据是什么格式，Accept 用来告诉服务器客户端能认识哪些格式
+
+consumes 用来限制 ContentType
+produces 用来限制 Accept
+
 ## 数据源
 
 ### [SpringBoot 中 JPA 的使用]()

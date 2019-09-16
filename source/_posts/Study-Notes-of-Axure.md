@@ -86,3 +86,7 @@ Android 程序开发统一使用虚拟尺寸单位：dp/dip（Density-independen
 - dp/dip：用于 Android 元素尺寸，如按钮、导航尺寸
 - sp：用于 Android 字体尺寸大小
 
+## 插入 SVG
+
+1. 将 SVG 文件拖入画布或者双击图片元件导入 SVG 文件
+2. 选中图片右键选择【转换 SVG 图片为形状】

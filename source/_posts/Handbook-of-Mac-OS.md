@@ -132,9 +132,17 @@ Mac 下使用 git 需要安装Command Line Tools
 
 ## Mac 下 WebStorm 快捷键
 
-### 竖向选择
+> **[PDF]**[DEFAULT OS X KEYMAP - JetBrains](https://resources.jetbrains.com/storage/products/webstorm/docs/WebStorm_ReferenceCard.pdf)
 
-`command + shift + 鼠标选择`
+### 多行输入
+
+- 连续多行输入
+
+  option + shift + 鼠标下拉选中连续行
+
+- 隔行多行输入
+
+  option + 鼠标点击多行选中
 
 ## Terminal
 

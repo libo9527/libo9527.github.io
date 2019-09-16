@@ -117,3 +117,7 @@ tags:
 
 [JExcel](https://www.teamdev.com/jexcel)——JExcel is a library (API) to read, write, display, and modify Excel files with .xls or .xlsx formats.
 
+## 牛人
+
+国外知名 ae 教程作者 AK大神([Andrew Kramer]([https://baike.baidu.com/item/Andrew%20Kramer](https://baike.baidu.com/item/Andrew Kramer)))
+

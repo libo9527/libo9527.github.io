@@ -250,3 +250,47 @@ FROM
 
 ![pic](https://i.loli.net/2019/08/10/NL9lIHtJnXxmC38.png)
 
+## ERROR
+
+### ORA-03113
+
+> [Oracle错误——ORA-03113:通信通道的文件结尾 解决办法](https://blog.csdn.net/zwk626542417/article/details/39667999)
+
+#### 问题描述
+
+Oracle 中使用 `COUNT(DISTINCT xxx)` 时出现：
+
+```sql
+ORA-03113：end-of-file on communication  channel
+```
+
+而且只有在原始表中执行会报这个错，将原始表复制后再执行又不报错，或者把 `DISTINCT` 去掉再执行也不报错。
+
+#### SQL
+
+```sql
+SELECT
+    t.address_cityTown AS ID,
+    gl.PATH,
+    COUNT( DISTINCT t.id ) AS collectedQTY
+FROM
+    (
+SELECT
+    cr.id,
+    jt.*
+FROM
+    ( SELECT * FROM CUSTOMER_RAW WHERE DEL_FLAG = 0 ) cr,
+    JSON_TABLE (
+    DATA,
+    '$.generalInfo.address[*]' COLUMNS ( row_number FOR ORDINALITY, address_cityTown NUMBER ( 20 ) PATH '$.cityTown' )) AS jt
+    ) t
+    LEFT JOIN GLOBAL_LOCATION gl ON t.address_cityTown = gl.ID
+GROUP BY
+    t.address_cityTown,
+    gl.PATH
+```
+
+#### TABLE
+
+> [CUSTOMER_RAW.sql](/download/CUSTOMER_RAW.sql)
+

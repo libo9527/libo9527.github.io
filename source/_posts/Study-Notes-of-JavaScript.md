@@ -76,3 +76,35 @@ recursive (root) {
 }
 ```
 
+## Array
+
+### unshift()
+
+> [Array.prototype.unshift() | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift)
+>
+> **unshift()** 方法将一个或多个元素添加到数组的**开头**，并返回该数组的**新长度**(该方法修改原有数组)
+
+```javascript
+var array1 = [1, 2, 3];
+
+console.log(array1.unshift(4, 5));
+// expected output: 5
+
+console.log(array1);
+// expected output: Array [4, 5, 1, 2, 3]
+```
+
+### map()
+
+> [Array.prototype.map()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+>
+> `map()` 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。
+
+## Map
+
+### delete()
+
+> [Map.prototype.delete()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/delete)
+>
+> `delete()` 方法用于移除 `Map` 对象中指定 key 的键值对。
+

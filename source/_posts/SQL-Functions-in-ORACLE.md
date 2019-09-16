@@ -306,3 +306,33 @@ ROW_NUMBER PHONE_TYPE PHONE_NUM
          2 Mobile     415-555-1234
 ```
 
+## 分析函数
+
+### ROW_NUMBER
+
+> [row_number - Oracle Docs](https://docs.oracle.com/cd/B19306_01/server.102/b14200/functions137.htm)
+
+语法：
+
+```
+ROW_NUMBER( )
+   OVER ([ query_partition_clause ] order_by_clause)
+```
+
+eg：查找最新一条收集任务
+
+```sql
+SELECT
+	* 
+FROM
+	( SELECT ct.* , row_number () over ( ORDER BY ct.CREATE_DATE DESC ) rn FROM COLLECT_TASK ct ) 
+WHERE
+	rn = 1
+```
+
+```
+ID 	COLLECTOR_ID CITY_ID CREATE_BY CREATE_DATE 	      UPDATE_BY UPDATE_DATE 	     DEL_FLAG RN 
+--- ------------ ------- --------- ------------------ --------- ------------------ -------- --
+135 176 	       5185 	 1 	       26/8/2019 17:23:37 1 	      26/8/2019 17:25:14 0 	      1 
+```
+

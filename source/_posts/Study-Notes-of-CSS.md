@@ -42,7 +42,6 @@ tags:
 需求说明：实现导航的跟随定位效果
 
 <iframe width="100%" height="300" src="https://www.zhangxinxu.com/study/201812/position-sticky.html" frameborder="0" style="max-width:100%;border:1px solid #ddd;"></iframe>
-
 ```css
 nav {
     position: -webkit-sticky;
@@ -50,4 +49,14 @@ nav {
     top: 0;
 }
 ```
+
+## 单位
+
+### vw、vh、vm
+
+> [视区相关单位vw, vh..简介以及可实际应用场景](https://www.zhangxinxu.com/wordpress/2012/09/new-viewport-relative-units-vw-vh-vm-vmin/)
+
+vw 相对于视区的宽度：视区宽度是100vw；vh 相对于视区的高度：视区高度是100vh
+
+**“视区”指浏览器内部的可视区域大小**，即`window.innerWidth/window.innerHeight`大小，不包含任务栏标题栏以及底部工具栏的浏览器区域大小。
 
