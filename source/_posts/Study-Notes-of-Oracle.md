@@ -293,4 +293,3 @@ GROUP BY
 #### TABLE
 
 > [CUSTOMER_RAW.sql](/download/CUSTOMER_RAW.sql)
-
