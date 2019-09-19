@@ -124,7 +124,7 @@
 <meta property="og:description" content="JavaScript 笔记">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.tutorialrepublic.com/lib/images/javascript-illustration.png">
-<meta property="og:updated_time" content="2019-09-18T18:37:38.188Z">
+<meta property="og:updated_time" content="2019-09-19T01:57:49.675Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of JavaScript">
 <meta name="twitter:description" content="JavaScript 笔记">
@@ -470,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-19 02:37:38" itemprop="dateModified" datetime="2019-09-19T02:37:38+08:00">2019-09-19</time>
+                <time title="修改时间：2019-09-19 09:57:49" itemprop="dateModified" datetime="2019-09-19T09:57:49+08:00">2019-09-19</time>
               
             
           </span>
@@ -619,6 +619,12 @@
 <p><a href="https://stackoverflow.com/questions/20069828/how-to-convert-set-to-array" target="_blank" rel="noopener">How to convert Set to Array?</a></p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> array = <span class="built_in">Array</span>.from(mySet);</span><br></pre></td></tr></table></figure>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><h3 id="add"><a href="#add" class="headerlink" title="add()"></a>add()</h3><blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set/add" target="_blank" rel="noopener">Set.prototype.add() | MDN</a></p>
+<p><code>add()</code> 方法用来向一个 <code>Set</code> 对象的末尾添加一个指定的值。</p>
+</blockquote>
+<p>Set 没有直接添加一个数组的方法，只能通过构造函数来添加：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>])</span><br><span class="line"><span class="keyword">const</span> arr = [<span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>]</span><br><span class="line"><span class="keyword">const</span> extendedSet = <span class="keyword">new</span> <span class="built_in">Set</span>([ ...set, ...arr ])</span><br><span class="line"><span class="comment">// Set &#123; 'a', 'b', 'c', 'd', 'e', 'f' &#125;</span></span><br></pre></td></tr></table></figure>
 <h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><h3 id="delete"><a href="#delete" class="headerlink" title="delete()"></a>delete()</h3><blockquote>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/delete" target="_blank" rel="noopener">Map.prototype.delete()</a></p>
 <p><code>delete()</code> 方法用于移除 <code>Map</code> 对象中指定 key 的键值对。</p>
@@ -797,7 +803,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -916,7 +922,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">53</span>
+                      
+                    
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1019,7 +1027,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">45</span>
+                      
+                    
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1069,7 +1079,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ForEach"><span class="nav-number">1.</span> <span class="nav-text">ForEach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#取整"><span class="nav-number">2.</span> <span class="nav-text">取整</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向下取整"><span class="nav-number">2.1.</span> <span class="nav-text">向下取整</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#number-0"><span class="nav-number">2.1.1.</span> <span class="nav-text">number | 0</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树的遍历"><span class="nav-number">3.</span> <span class="nav-text">树的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#递归遍历"><span class="nav-number">3.1.</span> <span class="nav-text">递归遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array"><span class="nav-number">4.</span> <span class="nav-text">Array</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#unshift"><span class="nav-number">4.1.</span> <span class="nav-text">unshift()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map"><span class="nav-number">4.2.</span> <span class="nav-text">map()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#splice"><span class="nav-number">4.3.</span> <span class="nav-text">splice()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取数组的最后一个元素"><span class="nav-number">4.3.1.</span> <span class="nav-text">获取数组的最后一个元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判空"><span class="nav-number">4.4.</span> <span class="nav-text">判空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历删除子结点"><span class="nav-number">4.5.</span> <span class="nav-text">遍历删除子结点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#描述"><span class="nav-number">4.5.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法"><span class="nav-number">4.5.2.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexOf"><span class="nav-number">4.6.</span> <span class="nav-text">indexOf()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#includes"><span class="nav-number">4.7.</span> <span class="nav-text">includes()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from"><span class="nav-number">4.8.</span> <span class="nav-text">from()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#将-Set-转化为-Array"><span class="nav-number">4.8.1.</span> <span class="nav-text">将 Set 转化为 Array</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">5.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#delete"><span class="nav-number">5.1.</span> <span class="nav-text">delete()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">6.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#localeCompare"><span class="nav-number">6.1.</span> <span class="nav-text">localeCompare()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Console"><span class="nav-number">7.</span> <span class="nav-text">Console</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Element"><span class="nav-number">8.</span> <span class="nav-text">Element</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#element-className-replace"><span class="nav-number">8.1.</span> <span class="nav-text">element.className.replace()</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ForEach"><span class="nav-number">1.</span> <span class="nav-text">ForEach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#取整"><span class="nav-number">2.</span> <span class="nav-text">取整</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向下取整"><span class="nav-number">2.1.</span> <span class="nav-text">向下取整</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#number-0"><span class="nav-number">2.1.1.</span> <span class="nav-text">number | 0</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树的遍历"><span class="nav-number">3.</span> <span class="nav-text">树的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#递归遍历"><span class="nav-number">3.1.</span> <span class="nav-text">递归遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array"><span class="nav-number">4.</span> <span class="nav-text">Array</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#unshift"><span class="nav-number">4.1.</span> <span class="nav-text">unshift()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map"><span class="nav-number">4.2.</span> <span class="nav-text">map()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#splice"><span class="nav-number">4.3.</span> <span class="nav-text">splice()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取数组的最后一个元素"><span class="nav-number">4.3.1.</span> <span class="nav-text">获取数组的最后一个元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判空"><span class="nav-number">4.4.</span> <span class="nav-text">判空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历删除子结点"><span class="nav-number">4.5.</span> <span class="nav-text">遍历删除子结点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#描述"><span class="nav-number">4.5.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法"><span class="nav-number">4.5.2.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexOf"><span class="nav-number">4.6.</span> <span class="nav-text">indexOf()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#includes"><span class="nav-number">4.7.</span> <span class="nav-text">includes()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from"><span class="nav-number">4.8.</span> <span class="nav-text">from()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#将-Set-转化为-Array"><span class="nav-number">4.8.1.</span> <span class="nav-text">将 Set 转化为 Array</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">5.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#add"><span class="nav-number">5.1.</span> <span class="nav-text">add()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">6.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#delete"><span class="nav-number">6.1.</span> <span class="nav-text">delete()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">7.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#localeCompare"><span class="nav-number">7.1.</span> <span class="nav-text">localeCompare()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Console"><span class="nav-number">8.</span> <span class="nav-text">Console</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Element"><span class="nav-number">9.</span> <span class="nav-text">Element</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#element-className-replace"><span class="nav-number">9.1.</span> <span class="nav-text">element.className.replace()</span></a></li></ol></li></ol></div>
             
 
           </div>
