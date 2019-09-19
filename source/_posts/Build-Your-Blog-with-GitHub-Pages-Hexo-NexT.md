@@ -569,6 +569,34 @@ $ hexo publish [layout] <filename>
 1. 在`source`目录下，新建`download`目录，和`_posts``About``tags``categories`等目录并列。
 2. 将文件或者图片放到该目录下；在写博客时，通过诸如`[点击下载](/download/xx.exe)`这样的链接，直接写入。引用图片，采用`![pic](/download/test.png)`。
 
+### 引用站内文章
+
+> [Hexo引用站内文章](https://www.jibing57.com/2017/10/30/how-to-use-post-link-on-hexo/)
+
+#### 语法：
+
+```
+{% post_link slug [title] %}
+```
+
+- slug 
+
+  _posts 文件夹下需要引用的文章的 markdown 文件的名字，不带后缀
+
+- title
+
+  链接显示的文字
+
+#### eg：
+
+```
+{% post_link Comments 留言板 %}
+```
+
+#### 效果：
+
+{% post_link Comments 留言板 %}
+
 ## 底层原理
 
 > [next主题的模板引擎swig语法介绍](https://www.jianshu.com/p/c5d333e6353c)

@@ -88,3 +88,8 @@ public static void main(String[] args) {
 ```
 
 Collections.nCopies() 只能在创建 List 时填充容器，Collections.fill() 是用来对一个已有容器的填充。
+
+## 线程
+
+### 线程池
+
