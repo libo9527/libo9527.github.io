@@ -4,7 +4,8 @@ description: 2019国庆云南游
 date: 2019-09-19 02:22:22
 ---
 
-<iframe id="map" width="100%" height="400" frameborder="0" src="https://libo9527.github.io/static/map/amap/20191001/01/index.html"></iframe>
+<iframe width="100%" height="400" frameborder="no"  src="https://libo9527.github.io/static/map/amap/20191001/01/index.html"></iframe>
+
 <!-- more -->
 
 ## 2019年国庆云南游
@@ -114,20 +115,20 @@ date: 2019-09-19 02:22:22
 
 > [昆明全部景点 | 马蜂窝](http://www.mafengwo.cn/mdd/map/10807.html)
 
-<iframe id="map" width="100%" height="400"  src="https://libo9527.github.io/static/map/amap/20191001/02/index.html">
+<iframe width="100%" height="400" frameborder="no"  src="https://libo9527.github.io/static/map/amap/20191001/02/index.html">
 </iframe>
 
 #### 大理
 
 > [大理全部景点 | 马蜂窝](http://www.mafengwo.cn/mdd/map/10487.html)
 
-<iframe id="map" width="100%" height="400"  src="https://libo9527.github.io/static/map/amap/20191001/03/index.html">
+<iframe width="100%" height="400" frameborder="no"  src="https://libo9527.github.io/static/map/amap/20191001/03/index.html">
 </iframe>
 
 #### 丽江
 
 > [丽江全部景点 | 马蜂窝](http://www.mafengwo.cn/mdd/map/10186.html)
 
-<iframe id="map" width="100%" height="400"  src="https://libo9527.github.io/static/map/amap/20191001/04/index.html">
+<iframe width="100%" height="400" frameborder="no"  src="https://libo9527.github.io/static/map/amap/20191001/04/index.html">
 </iframe>
 
