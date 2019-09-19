@@ -4,8 +4,7 @@ description: 2019国庆云南游
 date: 2019-09-19 02:22:22
 ---
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Qing_Dynasty_Yunnan_map_1911.svg/250px-Qing_Dynasty_Yunnan_map_1911.svg.png" width="100%"/>
-
+<iframe id="map" width="100%" height="400" frameborder="0" src="https://libo9527.github.io/static/map/amap/20191001/01/index.html"></iframe>
 <!-- more -->
 
 ## 2019年国庆云南游
@@ -108,3 +107,27 @@ date: 2019-09-19 02:22:22
 - 6 号晚上住昆明
 
 - 7 号早上从昆明坐车返程
+
+### 景点
+
+#### 昆明
+
+> [昆明全部景点 | 马蜂窝](http://www.mafengwo.cn/mdd/map/10807.html)
+
+<iframe id="map" width="100%" height="400"  src="https://libo9527.github.io/static/map/amap/20191001/02/index.html">
+</iframe>
+
+#### 大理
+
+> [大理全部景点 | 马蜂窝](http://www.mafengwo.cn/mdd/map/10487.html)
+
+<iframe id="map" width="100%" height="400"  src="https://libo9527.github.io/static/map/amap/20191001/03/index.html">
+</iframe>
+
+#### 丽江
+
+> [丽江全部景点 | 马蜂窝](http://www.mafengwo.cn/mdd/map/10186.html)
+
+<iframe id="map" width="100%" height="400"  src="https://libo9527.github.io/static/map/amap/20191001/04/index.html">
+</iframe>
+
