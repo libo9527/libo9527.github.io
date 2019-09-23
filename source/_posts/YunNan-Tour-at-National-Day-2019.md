@@ -110,6 +110,13 @@ date: 2019-09-19 02:22:22
 
 - 7 号早上从昆明坐车返程
 
+### 天气
+
+<iframe width="100%" height="400" frameborder="no"  src="https://libo9527.github.io/static/map/amap/20191001/weather/index.html">
+</iframe>
+
+### [时间轴](https://libo9527.github.io/static/map/amap/20191001/timeline/index.html)
+
 ### 景点
 
 #### 昆明
@@ -486,10 +493,6 @@ date: 2019-09-19 02:22:22
 - 四方街酒吧一条街。
 - 饮玉巷。
 
-
-
-### 天气
-
 ### 注意事项
 
 #### 必带物品
@@ -524,7 +527,7 @@ date: 2019-09-19 02:22:22
 | 丽江 - 大理            | 2019-10-04 | 火车票 | ¥34     | 4    | ¥136        | ¥34         | 李、浮、谭、党 | <a href="https://libo9527.github.io/static/map/amap/20191001/images/lj-dl.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a> |
 | 大理 - 昆明            | 2019-10-05 | 火车票 | ¥145    | 4    | ¥580        | ¥145        | 李、浮、谭、党 | <a href="https://libo9527.github.io/static/map/amap/20191001/images/dl-km.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a> |
 | 昆明南 - 广州南        | 2019-10-07 | 高铁票 | ¥434.5  | 2    | ¥869        | ¥434.5      | 李、浮         | <a href="https://libo9527.github.io/static/map/amap/20191001/images/kmn-gzn.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a> |
-| 汉庭优佳昆明东华酒店   | 2019-10-02 | 酒店   | ¥205    | 2    | ¥410        | ¥102.5      | 李、浮、谭、党 | <a href="https://libo9527.github.io/static/map/amap/20191001/images/kn-hotel-01.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a><a href="https://libo9527.github.io/static/map/amap/20191001/images/kn-hotel-02.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a> |
+| 汉庭优佳昆明东华酒店   | 2019-10-02 | 酒店   | ¥205    | 2    | ¥410        | ¥102.5      | 李、浮、谭、党 | <a href="https://libo9527.github.io/static/map/amap/20191001/images/km-hotel-01.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a><a href="https://libo9527.github.io/static/map/amap/20191001/images/kn-hotel-02.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a> |
 | 汉庭丽江古城福星路酒店 | 2019-10-03 | 酒店   | ¥283    | 2    | ¥566        | ¥141.5      | 李、浮、谭、党 | <a href="https://libo9527.github.io/static/map/amap/20191001/images/lj-hotel.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a> |
 | 大理古城米畔·轻宿客栈  | 2019-10-04 | 民宿   | ¥319.20 | 2    | ¥638.4      | ¥159.6      | 李、浮、谭、党 | <a href="https://libo9527.github.io/static/map/amap/20191001/images/dl-hotel.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a> |
 | 汉庭昆明北京路酒店     | 2019-10-05 | 酒店   | ¥175    | 2    | ¥350        | ¥87.5       | 李、浮、谭、党 | <a href="https://libo9527.github.io/static/map/amap/20191001/images/km-hotel-03.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a> |
