@@ -482,7 +482,7 @@ Hexo 有三种默认布局：`post`、`page` 和 `draft`，它们分别对应不
 
 Hexo 的一种特殊布局：`draft`，这种布局在建立文章时会被保存到 `source/_drafts` 文件夹，您可通过 `publish` 命令将草稿移动到 `source/_posts` 文件夹。
 
-​```shell
+```shell
 $ hexo publish [layout] <filename>
 ```
 
@@ -495,6 +495,7 @@ $ hexo publish [layout] <filename>
    ```shell
     $ hexo new "GitHub Pages+Hexo+NexT"
     INFO  Created: E:\xxx\Hexo\source\_posts\GitHub-Pages-Hexo-NexT.md
+   ```
 ```
 
 2. 在使用`publish`命令发布草稿时需要用**文件名**，而不是文章标题
@@ -504,7 +505,7 @@ $ hexo publish [layout] <filename>
    ```shell
    $ hexo publish post GitHub-Pages-Hexo-NexT # post可以省略，因为layout默认就是post
    INFO  Published: E:\Github\Hexo\source\_posts\GitHub-Pages-Hexo-NexT.md
-   ```
+```
 
 3. 文件名为空时默认发布第一篇草稿
 
@@ -552,7 +553,21 @@ $ hexo publish [layout] <filename>
 
    ![](https://i.loli.net/2019/01/04/5c2ec9c02da97.jpg)
 
+#### 嵌入 CodePen
 
+<iframe height="265" style="width: 100%;" scrolling="no" title="Tree Sort" src="//codepen.io/libo9527/embed/gVjedo/?height=265&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/libo9527/pen/gVjedo/'>Tree Sort</a> by libo9527
+  (<a href='https://codepen.io/libo9527'>@libo9527</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+在 Codepen 中编辑好之后点击页面底部的 `Embed`，复制 `iframe` 的代码，贴到博客中即可。
+
+### 文件下载
+
+> [hexo添加下载功能](http://yanng.cc/2018/03/18/hexo添加下载功能/)
+
+1. 在`source`目录下，新建`download`目录，和`_posts``About``tags``categories`等目录并列。
+2. 将文件或者图片放到该目录下；在写博客时，通过诸如`[点击下载](/download/xx.exe)`这样的链接，直接写入。引用图片，采用`![pic](/download/test.png)`。
 
 ## 底层原理
 

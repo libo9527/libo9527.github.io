@@ -28,6 +28,58 @@ comments: false
 >
 > [多配置文件](https://blog.csdn.net/qq_42564846/article/details/84566822#t12)
 
+### 修改 Spring Boot 中的 JSON
+
+> [FastJson与Jackson，修改SpringBoot默认的JSON](https://blog.csdn.net/With_Her/article/details/81979550)
+
+SpringBoot 默认内置的是 jackson
+
+方式一：启动类继承 WebMvcConfigurerAdapter ,复写 configureMessageConverters 方法
+
+```java
+@Configuration
+public class WebMvcConfig extends WebMvcConfigurerAdapter {
+
+  @Override
+	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+    	super.configureMessageConverters(converters);
+		
+        FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
+ 
+        FastJsonConfig fastJsonConfig = new FastJsonConfig();
+        fastJsonConfig.setSerializerFeatures(
+                SerializerFeature.PrettyFormat
+        );
+        fastConverter.setFastJsonConfig(fastJsonConfig);
+		
+    	converters.add(fastConverter);
+	}
+}
+```
+
+方式二：注入配置类到Spring容器
+
+```java
+@Configuration
+public class ResponseDateFormatConfig {
+    @Bean
+    public HttpMessageConverters customConverters() {
+        FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
+
+        FastJsonConfig config = new FastJsonConfig();
+        config.setSerializerFeatures(
+                SerializerFeature.WriteNullListAsEmpty,
+                SerializerFeature.WriteMapNullValue,
+                SerializerFeature.WriteNullStringAsEmpty
+        );
+        config.setDateFormat(CdConstants.DATETIME_FORMATTER);
+        fastConverter.setFastJsonConfig(config);
+
+        return new HttpMessageConverters(fastConverter);
+    }
+}
+```
+
 ## 注解
 
 ### @CrossOrigin
@@ -44,6 +96,23 @@ comments: false
 2. XmlHttpRequest 同源策略：禁止使用 XHR 对象向不同源的服务器地址发起 HTTP 请求。
 
 只要协议、域名、端口有任何一个不同，都被当作是不同的域，之间的请求就是跨域操作。
+
+### @RequestPart
+
+> [RequestPart | Spring](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/RequestPart.html)
+>
+> [权威分析@RequestParam和@RequestPart 的区别（官方文档）](https://blog.csdn.net/wd2014610/article/details/79727061)
+
+### @RequestMapping
+
+#### consumes与produces的区别
+
+> [RequestMapping注解中consumes与produces的区别](https://yxjajl.iteye.com/blog/2410047)
+
+在 HTTP Request 中 ContentType 用来告诉服务器当前发送的数据是什么格式，Accept 用来告诉服务器客户端能认识哪些格式
+
+consumes 用来限制 ContentType
+produces 用来限制 Accept
 
 ## 数据源
 

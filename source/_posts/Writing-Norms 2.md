@@ -56,3 +56,17 @@ tags:
 8. 表示中文时，英文省略号（`⋯` 不知道这种英文省略号是怎么打出来的）应改为中文省略号（`……` Windows 系统中文全角下使用 `^`，即 `shift + 6`）。
 
 9. 第一次出现英文词汇时，在括号中给出中文标注。此后再次出现时，直接使用英文缩写即可。
+
+## 缩写
+
+### e.g.
+
+> [你能分清e.g.和i.e.吗？ - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2005/09/egie.html)
+
+`e.g.` 是英语中拉丁语 exempli gratia 的缩写，意思是 "for example"（举例）
+
+### i.e.
+
+> [你能分清e.g.和i.e.吗？ - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2005/09/egie.html)
+
+`i.e.` 是英语中拉丁语 id est 的缩写，意思是 "that is"（即）

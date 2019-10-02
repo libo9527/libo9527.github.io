@@ -58,3 +58,33 @@ Integer 是类，提供了很多方法方便使用，而 int 可以保证没有�
 
 1. Java 中不允许创建泛型数组
 
+## 集合
+
+### Collections
+
+#### nCopies()
+
+```java
+public static void main(String[] args) {
+  List<Integer> list = new ArrayList<>(
+    Collections.nCopies(3, 0));
+  System.out.println(list);
+  // [0, 0, 0]
+}
+```
+
+#### fill()
+
+```java
+public static void main(String[] args) {
+  List<Integer> list = new ArrayList<>(
+    Collections.nCopies(3, 0));
+  System.out.println(list);
+  // [0, 0, 0]
+  Collections.fill(list, 1);
+  System.out.println(list);
+  // [1, 1, 1]
+}
+```
+
+Collections.nCopies() 只能在创建 List 时填充容器，Collections.fill() 是用来对一个已有容器的填充。
