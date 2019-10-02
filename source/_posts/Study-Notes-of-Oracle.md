@@ -35,11 +35,6 @@ SELECT version FROM v$instance;
   SELECT * FROM TABLE ORDER BY COLUMN nulls last
   ```
 
-select * from zl_cbqc order by cb_ld desc nulls last
---------------------- 
-版权声明：本文为CSDN博主「wh62592855」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/wanghai__/article/details/4813404
-
 ## EXISTS
 
 > [EXISTS Condition | Oracle](https://docs.oracle.com/cd/B19306_01/server.102/b14200/conditions012.htm)
@@ -250,6 +245,8 @@ FROM
 
 ![pic](https://i.loli.net/2019/08/10/NL9lIHtJnXxmC38.png)
 
+## {% post_link Using-Triggers-in-ORACLE 触发器（TRIGGER） %}
+
 ## ERROR
 
 ### ORA-03113
@@ -293,3 +290,45 @@ GROUP BY
 #### TABLE
 
 > [CUSTOMER_RAW.sql](/download/CUSTOMER_RAW.sql)
+
+### ORA-04098
+
+> [Oracle触发器，解决ORA-04098: 触发器 'USER.DECTUSERTEST_TRI' 无效且未通过重新验证](https://www.cnblogs.com/enternal07/p/6762752.html)
+
+#### 问题描述
+
+创建了一个触发器，在执行触发事件的 SQL 时报错：
+
+```sql
+ORA-04098: trigger 'SKYSTAR.COUNT_COLLECTED_QTY' is invalid and failed re-validation
+```
+
+#### 触发器
+
+```sql
+CREATE OR REPLACE TRIGGER Count_Collected_Qty 
+AFTER INSERT  
+ON CUSTOMER_RAW_TEST
+FOR each ROW
+BEGIN
+		UPDATE GLOBAL_LOCATION_TEST SET COLLECTED_QTY = COLLECTED_QTY + 1 
+END;
+```
+
+#### 触发 SQL
+
+```sql
+INSERT INTO "CUSTOMER_RAW_TEST"("ID", "DATA", "SOURCE_TYPE_ID", "STATUS", "CREATE_BY", "CREATE_DATE", "UPDATE_BY", "UPDATE_DATE", "DEL_FLAG", "GOOGLE_FLAG", "GOOGLE_ADDRESS", "PROCESS_FLAG") VALUES 
+('5', '{"generalInfo":{"address":[{"country":5100,"countryName":"Test Country A","state":5110,"stateName":"Test State AA","cityTown":5111,"cityTownName":"Test City AAA"}]}}', '1', '213', '1435', TO_DATE('2019-09-16 15:36:37', 'SYYYY-MM-DD HH24:MI:SS'), '1435', TO_DATE('2019-09-16 15:36:37', 'SYYYY-MM-DD HH24:MI:SS'), '0', NULL, NULL, NULL);
+```
+
+#### TABLE
+
+[GLOBAL_LOCATION_TEST.sql](/download/GLOBAL_LOCATION_TEST.sql)
+
+[CUSTOMER_RAW_TEST.sql](/download/CUSTOMER_RAW_TEST.sql)
+
+#### 原因
+
+触发操作中的 SQL 语句没有加 `;`
+

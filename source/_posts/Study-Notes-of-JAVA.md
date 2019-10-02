@@ -50,7 +50,7 @@ Integer 是类，提供了很多方法方便使用，而 int 可以保证没有�
 
 ### ? 和 T 的区别
 
-​	`? extends E`: 接收E类型或者E的子类型。`? super E`: 接收E类型或者E的父类型	
+​	`? extends E`: 接收E类型或者E的子类型。`? super E`: 接收E类型或者E的父类型
 
 ​	？和T都表示不确定的类型 ，但如果是 T 的话，函数里面可以对 T 进行操作，比方 `T car = getCar()`，而不能用 `？ car = getCar()`。
 
@@ -58,3 +58,37 @@ Integer 是类，提供了很多方法方便使用，而 int 可以保证没有�
 
 1. Java 中不允许创建泛型数组
 
+## 集合
+
+### Collections
+
+#### nCopies()
+
+```java
+public static void main(String[] args) {
+  List<Integer> list = new ArrayList<>(
+    Collections.nCopies(3, 0));
+  System.out.println(list);
+  // [0, 0, 0]
+}
+```
+
+#### fill()
+
+```java
+public static void main(String[] args) {
+  List<Integer> list = new ArrayList<>(
+    Collections.nCopies(3, 0));
+  System.out.println(list);
+  // [0, 0, 0]
+  Collections.fill(list, 1);
+  System.out.println(list);
+  // [1, 1, 1]
+}
+```
+
+Collections.nCopies() 只能在创建 List 时填充容器，Collections.fill() 是用来对一个已有容器的填充。
+
+## 线程
+
+### 线程池

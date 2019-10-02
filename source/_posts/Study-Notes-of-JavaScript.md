@@ -219,6 +219,23 @@ name : Europe
 let array = Array.from(mySet);
 ```
 
+## Set
+
+### add()
+
+> [Set.prototype.add() | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set/add)
+>
+> `add()` 方法用来向一个 `Set` 对象的末尾添加一个指定的值。
+
+Set 没有直接添加一个数组的方法，只能通过构造函数来添加：
+
+```javascript
+const set = new Set(['a', 'b', 'c'])
+const arr = ['d', 'e', 'f']
+const extendedSet = new Set([ ...set, ...arr ])
+// Set { 'a', 'b', 'c', 'd', 'e', 'f' }
+```
+
 ## Map
 
 ### delete()
@@ -267,4 +284,5 @@ console.log(`temp的值为: ${temp}`)
 var element = document.getElementById("myDIV");
 element.classList.remove("mystyle");
 ```
+
 
