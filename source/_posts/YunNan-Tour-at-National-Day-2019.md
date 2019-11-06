@@ -2,6 +2,8 @@
 title: YunNan Tour at National Day 2019
 description: 2019国庆云南游
 date: 2019-09-19 02:22:22
+categories: Tour
+tags: Tour
 ---
 
 <iframe width="100%" height="400" frameborder="no"  src="https://libo9527.github.io/static/map/amap/20191001/01/index.html"></iframe>
