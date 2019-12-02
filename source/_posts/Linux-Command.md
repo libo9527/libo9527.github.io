@@ -6,7 +6,7 @@ categories: Linux
 tags:
 ---
 
-<img src="http://www.whohowwhen.com/wp-content/uploads/2018/05/linux.png" width="100%"/>
+<img src="https://opensource.com/sites/default/files/styles/image-full-size/public/lead-images/tux_linux_penguin_code_binary.jpg?itok=TxGxW0KY" width="100%"/>
 
 <!-- more -->
 
@@ -24,3 +24,19 @@ $ mkdir -p /media/userfiles/cd/temp
 no error if existing, make parent directories as needed
 ```
 
+### mv
+
+> [mv](https://man.linuxde.net/mv)
+>
+> **mv命令**用来对文件或目录重新命名，或者将文件从一个目录移到另一个目录中。
+
+#### 实例
+
+- 将 admin 文件夹重命名为 ledger-admin
+
+  ```shell
+  # cd 到 admin 上一级
+  $ mv admin ledger-admin
+  ```
+
+  
