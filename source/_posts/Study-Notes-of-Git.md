@@ -44,7 +44,17 @@ tags: Git
   git bracch -u master
   ```
   
-  
+- 分支重命名
+
+  >  -m, --move
+  >
+  > Move/rename a branch and the corresponding reflog.
+
+  ```shell
+  git branch -m oldBranchName newBranchName
+  ```
+
+  注意：远程分支的重命名需要通过先删除后新建的方式实现。
 
 ### checkout
 
@@ -59,7 +69,7 @@ tags: Git
   git fetch origin 远程分支名:本地分支名
   ```
 
-### Stash
+### stash
 
 - 查看 stash 列表
 
@@ -79,7 +89,7 @@ tags: Git
   git stash drop stash@{0}
   ```
 
-### Config
+### config
 
 git 配置有 system 级别、global 和 local 三个，优先级依次递增，也就是配置冲突时优先使用 local 级别的。
 

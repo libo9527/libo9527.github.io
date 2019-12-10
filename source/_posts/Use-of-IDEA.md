@@ -35,3 +35,31 @@ tags:
 ## 推荐做法
 
 1. 项目、模块等命名时，尽量使用下划线（避免用横杠）来连接多个单词。
+
+## Mac OS 下
+
+### 快捷键
+
+#### 跳转到某行/列
+
+`Command + L`
+
+#### 添加 MyBatis 的 XML 文件模版
+
+1. Preference --> Editor --> File and Code Templates
+
+   ![](https://oscimg.oschina.net/oscnet/ea4ccc152ffe4c2ee0800aa8c9feaa61b7a.jpg)
+
+   模版内容：
+
+   ```xml
+   <?xml version="1.0" encoding="UTF-8" ?>
+   <!DOCTYPE mapper
+     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   <mapper namespace="">
+   
+   </mapper>
+   ```
+
+2. 创建时选用 MybatisMapper 模版
