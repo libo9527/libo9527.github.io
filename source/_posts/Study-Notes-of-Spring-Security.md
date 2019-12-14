@@ -390,6 +390,8 @@ public class HelloController {
 }
 ```
 
+注意：如果配置了全局异常处理器，权限异常处理器就会失效，权限异常会先被全局异常处理器处理而到不了权限异常处理器。解决办法参考[这里](https://libo9527.github.io/2019/12/10/AccessDeniedHandler-of-Spring-Security-not-Working-While-GlobalExceptionHandler-existing/)
+
 **默认权限异常处理器源码截取**
 
 ```java AccessDeniedHandlerImpl.java
@@ -412,3 +414,359 @@ public class AccessDeniedHandlerImpl implements AccessDeniedHandler {
 ```
 
 ![](https://i.loli.net/2019/12/10/4eroj3GJS51gMP8.png)
+
+## 整合 JWT
+
+> [SpringBootSecurity学习（13）前后端分离版之JWT](https://aijishu.com/a/1060000000015716)
+>
+> [jjwt | GitHub](https://github.com/jwtk/jjwt#table-of-contents)
+
+使用 session 和 cookie 来维护登录状态的扩展性不好，使用 JWT 的 token 验证方式则可以很好的适应分布式场景的需求。
+
+### 导入 jjwt 包
+
+```xml pom.xml
+<dependency>
+  <groupId>io.jsonwebtoken</groupId>
+  <artifactId>jjwt-api</artifactId>
+  <version>0.10.7</version>
+</dependency>
+<dependency>
+  <groupId>io.jsonwebtoken</groupId>
+  <artifactId>jjwt-impl</artifactId>
+  <version>0.10.7</version>
+  <scope>runtime</scope>
+</dependency>
+<dependency>
+  <groupId>io.jsonwebtoken</groupId>
+  <artifactId>jjwt-jackson</artifactId>
+  <version>0.10.7</version>
+  <scope>runtime</scope>
+</dependency>
+<!-- Uncomment this next dependency if you want to use RSASSA-PSS (PS256, PS384, PS512) algorithms:
+<dependency>
+    <groupId>org.bouncycastle</groupId>
+    <artifactId>bcprov-jdk15on</artifactId>
+    <version>1.60</version>
+    <scope>runtime</scope>
+</dependency>
+-->
+```
+
+### 关闭 Session
+
+```java SecurityConfigurerImpl.java
+@Configuration
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true, jsr250Enabled = true)
+public class SecurityConfigurerImpl extends WebSecurityConfigurerAdapter {
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    }
+}
+```
+
+**源码截取**
+
+```java SessionCreationPolicy.java
+public enum SessionCreationPolicy {
+	/** Always create an {@link HttpSession} */
+	ALWAYS,
+	/**
+	 * Spring Security will never create an {@link HttpSession}, but will use the
+	 * {@link HttpSession} if it already exists
+	 */
+	NEVER,
+	/** Spring Security will only create an {@link HttpSession} if required */
+	IF_REQUIRED,
+	/**
+	 * Spring Security will never create an {@link HttpSession} and it will never use it
+	 * to obtain the {@link SecurityContext}
+	 */
+	STATELESS
+}
+```
+
+### JWT 工具类
+
+```java JWTUtil.java
+public class JWTUtil {
+
+    private static final Key KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
+    public final static String HEADER_TOKEN_NAME = "Authentication-Token";
+
+    public static String genericToken(SysUser user) {
+        user.setPassword(null);
+        return Jwts.builder()
+                .setIssuer("gzhennaxia")
+                .setIssuedAt(new Date())
+                .claim("user", JSON.toJSONString(user))
+                .signWith(KEY)
+                .compact();
+    }
+
+    public static SysUser parseToken2User(String token) {
+        Jws<Claims> jws = Jwts.parser()
+                .requireIssuer("gzhennaxia")
+                .setSigningKey(KEY)
+                .parseClaimsJws(token);
+        return JSON.parseObject(jws.getBody().get("user").toString(), SysUser.class);
+    }
+}
+```
+
+### 修改登录成功处理器
+
+```java AuthenticationSuccessHandlerImpl.java
+@Component
+public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHandler {
+    @Override
+    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
+        User user = (User) authentication.getPrincipal();
+        httpServletResponse.setHeader(JWTUtil.HEADER_TOKEN_NAME, JWTUtil.genericToken(SysUser.builder().username(user.getUsername()).build()));
+        httpServletResponse.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+        httpServletResponse.getWriter().write(ReturnVo.errorInJson(CodeEnum.SUCCESS));
+    }
+}
+```
+
+### 配置 JWT 过滤器
+
+```java JWTAuthenticationFilter.java
+@Component
+public class JWTAuthenticationFilter extends GenericFilterBean {
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        String token = request.getHeader(JWTUtil.HEADER_TOKEN_NAME);
+        if (!StringUtils.isEmpty(token)) {
+            try {
+                SysUser sysUser = JWTUtil.parseToken2User(token);
+                SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(sysUser, null, sysUser.getAuthorities()));
+            } catch (Exception e) {
+                e.printStackTrace();
+                servletResponse.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+                if (e instanceof MissingClaimException) {
+                    servletResponse.getWriter().write(ReturnVo.errorInJson(CodeEnum.MISSING_CLAIM));
+                } else if (e instanceof IncorrectClaimException) {
+                    servletResponse.getWriter().write(ReturnVo.errorInJson(CodeEnum.INCORRECT_CLAIM));
+                } else {
+                    servletResponse.getWriter().write(ReturnVo.errorInJson(CodeEnum.UNKNOWN_PARSE_ERROR));
+                }
+                return;
+            }
+        }
+        filterChain.doFilter(servletRequest, servletResponse);
+    }
+}
+```
+
+```java
+@Configuration
+public class SecurityConfigurerImpl extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private JWTAuthenticationFilter jwtAuthenticationFilter;
+    
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+    }
+}
+```
+
+## 使用 JSON 格式数据登陆
+
+> [Spring Security 登录使用 JSON 格式数据](http://www.javaboy.org/2019/0613/springsecurity-json.html)
+>
+> [Spring Security配置JSON登录](https://www.jianshu.com/p/693914564406)
+
+Spring Security 默认支持的登陆方式为 formLogin，即 Content-Type 为`application/x-www-form-urlencoded`，如果想要使用 JSON 数据登陆，则需要自定义提取用户名密码的过滤器来替换默认的`UsernamePasswordAuthenticationFilter`。
+
+```java CustomerAuthenticationFilter.java
+public class CustomerAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+
+    @Override
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+        String contentType = request.getContentType();
+        if (contentType.equals(MediaType.APPLICATION_JSON_VALUE) || contentType.equals(MediaType.APPLICATION_JSON_UTF8_VALUE)) {
+            UsernamePasswordAuthenticationToken authRequest;
+            try (InputStream in = request.getInputStream()) {
+                SysUser user = JSON.parseObject(in, SysUser.class);
+                authRequest = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
+            } catch (IOException e) {
+                e.printStackTrace();
+                authRequest = new UsernamePasswordAuthenticationToken("", "");
+            }
+            return this.getAuthenticationManager().authenticate(authRequest);
+        }
+        return super.attemptAuthentication(request, response);
+    }
+}
+```
+
+```java SecurityConfig.java
+@Configuration
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true, jsr250Enabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private AuthenticationSuccessHandler authenticationSuccessHandler;
+
+    @Autowired
+    private AuthenticationFailureHandler authenticationFailureHandler;
+    
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.addFilterAt(this.customerAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+    }
+
+    @Bean
+    CustomerAuthenticationFilter customerAuthenticationFilter() throws Exception {
+        CustomerAuthenticationFilter filter = new CustomerAuthenticationFilter();
+        filter.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/user/login", "POST"));
+        filter.setAuthenticationSuccessHandler(authenticationSuccessHandler);
+        filter.setAuthenticationFailureHandler(authenticationFailureHandler);
+        filter.setAuthenticationManager(this.authenticationManagerBean());
+        return filter;
+    }
+}
+```
+
+注意：
+
+1. 处理登陆请求的 URL 地址不能通过之前的方式（`.formLogin().loginProcessingUrl("/user/login")`）来配置，需要在自定义过滤器里配置，因为以前的方式配置的是默认的过滤器的，自定义过滤器会替换掉默认的，所以用以前的方式配置的 loginProcessingUrl 就失效了。
+2. 自定义的过滤器之所以要在 security 配置类中初始化（使用`@Bean`的方式而不是直接在类上使用`@Component`），是因为需要使用`WebSecurityConfigurerAdapter`的`authenticationManagerBean()`方法来调用默认的认证管理器，否则需要自定义自己的认证管理器。
+
+## 自定义认证管理器
+
+为了把提取用户名密码的过滤器从配置类中抽离出来，就需要使用自定义的认证管理器来替换默认的认证管理器（`WebSecurityConfigurerAdapter.AuthenticationManagerDelegator`）。由于默认的认证管理器是不可继承的（由`final`修饰），所以通过实现`AuthenticationManager`接口来自定义，而认证管理器又是通过认证处理器`AuthenticationManager`提供的认证方法`authenticate()`最终对用户进行认证的，所以在自定义认证管理器的时候还需要提供认证处理器，可以在认证管理器的构造方法中直接初始化认证处理器，这里使用默认的持久层认证处理器为`DaoAuthenticationProvider`。
+
+```java CustomerAuthenticationManagerImpl.java
+@Component
+public class CustomerAuthenticationManagerImpl implements AuthenticationManager {
+
+    private final AuthenticationProvider provider;
+
+    public CustomerAuthenticationManagerImpl(SecurityUserDetailService userDetailsService) {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService);
+        provider.setPasswordEncoder(new BCryptPasswordEncoder());
+        this.provider = provider;
+    }
+
+    @Override
+    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        Authentication authenticate = this.provider.authenticate(authentication);
+        if (Objects.nonNull(authenticate)) {
+            return authenticate;
+        }
+        throw new ProviderNotFoundException("Authentication failed!");
+    }
+}
+```
+
+```java SecurityConfig.java
+@Configuration
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true, jsr250Enabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private CustomerAuthenticationFilter authenticationFilter;
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.addFilterAt(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
+    }
+}
+```
+
+注意：和自定义用于提取用户名密码的过滤器道理一样，因为是替换默认的认证处理器，所以 UserDetailsService、PasswordEncoder 等配置需要在初始化认证处理器的地方进行配置，而不能用以前配置默认认证处理器的方式。
+
+- 配置默认处理器所需的 UserDetailsService：
+
+  ```java SecurityConfig.java
+  @Configuration
+  public class SecurityConfig extends WebSecurityConfigurerAdapter {
+      @Autowired
+      private SecurityUserDetailService userDetailService;
+
+      @Override
+      protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+          auth.userDetailsService(userDetailService);
+      } 
+  }
+  ```
+
+- 配置默认处理器所需的 PasswordEncoder：
+  1. @Bean
+  
+    ```java SecurityConfig.java
+      @Configuration
+      public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+        @Bean
+          PasswordEncoder passwordEncoder() {
+              return new BCryptPasswordEncoder();
+          }
+      }
+    ```
+  2. 在密码前加上加密算法前缀，如`{bcrypt}$2a$10$ffHsT7aCssLbKn7zACwOYupOQtxpzRVvIXD8Pveo9rHU4DrSUUyve`
+
+## 自定义认证处理器
+
+如果不想在自定义的认证管理器中使用默认的认证处理器，也可以自定义认证处理器。
+
+```java
+@Component
+public class CustomerAuthenticationProviderImpl extends DaoAuthenticationProvider {
+
+    @Autowired
+    UserService userService;
+
+    private static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
+
+    @Override
+    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        String username = (String) authentication.getPrincipal();
+        String password = (String) authentication.getCredentials();
+        SysUser user = userService.selectUserByUsername(username);
+        user.setRoleList(Collections.singletonList(new SysRole("user")));
+        if (PASSWORD_ENCODER.matches(password, user.getPassword())) {
+            return new UsernamePasswordAuthenticationToken(username, password, user.getRoleList());
+        } else {
+            throw new BadCredentialsException(this.messages.getMessage(
+                    "AbstractUserDetailsAuthenticationProvider.badCredentials",
+                    "Bad credentials"));
+        }
+    }
+
+    @Override
+    protected void doAfterPropertiesSet() {
+    }
+}
+```
+
+```java CustomerAuthenticationManagerImpl.java
+@Component
+public class CustomerAuthenticationManagerImpl implements AuthenticationManager {
+
+    private final AuthenticationProvider provider;
+
+    public CustomerAuthenticationManagerImpl(AuthenticationProvider provider) {
+        this.provider = provider;
+    }
+
+    @Override
+    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        Authentication authenticate = this.provider.authenticate(authentication);
+        if (Objects.nonNull(authenticate)) {
+            return authenticate;
+        }
+        throw new ProviderNotFoundException("Authentication failed!");
+    }
+}
+```
+
