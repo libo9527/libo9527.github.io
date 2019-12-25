@@ -52,6 +52,8 @@ tags: Mac-OS
 
 `fn + ↑ / ↓`
 
+`space/shift + space`
+
 ### 切换全屏窗口
 
 `control + ← / →`
