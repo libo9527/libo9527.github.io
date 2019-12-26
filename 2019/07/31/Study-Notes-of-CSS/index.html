@@ -123,7 +123,7 @@
 <meta property="og:description" content="CSS 笔记">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://miro.medium.com/max/1200/1*OFsc0SD55jhi8cjo7aCA4w.jpeg">
-<meta property="og:updated_time" content="2019-12-25T10:04:23.339Z">
+<meta property="og:updated_time" content="2019-12-26T06:13:47.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of CSS">
 <meta name="twitter:description" content="CSS 笔记">
@@ -469,7 +469,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-25 18:04:23" itemprop="dateModified" datetime="2019-12-25T18:04:23+08:00">2019-12-25</time>
+                <time title="修改时间：2019-12-26 14:13:47" itemprop="dateModified" datetime="2019-12-26T14:13:47+08:00">2019-12-26</time>
               
             
           </span>
@@ -539,23 +539,31 @@
       
 
       
-        <p><img src="https://miro.medium.com/max/1200/1*OFsc0SD55jhi8cjo7aCA4w.jpeg" width="100%"></p>
+        <img src="https://miro.medium.com/max/1200/1*OFsc0SD55jhi8cjo7aCA4w.jpeg" width="100%">
 <a id="more"></a>
-<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><h3 id="Flexbox-布局中实现元素的水平垂直居中"><a href="#Flexbox-布局中实现元素的水平垂直居中" class="headerlink" title="Flexbox 布局中实现元素的水平垂直居中"></a>Flexbox 布局中实现元素的水平垂直居中</h3><blockquote>
+<h2 id="垂直居中">垂直居中</h2>
+<h3 id="Flexbox-布局中实现元素的水平垂直居中">Flexbox 布局中实现元素的水平垂直居中</h3>
+<blockquote>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content" target="_blank" rel="noopener">justify-content | MDN</a></p>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items" target="_blank" rel="noopener">align-items | MDN</a></p>
 </blockquote>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#container</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<iframe height="265" style="width: 100%;" scrolling="no" title="bXmeLr" src="//codepen.io/libo9527/embed/bXmeLr/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"><br>  See the Pen <a href="https://codepen.io/libo9527/pen/bXmeLr/" target="_blank" rel="noopener">bXmeLr</a> by libo9527<br>  (<a href="https://codepen.io/libo9527" target="_blank" rel="noopener">@libo9527</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.<br></iframe>
-
-<h2 id="position-sticky"><a href="#position-sticky" class="headerlink" title="position: sticky"></a>position: sticky</h2><blockquote>
+<iframe height="265" style="width: 100%;" scrolling="no" title="bXmeLr" src="//codepen.io/libo9527/embed/bXmeLr/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/libo9527/pen/bXmeLr/" target="_blank" rel="noopener">bXmeLr</a> by libo9527
+  (<a href="https://codepen.io/libo9527" target="_blank" rel="noopener">@libo9527</a>) on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.
+</iframe>
+<h2 id="position-sticky">position: sticky</h2>
+<blockquote>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/position" target="_blank" rel="noopener">position | MDN</a></p>
 <p><a href="https://www.zhangxinxu.com/wordpress/2018/12/css-position-sticky/" target="_blank" rel="noopener">杀了个回马枪，还是说说position:sticky吧« 张鑫旭-鑫空间-鑫生活</a></p>
 </blockquote>
 <p>需求说明：实现导航的跟随定位效果</p>
-<p><iframe width="100%" height="300" src="https://www.zhangxinxu.com/study/201812/position-sticky.html" frameborder="0" style="max-width:100%;border:1px solid #ddd;"></iframe><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">nav</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: -webkit-sticky;</span><br><span class="line">    <span class="attribute">position</span>: sticky;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h2><h3 id="vw、vh、vm"><a href="#vw、vh、vm" class="headerlink" title="vw、vh、vm"></a>vw、vh、vm</h3><blockquote>
-<p><a href="https://www.zhangxinxu.com/wordpress/2012/09/new-viewport-relative-units-vw-vh-vm-vmin/" target="_blank" rel="noopener">视区相关单位vw, vh..简介以及可实际应用场景</a></p>
+<iframe width="100%" height="300" src="https://www.zhangxinxu.com/study/201812/position-sticky.html" frameborder="0" style="max-width:100%;border:1px solid #ddd;"></iframe>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">nav</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: -webkit-sticky;</span><br><span class="line">    <span class="attribute">position</span>: sticky;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="单位">单位</h2>
+<h3 id="vw、vh、vm">vw、vh、vm</h3>
+<blockquote>
+<p><a href="https://www.zhangxinxu.com/wordpress/2012/09/new-viewport-relative-units-vw-vh-vm-vmin/" target="_blank" rel="noopener">视区相关单位vw, vh…简介以及可实际应用场景</a></p>
 </blockquote>
 <p>vw 相对于视区的宽度：视区宽度是100vw；vh 相对于视区的高度：视区高度是100vh</p>
 <p><strong>“视区”指浏览器内部的可视区域大小</strong>，即<code>window.innerWidth/window.innerHeight</code>大小，不包含任务栏标题栏以及底部工具栏的浏览器区域大小。</p>
@@ -712,7 +720,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1607,5 +1615,5 @@
 	<!-- 代码块复制功能 -->
 	<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
 	<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>

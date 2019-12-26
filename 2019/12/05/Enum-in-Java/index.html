@@ -124,7 +124,7 @@
 <meta property="og:description" content="Java 中的枚举类型">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.edureka.co/blog/wp-content/uploads/2019/06/Enumeration-in-Java.jpg">
-<meta property="og:updated_time" content="2019-12-25T10:04:23.339Z">
+<meta property="og:updated_time" content="2019-12-26T06:13:47.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Enum in Java">
 <meta name="twitter:description" content="Java 中的枚举类型">
@@ -470,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-25 18:04:23" itemprop="dateModified" datetime="2019-12-25T18:04:23+08:00">2019-12-25</time>
+                <time title="修改时间：2019-12-26 14:13:47" itemprop="dateModified" datetime="2019-12-26T14:13:47+08:00">2019-12-26</time>
               
             
           </span>
@@ -533,19 +533,23 @@
       
 
       
-        <p><img src="https://www.edureka.co/blog/wp-content/uploads/2019/06/Enumeration-in-Java.jpg" width="100%"></p>
+        <img src="https://www.edureka.co/blog/wp-content/uploads/2019/06/Enumeration-in-Java.jpg" width="100%">
 <a id="more"></a>
-<h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><blockquote>
+<h2 id="枚举">枚举</h2>
+<blockquote>
 <p><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1260473188087424" target="_blank" rel="noopener">枚举类- 廖雪峰的官方网站</a></p>
 </blockquote>
-<h3 id="枚举常量与普通常量的比较"><a href="#枚举常量与普通常量的比较" class="headerlink" title="枚举常量与普通常量的比较"></a>枚举常量与普通常量的比较</h3><p>Java 中通过<code>static final</code>来定义普通常量，与普通常量相比，用枚举类定义的常量拥有以下特点。</p>
+<h3 id="枚举常量与普通常量的比较">枚举常量与普通常量的比较</h3>
+<p>Java 中通过<code>static final</code>来定义普通常量，与普通常量相比，用枚举类定义的常量拥有以下特点。</p>
 <ul>
-<li><code>enum</code> 常量本身带有类型信息，即<code>Weekday.SUN</code>类型是<code>Weekday</code>，编译器会自动检查出类型错误。<ul>
+<li><code>enum</code> 常量本身带有类型信息，即<code>Weekday.SUN</code>类型是<code>Weekday</code>，编译器会自动检查出类型错误。
+<ul>
 <li>因为枚举常量拥有类型信息，所以不同类型的枚举常量不能相互比较合赋值</li>
 </ul>
 </li>
 </ul>
-<h3 id="枚举类型与其他引用类型的区别"><a href="#枚举类型与其他引用类型的区别" class="headerlink" title="枚举类型与其他引用类型的区别"></a>枚举类型与其他引用类型的区别</h3><p>定义一个枚举类 Color：</p>
+<h3 id="枚举类型与其他引用类型的区别">枚举类型与其他引用类型的区别</h3>
+<p>定义一个枚举类 Color：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Color &#123;</span><br><span class="line">    RED, GREEN, BLUE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>反编译后的结果：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Color</span> <span class="keyword">extends</span> <span class="title">Enum</span> </span>&#123; <span class="comment">// 继承自Enum；标记为final class，不能被继承</span></span><br><span class="line">  	<span class="comment">// 每个实例均为全局唯一</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Color RED = <span class="keyword">new</span> Color();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Color GREEN = <span class="keyword">new</span> Color();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Color BLUE = <span class="keyword">new</span> Color();</span><br><span class="line">	  <span class="comment">// 私有构造方法，确保外部无法使用 new 操作符来创建实例</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Color</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -561,7 +565,8 @@
 <li>可以将<code>enum</code>类型用于<code>switch</code>语句；</li>
 <li>与普通的引用类型相比，枚举常量不必使用 equals 方法进行比较，直接使用 <code>==</code> 比较即可。这是因为 <code>enum</code> 类型的每个常量在JVM中只有一个唯一实例。</li>
 </ul>
-<h3 id="使用枚举时的注意事项"><a href="#使用枚举时的注意事项" class="headerlink" title="使用枚举时的注意事项"></a>使用枚举时的注意事项</h3><ul>
+<h3 id="使用枚举时的注意事项">使用枚举时的注意事项</h3>
+<ul>
 <li>不要使用 <code>toString()</code>，通过 <code>name()</code> 来获取常量定义的字符串；</li>
 <li>enum 的构造方法必须声明为 private，否则编译报错；</li>
 <li>枚举类的字段可以是非final类型，即可以在运行期修改，但是不推荐这样做！</li>
@@ -725,7 +730,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1620,5 +1625,5 @@
 	<!-- 代码块复制功能 -->
 	<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
 	<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>

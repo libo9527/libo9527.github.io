@@ -124,7 +124,7 @@
 <meta property="og:description" content="关于 Fastjson 中的循环引用问题">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/08/17/YvAZiPnxFgtGj6X.png">
-<meta property="og:updated_time" content="2019-12-25T10:04:23.339Z">
+<meta property="og:updated_time" content="2019-12-26T06:13:47.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Circule Reference in Fastjson">
 <meta name="twitter:description" content="关于 Fastjson 中的循环引用问题">
@@ -470,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-25 18:04:23" itemprop="dateModified" datetime="2019-12-25T18:04:23+08:00">2019-12-25</time>
+                <time title="修改时间：2019-12-26 14:13:47" itemprop="dateModified" datetime="2019-12-26T14:13:47+08:00">2019-12-26</time>
               
             
           </span>
@@ -533,18 +533,22 @@
       
 
       
-        <p><img src="https://i.loli.net/2019/08/17/YvAZiPnxFgtGj6X.png" width="100%"></p>
+        <img src="https://i.loli.net/2019/08/17/YvAZiPnxFgtGj6X.png" width="100%">
 <a id="more"></a>
 <blockquote>
 <p><a href="https://github.com/alibaba/fastjson/wiki/SerializerFeature_DisableCircularReferenceDetect_cn" target="_blank" rel="noopener">SerializerFeature_DisableCircularReferenceDetect_cn | fastjson-GitHub</a></p>
 <p>在 fastjson 中，会自动检测循环引用，并且输出为 fastjson 专有的引用表示格式。但这个不能被其他 JSON 库识别，也不能被浏览器识别，所以 fastjson 提供了关闭循环引用检测的功能。</p>
 </blockquote>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>项目中的一个接口返回的 json 数据出现引用格式：</p>
+<h2 id="问题描述">问题描述</h2>
+<p>项目中的一个接口返回的 json 数据出现引用格式：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"lastDoneCollectTask":&#123;</span><br><span class="line">  "$ref":"$.data.lastCreateCollectTask"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h2><p>项目中将 Spring Boot 内置的 JSON 改成了 fastjson，而 fastjson 会自动进行重复引用/循环引用检测，并将循环应用改为自己定义的引用格式。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>关闭 fastjson 循环引用检测的功能</p>
+<h2 id="问题原因">问题原因</h2>
+<p>项目中将 Spring Boot 内置的 JSON 改成了 fastjson，而 fastjson 会自动进行重复引用/循环引用检测，并将循环应用改为自己定义的引用格式。</p>
+<h2 id="解决方案">解决方案</h2>
+<p>关闭 fastjson 循环引用检测的功能</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JSON.toJSONString(obj, SerializerFeature.DisableCircularReferenceDetect);</span><br></pre></td></tr></table></figure>
-<h2 id="疑问🤔️"><a href="#疑问🤔️" class="headerlink" title="疑问🤔️"></a><del>疑问🤔️</del></h2><blockquote>
+<h2 id="疑问🤔️"><s>疑问🤔️</s></h2>
+<blockquote>
 <p>引用分为两种，重复引用和循环引用</p>
 <p>重复引用指一个对象重复出现多次，循环引用指相互引用，，这个问题比较严重，如果处理不好就会出现StackOverflowError异常</p>
 </blockquote>
@@ -712,7 +716,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1607,5 +1611,5 @@
 	<!-- 代码块复制功能 -->
 	<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
 	<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>

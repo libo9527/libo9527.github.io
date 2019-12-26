@@ -124,7 +124,7 @@
 <meta property="og:description" content="ORACLE 中触发器的使用">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.ytimg.com/vi/R3fvX_xf5P4/maxresdefault.jpg">
-<meta property="og:updated_time" content="2019-12-25T10:04:23.339Z">
+<meta property="og:updated_time" content="2019-12-26T06:13:47.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Using Triggers in ORACLE">
 <meta name="twitter:description" content="ORACLE 中触发器的使用">
@@ -470,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-25 18:04:23" itemprop="dateModified" datetime="2019-12-25T18:04:23+08:00">2019-12-25</time>
+                <time title="修改时间：2019-12-26 14:13:47" itemprop="dateModified" datetime="2019-12-26T14:13:47+08:00">2019-12-26</time>
               
             
           </span>
@@ -540,95 +540,125 @@
       
 
       
-        <p><img src="https://i.ytimg.com/vi/R3fvX_xf5P4/maxresdefault.jpg" width="100%"></p>
+        <img src="https://i.ytimg.com/vi/R3fvX_xf5P4/maxresdefault.jpg" width="100%">
 <a id="more"></a>
-<h2 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h2><blockquote>
+<h2 id="触发器">触发器</h2>
+<blockquote>
 <p><a href="https://docs.oracle.com/database/121/TDDDG/tdddg_triggers.htm#TDDDG50000" target="_blank" rel="noopener">Using Triggers | ORACLE</a></p>
 <p>A <strong>trigger</strong> is a PL/SQL unit that is stored in the database and (if it is in the enabled state) automatically executes (“fires”) in response to a specified event.</p>
 <p><a href="https://www.cnblogs.com/huyong/archive/2011/04/27/2030466.html" target="_blank" rel="noopener">ORACLE PL/SQL编程之八：把触发器说透</a></p>
 </blockquote>
 <p>触发器在数据库里以独立的对象存储，它与存储过程和函数不同的是，存储过程与函数需要用户显示调用才执行，而触发器是由一个事件来启动运行。即触发器是当某个事件发生时自动地隐式运行。并且，触发器不能接收参数。所以运行触发器就叫触发或点火（firing）。</p>
 <p>ORACLE 事件指的是对数据库的表或视图进行的 INSERT、UPDATE 及 DELETE 操作。ORACLE将触发器的功能扩展到了触发 ORACLE，如数据库的启动与关闭等。</p>
-<p>所以触发器常用来完成由数据库的完整性约束难以完成的复杂业务规则的约束，或用来监视对数据库的各种操作，实现审计的功能。 </p>
-<h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><ul>
-<li><p>触发事件</p>
+<p>所以触发器常用来完成由数据库的完整性约束难以完成的复杂业务规则的约束，或用来监视对数据库的各种操作，实现审计的功能。</p>
+<h3 id="组成">组成</h3>
+<ul>
+<li>
+<p>触发事件</p>
 <p>引起触发器被触发的事件。 例如：DML语句(INSERT, UPDATE, DELETE语句对表或视图执行数据处理操作)、DDL语句（如CREATE、ALTER、DROP语句在数据库中创建、修改、删除模式对象）、数据库系统事件（如系统启动或退出、异常错误）、用户事件（如登录或退出数据库）。</p>
 </li>
-<li><p>触发时间</p>
+<li>
+<p>触发时间</p>
 <p>即该 TRIGGER 是在触发事件发生之前（BEFORE）还是之后（AFTER）触发，也就是触发事件和该 TRIGGER 的操作顺序。</p>
 </li>
-<li><p>触发操作</p>
+<li>
+<p>触发操作</p>
 <p>即该 TRIGGER 被触发之后的目的和意图，正是触发器本身要做的事情。 例如：PL/SQL 块。</p>
 </li>
-<li><p>触发对象</p>
+<li>
+<p>触发对象</p>
 <p>包括表、视图、模式、数据库。只有在这些对象上发生了符合触发条件的触发事件，才会执行触发操作。</p>
 </li>
-<li><p>触发条件</p>
+<li>
+<p>触发条件</p>
 <p>由 WHEN 子句指定一个逻辑表达式。只有当该表达式的值为 TRUE 时，遇到触发事件才会自动执行触发器，使其执行触发操作。</p>
 </li>
-<li><p>触发频率</p>
+<li>
+<p>触发频率</p>
 <p>说明触发器内定义的动作被执行的次数。即语句级(STATEMENT)触发器和行级(ROW)触发器。</p>
 </li>
 </ul>
-<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>根据<strong>触发频率</strong>分类：</p>
+<h3 id="分类">分类</h3>
+<p>根据<strong>触发频率</strong>分类：</p>
 <ul>
-<li><p>语句级(STATEMENT)触发器：</p>
+<li>
+<p>语句级(STATEMENT)触发器：</p>
 <p>指当触发事件发生时，该触发器只执行一次；</p>
 </li>
-<li><p>行级(ROW)触发器：</p>
+<li>
+<p>行级(ROW)触发器：</p>
 <p>指当触发事件发生时，对受到该操作影响的每一行数据，触发器都单独执行一次。</p>
 </li>
 </ul>
 <p>根据<strong>触发事件类型</strong>分类：</p>
 <ul>
-<li><p>DML 触发器</p>
+<li>
+<p>DML 触发器</p>
 <p>ORACLE可以在DML语句进行触发，可以在DML操作前或操作后进行触发，并且可以对每个行或语句操作上进行触发。</p>
 </li>
-<li><p>替代触发器</p>
-<p>由于在ORACLE里，不能直接对由两个以上的表建立的视图进行操作。所以给出了替代触发器。它就是ORACLE 8专门为进行视图操作的一种处理方法。 </p>
+<li>
+<p>替代触发器</p>
+<p>由于在ORACLE里，不能直接对由两个以上的表建立的视图进行操作。所以给出了替代触发器。它就是ORACLE 8专门为进行视图操作的一种处理方法。</p>
 </li>
-<li><p>系统触发器</p>
-<p>ORACLE 8i 提供了第三种类型的触发器叫系统触发器。它可以在ORACLE数据库系统的事件中进行触发，如ORACLE系统的启动与关闭等。 </p>
+<li>
+<p>系统触发器</p>
+<p>ORACLE 8i 提供了第三种类型的触发器叫系统触发器。它可以在ORACLE数据库系统的事件中进行触发，如ORACLE系统的启动与关闭等。</p>
 </li>
 </ul>
-<h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><blockquote>
+<h3 id="创建">创建</h3>
+<blockquote>
 <p><a href="https://docs.oracle.com/cd/B19306_01/server.102/b14200/statements_7004.htm" target="_blank" rel="noopener">CREATE TRIGGER | ORACLE</a></p>
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [ <span class="keyword">OR</span> <span class="keyword">REPLACE</span> ] <span class="keyword">TRIGGER</span> [ schema. ]<span class="keyword">trigger</span></span><br><span class="line">   &#123; <span class="keyword">BEFORE</span> | <span class="keyword">AFTER</span> | INSTEAD <span class="keyword">OF</span> &#125;</span><br><span class="line">   &#123; dml_event_clause</span><br><span class="line">   | &#123; ddl_event [ <span class="keyword">OR</span> ddl_event ]...</span><br><span class="line">     | database_event [ <span class="keyword">OR</span> database_event ]...</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">ON</span> &#123; [ schema. ]<span class="keyword">SCHEMA</span></span><br><span class="line">        | <span class="keyword">DATABASE</span></span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   [ <span class="keyword">WHEN</span> (condition) ]</span><br><span class="line">   &#123; pl/sql_block | call_procedure_statement &#125; ;</span><br></pre></td></tr></table></figure>
 <p>eg：</p>
 <p>在给 CUSTOMER_RAW_TEST 表插入数据时自动执行 <code>UPDATE GLOBAL_LOCATION_TEST SET COLLECTED_QTY = COLLECTED_QTY + 1 ;</code></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> <span class="keyword">REPLACE</span> <span class="keyword">TRIGGER</span> Count_Collected_Qty </span><br><span class="line"><span class="keyword">AFTER</span> <span class="keyword">INSERT</span>  </span><br><span class="line"><span class="keyword">ON</span> CUSTOMER_RAW_TEST</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">each</span> <span class="keyword">ROW</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">		<span class="keyword">UPDATE</span> GLOBAL_LOCATION_TEST <span class="keyword">SET</span> COLLECTED_QTY = COLLECTED_QTY + <span class="number">1</span> ;</span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ul>
-<li><p>触发器不接受参数</p>
+<h4 id="注意">注意</h4>
+<ul>
+<li>
+<p>触发器不接受参数</p>
 </li>
-<li><p>一个表上最多可有12个触发器，但同一时间、同一事件、同一类型的触发器只能有一个。并各触发器之间不能有矛盾。</p>
+<li>
+<p>一个表上最多可有12个触发器，但同一时间、同一事件、同一类型的触发器只能有一个。并各触发器之间不能有矛盾。</p>
 </li>
-<li><p>在一个表上的触发器越多，对在该表上的DML操作的性能影响就越大。</p>
+<li>
+<p>在一个表上的触发器越多，对在该表上的DML操作的性能影响就越大。</p>
 </li>
-<li><p>触发器最大为32KB。若确实需要，可以先建立过程，然后在触发器中用CALL语句进行调用。</p>
+<li>
+<p>触发器最大为32KB。若确实需要，可以先建立过程，然后在触发器中用CALL语句进行调用。</p>
 </li>
-<li><p><strong>在触发器的执行部分只能用DML语句（SELECT、INSERT、UPDATE、DELETE），不能使用DDL语句（CREATE、ALTER、DROP）</strong></p>
+<li>
+<p><strong>在触发器的执行部分只能用DML语句（SELECT、INSERT、UPDATE、DELETE），不能使用DDL语句（CREATE、ALTER、DROP）</strong></p>
 </li>
-<li><p>触发器中不能包含事务控制语句(COMMIT，ROLLBACK，SAVEPOINT)。因为触发器是触发语句的一部分，触发语句被提交、回退时，触发器也被提交、回退了。</p>
+<li>
+<p>触发器中不能包含事务控制语句(COMMIT，ROLLBACK，SAVEPOINT)。因为触发器是触发语句的一部分，触发语句被提交、回退时，触发器也被提交、回退了。</p>
 </li>
-<li><p>在触发器主体中调用的任何过程、函数，都不能使用事务控制语句。</p>
+<li>
+<p>在触发器主体中调用的任何过程、函数，都不能使用事务控制语句。</p>
 </li>
-<li><p>在触发器主体中不能申明任何 Long 和 blob 变量。新值 new 和旧值 old 也不能向表中的任何long和blob列。</p>
+<li>
+<p>在触发器主体中不能申明任何 Long 和 blob 变量。新值 new 和旧值 old 也不能向表中的任何long和blob列。</p>
 </li>
-<li><p>不同类型的触发器(如DML触发器、INSTEAD OF触发器、系统触发器)的语法格式和作用有较大区别。 </p>
+<li>
+<p>不同类型的触发器(如DML触发器、INSTEAD OF触发器、系统触发器)的语法格式和作用有较大区别。</p>
 </li>
 </ul>
-<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> user_triggers;</span><br></pre></td></tr></table></figure>
+<h3 id="查找">查找</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> user_triggers;</span><br></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> object_name <span class="keyword">FROM</span> user_objects <span class="keyword">WHERE</span> object_type = <span class="string">'TRIGGER'</span>;</span><br></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> all_triggers <span class="keyword">WHERE</span> table_name = <span class="string">'CUSTOMER_RAW_TEST'</span>;</span><br></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> user_source <span class="keyword">WHERE</span> <span class="keyword">name</span> = <span class="string">'COUNT_COLLECTED_QTY'</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TRIGGER</span> COUNT_COLLECTED_QTY;</span><br></pre></td></tr></table></figure>
-<p>注：当删除表或视图时，建立在这些对象上的触发器也随之删除。 </p>
-<h3 id="禁用-启用"><a href="#禁用-启用" class="headerlink" title="禁用/启用"></a>禁用/启用</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> TIGGER trigger_name [<span class="keyword">DISABLE</span> | <span class="keyword">ENABLE</span> ];</span><br></pre></td></tr></table></figure>
-<p>ALTER TRIGGER 语句只能改变单个触发器的状态，而 ALTER TABLE 语句则能够改变与指定表相关的所有触发器的使用状态。格式为： </p>
+<h3 id="删除">删除</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TRIGGER</span> COUNT_COLLECTED_QTY;</span><br></pre></td></tr></table></figure>
+<p>注：当删除表或视图时，建立在这些对象上的触发器也随之删除。</p>
+<h3 id="禁用-启用">禁用/启用</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> TIGGER trigger_name [<span class="keyword">DISABLE</span> | <span class="keyword">ENABLE</span> ];</span><br></pre></td></tr></table></figure>
+<p>ALTER TRIGGER 语句只能改变单个触发器的状态，而 ALTER TABLE 语句则能够改变与指定表相关的所有触发器的使用状态。格式为：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> [schema.]table_name &#123;<span class="keyword">ENABLE</span>|<span class="keyword">DISABLE</span>&#125; ALL <span class="keyword">TRIGGERS</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="查看权限"><a href="#查看权限" class="headerlink" title="查看权限"></a>查看权限</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> owner, object_name, object_type, <span class="keyword">status</span> <span class="keyword">FROM</span> dba_objects <span class="keyword">WHERE</span> object_name = <span class="string">'COUNT_COLLECTED_QTY'</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="使用-Navicat-管理触发器"><a href="#使用-Navicat-管理触发器" class="headerlink" title="使用 Navicat 管理触发器"></a>使用 Navicat 管理触发器</h3><blockquote>
+<h3 id="查看权限">查看权限</h3>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> owner, object_name, object_type, <span class="keyword">status</span> <span class="keyword">FROM</span> dba_objects <span class="keyword">WHERE</span> object_name = <span class="string">'COUNT_COLLECTED_QTY'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="使用-Navicat-管理触发器">使用 Navicat 管理触发器</h3>
+<blockquote>
 <p><a href="http://www.formysql.com/wenti/oracle-chufaqi.html" target="_blank" rel="noopener">浅谈 Navicat for Oracle 表触发器</a></p>
 </blockquote>
 
@@ -790,7 +820,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1685,5 +1715,5 @@
 	<!-- 代码块复制功能 -->
 	<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
 	<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>

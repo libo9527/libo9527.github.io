@@ -124,7 +124,7 @@
 <meta property="og:description" content="Git 笔记">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.linkedin.com/media-proxy/ext?w=1200&h=675&hash=EnUu%2BT9OJGbHiVWYjgwyvE0dids%3D&ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta5g-0R6plxVUzgUv5K_PrkC9q0RIUJDPBy-kWyaq89KIf3LpesfWfrq8pVgTcCkFkgw1fOuuSC3gFNu1NdCvKg">
-<meta property="og:updated_time" content="2019-12-25T10:04:23.339Z">
+<meta property="og:updated_time" content="2019-12-26T06:13:47.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of Git">
 <meta name="twitter:description" content="Git 笔记">
@@ -470,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-25 18:04:23" itemprop="dateModified" datetime="2019-12-25T18:04:23+08:00">2019-12-25</time>
+                <time title="修改时间：2019-12-26 14:13:47" itemprop="dateModified" datetime="2019-12-26T14:13:47+08:00">2019-12-26</time>
               
             
           </span>
@@ -533,63 +533,80 @@
       
 
       
-        <p><img src="https://www.linkedin.com/media-proxy/ext?w=1200&h=675&hash=EnUu%2BT9OJGbHiVWYjgwyvE0dids%3D&ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta5g-0R6plxVUzgUv5K_PrkC9q0RIUJDPBy-kWyaq89KIf3LpesfWfrq8pVgTcCkFkgw1fOuuSC3gFNu1NdCvKg" width="100%"></p>
+        <img src="https://www.linkedin.com/media-proxy/ext?w=1200&h=675&hash=EnUu%2BT9OJGbHiVWYjgwyvE0dids%3D&ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta5g-0R6plxVUzgUv5K_PrkC9q0RIUJDPBy-kWyaq89KIf3LpesfWfrq8pVgTcCkFkgw1fOuuSC3gFNu1NdCvKg" width="100%">
 <a id="more"></a>
-<h2 id="Command"><a href="#Command" class="headerlink" title="Command"></a>Command</h2><h3 id="remote"><a href="#remote" class="headerlink" title="remote"></a>remote</h3><ul>
-<li><p>添加远程主机</p>
+<h2 id="Command">Command</h2>
+<h3 id="remote">remote</h3>
+<ul>
+<li>
+<p>添加远程主机</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> git remote add &lt;主机名&gt; &lt;网址&gt;</span></span><br><span class="line">git remote add origin http://bitbucket.sstparts.com/scm/web/sst-cloud.git</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h3><ul>
-<li><p>查看本地分支与远程分支的追踪关系</p>
+<h3 id="branch">branch</h3>
+<ul>
+<li>
+<p>查看本地分支与远程分支的追踪关系</p>
 <blockquote>
-<p>-v, -vv, –verbose<br>When in list mode, show sha1 and commit subject line for each head, along with relationship to upstream branch (if any). If given twice, print the name of the upstream branch, as well (see also git remote show <code>&lt;remote&gt;</code>).</p>
+<p>-v, -vv, --verbose<br>
+When in list mode, show sha1 and commit subject line for each head, along with relationship to upstream branch (if any). If given twice, print the name of the upstream branch, as well (see also git remote show <code>&lt;remote&gt;</code>).</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -vv</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>关联远程分支</p>
+<li>
+<p>关联远程分支</p>
 <blockquote>
-<p> -u <code>&lt;upstream&gt;</code>, –set-upstream-to=<code>&lt;upstream&gt;</code><br>Set up <code>&lt;branchname&gt;</code>‘s tracking information so <code>&lt;upstream&gt;</code> is considered <code>&lt;branchname&gt;</code>‘s upstream branch. If no <code>&lt;branchname&gt;</code> is specified, then it defaults to the current branch.</p>
+<p>-u <code>&lt;upstream&gt;</code>, --set-upstream-to=<code>&lt;upstream&gt;</code><br>
+Set up <code>&lt;branchname&gt;</code>'s tracking information so <code>&lt;upstream&gt;</code> is considered <code>&lt;branchname&gt;</code>'s upstream branch. If no <code>&lt;branchname&gt;</code> is specified, then it defaults to the current branch.</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to=master</span><br><span class="line"><span class="meta">#</span><span class="bash"> or</span></span><br><span class="line">git bracch -u master</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<ul>
-<li><p>分支重命名</p>
+<li>
+<p>分支重命名</p>
 <blockquote>
-<p> -m, –move</p>
+<p>-m, --move</p>
 <p>Move/rename a branch and the corresponding reflog.</p>
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -m oldBranchName newBranchName</span><br></pre></td></tr></table></figure>
 <p>注意：远程分支的重命名需要通过先删除后新建的方式实现。</p>
 </li>
 </ul>
-<h3 id="checkout"><a href="#checkout" class="headerlink" title="checkout"></a>checkout</h3><ul>
-<li><p>拉取远程新分支到本地</p>
+<h3 id="checkout">checkout</h3>
+<ul>
+<li>
+<p>拉取远程新分支到本地</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b 本地分支名 origin/远程分支名</span><br></pre></td></tr></table></figure>
 <p>另一种方式（这种方式不会切换到新分支，需要手动切换）：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin 远程分支名:本地分支名</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h3><ul>
-<li><p>查看 stash 列表</p>
+<h3 id="stash">stash</h3>
+<ul>
+<li>
+<p>查看 stash 列表</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash list</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>清空 stash 列表</p>
+<li>
+<p>清空 stash 列表</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash clear</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>删除队列中的第一个</p>
+<li>
+<p>删除队列中的第一个</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash drop stash@&#123;0&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="config"><a href="#config" class="headerlink" title="config"></a>config</h3><p>git 配置有 system 级别、global 和 local 三个，优先级依次递增，也就是配置冲突时优先使用 local 级别的。</p>
+<h3 id="config">config</h3>
+<p>git 配置有 system 级别、global 和 local 三个，优先级依次递增，也就是配置冲突时优先使用 local 级别的。</p>
 <ul>
-<li><p>查看当前仓库配置信息</p>
+<li>
+<p>查看当前仓库配置信息</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --local --list</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="DIFFRENCE"><a href="#DIFFRENCE" class="headerlink" title="DIFFRENCE"></a>DIFFRENCE</h2><ol>
-<li><p>pull VS fetch</p>
+<h2 id="DIFFRENCE">DIFFRENCE</h2>
+<ol>
+<li>
+<p>pull VS fetch</p>
 <p>pull = fetch + merge</p>
 </li>
 </ol>
@@ -752,7 +769,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1647,5 +1664,5 @@
 	<!-- 代码块复制功能 -->
 	<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
 	<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>

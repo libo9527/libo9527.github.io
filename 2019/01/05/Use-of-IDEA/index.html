@@ -126,7 +126,7 @@
 <meta property="og:image" content="https://www.paradigmadigital.com/wp-content/uploads/2017/08/intellijVSeclipse.jpg">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/130410-06580ab3367355e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
 <meta property="og:image" content="https://oscimg.oschina.net/oscnet/ea4ccc152ffe4c2ee0800aa8c9feaa61b7a.jpg">
-<meta property="og:updated_time" content="2019-12-25T10:04:23.339Z">
+<meta property="og:updated_time" content="2019-12-26T06:13:47.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Use of IDEA">
 <meta name="twitter:description" content="IDEA 的使用">
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-25 18:04:23" itemprop="dateModified" datetime="2019-12-25T18:04:23+08:00">2019-12-25</time>
+                <time title="修改时间：2019-12-26 14:13:47" itemprop="dateModified" datetime="2019-12-26T14:13:47+08:00">2019-12-26</time>
               
             
           </span>
@@ -535,33 +535,47 @@
       
 
       
-        <p><img src="https://www.paradigmadigital.com/wp-content/uploads/2017/08/intellijVSeclipse.jpg" width="100%"></p>
+        <img src="https://www.paradigmadigital.com/wp-content/uploads/2017/08/intellijVSeclipse.jpg" width="100%">
 <a id="more"></a>
-<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><blockquote>
+<h2 id="设置">设置</h2>
+<h3 id="字体">字体</h3>
+<blockquote>
 <p><a href="https://blog.csdn.net/zhaoyayua/article/details/46548613" target="_blank" rel="noopener">IntelliJ IDEA 调整字体大小- 赱向远方- CSDN博客</a></p>
 </blockquote>
-<h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><blockquote>
+<h3 id="Maven">Maven</h3>
+<blockquote>
 <p><a href="https://blog.csdn.net/qq_30551211/article/details/51277444" target="_blank" rel="noopener">IDEA新建MAVEN项目时速度缓慢</a></p>
 </blockquote>
-<p>​    IDEA 根据 maven archetype 的本质，其实是执行 <code>mvn archetype:generate</code> 命令，该命令执行时，需要指定一个<code>archetype-catalog.xml</code>文件。</p>
-<p>​    该命令的参数<code>-DarchetypeCatalog</code>，可选值为：remote，internal  ，local等，用来指定archetype-catalog.xml文件从哪里获取。默认为remote，即从 <a href="http://repo1.maven.org/maven2/archetype-catalog.xml" target="_blank" rel="noopener">http://repo1.maven.org/maven2/archetype-catalog.xml</a> 路径下载<code>archetype-catalog.xml</code>文件。<a href="http://repo1.maven.org/maven2/archetype-catalog.xml" target="_blank" rel="noopener">http://repo1.maven.org/maven2/archetype-catalog.xml</a> 文件约为3-4M，下载速度很慢，所以导致创建过程缓慢。</p>
-<p>​    可以在 <code>settings&gt;Building,Exceptiong,Deployment&gt;Maven&gt;Runner</code> 中配置 <code>VM Options</code> 来指定使用本地文件。如下图所示：</p>
+<p>​	IDEA 根据 maven archetype 的本质，其实是执行 <code>mvn archetype:generate</code> 命令，该命令执行时，需要指定一个<code>archetype-catalog.xml</code>文件。</p>
+<p>​	该命令的参数<code>-DarchetypeCatalog</code>，可选值为：remote，internal  ，local等，用来指定archetype-catalog.xml文件从哪里获取。默认为remote，即从 <a href="http://repo1.maven.org/maven2/archetype-catalog.xml" target="_blank" rel="noopener">http://repo1.maven.org/maven2/archetype-catalog.xml</a> 路径下载<code>archetype-catalog.xml</code>文件。<a href="http://repo1.maven.org/maven2/archetype-catalog.xml" target="_blank" rel="noopener">http://repo1.maven.org/maven2/archetype-catalog.xml</a> 文件约为3-4M，下载速度很慢，所以导致创建过程缓慢。</p>
+<p>​	可以在 <code>settings&gt;Building,Exceptiong,Deployment&gt;Maven&gt;Runner</code> 中配置 <code>VM Options</code> 来指定使用本地文件。如下图所示：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/130410-06580ab3367355e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt=""></p>
-<h2 id="推荐做法"><a href="#推荐做法" class="headerlink" title="推荐做法"></a>推荐做法</h2><ol>
+<h2 id="推荐做法">推荐做法</h2>
+<ol>
 <li>项目、模块等命名时，尽量使用下划线（避免用横杠）来连接多个单词。</li>
 </ol>
-<h2 id="Mac-OS-下"><a href="#Mac-OS-下" class="headerlink" title="Mac OS 下"></a>Mac OS 下</h2><h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><h4 id="快速跳转到文件头"><a href="#快速跳转到文件头" class="headerlink" title="快速跳转到文件头"></a>快速跳转到文件头</h4><p><code>fn + Command + ←</code></p>
-<h4 id="快速跳转到文件尾"><a href="#快速跳转到文件尾" class="headerlink" title="快速跳转到文件尾"></a>快速跳转到文件尾</h4><p><code>fn + Command + →</code></p>
-<h4 id="快速跳转到当前窗口头"><a href="#快速跳转到当前窗口头" class="headerlink" title="快速跳转到当前窗口头"></a>快速跳转到当前窗口头</h4><p><code>cn +Command + ↑</code></p>
-<h4 id="快速跳转到当前窗口尾"><a href="#快速跳转到当前窗口尾" class="headerlink" title="快速跳转到当前窗口尾"></a>快速跳转到当前窗口尾</h4><p><code>fn + Command + ↓</code></p>
-<h4 id="快速跳转到某行-列"><a href="#快速跳转到某行-列" class="headerlink" title="快速跳转到某行/列"></a>快速跳转到某行/列</h4><p><code>Command + L</code></p>
-<h4 id="添加-MyBatis-的-XML-文件模版"><a href="#添加-MyBatis-的-XML-文件模版" class="headerlink" title="添加 MyBatis 的 XML 文件模版"></a>添加 MyBatis 的 XML 文件模版</h4><ol>
-<li><p>Preference –&gt; Editor –&gt; File and Code Templates</p>
+<h2 id="Mac-OS-下">Mac OS 下</h2>
+<h3 id="快捷键">快捷键</h3>
+<h4 id="快速跳转到文件头">快速跳转到文件头</h4>
+<p><code>fn + Command + ←</code></p>
+<h4 id="快速跳转到文件尾">快速跳转到文件尾</h4>
+<p><code>fn + Command + →</code></p>
+<h4 id="快速跳转到当前窗口头">快速跳转到当前窗口头</h4>
+<p><code>cn +Command + ↑</code></p>
+<h4 id="快速跳转到当前窗口尾">快速跳转到当前窗口尾</h4>
+<p><code>fn + Command + ↓</code></p>
+<h4 id="快速跳转到某行-列">快速跳转到某行/列</h4>
+<p><code>Command + L</code></p>
+<h4 id="添加-MyBatis-的-XML-文件模版">添加 MyBatis 的 XML 文件模版</h4>
+<ol>
+<li>
+<p>Preference --&gt; Editor --&gt; File and Code Templates</p>
 <p><img src="https://oscimg.oschina.net/oscnet/ea4ccc152ffe4c2ee0800aa8c9feaa61b7a.jpg" alt=""></p>
 <p>模版内容：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE mapper</span></span><br><span class="line"><span class="meta">  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"</span></span><br><span class="line"><span class="meta">  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">""</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>创建时选用 MybatisMapper 模版</p>
+<li>
+<p>创建时选用 MybatisMapper 模版</p>
 </li>
 </ol>
 
@@ -723,7 +737,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1618,5 +1632,5 @@
 	<!-- 代码块复制功能 -->
 	<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
 	<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>

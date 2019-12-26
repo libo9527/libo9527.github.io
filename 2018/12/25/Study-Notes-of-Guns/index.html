@@ -124,7 +124,7 @@
 <meta property="og:description" content="更简洁的后台管理系统">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2018/12/26/5c23433372f23.jpg">
-<meta property="og:updated_time" content="2019-12-25T10:04:23.339Z">
+<meta property="og:updated_time" content="2019-12-26T06:13:47.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of Guns">
 <meta name="twitter:description" content="更简洁的后台管理系统">
@@ -470,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-25 18:04:23" itemprop="dateModified" datetime="2019-12-25T18:04:23+08:00">2019-12-25</time>
+                <time title="修改时间：2019-12-26 14:13:47" itemprop="dateModified" datetime="2019-12-26T14:13:47+08:00">2019-12-26</time>
               
             
           </span>
@@ -546,49 +546,61 @@
 <p>Guns基于SpringBoot 2，致力于做更简洁的后台管理系统，完美整合springmvc + shiro + mybatis-plus + beetl!Guns项目代码简洁，注释丰富，上手容易，同时Guns包含许多基础模块(用户管理，角色管理，部门管理，字典管理等10个模块)，可以直接作为一个后台管理系统的脚手架!</p>
 <p><a href="http://stylefeng.cn/" target="_blank" rel="noopener">http://stylefeng.cn</a></p>
 </blockquote>
-<h2 id="后端分页"><a href="#后端分页" class="headerlink" title="后端分页"></a>后端分页</h2><blockquote>
+<h2 id="后端分页">后端分页</h2>
+<blockquote>
 <p>可参考 Guns 的【日志管理】模块</p>
 <p><a href="https://mp.baomidou.com/guide/page.html" target="_blank" rel="noopener">分页插件| MyBatis-Plus</a></p>
 </blockquote>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol>
+<h3 id="使用">使用</h3>
+<ol>
 <li>前端初始化<a href="http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/" target="_blank" rel="noopener">Bootstrap Table</a>时设置分页方式为服务端分页。（<code>static/modular/system/log/log.js</code>）</li>
 <li>后端接口使用<code>Guns</code>提供的工具类<code>common.constant.factory.PageFactory</code>来获取<a href="https://mp.baomidou.com/guide/page.html" target="_blank" rel="noopener"><code>MyBatis-Plus</code>分页插件</a>所需的<code>Page</code>对象。</li>
 <li>然后将<code>Page</code>对象传递到<code>Mapper</code>层进行查询，<a href="https://mp.baomidou.com/guide/page.html" target="_blank" rel="noopener"><code>MyBatis-Plus</code>分页插件</a>会自动帮你实现分页。</li>
 <li>将查询结果放入<code>Page</code>对象的<code>records</code>属性中。</li>
 <li>使用<code>Guns</code>的<code>core.common.page.PageInfoBT</code>对分页结果进行封装后返回给前端。</li>
 </ol>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ol>
+<h3 id="分析">分析</h3>
+<ol>
 <li>Guns配置分页插件的地方在<code>com.dubbo.pay.config.datasource</code></li>
 </ol>
-<h2 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h2><blockquote>
+<h2 id="表单验证">表单验证</h2>
+<blockquote>
 <p>参考 Guns 的【用户管理】模块</p>
 <p><a href="http://bootstrapvalidator.votintsev.ru/" target="_blank" rel="noopener">BootstrapValidator</a></p>
 <p><a href="https://mrbird.cc/BootstrapValidator%E6%8C%87%E5%8D%97.html" target="_blank" rel="noopener">BootstrapValidator指南</a></p>
 </blockquote>
 <ol>
-<li><p>必要的<code>css</code>和<code>js</code>文件在<code>src\main\webapp\WEB-INF\view\common\_container.html</code>文件中引入。</p>
+<li>
+<p>必要的<code>css</code>和<code>js</code>文件在<code>src\main\webapp\WEB-INF\view\common\_container.html</code>文件中引入。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 全局css --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"$&#123;ctxPath&#125;/static/css/bootstrap.min.css?v=3.3.6"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"$&#123;ctxPath&#125;/static/css/plugins/validate/bootstrapValidator.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 全局js --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"$&#123;ctxPath&#125;/static/js/jquery.min.js?v=2.1.4"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"$&#123;ctxPath&#125;/static/js/bootstrap.min.js?v=3.3.6"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"$&#123;ctxPath&#125;/static/js/plugins/validate/bootstrapValidator.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>HTML 表单</p>
+<li>
+<p>HTML 表单</p>
 <ul>
-<li><p>表单要指定 ID</p>
+<li>
+<p>表单要指定 ID</p>
 <figure class="highlight html"><figcaption><span>WEB-INF/view/system/user/user_add.html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-horizontal"</span> <span class="attr">id</span>=<span class="string">"userInfoForm"</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>需验证的字段，默认需要以<code>&lt;div class=”form-group”&gt;&lt;/div&gt;</code>包裹（对应错误提示会根据该class值定位），内部<code>&lt;input class=&quot;form-control&quot; /&gt;</code>标签必须有name属性值（作为验证匹配字段）。</p>
+<li>
+<p>需验证的字段，默认需要以<code>&lt;div class=”form-group”&gt;&lt;/div&gt;</code>包裹（对应错误提示会根据该class值定位），内部<code>&lt;input class=&quot;form-control&quot; /&gt;</code>标签必须有name属性值（作为验证匹配字段）。</p>
 <figure class="highlight html"><figcaption><span>WEB-INF/view/system/user/user_add.html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">#input</span> <span class="attr">id</span>=<span class="string">"account"</span> <span class="attr">name</span>=<span class="string">"账户"</span> <span class="attr">underline</span>=<span class="string">"true"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 <p>自定义标签 input ：</p>
 <figure class="highlight html"><figcaption><span>WEB-INF/view/common/tags/input.tag</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"col-sm-3 control-label"</span>&gt;</span>$&#123;name&#125;<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-9"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"$&#123;id&#125;"</span> <span class="attr">name</span>=<span class="string">"$&#123;id&#125;"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">...</span></span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>表单域配置（<a href="http://bootstrapvalidator.votintsev.ru/validators/" target="_blank" rel="noopener">官方默认验证</a>）</p>
+<li>
+<p>表单域配置（<a href="http://bootstrapvalidator.votintsev.ru/validators/" target="_blank" rel="noopener">官方默认验证</a>）</p>
 <figure class="highlight js"><figcaption><span>static/modular/system/user/user_info.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> UserInfoDlg = &#123;</span><br><span class="line">    ...</span><br><span class="line">    validateFields: &#123;</span><br><span class="line">        account: &#123;</span><br><span class="line">            validators: &#123;</span><br><span class="line">                notEmpty: &#123;</span><br><span class="line">                    message: <span class="string">'账户不能为空'</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>js 入口函数中初始化验证器</p>
+<li>
+<p>js 入口函数中初始化验证器</p>
 <figure class="highlight js"><figcaption><span>static/modular/system/user/user_info.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    Feng.initValidator(<span class="string">"userInfoForm"</span>, UserInfoDlg.validateFields);</span><br><span class="line">	...</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>提交时手动触发</p>
+<li>
+<p>提交时手动触发</p>
 <figure class="highlight js"><figcaption><span>static/modular/system/user/user_info.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">UserInfoDlg.validate = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 重置表单所有验证规则</span></span><br><span class="line">    $(<span class="string">'#userInfoForm'</span>).data(<span class="string">"bootstrapValidator"</span>).resetForm();</span><br><span class="line">    <span class="comment">// 触发全部验证</span></span><br><span class="line">    $(<span class="string">'#userInfoForm'</span>).bootstrapValidator(<span class="string">'validate'</span>);</span><br><span class="line">    <span class="comment">// 获取当前表单验证状态</span></span><br><span class="line">    <span class="keyword">return</span> $(<span class="string">"#userInfoForm"</span>).data(<span class="string">'bootstrapValidator'</span>).isValid();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>当提交按钮的<code>type=”submit”</code>时，会在 success 之前自动触发表单验证，Guns 提交按钮为普通按钮，故需要手动触发。</p>
+<li>
+<p>当提交按钮的<code>type=”submit”</code>时，会在 success 之前自动触发表单验证，Guns 提交按钮为普通按钮，故需要手动触发。</p>
 <figure class="highlight html"><figcaption><span>WEB-INF/view/common/tags/button.tag</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">...</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -596,7 +608,8 @@
 </ul>
 </li>
 </ol>
-<h3 id="正整数"><a href="#正整数" class="headerlink" title="正整数"></a>正整数</h3><p>方式一：</p>
+<h3 id="正整数">正整数</h3>
+<p>方式一：</p>
 <p>用 BootstrapValidator 验证正整数时需要适用正则表达式：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">validateFields: &#123;</span><br><span class="line">        count: &#123;</span><br><span class="line">            validators: &#123;</span><br><span class="line">                regexp: &#123;</span><br><span class="line">                    regexp: <span class="regexp">/^[1-9]\d*$ /</span>,</span><br><span class="line">                    message: <span class="string">'格式错误，请输入正整数'</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>方式二：</p>
@@ -762,7 +775,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1657,5 +1670,5 @@
 	<!-- 代码块复制功能 -->
 	<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
 	<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>

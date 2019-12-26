@@ -124,7 +124,7 @@
 <meta property="og:description" content="JPA的使用">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://javadeveloperzone.com/wp-content/uploads/2018/02/Spring-boot-jpa-mysql-example-1024x488.jpg">
-<meta property="og:updated_time" content="2019-12-25T10:04:23.339Z">
+<meta property="og:updated_time" content="2019-12-26T06:13:47.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Use JPA in Spring Boot">
 <meta name="twitter:description" content="JPA的使用">
@@ -470,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-25 18:04:23" itemprop="dateModified" datetime="2019-12-25T18:04:23+08:00">2019-12-25</time>
+                <time title="修改时间：2019-12-26 14:13:47" itemprop="dateModified" datetime="2019-12-26T14:13:47+08:00">2019-12-26</time>
               
             
           </span>
@@ -547,13 +547,17 @@
       
 
       
-        <p><img src="https://javadeveloperzone.com/wp-content/uploads/2018/02/Spring-boot-jpa-mysql-example-1024x488.jpg" width="100%"></p>
+        <img src="https://javadeveloperzone.com/wp-content/uploads/2018/02/Spring-boot-jpa-mysql-example-1024x488.jpg" width="100%">
 <a id="more"></a>
-<h2 id="什么是JPA"><a href="#什么是JPA" class="headerlink" title="什么是JPA"></a>什么是JPA</h2><p>​    JPA 的全称叫做 Java Persistence API，是一个基于 O/R 映射的标准<strong>规范</strong>。目前 JPA 的主要实现有Hibernate、EclipseLink、OpenJPA等，事实上，由于 Hibernate 在数据访问解决技术领域的绝对霸主地位，JPA的标准基本是由 Hibernate 来主导的。Spring 框架为我们提供了 Spring Data JPA，可以减少我们使用 JPA 时的代码量。</p>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
-<li><p><code>spring.jpa.show-sql=true</code>：日志中打印 SQL 语句。</p>
+<h2 id="什么是JPA">什么是JPA</h2>
+<p>​	JPA 的全称叫做 Java Persistence API，是一个基于 O/R 映射的标准<strong>规范</strong>。目前 JPA 的主要实现有Hibernate、EclipseLink、OpenJPA等，事实上，由于 Hibernate 在数据访问解决技术领域的绝对霸主地位，JPA的标准基本是由 Hibernate 来主导的。Spring 框架为我们提供了 Spring Data JPA，可以减少我们使用 JPA 时的代码量。</p>
+<h2 id="配置">配置</h2>
+<ol>
+<li>
+<p><code>spring.jpa.show-sql=true</code>：日志中打印 SQL 语句。</p>
 </li>
-<li><p><code>spring.jpa.hibernate.ddl-auto=create</code>：配置实体类维护数据库表结构的具体行为。</p>
+<li>
+<p><code>spring.jpa.hibernate.ddl-auto=create</code>：配置实体类维护数据库表结构的具体行为。</p>
 <ul>
 <li>update：当实体类的属性发生变化时，表结构跟着更新。</li>
 <li>create：启动的时候删除现有的表，并根据实体类重新生成表。</li>
@@ -562,53 +566,69 @@
 <li>none：什么都不做。</li>
 </ul>
 </li>
-<li><p><code>spring.jpa.database-platform=org.hibernate.dialect.MySQL5InnoDBDialect</code></p>
+<li>
+<p><code>spring.jpa.database-platform=org.hibernate.dialect.MySQL5InnoDBDialect</code></p>
 <p>在 SrpingBoot 2.0 版本中，Hibernate 创建数据表的时候，默认的数据库存储引擎选择的是 MyISAM 。这个参数是在建表的时候，将默认的存储引擎切换为 InnoDB 用的。</p>
 </li>
-<li><p><code>jpa.generate-ddl=true</code>：开启 DDL 功能。<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html#howto-initialize-a-database-using-jpa" target="_blank" rel="noopener">Initialize a Database Using JPA</a></p>
+<li>
+<p><code>jpa.generate-ddl=true</code>：开启 DDL 功能。<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html#howto-initialize-a-database-using-jpa" target="_blank" rel="noopener">Initialize a Database Using JPA</a></p>
 </li>
 </ol>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><blockquote>
+<h2 id="使用">使用</h2>
+<blockquote>
 <p><a href="https://docs.spring.io/spring-data/jpa/docs/2.1.0.RELEASE/api/" target="_blank" rel="noopener">Spring Data JPA 2.1.0.RELEASE API</a></p>
 </blockquote>
-<h3 id="原生SQL语句"><a href="#原生SQL语句" class="headerlink" title="原生SQL语句"></a>原生SQL语句</h3><ol>
+<h3 id="原生SQL语句">原生SQL语句</h3>
+<ol>
 <li>使用<code>@Query</code>注解</li>
 <li>设置 nativeQuery 属性值为 true</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Query</span>(value=<span class="string">"SELECT count(*) FROM user"</span>, nativeQuery=<span class="keyword">true</span>)</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getTotalRow</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
-<h3 id="JPQL"><a href="#JPQL" class="headerlink" title="JPQL"></a>JPQL</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Query</span>(<span class="string">"SELECT u FROM User u WHERE u.status = 1"</span>)</span><br><span class="line"><span class="function">Collection&lt;User&gt; <span class="title">findAllActiveUsers</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="JPQL">JPQL</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Query</span>(<span class="string">"SELECT u FROM User u WHERE u.status = 1"</span>)</span><br><span class="line"><span class="function">Collection&lt;User&gt; <span class="title">findAllActiveUsers</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
 <p><strong>JPQL 不支持使用 INSERT</strong></p>
-<h3 id="多条件查询"><a href="#多条件查询" class="headerlink" title="多条件查询"></a>多条件查询</h3><blockquote>
+<h3 id="多条件查询">多条件查询</h3>
+<blockquote>
 <p><a href="https://www.jianshu.com/p/659e9715d01d" target="_blank" rel="noopener">【一目了然】Spring Data JPA使用Specification动态构建多表查询、复杂查询及排序示例</a></p>
 </blockquote>
 <ol>
-<li><p>dao 层接口继承 <a href="https://docs.spring.io/spring-data/jpa/docs/2.1.0.RELEASE/api/org/springframework/data/jpa/repository/JpaSpecificationExecutor.html" target="_blank" rel="noopener">JpaSpecificationExecutor</a> 接口。</p>
+<li>
+<p>dao 层接口继承 <a href="https://docs.spring.io/spring-data/jpa/docs/2.1.0.RELEASE/api/org/springframework/data/jpa/repository/JpaSpecificationExecutor.html" target="_blank" rel="noopener">JpaSpecificationExecutor</a> 接口。</p>
 </li>
-<li><p>调用 <a href="https://docs.spring.io/spring-data/jpa/docs/2.1.0.RELEASE/api/org/springframework/data/jpa/repository/JpaSpecificationExecutor.html#findAll-org.springframework.data.jpa.domain.Specification-" target="_blank" rel="noopener">List<t> findAll(Specification<t> spec);</t></t></a></p>
+<li>
+<p>调用 <a href="https://docs.spring.io/spring-data/jpa/docs/2.1.0.RELEASE/api/org/springframework/data/jpa/repository/JpaSpecificationExecutor.html#findAll-org.springframework.data.jpa.domain.Specification-" target="_blank" rel="noopener">List<t> findAll(Specification<t> spec);</t></t></a></p>
 </li>
-<li><p>实现 <a href="https://docs.spring.io/spring-data/jpa/docs/2.1.0.RELEASE/api/org/springframework/data/jpa/domain/Specification.html" target="_blank" rel="noopener">Specification</a></p>
+<li>
+<p>实现 <a href="https://docs.spring.io/spring-data/jpa/docs/2.1.0.RELEASE/api/org/springframework/data/jpa/domain/Specification.html" target="_blank" rel="noopener">Specification</a></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> root 根对象，即条件将被封装到该对象中。where 列名 = label.getXXX</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> query 查询关键字的封装。例如group by、order by等。几乎不用！</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> cb 用来封装条件对象。</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@return</span> 返回null代表没有任何条件</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root&lt;T&gt; root, CriteriaQuery&lt;?&gt; query, CriteriaBuilder cb)</span></span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>eg：</p>
+<li>
+<p>eg：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">getStudent</span><span class="params">(String studentNumber,String name ,String nickName,</span></span></span><br><span class="line"><span class="function"><span class="params">            Date birthday,String courseName,<span class="keyword">float</span> chineseScore,<span class="keyword">float</span> mathScore,</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="keyword">float</span> englishScore,<span class="keyword">float</span> performancePoints)</span> </span>&#123;</span><br><span class="line">    Specification&lt;Student&gt; specification = <span class="keyword">new</span> Specification&lt;Student&gt;()&#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root&lt;Student&gt; root, CriteriaQuery&lt;?&gt; query, CriteriaBuilder cb)</span> </span>&#123;</span><br><span class="line">            <span class="comment">//用于暂时存放查询条件的集合</span></span><br><span class="line">            List&lt;Predicate&gt; predicatesList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="comment">//--------------------------------------------</span></span><br><span class="line">            <span class="comment">//查询条件示例</span></span><br><span class="line">            <span class="comment">//equal示例</span></span><br><span class="line">            <span class="keyword">if</span> (!StringUtils.isEmpty(name))&#123;</span><br><span class="line">                Predicate namePredicate = cb.equal(root.get(<span class="string">"name"</span>), name);</span><br><span class="line">                predicatesList.add(namePredicate);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//like示例</span></span><br><span class="line">            <span class="keyword">if</span> (!StringUtils.isEmpty(nickName))&#123;</span><br><span class="line">                Predicate nickNamePredicate = cb.like(root.get(<span class="string">"nickName"</span>), <span class="string">'%'</span>+nickName+<span class="string">'%'</span>);</span><br><span class="line">                predicatesList.add(nickNamePredicate);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//between示例</span></span><br><span class="line">            <span class="keyword">if</span> (birthday != <span class="keyword">null</span>) &#123;</span><br><span class="line">                Predicate birthdayPredicate = cb.between(root.get(<span class="string">"birthday"</span>), birthday, <span class="keyword">new</span> Date());</span><br><span class="line">                predicatesList.add(birthdayPredicate);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//关联表查询示例</span></span><br><span class="line">            <span class="keyword">if</span> (!StringUtils.isEmpty(courseName)) &#123;</span><br><span class="line">                Join&lt;Student,Teacher&gt; joinTeacher = root.join(<span class="string">"teachers"</span>,JoinType.LEFT);</span><br><span class="line">                Predicate coursePredicate = cb.equal(joinTeacher.get(<span class="string">"courseName"</span>), courseName);</span><br><span class="line">                predicatesList.add(coursePredicate);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//复杂条件组合示例</span></span><br><span class="line">            <span class="keyword">if</span> (chineseScore!=<span class="number">0</span> &amp;&amp; mathScore!=<span class="number">0</span> &amp;&amp; englishScore!=<span class="number">0</span> &amp;&amp; performancePoints!=<span class="number">0</span>) &#123;</span><br><span class="line">                Join&lt;Student,Examination&gt; joinExam = root.join(<span class="string">"exams"</span>,JoinType.LEFT);</span><br><span class="line">                Predicate predicateExamChinese = cb.ge(joinExam.get(<span class="string">"chineseScore"</span>),chineseScore);</span><br><span class="line">                Predicate predicateExamMath = cb.ge(joinExam.get(<span class="string">"mathScore"</span>),mathScore);</span><br><span class="line">                Predicate predicateExamEnglish = cb.ge(joinExam.get(<span class="string">"englishScore"</span>),englishScore);</span><br><span class="line">                Predicate predicateExamPerformance = cb.ge(joinExam.get(<span class="string">"performancePoints"</span>),performancePoints);</span><br><span class="line">                <span class="comment">//组合</span></span><br><span class="line">                Predicate predicateExam = cb.or(predicateExamChinese,predicateExamEnglish,predicateExamMath);</span><br><span class="line">                Predicate predicateExamAll = cb.and(predicateExamPerformance,predicateExam);</span><br><span class="line">                predicatesList.add(predicateExamAll);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//--------------------------------------------</span></span><br><span class="line">            <span class="comment">//排序示例(先根据学号排序，后根据姓名排序)</span></span><br><span class="line">            query.orderBy(cb.asc(root.get(<span class="string">"studentNumber"</span>)),cb.asc(root.get(<span class="string">"name"</span>)));</span><br><span class="line">            <span class="comment">//--------------------------------------------</span></span><br><span class="line">            <span class="comment">//最终将查询条件拼好然后return</span></span><br><span class="line">            Predicate[] predicates = <span class="keyword">new</span> Predicate[predicatesList.size()];</span><br><span class="line">            <span class="keyword">return</span> cb.and(predicatesList.toArray(predicates));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> repository.findAll(specification);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <blockquote>
 <p>使用 <a href="https://link.jianshu.com/?t=https%3A%2F%2Fgithub.com%2Fwenhao%2Fjpa-spec" target="_blank" rel="noopener">jpa-spec</a> 能够减少一些代码量</p>
 </blockquote>
-<h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><ol>
-<li><p>dao 层接口继承 <code>JpaSpecificationExecutor</code>接口。</p>
+<h3 id="分页">分页</h3>
+<ol>
+<li>
+<p>dao 层接口继承 <code>JpaSpecificationExecutor</code>接口。</p>
 </li>
-<li><p>调用 <a href="https://docs.spring.io/spring-data/jpa/docs/2.1.0.RELEASE/api/org/springframework/data/jpa/repository/JpaSpecificationExecutor.html#findAll-org.springframework.data.jpa.domain.Specification-org.springframework.data.domain.Pageable-" target="_blank" rel="noopener">Page<t> findAll(@Nullable Specification<t> spec, Pageable pageable)</t></t></a></p>
+<li>
+<p>调用 <a href="https://docs.spring.io/spring-data/jpa/docs/2.1.0.RELEASE/api/org/springframework/data/jpa/repository/JpaSpecificationExecutor.html#findAll-org.springframework.data.jpa.domain.Specification-org.springframework.data.domain.Pageable-" target="_blank" rel="noopener">Page<t> findAll(@Nullable Specification<t> spec, Pageable pageable)</t></t></a></p>
 </li>
-<li><p>实现 <a href="https://docs.spring.io/spring-data/jpa/docs/2.1.0.RELEASE/api/org/springframework/data/jpa/domain/Specification.html" target="_blank" rel="noopener">Specification</a>，及 <a href="https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/domain/Pageable.html?is-external=true" target="_blank" rel="noopener">Pageable</a></p>
+<li>
+<p>实现 <a href="https://docs.spring.io/spring-data/jpa/docs/2.1.0.RELEASE/api/org/springframework/data/jpa/domain/Specification.html" target="_blank" rel="noopener">Specification</a>，及 <a href="https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/domain/Pageable.html?is-external=true" target="_blank" rel="noopener">Pageable</a></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> root 根对象，即条件将被封装到该对象中。where 列名 = label.getXXX</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> query 查询关键字的封装。例如group by、order by等。几乎不用！</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> cb 用来封装条件对象。</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> pageable 用来封装分页的对象。</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@return</span> 返回null代表没有任何条件</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Page&lt;T&gt; <span class="title">toPredicate</span><span class="params">(Root&lt;T&gt; root, CriteriaQuery&lt;?&gt; query, CriteriaBuilder cb, Pageable pageable)</span></span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>eg：</p>
+<li>
+<p>eg：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Page&lt;User&gt; <span class="title">selectAll</span><span class="params">(<span class="keyword">int</span> pageNum, <span class="keyword">int</span> pageSize)</span> </span>&#123;</span><br><span class="line">    Pageable pageable = <span class="keyword">new</span> PageRequest(pageNum, pageSize);</span><br><span class="line">    Page&lt;User&gt; users = userRepository.findAll(<span class="keyword">new</span> Specification&lt;Student&gt;()&#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root&lt;Student&gt; root, CriteriaQuery&lt;?&gt; query, CriteriaBuilder cb)</span> </span>&#123;</span><br><span class="line">            List&lt;Predicate&gt; predicatesList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">if</span> (!StringUtils.isEmpty(name))&#123;</span><br><span class="line">                Predicate namePredicate = cb.equal(root.get(<span class="string">"name"</span>), name);</span><br><span class="line">                predicatesList.add(namePredicate);</span><br><span class="line">            &#125;</span><br><span class="line">            Predicate[] predicates = <span class="keyword">new</span> Predicate[predicatesList.size()];</span><br><span class="line">            <span class="keyword">return</span> cb.and(predicatesList.toArray(predicates));</span><br><span class="line">        &#125;, pageable);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><blockquote>
+<h3 id="事务">事务</h3>
+<blockquote>
 <p><a href="https://blog.csdn.net/moshowgame/article/details/80090453" target="_blank" rel="noopener">JPA事务问题Executing an update/delete query</a></p>
 <p><a href="https://blog.csdn.net/hanghangde/article/details/53241150" target="_blank" rel="noopener">用Spring boot jpa update modify delete 数据和事务管理的那些坑</a></p>
 </blockquote>
@@ -777,7 +797,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1672,5 +1692,5 @@
 	<!-- 代码块复制功能 -->
 	<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
 	<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>

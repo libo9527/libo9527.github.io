@@ -123,7 +123,7 @@
 <meta property="og:description" content="JAVA学习笔记">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.imarslan.com/wp-content/uploads/2018/06/cover.png">
-<meta property="og:updated_time" content="2019-12-25T10:04:23.339Z">
+<meta property="og:updated_time" content="2019-12-26T06:13:47.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of JAVA">
 <meta name="twitter:description" content="JAVA学习笔记">
@@ -469,7 +469,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-25 18:04:23" itemprop="dateModified" datetime="2019-12-25T18:04:23+08:00">2019-12-25</time>
+                <time title="修改时间：2019-12-26 14:13:47" itemprop="dateModified" datetime="2019-12-26T14:13:47+08:00">2019-12-26</time>
               
             
           </span>
@@ -539,37 +539,51 @@
       
 
       
-        <p><img src="https://www.imarslan.com/wp-content/uploads/2018/06/cover.png" width="100%"></p>
+        <img src="https://www.imarslan.com/wp-content/uploads/2018/06/cover.png" width="100%">
 <a id="more"></a>
-<h2 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h2><h3 id="Integer-与-int"><a href="#Integer-与-int" class="headerlink" title="Integer 与 int"></a>Integer 与 int</h3><p>Integer 是类，提供了很多方法方便使用，而 int 可以保证没有空指针异常，初始值为 0。</p>
-<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><blockquote>
+<h2 id="包装类">包装类</h2>
+<h3 id="Integer-与-int">Integer 与 int</h3>
+<p>Integer 是类，提供了很多方法方便使用，而 int 可以保证没有空指针异常，初始值为 0。</p>
+<h2 id="泛型">泛型</h2>
+<blockquote>
 <p><a href="http://www.runoob.com/java/java-generics.html" target="_blank" rel="noopener">Java 泛型| 菜鸟教程</a></p>
 <p><a href="https://blog.csdn.net/qq_27093465/article/details/73229016" target="_blank" rel="noopener">Java泛型详解：和Class的使用。泛型类，泛型方法的详细使用实例</a></p>
 </blockquote>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>​    Java 泛型（generics）是 JDK 5 中引入的一个新特性, 泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型。</p>
-<p>​    <strong>泛型的本质是参数化类型</strong>，即将类型由原来具体的类型参数化。这种参数类型可以用在类、接口和方法中，分别被称为泛型类、泛型接口、泛型方法。<strong>泛型类型在逻辑上可以看成是多个不同的类型，实际上都是相同的基本类型。</strong></p>
-<p>​    ArrayList 就是泛型的典型应用。</p>
-<p>​    Java泛型很大程度上只能提供静态类型检查，然后类型的信息就会被擦除。类型擦除就是指 Java 泛型只能用于在编译期间的静态类型检查，然后编译器生成的代码会擦除相应的类型信息（即类型均变为 Object），这样到了运行期间实际上JVM根本就知道泛型所代表的具体类型。这样做的目的是因为Java泛型是1.5之后才被引入的，为了保持向下的兼容性，所以只能做类型擦除来兼容以前的非泛型代码。</p>
-<h3 id="相比-Object，泛型的优势"><a href="#相比-Object，泛型的优势" class="headerlink" title="相比 Object，泛型的优势"></a>相比 Object，泛型的优势</h3><ol>
+<h3 id="简介">简介</h3>
+<p>​	Java 泛型（generics）是 JDK 5 中引入的一个新特性, 泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型。</p>
+<p>​	<strong>泛型的本质是参数化类型</strong>，即将类型由原来具体的类型参数化。这种参数类型可以用在类、接口和方法中，分别被称为泛型类、泛型接口、泛型方法。<strong>泛型类型在逻辑上可以看成是多个不同的类型，实际上都是相同的基本类型。</strong></p>
+<p>​	ArrayList 就是泛型的典型应用。</p>
+<p>​	Java泛型很大程度上只能提供静态类型检查，然后类型的信息就会被擦除。类型擦除就是指 Java 泛型只能用于在编译期间的静态类型检查，然后编译器生成的代码会擦除相应的类型信息（即类型均变为 Object），这样到了运行期间实际上JVM根本就知道泛型所代表的具体类型。这样做的目的是因为Java泛型是1.5之后才被引入的，为了保持向下的兼容性，所以只能做类型擦除来兼容以前的非泛型代码。</p>
+<h3 id="相比-Object，泛型的优势">相比 Object，泛型的优势</h3>
+<ol>
 <li>不用强制转换</li>
 <li>避开运行时的类型转换错误。在 settValue 时如果传入类型不对，编译时便会报错。</li>
 </ol>
-<h3 id="字母规范"><a href="#字母规范" class="headerlink" title="字母规范"></a>字母规范</h3><p>虽然在定义泛型时，可以使用任意字母，其意义完全相同，单为了提高可读性，还是用有意义的字母比较好，一般来讲，在不同的情境下使用的字母意义如下：</p>
+<h3 id="字母规范">字母规范</h3>
+<p>虽然在定义泛型时，可以使用任意字母，其意义完全相同，单为了提高可读性，还是用有意义的字母比较好，一般来讲，在不同的情境下使用的字母意义如下：</p>
 <ul>
 <li>E — Element，常用在 java Collection 里，如：List<e>,Iterator<e>,Set<e></e></e></e></li>
 <li>K,V — Key，Value，代表Map的键值对</li>
 <li>N — Number，数字</li>
 <li>T — Type，类型，如 String，Integer 等等</li>
 </ul>
-<h3 id="和-T-的区别"><a href="#和-T-的区别" class="headerlink" title="? 和 T 的区别"></a>? 和 T 的区别</h3><p>​    <code>? extends E</code>: 接收E类型或者E的子类型。<code>? super E</code>: 接收E类型或者E的父类型</p>
-<p>​    ？和T都表示不确定的类型 ，但如果是 T 的话，函数里面可以对 T 进行操作，比方 <code>T car = getCar()</code>，而不能用 <code>？ car = getCar()</code>。</p>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<h3 id="和-T-的区别">? 和 T 的区别</h3>
+<p>​	<code>? extends E</code>: 接收E类型或者E的子类型。<code>? super E</code>: 接收E类型或者E的父类型</p>
+<p>​	？和T都表示不确定的类型 ，但如果是 T 的话，函数里面可以对 T 进行操作，比方 <code>T car = getCar()</code>，而不能用 <code>？ car = getCar()</code>。</p>
+<h3 id="注意事项">注意事项</h3>
+<ol>
 <li>Java 中不允许创建泛型数组</li>
 </ol>
-<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h3 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h3><h4 id="nCopies"><a href="#nCopies" class="headerlink" title="nCopies()"></a>nCopies()</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(</span><br><span class="line">    Collections.nCopies(<span class="number">3</span>, <span class="number">0</span>));</span><br><span class="line">  System.out.println(list);</span><br><span class="line">  <span class="comment">// [0, 0, 0]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="fill"><a href="#fill" class="headerlink" title="fill()"></a>fill()</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(</span><br><span class="line">    Collections.nCopies(<span class="number">3</span>, <span class="number">0</span>));</span><br><span class="line">  System.out.println(list);</span><br><span class="line">  <span class="comment">// [0, 0, 0]</span></span><br><span class="line">  Collections.fill(list, <span class="number">1</span>);</span><br><span class="line">  System.out.println(list);</span><br><span class="line">  <span class="comment">// [1, 1, 1]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="集合">集合</h2>
+<h3 id="Collections">Collections</h3>
+<h4 id="nCopies">nCopies()</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(</span><br><span class="line">    Collections.nCopies(<span class="number">3</span>, <span class="number">0</span>));</span><br><span class="line">  System.out.println(list);</span><br><span class="line">  <span class="comment">// [0, 0, 0]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="fill">fill()</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(</span><br><span class="line">    Collections.nCopies(<span class="number">3</span>, <span class="number">0</span>));</span><br><span class="line">  System.out.println(list);</span><br><span class="line">  <span class="comment">// [0, 0, 0]</span></span><br><span class="line">  Collections.fill(list, <span class="number">1</span>);</span><br><span class="line">  System.out.println(list);</span><br><span class="line">  <span class="comment">// [1, 1, 1]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Collections.nCopies() 只能在创建 List 时填充容器，Collections.fill() 是用来对一个已有容器的填充。</p>
-<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3>
+<h2 id="线程">线程</h2>
+<h3 id="线程池">线程池</h3>
+
       
     </div>
 
@@ -722,7 +736,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1617,5 +1631,5 @@
 	<!-- 代码块复制功能 -->
 	<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
 	<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>

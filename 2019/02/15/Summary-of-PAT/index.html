@@ -124,7 +124,7 @@
 <meta property="og:description" content="PAT总结">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/01/11/5c3813443dce6.jpg">
-<meta property="og:updated_time" content="2019-12-25T10:04:23.339Z">
+<meta property="og:updated_time" content="2019-12-26T06:13:47.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Summary of PAT">
 <meta name="twitter:description" content="PAT总结">
@@ -470,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-25 18:04:23" itemprop="dateModified" datetime="2019-12-25T18:04:23+08:00">2019-12-25</time>
+                <time title="修改时间：2019-12-26 14:13:47" itemprop="dateModified" datetime="2019-12-26T14:13:47+08:00">2019-12-26</time>
               
             
           </span>
@@ -521,9 +521,11 @@
       
 
       
-        <p><img src="https://i.loli.net/2019/01/11/5c3813443dce6.jpg" width="100%"></p>
+        <img src="https://i.loli.net/2019/01/11/5c3813443dce6.jpg" width="100%">
 <a id="more"></a>
-<h2 id="PAT总结"><a href="#PAT总结" class="headerlink" title="PAT总结"></a>PAT总结</h2><h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><ul>
+<h2 id="PAT总结">PAT总结</h2>
+<h3 id="最佳实践">最佳实践</h3>
+<ul>
 <li>输入使用<code>scanf</code>，输出使用<code>printf</code></li>
 <li>题目要求 10^9 以内或者说 32 位整数，使用 int</li>
 <li>题目要求 10^10 以内或者说 64 位整数，使用 double</li>
@@ -534,20 +536,26 @@
 <li>数组大小大于 10^6，则将其定义在主函数外面</li>
 <li>只用 memset 函数给数组赋 0 或 -1，使用 fill 函数赋其他值</li>
 </ul>
-<h3 id="PAT-OJ-坑"><a href="#PAT-OJ-坑" class="headerlink" title="PAT OJ 坑"></a>PAT OJ 坑</h3><ul>
-<li><p>PTA OJ 使用 <code>get()</code> 函数，C++ 会编译不通过，C 编译可以通过，但注意将头文件修改成 C 语言格式。</p>
+<h3 id="PAT-OJ-坑">PAT OJ 坑</h3>
+<ul>
+<li>
+<p>PTA OJ 使用 <code>get()</code> 函数，C++ 会编译不通过，C 编译可以通过，但注意将头文件修改成 C 语言格式。</p>
 <p>解决方法：</p>
 <ol>
-<li><p>使用 <code>scanf(&quot;%s&quot;, a)</code> 替代</p>
+<li>
+<p>使用 <code>scanf(&quot;%s&quot;, a)</code> 替代</p>
 <p>sacanf() 无法接受带有空格的字符串。</p>
 </li>
-<li><p>使用 <code>fgets(char* a,int maxlens,stdin)</code> 替代</p>
+<li>
+<p>使用 <code>fgets(char* a,int maxlens,stdin)</code> 替代</p>
 <p>fgets 函数在<strong>未读取到我们要求的大小时</strong>（例如 maxlens=10，但只输入了3个字符），遇到换行符，那么读取到的数据就是： 已经读到的数据（遇到换行符前的数据）+ 换行符 + NULL，这会导致 strlen() 函数求得的长度比实际值多 1。</p>
 </li>
 </ol>
 </li>
 </ul>
-<h3 id="C-C-语法"><a href="#C-C-语法" class="headerlink" title="C / C++ 语法"></a>C / C++ 语法</h3><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><p><strong>四种基本数据类型</strong></p>
+<h3 id="C-C-语法">C / C++ 语法</h3>
+<h4 id="数据类型">数据类型</h4>
+<p><strong>四种基本数据类型</strong></p>
 <table>
 <thead>
 <tr>
@@ -583,7 +591,8 @@
 </tbody>
 </table>
 <p>long long 型赋大于 2^31 - 1 的初值时，需要在初值后面加上 LL</p>
-<h4 id="格式符"><a href="#格式符" class="headerlink" title="格式符"></a>格式符</h4><p><strong>scanf 格式符</strong></p>
+<h4 id="格式符">格式符</h4>
+<p><strong>scanf 格式符</strong></p>
 <table>
 <thead>
 <tr>
@@ -676,26 +685,34 @@
 </tr>
 </tbody>
 </table>
-<p><strong><em>想要输出 <code>%</code>,<code>\</code>需要在前面再加上一个<code>%</code>,<code>\</code></em></strong></p>
-<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p><strong>常用 math 函数</strong></p>
+<p><em><strong>想要输出 <code>%</code>,<code>\</code>需要在前面再加上一个<code>%</code>,<code>\</code></strong></em></p>
+<h4 id="函数">函数</h4>
+<p><strong>常用 math 函数</strong></p>
 <p>使用时需要添加 <code>&lt;cmath</code> 头文件。</p>
 <ol>
-<li><p>绝对值：<code>fabs(double x)</code></p>
+<li>
+<p>绝对值：<code>fabs(double x)</code></p>
 </li>
-<li><p>取整：<code>floor(double x)</code>，<code>ceil(double x)</code></p>
+<li>
+<p>取整：<code>floor(double x)</code>，<code>ceil(double x)</code></p>
 </li>
-<li><p>指数：<code>sqrt(double x)</code></p>
+<li>
+<p>指数：<code>sqrt(double x)</code></p>
 </li>
-<li><p>对数：<code>log(double x)</code></p>
+<li>
+<p>对数：<code>log(double x)</code></p>
 </li>
 </ol>
 <p>换底公式：<code>log(a, b) = log(e, b) / log(e, a)</code></p>
 <ol start="5">
-<li><p>三角：<code>sin(double x), cos(double x), tan(double x)</code></p>
+<li>
+<p>三角：<code>sin(double x), cos(double x), tan(double x)</code></p>
 </li>
-<li><p>反三角：<code>asin(double x), acos(double x), atan(double x)</code></p>
+<li>
+<p>反三角：<code>asin(double x), acos(double x), atan(double x)</code></p>
 </li>
-<li><p>四舍五入：<code>round(double x)</code></p>
+<li>
+<p>四舍五入：<code>round(double x)</code></p>
 </li>
 </ol>
 <p><strong>memset</strong></p>
@@ -704,35 +721,46 @@
 <p><strong>常见 string 函数</strong></p>
 <p>需要添加 <code>&lt;cstring&gt;</code> 头文件</p>
 <ol>
-<li><p>取长：<code>strlen()</code></p>
-<p>strlen() 函数返回的类型是一个无符号整数类型，这就带来了一些需要<strong><em>注意的问题</em></strong>。</p>
-<p>比如<br>1  <code>if( strlen(str1) &gt;= strlen(str2) )......</code><br>2  <code>if( strlen(str1) - strlen(str2) &gt;= 0)......</code></p>
+<li>
+<p>取长：<code>strlen()</code></p>
+<p>strlen() 函数返回的类型是一个无符号整数类型，这就带来了一些需要<em><strong>注意的问题</strong></em>。</p>
+<p>比如<br>
+1  <code>if( strlen(str1) &gt;= strlen(str2) )......</code><br>
+2  <code>if( strlen(str1) - strlen(str2) &gt;= 0)......</code></p>
 <p>第一个 if 能够正常工作，但是第二个就不能了，因为 strlen() 的返回值是无符号整型值，所以 &gt;=  左边的整个式子的结果就是一个无符号整型值。也就是说第二个 if 的结果永远都为真（无符号数不可能大于0）。</p>
 </li>
-<li><p>比较：<code>strcmp()</code></p>
+<li>
+<p>比较：<code>strcmp()</code></p>
 </li>
-<li><p>复制：<code>strcpy()</code></p>
+<li>
+<p>复制：<code>strcpy()</code></p>
 </li>
-<li><p>拼接：<code>strcat()</code></p>
+<li>
+<p>拼接：<code>strcat()</code></p>
 </li>
 </ol>
 <p>数组可以作为函数的参数，但<strong>不能作为返回值类型</strong></p>
-<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>数组大小必须是整数常量，不可以是变量</p>
+<h4 id="数组">数组</h4>
+<p>数组大小必须是整数常量，不可以是变量</p>
 <p>整型数组部分初始化后其余默认位 0，但如果都没有初始化，则每个元素都是一个随机数。</p>
 <p>字符数组可以直接赋值字符串类初始化，但<strong>仅限于初始化</strong>，其他位置不允许。</p>
-<h4 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h4><ul>
+<h4 id="指针">指针</h4>
+<ul>
 <li>指针就是变量的地址</li>
 <li>指针是一个 unsigned 类型的整数</li>
 <li><code>*</code> 一般放在变量前，但<strong>星号是类型的一部分</strong></li>
 </ul>
-<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><ul>
+<h4 id="引用">引用</h4>
+<ul>
 <li>引用不产生副本，而是给原变量<strong>起别名</strong></li>
 <li>引用不是取地址。<code>&amp;</code> 只有在函数的参数列表中出现才叫<strong>引用</strong>，其余地方叫<strong>取址符</strong></li>
 </ul>
-<h4 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h4><ul>
+<h4 id="结构体">结构体</h4>
+<ul>
 <li>访问结构体内的元素有两种方法：<code>.</code> 和 <code>-&gt;</code></li>
 </ul>
-<h4 id="浮点数的比较"><a href="#浮点数的比较" class="headerlink" title="浮点数的比较"></a>浮点数的比较</h4><p>精度 eps 一般取 10^-8</p>
+<h4 id="浮点数的比较">浮点数的比较</h4>
+<p>精度 eps 一般取 10^-8</p>
 <p><code>const double eps = 1e-8</code></p>
 <ol>
 <li>等于</li>
@@ -754,15 +782,22 @@
 <li>小于等于</li>
 </ol>
 <p><code>#define LessEqu(a, b)(((a) - (b) &lt; (eps)))</code></p>
-<h4 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h4><p><strong>时间复杂度</strong></p>
+<h4 id="复杂度">复杂度</h4>
+<p><strong>时间复杂度</strong></p>
 <p>O(1) &lt; O(logn) &lt; O(n) &lt; O(n^2)</p>
 <p><strong>空间复杂度</strong></p>
 <p>一般都够用，只要不开好几盒 10^7 以上的数组即可。</p>
-<h3 id="评测结果"><a href="#评测结果" class="headerlink" title="评测结果"></a>评测结果</h3><h4 id="AC（Accepted-答案正确）"><a href="#AC（Accepted-答案正确）" class="headerlink" title="AC（Accepted 答案正确）"></a>AC（Accepted 答案正确）</h4><h4 id="CE（Compile-Eroor-编译错误）"><a href="#CE（Compile-Eroor-编译错误）" class="headerlink" title="CE（Compile Eroor 编译错误）"></a>CE（Compile Eroor 编译错误）</h4><h4 id="WA（Wrong-Answer-答案错误）"><a href="#WA（Wrong-Answer-答案错误）" class="headerlink" title="WA（Wrong Answer 答案错误）"></a>WA（Wrong Answer 答案错误）</h4><h4 id="TLE（Time-Limit-Exceeded-运行超时）"><a href="#TLE（Time-Limit-Exceeded-运行超时）" class="headerlink" title="TLE（Time Limit Exceeded 运行超时）"></a>TLE（Time Limit Exceeded 运行超时）</h4><ul>
+<h3 id="评测结果">评测结果</h3>
+<h4 id="AC（Accepted-答案正确）">AC（Accepted 答案正确）</h4>
+<h4 id="CE（Compile-Eroor-编译错误）">CE（Compile Eroor 编译错误）</h4>
+<h4 id="WA（Wrong-Answer-答案错误）">WA（Wrong Answer 答案错误）</h4>
+<h4 id="TLE（Time-Limit-Exceeded-运行超时）">TLE（Time Limit Exceeded 运行超时）</h4>
+<ul>
 <li>时间复杂度太高</li>
 <li>死循环</li>
 </ul>
-<h4 id="RE（Runtime-Error-运行错误）"><a href="#RE（Runtime-Error-运行错误）" class="headerlink" title="RE（Runtime Error 运行错误）"></a>RE（Runtime Error 运行错误）</h4><ul>
+<h4 id="RE（Runtime-Error-运行错误）">RE（Runtime Error 运行错误）</h4>
+<ul>
 <li>段错误</li>
 <li>非法访问内存</li>
 <li>数组越界</li>
@@ -773,14 +808,17 @@
 <li>递归爆栈</li>
 <li>递归层数太深</li>
 </ul>
-<h4 id="MLE（Memory-Limit-Exceeded-内存超限）"><a href="#MLE（Memory-Limit-Exceeded-内存超限）" class="headerlink" title="MLE（Memory Limit Exceeded 内存超限）"></a>MLE（Memory Limit Exceeded 内存超限）</h4><ul>
+<h4 id="MLE（Memory-Limit-Exceeded-内存超限）">MLE（Memory Limit Exceeded 内存超限）</h4>
+<ul>
 <li>数组太大</li>
 </ul>
-<h4 id="PE（Presentation-Error-格式错误）"><a href="#PE（Presentation-Error-格式错误）" class="headerlink" title="PE（Presentation Error 格式错误）"></a>PE（Presentation Error 格式错误）</h4><ul>
+<h4 id="PE（Presentation-Error-格式错误）">PE（Presentation Error 格式错误）</h4>
+<ul>
 <li>空格</li>
 <li>换行</li>
 </ul>
-<h4 id="OLE（Output-Limit-Exceeded-输出超限）"><a href="#OLE（Output-Limit-Exceeded-输出超限）" class="headerlink" title="OLE（Output Limit Exceeded 输出超限）"></a>OLE（Output Limit Exceeded 输出超限）</h4><ul>
+<h4 id="OLE（Output-Limit-Exceeded-输出超限）">OLE（Output Limit Exceeded 输出超限）</h4>
+<ul>
 <li>调试信息</li>
 <li>死循环输出</li>
 </ul>
@@ -931,7 +969,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1800,5 +1838,5 @@
 	<!-- 代码块复制功能 -->
 	<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
 	<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>

@@ -125,7 +125,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://backlog.com/app/themes/backlog-child/assets/img/guides/git/basics/rewriting_history_005.png">
 <meta property="og:image" content="https://i.loli.net/2019/11/15/xvD9GbWqJ6rBAMk.png">
-<meta property="og:updated_time" content="2019-12-25T10:04:23.339Z">
+<meta property="og:updated_time" content="2019-12-26T06:13:47.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Permission Control in Git Repository">
 <meta name="twitter:description" content="Git 仓库中的权限控制">
@@ -471,7 +471,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-25 18:04:23" itemprop="dateModified" datetime="2019-12-25T18:04:23+08:00">2019-12-25</time>
+                <time title="修改时间：2019-12-26 14:13:47" itemprop="dateModified" datetime="2019-12-26T14:13:47+08:00">2019-12-26</time>
               
             
           </span>
@@ -534,26 +534,30 @@
       
 
       
-        <p><img src="https://backlog.com/app/themes/backlog-child/assets/img/guides/git/basics/rewriting_history_005.png" width="100%"></p>
+        <img src="https://backlog.com/app/themes/backlog-child/assets/img/guides/git/basics/rewriting_history_005.png" width="100%">
 <a id="more"></a>
 <blockquote>
 <p>原有的 Git 并不支持权限控制，权限控制都是各大远程仓库托管平台所提供的功能。</p>
 </blockquote>
-<h2 id="合并流程"><a href="#合并流程" class="headerlink" title="合并流程"></a>合并流程</h2><blockquote>
+<h2 id="合并流程">合并流程</h2>
+<blockquote>
 <p>我们公司 API 项目组的 master 分支的合并权限是测试人员才有的，也就是说只有测试人员才能把其他开发分支合并到 master 分支。</p>
 </blockquote>
 <p>因为合并的时候如果有冲突，就需要到测试人员那里去解决冲突，但是测试那里并没有开发环境，解决冲突后无法确定项目是否能正常运行（如果合并时出现合并后存在问题的代码），而部署的权限也在测试手里，合完后他们就直接部署了。</p>
 <p>这就存在合并后有冲突，冲突解决后如果代码存在运行时异常，直接部署后导致部署失败，又需要回退再重新合并。</p>
 <p>为了解决这种麻烦且易错的问题，我的方案如下。</p>
-<h3 id="主要角色"><a href="#主要角色" class="headerlink" title="主要角色"></a>主要角色</h3><ol>
+<h3 id="主要角色">主要角色</h3>
+<ol>
 <li>QA：测试人员</li>
 <li>DP：开发人员</li>
 </ol>
-<h3 id="涉及分支"><a href="#涉及分支" class="headerlink" title="涉及分支"></a>涉及分支</h3><ol>
+<h3 id="涉及分支">涉及分支</h3>
+<ol>
 <li>master</li>
 <li>API-1921（根据 jira 分配的任务编号建对应分支）</li>
 </ol>
-<h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><p><img src="https://i.loli.net/2019/11/15/xvD9GbWqJ6rBAMk.png" alt=""></p>
+<h3 id="流程图">流程图</h3>
+<p><img src="https://i.loli.net/2019/11/15/xvD9GbWqJ6rBAMk.png" alt=""></p>
 
       
     </div>
@@ -713,7 +717,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1608,5 +1612,5 @@
 	<!-- 代码块复制功能 -->
 	<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
 	<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>

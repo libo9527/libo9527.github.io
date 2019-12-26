@@ -124,7 +124,7 @@
 <meta property="og:description" content="Mac 终端的使用">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://photos5.appleinsider.com/gallery/29497-47785-000-3x2-Terminal-part-2-l.jpg">
-<meta property="og:updated_time" content="2019-12-25T10:04:23.339Z">
+<meta property="og:updated_time" content="2019-12-26T06:13:47.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac-OS-Terminal">
 <meta name="twitter:description" content="Mac 终端的使用">
@@ -470,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-25 18:04:23" itemprop="dateModified" datetime="2019-12-25T18:04:23+08:00">2019-12-25</time>
+                <time title="修改时间：2019-12-26 14:13:47" itemprop="dateModified" datetime="2019-12-26T14:13:47+08:00">2019-12-26</time>
               
             
           </span>
@@ -533,12 +533,14 @@
       
 
       
-        <p><img src="https://photos5.appleinsider.com/gallery/29497-47785-000-3x2-Terminal-part-2-l.jpg" width="100%"></p>
+        <img src="https://photos5.appleinsider.com/gallery/29497-47785-000-3x2-Terminal-part-2-l.jpg" width="100%">
 <a id="more"></a>
-<h2 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h2><blockquote>
+<h2 id="文件权限">文件权限</h2>
+<blockquote>
 <p><a href="http://cn.linux.vbird.org/linux_basic/0210filepermission.php" target="_blank" rel="noopener">第六章、Linux 的文件权限与目录配置</a></p>
 </blockquote>
-<h3 id="查看文件权限"><a href="#查看文件权限" class="headerlink" title="查看文件权限"></a>查看文件权限</h3><p>命令：<code>ls -l</code></p>
+<h3 id="查看文件权限">查看文件权限</h3>
+<p>命令：<code>ls -l</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l xxx.xxx</span><br><span class="line">-rw-r--r--@ 1 boris  staff  1080  7 31 18:00 xxx.xxx</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
@@ -554,24 +556,26 @@
 </thead>
 <tbody>
 <tr>
-<td>-rw-r--r--@</td>
+<td>-rw-r–r--@</td>
 <td>1</td>
 <td style="text-align:center">boris</td>
 <td>staff</td>
 <td>1080</td>
 <td>7 31 18:00</td>
-<td>xxx.xxx</td>
+<td><a href="http://xxx.xxx" target="_blank" rel="noopener">xxx.xxx</a></td>
 </tr>
 </tbody>
 </table>
-<h4 id="文件类型和访问权限"><a href="#文件类型和访问权限" class="headerlink" title="文件类型和访问权限"></a>文件类型和访问权限</h4><p>第一个符号代表文件类型：</p>
+<h4 id="文件类型和访问权限">文件类型和访问权限</h4>
+<p>第一个符号代表文件类型：</p>
 <ul>
 <li><code>-</code> 表示该文件是非目录类型</li>
 <li><code>d</code> 表示目录类型</li>
 <li>中间九个字母分为三组，分别对应用户（user）、所在组（group）和其他用户（other）对该文件的访问权限。每组中的三个字符 “rwx” 分别表示对应用户对该文件拥有的可读／可写／可执行权限，没有相应权限则使用 “-” 符号替代。</li>
 <li>末尾的 @ 符号表示文件拓展属性，属于文件系统的一个功能。</li>
 </ul>
-<h3 id="修改文件权限"><a href="#修改文件权限" class="headerlink" title="修改文件权限"></a>修改文件权限</h3><p>命令：<code>chmod [用户][操作][权限] [文件]</code></p>
+<h3 id="修改文件权限">修改文件权限</h3>
+<p>命令：<code>chmod [用户][操作][权限] [文件]</code></p>
 <ul>
 <li>用户部分：使用字母 u 表示文件拥有者（user），g 表示拥有者所在群组（group），o 表示其他用户（other），a 表示全部用户（all，包含前面三种用户范围）；</li>
 <li>操作部分：“+” 符号表示增加权限，“-” 符号表示取消权限，“=” 符号表示赋值权限；</li>
@@ -738,7 +742,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1633,5 +1637,5 @@
 	<!-- 代码块复制功能 -->
 	<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
 	<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>

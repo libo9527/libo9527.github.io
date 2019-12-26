@@ -124,7 +124,7 @@
 <meta property="og:description" content="JWT 最佳实践">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.wangbase.com/blogimg/asset/201807/bg2018072301.jpg">
-<meta property="og:updated_time" content="2019-12-25T10:04:23.339Z">
+<meta property="og:updated_time" content="2019-12-26T06:13:47.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The Bast Practice of JWT">
 <meta name="twitter:description" content="JWT 最佳实践">
@@ -470,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-25 18:04:23" itemprop="dateModified" datetime="2019-12-25T18:04:23+08:00">2019-12-25</time>
+                <time title="修改时间：2019-12-26 14:13:47" itemprop="dateModified" datetime="2019-12-26T14:13:47+08:00">2019-12-26</time>
               
             
           </span>
@@ -533,7 +533,7 @@
       
 
       
-        <p><img src="https://www.wangbase.com/blogimg/asset/201807/bg2018072301.jpg" width="100%"></p>
+        <img src="https://www.wangbase.com/blogimg/asset/201807/bg2018072301.jpg" width="100%">
 <a id="more"></a>
 <blockquote>
 <p><a href="https://jwt.io/" target="_blank" rel="noopener">官网</a></p>
@@ -541,40 +541,49 @@
 <p><a href="https://www.baeldung.com/java-json-web-tokens-jjwt" target="_blank" rel="noopener">Supercharge Java Authentication with JSON Web Tokens (JWTs)</a></p>
 <p><a href="https://juejin.im/post/5ca162b36fb9a05e181de126#heading-4" target="_blank" rel="noopener">Spring Boot Security 整合 JWT 实现 无状态的分布式API接口</a></p>
 </blockquote>
-<h2 id="Java-中-JWT-的实现"><a href="#Java-中-JWT-的实现" class="headerlink" title="Java 中 JWT 的实现"></a>Java 中 JWT 的实现</h2><ul>
+<h2 id="Java-中-JWT-的实现">Java 中 JWT 的实现</h2>
+<ul>
 <li><a href="https://github.com/auth0/java-jwt" target="_blank" rel="noopener">java-jwt</a></li>
 <li><a href="https://github.com/jwtk/jjwt" target="_blank" rel="noopener">jjwt</a></li>
 </ul>
-<h2 id="java-jwt"><a href="#java-jwt" class="headerlink" title="java-jwt"></a>java-jwt</h2><blockquote>
+<h2 id="java-jwt">java-jwt</h2>
+<blockquote>
 <p><a href="https://github.com/auth0/java-jwt" target="_blank" rel="noopener">java-jwt | GitHub</a></p>
 <p><a href="http://www.hyhblog.cn/2017/10/21/json-web-token-intro-and-best-practices/" target="_blank" rel="noopener">Json Web Token的介绍和最佳实践</a></p>
 <p><a href="https://juejin.im/post/5c8f50e35188252d9209588d#heading-10" target="_blank" rel="noopener">如何在SpringBoot中集成JWT(JSON Web Token)鉴权</a></p>
 </blockquote>
 <ol>
-<li><p>导入依赖</p>
+<li>
+<p>导入依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.auth0<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>java-jwt<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>生成 token</p>
+<li>
+<p>生成 token</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String KEY = <span class="string">"secret"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> Algorithm ALGORITHM = Algorithm.HMAC256(KEY);</span><br><span class="line">String token = JWT.create()</span><br><span class="line">  .withIssuer(<span class="string">"gzhennaxia"</span>) <span class="comment">// 签发人</span></span><br><span class="line">  .withSubject(userId) <span class="comment">// 主题，需要全局唯一</span></span><br><span class="line">  .sign(ALGORITHM);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>验证 token</p>
+<li>
+<p>验证 token</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JWTVerifier verifier = JWT.require(ALGORITHM).build();</span><br><span class="line">DecodedJWT decodedJWT = verifier.verify(token);</span><br></pre></td></tr></table></figure>
 <p>DecodedJWT：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"algorithm"</span>:<span class="string">"HS256"</span>,</span><br><span class="line">    <span class="attr">"claims"</span>:&#123;</span><br><span class="line">        <span class="attr">"iss"</span>:&#123;</span><br><span class="line">            <span class="attr">"null"</span>:<span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"sub"</span>:&#123;</span><br><span class="line">            <span class="attr">"null"</span>:<span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"header"</span>:<span class="string">"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"</span>,</span><br><span class="line">    <span class="attr">"issuer"</span>:<span class="string">"gzhennaxia"</span>,</span><br><span class="line">    <span class="attr">"payload"</span>:<span class="string">"eyJzdWIiOiIxIiwiaXNzIjoiZ3poZW5uYXhpYSJ9"</span>,</span><br><span class="line">    <span class="attr">"signature"</span>:<span class="string">"ItL7KsvAp4Zezk5N5uu1ayAh2HlHU2EgIW3NiSZw1f8"</span>,</span><br><span class="line">    <span class="attr">"subject"</span>:<span class="string">"1"</span>,</span><br><span class="line">    <span class="attr">"token"</span>:<span class="string">"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiZ3poZW5uYXhpYSJ9.ItL7KsvAp4Zezk5N5uu1ayAh2HlHU2EgIW3NiSZw1f8"</span>,</span><br><span class="line">    <span class="attr">"type"</span>:<span class="string">"JWT"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="jjwt"><a href="#jjwt" class="headerlink" title="jjwt"></a>jjwt</h2><blockquote>
+<h2 id="jjwt">jjwt</h2>
+<blockquote>
 <p><a href="https://github.com/jwtk/jjwt" target="_blank" rel="noopener">jjwt | GitHub</a></p>
 </blockquote>
 <ol>
-<li><p>导入依赖</p>
+<li>
+<p>导入依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.jsonwebtoken<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jjwt-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.10.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.jsonwebtoken<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jjwt-impl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.10.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.jsonwebtoken<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jjwt-jackson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.10.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Uncomment this next dependency if you want to use RSASSA-PSS (PS256, PS384, PS512) algorithms:</span></span><br><span class="line"><span class="comment">&lt;dependency&gt;</span></span><br><span class="line"><span class="comment">    &lt;groupId&gt;org.bouncycastle&lt;/groupId&gt;</span></span><br><span class="line"><span class="comment">    &lt;artifactId&gt;bcprov-jdk15on&lt;/artifactId&gt;</span></span><br><span class="line"><span class="comment">    &lt;version&gt;1.60&lt;/version&gt;</span></span><br><span class="line"><span class="comment">    &lt;scope&gt;runtime&lt;/scope&gt;</span></span><br><span class="line"><span class="comment">&lt;/dependency&gt;</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>生成 token</p>
+<li>
+<p>生成 token</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> Key KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);</span><br><span class="line">Jwts.builder()</span><br><span class="line">  .setIssuer(<span class="string">"gzhennaxia"</span>)</span><br><span class="line">  .setSubject(userId.toString())</span><br><span class="line">  .signWith(KEY)</span><br><span class="line">  .compact();</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">token: eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnemhlbm5heGlhIiwic3ViIjoiMSJ9._Q0XHRhoS0a-ZA4pMzEmY2hShds86IrE5i4-XSj6sGI</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>验证 token</p>
+<li>
+<p>验证 token</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Jwt jwt = Jwts.parser().setSigningKey(KEY).parse(token);</span><br></pre></td></tr></table></figure>
 <p>Jwt：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"header"</span>:&#123;</span><br><span class="line">        <span class="attr">"alg"</span>:<span class="string">"HS256"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"body"</span>:&#123;</span><br><span class="line">        <span class="attr">"iss"</span>:<span class="string">"gzhennaxia"</span>,</span><br><span class="line">        <span class="attr">"sub"</span>:<span class="string">"1"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"signature"</span>:<span class="string">"_Q0XHRhoS0a-ZA4pMzEmY2hShds86IrE5i4-XSj6sGI"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
@@ -738,7 +747,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">73</span>
+                    <span class="site-state-item-count">74</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1633,5 +1642,5 @@
 	<!-- 代码块复制功能 -->
 	<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
 	<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>
