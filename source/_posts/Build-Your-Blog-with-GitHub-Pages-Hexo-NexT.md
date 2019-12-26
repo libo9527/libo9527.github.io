@@ -450,6 +450,60 @@ message: Welcome to my blog, enter password to read.
 
 2. 在需要首页隐藏的文章 front-matter 中添加 `hidden: true`
 
+### Emoji 表情
+
+> [Hexo中添加emoji表情](https://chaxiaoniu.oschina.io/2017/07/10/HexoAddEmoji/)
+>
+> Hexo默认采用 [hexo-renderer-marked](https://github.com/hexojs/hexo-renderer-marked) 这个渲染器，但其不支持插件扩展。还有一个支持插件扩展的是 [hexo-renderer-markdown-it](https://github.com/hexojs/hexo-renderer-markdown-it)，可以使用 [markdwon-it-emoji](https://github.com/markdown-it/markdown-it-emoji) 插件来支持 emoji。
+
+1. 替换渲染器
+
+   ```shell
+   npm un hexo-renderer-marked --save
+   npm i hexo-renderer-markdown-it --save
+   ```
+
+2. 安装`markdown-it-emoji`插件
+
+   ```shell
+   npm i markdown-it-emoji --save
+   ```
+
+3. 站点配置文件添加 markdown-it 配置
+
+   ```shell _config.yml
+   ## hexo-renderer-markdown-it
+   ## Markdown-it config
+   ## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki
+   markdown:
+     render:
+       html: true
+       xhtmlOut: false
+       breaks: true
+       linkify: true
+       typographer: true
+       quotes: '“”‘’'
+     plugins:
+       - markdown-it-abbr
+       - markdown-it-footnote
+       - markdown-it-ins
+       - markdown-it-sub
+       - markdown-it-sup
+       - markdown-it-emoji  ## add emoji
+     anchors:
+       level: 2
+       collisionSuffix: 'v'
+       # If `true`, creates an anchor tag with a permalink besides the heading.
+       permalink: false
+       permalinkClass: header-anchor
+       # The symbol used to make the permalink
+       permalinkSymbol: ¶
+   ```
+
+4. 使用
+
+   在 [EMOJI CHEAT SHEET](https://www.webfx.com/tools/emoji-cheat-sheet/) 中找你想要的表情，点击即可复制。:smile:
+
 ## 填坑记录
 
 ### 选用主题后页面空白
@@ -482,7 +536,7 @@ Hexo 有三种默认布局：`post`、`page` 和 `draft`，它们分别对应不
 
 Hexo 的一种特殊布局：`draft`，这种布局在建立文章时会被保存到 `source/_drafts` 文件夹，您可通过 `publish` 命令将草稿移动到 `source/_posts` 文件夹。
 
-​```shell
+```shell
 $ hexo publish [layout] <filename>
 ```
 
@@ -495,6 +549,7 @@ $ hexo publish [layout] <filename>
    ```shell
     $ hexo new "GitHub Pages+Hexo+NexT"
     INFO  Created: E:\xxx\Hexo\source\_posts\GitHub-Pages-Hexo-NexT.md
+   ```
 ```
 
 2. 在使用`publish`命令发布草稿时需要用**文件名**，而不是文章标题
@@ -504,7 +559,7 @@ $ hexo publish [layout] <filename>
    ```shell
    $ hexo publish post GitHub-Pages-Hexo-NexT # post可以省略，因为layout默认就是post
    INFO  Published: E:\Github\Hexo\source\_posts\GitHub-Pages-Hexo-NexT.md
-   ```
+```
 
 3. 文件名为空时默认发布第一篇草稿
 
