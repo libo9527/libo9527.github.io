@@ -123,7 +123,8 @@
 <meta property="og:description" content="CORS 简介">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://geekflare.com/wp-content/uploads/2019/11/cors-1200x385.jpg">
-<meta property="og:updated_time" content="2019-12-26T07:40:55.683Z">
+<meta property="og:image" content="https://www.technipages.com/wp-content/uploads/2016/05/Chrome-Disable-Cache.png">
+<meta property="og:updated_time" content="2019-12-30T10:11:00.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What is CORS">
 <meta name="twitter:description" content="CORS 简介">
@@ -469,7 +470,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-26 15:40:55" itemprop="dateModified" datetime="2019-12-26T15:40:55+08:00">2019-12-26</time>
+                <time title="修改时间：2019-12-30 18:11:00" itemprop="dateModified" datetime="2019-12-30T18:11:00+08:00">2019-12-30</time>
               
             
           </span>
@@ -520,7 +521,68 @@
 <p><strong>跨域资源共享</strong>（Cross-origin resource sharing，简称CORS），用于让网页的受限资源能够被其他<a href="https://zh.wikipedia.org/wiki/%E5%9F%9F%E5%90%8D" target="_blank" rel="noopener">域名</a>的页面访问的一种机制。通过该机制，页面能够自由地使用不同域名（cross-origin）的图片、样式、脚本、iframes以及视频。 ——<a href="https://zh.wikipedia.org/zh-hans/%E8%B7%A8%E4%BE%86%E6%BA%90%E8%B3%87%E6%BA%90%E5%85%B1%E4%BA%AB" target="_blank" rel="noopener">维基百科</a></p>
 <p><a href="https://developer.mozilla.org/zh/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="noopener">HTTP访问控制（CORS） - HTTP | MDN</a></p>
 <p><a href="https://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="noopener">跨域资源共享CORS 详解- 阮一峰的网络日志</a></p>
+<p><a href="http://blog.jiayuanzhang.com/post/cors-tutorial/" target="_blank" rel="noopener">跨域资源共享（CORS）详解</a></p>
 </blockquote>
+<h2 id="CORS">CORS</h2>
+<h3 id="简单请求和非简单请求">简单请求和非简单请求</h3>
+<p>只要同时满足以下两大条件，就属于简单请求：</p>
+<p>（1）请求方法是以下三种方法之一：</p>
+<ul>
+<li>HEAD</li>
+<li>GET</li>
+<li>POST</li>
+</ul>
+<p>（2）HTTP的头信息不超出以下几种字段：</p>
+<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Last-Event-ID</li>
+<li>Content-Type：只限于三个值<code>application/x-www-form-urlencoded</code>、<code>multipart/form-data</code>、<code>text/plain</code></li>
+</ul>
+<h2 id="Spring-项目中配置-CORS">Spring 项目中配置 CORS</h2>
+<blockquote>
+<p><a href="https://link.jianshu.com/?t=http://spring.io/guides/gs/rest-service-cors/" target="_blank" rel="noopener">Enabling Cross Origin Requests for a RESTful Web Service | Spring</a></p>
+<p><a href="https://spring.io/blog/2015/06/08/cors-support-in-spring-framework" target="_blank" rel="noopener">CORS support in Spring Framework | Spring</a></p>
+</blockquote>
+<h3 id="自定义过滤器">自定义过滤器</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1. 使用过滤器注册器注册</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FilterRegisterConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> FilterRegistrationBean <span class="title">filterRegisterBean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        FilterRegistrationBean&lt;CorsFilter&gt; registrationBean = <span class="keyword">new</span> FilterRegistrationBean&lt;&gt;();</span><br><span class="line">        registrationBean.setFilter(<span class="keyword">new</span> CorsFilter());</span><br><span class="line">        registrationBean.setUrlPatterns(<span class="keyword">new</span> ArrayList&lt;String&gt;() &#123;&#123; add(<span class="string">"*"</span>); &#125;&#125;);</span><br><span class="line">        <span class="keyword">return</span> registrationBean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//2. 使用 @WebFilter 注解</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@WebFilter</span>(urlPatterns = <span class="string">"*"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CorsFilter</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        HttpServletResponse response = (HttpServletResponse) servletResponse;</span><br><span class="line">        response.setHeader(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"http://localhost:9528"</span>);</span><br><span class="line">        response.setHeader(<span class="string">"Access-Control-Max-Age"</span>, <span class="string">"10"</span>);</span><br><span class="line">        response.setHeader(<span class="string">"Access-Control-Allow-Methods"</span>, <span class="string">"*"</span>);</span><br><span class="line">        response.setHeader(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"*"</span>);</span><br><span class="line">        filterChain.doFilter(servletRequest, servletResponse);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><strong>Access-Control-Allow-Methods</strong></p>
+<p>该字段必需，它的值是逗号分隔的一个字符串，表明服务器支持的所有跨域请求的请求类型。</p>
+</li>
+<li>
+<p><strong>Access-Control-Allow-Headers</strong></p>
+<p>如果浏览器请求包括<code>Access-Control-Request-Headers</code>字段，则<code>Access-Control-Allow-Headers</code>字段是必需的。它也是一个逗号分隔的字符串，表明服务器支持的所有头信息字段，不限于浏览器在&quot;预检&quot;中请求的字段。</p>
+</li>
+<li>
+<p><strong>Access-Control-Max-Age</strong></p>
+<p>该字段可选，用来指定本次预检请求的有效期，单位为秒。上面结果中，有效期是 10秒，即允许缓存该条回应 10 秒，在此期间，不用发出另一条预检请求。</p>
+<p>注意：如果设置缓存后，发现每次还是会发送 OPTIONS 请求，请检查是不是勾选了“禁止缓存”。</p>
+<p><img src="https://www.technipages.com/wp-content/uploads/2016/05/Chrome-Disable-Cache.png" alt=""></p>
+</li>
+</ul>
+<h3 id="注解-CrossOrigin">注解 <code>@CrossOrigin</code></h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当前 Controller 中所有的方法接受跨域访问</span></span><br><span class="line">@CrossOrigin(origins = <span class="string">"http://localhost:9528"</span>, maxAge = <span class="number">10</span>)</span><br><span class="line">@RestController</span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">CorsController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    @PostMapping(<span class="string">"cors"</span>)</span><br><span class="line">    public <span class="built_in">String</span> cors() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 仅 /cors 可以接受跨域访问</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CorsController</span> </span>&#123;</span><br><span class="line">		<span class="meta">@CrossOrigin</span>(origins = <span class="string">"http://localhost:9528"</span>, maxAge = <span class="number">10</span>)</span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"cors"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">cors</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"cors"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"cors2"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">cors2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"cors2"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="实现-WebMvcConfigurer-接口">实现 WebMvcConfigurer 接口</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebMvcConfigurerImpl</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addCorsMappings</span><span class="params">(CorsRegistry registry)</span> </span>&#123;</span><br><span class="line">      	<span class="comment">// Error: registry.addMapping("*")</span></span><br><span class="line">        registry.addMapping(<span class="string">"/**"</span>)</span><br><span class="line">                .allowedOrigins(<span class="string">"http://localhost:9528"</span>)</span><br><span class="line">                .allowedMethods(<span class="string">"*"</span>)</span><br><span class="line">                .allowedHeaders(<span class="string">"*"</span>)</span><br><span class="line">                .maxAge(<span class="number">10L</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Spring-Actuator-项目可使用-application-properties-来配置">Spring Actuator 项目可使用 application.properties 来配置</h3>
+<blockquote>
+<p><a href="https://stackoverflow.com/questions/42874351/spring-boot-enabling-cors-by-application-properties" target="_blank" rel="noopener">Spring Boot enabling CORS by application.properties</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">endpoints.cors.allowed-origins=http://localhost:9528</span><br><span class="line">endpoints.cors.allowed-methods=*</span><br><span class="line">endpoints.cors.allowed-headers=*</span><br><span class="line">endpoints.cors.max-age=10</span><br></pre></td></tr></table></figure>
+<h2 id="Spring-Security-项目中配置-CORS">Spring Security 项目中配置 CORS</h2>
+<blockquote>
+<p><a href="https://docs.spring.io/spring-security/site/docs/4.2.x/reference/html/cors.html" target="_blank" rel="noopener">CORS | Spring Security</a></p>
+<p><a href="https://stackoverflow.com/questions/40418441/spring-security-cors-filter" target="_blank" rel="noopener">Spring security CORS Filter | Stack Overflow</a></p>
+<p><a href="http://www.jetchen.cn/spring-security-cors/" target="_blank" rel="noopener">Spring Security 环境下 CORS 跨域失效问题</a></p>
+<p><a href="http://www.saily.top/2016/12/29/spring-security-cors/" target="_blank" rel="noopener">Spring Security配置cors跨域访问</a></p>
+<p><a href="https://www.jianshu.com/p/87e1ef68794c" target="_blank" rel="noopener">CORS with Spring Boot and Spring Security</a></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableWebSecurity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecurityConfig</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// by default uses a Bean by the name of corsConfigurationSource</span></span><br><span class="line">        http.cors();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function">CorsConfigurationSource <span class="title">corsConfigurationSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        CorsConfiguration configuration = <span class="keyword">new</span> CorsConfiguration();</span><br><span class="line">        configuration.setAllowedOrigins(Arrays.asList(<span class="string">"http://localhost:9528"</span>));</span><br><span class="line">        configuration.setAllowedMethods(Arrays.asList(<span class="string">"*"</span>));</span><br><span class="line">        configuration.setAllowedHeaders(Arrays.asList(<span class="string">"*"</span>));</span><br><span class="line">        configuration.setMaxAge(<span class="number">10L</span>);</span><br><span class="line">        UrlBasedCorsConfigurationSource source = <span class="keyword">new</span> UrlBasedCorsConfigurationSource();</span><br><span class="line">        source.registerCorsConfiguration(<span class="string">"/**"</span>, configuration);</span><br><span class="line">        <span class="keyword">return</span> source;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -647,8 +709,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -975,6 +1046,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CORS"><span class="nav-number">1.</span> <span class="nav-text">CORS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单请求和非简单请求"><span class="nav-number">1.1.</span> <span class="nav-text">简单请求和非简单请求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-项目中配置-CORS"><span class="nav-number">2.</span> <span class="nav-text">Spring 项目中配置 CORS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义过滤器"><span class="nav-number">2.1.</span> <span class="nav-text">自定义过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注解-CrossOrigin"><span class="nav-number">2.2.</span> <span class="nav-text">注解 @CrossOrigin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现-WebMvcConfigurer-接口"><span class="nav-number">2.3.</span> <span class="nav-text">实现 WebMvcConfigurer 接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Actuator-项目可使用-application-properties-来配置"><span class="nav-number">2.4.</span> <span class="nav-text">Spring Actuator 项目可使用 application.properties 来配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Security-项目中配置-CORS"><span class="nav-number">3.</span> <span class="nav-text">Spring Security 项目中配置 CORS</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
