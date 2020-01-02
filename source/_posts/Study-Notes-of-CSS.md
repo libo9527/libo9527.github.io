@@ -60,3 +60,24 @@ vw 相对于视区的宽度：视区宽度是100vw；vh 相对于视区的高度
 
 **“视区”指浏览器内部的可视区域大小**，即`window.innerWidth/window.innerHeight`大小，不包含任务栏标题栏以及底部工具栏的浏览器区域大小。
 
+## CSS截取图片的几种方式
+
+1. div元素，使用 background-position：Xpx Ypx，配合 width 和 height
+
+   ```html
+   <div class="div_bg"></div>
+   <style type="text/css">
+      .div_bg
+           {
+               width: 550px;
+               height: 113px;
+               background-image: url(img/bk_title_all.jpg);
+               background-repeat: no-repeat;
+               background-position: 0px -599px;
+           }
+   </style>
+   ```
+
+## [去除inline-block元素间间距的N种方法](https://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/)
+
+1. 去掉HTML中的空格，自然间距就木有了。
