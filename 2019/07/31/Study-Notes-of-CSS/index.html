@@ -123,7 +123,7 @@
 <meta property="og:description" content="CSS 笔记">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://miro.medium.com/max/1200/1*OFsc0SD55jhi8cjo7aCA4w.jpeg">
-<meta property="og:updated_time" content="2019-12-31T09:58:43.799Z">
+<meta property="og:updated_time" content="2020-01-02T10:03:45.385Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of CSS">
 <meta name="twitter:description" content="CSS 笔记">
@@ -469,7 +469,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-31 17:58:43" itemprop="dateModified" datetime="2019-12-31T17:58:43+08:00">2019-12-31</time>
+                <time title="修改时间：2020-01-02 18:03:45" itemprop="dateModified" datetime="2020-01-02T18:03:45+08:00">2020-01-02</time>
               
             
           </span>
@@ -567,6 +567,17 @@
 </blockquote>
 <p>vw 相对于视区的宽度：视区宽度是100vw；vh 相对于视区的高度：视区高度是100vh</p>
 <p><strong>“视区”指浏览器内部的可视区域大小</strong>，即<code>window.innerWidth/window.innerHeight</code>大小，不包含任务栏标题栏以及底部工具栏的浏览器区域大小。</p>
+<h2 id="CSS截取图片的几种方式">CSS截取图片的几种方式</h2>
+<ol>
+<li>
+<p>div元素，使用 background-position：Xpx Ypx，配合 width 和 height</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"div_bg"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">   <span class="selector-class">.div_bg</span></span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="undefined">            width: 550px;</span></span><br><span class="line"><span class="undefined">            height: 113px;</span></span><br><span class="line"><span class="undefined">            background-image: url(img/bk_title_all.jpg);</span></span><br><span class="line"><span class="undefined">            background-repeat: no-repeat;</span></span><br><span class="line"><span class="undefined">            background-position: 0px -599px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="去除inline-block元素间间距的N种方法"><a href="https://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/" target="_blank" rel="noopener">去除inline-block元素间间距的N种方法</a></h2>
+<ol>
+<li>去掉HTML中的空格，自然间距就木有了。</li>
+</ol>
 
       
     </div>
@@ -720,7 +731,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -861,7 +872,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">64</span>
+                      
+                    
+                    <span class="site-state-item-count">65</span>
                     <span class="site-state-item-name">分类</span>
                   
                 </div>
@@ -990,7 +1003,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">58</span>
+                      
+                    
+                    <span class="site-state-item-count">59</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -1040,7 +1055,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#垂直居中"><span class="nav-number">1.</span> <span class="nav-text">垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flexbox-布局中实现元素的水平垂直居中"><span class="nav-number">1.1.</span> <span class="nav-text">Flexbox 布局中实现元素的水平垂直居中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#position-sticky"><span class="nav-number">2.</span> <span class="nav-text">position: sticky</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单位"><span class="nav-number">3.</span> <span class="nav-text">单位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vw、vh、vm"><span class="nav-number">3.1.</span> <span class="nav-text">vw、vh、vm</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#垂直居中"><span class="nav-number">1.</span> <span class="nav-text">垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flexbox-布局中实现元素的水平垂直居中"><span class="nav-number">1.1.</span> <span class="nav-text">Flexbox 布局中实现元素的水平垂直居中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#position-sticky"><span class="nav-number">2.</span> <span class="nav-text">position: sticky</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单位"><span class="nav-number">3.</span> <span class="nav-text">单位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vw、vh、vm"><span class="nav-number">3.1.</span> <span class="nav-text">vw、vh、vm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS截取图片的几种方式"><span class="nav-number">4.</span> <span class="nav-text">CSS截取图片的几种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去除inline-block元素间间距的N种方法"><span class="nav-number">5.</span> <span class="nav-text">去除inline-block元素间间距的N种方法</span></a></li></ol></div>
             
 
           </div>
@@ -1067,7 +1082,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
