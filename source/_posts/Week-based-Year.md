@@ -1,5 +1,5 @@
 ---
-title: Week-based Year
+title: Week-based-year
 description: Java 日期格式化注意事项
 date: 2020-01-02 09:38:28
 categories: JDK
@@ -16,6 +16,52 @@ tags: JDK
 ## BUG 🐛
 
 正确时间应为 `2019/12/29 02:33`，却错误的显示为 `2020/12/29 02:33`
+
+```java
+package com.gzhennaxia.admin.util;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+/**
+ * @author bo li
+ * @date 2020-01-02 17:42
+ */
+public class CarefulWithThatDateEugene {
+
+    private static void tryit(int Y, int M, int D, String pat) {
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern(pat);
+        LocalDate         dat = LocalDate.of(Y,M,D);
+        String            str = fmt.format(dat);
+        System.out.printf("Y=%04d M=%02d D=%02d " +
+                "formatted with " +
+                "\"%s\" -> %s\n",Y,M,D,pat,str);
+    }
+    public static void main(String[] args){
+        tryit(2019,12,28,"YYYY-MM-dd");
+        tryit(2019,12,29,"YYYY-MM-dd");
+        tryit(2019,12,30,"YYYY-MM-dd");
+        tryit(2019,12,31,"YYYY-MM-dd");
+        tryit(2020,01,1,"DD/MM/YYYY");
+        tryit(2020,01,2,"YYYY-MM-DD");
+        tryit(2020,01,3,"YYYY-MM-DD");
+        tryit(2020,01,4,"YYYY-MM-DD");
+        tryit(2020,01,5,"YYYY-MM-DD");
+    }
+}
+```
+
+```
+Y=2019 M=12 D=28 formatted with "YYYY-MM-dd" -> 2019-12-28
+Y=2019 M=12 D=29 formatted with "YYYY-MM-dd" -> 2020-12-29
+Y=2019 M=12 D=30 formatted with "YYYY-MM-dd" -> 2020-12-30
+Y=2019 M=12 D=31 formatted with "YYYY-MM-dd" -> 2020-12-31
+Y=2020 M=01 D=01 formatted with "DD/MM/YYYY" -> 01/01/2020
+Y=2020 M=01 D=02 formatted with "YYYY-MM-DD" -> 2020-01-02
+Y=2020 M=01 D=03 formatted with "YYYY-MM-DD" -> 2020-01-03
+Y=2020 M=01 D=04 formatted with "YYYY-MM-DD" -> 2020-01-04
+Y=2020 M=01 D=05 formatted with "YYYY-MM-DD" -> 2020-01-05
+```
 
 ### 原因
 
