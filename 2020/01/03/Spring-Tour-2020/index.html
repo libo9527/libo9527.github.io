@@ -115,27 +115,25 @@
 
 
 
-  <meta name="description" content="Git 中的账号管理">
-<meta name="keywords" content="Git">
+  <meta name="description" content="2020年新春游">
+<meta name="keywords" content="Tour">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Account Management in Git">
-<meta property="og:url" content="http://libo9527.github.io/2020/01/02/Account-Management-in-Git/index.html">
+<meta property="og:title" content="Spring Tour 2020">
+<meta property="og:url" content="http://libo9527.github.io/2020/01/03/Spring-Tour-2020/index.html">
 <meta property="og:site_name" content="LiBo">
-<meta property="og:description" content="Git 中的账号管理">
+<meta property="og:description" content="2020年新春游">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw">
-<meta property="og:updated_time" content="2020-01-02T10:03:45.385Z">
+<meta property="og:updated_time" content="2020-01-03T10:01:35.184Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Account Management in Git">
-<meta name="twitter:description" content="Git 中的账号管理">
-<meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw">
+<meta name="twitter:title" content="Spring Tour 2020">
+<meta name="twitter:description" content="2020年新春游">
 
 
 
 
 
 
-  <link rel="canonical" href="http://libo9527.github.io/2020/01/02/Account-Management-in-Git/">
+  <link rel="canonical" href="http://libo9527.github.io/2020/01/03/Spring-Tour-2020/">
 
 
 
@@ -145,7 +143,7 @@
   };
 </script>
 
-  <title>Account Management in Git | LiBo</title>
+  <title>Spring Tour 2020 | LiBo</title>
   
 
 
@@ -407,7 +405,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libo9527.github.io/2020/01/02/Account-Management-in-Git/">
+    <link itemprop="mainEntityOfPage" href="http://libo9527.github.io/2020/01/03/Spring-Tour-2020/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Li Bo">
@@ -424,7 +422,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Account Management in Git
+          <h1 class="post-title" itemprop="name headline">Spring Tour 2020
               
             
           </h1>
@@ -453,9 +451,13 @@
                 
               
 
-              <time title="创建时间：2020-01-02 18:03:45" itemprop="dateCreated datePublished" datetime="2020-01-02T18:03:45+08:00">2020-01-02</time>
+              <time title="创建时间：2020-01-03 16:05:31 / 修改时间：18:01:35" itemprop="dateCreated datePublished" datetime="2020-01-03T16:05:31+08:00">2020-01-03</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -471,7 +473,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Tour/" itemprop="url" rel="index"><span itemprop="name">Tour</span></a></span>
 
                 
                 
@@ -486,8 +488,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/01/02/Account-Management-in-Git/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2020/01/02/Account-Management-in-Git/" itemprop="commentCount"></span>
+                <a href="/2020/01/03/Spring-Tour-2020/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2020/01/03/Spring-Tour-2020/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -501,7 +503,7 @@
           
 
           
-              <div class="post-description">Git 中的账号管理</div>
+              <div class="post-description">2020年新春游</div>
           
 		  
         </div>
@@ -517,139 +519,20 @@
       
 
       
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%">
-<a id="more"></a>
-<h2 id="Git-中-GitHub-账号的管理">Git 中 GitHub 账号的管理</h2>
-<p>本文记录关于 Git 中管理账号时可能遇到的一些问题，使用的远程仓库托管平台是 GitHub。</p>
-<h3 id="单账号管理">单账号管理</h3>
-<blockquote>
-<p>假设 GitHub 的账号信息如下：</p>
-<p>账号：username</p>
-<p>密码：password</p>
-<p>假设 GitHub 中托管的仓库地址如下：</p>
-<p>HTTPS：<code>https://github.com/username/repository.git</code></p>
-<p>SSH：<code>git@github.com:username/repository.git</code></p>
-</blockquote>
-<p>Git 中链接远程仓库有 HTTPS 和 SSH 两种方式，HTTPS 相对比较简单，而 SSH 则具有更高的安全性。</p>
-<h4 id="HTTPS-方式">HTTPS 方式</h4>
-<p>使用 HTTPS 的方式时，会遇到每次提交都要输入 GitHub 的账号密码的问题，可以通过将账号密码缓存到内存或者保存到本地磁盘来解决这个问题。具体详情可查看【<a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%87%AD%E8%AF%81%E5%AD%98%E5%82%A8" target="_blank" rel="noopener">凭证存储 - Git</a>】</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 将账号密码保存到磁盘，默认存储位置是 ~/.git-credentials</span><br><span class="line"><span class="meta">$</span> git config --global credential.helper store</span><br></pre></td></tr></table></figure>
-<p>但这种方式是明文存储的，查看 <code>~/.git-credentials</code> 可以看到具体的账号信息。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://username:password@github.com</span><br></pre></td></tr></table></figure>
-<h4 id="SSH-方式">SSH 方式</h4>
-<p>通过 SSH 方式链接 GitHub 时需要通过密钥来实现，所以 SSH 具有比较高的安全性。</p>
-<ol>
-<li>
-<p>生成密钥对</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> -t 指定密钥类型，默认是 rsa</span><br><span class="line"><span class="meta">#</span> -C 注释</span><br><span class="line"><span class="meta">#</span> -f 指定文件名，默认是 ~/.ssh/id_rsa（私钥）和 ~/.ssh/id_rsa.pub（公钥）</span><br><span class="line"><span class="meta">$</span> ssh-keygen -t rsa -C "username@email.com"</span><br></pre></td></tr></table></figure>
-<p>生成密钥时会提示让输入密码，此时的密码是以后 Git 提交时需要输入的密码，可以不填直接回车，那在提交的时候就不需要再输入密码了。</p>
-</li>
-<li>
-<p>GitHub 中添加公钥</p>
-<p>登陆 GitHub，在 <code>Personal settings &gt; SSH and GPG keys &gt; New SSH key</code> 将 <code>~/.ssh/id_rsa.pub</code> 文件中公钥添加进去。</p>
-</li>
-<li>
-<p>设置本地仓库中的远程仓库地址为 SSH 格式</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git remote set-url origin "git@github.com:username/repository.git"</span><br><span class="line"><span class="meta">#</span> 或者</span><br><span class="line"><span class="meta">$</span> git config remote.origin.url "git@github.com:username/repository.git"</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="多账号管理">多账号管理</h3>
-<blockquote>
-<p>假设 GitHub 的账号信息如下：</p>
-<p>账号A</p>
-<ul>
-<li>账号：usernameA</li>
-<li>密码：passwordA</li>
-<li>邮箱：usernameA@163.com</li>
-</ul>
-<p>账号B</p>
-<ul>
-<li>账号：usernameB</li>
-<li>密码：passwordB</li>
-<li>邮箱：usernameB@163.com</li>
-</ul>
-<p>假设 GitHub 中托管的仓库地址如下：</p>
-<p>仓库A</p>
-<ul>
-<li>
-<p>HTTPS：<code>https://github.com/usernameA/repositoryA.git</code></p>
-</li>
-<li>
-<p>SSH：<code>git@github.com:usernameA/repositoryA.git</code></p>
-</li>
-</ul>
-<p>仓库B</p>
-<ul>
-<li>
-<p>HTTPS：<code>https://github.com/usernameB/repositoryB.git</code></p>
-</li>
-<li>
-<p>SSH：<code>git@github.com:usernameB/repositoryB.git</code></p>
-</li>
-</ul>
-</blockquote>
-<h4 id="账号切换">账号切换</h4>
-<blockquote>
-<p>假设账号A和账号B都有权限管理仓库A，此时想将本地仓库原本的账号A切换到账号B。</p>
-</blockquote>
-<ol>
-<li>
-<p>查看本机是否缓存或保存了账号A的账号信息</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查看 local 级别的配置中是否有关于 credential.helper 的配置</span><br><span class="line"><span class="meta">$</span> git config --local --get credential.helper</span><br><span class="line"><span class="meta">#</span> 查看 global 级别的配置中是否有关于 credential.helper 的配置</span><br><span class="line"><span class="meta">$</span> git config --global --get credential.helper</span><br><span class="line"><span class="meta">#</span> 查看 system 级别的配置中是否有关于 credential.helper 的配置</span><br><span class="line"><span class="meta">$</span> git config --system --get credential.helper</span><br></pre></td></tr></table></figure>
-<p>如果返回结果为：<code>cache</code> /  <code>store</code> /  <code>osxkeychain</code> /  <code>winstore</code> 则表示本地存在账号A的账号信息</p>
-</li>
-<li>
-<p>如果存在账号A的信息则清除掉其账号信息</p>
-<p>删除 <code>~/.git-credentials</code> 文件中账号A的账号信息</p>
-</li>
-<li>
-<p>切换本地仓库中的 Git 用户名和邮箱</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git config --local user.name "usernameB"</span><br><span class="line"><span class="meta">$</span> git config --local user.email "usernameB@163.com"</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>将账号B的账号信息保存到本机</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git config --local credential.helper store</span><br></pre></td></tr></table></figure>
-<p>下一次提交时会提示让输入用户名和密码，输入账号B的用户名和密码即可。</p>
-</li>
-</ol>
-<p>经过以上 4 步之后就完成了账号的切换工作，之后再提交时使用的就是账号B了。</p>
-<h4 id="多账号共存">多账号共存</h4>
-<p>以上情况都是本机中只存在一个 GitHub 账号，如果需要使用不同的账号管理不同的仓库时则需要对每个仓库和账号进行相应的配置以达到理想的匹配作用。</p>
-<h5 id="HTTPS-方式-v2">HTTPS 方式</h5>
-<p>如果想要本机中同时保存账号A和账号B的账号信息，对于本地仓库A，可能随时想要选用账号A或账号B中的一个来提交时。只需要在本地仓库的远程仓库地址中加上相应的用户名，然后再将 Git 用户名和密码切换到相应的用户即可。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 先设置保存密码的配置</span><br><span class="line"><span class="meta">$</span> git config --local credential.helper store</span><br><span class="line"><span class="meta">#</span> 想要切换到账号A时</span><br><span class="line"><span class="meta">$</span> git remote set-url origin "https://usernameA@github.com/usernameA/repositoryA.git"</span><br><span class="line"><span class="meta">$</span> git config --local user.name "usernameA"</span><br><span class="line"><span class="meta">$</span> git config --local user.email "usernameA@163.com"</span><br><span class="line"><span class="meta">#</span> 想要切换到账号B时</span><br><span class="line"><span class="meta">$</span> git remote set-url origin "https://usernameB@github.com/usernameA/repositoryA.git"</span><br><span class="line"><span class="meta">$</span> git config --local user.name "usernameB"</span><br><span class="line"><span class="meta">$</span> git config --local user.email "usernameB@163.com"</span><br></pre></td></tr></table></figure>
-<h5 id="SSH-方式-v2">SSH 方式</h5>
-<blockquote>
-<p>假设要通过 SSH 的方式来让账户A和账户B再本地仓库A中自由的切换</p>
-</blockquote>
-<p>使用 SSH 方式时需要对不用的账号生成不同的密钥，并配置账号与 GitHub 域名的匹配信息。</p>
-<ol>
-<li>
-<p>生成各自密钥</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> -t 指定密钥类型，默认是 rsa</span><br><span class="line"><span class="meta">#</span> -C 注释</span><br><span class="line"><span class="meta">#</span> -f 指定文件名，默认是 ~/.ssh/id_rsa（私钥）和 ~/.ssh/id_rsa.pub（公钥）</span><br><span class="line"><span class="meta">$</span> ssh-keygen -t rsa -C "usernameA@email.com" -f "id_rsa_A"</span><br><span class="line"><span class="meta">$</span> ssh-keygen -t rsa -C "usernameB@email.com" -f "id_rsa_B"</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>将密钥全部添加到 SSH Agent 中</p>
-<blockquote>
-<p>部分终端中需要手动开启 ssh-agent</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> $ ssh-agent bash</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ssh-add ~/.ssh/id_rsa_A</span><br><span class="line"><span class="meta">$</span> ssh-add ~/.ssh/id_rsa_B</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>添加配置文件 <code>~/.ssh/config</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> usernameA</span><br><span class="line">Host hostA #别名，之后配置本地仓库的远程仓库地址时需要使用</span><br><span class="line">  HostName github.com</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa</span><br><span class="line">  User usernameA</span><br><span class="line"><span class="meta">#</span> usernameB</span><br><span class="line">Host hostB</span><br><span class="line">  HostName github.com</span><br><span class="line">  IdentityFile ~/.ssh/id_rea2</span><br><span class="line">  User usernameB</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>远程仓库托管平台中添加对应的公钥</p>
-<p>登陆相应的远程仓库托管平台，将公钥添加上去。</p>
-</li>
-<li>
-<p>修改本地仓库对应的远程仓库地址</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 想要切换到账户A时</span><br><span class="line"><span class="meta">$</span> git remote set-url origin "git@hostA:usernameA/repositoryA.git"</span><br><span class="line"><span class="meta">$</span> git config --local user.name "usernameA"</span><br><span class="line"><span class="meta">$</span> git config --local user.email "usernameA@163.com"</span><br><span class="line"><span class="meta">#</span> 想要切换到账号B时</span><br><span class="line"><span class="meta">$</span> git remote set-url origin "git@hostB:usernameA/repositoryA.git"</span><br><span class="line"><span class="meta">$</span> git config --local user.name "usernameB"</span><br><span class="line"><span class="meta">$</span> git config --local user.email "usernameB@163.com"</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
+        <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<div id="hbe-security">
+  <div class="hbe-input-container">
+  <input type="password" class="hbe-form-control" id="pass" placeholder="暗号……">
+    <label for="pass">暗号……</label>
+    <div class="bottom-line"></div>
+  </div>
+</div>
+<div id="decryptionError" style="display: none;">Incorrect Password!</div>
+<div id="noContentError" style="display: none;">No content to display!</div>
+<div id="encrypt-blog" style="display:none">
+U2FsdGVkX1/E99DL0MRSeLGyLEkuD2UDMJ89NfDtZayD4ck90RfTW7zgHZYDBWzgn2yW9ahcaDgm/BLa2Wa5LnRxSrUYn1pmbNFfpTkGsunon6I/JRPXHycpl6uIcZ90ObOQNYlBDxiawq/3XJ1B9eUSwIeAu6Rhc1S2vhMLOvuUKL3/PK43+avFLcTb9Mr3p+Fx2wONyKed/7Cn/Xn990EKK6tSSL6hBUbhWqwPARmOoYxlLHTv+Tv9bMEYe+NBZPbegSXxXVJSuOYvXbWuXMnPf2vFtn9l7YnK+YvEpjw=
+</div>
+<script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
       
     </div>
 
@@ -690,7 +573,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://libo9527.github.io/2020/01/02/Account-Management-in-Git/" title="Account Management in Git">http://libo9527.github.io/2020/01/02/Account-Management-in-Git/</a>
+    <a href="http://libo9527.github.io/2020/01/03/Spring-Tour-2020/" title="Spring Tour 2020">http://libo9527.github.io/2020/01/03/Spring-Tour-2020/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -703,7 +586,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Git/" rel="tag"><i class="fa fa-tag"></i> Git</a>
+            <a href="/tags/Tour/" rel="tag"><i class="fa fa-tag"></i> Tour</a>
           
         </div>
       
@@ -716,8 +599,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/01/02/Week-based-Year/" rel="next" title="Week-based Year">
-                <i class="fa fa-chevron-left"></i> Week-based Year
+              <a href="/2020/01/02/Week-based-Year/" rel="next" title="Week-based-year">
+                <i class="fa fa-chevron-left"></i> Week-based-year
               </a>
             
           </div>
@@ -725,6 +608,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/03/Account-Management-in-Git/" rel="prev" title="Account Management in Git">
+                Account Management in Git <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -777,17 +664,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -804,7 +682,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">76</span>
+                    <span class="site-state-item-count">77</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1118,22 +996,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-中-GitHub-账号的管理"><span class="nav-number">1.</span> <span class="nav-text">Git 中 GitHub 账号的管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单账号管理"><span class="nav-number">1.1.</span> <span class="nav-text">单账号管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTPS-方式"><span class="nav-number">1.1.1.</span> <span class="nav-text">HTTPS 方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SSH-方式"><span class="nav-number">1.1.2.</span> <span class="nav-text">SSH 方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多账号管理"><span class="nav-number">1.2.</span> <span class="nav-text">多账号管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#账号切换"><span class="nav-number">1.2.1.</span> <span class="nav-text">账号切换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多账号共存"><span class="nav-number">1.2.2.</span> <span class="nav-text">多账号共存</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTPS-方式-v2"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">HTTPS 方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SSH-方式-v2"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">SSH 方式</span></a></li></ol></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
