@@ -504,6 +504,11 @@ message: Welcome to my blog, enter password to read.
 
    在 [EMOJI CHEAT SHEET](https://www.webfx.com/tools/emoji-cheat-sheet/) 中找你想要的表情，点击即可复制。:smile:
 
+### 文件下载功能
+
+1. 在 `source` 目录下，新建 `download` 目录
+2. 通过诸如 `[点击下载 xxx.pdf](/download/xxx.pdf)` 这样的链接，提供下载功能。
+
 ## 填坑记录
 
 ### 选用主题后页面空白
