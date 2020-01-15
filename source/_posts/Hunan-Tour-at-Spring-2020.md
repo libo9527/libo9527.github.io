@@ -30,7 +30,7 @@ tags: Tour
 | ------------------------------------------------------------ | -------------- | -------------- | ---------------- | ---------------- | ------------------------------------------ | ------------------------------------------------------------ | ---- | ----- | ----------- | ------------------------------------------------------------ |
 | K6618 | 深圳 | 株洲 | 2020-01-18 01:05 | 2020-01-18 10:43 | 无座：¥77 | <sapn style="color: green; font-weight: bolder;">已出票</span> | 李博 | 12306 | [871759358@qq.com](mailto:871759358@qq.com) ||
 | K9001 | 株洲 | 衡山 | 2020-01-18 10:59 | 2020-01-18 11:49 | 硬座：¥14.5 | <sapn style="color: green; font-weight: bolder;">已出票</span><br /><sapn style="color: #31E69D; font-weight: bolder;">15 车 108号</span> | 李博 | 12306 | [871759358@qq.com](mailto:871759358@qq.com) ||
-|  | 衡山 | 长沙 |  |  |  |  |  |  |  ||
+| K458 | 衡山 | 长沙 | 2020-01-19 09:33 | 2020-01-19 11:19 | 硬座：¥21.5 | <sapn style="color: green; font-weight: bolder;">已出票</span><br /><sapn style="color: #31E69D; font-weight: bolder;">05 车 074号</span> | 李博 | 12306 | [871759358@qq.com](mailto:871759358@qq.com) ||
 | K968 | 长沙 | 岳阳 | 2020-01-20 07:45 | 2020-01-20 09:13 | 硬座：¥23.5 | <sapn style="color: green; font-weight: bolder;">已出票</span><br /><sapn style="color: #31E69D; font-weight: bolder;">6 车 003号</span> | 李博 | 12306 | [871759358@qq.com](mailto:871759358@qq.com) ||
 | 中国联合航空KN5806 | 岳阳三荷机场 | 北京大兴国际机场 | 2020-01-20 15:40 | 2020-01-20 18:00 | 机票：¥200 <br />机建燃油：¥50 | <sapn style="color: green; font-weight: bolder;">已出票</span><br /><sapn style="color: #31E69D; font-weight: bolder;">值机柜台：1-6</sapn><br /><sapn style="color: #31E69D; font-weight: bolder;">预约座位：38A</span> | 李博 | 飞猪 | 18598046892 ||
 
@@ -44,7 +44,14 @@ tags: Tour
 
 ## [行程安排](https://libo9527.github.io/static/map/amap/2020-0117-0120/timeline/index.html)
 
-
 <iframe  width='100%' height='700' frameBorder='0' src='https://libo9527.github.io/static/map/amap/2020-0117-0120/timeline/index.html'>
 </iframe>
 
+## 景点
+
+### [南岳衡山](https://libo9527.github.io/2020/01/15/The-Southern-Sacred-Mountain-Hengshan/)
+
+## 必备物品
+
+1. 牙刷、牙膏、面巾纸
+2. 雨伞
