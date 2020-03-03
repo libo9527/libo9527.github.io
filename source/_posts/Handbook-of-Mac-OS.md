@@ -148,7 +148,7 @@ Mac 下使用 git 需要安装Command Line Tools
 
 ## Terminal
 
-#### 查看命令手册
+### 查看命令手册
 
 ```shell
 $ man command
@@ -193,6 +193,10 @@ open
   ```shell
   $ open -n /Applications/WeChat.app/Contents/MacOS/WeChat
   ```
+
+### 网络代理
+
+> [Mac 终端环境下配置网络代理](/2020/03/03/Configing-Procy-of-Network-in-Mac-Terminal/)
 
 ## Spotlight
 

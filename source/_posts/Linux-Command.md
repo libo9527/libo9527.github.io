@@ -26,7 +26,7 @@ no error if existing, make parent directories as needed
 
 ### mv
 
-> [mv](https://man.linuxde.net/mv)
+> [mv | Linux命令大全](https://man.linuxde.net/mv)
 >
 > **mv命令**用来对文件或目录重新命名，或者将文件从一个目录移到另一个目录中。
 
@@ -37,6 +37,12 @@ no error if existing, make parent directories as needed
   ```shell
   # cd 到 admin 上一级
   $ mv admin ledger-admin
+  ```
+
+- 将文件 a.txt 从目录 `/a` 移动到 `/b`
+
+  ```shell
+  $ mv /a/a.txt /b/a.txt
   ```
 
   
