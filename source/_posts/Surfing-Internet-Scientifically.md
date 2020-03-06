@@ -1,6 +1,6 @@
 ---
 title: Surfing Internet Scientifically
-description: 一句话描述这篇文章
+description: 科学上网
 comments: false
 hidden: false
 top: false
@@ -9,7 +9,7 @@ categories:
 tags:
 ---
 
-<img src="cover" width="100%"/>
+<img src="https://hyw-space-1253436760.cos.ap-shanghai.myqcloud.com/%E5%85%B6%E4%BB%96/xxx.jpg" width="100%"/>
 
 <!-- more -->
 
