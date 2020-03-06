@@ -123,7 +123,7 @@
 <meta property="og:description" content="正则表达式学习笔记">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://blog.malwarebytes.com/wp-content/uploads/2018/08/regex_puzzle-900x506.jpg">
-<meta property="og:updated_time" content="2020-03-03T09:27:42.022Z">
+<meta property="og:updated_time" content="2020-03-06T07:38:57.826Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of Regular Expression">
 <meta name="twitter:description" content="正则表达式学习笔记">
@@ -469,7 +469,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-03-03 17:27:42" itemprop="dateModified" datetime="2020-03-03T17:27:42+08:00">2020-03-03</time>
+                <time title="修改时间：2020-03-06 15:38:57" itemprop="dateModified" datetime="2020-03-06T15:38:57+08:00">2020-03-06</time>
               
             
           </span>
@@ -567,7 +567,7 @@
 </tr>
 <tr>
 <td>[ ]</td>
-<td>字符种类。匹配方括号内的任意字符。</td>
+<td>字符集。匹配方括号内的任意字符。</td>
 </tr>
 <tr>
 <td>[^ ]</td>
@@ -595,7 +595,7 @@
 </tr>
 <tr>
 <td>|</td>
-<td>或运算符，匹配符号<span class="label info">前</span><mark>或</mark><span class="label info">后</span>的字符.</td>
+<td>或元字符，匹配符号<span class="label info">前</span><mark>或</mark><span class="label info">后</span>的字符.</td>
 </tr>
 <tr>
 <td>\</td>
@@ -611,8 +611,211 @@
 </tr>
 </tbody>
 </table>
+<h3 id="元字符-v2">元字符 <code>.</code></h3>
+<h3 id="字符集">字符集 <code>[]</code></h3>
+<p>方括号用来指定一个字符集。</p>
+<ol>
+<li>
+<p>括号中的字符集<mark>不关心顺序</mark>。</p>
+<p>表达式<code>[Tt]he</code> 匹配 <code>the</code> 和 <code>The</code></p>
+</li>
+<li>
+<p>方括号的点号<mark>就</mark>表示点号</p>
+<p>表达式 <code>ar[.]</code> 匹配 <code>ar.</code>字符串</p>
+</li>
+</ol>
+<h4 id="否定字符集">否定字符集</h4>
+<p>一般来说 <code>^</code> 表示一个字符串的开头，但当它用在方括号里面的开头时，它表示这个字符集是否定的。 例如，表达式 <a href="https://regex101.com/r/nNNlq3/1" target="_blank" rel="noopener"><code>[^c]ar</code></a> 匹配一个后面跟着 <code>ar</code> 的除了 <code>c</code> 的任意字符。</p>
+<h3 id="重复次数">重复次数</h3>
+<p>后面跟着元字符 <code>+</code>，<code>*</code> or <code>?</code> 的，用来指定匹配子模式的次数。 这些元字符在不同的情况下有着不同的含义。</p>
+<h4 id="元字符-v3">元字符 <code>*</code></h4>
+<p><code>*</code> 号匹配在 <code>*</code> 之前的字符出现 <mark>&gt;=0</mark> 次。 例如，表达式 <code>a*</code> 匹配 0个或者多个以 a 开头的字符。表达式 <a href="https://regex101.com/r/7m8me5/1" target="_blank" rel="noopener"><code>[a-z]*</code></a> 匹配所有以小写字母开头的字符串。</p>
+<p><code>*</code> 元字符和 <code>.</code> 元字符搭配可以匹配所有的字符(<code>.*</code>)。</p>
+<p><code>*</code> 和空格元字符 <code>\s</code> 连起来用，如表达式 <a href="https://regex101.com/r/gGrwuz/1" target="_blank" rel="noopener"><code>\s*cat\s*</code></a> 匹配以 0个或多个空格开头，中间是 cat，并且以 0个或多个空格结尾的字符串。</p>
+<h4 id="元字符-v4">元字符 <code>+</code></h4>
+<p><code>+</code> 元字符匹配 <code>+</code> 号之前的字符出现 <mark>&gt;=1</mark> 次。 例如表达式 <a href="https://regex101.com/r/Dzf9Aa/1" target="_blank" rel="noopener"><code>c.+t</code></a> 匹配以字母 <code>c</code> 开头以 <code>t</code> 结尾，中间跟着至少一个字符的字符串。</p>
+<h4 id="元字符-v5">元字符 <code>?</code></h4>
+<p>元字符 <code>?</code> 表示前面的字符为<mark>可选字符</mark>，即出现 0 次或 1 次。 例如，表达式 <a href="https://regex101.com/r/kPpO2x/1" target="_blank" rel="noopener"><code>[T]?he</code></a> 匹配字符串 <code>he</code> 和 <code>The</code>。</p>
+<h3 id="元字符-v6">元字符 <code>{}</code></h3>
+<p>在正则表达式中 <code>{}</code> 是一个量词，常用来表示一个或一组字符可以重复出现的次数。 例如，表达式 <a href="https://regex101.com/r/juM86s/1" target="_blank" rel="noopener"><code>[0-9]{2,3}</code></a> 匹配最少 2 位最多 3 位 0~9 的数字。</p>
+<p>可以省略第二个参数。 例如，<a href="https://regex101.com/r/Gdy4w5/1" target="_blank" rel="noopener"><code>[0-9]{2,}</code></a> 匹配至少两位 0~9 的数字。</p>
+<p>如果逗号也省略掉，则表示重复固定的次数。 例如，<a href="https://regex101.com/r/Sivu30/1" target="_blank" rel="noopener"><code>[0-9]{3}</code></a> 匹配 3 位 0~9 的数字</p>
+<h3 id="元字符-v7">元字符 <code>()</code></h3>
+<p>元字符 <code>()</code> 表示将括号内的子模式绑定为一个组，将这个组作为一个新的子模式进行匹配。</p>
+<p>例如之前说的 <code>{}</code> 是用来表示前面一个字符出现指定次数。但如果在 <code>{}</code> 前用括号将一串字符括起来，则表示整个括号内的字符重复 N 次。例如，表达式 <code>(ab)*</code> 匹配连续出现 0 个或多个 <code>ab</code>。</p>
+<p>还可以在 <code>()</code> 中用 <code>|</code> 表示或。例如，<a href="https://regex101.com/r/tUxrBG/1" target="_blank" rel="noopener"><code>(c|g|p)ar</code></a> 匹配 <code>car</code> 或 <code>gar</code> 或 <code>par</code>.</p>
+<h3 id="元字符-v8">元字符 <code>|</code></h3>
+<p>元字符 <code>|</code> 表示或，用作判断条件。</p>
+<p>例如 <a href="https://regex101.com/r/fBXyX0/1" target="_blank" rel="noopener"><code>(T|t)he|car</code></a> 匹配 <code>(T|t)he</code> 或 <code>car</code>。</p>
+<h3 id="元字符-v9">元字符 <code>\</code></h3>
+<p>元字符 <code>\</code> 用于转义紧跟其后的字符。用于转义 <code>{ } [ ] / \ + * . $ ^ | ?</code> 这些特殊字符。如果想要匹配这些特殊字符则要在其前面加上反斜线 <code>\</code>。</p>
+<p>例如 <code>.</code> 是用来匹配除换行符外的所有单个字符的。如果想要匹配句子中的 <code>.</code> 则要写成 <code>\.</code>。</p>
+<p>例如 <a href="https://regex101.com/r/DOc5Nu/1" target="_blank" rel="noopener"><code>(f|c|m)at\.?</code></a> 匹配以 <code>f</code> 或者 <code>c</code> 或者 <code>m</code> 开头，中间是 <code>mt</code>，后面有 0 个或者 1 个 <code>.</code></p>
+<h3 id="锚点">锚点</h3>
+<p>正则表达式中，想要匹配指定开头或结尾的字符串就要使用到锚点。<code>^</code> 指定开头，<code>$</code> 指定结尾。</p>
+<h3 id="元字符-v10">元字符 <code>^</code></h3>
+<p><code>^</code> 用来检查匹配的字符串是否在所匹配字符串的开头。</p>
+<p>例如，在 <code>abc</code> 中使用表达式 <code>^a</code> 会得到结果 <code>a</code>。但如果使用 <code>^b</code> 将匹配不到任何结果。因为在字符串 <code>abc</code> 中并没有以 <code>b</code> 开头的字符串。</p>
+<p>例如，<a href="https://regex101.com/r/jXrKne/1" target="_blank" rel="noopener"><code>^(T|t)he</code></a> 匹配以 <code>The</code> 或 <code>the</code> 开头的字符串。</p>
+<h3 id="元字符-v11">元字符 <code>$</code></h3>
+<p>与 <code>^</code> 同理，元字符 <code>$</code> 用来检查匹配的字符串是否在所匹配字符串的结尾。</p>
+<p>例如，<a href="https://regex101.com/r/t0AkOd/1" target="_blank" rel="noopener"><code>(at\.)$</code></a> 匹配以 <code>at.</code> 结尾的字符串。</p>
+<h2 id="简写字符集">简写字符集</h2>
+<p>正则表达式提供一些常用的字符集简写。如下:</p>
+<table>
+<thead>
+<tr>
+<th>简写</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>除<mark>换</mark>行符外的所有单个字符</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配所有<mark>字母数字</mark>，等同于 <code>[a-zA-Z0-9_]</code></td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配所有<mark>非字母数字</mark>，即符号，等同于： <code>[^\w]</code></td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配<mark>数字</mark>： <code>[0-9]</code></td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配<mark>非数字</mark>： <code>[^\d]</code></td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配所有<mark>空格字符</mark>，等同于： <code>[\t\n\f\r\p{Z}]</code></td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配所有<mark>非空格字符</mark>： <code>[^\s]</code></td>
+</tr>
+<tr>
+<td>\f</td>
+<td>匹配一个<mark>换页符</mark></td>
+</tr>
+<tr>
+<td>\n</td>
+<td>匹配一个<mark>换行符</mark></td>
+</tr>
+<tr>
+<td>\r</td>
+<td>匹配一个<mark>回车符</mark></td>
+</tr>
+<tr>
+<td>\t</td>
+<td>匹配一个<mark>制表符</mark></td>
+</tr>
+<tr>
+<td>\v</td>
+<td>匹配一个<mark>垂直制表符</mark></td>
+</tr>
+<tr>
+<td>\p</td>
+<td>匹配 CR/LF（等同于 <code>\r\n</code>），用来匹配 DOS 行<mark>终止符</mark></td>
+</tr>
+</tbody>
+</table>
+<h2 id="零宽度断言">零宽度断言</h2>
+<p>零宽度断言用来指定一个<mark>位置(零宽度)</mark>，这个位置应该满足一定的<mark>条件(断言)</mark>。断言其实就相当于一个布尔值，只能是 0 或者 1。</p>
+<p>由零宽度断言的定义可以看出来，它必须和和其他的表达式结合起来使用才具有意义，否则单纯的零宽度断言表达式的匹配结果就是个位置，什么字符都没有！</p>
+<p>零宽度断言共四种：</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>?=</td>
+<td>正先行断言</td>
+</tr>
+<tr>
+<td>?!</td>
+<td>负先行断言</td>
+</tr>
+<tr>
+<td>?&lt;=</td>
+<td>正后发断言</td>
+</tr>
+<tr>
+<td>?&lt;!</td>
+<td>负后发断言</td>
+</tr>
+</tbody>
+</table>
+<p>理解：</p>
+<ul>
+<li>正/负：指是否满足条件(即断言)，正(负)表示(不)满足。</li>
+<li>先行/后发：指的是位置(最终的匹配结果)和条件(即断言)的前后关系，先行(后发)指位置在条件前(后)。</li>
+</ul>
+<p>另外，零宽度断言都要用括号扩起来。</p>
+<h3 id="正先行断言">正先行断言 <code>?=</code></h3>
+<p>语法：<code>表达式1(?=表达式2)</code></p>
+<p>表示满足表达式1的字符串后面必须跟着满足表达式2的字符串，结果只返回满足匹配表达式1的字符串。</p>
+<p>例如，表达式 <a href="https://regex101.com/r/IDDARt/1" target="_blank" rel="noopener"><code>(T|t)he(?=\sfat)</code></a> 匹配 <code>The</code> 或者 <code>the</code>，而且 <code>The</code> 和 <code>the</code> 后面紧跟着 <code>空格fat</code>。</p>
+<h3 id="负先行断言">负先行断言 <code>?!</code></h3>
+<p>语法：<code>表达式1(?=表达式2)</code></p>
+<p>表示满足表达式1的字符串后面必须<mark>不</mark>能跟着满足表达式2的字符串，结果只返回满足匹配表达式1的字符串。</p>
+<p>例如，表达式 <a href="https://regex101.com/r/V32Npg/1" target="_blank" rel="noopener"><code>(T|t)he(?!\sfat)</code></a> 匹配 <code>The</code> 或者 <code>the</code>，而且 <code>The</code> 和 <code>the</code> 后面<mark>不</mark>跟着 <code>空格fat</code>。</p>
+<h3 id="正后发断言">正后发断言 <code>?&lt;=</code></h3>
+<p>语法：<code>(?&lt;=表达式1)表达式2</code></p>
+<p>表示满足表达式2的字符串<mark>前</mark>面面必须能跟着满足表达式1的字符串，结果只返回满足匹配表达式2的字符串。</p>
+<p>例如，表达式 <a href="https://regex101.com/r/avH165/1" target="_blank" rel="noopener"><code>(?&lt;=(T|t)he\s)(fat|mat)</code></a> 匹配 <code>fat</code> 和 <code>mat</code>，且其前面跟着 <code>The空格</code> 或 <code>the空格</code>。</p>
+<h3 id="负后发断言">负后发断言 <code>?&lt;!</code></h3>
+<p>语法：<code>(?&lt;!表达式1)表达式2</code></p>
+<p>表示满足表达式2的字符串<mark>前</mark>面面必须<mark>不</mark>能跟着满足表达式1的字符串，结果只返回满足匹配表达式2的字符串。</p>
+<p>例如，表达式 <a href="https://regex101.com/r/8Efx5G/1" target="_blank" rel="noopener"><code>(?&lt;!(T|t)he\s)(cat)</code></a> 匹配 <code>cat</code>，且其前<mark>不</mark>跟着 <code>The</code> 或 <code>the</code>。</p>
+<h2 id="标志">标志</h2>
+<p>标志也叫<span class="label info">模式修正符</span>，因为它可以用来修改表达式的搜索结果。 这些标志可以任意的组合使用，它也是整个正则表达式的一部分。</p>
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i</td>
+<td>忽略大小写。</td>
+</tr>
+<tr>
+<td>g</td>
+<td>全局搜索。</td>
+</tr>
+<tr>
+<td>m</td>
+<td>多行修饰符：锚点元字符 <code>^</code> <code>$</code> 工作范围在每行的起始。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="忽略大小写（Case-Insensitive）">忽略大小写（Case Insensitive）</h3>
+<p>修正符 <code>i</code> 用于忽略大小写。 例如，表达式 <a href="https://regex101.com/r/ahfiuh/1" target="_blank" rel="noopener"><code>/The/gi</code></a> 表示在全局搜索 <code>The</code>，在后面的 <code>i</code> 将其条件修改为忽略大小写，则变成搜索 <code>the</code> 和 <code>The</code>，<code>g</code> 表示全局搜索。</p>
+<h3 id="全局搜索（Global-search）">全局搜索（Global search）</h3>
+<p>修正符 <code>g</code> 常用于执行一个全局搜索匹配，即不仅仅返回第一个匹配的，而是返回全部。 例如，表达式 <a href="https://regex101.com/r/dO1nef/1" target="_blank" rel="noopener"><code>/.(at)/g</code></a> 表示全局搜索 <code>非换行符以外任意单个字符</code> 后面跟着 <code>at</code>。</p>
+<h3 id="多行修正符（Multiline）">多行修正符（Multiline）</h3>
+<p>多行修正符 <code>m</code> 用于执行一个多行匹配。</p>
+<p>之前介绍的 <code>^</code> 和 <code>$</code> 用于检查模式是否是在待检测字符串的开头或结尾。但我们如果想要它在<mark>每</mark>行的开头和结尾生效，我们需要用到多行修正符 <code>m</code>。</p>
+<p>例如，表达式 <a href="https://regex101.com/r/E88WE2/1" target="_blank" rel="noopener"><code>/at(.)?$/gm</code></a> 表示小写字符 <code>a</code> 后跟小写字符 <code>t</code> ，末尾再跟上一个除换行符以外的任意字符，再根据 <code>m</code> 修正符，现在表达式匹配每行的结尾。</p>
+<h3 id="贪婪匹配与惰性匹配（Greedy-vs-lazy-matching）">贪婪匹配与惰性匹配（Greedy vs lazy matching）</h3>
+<p>正则表达式默认采用贪婪匹配模式，在该模式下意味着会匹配尽可能长的子串。我们可以使用 <code>?</code> 将贪婪匹配模式转化为惰性匹配模式。</p>
+<p>例如 <a href="https://regex101.com/r/AyAdgJ/1" target="_blank" rel="noopener"><code>/(.*at)/</code></a> 表示匹配以 <code>at</code> 结尾，前面有任意多个非换行字符的子字符串中长度最<mark>长</mark>的一个。</p>
+<p>而 <a href="https://regex101.com/r/AyAdgJ/2" target="_blank" rel="noopener"><code>/(.*?at)/</code></a> 表示匹配以 <code>at</code> 结尾，前面有任意多个非换行字符的子字符串中长度最短的一个。</p>
 <h2 id="实例">实例</h2>
-<h3 id="以-s1开头并且以s2结尾">以 s1开头并且以s2结尾</h3>
+<h3 id="以某个字符串开始字符串，并且以另一个字符串结尾字符串">以某个字符串开始字符串，并且以另一个字符串结尾字符串</h3>
+<p>例如要搜索以 <code>https://img.alicdn.com</code> 开始，以 <code>jpg_80x80.jpg</code> 结束的子字符串。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:\/\/img\.alicdn\.com.*jpg_80x80\.jpg</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1106,7 +1309,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">1.</span> <span class="nav-text">教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是正则表达式？"><span class="nav-number">2.</span> <span class="nav-text">什么是正则表达式？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元字符"><span class="nav-number">3.</span> <span class="nav-text">元字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">4.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#以-s1开头并且以s2结尾"><span class="nav-number">4.1.</span> <span class="nav-text">以 s1开头并且以s2结尾</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">1.</span> <span class="nav-text">教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是正则表达式？"><span class="nav-number">2.</span> <span class="nav-text">什么是正则表达式？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元字符"><span class="nav-number">3.</span> <span class="nav-text">元字符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-v2"><span class="nav-number">3.1.</span> <span class="nav-text">元字符 .</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符集"><span class="nav-number">3.2.</span> <span class="nav-text">字符集 []</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#否定字符集"><span class="nav-number">3.2.1.</span> <span class="nav-text">否定字符集</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重复次数"><span class="nav-number">3.3.</span> <span class="nav-text">重复次数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符-v3"><span class="nav-number">3.3.1.</span> <span class="nav-text">元字符 *</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符-v4"><span class="nav-number">3.3.2.</span> <span class="nav-text">元字符 +</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符-v5"><span class="nav-number">3.3.3.</span> <span class="nav-text">元字符 ?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-v6"><span class="nav-number">3.4.</span> <span class="nav-text">元字符 {}</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-v7"><span class="nav-number">3.5.</span> <span class="nav-text">元字符 ()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-v8"><span class="nav-number">3.6.</span> <span class="nav-text">元字符 |</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-v9"><span class="nav-number">3.7.</span> <span class="nav-text">元字符 \</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锚点"><span class="nav-number">3.8.</span> <span class="nav-text">锚点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-v10"><span class="nav-number">3.9.</span> <span class="nav-text">元字符 ^</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-v11"><span class="nav-number">3.10.</span> <span class="nav-text">元字符 $</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简写字符集"><span class="nav-number">4.</span> <span class="nav-text">简写字符集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#零宽度断言"><span class="nav-number">5.</span> <span class="nav-text">零宽度断言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正先行断言"><span class="nav-number">5.1.</span> <span class="nav-text">正先行断言 ?=</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负先行断言"><span class="nav-number">5.2.</span> <span class="nav-text">负先行断言 ?!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正后发断言"><span class="nav-number">5.3.</span> <span class="nav-text">正后发断言 ?&lt;=</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负后发断言"><span class="nav-number">5.4.</span> <span class="nav-text">负后发断言 ?&lt;!</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标志"><span class="nav-number">6.</span> <span class="nav-text">标志</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#忽略大小写（Case-Insensitive）"><span class="nav-number">6.1.</span> <span class="nav-text">忽略大小写（Case Insensitive）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局搜索（Global-search）"><span class="nav-number">6.2.</span> <span class="nav-text">全局搜索（Global search）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多行修正符（Multiline）"><span class="nav-number">6.3.</span> <span class="nav-text">多行修正符（Multiline）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贪婪匹配与惰性匹配（Greedy-vs-lazy-matching）"><span class="nav-number">6.4.</span> <span class="nav-text">贪婪匹配与惰性匹配（Greedy vs lazy matching）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">7.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#以某个字符串开始字符串，并且以另一个字符串结尾字符串"><span class="nav-number">7.1.</span> <span class="nav-text">以某个字符串开始字符串，并且以另一个字符串结尾字符串</span></a></li></ol></li></ol></div>
             
 
           </div>
