@@ -16,13 +16,13 @@
       </div>
     {%- endif %}
 
-    <div>
-      <a href="{{ config.root }}" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">{{ title }}</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
+    <!-- <div> -->
+      <!-- <a href="{{ config.root }}" class="brand" rel="start"> -->
+        <!-- <span class="logo-line-before"><i></i></span> -->
+        <!-- <span class="site-title">{{ title }}</span> -->
+        <!-- <span class="logo-line-after"><i></i></span> -->
+      <!-- </a> -->
+    <!-- </div> -->
     {%- if subtitle %}
       {%- if theme.seo %}
         <h1 class="site-subtitle" itemprop="description">{{ subtitle }}</h1>
