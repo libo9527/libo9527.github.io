@@ -1,161 +1,58 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_io/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-
-
-
-  
-  
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '6.6.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta name="description" content="Oracle 笔记">
-<meta name="keywords" content="Oracle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Study Notes of Oracle">
-<meta property="og:url" content="http://libo9527.github.io/2019/08/07/Study-Notes-of-Oracle/index.html">
-<meta property="og:site_name" content="LiBo">
+<meta property="og:url" content="http://yoursite.com/2019/08/07/Study-Notes-of-Oracle/index.html">
+<meta property="og:site_name" content="Li Bo">
 <meta property="og:description" content="Oracle 笔记">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.datocms-assets.com/2885/1522106007-oracle.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/13/6nlYZxW5zsLbfAC.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/10/TCvoScY2A7Vajd8.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/10/F6XYRiD7Q29OHrE.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/10/NL9lIHtJnXxmC38.png">
-<meta property="og:updated_time" content="2020-03-06T07:38:57.826Z">
+<meta property="article:published_time" content="2019-08-07T01:38:29.000Z">
+<meta property="article:modified_time" content="2020-03-07T00:41:38.052Z">
+<meta property="article:author" content="Li Bo">
+<meta property="article:tag" content="Oracle">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Study Notes of Oracle">
-<meta name="twitter:description" content="Oracle 笔记">
 <meta name="twitter:image" content="https://www.datocms-assets.com/2885/1522106007-oracle.png">
 
+<link rel="canonical" href="http://yoursite.com/2019/08/07/Study-Notes-of-Oracle/">
 
 
-
-
-
-  <link rel="canonical" href="http://libo9527.github.io/2019/08/07/Study-Notes-of-Oracle/">
-
-
-
-<script type="text/javascript" id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true
   };
 </script>
 
-  <title>Study Notes of Oracle | LiBo</title>
+  <title>Study Notes of Oracle | Li Bo</title>
   
-
-
-
-
-
 
 
 
@@ -163,370 +60,181 @@
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
 
-    <div class="custom-logo-site-title">
+  <div class="site-meta">
+
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">LiBo</span>
+        <span class="site-title">Li Bo</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
+        <p class="site-subtitle">Work`s Blog</p>
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
   
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-schedule">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
-
-  </li>
-
-      
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-  
-
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
 
+</div>
+<div class="search-pop-overlay"></div>
 
-
-  
-
-
-
+  </div>
 </div>
     </header>
 
     
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
+
+          <div class="content">
             
 
-          
-          <div id="content" class="content">
-            
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/Study-Notes-of-Oracle/">
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libo9527.github.io/2019/08/07/Study-Notes-of-Oracle/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-libo9527.jpeg">
       <meta itemprop="name" content="Li Bo">
-      <meta itemprop="description" content="我不怕千万人阻挡，只怕自己投降">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="即便痛苦，也要仰起高昂的头颅">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiBo">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Li Bo">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">Study Notes of Oracle
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          Study Notes of Oracle
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-			
-		    
-			
-		  
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2019-08-07 09:38:29" itemprop="dateCreated datePublished" datetime="2019-08-07T09:38:29+08:00">2019-08-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-03-06 15:38:57" itemprop="dateModified" datetime="2020-03-06T15:38:57+08:00">2020-03-06</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-07 08:41:38" itemprop="dateModified" datetime="2020-03-07T08:41:38+08:00">2020-03-07</time>
+              </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Oracle/" itemprop="url" rel="index"><span itemprop="name">Oracle</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Oracle/" itemprop="url" rel="index"><span itemprop="name">Oracle</span></a>
                 </span>
-                <a href="/2019/08/07/Study-Notes-of-Oracle/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/08/07/Study-Notes-of-Oracle/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
+            </span>
 
           
-          
+            <div class="post-description">Oracle 笔记</div>
 
-          
-
-          
-
-          
-              <div class="post-description">Oracle 笔记</div>
-          
-		  
         </div>
       </header>
-    
 
     
     
@@ -534,41 +242,34 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
+        <img src="https://www.datocms-assets.com/2885/1522106007-oracle.png" width="100%"/>
 
-      
-        <img src="https://www.datocms-assets.com/2885/1522106007-oracle.png" width="100%">
 <a id="more"></a>
-<h2 id="命令">命令</h2>
-<h3 id="查看版本">查看版本</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">version</span> <span class="keyword">FROM</span> v$<span class="keyword">instance</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="函数"><a href="https://libo9527.github.io/2019/08/14/SQL-Functions-in-ORACLE/">函数</a></h2>
-<h2 id="GROUP-BY">GROUP BY</h2>
-<h3 id="缺省值-NULL">缺省值 NULL</h3>
-<ul>
-<li>
-<p>Oracle 在 Order by 时认为 null 是最大值，所以如果是 ASC 升序则排在最后，DESC 降序则排在最前。</p>
+
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">version</span> <span class="keyword">FROM</span> v$<span class="keyword">instance</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a><a href="https://libo9527.github.io/2019/08/14/SQL-Functions-in-ORACLE/" target="_blank" rel="noopener">函数</a></h2><h2 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h2><h3 id="缺省值-NULL"><a href="#缺省值-NULL" class="headerlink" title="缺省值 NULL"></a>缺省值 NULL</h3><ul>
+<li><p>Oracle 在 Order by 时认为 null 是最大值，所以如果是 ASC 升序则排在最后，DESC 降序则排在最前。</p>
 </li>
-<li>
-<p>可以使用 nulls first 或者 nulls last 语法来控制 NULL 的位置。</p>
+<li><p>可以使用 nulls first 或者 nulls last 语法来控制 NULL 的位置。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">---将 null 始终放在最前</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">TABLE</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">COLUMN</span> <span class="keyword">nulls</span> <span class="keyword">first</span></span><br><span class="line"><span class="comment">---将 null 始终放在最后</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">TABLE</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">COLUMN</span> <span class="keyword">nulls</span> <span class="keyword">last</span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<h2 id="EXISTS">EXISTS</h2>
-<blockquote>
+<h2 id="EXISTS"><a href="#EXISTS" class="headerlink" title="EXISTS"></a>EXISTS</h2><blockquote>
 <p><a href="https://docs.oracle.com/cd/B19306_01/server.102/b14200/conditions012.htm" target="_blank" rel="noopener">EXISTS Condition | Oracle</a></p>
 <p>An <code>EXISTS</code> condition tests for existence of rows in a subquery.</p>
 </blockquote>
 <p>一般情况下公司数据库不会加外健来关联两张表，查询时为了避免数据不存在会使用 EXISTS 进行过滤。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	d.department_id </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	departments d </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line"><span class="keyword">EXISTS</span> ( </span><br><span class="line">	<span class="keyword">SELECT</span></span><br><span class="line">		* </span><br><span class="line">	<span class="keyword">FROM</span></span><br><span class="line">		employees e </span><br><span class="line">	<span class="keyword">WHERE</span></span><br><span class="line">	d.department_id = e.department_id</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h2 id="GROUP-BY-VS-PARTITION-BY">GROUP BY VS PARTITION BY</h2>
-<blockquote>
+
+<h2 id="GROUP-BY-VS-PARTITION-BY"><a href="#GROUP-BY-VS-PARTITION-BY" class="headerlink" title="GROUP BY VS PARTITION BY"></a>GROUP BY VS PARTITION BY</h2><blockquote>
 <p>Oracle 对于 GROUP BY 是严格的，oracle 中规定，使用 group by 时，select 后面所有不是聚合函数的字段，都必须出现在 group by 后面，否则会报错：“ORA-00979: not a GROUP BY expression”。而 MySQL 则不同，如果 SELECT 出来的字段在 GROUP BY 后面没有出现，那么会随机取出一个值。</p>
 </blockquote>
 <blockquote>
 <p><a href="https://asktom.oracle.com/pls/asktom/asktom.search?tag=partition-by-and-group-by" target="_blank" rel="noopener">partition by and group by | Oracle</a></p>
 <p>Totally different things.</p>
-<p>GROUP BY is about aggregation. Take ‘n’ rows and reduce the number of rows (by summing, or max, or min etc)…But we are <em>consolidating</em> some data.</p>
+<p>GROUP BY is about aggregation. Take ‘n’ rows and reduce the number of rows (by summing, or max, or min etc)..But we are <em>consolidating</em> some data.</p>
 <p>PARTITION BY is about carving up data into chunks. Take ‘n’ rows, apply some rule to split the rows into buckets…but will still have ‘n’ rows.</p>
 </blockquote>
 <ul>
@@ -577,179 +278,111 @@
 </ul>
 <p>eg：求各部门员工工资总和</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 使用分组函数GROUP BY方式</span></span><br><span class="line"><span class="keyword">SELECT</span> deptno 部门编号,<span class="keyword">SUM</span>(sal) 部门工资总和 <span class="keyword">FROM</span> emp <span class="keyword">GROUP</span> <span class="keyword">BY</span> deptno;</span><br><span class="line"><span class="comment">-- 结果</span></span><br><span class="line"><span class="comment">-----------------------</span></span><br><span class="line">| 部门编号 | 部门工资总和 |</span><br><span class="line">| 30 | 10900 |</span><br><span class="line">| 20 | 10575 |</span><br><span class="line">| 10 | 9250 |</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 使用分析函数 PARTITION BY方式</span></span><br><span class="line"><span class="keyword">SELECT</span> deptno 部门编号,<span class="keyword">SUM</span>(SAL) <span class="keyword">OVER</span> (<span class="keyword">partition</span> <span class="keyword">by</span> sal) 部门工资总和 <span class="keyword">FROM</span> emp;</span><br><span class="line"><span class="comment">-----------------</span></span><br><span class="line">| 部门编号 | 部门工资总和 |</span><br><span class="line">|	30 | 1450 |</span><br><span class="line">|	30 | 1500 |</span><br><span class="line">|	30 | 3200 |</span><br><span class="line">|	20 | 3200 |</span><br><span class="line">|	30 | 3500 |</span><br><span class="line">|	30 | 3500 |</span><br><span class="line">|	10 | 1800 |</span><br><span class="line">|	10 | 2450 |</span><br><span class="line">|	30 | 2850 |</span><br><span class="line">|	20 | 2975 |</span><br><span class="line">|	20 | 6000 |</span><br><span class="line">|	20 | 6000 |</span><br><span class="line">|	10 | 5000 |</span><br><span class="line"><span class="comment">-----------------</span></span><br><span class="line"><span class="keyword">SELECT</span> deptno 部门编号 ,ename 员工姓名, sal 员工工资, <span class="keyword">SUM</span>(sal) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> deptno <span class="keyword">ORDER</span> <span class="keyword">BY</span> sal) 所在部门工资总和  <span class="keyword">FROM</span> emp;</span><br><span class="line"><span class="comment">----------------------------------------------</span></span><br><span class="line">| 部门编号 | 员工姓名 | 员工工资 | 所在部门工资总和 |</span><br><span class="line">| 10 | MILLER | 1800 | 1800 |</span><br><span class="line">| 10 | CLARK | 2450 | 4250 |</span><br><span class="line">| 10 | KING | 5000 | 9250 |</span><br><span class="line">| 20 | ADAMS | 1600 | 1600 |</span><br><span class="line">| 20 | JONES | 2975 | 4575 |</span><br><span class="line">| 20 | SCOTT | 3000 | 10575 |</span><br><span class="line">| 20 | FORD | 3000 | 10575 |</span><br><span class="line">| 30 | JAMES | 1450 | 1450 |</span><br><span class="line">| 30 | TURNER | 1500 | 2950 |</span><br><span class="line">| 30 | ALLEN | 1600 | 4550 |</span><br><span class="line">| 30 | WARD | 1750 | 8050 |</span><br><span class="line">| 30 | MARTIN | 1750 | 8050 |</span><br><span class="line">| 30 | BLAKE | 2850 | 10900 |</span><br></pre></td></tr></table></figure>
-<h2 id="递归查询">递归查询</h2>
-<p>语法：</p>
+
+<h2 id="递归查询"><a href="#递归查询" class="headerlink" title="递归查询"></a>递归查询</h2><p>语法：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> ... <span class="keyword">FROM</span> tablename <span class="keyword">WHERE</span> ... <span class="keyword">START</span> <span class="keyword">WITH</span> ... <span class="keyword">CONNECT</span> <span class="keyword">BY</span> <span class="keyword">PRIOR</span> ...</span><br></pre></td></tr></table></figure>
+
 <p>eg：</p>
 <p>地址表 GLOBAL_LOCATION</p>
 <p><img src="https://i.loli.net/2019/08/13/6nlYZxW5zsLbfAC.png" alt="pic"></p>
 <ul>
-<li>
-<p>查询北京所有的子孙节点</p>
+<li><p>查询北京所有的子孙节点</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">ID</span>, PARENT_ID, <span class="keyword">NAME</span> <span class="keyword">FROM</span> GLOBAL_LOCATION <span class="keyword">START</span> <span class="keyword">WITH</span> PARENT_ID = <span class="number">247</span> <span class="keyword">CONNECT</span> <span class="keyword">BY</span> <span class="keyword">PRIOR</span> <span class="keyword">ID</span> = PARENT_ID</span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p>查询海淀所有的祖先节点</p>
+<li><p>查询海淀所有的祖先节点</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">ID</span>, PARENT_ID, <span class="keyword">NAME</span> <span class="keyword">FROM</span> GLOBAL_LOCATION <span class="keyword">START</span> <span class="keyword">WITH</span> <span class="keyword">ID</span> = <span class="number">3026</span> <span class="keyword">CONNECT</span> <span class="keyword">BY</span> <span class="keyword">PRIOR</span> PARENT_ID = <span class="keyword">ID</span></span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ul>
-<h2 id="Comprehensive-examples-in-work">Comprehensive examples in work</h2>
-<h3 id="地址树远程搜索">地址树远程搜索</h3>
-<p>需求说明：input 框中输入地址，远程搜索出匹配节点，由于同名地址到存在，要求将完整地址一同显示。</p>
+<h2 id="Comprehensive-examples-in-work"><a href="#Comprehensive-examples-in-work" class="headerlink" title="Comprehensive examples in work"></a>Comprehensive examples in work</h2><h3 id="地址树远程搜索"><a href="#地址树远程搜索" class="headerlink" title="地址树远程搜索"></a>地址树远程搜索</h3><p>需求说明：input 框中输入地址，远程搜索出匹配节点，由于同名地址到存在，要求将完整地址一同显示。</p>
 <p><img src="https://i.loli.net/2019/08/10/TCvoScY2A7Vajd8.png" alt="pic"></p>
 <p>表结构：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">"SKYSTAR"</span>.<span class="string">"GLOBAL_LOCATION_copy1"</span> (</span><br><span class="line">  <span class="string">"ID"</span> <span class="built_in">NUMBER</span>(<span class="number">20</span>) <span class="keyword">VISIBLE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> ,</span><br><span class="line">  <span class="string">"PARENT_ID"</span> <span class="built_in">NUMBER</span>(<span class="number">20</span>) <span class="keyword">VISIBLE</span> ,</span><br><span class="line">  <span class="string">"PATH"</span> VARCHAR2(<span class="number">100</span> <span class="keyword">BYTE</span>) <span class="keyword">VISIBLE</span> ,</span><br><span class="line">  <span class="string">"ENGLISH_NAME"</span> VARCHAR2(<span class="number">255</span> <span class="keyword">BYTE</span>) <span class="keyword">VISIBLE</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">"SKYSTAR"</span>.<span class="string">"GLOBAL_LOCATION_copy1"</span> (</span><br><span class="line">  <span class="string">"ID"</span> <span class="built_in">NUMBER</span>(<span class="number">20</span>) <span class="keyword">VISIBLE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> ,</span><br><span class="line">  <span class="string">"PARENT_ID"</span> <span class="built_in">NUMBER</span>(<span class="number">20</span>) <span class="keyword">VISIBLE</span> ,</span><br><span class="line">  <span class="string">"PATH"</span> <span class="built_in">VARCHAR2</span>(<span class="number">100</span> <span class="keyword">BYTE</span>) <span class="keyword">VISIBLE</span> ,</span><br><span class="line">  <span class="string">"ENGLISH_NAME"</span> <span class="built_in">VARCHAR2</span>(<span class="number">255</span> <span class="keyword">BYTE</span>) <span class="keyword">VISIBLE</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
 <p>样例数据：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"GLOBAL_LOCATION"</span>(<span class="string">"ID"</span>, <span class="string">"PARENT_ID"</span>, <span class="string">"PATH"</span>, <span class="string">"ENGLISH_NAME"</span>) <span class="keyword">VALUES</span> (<span class="string">'250'</span>, <span class="string">'7'</span>, <span class="string">',1,7,250,'</span>, <span class="string">'Shanxi'</span>);</span><br></pre></td></tr></table></figure>
+
 <ol>
-<li>根据输入查找节点</li>
-</ol>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">ID</span>, ENGLISH_NAME, <span class="keyword">PATH</span> <span class="keyword">FROM</span> GLOBAL_LOCATION <span class="keyword">WHERE</span> <span class="keyword">UPPER</span>(ENGLISH_NAME) <span class="keyword">LIKE</span> <span class="string">'%'</span> || <span class="keyword">UPPER</span>(<span class="comment">#&#123;NAME&#125;) || '%'</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>
-<p>去掉 PATH 前后的 <code>,</code></p>
+<li><p>根据输入查找节点</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">ID</span>, ENGLISH_NAME, <span class="keyword">PATH</span> <span class="keyword">FROM</span> GLOBAL_LOCATION <span class="keyword">WHERE</span> <span class="keyword">UPPER</span>(ENGLISH_NAME) <span class="keyword">LIKE</span> <span class="string">'%'</span> || <span class="keyword">UPPER</span>(<span class="comment">#&#123;NAME&#125;) || '%'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>去掉 PATH 前后的 <code>,</code></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SUBSTR</span>( <span class="string">',1,7,250,'</span>, <span class="number">2</span>, <span class="keyword">LENGTH</span>( <span class="string">',1,7,250,'</span> ) - <span class="number">2</span> ) <span class="keyword">FROM</span> dual</span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p>将去掉前后 <code>,</code> 的路径 PATH 按 <code>,</code> 分割得到祖先 ID</p>
+<li><p>将去掉前后 <code>,</code> 的路径 PATH 按 <code>,</code> 分割得到祖先 ID</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	REGEXP_SUBSTR( <span class="string">'1,7,250'</span>, <span class="string">'[^,]+'</span>, <span class="number">1</span>, <span class="keyword">ROWNUM</span> ) </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	dual <span class="keyword">CONNECT</span> <span class="keyword">BY</span> <span class="keyword">ROWNUM</span> &lt;= <span class="keyword">LENGTH</span>( <span class="string">'1,7,250'</span> ) - <span class="keyword">LENGTH</span>(REGEXP_REPLACE( <span class="string">'1,7,250'</span>, <span class="string">','</span>, <span class="string">''</span> )) + <span class="number">1</span></span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p>查找所有祖先节点，并使用 <code>&gt;</code> 连接</p>
+<li><p>查找所有祖先节点，并使用 <code>&gt;</code> 连接</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">LISTAGG</span> ( ENGLISH_NAME, <span class="string">' &gt; '</span> ) <span class="keyword">WITHIN</span> <span class="keyword">GROUP</span> ( <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ID</span> ) address </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	( <span class="keyword">SELECT</span> <span class="keyword">ID</span>, ENGLISH_NAME <span class="keyword">FROM</span> GLOBAL_LOCATION <span class="keyword">WHERE</span> <span class="keyword">ID</span> <span class="keyword">IN</span> ( <span class="number">1</span>, <span class="number">7</span>, <span class="number">250</span> ) )</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 <p>汇总后的 SQL：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    <span class="keyword">ID</span>,</span><br><span class="line">    ENGLISH_NAME,</span><br><span class="line">(</span><br><span class="line">    <span class="keyword">SELECT</span></span><br><span class="line">        <span class="keyword">LISTAGG</span> ( ENGLISH_NAME, <span class="string">' &gt; '</span> ) <span class="keyword">WITHIN</span> <span class="keyword">GROUP</span> ( <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ID</span> ) ADDRESS</span><br><span class="line">    <span class="keyword">FROM</span></span><br><span class="line">    (</span><br><span class="line">        <span class="keyword">SELECT</span></span><br><span class="line">            <span class="keyword">ID</span>,</span><br><span class="line">            ENGLISH_NAME</span><br><span class="line">        <span class="keyword">FROM</span></span><br><span class="line">            GLOBAL_LOCATION</span><br><span class="line">        <span class="keyword">WHERE</span> <span class="keyword">ID</span> <span class="keyword">IN</span> (</span><br><span class="line">            <span class="keyword">SELECT</span></span><br><span class="line">                REGEXP_SUBSTR( t1.ADDRESS, <span class="string">'[^,]+'</span>, <span class="number">1</span>, <span class="keyword">ROWNUM</span> )</span><br><span class="line">            <span class="keyword">FROM</span></span><br><span class="line">                dual <span class="keyword">CONNECT</span> <span class="keyword">BY</span> <span class="keyword">ROWNUM</span> &lt;= <span class="keyword">LENGTH</span>( t1.address ) - <span class="keyword">LENGTH</span>(REGEXP_REPLACE( t1.ADDRESS, <span class="string">','</span>, <span class="string">''</span> )) + <span class="number">1</span>)</span><br><span class="line">    )</span><br><span class="line">) FULL_ADDRESS</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">SELECT</span></span><br><span class="line">        <span class="keyword">ID</span>,</span><br><span class="line">        ENGLISH_NAME,</span><br><span class="line">        ( <span class="keyword">SELECT</span> <span class="keyword">SUBSTR</span>( gl.PATH, <span class="number">2</span>, <span class="keyword">LENGTH</span>( gl.PATH ) - <span class="number">2</span> ) <span class="keyword">FROM</span> dual ) ADDRESS</span><br><span class="line">    <span class="keyword">FROM</span></span><br><span class="line">    ( <span class="keyword">SELECT</span> <span class="keyword">ID</span>, ENGLISH_NAME, <span class="keyword">PATH</span> <span class="keyword">FROM</span> GLOBAL_LOCATION <span class="keyword">WHERE</span> <span class="keyword">UPPER</span>( ENGLISH_NAME ) <span class="keyword">LIKE</span> <span class="string">'%'</span> || <span class="keyword">UPPER</span>( <span class="string">'shan'</span> ) || <span class="string">'%'</span> ) gl</span><br><span class="line">) t1</span><br></pre></td></tr></table></figure>
+
 <p><img src="https://i.loli.net/2019/08/10/F6XYRiD7Q29OHrE.png" alt="pic"></p>
 <p><img src="https://i.loli.net/2019/08/10/NL9lIHtJnXxmC38.png" alt="pic"></p>
-<h2 id="￼20"><a href="/2019/09/17/Using-Triggers-in-ORACLE/" title="触发器（TRIGGER）">触发器（TRIGGER）</a></h2>
-<h2 id="ERROR">ERROR</h2>
-<h3 id="ORA-03113">ORA-03113</h3>
-<blockquote>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a href="/2019/09/17/Using-Triggers-in-ORACLE/" title="触发器（TRIGGER）">触发器（TRIGGER）</a></h2><h2 id="ERROR"><a href="#ERROR" class="headerlink" title="ERROR"></a>ERROR</h2><h3 id="ORA-03113"><a href="#ORA-03113" class="headerlink" title="ORA-03113"></a>ORA-03113</h3><blockquote>
 <p><a href="https://blog.csdn.net/zwk626542417/article/details/39667999" target="_blank" rel="noopener">Oracle错误——ORA-03113:通信通道的文件结尾 解决办法</a></p>
 </blockquote>
-<h4 id="问题描述">问题描述</h4>
-<p>Oracle 中使用 <code>COUNT(DISTINCT xxx)</code> 时出现：</p>
+<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>Oracle 中使用 <code>COUNT(DISTINCT xxx)</code> 时出现：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ORA-03113：<span class="keyword">end</span>-<span class="keyword">of</span>-<span class="keyword">file</span> <span class="keyword">on</span> communication  channel</span><br></pre></td></tr></table></figure>
+
 <p>而且只有在原始表中执行会报这个错，将原始表复制后再执行又不报错，或者把 <code>DISTINCT</code> 去掉再执行也不报错。</p>
-<h4 id="SQL">SQL</h4>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    t.address_cityTown <span class="keyword">AS</span> <span class="keyword">ID</span>,</span><br><span class="line">    gl.PATH,</span><br><span class="line">    <span class="keyword">COUNT</span>( <span class="keyword">DISTINCT</span> t.id ) <span class="keyword">AS</span> collectedQTY</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    (</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    cr.id,</span><br><span class="line">    jt.*</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    ( <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> CUSTOMER_RAW <span class="keyword">WHERE</span> DEL_FLAG = <span class="number">0</span> ) cr,</span><br><span class="line">    JSON_TABLE (</span><br><span class="line">    <span class="keyword">DATA</span>,</span><br><span class="line">    <span class="string">'$.generalInfo.address[*]'</span> <span class="keyword">COLUMNS</span> ( row_number <span class="keyword">FOR</span> <span class="keyword">ORDINALITY</span>, address_cityTown <span class="built_in">NUMBER</span> ( <span class="number">20</span> ) <span class="keyword">PATH</span> <span class="string">'$.cityTown'</span> )) <span class="keyword">AS</span> jt</span><br><span class="line">    ) t</span><br><span class="line">    <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> GLOBAL_LOCATION gl <span class="keyword">ON</span> t.address_cityTown = gl.ID</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    t.address_cityTown,</span><br><span class="line">    gl.PATH</span><br></pre></td></tr></table></figure>
-<h4 id="TABLE">TABLE</h4>
-<blockquote>
+<h4 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    t.address_cityTown <span class="keyword">AS</span> <span class="keyword">ID</span>,</span><br><span class="line">    gl.PATH,</span><br><span class="line">    <span class="keyword">COUNT</span>( <span class="keyword">DISTINCT</span> t.id ) <span class="keyword">AS</span> collectedQTY</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    (</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    cr.id,</span><br><span class="line">    jt.*</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    ( <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> CUSTOMER_RAW <span class="keyword">WHERE</span> DEL_FLAG = <span class="number">0</span> ) cr,</span><br><span class="line">    JSON_TABLE (</span><br><span class="line">    <span class="keyword">DATA</span>,</span><br><span class="line">    <span class="string">'$.generalInfo.address[*]'</span> <span class="keyword">COLUMNS</span> ( row_number <span class="keyword">FOR</span> <span class="keyword">ORDINALITY</span>, address_cityTown <span class="built_in">NUMBER</span> ( <span class="number">20</span> ) <span class="keyword">PATH</span> <span class="string">'$.cityTown'</span> )) <span class="keyword">AS</span> jt</span><br><span class="line">    ) t</span><br><span class="line">    <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> GLOBAL_LOCATION gl <span class="keyword">ON</span> t.address_cityTown = gl.ID</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">    t.address_cityTown,</span><br><span class="line">    gl.PATH</span><br></pre></td></tr></table></figure>
+
+<h4 id="TABLE"><a href="#TABLE" class="headerlink" title="TABLE"></a>TABLE</h4><blockquote>
 <p><a href="/download/CUSTOMER_RAW.sql">CUSTOMER_RAW.sql</a></p>
 </blockquote>
-<h3 id="ORA-04098">ORA-04098</h3>
-<blockquote>
+<h3 id="ORA-04098"><a href="#ORA-04098" class="headerlink" title="ORA-04098"></a>ORA-04098</h3><blockquote>
 <p><a href="https://www.cnblogs.com/enternal07/p/6762752.html" target="_blank" rel="noopener">Oracle触发器，解决ORA-04098: 触发器 ‘USER.DECTUSERTEST_TRI’ 无效且未通过重新验证</a></p>
 </blockquote>
-<h4 id="问题描述-v2">问题描述</h4>
-<p>创建了一个触发器，在执行触发事件的 SQL 时报错：</p>
+<h4 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h4><p>创建了一个触发器，在执行触发事件的 SQL 时报错：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ORA-04098: trigger 'SKYSTAR.COUNT_COLLECTED_QTY' is invalid and failed re-validation</span><br></pre></td></tr></table></figure>
-<h4 id="触发器">触发器</h4>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> <span class="keyword">REPLACE</span> <span class="keyword">TRIGGER</span> Count_Collected_Qty </span><br><span class="line"><span class="keyword">AFTER</span> <span class="keyword">INSERT</span>  </span><br><span class="line"><span class="keyword">ON</span> CUSTOMER_RAW_TEST</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">each</span> <span class="keyword">ROW</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">		<span class="keyword">UPDATE</span> GLOBAL_LOCATION_TEST <span class="keyword">SET</span> COLLECTED_QTY = COLLECTED_QTY + <span class="number">1</span> </span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="触发-SQL">触发 SQL</h4>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"CUSTOMER_RAW_TEST"</span>(<span class="string">"ID"</span>, <span class="string">"DATA"</span>, <span class="string">"SOURCE_TYPE_ID"</span>, <span class="string">"STATUS"</span>, <span class="string">"CREATE_BY"</span>, <span class="string">"CREATE_DATE"</span>, <span class="string">"UPDATE_BY"</span>, <span class="string">"UPDATE_DATE"</span>, <span class="string">"DEL_FLAG"</span>, <span class="string">"GOOGLE_FLAG"</span>, <span class="string">"GOOGLE_ADDRESS"</span>, <span class="string">"PROCESS_FLAG"</span>) <span class="keyword">VALUES</span> </span><br><span class="line">(<span class="string">'5'</span>, <span class="string">'&#123;"generalInfo":&#123;"address":[&#123;"country":5100,"countryName":"Test Country A","state":5110,"stateName":"Test State AA","cityTown":5111,"cityTownName":"Test City AAA"&#125;]&#125;&#125;'</span>, <span class="string">'1'</span>, <span class="string">'213'</span>, <span class="string">'1435'</span>, <span class="keyword">TO_DATE</span>(<span class="string">'2019-09-16 15:36:37'</span>, <span class="string">'SYYYY-MM-DD HH24:MI:SS'</span>), <span class="string">'1435'</span>, <span class="keyword">TO_DATE</span>(<span class="string">'2019-09-16 15:36:37'</span>, <span class="string">'SYYYY-MM-DD HH24:MI:SS'</span>), <span class="string">'0'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="TABLE-v2">TABLE</h4>
-<p><a href="/download/GLOBAL_LOCATION_TEST.sql">GLOBAL_LOCATION_TEST.sql</a></p>
+
+<h4 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> <span class="keyword">REPLACE</span> <span class="keyword">TRIGGER</span> Count_Collected_Qty </span><br><span class="line"><span class="keyword">AFTER</span> <span class="keyword">INSERT</span>  </span><br><span class="line"><span class="keyword">ON</span> CUSTOMER_RAW_TEST</span><br><span class="line"><span class="keyword">FOR</span> <span class="keyword">each</span> <span class="keyword">ROW</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">		<span class="keyword">UPDATE</span> GLOBAL_LOCATION_TEST <span class="keyword">SET</span> COLLECTED_QTY = COLLECTED_QTY + <span class="number">1</span> </span><br><span class="line"><span class="keyword">END</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="触发-SQL"><a href="#触发-SQL" class="headerlink" title="触发 SQL"></a>触发 SQL</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">"CUSTOMER_RAW_TEST"</span>(<span class="string">"ID"</span>, <span class="string">"DATA"</span>, <span class="string">"SOURCE_TYPE_ID"</span>, <span class="string">"STATUS"</span>, <span class="string">"CREATE_BY"</span>, <span class="string">"CREATE_DATE"</span>, <span class="string">"UPDATE_BY"</span>, <span class="string">"UPDATE_DATE"</span>, <span class="string">"DEL_FLAG"</span>, <span class="string">"GOOGLE_FLAG"</span>, <span class="string">"GOOGLE_ADDRESS"</span>, <span class="string">"PROCESS_FLAG"</span>) <span class="keyword">VALUES</span> </span><br><span class="line">(<span class="string">'5'</span>, <span class="string">'&#123;"generalInfo":&#123;"address":[&#123;"country":5100,"countryName":"Test Country A","state":5110,"stateName":"Test State AA","cityTown":5111,"cityTownName":"Test City AAA"&#125;]&#125;&#125;'</span>, <span class="string">'1'</span>, <span class="string">'213'</span>, <span class="string">'1435'</span>, <span class="keyword">TO_DATE</span>(<span class="string">'2019-09-16 15:36:37'</span>, <span class="string">'SYYYY-MM-DD HH24:MI:SS'</span>), <span class="string">'1435'</span>, <span class="keyword">TO_DATE</span>(<span class="string">'2019-09-16 15:36:37'</span>, <span class="string">'SYYYY-MM-DD HH24:MI:SS'</span>), <span class="string">'0'</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="TABLE-1"><a href="#TABLE-1" class="headerlink" title="TABLE"></a>TABLE</h4><p><a href="/download/GLOBAL_LOCATION_TEST.sql">GLOBAL_LOCATION_TEST.sql</a></p>
 <p><a href="/download/CUSTOMER_RAW_TEST.sql">CUSTOMER_RAW_TEST.sql</a></p>
-<h4 id="原因">原因</h4>
-<p>触发操作中的 SQL 语句没有加 <code>;</code></p>
+<h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>触发操作中的 SQL 语句没有加 <code>;</code></p>
 
-      
     </div>
 
     
-
-    
-    
-    
-	<div>
-		
-			<div>
-
-    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
-
-</div>
-		
-	</div>
-    
-
-    
-       
     
     
 
-    
-      <div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Oracle/" rel="tag"># Oracle</a>
+          </div>
+
         
 
 
-
-  
-
-
-
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>Li Bo</li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/07/31/Study-Notes-of-CSS/" rel="prev" title="Study Notes of CSS">
+      <i class="fa fa-chevron-left"></i> Study Notes of CSS
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/08/10/Handbook-of-Mac-OS/" rel="next" title="Handbook of Mac OS">
+      Handbook of Mac OS <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
     
-    <a href="http://libo9527.github.io/2019/08/07/Study-Notes-of-Oracle/" title="Study Notes of Oracle">http://libo9527.github.io/2019/08/07/Study-Notes-of-Oracle/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
-</ul>
-
-      </div>
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Oracle/" rel="tag"><i class="fa fa-tag"></i> Oracle</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/07/31/Study-Notes-of-CSS/" rel="next" title="Study Notes of CSS">
-                <i class="fa fa-chevron-left"></i> Study Notes of CSS
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/10/Handbook-of-Mac-OS/" rel="prev" title="Handbook of Mac OS">
-                Handbook of Mac OS <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
   </article>
-
+  
+  
+  
 
   </div>
 
@@ -757,486 +390,122 @@
           </div>
           
 
-  
-    <div id="gitalk-container">
-    </div>
-	
-		<div class="comments" id="comments">
-		</div>
-	
-    
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Li Bo">
-            
-              <p class="site-author-name" itemprop="name">Li Bo</p>
-              <p class="site-description motion-element" itemprop="description">我不怕千万人阻挡，只怕自己投降</p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">86</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">70</span>
-                    <span class="site-state-item-name">分类</span>
-                  
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">62</span>
-                    <span class="site-state-item-name">标签</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/libo9527" title="GitHub &rarr; https://github.com/libo9527" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命令"><span class="nav-number">1.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看版本"><span class="nav-number">1.1.</span> <span class="nav-text">查看版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">2.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GROUP-BY"><span class="nav-number">3.</span> <span class="nav-text">GROUP BY</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺省值-NULL"><span class="nav-number">3.1.</span> <span class="nav-text">缺省值 NULL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EXISTS"><span class="nav-number">4.</span> <span class="nav-text">EXISTS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GROUP-BY-VS-PARTITION-BY"><span class="nav-number">5.</span> <span class="nav-text">GROUP BY VS PARTITION BY</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归查询"><span class="nav-number">6.</span> <span class="nav-text">递归查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comprehensive-examples-in-work"><span class="nav-number">7.</span> <span class="nav-text">Comprehensive examples in work</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#地址树远程搜索"><span class="nav-number">7.1.</span> <span class="nav-text">地址树远程搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#￼20"><span class="nav-number">8.</span> <span class="nav-text">触发器（TRIGGER）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ERROR"><span class="nav-number">9.</span> <span class="nav-text">ERROR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ORA-03113"><span class="nav-number">9.1.</span> <span class="nav-text">ORA-03113</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述"><span class="nav-number">9.1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL"><span class="nav-number">9.1.2.</span> <span class="nav-text">SQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TABLE"><span class="nav-number">9.1.3.</span> <span class="nav-text">TABLE</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ORA-04098"><span class="nav-number">9.2.</span> <span class="nav-text">ORA-04098</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-v2"><span class="nav-number">9.2.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#触发器"><span class="nav-number">9.2.2.</span> <span class="nav-text">触发器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#触发-SQL"><span class="nav-number">9.2.3.</span> <span class="nav-text">触发 SQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TABLE-v2"><span class="nav-number">9.2.4.</span> <span class="nav-text">TABLE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原因"><span class="nav-number">9.2.5.</span> <span class="nav-text">原因</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-        <div class="back-to-top">
-          <i class="fa fa-arrow-up"></i>
-          
-            <span id="scrollpercent"><span>0</span>%</span>
-          
-        </div>
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Li Bo</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-
-    
-	
-    
-
-    
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命令"><span class="nav-number">1.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看版本"><span class="nav-number">1.1.</span> <span class="nav-text">查看版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">2.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GROUP-BY"><span class="nav-number">3.</span> <span class="nav-text">GROUP BY</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺省值-NULL"><span class="nav-number">3.1.</span> <span class="nav-text">缺省值 NULL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EXISTS"><span class="nav-number">4.</span> <span class="nav-text">EXISTS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GROUP-BY-VS-PARTITION-BY"><span class="nav-number">5.</span> <span class="nav-text">GROUP BY VS PARTITION BY</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归查询"><span class="nav-number">6.</span> <span class="nav-text">递归查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comprehensive-examples-in-work"><span class="nav-number">7.</span> <span class="nav-text">Comprehensive examples in work</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#地址树远程搜索"><span class="nav-number">7.1.</span> <span class="nav-text">地址树远程搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">8.</span> <span class="nav-text">触发器（TRIGGER）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ERROR"><span class="nav-number">9.</span> <span class="nav-text">ERROR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ORA-03113"><span class="nav-number">9.1.</span> <span class="nav-text">ORA-03113</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述"><span class="nav-number">9.1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL"><span class="nav-number">9.1.2.</span> <span class="nav-text">SQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TABLE"><span class="nav-number">9.1.3.</span> <span class="nav-text">TABLE</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ORA-04098"><span class="nav-number">9.2.</span> <span class="nav-text">ORA-04098</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-1"><span class="nav-number">9.2.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#触发器"><span class="nav-number">9.2.2.</span> <span class="nav-text">触发器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#触发-SQL"><span class="nav-number">9.2.3.</span> <span class="nav-text">触发 SQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TABLE-1"><span class="nav-number">9.2.4.</span> <span class="nav-text">TABLE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原因"><span class="nav-number">9.2.5.</span> <span class="nav-text">原因</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Li Bo"
+      src="/images/avatar-libo9527.jpeg">
+  <p class="site-author-name" itemprop="name">Li Bo</p>
+  <div class="site-description" itemprop="description">即便痛苦，也要仰起高昂的头颅</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">62</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Bo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.2
+  </div>
+
+        
 
 
 
@@ -1245,10 +514,35 @@
 
 
 
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
 
 
 
 
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 
@@ -1263,472 +557,8 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
 
   
 
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  
-  
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(function (item) {
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: false,
-        notify: false,
-        appId: 'Dkf5QXLDAXop5aEnIVYqtN2Y-gzGzoHsz',
-        appKey: 'wGjvGOUY5eohtITkt1ydIMUF',
-        placeholder: 'Just BB',
-        avatar:'mm',
-        meta:guest,
-        pageSize:'10' || 10,
-        visitor: false
-    });
-  </script>
-
-
-
-
-  
-  
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
-
-  
-  
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.css">
-
-  
-  
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
-    
-   <script type="text/javascript">
-        var gitalk = new Gitalk({
-          clientID: 'a75f33d0d54ca58ac001',
-          clientSecret: '02675748bae6c8068856bcd57d23a6835a8928a8',
-          repo: 'gitalk-comments',
-          owner: 'libo9527',
-          admin: ['libo9527'],
-          id: md5(location.pathname),
-          distractionFreeMode: 'true'
-        })
-        gitalk.render('gitalk-container')           
-       </script>
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-	<!-- 代码块复制功能 -->
-	<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
-	<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</body>
 </html>

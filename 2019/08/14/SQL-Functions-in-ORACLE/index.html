@@ -1,158 +1,56 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_io/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-
-
-
-  
-  
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '6.6.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta name="description" content="Oracle 函数">
-<meta name="keywords" content="Oracle,SQL-Function">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL Functions in ORACLE">
-<meta property="og:url" content="http://libo9527.github.io/2019/08/14/SQL-Functions-in-ORACLE/index.html">
-<meta property="og:site_name" content="LiBo">
+<meta property="og:url" content="http://yoursite.com/2019/08/14/SQL-Functions-in-ORACLE/index.html">
+<meta property="og:site_name" content="Li Bo">
 <meta property="og:description" content="Oracle 函数">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://regmedia.co.uk/2017/05/03/oracle_balloons2_photo_via_shutterstock.jpg">
 <meta property="og:image" content="https://i.loli.net/2019/08/14/wImuRzxqEybkW5C.png">
-<meta property="og:updated_time" content="2020-03-06T07:38:57.822Z">
+<meta property="article:published_time" content="2019-08-14T05:52:27.000Z">
+<meta property="article:modified_time" content="2020-03-07T00:41:38.048Z">
+<meta property="article:author" content="Li Bo">
+<meta property="article:tag" content="Oracle">
+<meta property="article:tag" content="SQL-Function">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SQL Functions in ORACLE">
-<meta name="twitter:description" content="Oracle 函数">
 <meta name="twitter:image" content="https://regmedia.co.uk/2017/05/03/oracle_balloons2_photo_via_shutterstock.jpg">
 
+<link rel="canonical" href="http://yoursite.com/2019/08/14/SQL-Functions-in-ORACLE/">
 
 
-
-
-
-  <link rel="canonical" href="http://libo9527.github.io/2019/08/14/SQL-Functions-in-ORACLE/">
-
-
-
-<script type="text/javascript" id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true
   };
 </script>
 
-  <title>SQL Functions in ORACLE | LiBo</title>
+  <title>SQL Functions in ORACLE | Li Bo</title>
   
-
-
-
-
-
 
 
 
@@ -160,377 +58,185 @@
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
 
-    <div class="custom-logo-site-title">
+  <div class="site-meta">
+
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">LiBo</span>
+        <span class="site-title">Li Bo</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
+        <p class="site-subtitle">Work`s Blog</p>
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
   
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-schedule">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
-
-  </li>
-
-      
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-  
-
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
 
+</div>
+<div class="search-pop-overlay"></div>
 
-
-  
-
-
-
+  </div>
 </div>
     </header>
 
     
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
+
+          <div class="content">
             
 
-          
-          <div id="content" class="content">
-            
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/14/SQL-Functions-in-ORACLE/">
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libo9527.github.io/2019/08/14/SQL-Functions-in-ORACLE/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-libo9527.jpeg">
       <meta itemprop="name" content="Li Bo">
-      <meta itemprop="description" content="我不怕千万人阻挡，只怕自己投降">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="即便痛苦，也要仰起高昂的头颅">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiBo">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Li Bo">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">SQL Functions in ORACLE
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          SQL Functions in ORACLE
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-			
-		    
-			
-		  
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2019-08-14 13:52:27" itemprop="dateCreated datePublished" datetime="2019-08-14T13:52:27+08:00">2019-08-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-03-06 15:38:57" itemprop="dateModified" datetime="2020-03-06T15:38:57+08:00">2020-03-06</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-07 08:41:38" itemprop="dateModified" datetime="2020-03-07T08:41:38+08:00">2020-03-07</time>
+              </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Database/" itemprop="url" rel="index"><span itemprop="name">Database</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Database/Oracle/" itemprop="url" rel="index"><span itemprop="name">Oracle</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Database/" itemprop="url" rel="index"><span itemprop="name">Database</span></a>
                 </span>
-                <a href="/2019/08/14/SQL-Functions-in-ORACLE/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/08/14/SQL-Functions-in-ORACLE/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Database/Oracle/" itemprop="url" rel="index"><span itemprop="name">Oracle</span></a>
+                </span>
+            </span>
 
           
-          
+            <div class="post-description">Oracle 函数</div>
 
-          
-
-          
-
-          
-              <div class="post-description">Oracle 函数</div>
-          
-		  
         </div>
       </header>
-    
 
     
     
@@ -538,29 +244,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
+        <img src="https://regmedia.co.uk/2017/05/03/oracle_balloons2_photo_via_shutterstock.jpg" width="100%"/>
 
-      
-        <img src="https://regmedia.co.uk/2017/05/03/oracle_balloons2_photo_via_shutterstock.jpg" width="100%">
 <a id="more"></a>
+
 <blockquote>
 <p><a href="https://docs.oracle.com/cd/B19306_01/server.102/b14200/functions001.htm" target="_blank" rel="noopener">SQL Functions - Oracle Help Center</a></p>
 </blockquote>
-<h2 id="NVL">NVL</h2>
-<p>格式：<strong>NVL(expr1,expr2)</strong></p>
+<h2 id="NVL"><a href="#NVL" class="headerlink" title="NVL"></a>NVL</h2><p>格式：<strong>NVL(expr1,expr2)</strong></p>
 <p>功能：如果第一个参数为空那么显示第二个参数的值，如果第一个参数的值不为空，则显示第一个参数本来的值。</p>
 <p>实例：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> ename,NVL(comm, <span class="number">-1</span>) <span class="keyword">from</span> emp;</span><br><span class="line"><span class="comment">------------------------------------</span></span><br><span class="line"></span><br><span class="line">ENAME NVL(COMM,-1)</span><br><span class="line"><span class="comment">------- ----</span></span><br><span class="line">SMITH -1</span><br><span class="line">ALLEN 300</span><br><span class="line">WARD 500</span><br><span class="line">JONES -1</span><br><span class="line">MARTIN 1400</span><br><span class="line">BLAKE -1</span><br><span class="line">FORD -1</span><br><span class="line">MILLER -1</span><br></pre></td></tr></table></figure>
-<h3 id="空值-NULL-和数字相加">空值 NULL 和数字相加</h3>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> GLOBAL_LOCATION <span class="keyword">SET</span> POPULATION = NVL(POPULATION, <span class="number">0</span>) + <span class="number">1000</span> <span class="keyword">WHERE</span> <span class="keyword">ID</span> = <span class="number">5022</span></span><br></pre></td></tr></table></figure>
-<h2 id="SUBSTR">SUBSTR</h2>
-<p>substr(字符串,截取开始位置,截取长度) //返回截取的字符串</p>
+
+<h3 id="空值-NULL-和数字相加"><a href="#空值-NULL-和数字相加" class="headerlink" title="空值 NULL 和数字相加"></a>空值 NULL 和数字相加</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> GLOBAL_LOCATION <span class="keyword">SET</span> POPULATION = NVL(POPULATION, <span class="number">0</span>) + <span class="number">1000</span> <span class="keyword">WHERE</span> <span class="keyword">ID</span> = <span class="number">5022</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="SUBSTR"><a href="#SUBSTR" class="headerlink" title="SUBSTR"></a>SUBSTR</h2><p>substr(字符串,截取开始位置,截取长度) //返回截取的字符串</p>
 <p>substr(‘Hello World’,2,4) //返回结果为 ‘ello’</p>
 <p>substr(‘Hello World’,-3,3)//返回结果为 ‘rld’ 负数(-i)表示截取的开始位置为字符串右端向左数第i个字符</p>
-<h2 id="LENGTH">LENGTH</h2>
-<p>length(字符串) //返回字符串长度</p>
-<h2 id="REGEXP-SUBSTR">REGEXP_SUBSTR</h2>
-<blockquote>
+<h2 id="LENGTH"><a href="#LENGTH" class="headerlink" title="LENGTH"></a>LENGTH</h2><p>length(字符串) //返回字符串长度</p>
+<h2 id="REGEXP-SUBSTR"><a href="#REGEXP-SUBSTR" class="headerlink" title="REGEXP_SUBSTR"></a>REGEXP_SUBSTR</h2><blockquote>
 <p><a href="https://blog.csdn.net/sofeien/article/details/80534557" target="_blank" rel="noopener">oracle如何拆分以逗号分隔的字符串为多行</a></p>
 <p><a href="https://blog.csdn.net/wang_yunj/article/details/51040029" target="_blank" rel="noopener">oracle connect by用法篇</a></p>
 </blockquote>
@@ -570,11 +272,11 @@
 <li>pattern：进行匹配的正则表达式</li>
 <li>position：起始位置，从第几个字符开始正则表达式匹配（默认为1）</li>
 <li>occurrence：标识提取第几个匹配值，默认为1</li>
-<li>modifier：模式（'i’不区分大小写进行检索；‘c’区分大小写进行检索。默认为’c’。）</li>
+<li>modifier：模式（’i’不区分大小写进行检索；’c’区分大小写进行检索。默认为’c’。）</li>
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> regexp_substr(<span class="string">'1,7,250'</span>,<span class="string">'[^,]+'</span>,<span class="number">1</span>,<span class="number">1</span>) <span class="keyword">result</span> <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">--- rsult: 1</span></span><br><span class="line"><span class="keyword">select</span> regexp_substr(<span class="string">'1,7,250'</span>,<span class="string">'[^,]+'</span>,<span class="number">1</span>,<span class="number">2</span>) <span class="keyword">result</span> <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">--- rsult: 7</span></span><br><span class="line"><span class="keyword">select</span> regexp_substr(<span class="string">'1,7,250'</span>,<span class="string">'[^,]+'</span>,<span class="number">1</span>,<span class="number">3</span>) <span class="keyword">result</span> <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">--- rsult: 250</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> regexp_substr(<span class="string">'1,7,250'</span>,<span class="string">'[^,]+'</span>,<span class="number">1</span>,<span class="keyword">rownum</span>) <span class="keyword">result</span> <span class="keyword">from</span> dual <span class="keyword">connect</span> <span class="keyword">by</span> <span class="keyword">rownum</span> &lt;= regexp_count(<span class="string">'1,7,250'</span>, <span class="string">'[^,]+'</span>);</span><br><span class="line"><span class="comment">--- rsult: </span></span><br><span class="line"><span class="comment">--- 1</span></span><br><span class="line"><span class="comment">--- 7</span></span><br><span class="line"><span class="comment">--- 250</span></span><br></pre></td></tr></table></figure>
-<h2 id="LISTAGG">LISTAGG</h2>
-<blockquote>
+
+<h2 id="LISTAGG"><a href="#LISTAGG" class="headerlink" title="LISTAGG"></a>LISTAGG</h2><blockquote>
 <p><a href="https://docs.oracle.com/cd/E11882_01/server.112/e41084/functions089.htm" target="_blank" rel="noopener">listagg - Oracle Docs</a></p>
 </blockquote>
 <p>LISTAGG(measure_expr [, ‘delimiter’])  WITHIN GROUP (order_by_clause) [OVER query_partition_clause]</p>
@@ -585,38 +287,35 @@
 <li>order_by_clause：order by 子句决定了列值被拼接的顺序</li>
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">LISTAGG</span> ( ENGLISH_NAME, <span class="string">' &gt; '</span> ) <span class="keyword">WITHIN</span> <span class="keyword">GROUP</span> ( <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ID</span> ) address </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	GLOBAL_LOCATION </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	<span class="keyword">ID</span> <span class="keyword">IN</span> ( <span class="number">1</span>, <span class="number">7</span>, <span class="number">250</span> )</span><br><span class="line">  </span><br><span class="line"><span class="comment">--- result: </span></span><br><span class="line"><span class="comment">--- Asia &gt; China &gt; Shanxi</span></span><br></pre></td></tr></table></figure>
-<h2 id="日期处理函数">日期处理函数</h2>
-<h3 id="ADD-MONTHS">ADD_MONTHS</h3>
-<blockquote>
+
+<h2 id="日期处理函数"><a href="#日期处理函数" class="headerlink" title="日期处理函数"></a>日期处理函数</h2><h3 id="ADD-MONTHS"><a href="#ADD-MONTHS" class="headerlink" title="ADD_MONTHS"></a>ADD_MONTHS</h3><blockquote>
 <p><a href="https://docs.oracle.com/cd/B28359_01/server.111/b28286/functions004.htm" target="_blank" rel="noopener">ADD_MONTHS | Oracle</a></p>
 <p><code>ADD_MONTHS</code> returns the date <code>date</code> plus <code>integer</code> months. A month is defined by the session parameter <code>NLS_CALENDAR</code>. The date argument can be a datetime value or any value that can be implicitly converted to <code>DATE</code>. The <code>integer</code> argument can be an integer or any value that can be implicitly converted to an integer. The return type is always <code>DATE</code>, regardless of the datatype of <code>date</code>. If <code>date</code> is the last day of the month or if the resulting month has fewer days than the day component of <code>date</code>, then the result is the last day of the resulting month. Otherwise, the result has the same day component as <code>date</code>.</p>
 </blockquote>
 <p>语法：ADD_MONTHS(date, integer)</p>
 <p>eg：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TO_CHAR( ADD_MONTHS( <span class="keyword">SYSDATE</span>, - <span class="number">1</span> ), <span class="string">'YYYY-MM-dd'</span> ) <span class="string">"Last month"</span>, TO_CHAR( <span class="keyword">SYSDATE</span>, <span class="string">'yyyy-MM-dd'</span> ) <span class="string">"Now"</span>, TO_CHAR( ADD_MONTHS( <span class="keyword">SYSDATE</span>, <span class="number">1</span> ), <span class="string">'YYYY-MM-dd'</span> ) <span class="string">"Next month"</span> <span class="keyword">FROM</span> dual;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"Last month" "Now"	      "Next month"</span><br><span class="line"><span class="comment">------------ ------------ ------------</span></span><br><span class="line">"2019-07-14" "2019-08-14"	"2019-09-14"</span><br></pre></td></tr></table></figure>
-<h3 id="LAST-DAY">LAST_DAY</h3>
-<blockquote>
+
+<h3 id="LAST-DAY"><a href="#LAST-DAY" class="headerlink" title="LAST_DAY"></a>LAST_DAY</h3><blockquote>
 <p><a href="https://docs.oracle.com/database/121/SQLRF/functions096.htm" target="_blank" rel="noopener">LAST_DAY | Oracle</a></p>
 <p><code>LAST_DAY</code> returns the date of the last day of the month that contains <code>date</code>. The last day of the month is defined by the session parameter <code>NLS_CALENDAR</code>. The return type is always <code>DATE</code>, regardless of the data type of <code>date</code>.</p>
 </blockquote>
 <p>语法：LAST_DAY(date)</p>
 <p>eg：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SYSDATE</span>, <span class="keyword">LAST_DAY</span>( <span class="keyword">SYSDATE</span> ) <span class="string">"Last"</span>, <span class="keyword">LAST_DAY</span>( <span class="keyword">SYSDATE</span> ) - <span class="keyword">SYSDATE</span> <span class="string">"Days Left"</span> <span class="keyword">FROM</span> DUAL;</span><br><span class="line"></span><br><span class="line">"SYSDATE"             "Last"                "Days Left"</span><br><span class="line"><span class="comment">--------------------- --------------------- -----------</span></span><br><span class="line">"2019-08-14 05:41:01" "2019-08-31 05:41:01"          17</span><br></pre></td></tr></table></figure>
-<h2 id="聚合函数">聚合函数</h2>
-<h3 id="COUNT">COUNT</h3>
-<h4 id="按日期统计">按日期统计</h4>
-<p>需求：统计收集数量</p>
+
+
+
+<h2 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h2><h3 id="COUNT"><a href="#COUNT" class="headerlink" title="COUNT"></a>COUNT</h3><h4 id="按日期统计"><a href="#按日期统计" class="headerlink" title="按日期统计"></a>按日期统计</h4><p>需求：统计收集数量</p>
 <p><img src="https://i.loli.net/2019/08/14/wImuRzxqEybkW5C.png" alt="pic"></p>
-<h5 id="按年统计">按年统计</h5>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TO_CHAR(COLLECT_DATE, <span class="string">'yyyy'</span>) <span class="keyword">AS</span> COLLECT_DATE, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="keyword">COUNT</span> <span class="keyword">FROM</span> COLLECT_RECORD <span class="keyword">GROUP</span> <span class="keyword">BY</span> TO_CHAR(COLLECT_DATE, <span class="string">'yyyy'</span>)</span><br></pre></td></tr></table></figure>
-<h5 id="按月统计">按月统计</h5>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TO_CHAR(COLLECT_DATE, <span class="string">'yyyy-MM'</span>) <span class="keyword">AS</span> COLLECT_DATE, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="keyword">COUNT</span> <span class="keyword">FROM</span> COLLECT_RECORD <span class="keyword">GROUP</span> <span class="keyword">BY</span> TO_CHAR(COLLECT_DATE, <span class="string">'yyyy-MM'</span>)</span><br></pre></td></tr></table></figure>
-<h5 id="按日统计">按日统计</h5>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TO_CHAR(COLLECT_DATE, <span class="string">'yyyy-MM-dd'</span>) <span class="keyword">AS</span> COLLECT_DATE, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="keyword">COUNT</span> <span class="keyword">FROM</span> COLLECT_RECORD <span class="keyword">GROUP</span> <span class="keyword">BY</span> TO_CHAR(COLLECT_DATE, <span class="string">'yyyy-MM-dd'</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="TRUNC">TRUNC</h2>
-<blockquote>
-<p><a href="https://docs.oracle.com/cd/B10501_01/appdev.920/a96583/cci08r14.htm#1072049" target="_blank" rel="noopener">Documentation | Oracle</a><br>
-This method returns the Number object truncated at the number of decimal places provided by the parameter specified.</p>
+<h5 id="按年统计"><a href="#按年统计" class="headerlink" title="按年统计"></a>按年统计</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TO_CHAR(COLLECT_DATE, <span class="string">'yyyy'</span>) <span class="keyword">AS</span> COLLECT_DATE, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="keyword">COUNT</span> <span class="keyword">FROM</span> COLLECT_RECORD <span class="keyword">GROUP</span> <span class="keyword">BY</span> TO_CHAR(COLLECT_DATE, <span class="string">'yyyy'</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="按月统计"><a href="#按月统计" class="headerlink" title="按月统计"></a>按月统计</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TO_CHAR(COLLECT_DATE, <span class="string">'yyyy-MM'</span>) <span class="keyword">AS</span> COLLECT_DATE, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="keyword">COUNT</span> <span class="keyword">FROM</span> COLLECT_RECORD <span class="keyword">GROUP</span> <span class="keyword">BY</span> TO_CHAR(COLLECT_DATE, <span class="string">'yyyy-MM'</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="按日统计"><a href="#按日统计" class="headerlink" title="按日统计"></a>按日统计</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TO_CHAR(COLLECT_DATE, <span class="string">'yyyy-MM-dd'</span>) <span class="keyword">AS</span> COLLECT_DATE, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="keyword">COUNT</span> <span class="keyword">FROM</span> COLLECT_RECORD <span class="keyword">GROUP</span> <span class="keyword">BY</span> TO_CHAR(COLLECT_DATE, <span class="string">'yyyy-MM-dd'</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="TRUNC"><a href="#TRUNC" class="headerlink" title="TRUNC"></a>TRUNC</h2><blockquote>
+<p><a href="https://docs.oracle.com/cd/B10501_01/appdev.920/a96583/cci08r14.htm#1072049" target="_blank" rel="noopener">Documentation | Oracle</a><br>This method returns the Number object truncated at the number of decimal places provided by the parameter specified.</p>
 </blockquote>
 <p>语法：TRUNC(number, num_digits)</p>
 <ul>
@@ -625,132 +324,71 @@ This method returns the Number object truncated at the number of decimal places 
 </ul>
 <p>eg：</p>
 <ul>
-<li>
-<p>数字</p>
+<li><p>数字</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> trunc(<span class="number">123.458</span>) <span class="keyword">from</span> dual    <span class="comment">--123</span></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="number">123.458</span>,<span class="number">0</span>) <span class="keyword">from</span> dual  <span class="comment">--123</span></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="number">123.458</span>,<span class="number">1</span>) <span class="keyword">from</span> dual  <span class="comment">--123.4</span></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="number">123.458</span>,<span class="number">-1</span>) <span class="keyword">from</span> dual <span class="comment">--120</span></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="number">123.458</span>,<span class="number">-4</span>) <span class="keyword">from</span> dual <span class="comment">--0</span></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="number">123.458</span>,<span class="number">4</span>) <span class="keyword">from</span> dual  <span class="comment">--123.458</span></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="number">123</span>) <span class="keyword">from</span> dual        <span class="comment">--123</span></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="number">123</span>,<span class="number">1</span>) <span class="keyword">from</span> dual      <span class="comment">--123</span></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="number">123</span>,<span class="number">-1</span>) <span class="keyword">from</span> dual     <span class="comment">--120</span></span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p>日期</p>
+<li><p>日期</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> trunc(<span class="keyword">sysdate</span>) <span class="keyword">from</span> dual</span><br><span class="line"><span class="comment">--2019-08-14 00:00:00  今天的日期</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="keyword">sysdate</span>, <span class="string">'mm'</span>) <span class="keyword">from</span> dual</span><br><span class="line"><span class="comment">--2019-08-01 00:00:00  当月第一天</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="keyword">sysdate</span>,<span class="string">'yy'</span>) <span class="keyword">from</span> dual</span><br><span class="line"><span class="comment">--2019-01-01 00:00:00  当年第一天</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="keyword">sysdate</span>,<span class="string">'dd'</span>) <span class="keyword">from</span> dual</span><br><span class="line"><span class="comment">--2019-08-14 00:00:00  当前年月日</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="keyword">sysdate</span>,<span class="string">'yyyy'</span>) <span class="keyword">from</span> dual</span><br><span class="line"><span class="comment">--2019-01-01 00:00:00  当年第一天</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="keyword">sysdate</span>,<span class="string">'d'</span>) <span class="keyword">from</span> dual</span><br><span class="line"><span class="comment">--2019-08-11 00:00:00  当前星期的第一天(星期天)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="keyword">sysdate</span>, <span class="string">'hh'</span>) <span class="keyword">from</span> dual</span><br><span class="line"><span class="comment">--2019-08-14 03:00:00  当前时间的第一分钟</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> trunc(<span class="keyword">sysdate</span>, <span class="string">'mi'</span>) <span class="keyword">from</span> dual</span><br><span class="line"><span class="comment">--2019-08-14 03:56:00  当前时间的第一秒，TRUNC()函数没有秒的精确</span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<h2 id="JSON">JSON</h2>
-<h3 id="JSON-TABLE">JSON_TABLE</h3>
-<blockquote>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><h3 id="JSON-TABLE"><a href="#JSON-TABLE" class="headerlink" title="JSON_TABLE"></a>JSON_TABLE</h3><blockquote>
 <p><a href="https://docs.oracle.com/database/121/SQLRF/functions092.htm" target="_blank" rel="noopener">json_table - Oracle Docs</a></p>
 </blockquote>
 <p>语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">JSON_TABLE</span><br><span class="line">  ( expr [ FORMAT JSON ], JSON_path_expression</span><br><span class="line">    [ JSON_table_on_error_clause ] JSON_columns_clause )</span><br></pre></td></tr></table></figure>
+
 <p>eg：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> j_purchaseorder</span><br><span class="line">  (<span class="keyword">id</span> <span class="keyword">RAW</span> (<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">   date_loaded <span class="built_in">TIMESTAMP</span>(<span class="number">6</span>) <span class="keyword">WITH</span> <span class="built_in">TIME</span> ZONE,</span><br><span class="line">   po_document <span class="keyword">CLOB</span> <span class="keyword">CONSTRAINT</span> ensure_json <span class="keyword">CHECK</span> (po_document <span class="keyword">IS</span> <span class="keyword">JSON</span>));</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> j_purchaseorder</span><br><span class="line">  <span class="keyword">VALUES</span> (</span><br><span class="line">    SYS_GUID(),</span><br><span class="line">    SYSTIMESTAMP,</span><br><span class="line">    <span class="string">'&#123;"PONumber"              : 1600,</span></span><br><span class="line"><span class="string">      "Reference"             : "ABULL-20140421",</span></span><br><span class="line"><span class="string">       "Requestor"            : "Alexis Bull",</span></span><br><span class="line"><span class="string">       "User"                 : "ABULL",</span></span><br><span class="line"><span class="string">       "CostCenter"           : "A50",</span></span><br><span class="line"><span class="string">       "ShippingInstructions" : &#123;"name"   : "Alexis Bull",</span></span><br><span class="line"><span class="string">                                 "Address": &#123;"street"   : "200 Sporting Green",</span></span><br><span class="line"><span class="string">                                              "city"    : "South San Francisco",</span></span><br><span class="line"><span class="string">                                              "state"   : "CA",</span></span><br><span class="line"><span class="string">                                              "zipCode" : 99236,</span></span><br><span class="line"><span class="string">                                              "country" : "United States of America"&#125;,</span></span><br><span class="line"><span class="string">                                 "Phone" : [&#123;"type" : "Office", "number" : "909-555-7307"&#125;,</span></span><br><span class="line"><span class="string">                                            &#123;"type" : "Mobile", "number" : "415-555-1234"&#125;]&#125;,</span></span><br><span class="line"><span class="string">       "Special Instructions" : null,</span></span><br><span class="line"><span class="string">       "AllowPartialShipment" : true,</span></span><br><span class="line"><span class="string">       "LineItems" : [&#123;"ItemNumber" : 1,</span></span><br><span class="line"><span class="string">                       "Part" : &#123;"Description" : "One Magic Christmas",</span></span><br><span class="line"><span class="string">                                 "UnitPrice"   : 19.95,</span></span><br><span class="line"><span class="string">                                 "UPCCode"     : 13131092899&#125;,</span></span><br><span class="line"><span class="string">                       "Quantity" : 9.0&#125;,</span></span><br><span class="line"><span class="string">                      &#123;"ItemNumber" : 2,</span></span><br><span class="line"><span class="string">                       "Part" : &#123;"Description" : "Lethal Weapon",</span></span><br><span class="line"><span class="string">                                 "UnitPrice"   : 19.95,</span></span><br><span class="line"><span class="string">                                 "UPCCode"     : 85391628927&#125;,</span></span><br><span class="line"><span class="string">                       "Quantity" : 5.0&#125;]&#125;'</span>);</span><br></pre></td></tr></table></figure>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> jt.*</span><br><span class="line"><span class="keyword">FROM</span> j_purchaseorder,</span><br><span class="line">JSON_TABLE(po_document, <span class="string">'$.ShippingInstructions.Phone[*]'</span></span><br><span class="line"><span class="keyword">COLUMNS</span> (row_number <span class="keyword">FOR</span> <span class="keyword">ORDINALITY</span>,</span><br><span class="line">         phone_type VARCHAR2(<span class="number">10</span>) <span class="keyword">PATH</span> <span class="string">'$.type'</span>,</span><br><span class="line">         phone_num VARCHAR2(<span class="number">20</span>) <span class="keyword">PATH</span> <span class="string">'$.number'</span>))</span><br><span class="line"><span class="keyword">AS</span> jt;</span><br><span class="line"></span><br><span class="line">ROW_NUMBER PHONE_TYPE PHONE_NUM</span><br><span class="line"><span class="comment">---------- ---------- --------------------</span></span><br><span class="line">         1 Office     909-555-7307</span><br><span class="line">         2 Mobile     415-555-1234</span><br></pre></td></tr></table></figure>
-<h2 id="分析函数">分析函数</h2>
-<h3 id="ROW-NUMBER">ROW_NUMBER</h3>
-<blockquote>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> jt.*</span><br><span class="line"><span class="keyword">FROM</span> j_purchaseorder,</span><br><span class="line">JSON_TABLE(po_document, <span class="string">'$.ShippingInstructions.Phone[*]'</span></span><br><span class="line"><span class="keyword">COLUMNS</span> (row_number <span class="keyword">FOR</span> <span class="keyword">ORDINALITY</span>,</span><br><span class="line">         phone_type <span class="built_in">VARCHAR2</span>(<span class="number">10</span>) <span class="keyword">PATH</span> <span class="string">'$.type'</span>,</span><br><span class="line">         phone_num <span class="built_in">VARCHAR2</span>(<span class="number">20</span>) <span class="keyword">PATH</span> <span class="string">'$.number'</span>))</span><br><span class="line"><span class="keyword">AS</span> jt;</span><br><span class="line"></span><br><span class="line">ROW_NUMBER PHONE_TYPE PHONE_NUM</span><br><span class="line"><span class="comment">---------- ---------- --------------------</span></span><br><span class="line">         1 Office     909-555-7307</span><br><span class="line">         2 Mobile     415-555-1234</span><br></pre></td></tr></table></figure>
+
+<h2 id="分析函数"><a href="#分析函数" class="headerlink" title="分析函数"></a>分析函数</h2><h3 id="ROW-NUMBER"><a href="#ROW-NUMBER" class="headerlink" title="ROW_NUMBER"></a>ROW_NUMBER</h3><blockquote>
 <p><a href="https://docs.oracle.com/cd/B19306_01/server.102/b14200/functions137.htm" target="_blank" rel="noopener">row_number - Oracle Docs</a></p>
 </blockquote>
 <p>语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ROW_NUMBER( )</span><br><span class="line">   OVER ([ query_partition_clause ] order_by_clause)</span><br></pre></td></tr></table></figure>
+
 <p>eg：查找最新一条收集任务</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	* </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	( <span class="keyword">SELECT</span> ct.* , row_number () <span class="keyword">over</span> ( <span class="keyword">ORDER</span> <span class="keyword">BY</span> ct.CREATE_DATE <span class="keyword">DESC</span> ) rn <span class="keyword">FROM</span> COLLECT_TASK ct ) </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	rn = <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ID 	COLLECTOR_ID CITY_ID CREATE_BY CREATE_DATE 	      UPDATE_BY UPDATE_DATE 	     DEL_FLAG RN </span><br><span class="line">--- ------------ ------- --------- ------------------ --------- ------------------ -------- --</span><br><span class="line">135 176 	       5185 	 1 	       26/8/2019 17:23:37 1 	      26/8/2019 17:25:14 0 	      1</span><br></pre></td></tr></table></figure>
 
-      
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ID 	COLLECTOR_ID CITY_ID CREATE_BY CREATE_DATE 	      UPDATE_BY UPDATE_DATE 	     DEL_FLAG RN </span><br><span class="line">--- ------------ ------- --------- ------------------ --------- ------------------ -------- --</span><br><span class="line">135 176 	       5185 	 1 	       26&#x2F;8&#x2F;2019 17:23:37 1 	      26&#x2F;8&#x2F;2019 17:25:14 0 	      1</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
-
-    
-    
-    
-	<div>
-		
-			<div>
-
-    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
-
-</div>
-		
-	</div>
-    
-
-    
-       
     
     
 
-    
-      <div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Oracle/" rel="tag"># Oracle</a>
+              <a href="/tags/SQL-Function/" rel="tag"># SQL-Function</a>
+          </div>
+
         
 
 
-
-  
-
-
-
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>Li Bo</li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/08/13/Study-Notes-of-Vue/" rel="prev" title="Study Notes of Vue">
+      <i class="fa fa-chevron-left"></i> Study Notes of Vue
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/08/16/Study-Notes-of-Axure/" rel="next" title="Study Notes of Axure">
+      Study Notes of Axure <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
     
-    <a href="http://libo9527.github.io/2019/08/14/SQL-Functions-in-ORACLE/" title="SQL Functions in ORACLE">http://libo9527.github.io/2019/08/14/SQL-Functions-in-ORACLE/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
-</ul>
-
-      </div>
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Oracle/" rel="tag"><i class="fa fa-tag"></i> Oracle</a>
-          
-            <a href="/tags/SQL-Function/" rel="tag"><i class="fa fa-tag"></i> SQL-Function</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/08/13/Study-Notes-of-Vue/" rel="next" title="Study Notes of Vue">
-                <i class="fa fa-chevron-left"></i> Study Notes of Vue
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/16/Study-Notes-of-Axure/" rel="prev" title="Study Notes of Axure">
-                Study Notes of Axure <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
   </article>
-
+  
+  
+  
 
   </div>
 
@@ -758,486 +396,122 @@ This method returns the Number object truncated at the number of decimal places 
           </div>
           
 
-  
-    <div id="gitalk-container">
-    </div>
-	
-		<div class="comments" id="comments">
-		</div>
-	
-    
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Li Bo">
-            
-              <p class="site-author-name" itemprop="name">Li Bo</p>
-              <p class="site-description motion-element" itemprop="description">我不怕千万人阻挡，只怕自己投降</p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">86</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">70</span>
-                    <span class="site-state-item-name">分类</span>
-                  
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">62</span>
-                    <span class="site-state-item-name">标签</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/libo9527" title="GitHub &rarr; https://github.com/libo9527" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NVL"><span class="nav-number">1.</span> <span class="nav-text">NVL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#空值-NULL-和数字相加"><span class="nav-number">1.1.</span> <span class="nav-text">空值 NULL 和数字相加</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SUBSTR"><span class="nav-number">2.</span> <span class="nav-text">SUBSTR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LENGTH"><span class="nav-number">3.</span> <span class="nav-text">LENGTH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REGEXP-SUBSTR"><span class="nav-number">4.</span> <span class="nav-text">REGEXP_SUBSTR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LISTAGG"><span class="nav-number">5.</span> <span class="nav-text">LISTAGG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期处理函数"><span class="nav-number">6.</span> <span class="nav-text">日期处理函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ADD-MONTHS"><span class="nav-number">6.1.</span> <span class="nav-text">ADD_MONTHS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LAST-DAY"><span class="nav-number">6.2.</span> <span class="nav-text">LAST_DAY</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚合函数"><span class="nav-number">7.</span> <span class="nav-text">聚合函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#COUNT"><span class="nav-number">7.1.</span> <span class="nav-text">COUNT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#按日期统计"><span class="nav-number">7.1.1.</span> <span class="nav-text">按日期统计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#按年统计"><span class="nav-number">7.1.1.1.</span> <span class="nav-text">按年统计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按月统计"><span class="nav-number">7.1.1.2.</span> <span class="nav-text">按月统计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按日统计"><span class="nav-number">7.1.1.3.</span> <span class="nav-text">按日统计</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TRUNC"><span class="nav-number">8.</span> <span class="nav-text">TRUNC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON"><span class="nav-number">9.</span> <span class="nav-text">JSON</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-TABLE"><span class="nav-number">9.1.</span> <span class="nav-text">JSON_TABLE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析函数"><span class="nav-number">10.</span> <span class="nav-text">分析函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ROW-NUMBER"><span class="nav-number">10.1.</span> <span class="nav-text">ROW_NUMBER</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-        <div class="back-to-top">
-          <i class="fa fa-arrow-up"></i>
-          
-            <span id="scrollpercent"><span>0</span>%</span>
-          
-        </div>
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Li Bo</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-
-    
-	
-    
-
-    
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NVL"><span class="nav-number">1.</span> <span class="nav-text">NVL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#空值-NULL-和数字相加"><span class="nav-number">1.1.</span> <span class="nav-text">空值 NULL 和数字相加</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SUBSTR"><span class="nav-number">2.</span> <span class="nav-text">SUBSTR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LENGTH"><span class="nav-number">3.</span> <span class="nav-text">LENGTH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REGEXP-SUBSTR"><span class="nav-number">4.</span> <span class="nav-text">REGEXP_SUBSTR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LISTAGG"><span class="nav-number">5.</span> <span class="nav-text">LISTAGG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期处理函数"><span class="nav-number">6.</span> <span class="nav-text">日期处理函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ADD-MONTHS"><span class="nav-number">6.1.</span> <span class="nav-text">ADD_MONTHS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LAST-DAY"><span class="nav-number">6.2.</span> <span class="nav-text">LAST_DAY</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚合函数"><span class="nav-number">7.</span> <span class="nav-text">聚合函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#COUNT"><span class="nav-number">7.1.</span> <span class="nav-text">COUNT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#按日期统计"><span class="nav-number">7.1.1.</span> <span class="nav-text">按日期统计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#按年统计"><span class="nav-number">7.1.1.1.</span> <span class="nav-text">按年统计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按月统计"><span class="nav-number">7.1.1.2.</span> <span class="nav-text">按月统计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按日统计"><span class="nav-number">7.1.1.3.</span> <span class="nav-text">按日统计</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TRUNC"><span class="nav-number">8.</span> <span class="nav-text">TRUNC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON"><span class="nav-number">9.</span> <span class="nav-text">JSON</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-TABLE"><span class="nav-number">9.1.</span> <span class="nav-text">JSON_TABLE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析函数"><span class="nav-number">10.</span> <span class="nav-text">分析函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ROW-NUMBER"><span class="nav-number">10.1.</span> <span class="nav-text">ROW_NUMBER</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Li Bo"
+      src="/images/avatar-libo9527.jpeg">
+  <p class="site-author-name" itemprop="name">Li Bo</p>
+  <div class="site-description" itemprop="description">即便痛苦，也要仰起高昂的头颅</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">62</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Bo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.2
+  </div>
+
+        
 
 
 
@@ -1246,10 +520,35 @@ This method returns the Number object truncated at the number of decimal places 
 
 
 
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
 
 
 
 
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 
@@ -1264,472 +563,8 @@ This method returns the Number object truncated at the number of decimal places 
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
 
   
 
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  
-  
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(function (item) {
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: false,
-        notify: false,
-        appId: 'Dkf5QXLDAXop5aEnIVYqtN2Y-gzGzoHsz',
-        appKey: 'wGjvGOUY5eohtITkt1ydIMUF',
-        placeholder: 'Just BB',
-        avatar:'mm',
-        meta:guest,
-        pageSize:'10' || 10,
-        visitor: false
-    });
-  </script>
-
-
-
-
-  
-  
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
-
-  
-  
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.css">
-
-  
-  
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
-    
-   <script type="text/javascript">
-        var gitalk = new Gitalk({
-          clientID: 'a75f33d0d54ca58ac001',
-          clientSecret: '02675748bae6c8068856bcd57d23a6835a8928a8',
-          repo: 'gitalk-comments',
-          owner: 'libo9527',
-          admin: ['libo9527'],
-          id: md5(location.pathname),
-          distractionFreeMode: 'true'
-        })
-        gitalk.render('gitalk-container')           
-       </script>
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-	<!-- 代码块复制功能 -->
-	<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
-	<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</body>
 </html>

@@ -1,156 +1,54 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<html lang="zh-CN">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_io/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-
-
-
-  
-  
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '6.6.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta name="description" content="正则表达式学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Study Notes of Regular Expression">
-<meta property="og:url" content="http://libo9527.github.io/2020/02/24/Study-Notes-of-Regular-Expression/index.html">
-<meta property="og:site_name" content="LiBo">
+<meta property="og:url" content="http://yoursite.com/2020/02/24/Study-Notes-of-Regular-Expression/index.html">
+<meta property="og:site_name" content="Li Bo">
 <meta property="og:description" content="正则表达式学习笔记">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.malwarebytes.com/wp-content/uploads/2018/08/regex_puzzle-900x506.jpg">
-<meta property="og:updated_time" content="2020-03-06T07:38:57.826Z">
+<meta property="article:published_time" content="2020-02-24T02:48:06.000Z">
+<meta property="article:modified_time" content="2020-03-07T00:41:38.052Z">
+<meta property="article:author" content="Li Bo">
+<meta property="article:tag" content="Word">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Study Notes of Regular Expression">
-<meta name="twitter:description" content="正则表达式学习笔记">
 <meta name="twitter:image" content="https://blog.malwarebytes.com/wp-content/uploads/2018/08/regex_puzzle-900x506.jpg">
 
+<link rel="canonical" href="http://yoursite.com/2020/02/24/Study-Notes-of-Regular-Expression/">
 
 
-
-
-
-  <link rel="canonical" href="http://libo9527.github.io/2020/02/24/Study-Notes-of-Regular-Expression/">
-
-
-
-<script type="text/javascript" id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true
   };
 </script>
 
-  <title>Study Notes of Regular Expression | LiBo</title>
+  <title>Study Notes of Regular Expression | Li Bo</title>
   
-
-
-
-
-
 
 
 
@@ -158,377 +56,185 @@
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
 
-    <div class="custom-logo-site-title">
+  <div class="site-meta">
+
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">LiBo</span>
+        <span class="site-title">Li Bo</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
+        <p class="site-subtitle">Work`s Blog</p>
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
   </div>
 </div>
-
 
 
 <nav class="site-nav">
   
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
+        <li class="menu-item menu-item-tags">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
+        <li class="menu-item menu-item-categories">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
+        <li class="menu-item menu-item-archives">
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
 
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-schedule">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
-
-  </li>
-
-      
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-        </li>
-      
-    </ul>
-  
-
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
 
+</div>
+<div class="search-pop-overlay"></div>
 
-
-  
-
-
-
+  </div>
 </div>
     </header>
 
     
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
+
+          <div class="content">
             
 
-          
-          <div id="content" class="content">
-            
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/24/Study-Notes-of-Regular-Expression/">
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://libo9527.github.io/2020/02/24/Study-Notes-of-Regular-Expression/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-libo9527.jpeg">
       <meta itemprop="name" content="Li Bo">
-      <meta itemprop="description" content="我不怕千万人阻挡，只怕自己投降">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="即便痛苦，也要仰起高昂的头颅">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LiBo">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Li Bo">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">Study Notes of Regular Expression
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          Study Notes of Regular Expression
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-			
-		    
-			
-		  
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">发表于</span>
 
               <time title="创建时间：2020-02-24 10:48:06" itemprop="dateCreated datePublished" datetime="2020-02-24T10:48:06+08:00">2020-02-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-03-06 15:38:57" itemprop="dateModified" datetime="2020-03-06T15:38:57+08:00">2020-03-06</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-07 08:41:38" itemprop="dateModified" datetime="2020-03-07T08:41:38+08:00">2020-03-07</time>
+              </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Study-Notes/" itemprop="url" rel="index"><span itemprop="name">Study Notes</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Study-Notes/Regular-Expression/" itemprop="url" rel="index"><span itemprop="name">Regular Expression</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Study-Notes/" itemprop="url" rel="index"><span itemprop="name">Study Notes</span></a>
                 </span>
-                <a href="/2020/02/24/Study-Notes-of-Regular-Expression/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2020/02/24/Study-Notes-of-Regular-Expression/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Study-Notes/Regular-Expression/" itemprop="url" rel="index"><span itemprop="name">Regular Expression</span></a>
+                </span>
+            </span>
 
           
-          
+            <div class="post-description">正则表达式学习笔记</div>
 
-          
-
-          
-
-          
-              <div class="post-description">正则表达式学习笔记</div>
-          
-		  
         </div>
       </header>
-    
 
     
     
@@ -536,21 +242,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
+        <img src="https://blog.malwarebytes.com/wp-content/uploads/2018/08/regex_puzzle-900x506.jpg" width="100%"/>
 
-      
-        <img src="https://blog.malwarebytes.com/wp-content/uploads/2018/08/regex_puzzle-900x506.jpg" width="100%">
 <a id="more"></a>
-<h2 id="教程">教程</h2>
-<blockquote>
+
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><blockquote>
 <p><a href="https://github.com/ziishaned/learn-regex" target="_blank" rel="noopener">learn-regex | GitHub</a></p>
 </blockquote>
-<h2 id="什么是正则表达式？">什么是正则表达式？</h2>
-<blockquote>
+<h2 id="什么是正则表达式？"><a href="#什么是正则表达式？" class="headerlink" title="什么是正则表达式？"></a>什么是正则表达式？</h2><blockquote>
 <span class="label info">正则表达式</span><mark>是</mark>一组由字母和符号组成的<span class="label info">特殊文本</span>，它可以<mark>用来</mark>从文本中找出满足你想要的格式的句子。
 </blockquote>
-<h2 id="元字符">元字符</h2>
-<blockquote>
+<h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h2><blockquote>
 <p>元字符<mark>不</mark>代表他们本身的字面意思，他们都有特殊的含义。</p>
 </blockquote>
 <table>
@@ -560,8 +262,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>.</td>
 <td>匹配<span class="label info">任意</span><span class="label danger">单个</span>字符<mark>除了</mark>换行符。</td>
 </tr>
@@ -599,7 +300,7 @@
 </tr>
 <tr>
 <td>\</td>
-<td>转义字符，用于匹配一些<mark>保留字符</mark> <code>[ ] ( ) { } . * + ? ^ $ \ |</code></td>
+<td>转义字符，用于匹配一些<mark>保留字符</mark> `[ ] ( ) { } . * + ? ^ $ \</td>
 </tr>
 <tr>
 <td>^</td>
@@ -609,59 +310,41 @@
 <td>$</td>
 <td>正则表达式的<mark>结束符号</mark>.</td>
 </tr>
-</tbody>
-</table>
-<h3 id="元字符-v2">元字符 <code>.</code></h3>
-<h3 id="字符集">字符集 <code>[]</code></h3>
-<p>方括号用来指定一个字符集。</p>
+</tbody></table>
+<h3 id="元字符-1"><a href="#元字符-1" class="headerlink" title="元字符 ."></a>元字符 <code>.</code></h3><h3 id="字符集"><a href="#字符集" class="headerlink" title="字符集 []"></a>字符集 <code>[]</code></h3><p>方括号用来指定一个字符集。</p>
 <ol>
-<li>
-<p>括号中的字符集<mark>不关心顺序</mark>。</p>
+<li><p>括号中的字符集<mark>不关心顺序</mark>。</p>
 <p>表达式<code>[Tt]he</code> 匹配 <code>the</code> 和 <code>The</code></p>
 </li>
-<li>
-<p>方括号的点号<mark>就</mark>表示点号</p>
+<li><p>方括号的点号<mark>就</mark>表示点号</p>
 <p>表达式 <code>ar[.]</code> 匹配 <code>ar.</code>字符串</p>
 </li>
 </ol>
-<h4 id="否定字符集">否定字符集</h4>
-<p>一般来说 <code>^</code> 表示一个字符串的开头，但当它用在方括号里面的开头时，它表示这个字符集是否定的。 例如，表达式 <a href="https://regex101.com/r/nNNlq3/1" target="_blank" rel="noopener"><code>[^c]ar</code></a> 匹配一个后面跟着 <code>ar</code> 的除了 <code>c</code> 的任意字符。</p>
-<h3 id="重复次数">重复次数</h3>
-<p>后面跟着元字符 <code>+</code>，<code>*</code> or <code>?</code> 的，用来指定匹配子模式的次数。 这些元字符在不同的情况下有着不同的含义。</p>
-<h4 id="元字符-v3">元字符 <code>*</code></h4>
-<p><code>*</code> 号匹配在 <code>*</code> 之前的字符出现 <mark>&gt;=0</mark> 次。 例如，表达式 <code>a*</code> 匹配 0个或者多个以 a 开头的字符。表达式 <a href="https://regex101.com/r/7m8me5/1" target="_blank" rel="noopener"><code>[a-z]*</code></a> 匹配所有以小写字母开头的字符串。</p>
+<h4 id="否定字符集"><a href="#否定字符集" class="headerlink" title="否定字符集"></a>否定字符集</h4><p>一般来说 <code>^</code> 表示一个字符串的开头，但当它用在方括号里面的开头时，它表示这个字符集是否定的。 例如，表达式 <a href="https://regex101.com/r/nNNlq3/1" target="_blank" rel="noopener"><code>[^c]ar</code></a> 匹配一个后面跟着 <code>ar</code> 的除了 <code>c</code> 的任意字符。</p>
+<h3 id="重复次数"><a href="#重复次数" class="headerlink" title="重复次数"></a>重复次数</h3><p>后面跟着元字符 <code>+</code>，<code>*</code> or <code>?</code> 的，用来指定匹配子模式的次数。 这些元字符在不同的情况下有着不同的含义。</p>
+<h4 id="元字符-2"><a href="#元字符-2" class="headerlink" title="元字符 *"></a>元字符 <code>*</code></h4><p><code>*</code> 号匹配在 <code>*</code> 之前的字符出现 <mark>&gt;=0</mark> 次。 例如，表达式 <code>a*</code> 匹配 0个或者多个以 a 开头的字符。表达式 <a href="https://regex101.com/r/7m8me5/1" target="_blank" rel="noopener"><code>[a-z]*</code></a> 匹配所有以小写字母开头的字符串。</p>
 <p><code>*</code> 元字符和 <code>.</code> 元字符搭配可以匹配所有的字符(<code>.*</code>)。</p>
 <p><code>*</code> 和空格元字符 <code>\s</code> 连起来用，如表达式 <a href="https://regex101.com/r/gGrwuz/1" target="_blank" rel="noopener"><code>\s*cat\s*</code></a> 匹配以 0个或多个空格开头，中间是 cat，并且以 0个或多个空格结尾的字符串。</p>
-<h4 id="元字符-v4">元字符 <code>+</code></h4>
-<p><code>+</code> 元字符匹配 <code>+</code> 号之前的字符出现 <mark>&gt;=1</mark> 次。 例如表达式 <a href="https://regex101.com/r/Dzf9Aa/1" target="_blank" rel="noopener"><code>c.+t</code></a> 匹配以字母 <code>c</code> 开头以 <code>t</code> 结尾，中间跟着至少一个字符的字符串。</p>
-<h4 id="元字符-v5">元字符 <code>?</code></h4>
-<p>元字符 <code>?</code> 表示前面的字符为<mark>可选字符</mark>，即出现 0 次或 1 次。 例如，表达式 <a href="https://regex101.com/r/kPpO2x/1" target="_blank" rel="noopener"><code>[T]?he</code></a> 匹配字符串 <code>he</code> 和 <code>The</code>。</p>
-<h3 id="元字符-v6">元字符 <code>{}</code></h3>
-<p>在正则表达式中 <code>{}</code> 是一个量词，常用来表示一个或一组字符可以重复出现的次数。 例如，表达式 <a href="https://regex101.com/r/juM86s/1" target="_blank" rel="noopener"><code>[0-9]{2,3}</code></a> 匹配最少 2 位最多 3 位 0~9 的数字。</p>
+<h4 id="元字符-3"><a href="#元字符-3" class="headerlink" title="元字符 +"></a>元字符 <code>+</code></h4><p><code>+</code> 元字符匹配 <code>+</code> 号之前的字符出现 <mark>&gt;=1</mark> 次。 例如表达式 <a href="https://regex101.com/r/Dzf9Aa/1" target="_blank" rel="noopener"><code>c.+t</code></a> 匹配以字母 <code>c</code> 开头以 <code>t</code> 结尾，中间跟着至少一个字符的字符串。</p>
+<h4 id="元字符-4"><a href="#元字符-4" class="headerlink" title="元字符 ?"></a>元字符 <code>?</code></h4><p>元字符 <code>?</code> 表示前面的字符为<mark>可选字符</mark>，即出现 0 次或 1 次。 例如，表达式 <a href="https://regex101.com/r/kPpO2x/1" target="_blank" rel="noopener"><code>[T]?he</code></a> 匹配字符串 <code>he</code> 和 <code>The</code>。</p>
+<h3 id="元字符-5"><a href="#元字符-5" class="headerlink" title="元字符 {}"></a>元字符 <code>{}</code></h3><p>在正则表达式中 <code>{}</code> 是一个量词，常用来表示一个或一组字符可以重复出现的次数。 例如，表达式 <a href="https://regex101.com/r/juM86s/1" target="_blank" rel="noopener"><code>[0-9]{2,3}</code></a> 匹配最少 2 位最多 3 位 0~9 的数字。</p>
 <p>可以省略第二个参数。 例如，<a href="https://regex101.com/r/Gdy4w5/1" target="_blank" rel="noopener"><code>[0-9]{2,}</code></a> 匹配至少两位 0~9 的数字。</p>
 <p>如果逗号也省略掉，则表示重复固定的次数。 例如，<a href="https://regex101.com/r/Sivu30/1" target="_blank" rel="noopener"><code>[0-9]{3}</code></a> 匹配 3 位 0~9 的数字</p>
-<h3 id="元字符-v7">元字符 <code>()</code></h3>
-<p>元字符 <code>()</code> 表示将括号内的子模式绑定为一个组，将这个组作为一个新的子模式进行匹配。</p>
+<h3 id="元字符-6"><a href="#元字符-6" class="headerlink" title="元字符 ()"></a>元字符 <code>()</code></h3><p>元字符 <code>()</code> 表示将括号内的子模式绑定为一个组，将这个组作为一个新的子模式进行匹配。</p>
 <p>例如之前说的 <code>{}</code> 是用来表示前面一个字符出现指定次数。但如果在 <code>{}</code> 前用括号将一串字符括起来，则表示整个括号内的字符重复 N 次。例如，表达式 <code>(ab)*</code> 匹配连续出现 0 个或多个 <code>ab</code>。</p>
 <p>还可以在 <code>()</code> 中用 <code>|</code> 表示或。例如，<a href="https://regex101.com/r/tUxrBG/1" target="_blank" rel="noopener"><code>(c|g|p)ar</code></a> 匹配 <code>car</code> 或 <code>gar</code> 或 <code>par</code>.</p>
-<h3 id="元字符-v8">元字符 <code>|</code></h3>
-<p>元字符 <code>|</code> 表示或，用作判断条件。</p>
+<h3 id="元字符-7"><a href="#元字符-7" class="headerlink" title="元字符 |"></a>元字符 <code>|</code></h3><p>元字符 <code>|</code> 表示或，用作判断条件。</p>
 <p>例如 <a href="https://regex101.com/r/fBXyX0/1" target="_blank" rel="noopener"><code>(T|t)he|car</code></a> 匹配 <code>(T|t)he</code> 或 <code>car</code>。</p>
-<h3 id="元字符-v9">元字符 <code>\</code></h3>
-<p>元字符 <code>\</code> 用于转义紧跟其后的字符。用于转义 <code>{ } [ ] / \ + * . $ ^ | ?</code> 这些特殊字符。如果想要匹配这些特殊字符则要在其前面加上反斜线 <code>\</code>。</p>
+<h3 id="元字符-8"><a href="#元字符-8" class="headerlink" title="元字符 \"></a>元字符 <code>\</code></h3><p>元字符 <code>\</code> 用于转义紧跟其后的字符。用于转义 <code>{ } [ ] / \ + * . $ ^ | ?</code> 这些特殊字符。如果想要匹配这些特殊字符则要在其前面加上反斜线 <code>\</code>。</p>
 <p>例如 <code>.</code> 是用来匹配除换行符外的所有单个字符的。如果想要匹配句子中的 <code>.</code> 则要写成 <code>\.</code>。</p>
 <p>例如 <a href="https://regex101.com/r/DOc5Nu/1" target="_blank" rel="noopener"><code>(f|c|m)at\.?</code></a> 匹配以 <code>f</code> 或者 <code>c</code> 或者 <code>m</code> 开头，中间是 <code>mt</code>，后面有 0 个或者 1 个 <code>.</code></p>
-<h3 id="锚点">锚点</h3>
-<p>正则表达式中，想要匹配指定开头或结尾的字符串就要使用到锚点。<code>^</code> 指定开头，<code>$</code> 指定结尾。</p>
-<h3 id="元字符-v10">元字符 <code>^</code></h3>
-<p><code>^</code> 用来检查匹配的字符串是否在所匹配字符串的开头。</p>
+<h3 id="锚点"><a href="#锚点" class="headerlink" title="锚点"></a>锚点</h3><p>正则表达式中，想要匹配指定开头或结尾的字符串就要使用到锚点。<code>^</code> 指定开头，<code>$</code> 指定结尾。</p>
+<h3 id="元字符-9"><a href="#元字符-9" class="headerlink" title="元字符 ^"></a>元字符 <code>^</code></h3><p><code>^</code> 用来检查匹配的字符串是否在所匹配字符串的开头。</p>
 <p>例如，在 <code>abc</code> 中使用表达式 <code>^a</code> 会得到结果 <code>a</code>。但如果使用 <code>^b</code> 将匹配不到任何结果。因为在字符串 <code>abc</code> 中并没有以 <code>b</code> 开头的字符串。</p>
 <p>例如，<a href="https://regex101.com/r/jXrKne/1" target="_blank" rel="noopener"><code>^(T|t)he</code></a> 匹配以 <code>The</code> 或 <code>the</code> 开头的字符串。</p>
-<h3 id="元字符-v11">元字符 <code>$</code></h3>
-<p>与 <code>^</code> 同理，元字符 <code>$</code> 用来检查匹配的字符串是否在所匹配字符串的结尾。</p>
+<h3 id="元字符-10"><a href="#元字符-10" class="headerlink" title="元字符 $"></a>元字符 <code>$</code></h3><p>与 <code>^</code> 同理，元字符 <code>$</code> 用来检查匹配的字符串是否在所匹配字符串的结尾。</p>
 <p>例如，<a href="https://regex101.com/r/t0AkOd/1" target="_blank" rel="noopener"><code>(at\.)$</code></a> 匹配以 <code>at.</code> 结尾的字符串。</p>
-<h2 id="简写字符集">简写字符集</h2>
-<p>正则表达式提供一些常用的字符集简写。如下:</p>
+<h2 id="简写字符集"><a href="#简写字符集" class="headerlink" title="简写字符集"></a>简写字符集</h2><p>正则表达式提供一些常用的字符集简写。如下:</p>
 <table>
 <thead>
 <tr>
@@ -669,8 +352,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>.</td>
 <td>除<mark>换</mark>行符外的所有单个字符</td>
 </tr>
@@ -722,10 +404,8 @@
 <td>\p</td>
 <td>匹配 CR/LF（等同于 <code>\r\n</code>），用来匹配 DOS 行<mark>终止符</mark></td>
 </tr>
-</tbody>
-</table>
-<h2 id="零宽度断言">零宽度断言</h2>
-<p>零宽度断言用来指定一个<mark>位置(零宽度)</mark>，这个位置应该满足一定的<mark>条件(断言)</mark>。断言其实就相当于一个布尔值，只能是 0 或者 1。</p>
+</tbody></table>
+<h2 id="零宽度断言"><a href="#零宽度断言" class="headerlink" title="零宽度断言"></a>零宽度断言</h2><p>零宽度断言用来指定一个<mark>位置(零宽度)</mark>，这个位置应该满足一定的<mark>条件(断言)</mark>。断言其实就相当于一个布尔值，只能是 0 或者 1。</p>
 <p>由零宽度断言的定义可以看出来，它必须和和其他的表达式结合起来使用才具有意义，否则单纯的零宽度断言表达式的匹配结果就是个位置，什么字符都没有！</p>
 <p>零宽度断言共四种：</p>
 <table>
@@ -735,8 +415,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>?=</td>
 <td>正先行断言</td>
 </tr>
@@ -752,32 +431,26 @@
 <td>?&lt;!</td>
 <td>负后发断言</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>理解：</p>
 <ul>
 <li>正/负：指是否满足条件(即断言)，正(负)表示(不)满足。</li>
 <li>先行/后发：指的是位置(最终的匹配结果)和条件(即断言)的前后关系，先行(后发)指位置在条件前(后)。</li>
 </ul>
 <p>另外，零宽度断言都要用括号扩起来。</p>
-<h3 id="正先行断言">正先行断言 <code>?=</code></h3>
-<p>语法：<code>表达式1(?=表达式2)</code></p>
+<h3 id="正先行断言"><a href="#正先行断言" class="headerlink" title="正先行断言 ?="></a>正先行断言 <code>?=</code></h3><p>语法：<code>表达式1(?=表达式2)</code></p>
 <p>表示满足表达式1的字符串后面必须跟着满足表达式2的字符串，结果只返回满足匹配表达式1的字符串。</p>
 <p>例如，表达式 <a href="https://regex101.com/r/IDDARt/1" target="_blank" rel="noopener"><code>(T|t)he(?=\sfat)</code></a> 匹配 <code>The</code> 或者 <code>the</code>，而且 <code>The</code> 和 <code>the</code> 后面紧跟着 <code>空格fat</code>。</p>
-<h3 id="负先行断言">负先行断言 <code>?!</code></h3>
-<p>语法：<code>表达式1(?=表达式2)</code></p>
+<h3 id="负先行断言"><a href="#负先行断言" class="headerlink" title="负先行断言 ?!"></a>负先行断言 <code>?!</code></h3><p>语法：<code>表达式1(?=表达式2)</code></p>
 <p>表示满足表达式1的字符串后面必须<mark>不</mark>能跟着满足表达式2的字符串，结果只返回满足匹配表达式1的字符串。</p>
 <p>例如，表达式 <a href="https://regex101.com/r/V32Npg/1" target="_blank" rel="noopener"><code>(T|t)he(?!\sfat)</code></a> 匹配 <code>The</code> 或者 <code>the</code>，而且 <code>The</code> 和 <code>the</code> 后面<mark>不</mark>跟着 <code>空格fat</code>。</p>
-<h3 id="正后发断言">正后发断言 <code>?&lt;=</code></h3>
-<p>语法：<code>(?&lt;=表达式1)表达式2</code></p>
+<h3 id="正后发断言-lt"><a href="#正后发断言-lt" class="headerlink" title="正后发断言 ?&lt;="></a>正后发断言 <code>?&lt;=</code></h3><p>语法：<code>(?&lt;=表达式1)表达式2</code></p>
 <p>表示满足表达式2的字符串<mark>前</mark>面面必须能跟着满足表达式1的字符串，结果只返回满足匹配表达式2的字符串。</p>
 <p>例如，表达式 <a href="https://regex101.com/r/avH165/1" target="_blank" rel="noopener"><code>(?&lt;=(T|t)he\s)(fat|mat)</code></a> 匹配 <code>fat</code> 和 <code>mat</code>，且其前面跟着 <code>The空格</code> 或 <code>the空格</code>。</p>
-<h3 id="负后发断言">负后发断言 <code>?&lt;!</code></h3>
-<p>语法：<code>(?&lt;!表达式1)表达式2</code></p>
+<h3 id="负后发断言-lt"><a href="#负后发断言-lt" class="headerlink" title="负后发断言 ?&lt;!"></a>负后发断言 <code>?&lt;!</code></h3><p>语法：<code>(?&lt;!表达式1)表达式2</code></p>
 <p>表示满足表达式2的字符串<mark>前</mark>面面必须<mark>不</mark>能跟着满足表达式1的字符串，结果只返回满足匹配表达式2的字符串。</p>
 <p>例如，表达式 <a href="https://regex101.com/r/8Efx5G/1" target="_blank" rel="noopener"><code>(?&lt;!(T|t)he\s)(cat)</code></a> 匹配 <code>cat</code>，且其前<mark>不</mark>跟着 <code>The</code> 或 <code>the</code>。</p>
-<h2 id="标志">标志</h2>
-<p>标志也叫<span class="label info">模式修正符</span>，因为它可以用来修改表达式的搜索结果。 这些标志可以任意的组合使用，它也是整个正则表达式的一部分。</p>
+<h2 id="标志"><a href="#标志" class="headerlink" title="标志"></a>标志</h2><p>标志也叫<span class="label info">模式修正符</span>，因为它可以用来修改表达式的搜索结果。 这些标志可以任意的组合使用，它也是整个正则表达式的一部分。</p>
 <table>
 <thead>
 <tr>
@@ -785,8 +458,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>i</td>
 <td>忽略大小写。</td>
 </tr>
@@ -798,112 +470,47 @@
 <td>m</td>
 <td>多行修饰符：锚点元字符 <code>^</code> <code>$</code> 工作范围在每行的起始。</td>
 </tr>
-</tbody>
-</table>
-<h3 id="忽略大小写（Case-Insensitive）">忽略大小写（Case Insensitive）</h3>
-<p>修正符 <code>i</code> 用于忽略大小写。 例如，表达式 <a href="https://regex101.com/r/ahfiuh/1" target="_blank" rel="noopener"><code>/The/gi</code></a> 表示在全局搜索 <code>The</code>，在后面的 <code>i</code> 将其条件修改为忽略大小写，则变成搜索 <code>the</code> 和 <code>The</code>，<code>g</code> 表示全局搜索。</p>
-<h3 id="全局搜索（Global-search）">全局搜索（Global search）</h3>
-<p>修正符 <code>g</code> 常用于执行一个全局搜索匹配，即不仅仅返回第一个匹配的，而是返回全部。 例如，表达式 <a href="https://regex101.com/r/dO1nef/1" target="_blank" rel="noopener"><code>/.(at)/g</code></a> 表示全局搜索 <code>非换行符以外任意单个字符</code> 后面跟着 <code>at</code>。</p>
-<h3 id="多行修正符（Multiline）">多行修正符（Multiline）</h3>
-<p>多行修正符 <code>m</code> 用于执行一个多行匹配。</p>
+</tbody></table>
+<h3 id="忽略大小写（Case-Insensitive）"><a href="#忽略大小写（Case-Insensitive）" class="headerlink" title="忽略大小写（Case Insensitive）"></a>忽略大小写（Case Insensitive）</h3><p>修正符 <code>i</code> 用于忽略大小写。 例如，表达式 <a href="https://regex101.com/r/ahfiuh/1" target="_blank" rel="noopener"><code>/The/gi</code></a> 表示在全局搜索 <code>The</code>，在后面的 <code>i</code> 将其条件修改为忽略大小写，则变成搜索 <code>the</code> 和 <code>The</code>，<code>g</code> 表示全局搜索。</p>
+<h3 id="全局搜索（Global-search）"><a href="#全局搜索（Global-search）" class="headerlink" title="全局搜索（Global search）"></a>全局搜索（Global search）</h3><p>修正符 <code>g</code> 常用于执行一个全局搜索匹配，即不仅仅返回第一个匹配的，而是返回全部。 例如，表达式 <a href="https://regex101.com/r/dO1nef/1" target="_blank" rel="noopener"><code>/.(at)/g</code></a> 表示全局搜索 <code>非换行符以外任意单个字符</code> 后面跟着 <code>at</code>。</p>
+<h3 id="多行修正符（Multiline）"><a href="#多行修正符（Multiline）" class="headerlink" title="多行修正符（Multiline）"></a>多行修正符（Multiline）</h3><p>多行修正符 <code>m</code> 用于执行一个多行匹配。</p>
 <p>之前介绍的 <code>^</code> 和 <code>$</code> 用于检查模式是否是在待检测字符串的开头或结尾。但我们如果想要它在<mark>每</mark>行的开头和结尾生效，我们需要用到多行修正符 <code>m</code>。</p>
 <p>例如，表达式 <a href="https://regex101.com/r/E88WE2/1" target="_blank" rel="noopener"><code>/at(.)?$/gm</code></a> 表示小写字符 <code>a</code> 后跟小写字符 <code>t</code> ，末尾再跟上一个除换行符以外的任意字符，再根据 <code>m</code> 修正符，现在表达式匹配每行的结尾。</p>
-<h3 id="贪婪匹配与惰性匹配（Greedy-vs-lazy-matching）">贪婪匹配与惰性匹配（Greedy vs lazy matching）</h3>
-<p>正则表达式默认采用贪婪匹配模式，在该模式下意味着会匹配尽可能长的子串。我们可以使用 <code>?</code> 将贪婪匹配模式转化为惰性匹配模式。</p>
+<h3 id="贪婪匹配与惰性匹配（Greedy-vs-lazy-matching）"><a href="#贪婪匹配与惰性匹配（Greedy-vs-lazy-matching）" class="headerlink" title="贪婪匹配与惰性匹配（Greedy vs lazy matching）"></a>贪婪匹配与惰性匹配（Greedy vs lazy matching）</h3><p>正则表达式默认采用贪婪匹配模式，在该模式下意味着会匹配尽可能长的子串。我们可以使用 <code>?</code> 将贪婪匹配模式转化为惰性匹配模式。</p>
 <p>例如 <a href="https://regex101.com/r/AyAdgJ/1" target="_blank" rel="noopener"><code>/(.*at)/</code></a> 表示匹配以 <code>at</code> 结尾，前面有任意多个非换行字符的子字符串中长度最<mark>长</mark>的一个。</p>
 <p>而 <a href="https://regex101.com/r/AyAdgJ/2" target="_blank" rel="noopener"><code>/(.*?at)/</code></a> 表示匹配以 <code>at</code> 结尾，前面有任意多个非换行字符的子字符串中长度最短的一个。</p>
-<h2 id="实例">实例</h2>
-<h3 id="以某个字符串开始字符串，并且以另一个字符串结尾字符串">以某个字符串开始字符串，并且以另一个字符串结尾字符串</h3>
-<p>例如要搜索以 <code>https://img.alicdn.com</code> 开始，以 <code>jpg_80x80.jpg</code> 结束的子字符串。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:\/\/img\.alicdn\.com.*jpg_80x80\.jpg</span><br></pre></td></tr></table></figure>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="以某个字符串开始字符串，并且以另一个字符串结尾字符串"><a href="#以某个字符串开始字符串，并且以另一个字符串结尾字符串" class="headerlink" title="以某个字符串开始字符串，并且以另一个字符串结尾字符串"></a>以某个字符串开始字符串，并且以另一个字符串结尾字符串</h3><p>例如要搜索以 <code>https://img.alicdn.com</code> 开始，以 <code>jpg_80x80.jpg</code> 结束的子字符串。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:\&#x2F;\&#x2F;img\.alicdn\.com.*jpg_80x80\.jpg</span><br></pre></td></tr></table></figure>
 
-      
+
     </div>
 
     
-
-    
-    
-    
-	<div>
-		
-			<div>
-
-    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
-
-</div>
-		
-	</div>
-    
-
-    
-       
     
     
 
-    
-      <div>
+      <footer class="post-footer">
+
         
 
 
-
-  
-
-
-
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>Li Bo</li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/01/17/Changsha-Tour/" rel="prev" title="Changsha">
+      <i class="fa fa-chevron-left"></i> Changsha
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/02/Study-Notes-of-Google-Calendar-API/" rel="next" title="Study Notes of Google Calendar API">
+      Study Notes of Google Calendar API <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
     
-    <a href="http://libo9527.github.io/2020/02/24/Study-Notes-of-Regular-Expression/" title="Study Notes of Regular Expression">http://libo9527.github.io/2020/02/24/Study-Notes-of-Regular-Expression/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
-</ul>
-
-      </div>
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2020/01/17/Changsha-Tour/" rel="next" title="Changsha">
-                <i class="fa fa-chevron-left"></i> Changsha
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/02/Study-Notes-of-Google-Calendar-API/" rel="prev" title="Study Notes of Google Calendar API">
-                Study Notes of Google Calendar API <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
   </article>
-
+  
+  
+  
 
   </div>
 
@@ -911,486 +518,122 @@
           </div>
           
 
-  
-    <div id="gitalk-container">
-    </div>
-	
-		<div class="comments" id="comments">
-		</div>
-	
-    
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Li Bo">
-            
-              <p class="site-author-name" itemprop="name">Li Bo</p>
-              <p class="site-description motion-element" itemprop="description">我不怕千万人阻挡，只怕自己投降</p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">86</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">70</span>
-                    <span class="site-state-item-name">分类</span>
-                  
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">62</span>
-                    <span class="site-state-item-name">标签</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/libo9527" title="GitHub &rarr; https://github.com/libo9527" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-            </div>
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">1.</span> <span class="nav-text">教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是正则表达式？"><span class="nav-number">2.</span> <span class="nav-text">什么是正则表达式？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元字符"><span class="nav-number">3.</span> <span class="nav-text">元字符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-v2"><span class="nav-number">3.1.</span> <span class="nav-text">元字符 .</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符集"><span class="nav-number">3.2.</span> <span class="nav-text">字符集 []</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#否定字符集"><span class="nav-number">3.2.1.</span> <span class="nav-text">否定字符集</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重复次数"><span class="nav-number">3.3.</span> <span class="nav-text">重复次数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符-v3"><span class="nav-number">3.3.1.</span> <span class="nav-text">元字符 *</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符-v4"><span class="nav-number">3.3.2.</span> <span class="nav-text">元字符 +</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符-v5"><span class="nav-number">3.3.3.</span> <span class="nav-text">元字符 ?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-v6"><span class="nav-number">3.4.</span> <span class="nav-text">元字符 {}</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-v7"><span class="nav-number">3.5.</span> <span class="nav-text">元字符 ()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-v8"><span class="nav-number">3.6.</span> <span class="nav-text">元字符 |</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-v9"><span class="nav-number">3.7.</span> <span class="nav-text">元字符 \</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锚点"><span class="nav-number">3.8.</span> <span class="nav-text">锚点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-v10"><span class="nav-number">3.9.</span> <span class="nav-text">元字符 ^</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-v11"><span class="nav-number">3.10.</span> <span class="nav-text">元字符 $</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简写字符集"><span class="nav-number">4.</span> <span class="nav-text">简写字符集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#零宽度断言"><span class="nav-number">5.</span> <span class="nav-text">零宽度断言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正先行断言"><span class="nav-number">5.1.</span> <span class="nav-text">正先行断言 ?=</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负先行断言"><span class="nav-number">5.2.</span> <span class="nav-text">负先行断言 ?!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正后发断言"><span class="nav-number">5.3.</span> <span class="nav-text">正后发断言 ?&lt;=</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负后发断言"><span class="nav-number">5.4.</span> <span class="nav-text">负后发断言 ?&lt;!</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标志"><span class="nav-number">6.</span> <span class="nav-text">标志</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#忽略大小写（Case-Insensitive）"><span class="nav-number">6.1.</span> <span class="nav-text">忽略大小写（Case Insensitive）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局搜索（Global-search）"><span class="nav-number">6.2.</span> <span class="nav-text">全局搜索（Global search）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多行修正符（Multiline）"><span class="nav-number">6.3.</span> <span class="nav-text">多行修正符（Multiline）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贪婪匹配与惰性匹配（Greedy-vs-lazy-matching）"><span class="nav-number">6.4.</span> <span class="nav-text">贪婪匹配与惰性匹配（Greedy vs lazy matching）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">7.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#以某个字符串开始字符串，并且以另一个字符串结尾字符串"><span class="nav-number">7.1.</span> <span class="nav-text">以某个字符串开始字符串，并且以另一个字符串结尾字符串</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-        <div class="back-to-top">
-          <i class="fa fa-arrow-up"></i>
-          
-            <span id="scrollpercent"><span>0</span>%</span>
-          
-        </div>
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Li Bo</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-
-    
-	
-    
-
-    
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">1.</span> <span class="nav-text">教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是正则表达式？"><span class="nav-number">2.</span> <span class="nav-text">什么是正则表达式？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元字符"><span class="nav-number">3.</span> <span class="nav-text">元字符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-1"><span class="nav-number">3.1.</span> <span class="nav-text">元字符 .</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符集"><span class="nav-number">3.2.</span> <span class="nav-text">字符集 []</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#否定字符集"><span class="nav-number">3.2.1.</span> <span class="nav-text">否定字符集</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重复次数"><span class="nav-number">3.3.</span> <span class="nav-text">重复次数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">元字符 *</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符-3"><span class="nav-number">3.3.2.</span> <span class="nav-text">元字符 +</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符-4"><span class="nav-number">3.3.3.</span> <span class="nav-text">元字符 ?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-5"><span class="nav-number">3.4.</span> <span class="nav-text">元字符 {}</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-6"><span class="nav-number">3.5.</span> <span class="nav-text">元字符 ()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-7"><span class="nav-number">3.6.</span> <span class="nav-text">元字符 |</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-8"><span class="nav-number">3.7.</span> <span class="nav-text">元字符 \</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锚点"><span class="nav-number">3.8.</span> <span class="nav-text">锚点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-9"><span class="nav-number">3.9.</span> <span class="nav-text">元字符 ^</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-10"><span class="nav-number">3.10.</span> <span class="nav-text">元字符 $</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简写字符集"><span class="nav-number">4.</span> <span class="nav-text">简写字符集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#零宽度断言"><span class="nav-number">5.</span> <span class="nav-text">零宽度断言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正先行断言"><span class="nav-number">5.1.</span> <span class="nav-text">正先行断言 ?&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负先行断言"><span class="nav-number">5.2.</span> <span class="nav-text">负先行断言 ?!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正后发断言-lt"><span class="nav-number">5.3.</span> <span class="nav-text">正后发断言 ?&lt;&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负后发断言-lt"><span class="nav-number">5.4.</span> <span class="nav-text">负后发断言 ?&lt;!</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标志"><span class="nav-number">6.</span> <span class="nav-text">标志</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#忽略大小写（Case-Insensitive）"><span class="nav-number">6.1.</span> <span class="nav-text">忽略大小写（Case Insensitive）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局搜索（Global-search）"><span class="nav-number">6.2.</span> <span class="nav-text">全局搜索（Global search）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多行修正符（Multiline）"><span class="nav-number">6.3.</span> <span class="nav-text">多行修正符（Multiline）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贪婪匹配与惰性匹配（Greedy-vs-lazy-matching）"><span class="nav-number">6.4.</span> <span class="nav-text">贪婪匹配与惰性匹配（Greedy vs lazy matching）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">7.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#以某个字符串开始字符串，并且以另一个字符串结尾字符串"><span class="nav-number">7.1.</span> <span class="nav-text">以某个字符串开始字符串，并且以另一个字符串结尾字符串</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Li Bo"
+      src="/images/avatar-libo9527.jpeg">
+  <p class="site-author-name" itemprop="name">Li Bo</p>
+  <div class="site-description" itemprop="description">即便痛苦，也要仰起高昂的头颅</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">86</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">62</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Bo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.2
+  </div>
+
+        
 
 
 
@@ -1399,10 +642,35 @@
 
 
 
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
 
 
 
 
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 
@@ -1417,472 +685,8 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
 
   
 
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  
-  
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(function (item) {
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: false,
-        notify: false,
-        appId: 'Dkf5QXLDAXop5aEnIVYqtN2Y-gzGzoHsz',
-        appKey: 'wGjvGOUY5eohtITkt1ydIMUF',
-        placeholder: 'Just BB',
-        avatar:'mm',
-        meta:guest,
-        pageSize:'10' || 10,
-        visitor: false
-    });
-  </script>
-
-
-
-
-  
-  
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
-
-  
-  
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.css">
-
-  
-  
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
-    
-   <script type="text/javascript">
-        var gitalk = new Gitalk({
-          clientID: 'a75f33d0d54ca58ac001',
-          clientSecret: '02675748bae6c8068856bcd57d23a6835a8928a8',
-          repo: 'gitalk-comments',
-          owner: 'libo9527',
-          admin: ['libo9527'],
-          id: md5(location.pathname),
-          distractionFreeMode: 'true'
-        })
-        gitalk.render('gitalk-container')           
-       </script>
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-	<!-- 代码块复制功能 -->
-	<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
-	<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</body>
 </html>
