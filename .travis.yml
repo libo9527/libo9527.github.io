@@ -1,39 +1,40 @@
-language: node_js  #设置语言
+# 环境变量
+env:
+  global:
+    - TZ=Asia/Shanghai
 
-node_js: stable  #设置相应的版本
+language: node_js
+node_js: node # node: 指定 Node.js 版本为 latest stable Node.js release
 
-# 开始构建
-before_install:
-  - export TZ='Asia/Shanghai'  #统一构建环境和博客配置的时区, 防止文章时间错误
-  
-install:
-  - npm install  #配置Hexo环境
-
-script:
-  - hexo cl  #清除
-  - hexo g  #生成
-
-after_script:
-  - git clone https://${GH_REF} .deploy_git
-  - cd .deploy_git
-  - git checkout master
-  - cd ../
-  - mv .deploy_git/.git/ ./public/
-  - cd ./public
-  - git config user.name "libo9527"  #用户名
-  - git config user.email "18629374709@163.com"  #邮箱
-  - git add .
-  - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"  #提交Commit时的说明
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master  #GH_TOKEN是在Travis中配置Token的名称
-# 结束构建
-
+# 只监测 source 分支
 branches:
   only:
-    - hexo-source  #只监测master之外新增的hexo-source分支
-env:
- global:
-   - GH_REF: github.com/libo9527/libo9527.github.io.git  #设置GH_REF
+    - source
 
 cache:
-  directories:  #缓存特定目录, 加快构建速度
-    - node_modules
+  #  apt: true # 缓存 apt 依赖
+  directories:
+    - node_modules # 缓存 node_modules 目录
+
+before_install:
+  # Deploy history
+  # 将上次部署的内容(master 分支的 top commit)克隆到 .deploy_git
+  - git clone --branch=master --single-branch https://github.com/Gzhennaxia/Gzhennaxia.github.io.git .last_deployed_backup
+
+install: npm install
+
+before_script:
+
+script:
+  - hexo clean
+  - hexo g
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GH_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  on:
+    branch: source
+  local-dir: public # 要发布到 GitHub Pages 的目录
+  target_branch: master
