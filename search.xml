@@ -129,6 +129,22 @@
       </tags>
   </entry>
   <entry>
+    <title>Study Notes of Shell</title>
+    <url>/2020/03/07/Study-Notes-of-Shell/</url>
+    <content><![CDATA[<blockquote>
+<p><a href="https://www.yinwang.org/blog-cn/2013/03/29/scripting-language" target="_blank" rel="noopener">https://www.yinwang.org/blog-cn/2013/03/29/scripting-language</a></p>
+<p><a href="https://www.learnshell.org/" target="_blank" rel="noopener">https://www.learnshell.org/</a></p>
+<p><a href="https://www.tutorialspoint.com/unix/shell_scripting.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/unix/shell_scripting.htm</a></p>
+<p><a href="https://github.com/qinjx/30min_guides/blob/master/shell.md" target="_blank" rel="noopener">https://github.com/qinjx/30min_guides/blob/master/shell.md</a></p>
+<p><a href="http://www.freeos.com/guides/lsst/" target="_blank" rel="noopener">http://www.freeos.com/guides/lsst/</a></p>
+<p><a href="https://linuxconfig.org/bash-scripting-tutorial-for-beginners" target="_blank" rel="noopener">https://linuxconfig.org/bash-scripting-tutorial-for-beginners</a></p>
+<p><a href="https://bash.cyberciti.biz/guide/Main_Page" target="_blank" rel="noopener">https://bash.cyberciti.biz/guide/Main_Page</a></p>
+<p><a href="https://book.douban.com/subject/26854226/" target="_blank" rel="noopener">https://book.douban.com/subject/26854226/</a></p>
+<p><a href="https://coding.imooc.com/class/314.html" target="_blank" rel="noopener">https://coding.imooc.com/class/314.html</a></p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
     <title>Surfing Internet Scientifically</title>
     <url>/2020/03/03/Surfing-Internet-Scientifically/</url>
     <content><![CDATA[<img src="https://hyw-space-1253436760.cos.ap-shanghai.myqcloud.com/%E5%85%B6%E4%BB%96/xxx.jpg" width="100%"/>
@@ -209,10 +225,13 @@
 <h2 id="身份验证"><a href="#身份验证" class="headerlink" title="身份验证"></a>身份验证</h2><blockquote>
 <p><a href="https://developers.google.com/identity/protocols/OAuth2" target="_blank" rel="noopener">Using OAuth 2.0 to Access Google APIs</a></p>
 <p><a href="https://developers.google.com/identity/protocols/OAuth2#webserver" target="_blank" rel="noopener">Scenarios: Web server applications</a></p>
+<p><a href="https://developers.google.com/api-client-library/java/google-api-java-client/oauth2#authorization_code_flow" target="_blank" rel="noopener">Authorization code flow | Google-API-Client-Library &gt; java</a></p>
+<p><a href="https://developers.google.com/oauthplayground" target="_blank" rel="noopener">OAuth 2.0 Playground | Google Developers</a></p>
 </blockquote>
 <p>认证流程图</p>
 <p><img src="https://developers.google.com/accounts/images/webflow.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% tabs authorize %&#125;</span><br><span class="line"></span><br><span class="line">&lt;!-- tab 1.获取凭证 → --&gt;</span><br><span class="line"></span><br><span class="line">在  [Google API Console](https:&#x2F;&#x2F;console.developers.google.com&#x2F;) 中获取 OAuth 2.0 认证凭证(例如  client ID、client secret)。</span><br><span class="line"></span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- tab 2.获取code → --&gt;</span><br><span class="line"></span><br><span class="line">ad</span><br><span class="line"></span><br><span class="line">&lt;!-- endtab --&gt;</span><br><span class="line"></span><br><span class="line">&#123;% endtab %&#125;</span><br></pre></td></tr></table></figure>
+<div class="tabs" id="authorize"><ul class="nav-tabs"><li class="tab active"><a href="#authorize-1">1.获取凭证 →</a></li><li class="tab"><a href="#authorize-2">2.获取 code →</a></li><li class="tab"><a href="#authorize-3">3.获取 token →</a></li></ul><div class="tab-content"><div class="tab-pane active" id="authorize-1"><p>在  <a href="https://console.developers.google.com/" target="_blank" rel="noopener">Google API Console</a> 中获取 OAuth 2.0 认证凭证(例如  client ID、client secret)。</p></div><div class="tab-pane" id="authorize-2"><p>…</p></div><div class="tab-pane" id="authorize-3"><p>…</p></div></div></div>
+
 ]]></content>
       <categories>
         <category>Study Notes</category>
