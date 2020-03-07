@@ -37,13 +37,15 @@ tags:
 > [Using OAuth 2.0 to Access Google APIs](https://developers.google.com/identity/protocols/OAuth2)
 >
 > [Scenarios: Web server applications](https://developers.google.com/identity/protocols/OAuth2#webserver)
+>
+> [Authorization code flow | Google-API-Client-Library > java](https://developers.google.com/api-client-library/java/google-api-java-client/oauth2#authorization_code_flow)
+>
+> [OAuth 2.0 Playground | Google Developers](https://developers.google.com/oauthplayground)
 
 认证流程图
 
 ![](https://developers.google.com/accounts/images/webflow.png)
 
-
-```
 {% tabs authorize %}
 
 <!-- tab 1.获取凭证 → -->
@@ -52,11 +54,19 @@ tags:
 
 <!-- endtab -->
 
-<!-- tab 2.获取code → -->
+<!-- tab 2.获取 code → -->
 
-ad
+...
 
 <!-- endtab -->
 
-{% endtab %}
-```
+
+
+<!-- tab 3.获取 token → -->
+
+...
+
+<!-- endtab -->
+
+{% endtabs %}
+
