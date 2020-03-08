@@ -131,18 +131,63 @@
   <entry>
     <title>Study Notes of Shell</title>
     <url>/2020/03/07/Study-Notes-of-Shell/</url>
-    <content><![CDATA[<blockquote>
+    <content><![CDATA[<img src="https://www.runoob.com/wp-content/uploads/2015/12/post-shell-script.jpg" width="100%"/>
+
+<a id="more"></a>
+
+<blockquote>
 <p><a href="https://www.yinwang.org/blog-cn/2013/03/29/scripting-language" target="_blank" rel="noopener">https://www.yinwang.org/blog-cn/2013/03/29/scripting-language</a></p>
 <p><a href="https://www.learnshell.org/" target="_blank" rel="noopener">https://www.learnshell.org/</a></p>
 <p><a href="https://www.tutorialspoint.com/unix/shell_scripting.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/unix/shell_scripting.htm</a></p>
-<p><a href="https://github.com/qinjx/30min_guides/blob/master/shell.md" target="_blank" rel="noopener">https://github.com/qinjx/30min_guides/blob/master/shell.md</a></p>
 <p><a href="http://www.freeos.com/guides/lsst/" target="_blank" rel="noopener">http://www.freeos.com/guides/lsst/</a></p>
 <p><a href="https://linuxconfig.org/bash-scripting-tutorial-for-beginners" target="_blank" rel="noopener">https://linuxconfig.org/bash-scripting-tutorial-for-beginners</a></p>
 <p><a href="https://bash.cyberciti.biz/guide/Main_Page" target="_blank" rel="noopener">https://bash.cyberciti.biz/guide/Main_Page</a></p>
 <p><a href="https://book.douban.com/subject/26854226/" target="_blank" rel="noopener">https://book.douban.com/subject/26854226/</a></p>
 <p><a href="https://coding.imooc.com/class/314.html" target="_blank" rel="noopener">https://coding.imooc.com/class/314.html</a></p>
 </blockquote>
+<h2 id="Shell脚本编程30分钟入门"><a href="#Shell脚本编程30分钟入门" class="headerlink" title="Shell脚本编程30分钟入门"></a>Shell脚本编程30分钟入门</h2><blockquote>
+<p><a href="https://github.com/qinjx/30min_guides/blob/master/shell.md" target="_blank" rel="noopener">https://github.com/qinjx/30min_guides/blob/master/shell.md</a></p>
+</blockquote>
+<h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>shell 编程只需要一个编写代码的<strong>文本编辑器</strong>和一个能解释执行的<strong>脚本解释器</strong>就可以了。</p>
+<h4 id="OS"><a href="#OS" class="headerlink" title="OS"></a>OS</h4><p>当前主流的操作系统都支持 shell  编程，本文档所述的shell 编程是指 Linux 下的 shell，讲的基本都是POSIX标准下的功能，所以，也适用于Unix及BSD（如Mac OS）。</p>
+<h5 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h5><p>Linux 默认自带 shell 解释器。</p>
+<h5 id="Mac-OS"><a href="#Mac-OS" class="headerlink" title="Mac OS"></a>Mac OS</h5><p>Mac OS不仅带了sh、bash这两个最基础的解释器，还内置了ksh、csh、zsh等不常用的解释器。</p>
+<h5 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h5><p>windows 出厂时没有内置 shell 解释器，需要自行安装，为了同时能用 grep, awk, curl 等工具，最好装一个 cygwin或者 mingw 来模拟linux环境。</p>
+<ul>
+<li><a href="http://www.cygwin.com/" target="_blank" rel="noopener">cygwin</a></li>
+<li><a href="http://www.mingw.org/" target="_blank" rel="noopener">mingw</a></li>
+</ul>
+<h4 id="脚本解释器"><a href="#脚本解释器" class="headerlink" title="脚本解释器"></a>脚本解释器</h4><h5 id="sh"><a href="#sh" class="headerlink" title="sh"></a>sh</h5><p>即 Bourne shell，POSIX(Portable Operating System Interface)标准的 shell 解释器，它的二进制文件路径通常是 /bin/sh，由Bell Labs开发。</p>
+<h5 id="bash"><a href="#bash" class="headerlink" title="bash"></a>bash</h5><p>Bash 是 Bourne shell 的替代品，属 GNU Project，二进制文件路径通常是 /bin/bash。业界通常混用 bash、sh 和 shell，比如你会经常在招聘运维工程师的文案中见到：熟悉 Linux Bash 编程，精通 Shell 编程。</p>
+<p>在CentOS里，/bin/sh是一个指向/bin/bash的符号链接:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@centosraw ~]# ls -l /bin/*sh</span><br><span class="line">-rwxr-xr-x. 1 root root 903272 Feb 22 05:09 /bin/bash</span><br><span class="line">-rwxr-xr-x. 1 root root 106216 Oct 17  2012 /bin/dash</span><br><span class="line">lrwxrwxrwx. 1 root root      4 Mar 22 10:22 /bin/sh -&gt; bash</span><br></pre></td></tr></table></figure>
+
+<p>但在Mac OS上不是，/bin/sh和/bin/bash是两个不同的文件，尽管它们的大小只相差100字节左右:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">iMac:~ wuxiao$ ls -l /bin/*sh</span><br><span class="line">-r-xr-xr-x  1 root  wheel  1371648  6 Nov 16:52 /bin/bash</span><br><span class="line">-rwxr-xr-x  2 root  wheel   772992  6 Nov 16:52 /bin/csh</span><br><span class="line">-r-xr-xr-x  1 root  wheel  2180736  6 Nov 16:52 /bin/ksh</span><br><span class="line">-r-xr-xr-x  1 root  wheel  1371712  6 Nov 16:52 /bin/sh</span><br><span class="line">-rwxr-xr-x  2 root  wheel   772992  6 Nov 16:52 /bin/tcsh</span><br><span class="line">-rwxr-xr-x  1 root  wheel  1103984  6 Nov 16:52 /bin/zsh</span><br></pre></td></tr></table></figure>
+
+<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a><del>运行</del></h4><h2 id="归纳总结"><a href="#归纳总结" class="headerlink" title="归纳总结"></a>归纳总结</h2><h3 id="指定脚本解释器"><a href="#指定脚本解释器" class="headerlink" title="指定脚本解释器"></a>指定脚本解释器</h3><p>“#!”是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行。</p>
+<h3 id="运行-1"><a href="#运行-1" class="headerlink" title="运行"></a>运行</h3><p>运行 Shell 脚本有两种方法。</p>
+<h4 id="作为可执行程序"><a href="#作为可执行程序" class="headerlink" title="作为可执行程序"></a>作为可执行程序</h4><ol>
+<li><p>赋予可执行权限</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod +x test.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">test.sh</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="作为解释器参数"><a href="#作为解释器参数" class="headerlink" title="作为解释器参数"></a>作为解释器参数</h4><p>这种运行方式是直接运行解释器，其参数就是shell脚本的文件名，如：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">/bin/sh test.sh</span><br></pre></td></tr></table></figure>
+
+<p>这种方式运行的脚本，不需要在第一行指定解释器信息，写了也没用。</p>
 ]]></content>
+      <categories>
+        <category>Study Notes</category>
+        <category>Shell</category>
+      </categories>
+      <tags>
+        <tag>Shell</tag>
+      </tags>
   </entry>
   <entry>
     <title>Surfing Internet Scientifically</title>
