@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/03/07/Account-Management-in-Git/</url>
+    <url>/2020/03/08/Account-Management-in-Git/</url>
     <content><![CDATA[<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -230,7 +230,9 @@
 </blockquote>
 <p>认证流程图</p>
 <p><img src="https://developers.google.com/accounts/images/webflow.png" alt=""></p>
-<div class="tabs" id="authorize"><ul class="nav-tabs"><li class="tab active"><a href="#authorize-1">1.获取凭证 →</a></li><li class="tab"><a href="#authorize-2">2.获取 code →</a></li><li class="tab"><a href="#authorize-3">3.获取 token →</a></li></ul><div class="tab-content"><div class="tab-pane active" id="authorize-1"><p>在  <a href="https://console.developers.google.com/" target="_blank" rel="noopener">Google API Console</a> 中获取 OAuth 2.0 认证凭证(例如  client ID、client secret)。</p></div><div class="tab-pane" id="authorize-2"><p>…</p></div><div class="tab-pane" id="authorize-3"><p>…</p></div></div></div>
+<div class="tabs" id="authorize"><ul class="nav-tabs"><li class="tab active"><a href="#authorize-1">1.获取凭证 →</a></li><li class="tab"><a href="#authorize-2">2.获取 code →</a></li><li class="tab"><a href="#authorize-3">3.获取 token →</a></li></ul><div class="tab-content"><div class="tab-pane active" id="authorize-1"><p>在  <a href="https://console.developers.google.com/" target="_blank" rel="noopener">Google API Console</a> 中获取 OAuth 2.0 认证凭证(例如  client ID、client secret)。</p></div><div class="tab-pane" id="authorize-2"><p>…</p></div><div class="tab-pane" id="authorize-3"><blockquote>
+<p><a href="https://stackoverflow.com/questions/37314744/google-drive-api-java-client-behind-proxy/39347143#39347143" target="_blank" rel="noopener">ERROR: java.net.SocketTimeoutException: Connect timed out</a></p>
+</blockquote></div></div></div>
 
 ]]></content>
       <categories>
