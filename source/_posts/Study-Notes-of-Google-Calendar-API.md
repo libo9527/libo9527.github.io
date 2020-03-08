@@ -64,7 +64,9 @@ tags:
 
 <!-- tab 3.获取 token → -->
 
-...
+> [ERROR: java.net.SocketTimeoutException: Connect timed out](https://stackoverflow.com/questions/37314744/google-drive-api-java-client-behind-proxy/39347143#39347143)
+
+
 
 <!-- endtab -->
 
