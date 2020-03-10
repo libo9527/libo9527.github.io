@@ -1336,7 +1336,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #d5aa7f;
+  background: #2e6a8b;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2464,6 +2464,13 @@ ul.breadcrumb li + li:last-child {
 .search-popup #no-result {
   color: #ccc;
   margin: auto;
+}
+mjx-container[jax="CHTML"][display="true"],
+.has-jax {
+  overflow: auto hidden;
+}
+mjx-container + br {
+  display: none;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   body::before {

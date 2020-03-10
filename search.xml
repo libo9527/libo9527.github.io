@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/03/08/Account-Management-in-Git/</url>
+    <url>/2020/03/10/Account-Management-in-Git/</url>
     <content><![CDATA[<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -180,6 +180,55 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">/bin/sh test.sh</span><br></pre></td></tr></table></figure>
 
 <p>这种方式运行的脚本，不需要在第一行指定解释器信息，写了也没用。</p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>定义变量时，变量名<strong>不</strong>加美元符号 <code>$</code>，如：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">your_name="xxx"</span><br></pre></td></tr></table></figure>
+
+<p>注意，变量名和等号之间<strong>不</strong>能有空格，这可能和你熟悉的所有编程语言都不一样。</p>
+<h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><p>调用一个定义过的变量，只要在变量名前面加美元符号 <code>$</code> 即可，如：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">your_name="xxx"</span><br><span class="line">echo $your_name</span><br><span class="line">echo $&#123;your_name&#125;</span><br></pre></td></tr></table></figure>
+
+<p>变量名外面的花括号是可选的，加不加都行，加花括号是为了帮助解释器识别变量的边界，比如下面这种情况：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">for skill in Ada Coffe Action Java; do</span><br><span class="line">	echo "I am good at $&#123;skill&#125;Script"</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>如果不给skill变量加花括号，写成 <code>echo &quot;I am good at $skillScript&quot;</code>，解释器就会把​<code>$skillScript</code> 当成一个变量，代码执行结果就不是我们期望的样子了。</p>
+<p>推荐给所有变量加上花括号，这是个好的编程习惯。IntelliJ IDEA 编写 shell script 时，会提示加花括号。</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>以 <code>#</code> 开头的行就是注释，会被解释器忽略。</p>
+<h4 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h4><p>sh 里没有多行注释，只能每一行加一个 # 号。</p>
+<p>如果在开发过程中，遇到大段的代码需要临时注释起来，过一会儿又取消注释，怎么办呢？每一行加个 # 符号太费力了，可以把这一段要注释的代码用一对花括号括起来，定义成一个函数，没有地方调用这个函数，这块代码就不会执行，达到了和注释一样的效果。</p>
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>字符串是 shell 编程中最常用的数据类型，字符串可以用单引号，也可以用双引号，也可以不用引号。单双引号的区别跟 PHP 类似。</p>
+<h4 id="单引号"><a href="#单引号" class="headerlink" title="单引号"></a>单引号</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">str='this is a string'</span><br></pre></td></tr></table></figure>
+
+<p>单引号字符串的限制：</p>
+<ul>
+<li>单引号里的<strong>任何</strong>字符都会原样输出，单引号字符串中的变量是<strong>无效</strong>的</li>
+<li>单引号字串中不能出现单引号（对单引号使用转义符后<strong>也</strong>不行）</li>
+</ul>
+<h4 id="双引号"><a href="#双引号" class="headerlink" title="双引号"></a>双引号</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">your_name='xxx'</span><br><span class="line">str="Hello, I know your are \"$your_name\"! \n"</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>双引号里可以有变量</li>
+<li>双引号里可以出现转义字符</li>
+</ul>
+<h4 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h4><h5 id="拼接字符串"><a href="#拼接字符串" class="headerlink" title="拼接字符串"></a>拼接字符串</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">your_name="xxx"</span><br><span class="line">greeting="hello, "$your_name" !"</span><br><span class="line">greeting_1="hello, $&#123;your_name&#125; !"</span><br><span class="line"></span><br><span class="line">echo $greeting $greeting_1</span><br></pre></td></tr></table></figure>
+
+<h5 id="获取字符串长度"><a href="#获取字符串长度" class="headerlink" title="获取字符串长度"></a>获取字符串长度</h5><p>语法：<code><span>${</span><span>#string}</span></code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">string="abcd"</span><br><span class="line">echo $&#123;#string&#125; #输出：4</span><br></pre></td></tr></table></figure>
+
+<h5 id="提取子字符串"><a href="#提取子字符串" class="headerlink" title="提取子字符串"></a>提取子字符串</h5><p>语法：</p>
+<ol>
+<li><code>${string:position}</code>：在 <code>$string</code> 中, 从位置 <code>$position</code> 开始提取子串</li>
+<li><code>${string:position:length}</code>：在 <code>$string</code> 中, 从位置<code>$position</code> 开始提取长度为 <code>$length</code> 的子串</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">string="alibaba is a great company"</span><br><span class="line">echo $&#123;string:1:4&#125; #输出：liba</span><br></pre></td></tr></table></figure>
+
+<h5 id="查找字符索引"><a href="#查找字符索引" class="headerlink" title="查找字符索引"></a>查找字符索引</h5><p>语法：<code>expr index &quot;$string&quot; c</code></p>
+<ol>
+<li>查找结果的是第一个符合条件的字符所在的位置</li>
+<li>这里的索引并不是从0开始，而是从1开始算起，如果返回0，则表示查找失败</li>
+<li>当 <code>c</code> 是一个字符串时，结果是遍历 <code>$string</code> 的每个字符，当该字符在 <code>c</code> 中时，返回其位置。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">string="alibaba is a great company"</span><br><span class="line">echo `expr index "$string" i`</span><br><span class="line"><span class="meta">#</span><span class="bash">输出：3，这个语句的意思是：找出字母 i 在这句话中的位置，要在linux下运行，mac下会报错</span></span><br><span class="line"></span><br><span class="line">echo `expr index "$string" si`</span><br><span class="line"><span class="meta">#</span><span class="bash">输出：3，因为在 <span class="variable">$string</span> 中先出现 si 中的 i，其位置是3</span></span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>Study Notes</category>
@@ -249,24 +298,9 @@
 
 <a id="more"></a>
 
-<h2 id="任务安排"><a href="#任务安排" class="headerlink" title="任务安排"></a>任务安排</h2><h3 id="阅读官方文档"><a href="#阅读官方文档" class="headerlink" title="阅读官方文档"></a>阅读官方文档</h3><blockquote>
-<p><a href="https://developers.google.com/calendar" target="_blank" rel="noopener">Calendar API | Google Developers</a></p>
+<h2 id="任务安排"><a href="#任务安排" class="headerlink" title="任务安排"></a>任务安排</h2><h3 id="阅读官方文档"><a href="#阅读官方文档" class="headerlink" title="阅读官方文档"></a>阅读官方文档</h3><h4 id="Calendar-API-Google-Developers"><a href="#Calendar-API-Google-Developers" class="headerlink" title="Calendar API | Google Developers"></a><a href="https://developers.google.com/calendar" target="_blank" rel="noopener">Calendar API | Google Developers</a></h4><h5 id="首页"><a href="#首页" class="headerlink" title="首页"></a><del>首页</del></h5><h5 id="指南"><a href="#指南" class="headerlink" title="指南"></a>指南</h5><h6 id="Get-Started"><a href="#Get-Started" class="headerlink" title="Get Started"></a><del>Get Started</del></h6><h6 id="Authorizing-Requests"><a href="#Authorizing-Requests" class="headerlink" title="Authorizing Requests"></a><a href="https://developers.google.com/calendar/auth" target="_blank" rel="noopener">Authorizing Requests</a></h6><h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><h6 id="CalendarList"><a href="#CalendarList" class="headerlink" title="CalendarList"></a><a href="https://developers.google.com/calendar/v3/reference/#CalendarList" target="_blank" rel="noopener">CalendarList</a></h6><h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><h6 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h6><h5 id="支持"><a href="#支持" class="headerlink" title="支持"></a>支持</h5><h4 id="Google-API-Client-Libraries-gt-Java"><a href="#Google-API-Client-Libraries-gt-Java" class="headerlink" title="Google API Client Libraries &gt; Java"></a><a href="https://developers.google.com/api-client-library/java" target="_blank" rel="noopener">Google API Client Libraries &gt; Java</a></h4><h5 id="APIs"><a href="#APIs" class="headerlink" title="APIs"></a>APIs</h5><h6 id="Calendar-API-Client-Library-for-Java"><a href="#Calendar-API-Client-Library-for-Java" class="headerlink" title="Calendar API Client Library for Java"></a><a href="https://github.com/googleapis/google-api-java-client-services/tree/master/clients/google-api-services-calendar/v3" target="_blank" rel="noopener">Calendar API Client Library for Java</a></h6><blockquote>
+<p><a href="https://developers.google.com/apis-explorer/#p/calendar/v1/" target="_blank" rel="noopener">APIs Explorer for the Calendar API</a></p>
 </blockquote>
-<ol>
-<li><del>首页</del></li>
-<li>指南<ol>
-<li><del>Get Started</del></li>
-<li><a href="https://developers.google.com/calendar/auth" target="_blank" rel="noopener">Authorizing Requests</a></li>
-</ol>
-</li>
-<li>参考</li>
-<li>示例<ol>
-<li>Java</li>
-</ol>
-</li>
-<li>支持</li>
-</ol>
-<p><a href="https://developers.google.com/api-client-library/java" target="_blank" rel="noopener">Google API Client Libraries &gt; Java</a></p>
 <h2 id="身份验证"><a href="#身份验证" class="headerlink" title="身份验证"></a>身份验证</h2><blockquote>
 <p><a href="https://developers.google.com/identity/protocols/OAuth2" target="_blank" rel="noopener">Using OAuth 2.0 to Access Google APIs</a></p>
 <p><a href="https://developers.google.com/identity/protocols/OAuth2#webserver" target="_blank" rel="noopener">Scenarios: Web server applications</a></p>
@@ -275,8 +309,10 @@
 </blockquote>
 <p>认证流程图</p>
 <p><img src="https://developers.google.com/accounts/images/webflow.png" alt=""></p>
-<div class="tabs" id="authorize"><ul class="nav-tabs"><li class="tab active"><a href="#authorize-1">1.获取凭证 →</a></li><li class="tab"><a href="#authorize-2">2.获取 code →</a></li><li class="tab"><a href="#authorize-3">3.获取 token →</a></li></ul><div class="tab-content"><div class="tab-pane active" id="authorize-1"><p>在  <a href="https://console.developers.google.com/" target="_blank" rel="noopener">Google API Console</a> 中获取 OAuth 2.0 认证凭证(例如  client ID、client secret)。</p></div><div class="tab-pane" id="authorize-2"><p>…</p></div><div class="tab-pane" id="authorize-3"><blockquote>
+<div class="tabs" id="authorize"><ul class="nav-tabs"><li class="tab active"><a href="#authorize-1">1.获取凭证 →</a></li><li class="tab"><a href="#authorize-2">2.获取 code →</a></li><li class="tab"><a href="#authorize-3">3.获取 token →</a></li><li class="tab"><a href="#authorize-4">4.调用 API →</a></li></ul><div class="tab-content"><div class="tab-pane active" id="authorize-1"><p>在  <a href="https://console.developers.google.com/" target="_blank" rel="noopener">Google API Console</a> 中获取 OAuth 2.0 认证凭证(例如  client ID、client secret)。</p></div><div class="tab-pane" id="authorize-2"><p>…</p></div><div class="tab-pane" id="authorize-3"><blockquote>
 <p><a href="https://stackoverflow.com/questions/37314744/google-drive-api-java-client-behind-proxy/39347143#39347143" target="_blank" rel="noopener">ERROR: java.net.SocketTimeoutException: Connect timed out</a></p>
+</blockquote></div><div class="tab-pane" id="authorize-4"><blockquote>
+<p><a href="https://developers.google.com/calendar/v3/reference/events/list" target="_blank" rel="noopener">Events: list ｜ Calendar API</a></p>
 </blockquote></div></div></div>
 
 ]]></content>
