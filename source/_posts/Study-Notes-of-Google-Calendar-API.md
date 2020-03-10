@@ -19,18 +19,35 @@ tags:
 
 ### 阅读官方文档
 
-> [Calendar API | Google Developers](https://developers.google.com/calendar)
+#### [Calendar API | Google Developers](https://developers.google.com/calendar)
 
-1. ~~首页~~
-2. 指南
-   1. ~~Get Started~~
-   2. [Authorizing Requests](https://developers.google.com/calendar/auth)
-3. 参考
-4. 示例
-   1. Java
-5. 支持
+##### ~~首页~~
 
-[Google API Client Libraries > Java](https://developers.google.com/api-client-library/java)
+##### 指南
+
+###### ~~Get Started~~
+
+###### [Authorizing Requests](https://developers.google.com/calendar/auth)
+
+##### 参考
+
+###### [CalendarList](https://developers.google.com/calendar/v3/reference/#CalendarList)
+
+##### 示例
+
+###### Java
+
+##### 支持
+
+#### [Google API Client Libraries > Java](https://developers.google.com/api-client-library/java)
+
+##### APIs
+
+###### [Calendar API Client Library for Java](https://github.com/googleapis/google-api-java-client-services/tree/master/clients/google-api-services-calendar/v3)
+
+> [APIs Explorer for the Calendar API](https://developers.google.com/apis-explorer/#p/calendar/v1/)
+
+
 
 ## 身份验证
 
@@ -65,6 +82,16 @@ tags:
 <!-- tab 3.获取 token → -->
 
 > [ERROR: java.net.SocketTimeoutException: Connect timed out](https://stackoverflow.com/questions/37314744/google-drive-api-java-client-behind-proxy/39347143#39347143)
+
+
+
+<!-- endtab -->
+
+
+
+<!-- tab 4.调用 API → -->
+
+> [Events: list ｜ Calendar API](https://developers.google.com/calendar/v3/reference/events/list)
 
 
 
