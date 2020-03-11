@@ -2,8 +2,8 @@
 <search>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/03/10/Account-Management-in-Git/</url>
-    <content><![CDATA[<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
+    <url>/2020/03/11/Account-Management-in-Git/</url>
+    <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
 
@@ -131,7 +131,7 @@
   <entry>
     <title>Study Notes of Shell</title>
     <url>/2020/03/07/Study-Notes-of-Shell/</url>
-    <content><![CDATA[<img src="https://www.runoob.com/wp-content/uploads/2015/12/post-shell-script.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://www.runoob.com/wp-content/uploads/2015/12/post-shell-script.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -229,6 +229,13 @@
 </ol>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">string="alibaba is a great company"</span><br><span class="line">echo `expr index "$string" i`</span><br><span class="line"><span class="meta">#</span><span class="bash">输出：3，这个语句的意思是：找出字母 i 在这句话中的位置，要在linux下运行，mac下会报错</span></span><br><span class="line"></span><br><span class="line">echo `expr index "$string" si`</span><br><span class="line"><span class="meta">#</span><span class="bash">输出：3，因为在 <span class="variable">$string</span> 中先出现 si 中的 i，其位置是3</span></span><br></pre></td></tr></table></figure>
 
+
+
+
+
+
+
+<p>aaa得分21打断%的</p>
 ]]></content>
       <categories>
         <category>Study Notes</category>
@@ -241,7 +248,7 @@
   <entry>
     <title>Surfing Internet Scientifically</title>
     <url>/2020/03/03/Surfing-Internet-Scientifically/</url>
-    <content><![CDATA[<img src="https://hyw-space-1253436760.cos.ap-shanghai.myqcloud.com/%E5%85%B6%E4%BB%96/xxx.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://hyw-space-1253436760.cos.ap-shanghai.myqcloud.com/%E5%85%B6%E4%BB%96/xxx.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -254,7 +261,7 @@
   <entry>
     <title>Configing Procy of Network in Mac Terminal</title>
     <url>/2020/03/03/Configing-Procy-of-Network-in-Mac-Terminal/</url>
-    <content><![CDATA[<img src="https://i.ytimg.com/vi/dMLK0cx7V_Y/maxresdefault.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://i.ytimg.com/vi/dMLK0cx7V_Y/maxresdefault.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -288,13 +295,13 @@
 </ol>
 <h2 id="IDEA-配置代理"><a href="#IDEA-配置代理" class="headerlink" title="IDEA 配置代理"></a>IDEA 配置代理</h2><p><code>Preferences&gt;Appearance &amp; Behavior&gt;System Settings&gt;HTTP Proxy&gt;Manual proxy configurationation</code></p>
 <p>填写相应的 Host 和 Port 即可。</p>
-<p><img src="https://img2018.cnblogs.com/blog/478956/201810/478956-20181019112723115-194000758.png" alt=""></p>
+<p><img data-src="https://img2018.cnblogs.com/blog/478956/201810/478956-20181019112723115-194000758.png" alt=""></p>
 ]]></content>
   </entry>
   <entry>
     <title>Study Notes of Google Calendar API</title>
     <url>/2020/03/02/Study-Notes-of-Google-Calendar-API/</url>
-    <content><![CDATA[<img src="https://www.techapple.com/wp-content/uploads/2017/10/GOOGLE-CALENDER.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://www.techapple.com/wp-content/uploads/2017/10/GOOGLE-CALENDER.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -308,7 +315,7 @@
 <p><a href="https://developers.google.com/oauthplayground" target="_blank" rel="noopener">OAuth 2.0 Playground | Google Developers</a></p>
 </blockquote>
 <p>认证流程图</p>
-<p><img src="https://developers.google.com/accounts/images/webflow.png" alt=""></p>
+<p><img data-src="https://developers.google.com/accounts/images/webflow.png" alt=""></p>
 <div class="tabs" id="authorize"><ul class="nav-tabs"><li class="tab active"><a href="#authorize-1">1.获取凭证 →</a></li><li class="tab"><a href="#authorize-2">2.获取 code →</a></li><li class="tab"><a href="#authorize-3">3.获取 token →</a></li><li class="tab"><a href="#authorize-4">4.调用 API →</a></li></ul><div class="tab-content"><div class="tab-pane active" id="authorize-1"><p>在  <a href="https://console.developers.google.com/" target="_blank" rel="noopener">Google API Console</a> 中获取 OAuth 2.0 认证凭证(例如  client ID、client secret)。</p></div><div class="tab-pane" id="authorize-2"><p>…</p></div><div class="tab-pane" id="authorize-3"><blockquote>
 <p><a href="https://stackoverflow.com/questions/37314744/google-drive-api-java-client-behind-proxy/39347143#39347143" target="_blank" rel="noopener">ERROR: java.net.SocketTimeoutException: Connect timed out</a></p>
 </blockquote></div><div class="tab-pane" id="authorize-4"><blockquote>
@@ -324,7 +331,7 @@
   <entry>
     <title>Study Notes of Regular Expression</title>
     <url>/2020/02/24/Study-Notes-of-Regular-Expression/</url>
-    <content><![CDATA[<img src="https://blog.malwarebytes.com/wp-content/uploads/2018/08/regex_puzzle-900x506.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://blog.malwarebytes.com/wp-content/uploads/2018/08/regex_puzzle-900x506.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -573,7 +580,7 @@
   <entry>
     <title>Changsha</title>
     <url>/2020/01/17/Changsha-Tour/</url>
-    <content><![CDATA[<img src="https://www.minmetalsland.com/uploads/allimg/191204/1-1912040UI9E6.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://www.minmetalsland.com/uploads/allimg/191204/1-1912040UI9E6.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -596,7 +603,7 @@
   <entry>
     <title>The Southern Sacred Mountain Hengshan</title>
     <url>/2020/01/15/The-Southern-Sacred-Mountain-Hengshan/</url>
-    <content><![CDATA[<img src="http://buy.nanyue.net.cn/image/cache/catalog/spot-1-500x282.png" width="100%"/>
+    <content><![CDATA[<img data-src="http://buy.nanyue.net.cn/image/cache/catalog/spot-1-500x282.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -622,12 +629,12 @@
 <p>南岳大庙是中国江南最大的古建筑群，有”江南第一庙””南国故宫”之称，根据现存资料记载始建于唐，后经唐、宋、元、明、清六次大火和十六次修缮扩建，于光绪八年(1882年)形成现在98500平方米的规模。<br>南岳大庙分为九进四重院落，四周围以红墙，角楼高耸，寿涧山泉，绕墙流注，颇似北京故宫风貌。南岳大庙佛道共存，东侧为八个道观，西侧为八个佛寺，堪称我国寺庙一绝，每年八月十五，这里都要举行盛大规模的庙会，不少东南亚的佛国华侨，日本佛教界人士，以及回乡的善男信女，都不惜长途跋涉来此朝拜，因此这里常年香火不息。</p>
 <h3 id="祝融峰"><a href="#祝融峰" class="headerlink" title="祝融峰"></a>祝融峰</h3><p>祝融峰是南岳最高峰，离上封寺不到一里，海拔1290米。祝融峰的名字与上古的神话有关，相传祝融是黄帝身边的大臣，是火神，他曾以衡山为栖息之所，死后葬在衡山的最高峰，后人便以它的名字命名该峰。祝融峰上有祝融殿，因山高风大，所以建筑是用坚固的花岗岩砌墙，以铁瓦盖的顶，殿宇凌风傲雪，巍然屹立在绝顶巨石之上。殿后有望月台，是一块高耸的巉岩，上有石刻，字迹清晰可辨。</p>
 <p>【景区交通】<br>景区交通实行“车索一体化”（就是一张票通用）经营。你可以关注“南岳 <a href="http://www.mafengwo.cn/travel-scenic-spot/mafengwo/11886.html" target="_blank" rel="noopener">衡山</a> 景区交通”微信公众号在线购票，上车时候出示二维码。上行（环保车或者索道，包括支线车）44元，下行44元，上下行78元。环保车班次很密集，运行线为“R”形（这个R要仔细看，才明白）：<br>上行线路始发站为游客服务中心，途经华严湖、忠烈祠、诚信林、 <a href="http://www.mafengwo.cn/travel-scenic-spot/mafengwo/143811.html" target="_blank" rel="noopener">延寿</a> 亭、穿岩诗林到达半山亭换乘站。在半山亭换乘站可选择乘坐环保车途经磨镜台、西岭、民俗文化城到达南 <a href="http://www.mafengwo.cn/travel-scenic-spot/mafengwo/62977.html" target="_blank" rel="noopener">天门</a> ；也可以换乘索道直达南 <a href="http://www.mafengwo.cn/travel-scenic-spot/mafengwo/62977.html" target="_blank" rel="noopener">天门</a> 。<br>下行线路始发站为南 <a href="http://www.mafengwo.cn/travel-scenic-spot/mafengwo/62977.html" target="_blank" rel="noopener">天门</a> 。环保车由东线往下行驶，依次经过邺候书院、财富山庄到达半山亭，也可以乘坐索道直达半山亭。到达半山亭后乘坐环保车途经忠烈祠、华严湖到达终点站游客服务中心。</p>
-<p><a href="http://www.mafengwo.cn/photo/11886/scenery_17454946/873929145.html" target="_blank" rel="noopener"><img src="http://p1-q.mafengwo.net/s15/M00/53/78/CoUBGV2djD-AMWPBAAKLaQevPEI381.jpg?imageMogr2%2Fthumbnail%2F1360x%2Fstrip%2Fquality%2F90" alt="img"></a><a href="http://www.mafengwo.cn/poi/6325752.html" target="_blank" rel="noopener">南岳衡山</a></p>
+<p><a href="http://www.mafengwo.cn/photo/11886/scenery_17454946/873929145.html" target="_blank" rel="noopener"><img data-src="http://p1-q.mafengwo.net/s15/M00/53/78/CoUBGV2djD-AMWPBAAKLaQevPEI381.jpg?imageMogr2%2Fthumbnail%2F1360x%2Fstrip%2Fquality%2F90" alt="img"></a><a href="http://www.mafengwo.cn/poi/6325752.html" target="_blank" rel="noopener">南岳衡山</a></p>
 <p>tips：<br>1、环保车可以随时停下，但是要到指定站点上车。<br>2、这张图上标出了 <a href="http://www.mafengwo.cn/travel-scenic-spot/mafengwo/11886.html" target="_blank" rel="noopener">衡山</a> 三大碑（“五岳独秀”、“寿比南山”、“南岳 <a href="http://www.mafengwo.cn/travel-scenic-spot/mafengwo/11886.html" target="_blank" rel="noopener">衡山</a> ”）的前两个碑位置，打卡的游客不要错过，“南岳 <a href="http://www.mafengwo.cn/travel-scenic-spot/mafengwo/11886.html" target="_blank" rel="noopener">衡山</a> ”碑在山顶祝融庙旁。<br>3、这张图让我踩了两个坑，a、梵音古道只画了一半；b、各景点距离仅参考。后面景区路线部分详说。</p>
 <p>【景区路线】<br>我原本的计划上山全程徒步，下山返程索道公交。前面说的两个坑的第一个，下图才是梵音古道的全程图，终点在邺候书院。吐槽一下 <a href="http://www.mafengwo.cn/travel-scenic-spot/mafengwo/11886.html" target="_blank" rel="noopener">衡山</a> 的指示牌，我在梵音古道走丢了，后来查了一下，应该是在上桎木潭迷路了，我却直接向上，走到半山亭了，没有去成忠烈祠，返程时候补打了个卡。</p>
-<p><a href="http://www.mafengwo.cn/photo/11886/scenery_17454946/873987914.html" target="_blank" rel="noopener"><img src="http://p1-q.mafengwo.net/s15/M00/5D/E4/CoUBGV2dkPeASI3AABOfMnbaS1I888.jpg?imageMogr2%2Fthumbnail%2F1360x%2Fstrip%2Fquality%2F90" alt="img"></a><a href="http://www.mafengwo.cn/poi/6325752.html" target="_blank" rel="noopener">南岳衡山</a></p>
+<p><a href="http://www.mafengwo.cn/photo/11886/scenery_17454946/873987914.html" target="_blank" rel="noopener"><img data-src="http://p1-q.mafengwo.net/s15/M00/5D/E4/CoUBGV2dkPeASI3AABOfMnbaS1I888.jpg?imageMogr2%2Fthumbnail%2F1360x%2Fstrip%2Fquality%2F90" alt="img"></a><a href="http://www.mafengwo.cn/poi/6325752.html" target="_blank" rel="noopener">南岳衡山</a></p>
 <p>第二个坑，不要被各景点间标识的公里数误导，不能按照里程估算所耗时间（体力）。下图是我南岳GPS记录。在半山亭有两个分叉。我先去看一下麻姑仙境、磨镜台，从半山亭到磨镜台2km（下图那么长的线），坡度不大，大概20-30分钟就能走完。但是从半山亭到南 <a href="http://www.mafengwo.cn/travel-scenic-spot/mafengwo/62977.html" target="_blank" rel="noopener">天门</a> 几乎全是上坡，花了我整整一个半小时。</p>
-<p><a href="http://www.mafengwo.cn/photo/11886/scenery_17454946/874064156.html" target="_blank" rel="noopener"><img src="http://p1-q.mafengwo.net/s15/M00/6C/32/CoUBGV2dl0aAePiwAADxNNksVa0451.jpg?imageMogr2%2Fthumbnail%2F1360x%2Fstrip%2Fquality%2F90" alt="img"></a><a href="http://www.mafengwo.cn/poi/6325752.html" target="_blank" rel="noopener">南岳衡山</a></p>
+<p><a href="http://www.mafengwo.cn/photo/11886/scenery_17454946/874064156.html" target="_blank" rel="noopener"><img data-src="http://p1-q.mafengwo.net/s15/M00/6C/32/CoUBGV2dl0aAePiwAADxNNksVa0451.jpg?imageMogr2%2Fthumbnail%2F1360x%2Fstrip%2Fquality%2F90" alt="img"></a><a href="http://www.mafengwo.cn/poi/6325752.html" target="_blank" rel="noopener">南岳衡山</a></p>
 <p>【其它】<br>1、除了梵音古道外，登山途中的补给点还是比较多的。矿泉水最贵的为5元，所以不用背负太多水。不过各个卖点的水果偏少。<br>2、各种公众号（景区、景区交通）、app可以提前下载好。</p>
 ]]></content>
       <categories>
@@ -640,7 +647,7 @@
   <entry>
     <title>Hunan Tour at Spring 2020</title>
     <url>/2020/01/10/Hunan-Tour-at-Spring-2020/</url>
-    <content><![CDATA[<img src="http://n1-q.mafengwo.net/s5/M00/3C/C8/wKgB21A-JrDEN_kzAAnaoaVE30Y54.jpeg?imageView2%2F2%2Fw%2F2000%2Fh%2F600%2Fq%2F90" width="100%"/>
+    <content><![CDATA[<img data-src="http://n1-q.mafengwo.net/s5/M00/3C/C8/wKgB21A-JrDEN_kzAAnaoaVE30Y54.jpeg?imageView2%2F2%2Fw%2F2000%2Fh%2F600%2Fq%2F90" width="100%"/>
 
 <a id="more"></a>
 
@@ -857,7 +864,7 @@
   <entry>
     <title>Forbidden City</title>
     <url>/2020/01/10/Forbidden-City/</url>
-    <content><![CDATA[<img src="http://img.mp.itc.cn/upload/20160507/9df596813d3640468330b7bf6535f336_th.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="http://img.mp.itc.cn/upload/20160507/9df596813d3640468330b7bf6535f336_th.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -879,7 +886,7 @@
 <li>下单时填写了二代身份证号的观众可在入院日当日持身份证或户口本原件在任意检票口直接入院，无须兑换纸质门票。</li>
 </ul>
 <h4 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h4><p>除法定节假日，故宫博物院全年实行周一闭馆。</p>
-<p><img src="https://gugong.ktmtech.cn/Content/images/canguantime.png" alt=""></p>
+<p><img data-src="https://gugong.ktmtech.cn/Content/images/canguantime.png" alt=""></p>
 <h4 id="路线"><a href="#路线" class="headerlink" title="路线"></a>路线</h4><ul>
 <li>午门（南门）：只作为参观入口，观众一律从午门进入故宫；</li>
 <li>神武门（北门）：只作为参观出口；</li>
@@ -1012,19 +1019,19 @@
   <entry>
     <title>Free Image Hosting</title>
     <url>/2020/01/08/Free-Image-Hosting/</url>
-    <content><![CDATA[<img src="https://twitgoo.com/wp-content/uploads/2019/11/choose-best-blog-hosting.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://twitgoo.com/wp-content/uploads/2019/11/choose-best-blog-hosting.png" width="100%"/>
 
 <a id="more"></a>
 
 <blockquote>
 <p><a href="https://hao.su/pic.html" target="_blank" rel="noopener">免费图床- 不死鸟- 分享为王</a></p>
 <p><a href="https://www.chaidu.com/" target="_blank" rel="noopener">https://www.chaidu.com/</a></p>
-<p><img src="https://wx1.sinaimg.cn/mw690/0060lm7Tly1ftl505nwt1j30xf06rjry.jpg" alt=""></p>
+<p><img data-src="https://wx1.sinaimg.cn/mw690/0060lm7Tly1ftl505nwt1j30xf06rjry.jpg" alt=""></p>
 </blockquote>
 <h2 id="SM·MS"><a href="#SM·MS" class="headerlink" title="SM·MS"></a>SM·MS</h2><blockquote>
 <p><a href="https://sm.ms/" target="_blank" rel="noopener">https://sm.ms/</a></p>
 </blockquote>
-<p><img src="" alt="挂了"></p>
+<p><img data-src="" alt="挂了"></p>
 <h2 id="imgur"><a href="#imgur" class="headerlink" title="imgur"></a>imgur</h2><blockquote>
 <p><a href="https://imgur.com/" target="_blank" rel="noopener">imgur</a></p>
 </blockquote>
@@ -1039,7 +1046,7 @@
   <entry>
     <title>Spring Tour 2020</title>
     <url>/2020/01/03/Spring-Tour-2020/</url>
-    <content><![CDATA[<img src="https://image.freepik.com/free-vector/2020_147586-36.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://image.freepik.com/free-vector/2020_147586-36.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -1292,17 +1299,17 @@
 <li><p>远郊区(10)<br>门头沟区、房山区、通州区、顺义区、昌平区、大兴区、怀柔区、平谷区、密云区、延庆区、</p>
 </li>
 </ul>
-<p><img src="https://img.vim-cn.com/b6/931274eab4b8efc975a15eba0ac286c5c88f64.jpg" alt="image.png"></p>
+<p><img data-src="https://img.vim-cn.com/b6/931274eab4b8efc975a15eba0ac286c5c88f64.jpg" alt="image.png"></p>
 <h4 id="环路"><a href="#环路" class="headerlink" title="环路"></a>环路</h4><p>北京的二环三环指的是环城快速路。自2018年8月20日大七环全线通车以来，北京一共有二环、三环、四环、五环、六环、七环六条环城高速路。</p>
-<p><img src="http://5b0988e595225.cdn.sohucs.com/images/20180831/21272b8b9d7a45e7b7505be76a6f7b81.jpeg" alt=""></p>
-<h5 id="一环"><a href="#一环" class="headerlink" title="一环"></a>一环</h5><p><img src="http://5b0988e595225.cdn.sohucs.com/images/20180831/281e55bd73ab452fba0dfd140df4fa87.jpeg" alt=""></p>
+<p><img data-src="http://5b0988e595225.cdn.sohucs.com/images/20180831/21272b8b9d7a45e7b7505be76a6f7b81.jpeg" alt=""></p>
+<h5 id="一环"><a href="#一环" class="headerlink" title="一环"></a>一环</h5><p><img data-src="http://5b0988e595225.cdn.sohucs.com/images/20180831/281e55bd73ab452fba0dfd140df4fa87.jpeg" alt=""></p>
 <p>上个世纪50年代初，北京内外城城墙还都在。在内城有条环路，走有轨电车,这条有轨电车线路围绕紫禁城环绕一圈。从天安门前开始，往西到西单；折向北，过西四，到平安里（现改为平安大道）；折向东，到地安门；折向北，到鼓楼；折向东，过交道口到北新桥；折向南，过东四到东单；折向西，回到天安门前。这就是北京的一环，现已不再认为是环路。</p>
 <h5 id="二环"><a href="#二环" class="headerlink" title="二环"></a>二环</h5><p>二环路全长32.7公里。是在原来的<strong>北京城墙</strong>的位置上修建的城市快速环路。在地上工程进行的同时，地下修建了环线地铁。于20世纪60年代起建，<strong>晚于三环</strong>的20世纪50年代末。其中，在内城墙基础上的北半环1980年底全线通车；在外城基础上的南半环在1991年底通车。1992年，北京也是中国第一条全封闭、全立交、没有交通信号灯的城市快速路——二环路全线竣工通车。</p>
 <h5 id="三环"><a href="#三环" class="headerlink" title="三环"></a>三环</h5><p>三环路全长48.3公里，始建于20世纪50年代，<strong>比二环还要早</strong>。东、南、北三环早于1958年建成通车，那时人们<strong>将东、南、北三段俗称为“三环路”</strong>，西三环1981年底建成通车。三环路是北京第一条建成通车的环路。经80年代多处改扩建，逐渐成为快速环路。唯独玉泉营环岛一处，直到1999年国庆前，才改造成立交桥，从此三环路作为全立交的城市快速路全线建成。</p>
 <h5 id="四环"><a href="#四环" class="headerlink" title="四环"></a>四环</h5><p>四环路平均距离北京市中心点约8公里，全长65.3公里。主路双向八车道，全封闭、全立交，被认为是<strong>国内有史以来市区道路建设标准最高、规模最大</strong>的城市快速环路。整个四环路的建设持续了十余年。1999年中华人民共和国成立五十周年之际，东四环路建成并通车。到2001年6月，整个四环路全部连成一体。</p>
 <h5 id="五环"><a href="#五环" class="headerlink" title="五环"></a>五环</h5><p>五环路全程98.58公里，2003年以前因为被认为是北京市区最外围的一圈高速公路，名称曾为“公路一环”，于2003年11月1日全线建成并通车，通车后属于收费高速公路，后为缓解交通，于2004年1月1日停止收费。</p>
 <h5 id="六环"><a href="#六环" class="headerlink" title="六环"></a>六环</h5><p>六环路全程187.6公里，是连接北京第一圈卫星城的一条环形高速公路，以前的名称曾为“公路二环”。2001年年底，六环路第一期工程-通马黄段（连接通州、马驹桥、黄村）建成并通车。2009年9月12号随着六环路最后一段西六环的建成通车，全长187.6公里的北京六环路全线贯通。</p>
-<h5 id="七环"><a href="#七环" class="headerlink" title="七环"></a>七环</h5><p><img src="http://5b0988e595225.cdn.sohucs.com/images/20180831/7da54aa1645741e5af98c184e8cc1cdf.jpeg" alt=""></p>
+<h5 id="七环"><a href="#七环" class="headerlink" title="七环"></a>七环</h5><p><img data-src="http://5b0988e595225.cdn.sohucs.com/images/20180831/7da54aa1645741e5af98c184e8cc1cdf.jpeg" alt=""></p>
 <p>北京七环路全名北京大外环高速公路，又称京津冀环线高速公路。总里程约940公里，其中北京市境内约90公里，河北省境内约850公里。于2018年8月20日全线通车。至此，河北省按顺时针方向已有京承、密涿、承平、京秦、京哈、京台、大广、京港澳、京昆、京新、京藏11条高速公路呈聚合状直达北京。</p>
 <h3 id="交通"><a href="#交通" class="headerlink" title="交通"></a>交通</h3><h4 id="一卡通"><a href="#一卡通" class="headerlink" title="一卡通"></a>一卡通</h4><ul>
 <li>地铁不打折，公交 4 折。</li>
@@ -1329,7 +1336,7 @@
 <li>下单时填写了二代身份证号的观众可在入院日当日持身份证或户口本原件在任意检票口直接入院，无须兑换纸质门票。</li>
 </ul>
 <h4 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h4><p>除法定节假日，故宫博物院全年实行周一闭馆。</p>
-<p><img src="https://gugong.ktmtech.cn/Content/images/canguantime.png" alt=""></p>
+<p><img data-src="https://gugong.ktmtech.cn/Content/images/canguantime.png" alt=""></p>
 <h4 id="路线"><a href="#路线" class="headerlink" title="路线"></a>路线</h4><ul>
 <li>午门（南门）：只作为参观入口，观众一律从午门进入故宫；</li>
 <li>神武门（北门）：只作为参观出口；</li>
@@ -1448,7 +1455,7 @@
 <p>北宫门&gt;&gt;苏州街&gt;&gt;石舫&gt;&gt;长廊&gt;&gt;排云殿&gt;&gt;佛香阁&gt;&gt;乐寿堂&gt;&gt;文昌院&gt;&gt;仁寿殿&gt;&gt;东宫门。 （约2小时行程）</p>
 <h5 id="新建宫门入园"><a href="#新建宫门入园" class="headerlink" title="新建宫门入园"></a>新建宫门入园</h5><p>新建宫门&gt;&gt;昆明湖东堤&gt;&gt;文昌院&gt;&gt;仁寿殿&gt;&gt;玉澜堂、宜芸馆&gt;&gt;乐寿堂&gt;&gt;长廊&gt;&gt;排云殿&gt;&gt;佛香阁&gt;&gt;苏州街&gt;&gt;北宫门。（约2.5小时行程）</p>
 <p>新建宫门&gt;&gt;南湖岛&gt;&gt;十七孔桥&gt;&gt;铜牛&gt;&gt;乘船至石舫&gt;&gt;耕织图景区&gt;&gt;苏州街&gt;&gt;佛香阁&gt;&gt;排云殿&gt;&gt;长廊&gt;&gt;乐寿堂&gt;&gt;玉澜堂、宜芸馆&gt;&gt;文昌院&gt;&gt;仁寿殿&gt;&gt;东宫门。 （约3小时行程）</p>
-<p><img src="http://s.visitbeijing.com.cn/uploadfile/2015/0727/20150727094829536.jpg" alt=""></p>
+<p><img data-src="http://s.visitbeijing.com.cn/uploadfile/2015/0727/20150727094829536.jpg" alt=""></p>
 <h3 id="圆明园"><a href="#圆明园" class="headerlink" title="圆明园"></a>圆明园</h3><blockquote>
 <p><a href="http://www.yuanmingyuanpark.cn/" target="_blank" rel="noopener">圆明园遗址公园</a></p>
 </blockquote>
@@ -1475,14 +1482,14 @@
 </ul>
 <h5 id="首道门门票优惠减免规定"><a href="#首道门门票优惠减免规定" class="headerlink" title="首道门门票优惠减免规定"></a>首道门门票优惠减免规定</h5><p>1、6周岁（含6周岁）或1.2 米(含1.2米 )以下儿童免票；<br>2、60周岁（含60周岁）以上老年人凭老年证或身份证免票；<br>6、残疾人持残疾证件免票；<br>14、门票当日有效，售出后概不退换。</p>
 <h5 id="园中园门票优惠减免规定"><a href="#园中园门票优惠减免规定" class="headerlink" title="园中园门票优惠减免规定"></a>园中园门票优惠减免规定</h5><p>1、6周岁（含6周岁）或1.2 米(含1.2米)以下儿童免票；<br>2、60周岁（含60周岁）以上老年人凭老年证或身份证免票；<br>6、残疾人持残疾证件免票；<br>13、门票当日有效，售出后概不退换。</p>
-<h4 id="景区卫生间位置分布"><a href="#景区卫生间位置分布" class="headerlink" title="景区卫生间位置分布"></a>景区卫生间位置分布</h4><p><img src="http://www.yuanmingyuanpark.cn/lyfw/llxx/201012/W020181225383396550738.jpg" alt=""></p>
+<h4 id="景区卫生间位置分布"><a href="#景区卫生间位置分布" class="headerlink" title="景区卫生间位置分布"></a>景区卫生间位置分布</h4><p><img data-src="http://www.yuanmingyuanpark.cn/lyfw/llxx/201012/W020181225383396550738.jpg" alt=""></p>
 <h4 id="公园开放时间："><a href="#公园开放时间：" class="headerlink" title="公园开放时间："></a>公园开放时间：</h4><p>1月—3月15日、10月16日—12月  售票时间：7:00—17:30  开闭园时间：7:00—19:30</p>
 <p>3月16日—4月、9月—10月15日   售票时间：7:00—18:00  开闭园时间：7:00—20:00</p>
 <p>5月—8月  售票时间：7:00—19:00  开闭园时间：7:00—21:00</p>
 <h3 id="什刹海"><a href="#什刹海" class="headerlink" title="什刹海"></a>什刹海</h3><blockquote>
 <p><a href="http://www.wanderbee.com/zh-CN/articles/explore-old-beijing/" target="_blank" rel="noopener">漫步什刹海，寻味老北京</a></p>
 </blockquote>
-<p><img src="http://www.wanderbee.com/assets/article-images/explore-old-beijing-01.jpg" alt=""></p>
+<p><img data-src="http://www.wanderbee.com/assets/article-images/explore-old-beijing-01.jpg" alt=""></p>
 <h4 id="描述-3"><a href="#描述-3" class="headerlink" title="描述"></a>描述</h4><ul>
 <li>什刹海盛产贵族，王府大院、名人故居扎堆于此。</li>
 </ul>
@@ -1600,7 +1607,7 @@
   <entry>
     <title>Zhuhai Tour in the weekend of January 2020</title>
     <url>/2019/12/31/Zhuhai-Tour-in-the-weekend-of-January-2020/</url>
-    <content><![CDATA[<img src="cover" width="100%"/>
+    <content><![CDATA[<img data-src="cover" width="100%"/>
 
 <a id="more"></a>
 
@@ -1705,8 +1712,8 @@
 <p>上车集合点：<br>1、6：30 或 7：00 大剧院B出口；<br>2、7：00 或 7：30 深大北门天桥:深大北门公交站1/2，腾讯大厦同侧。</p>
 <p>票价：¥ 99</p>
 </blockquote>
-<p><img src="https://b1-q.mafengwo.net/s13/M00/17/6E/wKgEaVxtL1iAauPpAADQXT-OV-Q43.jpeg" alt=""></p>
-<p><img src="https://n1-q.mafengwo.net/s13/M00/13/C6/wKgEaVxtLO2ATuG4AADxsEuMe0o57.jpeg" alt=""></p>
+<p><img data-src="https://b1-q.mafengwo.net/s13/M00/17/6E/wKgEaVxtL1iAauPpAADQXT-OV-Q43.jpeg" alt=""></p>
+<p><img data-src="https://n1-q.mafengwo.net/s13/M00/13/C6/wKgEaVxtLO2ATuG4AADxsEuMe0o57.jpeg" alt=""></p>
 ]]></content>
       <categories>
         <category>Tour</category>
@@ -1718,7 +1725,7 @@
   <entry>
     <title>Macau Tour at New Year&#39;s Day in 2020</title>
     <url>/2019/12/26/Macau-Tour-at-New-Year-s-Day-in-2020/</url>
-    <content><![CDATA[<img src="https://imgcdn.yicai.com/vms-storage/df7a694bdc74ee4f44f8ab9ccd4d913560ceb568.jpeg" width="100%"/>
+    <content><![CDATA[<img data-src="https://imgcdn.yicai.com/vms-storage/df7a694bdc74ee4f44f8ab9ccd4d913560ceb568.jpeg" width="100%"/>
 
 <a id="more"></a>
 
@@ -1733,8 +1740,8 @@
 </ol>
 <p>票价：¥ 289</p>
 </blockquote>
-<p><img src="https://b1-q.mafengwo.net/s13/M00/17/6E/wKgEaVxtL1iAauPpAADQXT-OV-Q43.jpeg" alt=""></p>
-<p><img src="https://n1-q.mafengwo.net/s13/M00/13/C6/wKgEaVxtLO2ATuG4AADxsEuMe0o57.jpeg" alt=""></p>
+<p><img data-src="https://b1-q.mafengwo.net/s13/M00/17/6E/wKgEaVxtL1iAauPpAADQXT-OV-Q43.jpeg" alt=""></p>
+<p><img data-src="https://n1-q.mafengwo.net/s13/M00/13/C6/wKgEaVxtLO2ATuG4AADxsEuMe0o57.jpeg" alt=""></p>
 <h2 id="游玩路线"><a href="#游玩路线" class="headerlink" title="游玩路线"></a>游玩路线</h2><blockquote>
 <p><a href="[chrome-extension://cdonnmffkdaoajfknoeeecmchibpmkmg/assets/pdf/web/viewer.html?file=https%3A%2F%2Fwww.dsat.gov.mo%2Fhzmb%2Fpdf%2FHZMB_userguide.pdf](chrome-extension://cdonnmffkdaoajfknoeeecmchibpmkmg/assets/pdf/web/viewer.html?file=https%3A%2F%2Fwww.dsat.gov.mo%2Fhzmb%2Fpdf%2FHZMB_userguide.pdf)">港珠澳大桥通行使用指南</a></p>
 <p><a href="http://www.dsat.gov.mo/bus/site/index.aspx" target="_blank" rel="noopener">澳门交通事务局官网</a></p>
@@ -1801,7 +1808,7 @@
 <h3 id="由近及远"><a href="#由近及远" class="headerlink" title="由近及远"></a>由近及远</h3><h4 id="10-30-11-30"><a href="#10-30-11-30" class="headerlink" title="10:30 - 11:30"></a>10:30 - 11:30</h4><iframe width="100%" height="600" frameborder="no"  src="https://libo9527.github.io/static/map/amap/20200101/bus/gzodqambjdl-dsbpf.html"></iframe>
 
 
-<p><img src="https://i.loli.net/2019/12/31/eyijDN4bkvBX8xl.png" alt=""></p>
+<p><img data-src="https://i.loli.net/2019/12/31/eyijDN4bkvBX8xl.png" alt=""></p>
 <table>
 <thead>
 <tr>
@@ -1837,7 +1844,7 @@
   <entry>
     <title>Ticketing Arrangement</title>
     <url>/2019/12/24/Ticketing-Arrangement/</url>
-    <content><![CDATA[<img src="http://cdn.feeyo.com/news/091126/09112611172657.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="http://cdn.feeyo.com/news/091126/09112611172657.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -1996,7 +2003,7 @@
   <entry>
     <title>What System I Wanted</title>
     <url>/2019/12/21/What-System-I-Wanted/</url>
-    <content><![CDATA[<img src="https://www.churchofjesuschrist.org/youth/bc/youth/article/powerful-ways-to-control-your-thoughts/images/control-my-thoughts-700x363-2115883.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://www.churchofjesuschrist.org/youth/bc/youth/article/powerful-ways-to-control-your-thoughts/images/control-my-thoughts-700x363-2115883.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -2026,7 +2033,7 @@
   <entry>
     <title>JSON Web Token</title>
     <url>/2019/12/17/JSON-Web-Token/</url>
-    <content><![CDATA[<img src="https://images-1254006831.cos.ap-chengdu.myqcloud.com/jwt.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://images-1254006831.cos.ap-chengdu.myqcloud.com/jwt.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -2047,7 +2054,7 @@
   <entry>
     <title>AccessDeniedHandler of Spring Security not Working While GlobalExceptionHandler existing</title>
     <url>/2019/12/10/AccessDeniedHandler-of-Spring-Security-not-Working-While-GlobalExceptionHandler-existing/</url>
-    <content><![CDATA[<img src="https://previews.123rf.com/images/asiln/asiln1408/asiln140800037/30823194-access-denied-stamp.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://previews.123rf.com/images/asiln/asiln1408/asiln140800037/30823194-access-denied-stamp.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -2076,7 +2083,7 @@
   <entry>
     <title>What is CORS</title>
     <url>/2019/12/10/What-is-CORS/</url>
-    <content><![CDATA[<img src="https://geekflare.com/wp-content/uploads/2019/11/cors-1200x385.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://geekflare.com/wp-content/uploads/2019/11/cors-1200x385.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -2119,7 +2126,7 @@
 <li><p><strong>Access-Control-Max-Age</strong></p>
 <p>该字段可选，用来指定本次预检请求的有效期，单位为秒。上面结果中，有效期是 10秒，即允许缓存该条回应 10 秒，在此期间，不用发出另一条预检请求。</p>
 <p>注意：如果设置缓存后，发现每次还是会发送 OPTIONS 请求，请检查是不是勾选了“禁止缓存”。</p>
-<p><img src="https://www.technipages.com/wp-content/uploads/2016/05/Chrome-Disable-Cache.png" alt=""></p>
+<p><img data-src="https://www.technipages.com/wp-content/uploads/2016/05/Chrome-Disable-Cache.png" alt=""></p>
 </li>
 </ul>
 <h3 id="注解-CrossOrigin"><a href="#注解-CrossOrigin" class="headerlink" title="注解 @CrossOrigin"></a>注解 <code>@CrossOrigin</code></h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 当前 Controller 中所有的方法接受跨域访问</span></span><br><span class="line">@CrossOrigin(origins = <span class="string">"http://localhost:9528"</span>, maxAge = <span class="number">10</span>)</span><br><span class="line">@RestController</span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">CorsController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    @PostMapping(<span class="string">"cors"</span>)</span><br><span class="line">    public <span class="built_in">String</span> cors() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2149,7 +2156,7 @@
   <entry>
     <title>What is CSRF</title>
     <url>/2019/12/10/What-is-CSRF/</url>
-    <content><![CDATA[<img src="https://dpsvdv74uwwos.cloudfront.net/statics/img/ogimage/csrf-cross-site-request-forgery.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://dpsvdv74uwwos.cloudfront.net/statics/img/ogimage/csrf-cross-site-request-forgery.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -2168,7 +2175,7 @@
   <entry>
     <title>Study Notes of Spring Security</title>
     <url>/2019/12/05/Study-Notes-of-Spring-Security/</url>
-    <content><![CDATA[<img src="https://miro.medium.com/max/2560/1*bQV578ujCEPGvy9ZVemdUg.jpeg" width="100%"/>
+    <content><![CDATA[<img data-src="https://miro.medium.com/max/2560/1*bQV578ujCEPGvy9ZVemdUg.jpeg" width="100%"/>
 
 <a id="more"></a>
 
@@ -2194,9 +2201,9 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>访问接口，将重定向到默认登陆页面，登陆成功之后，就会自动跳转到原来都接口。</p>
-<p><img src="http://www.javaboy.org/images/boot/25-2.png" alt=""></p>
+<p><img data-src="http://www.javaboy.org/images/boot/25-2.png" alt=""></p>
 <p>另外：也可以使用 postman 来发送登陆请求（需要将登陆信息放在请求头中，避免重定向到登陆页面）</p>
-<p><img src="http://www.javaboy.org/images/boot/25-3.png" alt=""></p>
+<p><img data-src="http://www.javaboy.org/images/boot/25-3.png" alt=""></p>
 <p>通过以上两种不同的登录方式，可以看出，Spring Security 支持 form 表单和 HttpBasic 两种不同的认证方式，对应到源码是<code>.formLogin()</code>和<code>.httpBasic()</code>：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">WebSecurityConfigurerAdapter</span> <span class="keyword">implements</span> <span class="title">WebSecurityConfigurer</span>&lt;<span class="title">WebSecurity</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.logger.debug(<span class="string">"Using default configure(HttpSecurity). If subclassed this will potentially override subclass configure(HttpSecurity)."</span>);</span><br><span class="line">        ((HttpSecurity) ((HttpSecurity) ((AuthorizedUrl) http.authorizeRequests()</span><br><span class="line">                .anyRequest())</span><br><span class="line">                .authenticated()</span><br><span class="line">                .and())</span><br><span class="line">                .formLogin()</span><br><span class="line">                .and())</span><br><span class="line">                .httpBasic();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -2231,13 +2238,13 @@
 <p><strong>默认登陆失败处理器源码截取</strong></p>
 <figure class="highlight java"><figcaption><span>SimpleUrlAuthenticationFailureHandler.java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleUrlAuthenticationFailureHandler</span> <span class="keyword">implements</span> <span class="title">AuthenticationFailureHandler</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAuthenticationFailure</span><span class="params">(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.defaultFailureUrl == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>.logger.debug(<span class="string">"No failure URL set, sending 401 Unauthorized error"</span>);</span><br><span class="line">            response.sendError(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.saveException(request, exception);</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.forwardToDestination) &#123;</span><br><span class="line">                <span class="keyword">this</span>.logger.debug(<span class="string">"Forwarding to "</span> + <span class="keyword">this</span>.defaultFailureUrl);</span><br><span class="line">                request.getRequestDispatcher(<span class="keyword">this</span>.defaultFailureUrl).forward(request, response);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.logger.debug(<span class="string">"Redirecting to "</span> + <span class="keyword">this</span>.defaultFailureUrl);</span><br><span class="line">                <span class="keyword">this</span>.redirectStrategy.sendRedirect(request, response, <span class="keyword">this</span>.defaultFailureUrl);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2019/12/10/mDavjnKlXk5CQO8.png" alt=""></p>
+<p><img data-src="https://i.loli.net/2019/12/10/mDavjnKlXk5CQO8.png" alt=""></p>
 <h3 id="配置认证异常处理器"><a href="#配置认证异常处理器" class="headerlink" title="配置认证异常处理器"></a>配置认证异常处理器</h3><figure class="highlight java"><figcaption><span>SecurityConfigurerImpl.java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecurityConfigurerImpl</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * 认证异常（未登陆/登陆过期等）处理器</span></span><br><span class="line"><span class="comment">         * 默认处理器（LoginUrlAuthenticationEntryPoint）将重定向到登陆页面</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        http.exceptionHandling().authenticationEntryPoint(<span class="keyword">new</span> AuthenticationEntryPoint() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">commence</span><span class="params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">                httpServletResponse.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);</span><br><span class="line">                httpServletResponse.getWriter().write(<span class="string">"&#123;\"code\": \"401\", \"msg\": \"登陆已过期或未登陆\"&#125;"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>默认认证异常处理器源码截取</strong></p>
 <figure class="highlight java"><figcaption><span>LoginUrlAuthenticationEntryPoint.java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginUrlAuthenticationEntryPoint</span> <span class="keyword">implements</span> <span class="title">AuthenticationEntryPoint</span>, <span class="title">InitializingBean</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">commence</span><span class="params">(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        String redirectUrl = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.useForward) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.forceHttps &amp;&amp; <span class="string">"http"</span>.equals(request.getScheme())) &#123;</span><br><span class="line">                redirectUrl = <span class="keyword">this</span>.buildHttpsRedirectUrlForRequest(request);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (redirectUrl == <span class="keyword">null</span>) &#123;</span><br><span class="line">                String loginForm = <span class="keyword">this</span>.determineUrlToUseForThisRequest(request, response, authException);</span><br><span class="line">                <span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">                    logger.debug(<span class="string">"Server side forward to: "</span> + loginForm);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                RequestDispatcher dispatcher = request.getRequestDispatcher(loginForm);</span><br><span class="line">                dispatcher.forward(request, response);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            redirectUrl = <span class="keyword">this</span>.buildRedirectUrlToLoginPage(request, response, authException);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.redirectStrategy.sendRedirect(request, response, redirectUrl);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2019/12/10/unCSeMidlUhOj8s.png" alt=""></p>
+<p><img data-src="https://i.loli.net/2019/12/10/unCSeMidlUhOj8s.png" alt=""></p>
 <h3 id="配置权限异常处理器"><a href="#配置权限异常处理器" class="headerlink" title="配置权限异常处理器"></a>配置权限异常处理器</h3><figure class="highlight java"><figcaption><span>SecurityConfigurerImpl.java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="comment">// 开启方法级别的权限注解</span></span><br><span class="line"><span class="meta">@EnableGlobalMethodSecurity</span>(securedEnabled = <span class="keyword">true</span>, prePostEnabled = <span class="keyword">true</span>, jsr250Enabled = <span class="keyword">true</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecurityConfigurerImpl</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * 权限异常处理器</span></span><br><span class="line"><span class="comment">         * 默认处理器（AccessDeniedHandlerImpl）将返回状态码为 403 的响应</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        http.exceptionHandling().accessDeniedHandler(<span class="keyword">new</span> AccessDeniedHandler() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handle</span><span class="params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">                httpServletResponse.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);</span><br><span class="line">                httpServletResponse.getWriter().write(<span class="string">"&#123;\"code\": \"402\", \"msg\": \"权限不足\"&#125;"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>接口方法上使用注解<code>@PreAuthorize</code>配置权限</p>
@@ -2247,7 +2254,7 @@
 <p><strong>默认权限异常处理器源码截取</strong></p>
 <figure class="highlight java"><figcaption><span>AccessDeniedHandlerImpl.java</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccessDeniedHandlerImpl</span> <span class="keyword">implements</span> <span class="title">AccessDeniedHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!response.isCommitted()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.errorPage != <span class="keyword">null</span>) &#123;</span><br><span class="line">                request.setAttribute(<span class="string">"SPRING_SECURITY_403_EXCEPTION"</span>, accessDeniedException);</span><br><span class="line">                response.setStatus(HttpStatus.FORBIDDEN.value());</span><br><span class="line">                RequestDispatcher dispatcher = request.getRequestDispatcher(<span class="keyword">this</span>.errorPage);</span><br><span class="line">                dispatcher.forward(request, response);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                response.sendError(HttpStatus.FORBIDDEN.value(), HttpStatus.FORBIDDEN.getReasonPhrase());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2019/12/10/4eroj3GJS51gMP8.png" alt=""></p>
+<p><img data-src="https://i.loli.net/2019/12/10/4eroj3GJS51gMP8.png" alt=""></p>
 <h2 id="整合-JWT"><a href="#整合-JWT" class="headerlink" title="整合 JWT"></a>整合 JWT</h2><blockquote>
 <p><a href="https://aijishu.com/a/1060000000015716" target="_blank" rel="noopener">SpringBootSecurity学习（13）前后端分离版之JWT</a></p>
 <p><a href="https://github.com/jwtk/jjwt#table-of-contents" target="_blank" rel="noopener">jjwt | GitHub</a></p>
@@ -2317,7 +2324,7 @@
   <entry>
     <title>Exception Handling in Spring Boot</title>
     <url>/2019/12/05/Exception-Handling-in-Spring-Boot/</url>
-    <content><![CDATA[<img src="https://techblogstation.com/wp-content/uploads/2019/11/Spring-Boot-Exception-Handling.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://techblogstation.com/wp-content/uploads/2019/11/Spring-Boot-Exception-Handling.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -2344,7 +2351,7 @@
   <entry>
     <title>Enum in Java</title>
     <url>/2019/12/05/Enum-in-Java/</url>
-    <content><![CDATA[<img src="https://www.edureka.co/blog/wp-content/uploads/2019/06/Enumeration-in-Java.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://www.edureka.co/blog/wp-content/uploads/2019/06/Enumeration-in-Java.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -2392,7 +2399,7 @@
   <entry>
     <title>Spring Boot Hot Swap with Intellij IDEA</title>
     <url>/2019/12/04/Spring-Boot-Hot-Swap-with-Intellij-IDEA/</url>
-    <content><![CDATA[<img src="https://i.ytimg.com/vi/VWF7vCJSqrA/maxresdefault.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://i.ytimg.com/vi/VWF7vCJSqrA/maxresdefault.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -2433,7 +2440,7 @@
   <entry>
     <title>The Bast Practice of JWT</title>
     <url>/2019/12/02/The-Bast-Practice-of-JWT/</url>
-    <content><![CDATA[<img src="https://www.wangbase.com/blogimg/asset/201807/bg2018072301.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://www.wangbase.com/blogimg/asset/201807/bg2018072301.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -2496,7 +2503,7 @@
   <entry>
     <title>Spring-Boot Mutiple Environment Configuration</title>
     <url>/2019/11/28/Spring-Boot-Mutiple-Environment-Configuration/</url>
-    <content><![CDATA[<img src="https://miamioh.edu/_files/images/it-services/news-articles/2017/08/dev-graphic.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://miamioh.edu/_files/images/it-services/news-articles/2017/08/dev-graphic.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -2523,7 +2530,7 @@
 
 <h2 id="HelloController-java"><a href="#HelloController-java" class="headerlink" title="HelloController.java"></a>HelloController.java</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.gzhennaxia.admin.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Value;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> bo li</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019-11-28 14:28</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"hello"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;spring.profiles.active&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String environment;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"env"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getEnvironment</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"The Environment is "</span> + environment;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2019/11/28/zqRYIDZbMgh7JLs.png" alt=""></p>
+<p><img data-src="https://i.loli.net/2019/11/28/zqRYIDZbMgh7JLs.png" alt=""></p>
 <h2 id="环境切换"><a href="#环境切换" class="headerlink" title="环境切换"></a>环境切换</h2><h3 id="默认环境"><a href="#默认环境" class="headerlink" title="默认环境"></a>默认环境</h3><p>在项目的<code>pom.xml</code>中，使用<code>&lt;activeByDefault&gt;true&lt;/activeByDefault&gt;</code>这段配置，定义了<code>dev</code>为项目的默认环境。所以当开发中启动项目会默认使用<code>application-dev.yml</code>的配置。在控制台的日志的第二行会有这么一段日志<code>The following profiles are active: dev</code>，表示已经加载了开发环境相关的配置。</p>
 <h3 id="通过Maven打包时指定环境"><a href="#通过Maven打包时指定环境" class="headerlink" title="通过Maven打包时指定环境"></a>通过<code>Maven</code>打包时指定环境</h3><p>使用<code>Maven</code>命令<code>mvn clean package -Pprod</code>对项目的进行打包，然后直接使用<code>java -jar xxx.jar</code>命令启动项目。会发现日志输出了<code>The following profiles are active: prod</code>，说明使用的是生产环境。</p>
 <h3 id="使用命令启动时指定环境"><a href="#使用命令启动时指定环境" class="headerlink" title="使用命令启动时指定环境"></a>使用命令启动时指定环境</h3><p>首先使用<code>Maven</code>命令<code>mvn clean package</code>对项目进行打包，然后先使用<code>java -jar xxx.jar</code>命令启动项目。会发现日志输出了<code>The following profiles are active: dev</code>，说明启动的是开发环境。接下来使用<code>java -jar xxx.jar --spring.profiles.active=test</code>命令启动项目，会发现日志输出了<code>The following profiles are active: test</code>。</p>
@@ -2538,7 +2545,7 @@
   <entry>
     <title>Adapting height in Mini-Program of WeChat</title>
     <url>/2019/11/19/Adapting-height-in-Mini-Program-of-WeChat/</url>
-    <content><![CDATA[<img src="cover" width="100%"/>
+    <content><![CDATA[<img data-src="cover" width="100%"/>
 
 <a id="more"></a>
 
@@ -2561,14 +2568,14 @@
   <entry>
     <title>Can not specify local image directly in Mini-Program of WeChat</title>
     <url>/2019/11/19/Can-not-specify-local-image-directly-in-Mini-Program-of-WeChat/</url>
-    <content><![CDATA[<img src="http://static.chiefmore.com/u/cms/www/201806/15094709cpct.png" width="100%"/>
+    <content><![CDATA[<img data-src="http://static.chiefmore.com/u/cms/www/201806/15094709cpct.png" width="100%"/>
 
 <a id="more"></a>
 
 <blockquote>
 <p>微信小程序使用本地图片作为 background-image 时报错</p>
 <p>background-image: url(“/images/bg.jpg”);</p>
-<p><img src="http://code.py40.com/wp-content/uploads/2017/05/QQ_20170511110600.png" alt=""></p>
+<p><img data-src="http://code.py40.com/wp-content/uploads/2017/05/QQ_20170511110600.png" alt=""></p>
 </blockquote>
 <h2 id="设计理念"><a href="#设计理念" class="headerlink" title="设计理念"></a>设计理念</h2><p>小程序倡导的是“轻应用”，本身只允许 2M 大小的程序，图片又比较占空间，所以小程序不推荐使用本地图片。</p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="外链"><a href="#外链" class="headerlink" title="外链"></a>外链</h3><p>将图片放在服务器上，用远程图片链接地址代替。</p>
@@ -2593,7 +2600,7 @@
   <entry>
     <title>Permission Control in Git Repository</title>
     <url>/2019/11/15/Permission-Control-in-Git-Repository/</url>
-    <content><![CDATA[<img src="https://backlog.com/app/themes/backlog-child/assets/img/guides/git/basics/rewriting_history_005.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://backlog.com/app/themes/backlog-child/assets/img/guides/git/basics/rewriting_history_005.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -2614,7 +2621,7 @@
 <li>master</li>
 <li>API-1921（根据 jira 分配的任务编号建对应分支）</li>
 </ol>
-<h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><p><img src="https://i.loli.net/2019/11/15/xvD9GbWqJ6rBAMk.png" alt=""></p>
+<h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><p><img data-src="https://i.loli.net/2019/11/15/xvD9GbWqJ6rBAMk.png" alt=""></p>
 ]]></content>
       <categories>
         <category>Git</category>
@@ -2626,7 +2633,7 @@
   <entry>
     <title>Huizhou Tour in the weekend of November 2019</title>
     <url>/2019/11/06/Huizhou-Tour-in-the-weekend-of-November-2019/</url>
-    <content><![CDATA[<img src="https://i.loli.net/2019/11/06/klqyjxgNZ9UIhG2.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://i.loli.net/2019/11/06/klqyjxgNZ9UIhG2.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -2701,7 +2708,7 @@
   <entry>
     <title>Git Error MERGE_MSG</title>
     <url>/2019/11/01/Git-Error-MERGE-MSG/</url>
-    <content><![CDATA[<img src="https://raw.githubusercontent.com/DRPrincess/BlogImages/master/qiniu/95e1e0d779e7824420350bfbc96019a1.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://raw.githubusercontent.com/DRPrincess/BlogImages/master/qiniu/95e1e0d779e7824420350bfbc96019a1.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -2710,7 +2717,7 @@
 </blockquote>
 <p>合并后，执行 git pull 或者 push 或者 merge 命令时，报以上错误</p>
 <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>merge 后未正确关闭 MERGE_MSG 编辑文件。合并后会进入 commit msg 编辑页面（MERGE_MSG文件），若未正确退出，下次再合并时就会报这个错误。</p>
-<p><img src="https://raw.githubusercontent.com/DRPrincess/BlogImages/master/qiniu/9a65e381933b29e2d6dd12bcaa50dccf.png" alt=""></p>
+<p><img data-src="https://raw.githubusercontent.com/DRPrincess/BlogImages/master/qiniu/9a65e381933b29e2d6dd12bcaa50dccf.png" alt=""></p>
 <p>这是因为 linux 中使用 vim 编辑某文件时，会生成一个 .sw* 的隐藏文件，当正确退出后会自动删除该文件。</p>
 <h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><ol>
 <li><p>回到合并前状态</p>
@@ -2733,7 +2740,7 @@
   <entry>
     <title>Study Notes of Git</title>
     <url>/2019/11/01/Study-Notes-of-Git/</url>
-    <content><![CDATA[<img src="https://www.linkedin.com/media-proxy/ext?w=1200&h=675&hash=EnUu%2BT9OJGbHiVWYjgwyvE0dids%3D&ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta5g-0R6plxVUzgUv5K_PrkC9q0RIUJDPBy-kWyaq89KIf3LpesfWfrq8pVgTcCkFkgw1fOuuSC3gFNu1NdCvKg" width="100%"/>
+    <content><![CDATA[<img data-src="https://www.linkedin.com/media-proxy/ext?w=1200&h=675&hash=EnUu%2BT9OJGbHiVWYjgwyvE0dids%3D&ora=1%2CaFBCTXdkRmpGL2lvQUFBPQ%2CxAVta5g-0R6plxVUzgUv5K_PrkC9q0RIUJDPBy-kWyaq89KIf3LpesfWfrq8pVgTcCkFkgw1fOuuSC3gFNu1NdCvKg" width="100%"/>
 
 <a id="more"></a>
 
@@ -2809,7 +2816,7 @@
   <entry>
     <title>EXCEL Function Instance</title>
     <url>/2019/11/01/EXCEL-Function-Instance/</url>
-    <content><![CDATA[<img src="https://bitcoinist.com/wp-content/uploads/2019/05/shutterstock_1067559386.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://bitcoinist.com/wp-content/uploads/2019/05/shutterstock_1067559386.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -3051,7 +3058,7 @@ table th:first-of-type {  #first表示表格第一列
 <li><p>3 号白天逛昆明到景点</p>
 </li>
 <li><p>3 号晚上从昆明坐车到大理</p>
-<p><img src="https://i.loli.net/2019/09/19/uFXLgV5P6esSHBa.png" alt=""></p>
+<p><img data-src="https://i.loli.net/2019/09/19/uFXLgV5P6esSHBa.png" alt=""></p>
 </li>
 <li><p>3 号晚上住大理</p>
 </li>
@@ -3062,31 +3069,31 @@ table th:first-of-type {  #first表示表格第一列
 <li><p>5 号白天逛大理景点</p>
 </li>
 <li><p>5 号晚上从大理坐车到丽江</p>
-<p><img src="https://i.loli.net/2019/09/19/Rz8ypmZlXKxUud7.png" alt=""></p>
+<p><img data-src="https://i.loli.net/2019/09/19/Rz8ypmZlXKxUud7.png" alt=""></p>
 </li>
 <li><p>5 号晚上住丽江</p>
 </li>
 <li><p>6 号白天逛丽江的景点</p>
 </li>
 <li><p>6 号晚上从丽江坐车到昆明</p>
-<p><img src="https://i.loli.net/2019/09/19/kVzFGocCRZagmTL.png" alt=""></p>
-<p><img src="https://i.loli.net/2019/09/19/lrkIpWoZOstzf91.png" alt=""></p>
-<p><img src="https://i.loli.net/2019/09/19/vpUMFiEzWBRCAqY.png" alt=""></p>
-<p><img src="https://i.loli.net/2019/09/19/Xy8xU3Wnj1rzOqP.png" alt=""></p>
-<p><img src="https://i.loli.net/2019/09/19/sVgykCFrOcJhQoW.png" alt=""></p>
-<p><img src="http://ww1.sinaimg.cn/large/005M2pcYgy1g747csa62kj30u00yyjt1.jpg" alt="WechatIMG8.jpeg"></p>
+<p><img data-src="https://i.loli.net/2019/09/19/kVzFGocCRZagmTL.png" alt=""></p>
+<p><img data-src="https://i.loli.net/2019/09/19/lrkIpWoZOstzf91.png" alt=""></p>
+<p><img data-src="https://i.loli.net/2019/09/19/vpUMFiEzWBRCAqY.png" alt=""></p>
+<p><img data-src="https://i.loli.net/2019/09/19/Xy8xU3Wnj1rzOqP.png" alt=""></p>
+<p><img data-src="https://i.loli.net/2019/09/19/sVgykCFrOcJhQoW.png" alt=""></p>
+<p><img data-src="http://ww1.sinaimg.cn/large/005M2pcYgy1g747csa62kj30u00yyjt1.jpg" alt="WechatIMG8.jpeg"></p>
 </li>
 </ul>
 <h4 id="路线二"><a href="#路线二" class="headerlink" title="路线二"></a>路线二</h4><ul>
 <li><p>2 号晚上到了住昆明</p>
 </li>
 <li><p>3 号早上从昆明坐车到丽江</p>
-<p><img src="https://i.loli.net/2019/09/19/qYbAGXDla6Etmu9.png" alt=""></p>
+<p><img data-src="https://i.loli.net/2019/09/19/qYbAGXDla6Etmu9.png" alt=""></p>
 </li>
 <li><p>3 号白天逛丽江的景点</p>
 </li>
 <li><p>3 号晚上从丽江坐车到大理</p>
-<p><img src="http://ww1.sinaimg.cn/large/005M2pcYgy1g746p2czg4j31ki0qaah2.jpg" alt="WechatIMG6.png"></p>
+<p><img data-src="http://ww1.sinaimg.cn/large/005M2pcYgy1g746p2czg4j31ki0qaah2.jpg" alt="WechatIMG6.png"></p>
 </li>
 <li><p>3 号晚上住大理</p>
 </li>
@@ -3097,7 +3104,7 @@ table th:first-of-type {  #first表示表格第一列
 <li><p>5 号白天逛大理的景点</p>
 </li>
 <li><p>5 号晚上从大理坐车到昆明</p>
-<p><img src="http://ww1.sinaimg.cn/large/005M2pcYgy1g746s5bm7bj31lq0z6gup.jpg" alt="WechatIMG7.png"></p>
+<p><img data-src="http://ww1.sinaimg.cn/large/005M2pcYgy1g746s5bm7bj31lq0z6gup.jpg" alt="WechatIMG7.png"></p>
 </li>
 <li><p>5 号晚上住昆明</p>
 </li>
@@ -3129,7 +3136,7 @@ table th:first-of-type {  #first表示表格第一列
 </iframe>
 
 <h5 id="大理古城"><a href="#大理古城" class="headerlink" title="大理古城"></a>大理古城</h5><p>大理古城有4座主要的城门，除了南门北门外，东门名叫洱海门，西门则叫做苍山门，因为苍山位于古城西侧，开门即见山。</p>
-<p><img src="https://i.loli.net/2019/09/21/Fil3ypWnz18rbVa.png" alt="image.png"></p>
+<p><img data-src="https://i.loli.net/2019/09/21/Fil3ypWnz18rbVa.png" alt="image.png"></p>
 <h6 id="门票"><a href="#门票" class="headerlink" title="门票"></a>门票</h6><p>免费</p>
 <h6 id="开放时间"><a href="#开放时间" class="headerlink" title="开放时间"></a>开放时间</h6><p>全天</p>
 <h6 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h6><blockquote>
@@ -3139,8 +3146,8 @@ table th:first-of-type {  #first表示表格第一列
 <h6 id="内部景点"><a href="#内部景点" class="headerlink" title="内部景点"></a>内部景点</h6><blockquote>
 <p><a href="http://www.mafengwo.cn/poi/17043.html" target="_blank" rel="noopener">大理古城 | 马蜂窝</a></p>
 </blockquote>
-<p><img src="https://i.loli.net/2019/09/21/Hhvr1LiFQ4ESuKP.png" alt="image.png"></p>
-<p><img src="https://i.loli.net/2019/09/21/PMKdcE5Bih3rLgD.png" alt="image.png"></p>
+<p><img data-src="https://i.loli.net/2019/09/21/Hhvr1LiFQ4ESuKP.png" alt="image.png"></p>
+<p><img data-src="https://i.loli.net/2019/09/21/PMKdcE5Bih3rLgD.png" alt="image.png"></p>
 <h5 id="洱海"><a href="#洱海" class="headerlink" title="洱海"></a>洱海</h5><blockquote>
 <p><a href="http://www.mafengwo.cn/poi/956.html" target="_blank" rel="noopener">洱海 | 马蜂窝</a></p>
 <p>大理“风花雪月”四大名景（下关风、上关花、苍山雪、洱海月）之一，外形如同耳朵，是由西洱河塌陷形成的高原湖泊。<br>共有三岛、四洲、五湖、九曲。</p>
@@ -3166,7 +3173,7 @@ table th:first-of-type {  #first表示表格第一列
 <li>洱海形成于冰河时代末期，其成因主要是沉降侵蚀，属高原构造断陷湖泊，海拔1972米。</li>
 <li>洱海之所以最终以“洱”为名，要么说它“形若人耳”，要么说它“如月抱珥”，因而得名。而“海”的叫法，则源于云南的习俗。在云南十八怪中就有一怪为“湖泊称作海”。这就是说，湖泊在云南多被叫做“海”。</li>
 </ul>
-<h6 id="内部景点-1"><a href="#内部景点-1" class="headerlink" title="内部景点"></a>内部景点</h6><p><img src="https://p1-q.mafengwo.net/s10/M00/68/4D/wKgBZ1nga8-AK3X9AAO9cNuAiuA91.jpeg?imageView2%2F2%2Fw%2F680%2Fq%2F90%7CimageMogr2%2Fstrip%2Fquality%2F90" alt=""></p>
+<h6 id="内部景点-1"><a href="#内部景点-1" class="headerlink" title="内部景点"></a>内部景点</h6><p><img data-src="https://p1-q.mafengwo.net/s10/M00/68/4D/wKgBZ1nga8-AK3X9AAO9cNuAiuA91.jpeg?imageView2%2F2%2Fw%2F680%2Fq%2F90%7CimageMogr2%2Fstrip%2Fquality%2F90" alt=""></p>
 <h5 id="崇圣寺三塔"><a href="#崇圣寺三塔" class="headerlink" title="崇圣寺三塔"></a>崇圣寺三塔</h5><h6 id="门票-2"><a href="#门票-2" class="headerlink" title="门票"></a>门票</h6><ul>
 <li>门票： ¥75/人</li>
 </ul>
@@ -3274,8 +3281,8 @@ table th:first-of-type {  #first表示表格第一列
 <li>世界上北半球<strong>纬度最低</strong>、<strong>海拔最高</strong>的山峰。</li>
 <li>国内<strong>唯一</strong>一个可以攀爬的雪山</li>
 </ul>
-<h6 id="内部景点-5"><a href="#内部景点-5" class="headerlink" title="内部景点"></a>内部景点</h6><p><img src="http://s1.lvjs.com.cn//uploads/pc/place2/2017-04-27/b9ea4acd-9e15-4f71-a361-40871788f6aa_720_.jpg" alt=""></p>
-<p><img src="https://pic3.zhimg.com/v2-cf5a2295dff7d5286f844120f561311a_b.jpg" alt=""></p>
+<h6 id="内部景点-5"><a href="#内部景点-5" class="headerlink" title="内部景点"></a>内部景点</h6><p><img data-src="http://s1.lvjs.com.cn//uploads/pc/place2/2017-04-27/b9ea4acd-9e15-4f71-a361-40871788f6aa_720_.jpg" alt=""></p>
+<p><img data-src="https://pic3.zhimg.com/v2-cf5a2295dff7d5286f844120f561311a_b.jpg" alt=""></p>
 <p>黑白水河、甘海子、云杉坪、牦牛坪、扇子陡等。其中，云杉坪，又名“情死之地”，海拔3,240米，是纳西族人心中的圣洁之地。</p>
 <p><strong>玉龙雪山景区的核心看点</strong></p>
 <ol>
@@ -3340,7 +3347,7 @@ table th:first-of-type {  #first表示表格第一列
 <h6 id="内部景点-6"><a href="#内部景点-6" class="headerlink" title="内部景点"></a>内部景点</h6><blockquote>
 <p><a href="http://www.ljgc517.com/gcjd2v2/index.htm" target="_blank" rel="noopener">古城景点 | 官网</a></p>
 </blockquote>
-<p><img src="http://www.17u1u.com/file/image/2015/0111/1420963071.jpg" alt=""></p>
+<p><img data-src="http://www.17u1u.com/file/image/2015/0111/1420963071.jpg" alt=""></p>
 <ul>
 <li><p>大水车</p>
 </li>
@@ -3427,7 +3434,7 @@ table th:first-of-type {  #first表示表格第一列
 <td>¥79.5</td>
 <td>¥79.5</td>
 <td>李</td>
-<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/sz-gz.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
+<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/sz-gz.png" target="_blank"><i><img width="30px" data-src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
 </tr>
 <tr>
 <td>广州南 - 昆明南</td>
@@ -3438,7 +3445,7 @@ table th:first-of-type {  #first表示表格第一列
 <td>¥869</td>
 <td>¥434.5</td>
 <td>李、浮</td>
-<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/gzn-kmn.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
+<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/gzn-kmn.png" target="_blank"><i><img width="30px" data-src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
 </tr>
 <tr>
 <td>昆明 - 丽江</td>
@@ -3449,7 +3456,7 @@ table th:first-of-type {  #first表示表格第一列
 <td>¥880</td>
 <td>¥220</td>
 <td>李、浮、谭、党</td>
-<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/km-lj.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
+<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/km-lj.png" target="_blank"><i><img width="30px" data-src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
 </tr>
 <tr>
 <td>丽江 - 大理</td>
@@ -3460,7 +3467,7 @@ table th:first-of-type {  #first表示表格第一列
 <td>¥136</td>
 <td>¥34</td>
 <td>李、浮、谭、党</td>
-<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/lj-dl.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
+<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/lj-dl.png" target="_blank"><i><img width="30px" data-src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
 </tr>
 <tr>
 <td>大理 - 昆明</td>
@@ -3471,7 +3478,7 @@ table th:first-of-type {  #first表示表格第一列
 <td>¥580</td>
 <td>¥145</td>
 <td>李、浮、谭、党</td>
-<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/dl-km.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
+<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/dl-km.png" target="_blank"><i><img width="30px" data-src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
 </tr>
 <tr>
 <td>昆明南 - 广州南</td>
@@ -3482,7 +3489,7 @@ table th:first-of-type {  #first表示表格第一列
 <td>¥869</td>
 <td>¥434.5</td>
 <td>李、浮</td>
-<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/kmn-gzn.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
+<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/kmn-gzn.png" target="_blank"><i><img width="30px" data-src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
 </tr>
 <tr>
 <td>汉庭优佳昆明东华酒店</td>
@@ -3493,7 +3500,7 @@ table th:first-of-type {  #first表示表格第一列
 <td>¥410</td>
 <td>¥102.5</td>
 <td>李、浮、谭、党</td>
-<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/km-hotel-01.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a><a href="https://libo9527.github.io/static/map/amap/20191001/images/kn-hotel-02.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
+<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/km-hotel-01.png" target="_blank"><i><img width="30px" data-src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a><a href="https://libo9527.github.io/static/map/amap/20191001/images/kn-hotel-02.png" target="_blank"><i><img width="30px" data-src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
 </tr>
 <tr>
 <td>汉庭丽江古城福星路酒店</td>
@@ -3504,7 +3511,7 @@ table th:first-of-type {  #first表示表格第一列
 <td>¥566</td>
 <td>¥141.5</td>
 <td>李、浮、谭、党</td>
-<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/lj-hotel.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
+<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/lj-hotel.png" target="_blank"><i><img width="30px" data-src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
 </tr>
 <tr>
 <td>大理古城米畔·轻宿客栈</td>
@@ -3515,7 +3522,7 @@ table th:first-of-type {  #first表示表格第一列
 <td>¥638.4</td>
 <td>¥159.6</td>
 <td>李、浮、谭、党</td>
-<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/dl-hotel.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
+<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/dl-hotel.png" target="_blank"><i><img width="30px" data-src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
 </tr>
 <tr>
 <td>汉庭昆明北京路酒店</td>
@@ -3526,7 +3533,7 @@ table th:first-of-type {  #first表示表格第一列
 <td>¥350</td>
 <td>¥87.5</td>
 <td>李、浮、谭、党</td>
-<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/km-hotel-03.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
+<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/km-hotel-03.png" target="_blank"><i><img width="30px" data-src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
 </tr>
 <tr>
 <td>汉庭昆明呈贡酒店</td>
@@ -3537,7 +3544,7 @@ table th:first-of-type {  #first表示表格第一列
 <td>¥252</td>
 <td>¥63</td>
 <td>李、浮、谭、党</td>
-<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/km-hotel-04.png" target="_blank"><i><img width="30px" src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
+<td><a href="https://libo9527.github.io/static/map/amap/20191001/images/km-hotel-04.png" target="_blank"><i><img width="30px" data-src="https://cdn1.iconfinder.com/data/icons/social-17/48/photos2-512.png" alt="icon"></i></a></td>
 </tr>
 <tr>
 <td></td>
@@ -3573,7 +3580,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Using Triggers in ORACLE</title>
     <url>/2019/09/17/Using-Triggers-in-ORACLE/</url>
-    <content><![CDATA[<img src="https://i.ytimg.com/vi/R3fvX_xf5P4/maxresdefault.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://i.ytimg.com/vi/R3fvX_xf5P4/maxresdefault.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -3688,7 +3695,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of NPM</title>
     <url>/2019/08/30/Study-Notes-of-NPM/</url>
-    <content><![CDATA[<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/1200px-Npm-logo.svg.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Npm-logo.svg/1200px-Npm-logo.svg.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -3719,7 +3726,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of Apache Commons</title>
     <url>/2019/08/30/Study-Notes-of-Apache-Commons/</url>
-    <content><![CDATA[<img src="https://commons.apache.org/images/commons-logo.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://commons.apache.org/images/commons-logo.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -3741,7 +3748,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of Apache POI</title>
     <url>/2019/08/30/Study-Notes-of-Apache-POI/</url>
-    <content><![CDATA[<img src="http://poi.apache.org/images/project-header.png" width="100%"/>
+    <content><![CDATA[<img data-src="http://poi.apache.org/images/project-header.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -3764,14 +3771,14 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of Android</title>
     <url>/2019/08/30/Study-Notes-of-Android/</url>
-    <content><![CDATA[<img src="cover" width="100%"/>
+    <content><![CDATA[<img data-src="cover" width="100%"/>
 
 <a id="more"></a>
 
 <h2 id="Android屏幕区域划分"><a href="#Android屏幕区域划分" class="headerlink" title="Android屏幕区域划分"></a>Android屏幕区域划分</h2><blockquote>
 <p><a href="https://blog.csdn.net/zengruiyue/article/details/100116418" target="_blank" rel="noopener">Android 自定义View之坐标系</a></p>
 </blockquote>
-<p><img src="https://p1htmlkernalweb.mybluemix.net/image/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemVuZ3J1aXl1ZS9hcnRpY2xlL2RldGFpbHMvMTAwMTE2NDE4_aHR0cHM6Ly9pbWctYmxvZy5jc2RuaW1nLmNuLzIwMTkwODI4MTYzNzU5MzIyLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3dhdGVybWFyayx0eXBlX1ptRnVaM3BvWlc1bmFHVnBkR2ssc2hhZG93XzEwLHRleHRfYUhSMGNITTZMeTlpYkc5bkxtTnpaRzR1Ym1WMEwzcGxibWR5ZFdsNWRXVT0sc2l6ZV8xNixjb2xvcl9GRkZGRkYsdF83MA==" alt=""></p>
+<p><img data-src="https://p1htmlkernalweb.mybluemix.net/image/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemVuZ3J1aXl1ZS9hcnRpY2xlL2RldGFpbHMvMTAwMTE2NDE4_aHR0cHM6Ly9pbWctYmxvZy5jc2RuaW1nLmNuLzIwMTkwODI4MTYzNzU5MzIyLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3dhdGVybWFyayx0eXBlX1ptRnVaM3BvWlc1bmFHVnBkR2ssc2hhZG93XzEwLHRleHRfYUhSMGNITTZMeTlpYkc5bkxtTnpaRzR1Ym1WMEwzcGxibWR5ZFdsNWRXVT0sc2l6ZV8xNixjb2xvcl9GRkZGRkYsdF83MA==" alt=""></p>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -3783,7 +3790,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of HTML</title>
     <url>/2019/08/30/Study-Notes-of-HTML/</url>
-    <content><![CDATA[<img src="https://engineering.eckovation.com/wp-content/uploads/2017/09/wallhaven-439017.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://engineering.eckovation.com/wp-content/uploads/2017/09/wallhaven-439017.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -3819,7 +3826,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of Illustrator</title>
     <url>/2019/08/23/Study-Notes-of-Illustrator/</url>
-    <content><![CDATA[<img src="https://www.adobe.com/content/dam/acom/en/products/illustrator/max2018/ai-video_1000x494.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://www.adobe.com/content/dam/acom/en/products/illustrator/max2018/ai-video_1000x494.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -3844,7 +3851,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Circule Reference in Fastjson</title>
     <url>/2019/08/17/Circule-Reference-in-Fastjson/</url>
-    <content><![CDATA[<img src="https://i.loli.net/2019/08/17/YvAZiPnxFgtGj6X.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://i.loli.net/2019/08/17/YvAZiPnxFgtGj6X.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -3882,7 +3889,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of Axure</title>
     <url>/2019/08/16/Study-Notes-of-Axure/</url>
-    <content><![CDATA[<img src="http://humbleux.com/wp-content/uploads/edd/2017/03/Axure-responsive-Store-template-1-Cover.png" width="100%"/>
+    <content><![CDATA[<img data-src="http://humbleux.com/wp-content/uploads/edd/2017/03/Axure-responsive-Store-template-1-Cover.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -3946,7 +3953,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>SQL Functions in ORACLE</title>
     <url>/2019/08/14/SQL-Functions-in-ORACLE/</url>
-    <content><![CDATA[<img src="https://regmedia.co.uk/2017/05/03/oracle_balloons2_photo_via_shutterstock.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://regmedia.co.uk/2017/05/03/oracle_balloons2_photo_via_shutterstock.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -4009,7 +4016,7 @@ table th:first-of-type {  #first表示表格第一列
 
 
 <h2 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h2><h3 id="COUNT"><a href="#COUNT" class="headerlink" title="COUNT"></a>COUNT</h3><h4 id="按日期统计"><a href="#按日期统计" class="headerlink" title="按日期统计"></a>按日期统计</h4><p>需求：统计收集数量</p>
-<p><img src="https://i.loli.net/2019/08/14/wImuRzxqEybkW5C.png" alt="pic"></p>
+<p><img data-src="https://i.loli.net/2019/08/14/wImuRzxqEybkW5C.png" alt="pic"></p>
 <h5 id="按年统计"><a href="#按年统计" class="headerlink" title="按年统计"></a>按年统计</h5><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TO_CHAR(COLLECT_DATE, <span class="string">'yyyy'</span>) <span class="keyword">AS</span> COLLECT_DATE, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="keyword">COUNT</span> <span class="keyword">FROM</span> COLLECT_RECORD <span class="keyword">GROUP</span> <span class="keyword">BY</span> TO_CHAR(COLLECT_DATE, <span class="string">'yyyy'</span>)</span><br></pre></td></tr></table></figure>
 
 <h5 id="按月统计"><a href="#按月统计" class="headerlink" title="按月统计"></a>按月统计</h5><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> TO_CHAR(COLLECT_DATE, <span class="string">'yyyy-MM'</span>) <span class="keyword">AS</span> COLLECT_DATE, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="keyword">COUNT</span> <span class="keyword">FROM</span> COLLECT_RECORD <span class="keyword">GROUP</span> <span class="keyword">BY</span> TO_CHAR(COLLECT_DATE, <span class="string">'yyyy-MM'</span>)</span><br></pre></td></tr></table></figure>
@@ -4071,7 +4078,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of Vue</title>
     <url>/2019/08/13/Study-Notes-of-Vue/</url>
-    <content><![CDATA[<img src="https://4.bp.blogspot.com/-QPkAcNH1NUQ/WRfc27-qWFI/AAAAAAAAy6g/74NNXOZ4pywIMCBbExG566EhxupnNDDrACLcB/s1600/vue-newsletter.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://4.bp.blogspot.com/-QPkAcNH1NUQ/WRfc27-qWFI/AAAAAAAAy6g/74NNXOZ4pywIMCBbExG566EhxupnNDDrACLcB/s1600/vue-newsletter.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -4094,7 +4101,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Handbook of Mac OS</title>
     <url>/2019/08/10/Handbook-of-Mac-OS/</url>
-    <content><![CDATA[<img src="https://assets.website-files.com/5acbcf3278f9ca8c8c178e76/5bae943f1d8edfa43e6a7ae2_main-mojave.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://assets.website-files.com/5acbcf3278f9ca8c8c178e76/5bae943f1d8edfa43e6a7ae2_main-mojave.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -4209,7 +4216,7 @@ table th:first-of-type {  #first表示表格第一列
 <li><p>打开 <code>RichText.mdimporter/Contents/Info.plist</code>，添加下面的代码。</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">string</span>&gt;</span>net.daringfireball.markdown<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.postimg.cc/dwn4fgdw/markdown-finder.png" alt=""></p>
+<p><img data-src="https://i.postimg.cc/dwn4fgdw/markdown-finder.png" alt=""></p>
 </li>
 <li><p>重命名 RichText.mdimporter 为 Markdown.mdimporter。</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mv ~/RichText.mdimporter Markdown.mdimporter</span><br></pre></td></tr></table></figure>
@@ -4240,7 +4247,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of Oracle</title>
     <url>/2019/08/07/Study-Notes-of-Oracle/</url>
-    <content><![CDATA[<img src="https://www.datocms-assets.com/2885/1522106007-oracle.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://www.datocms-assets.com/2885/1522106007-oracle.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -4284,7 +4291,7 @@ table th:first-of-type {  #first表示表格第一列
 
 <p>eg：</p>
 <p>地址表 GLOBAL_LOCATION</p>
-<p><img src="https://i.loli.net/2019/08/13/6nlYZxW5zsLbfAC.png" alt="pic"></p>
+<p><img data-src="https://i.loli.net/2019/08/13/6nlYZxW5zsLbfAC.png" alt="pic"></p>
 <ul>
 <li><p>查询北京所有的子孙节点</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">ID</span>, PARENT_ID, <span class="keyword">NAME</span> <span class="keyword">FROM</span> GLOBAL_LOCATION <span class="keyword">START</span> <span class="keyword">WITH</span> PARENT_ID = <span class="number">247</span> <span class="keyword">CONNECT</span> <span class="keyword">BY</span> <span class="keyword">PRIOR</span> <span class="keyword">ID</span> = PARENT_ID</span><br></pre></td></tr></table></figure>
@@ -4297,7 +4304,7 @@ table th:first-of-type {  #first表示表格第一列
 </li>
 </ul>
 <h2 id="Comprehensive-examples-in-work"><a href="#Comprehensive-examples-in-work" class="headerlink" title="Comprehensive examples in work"></a>Comprehensive examples in work</h2><h3 id="地址树远程搜索"><a href="#地址树远程搜索" class="headerlink" title="地址树远程搜索"></a>地址树远程搜索</h3><p>需求说明：input 框中输入地址，远程搜索出匹配节点，由于同名地址到存在，要求将完整地址一同显示。</p>
-<p><img src="https://i.loli.net/2019/08/10/TCvoScY2A7Vajd8.png" alt="pic"></p>
+<p><img data-src="https://i.loli.net/2019/08/10/TCvoScY2A7Vajd8.png" alt="pic"></p>
 <p>表结构：</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">"SKYSTAR"</span>.<span class="string">"GLOBAL_LOCATION_copy1"</span> (</span><br><span class="line">  <span class="string">"ID"</span> <span class="built_in">NUMBER</span>(<span class="number">20</span>) <span class="keyword">VISIBLE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> ,</span><br><span class="line">  <span class="string">"PARENT_ID"</span> <span class="built_in">NUMBER</span>(<span class="number">20</span>) <span class="keyword">VISIBLE</span> ,</span><br><span class="line">  <span class="string">"PATH"</span> <span class="built_in">VARCHAR2</span>(<span class="number">100</span> <span class="keyword">BYTE</span>) <span class="keyword">VISIBLE</span> ,</span><br><span class="line">  <span class="string">"ENGLISH_NAME"</span> <span class="built_in">VARCHAR2</span>(<span class="number">255</span> <span class="keyword">BYTE</span>) <span class="keyword">VISIBLE</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
@@ -4322,8 +4329,8 @@ table th:first-of-type {  #first表示表格第一列
 <p>汇总后的 SQL：</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    <span class="keyword">ID</span>,</span><br><span class="line">    ENGLISH_NAME,</span><br><span class="line">(</span><br><span class="line">    <span class="keyword">SELECT</span></span><br><span class="line">        <span class="keyword">LISTAGG</span> ( ENGLISH_NAME, <span class="string">' &gt; '</span> ) <span class="keyword">WITHIN</span> <span class="keyword">GROUP</span> ( <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ID</span> ) ADDRESS</span><br><span class="line">    <span class="keyword">FROM</span></span><br><span class="line">    (</span><br><span class="line">        <span class="keyword">SELECT</span></span><br><span class="line">            <span class="keyword">ID</span>,</span><br><span class="line">            ENGLISH_NAME</span><br><span class="line">        <span class="keyword">FROM</span></span><br><span class="line">            GLOBAL_LOCATION</span><br><span class="line">        <span class="keyword">WHERE</span> <span class="keyword">ID</span> <span class="keyword">IN</span> (</span><br><span class="line">            <span class="keyword">SELECT</span></span><br><span class="line">                REGEXP_SUBSTR( t1.ADDRESS, <span class="string">'[^,]+'</span>, <span class="number">1</span>, <span class="keyword">ROWNUM</span> )</span><br><span class="line">            <span class="keyword">FROM</span></span><br><span class="line">                dual <span class="keyword">CONNECT</span> <span class="keyword">BY</span> <span class="keyword">ROWNUM</span> &lt;= <span class="keyword">LENGTH</span>( t1.address ) - <span class="keyword">LENGTH</span>(REGEXP_REPLACE( t1.ADDRESS, <span class="string">','</span>, <span class="string">''</span> )) + <span class="number">1</span>)</span><br><span class="line">    )</span><br><span class="line">) FULL_ADDRESS</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">SELECT</span></span><br><span class="line">        <span class="keyword">ID</span>,</span><br><span class="line">        ENGLISH_NAME,</span><br><span class="line">        ( <span class="keyword">SELECT</span> <span class="keyword">SUBSTR</span>( gl.PATH, <span class="number">2</span>, <span class="keyword">LENGTH</span>( gl.PATH ) - <span class="number">2</span> ) <span class="keyword">FROM</span> dual ) ADDRESS</span><br><span class="line">    <span class="keyword">FROM</span></span><br><span class="line">    ( <span class="keyword">SELECT</span> <span class="keyword">ID</span>, ENGLISH_NAME, <span class="keyword">PATH</span> <span class="keyword">FROM</span> GLOBAL_LOCATION <span class="keyword">WHERE</span> <span class="keyword">UPPER</span>( ENGLISH_NAME ) <span class="keyword">LIKE</span> <span class="string">'%'</span> || <span class="keyword">UPPER</span>( <span class="string">'shan'</span> ) || <span class="string">'%'</span> ) gl</span><br><span class="line">) t1</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.loli.net/2019/08/10/F6XYRiD7Q29OHrE.png" alt="pic"></p>
-<p><img src="https://i.loli.net/2019/08/10/NL9lIHtJnXxmC38.png" alt="pic"></p>
+<p><img data-src="https://i.loli.net/2019/08/10/F6XYRiD7Q29OHrE.png" alt="pic"></p>
+<p><img data-src="https://i.loli.net/2019/08/10/NL9lIHtJnXxmC38.png" alt="pic"></p>
 <h2 id=""><a href="#" class="headerlink" title=""></a><a href="/2019/09/17/Using-Triggers-in-ORACLE/" title="触发器（TRIGGER）">触发器（TRIGGER）</a></h2><h2 id="ERROR"><a href="#ERROR" class="headerlink" title="ERROR"></a>ERROR</h2><h3 id="ORA-03113"><a href="#ORA-03113" class="headerlink" title="ORA-03113"></a>ORA-03113</h3><blockquote>
 <p><a href="https://blog.csdn.net/zwk626542417/article/details/39667999" target="_blank" rel="noopener">Oracle错误——ORA-03113:通信通道的文件结尾 解决办法</a></p>
 </blockquote>
@@ -4360,7 +4367,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of CSS</title>
     <url>/2019/07/31/Study-Notes-of-CSS/</url>
-    <content><![CDATA[<img src="https://miro.medium.com/max/1200/1*OFsc0SD55jhi8cjo7aCA4w.jpeg" width="100%"/>
+    <content><![CDATA[<img data-src="https://miro.medium.com/max/1200/1*OFsc0SD55jhi8cjo7aCA4w.jpeg" width="100%"/>
 
 <a id="more"></a>
 
@@ -4406,7 +4413,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of JavaScript</title>
     <url>/2019/07/31/Study-Notes-of-JavaScript/</url>
-    <content><![CDATA[<img src="https://www.tutorialrepublic.com/lib/images/javascript-illustration.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://www.tutorialrepublic.com/lib/images/javascript-illustration.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -4538,7 +4545,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Linux Command</title>
     <url>/2019/07/31/Linux-Command/</url>
-    <content><![CDATA[<img src="https://opensource.com/sites/default/files/styles/image-full-size/public/lead-images/tux_linux_penguin_code_binary.jpg?itok=TxGxW0KY" width="100%"/>
+    <content><![CDATA[<img data-src="https://opensource.com/sites/default/files/styles/image-full-size/public/lead-images/tux_linux_penguin_code_binary.jpg?itok=TxGxW0KY" width="100%"/>
 
 <a id="more"></a>
 
@@ -4571,7 +4578,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Mac-OS-Terminal</title>
     <url>/2019/07/31/Mac-OS-Terminal/</url>
-    <content><![CDATA[<img src="https://photos5.appleinsider.com/gallery/29497-47785-000-3x2-Terminal-part-2-l.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://photos5.appleinsider.com/gallery/29497-47785-000-3x2-Terminal-part-2-l.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -4630,7 +4637,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Use-of-ElementUI</title>
     <url>/2019/07/31/Use-of-ElementUI/</url>
-    <content><![CDATA[<img src="https://i.loli.net/2019/07/31/5d41178cb31bc93582.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://i.loli.net/2019/07/31/5d41178cb31bc93582.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -4640,7 +4647,7 @@ table th:first-of-type {  #first表示表格第一列
 <h2 id="Scrollbar-滚动条"><a href="#Scrollbar-滚动条" class="headerlink" title="Scrollbar 滚动条"></a>Scrollbar 滚动条</h2><blockquote>
 <p><a href="https://codepen.io/libo9527/pen/jgmYmb" target="_blank" rel="noopener">Demo code</a></p>
 </blockquote>
-<p><img src="https://i.loli.net/2019/07/31/5d4135303465a78467.png" alt="项目中的使用"></p>
+<p><img data-src="https://i.loli.net/2019/07/31/5d4135303465a78467.png" alt="项目中的使用"></p>
 <p>注：如果不需要横向滚动条，将 wrap 层的 <code>overflow-x</code> 置为 <code>hidden</code> 即可。</p>
 <h2 id="ERROR"><a href="#ERROR" class="headerlink" title="ERROR"></a>ERROR</h2><h3 id="懒加载情况下无法添加一级结点"><a href="#懒加载情况下无法添加一级结点" class="headerlink" title="懒加载情况下无法添加一级结点"></a>懒加载情况下无法添加一级结点</h3><h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>懒加载情况下无法通过 append/insertBefore 等方法添加一级结点</p>
 <h4 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">console_runner-1df7d3399bdc1f40995a35209755dcfd8c7547da127f6469fd81e5fba982f6af.js:1 [Vue warn]: Error in v-on handler: &quot;TypeError: Cannot read property &#39;indexOf&#39; of undefined&quot;</span><br><span class="line"></span><br><span class="line">found in</span><br><span class="line"></span><br><span class="line">---&gt; &lt;ElButton&gt; at packages&#x2F;button&#x2F;src&#x2F;button.vue</span><br><span class="line">       &lt;ElCard&gt; at packages&#x2F;card&#x2F;src&#x2F;main.vue</span><br><span class="line">         &lt;Root&gt;</span><br></pre></td></tr></table></figure>
@@ -4659,7 +4666,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Summary of PAT</title>
     <url>/2019/02/15/Summary-of-PAT/</url>
-    <content><![CDATA[<img src="https://i.loli.net/2019/01/11/5c3813443dce6.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://i.loli.net/2019/01/11/5c3813443dce6.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -4927,7 +4934,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Scenic Strategy</title>
     <url>/2019/02/03/Scenic-Strategy/</url>
-    <content><![CDATA[<img src="http://staticnew.mayi.com/resourcesWeb/travel/images/zixun/201509030020127533.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="http://staticnew.mayi.com/resourcesWeb/travel/images/zixun/201509030020127533.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -4935,7 +4942,7 @@ table th:first-of-type {  #first表示表格第一列
 <p><a href="https://www.meet99.com/lvyou" target="_blank" rel="noopener">景点大全</a></p>
 </blockquote>
 <h2 id="金鸡湖景区"><a href="#金鸡湖景区" class="headerlink" title="金鸡湖景区"></a>金鸡湖景区</h2><p>门票<br>金鸡湖免费，摩天轮乐园成人80元，学生40元/人。<br>开放时间<br>全天。金鸡湖音乐喷泉的时间：周五周六晚上20:00-20:30</p>
-<p><img src="http://jinjilake.sipac.gov.cn/images/yxjjh/yxjjh_wh.png" alt=""></p>
+<p><img data-src="http://jinjilake.sipac.gov.cn/images/yxjjh/yxjjh_wh.png" alt=""></p>
 <p>景区内目前有3个游客接待中心，分别是北门游客中心、南门游客中心和博览游客中心。这里可以免费获取旅游手册，资讯旅游信息，租借婴儿椅、轮椅等，还能寄送明信片。</p>
 <h2 id="拙政园"><a href="#拙政园" class="headerlink" title="拙政园"></a>拙政园</h2><blockquote>
 <p><a href="https://www.baidu.com/link?url=grc1aIl18kWGOdDq8Mqa8biQ5gH_L_h-fThoI4uKjGMYNCO4g7d1bTCKxy6_G2N-NT8R9n7qG-1qtBS5fjNoia9fULDznfN7fr_ku1NmjyVCDk7lauTzs89plubteNBgVyr905Ni2iRSWCzkY3JJDgcUDy383rBzQYMqaFdWNnNZHBAkbMmnmjbeprSNFx91YCZXqyrKPKB0ONJzjfN-YzwWFyYgxDjxgRx4v9kJLnYbuOsZguDs6L-dYQXESXJhQsXkvR6w5uPk0Gg0dsSuxpjo5mMMIpCO8-mFRHCj6pqnNQqdKET7IYZY6iy5gOqihT-qxBwYdhsT2o19TLCTD3XBdJhzIuWvHx7Es-H1jeHzwsb3DwX6kFRgqvTM55gAzT0IsHdAz5gh5oLiX7iTrXKeFMX0elI7SVfBeim616hR3Bv9W_haYvrS63si8XR41TtobevSyyH3bOgTz46iJtEieeCgG2neSKLf7fMQNixsBtK7lcX_MOhlU65_q5c6p2zERiYNAjUhcxP6FLoUelGlJX8JE2F19Hh5OyB493gBxslDsF9xoh1fHTN-7MFo8OlIvI0S5mqH2qiMf1DMdCUe7lPkWC7_41aRdPdK0P91okYLnLCr009xwDOF3Nw7pKS6Y4TV7dgPtS8cg3fIcncF91-ktjFmFbvHiqO6ao3dwbz51UcgTZ66fJt8MF4_KIHxK3xT0yp13x7BwOUhiQCGLpxlCjEQyGt3NcN87I2n4J0rg13TSsyaNbajEvYFNpjPCQV4_sPndk2bj5ZI6mYQyA_6JTxlNvb3G2afdmRHHLjEi78R2exewsnhQX2knEbIetIRD6AINEuc5cELJMAEHDqKaVbLIZNZzm_L38kDNmwPJTtyUcSBZpGwwbo2z5yyRic51VFLdfx8oUQkWftCgnEEAJgX8Se4hMXbbPsrWldec7OHSlkCTrCuZ4IOYK6z2kVR3UQKE4qiP5n8j_&wd=&eqid=8dac39ec0000553e000000065c566595" target="_blank" rel="noopener">苏州拙政园官网</a></p>
@@ -5104,7 +5111,7 @@ table th:first-of-type {  #first表示表格第一列
 <h2 id="灵隐飞来峰"><a href="#灵隐飞来峰" class="headerlink" title="灵隐飞来峰"></a>灵隐飞来峰</h2><p><a href="https://baike.baidu.com/item/%E7%81%B5%E9%9A%90/2696217" target="_blank" rel="noopener">灵隐</a>一带的山峰怪石嵯峨，风景绝异，印度僧人慧理称：“此乃中天竺国灵鹫山之小岭，不知何以飞来？”，因此称为“<a href="https://baike.baidu.com/item/%E9%A3%9E%E6%9D%A5%E5%B3%B0/13032771" target="_blank" rel="noopener">飞来峰</a>”。 飞来峰是江南少见的古代石窟艺术瑰宝，有着<a href="https://baike.baidu.com/item/%E5%A4%AA%E5%A7%A5%E5%B1%B1/607313" target="_blank" rel="noopener">太姥山</a>的灵石峭壁，<a href="https://baike.baidu.com/item/%E5%85%94%E8%80%B3%E5%B2%AD/15903933" target="_blank" rel="noopener">兔耳岭</a>的石峰见景之美，可与四川<a href="https://baike.baidu.com/item/%E5%A4%A7%E8%B6%B3%E7%9F%B3%E5%88%BB/209440" target="_blank" rel="noopener">大足石刻</a>媲美。<a href="https://baike.baidu.com/item/%E8%8B%8F%E4%B8%9C%E5%9D%A1/53970" target="_blank" rel="noopener">苏东坡</a>曾有“溪山处处皆可庐，最爱灵隐飞来峰”的诗句。</p>
 <p>门票信息：45.00元（不含灵隐寺）灵隐寺：30.00元</p>
 <p>开放时间：07:00~18:00</p>
-<p><img src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D220/sign=288b38fca6c379317968812bdbc5b784/63d9f2d3572c11dff99745d96a2762d0f603c282.jpg" alt="杭州飞来峰"></p>
+<p><img data-src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D220/sign=288b38fca6c379317968812bdbc5b784/63d9f2d3572c11dff99745d96a2762d0f603c282.jpg" alt="杭州飞来峰"></p>
 <h2 id="灵隐寺"><a href="#灵隐寺" class="headerlink" title="灵隐寺"></a>灵隐寺</h2><p><a href="https://baike.baidu.com/item/%E7%81%B5%E9%9A%90%E5%AF%BA/110918" target="_blank" rel="noopener">灵隐寺</a>，又名云林寺，位于<a href="https://baike.baidu.com/item/%E6%B5%99%E6%B1%9F%E7%9C%81" target="_blank" rel="noopener">浙江省</a><a href="https://baike.baidu.com/item/%E6%9D%AD%E5%B7%9E%E5%B8%82" target="_blank" rel="noopener">杭州市</a>，背靠<a href="https://baike.baidu.com/item/%E5%8C%97%E9%AB%98%E5%B3%B0/309548" target="_blank" rel="noopener">北高峰</a>，面朝<a href="https://baike.baidu.com/item/%E9%A3%9E%E6%9D%A5%E5%B3%B0/13032771" target="_blank" rel="noopener">飞来峰</a>，始建于<a href="https://baike.baidu.com/item/%E4%B8%9C%E6%99%8B/456028" target="_blank" rel="noopener">东晋</a>咸和元年（326年），占地面积约87000平方米。灵隐寺开山祖师为西印度僧人<a href="https://baike.baidu.com/item/%E6%85%A7%E7%90%86/3665551" target="_blank" rel="noopener">慧理</a><a href="https://baike.baidu.com/item/%E5%92%8C%E5%B0%9A/189974" target="_blank" rel="noopener">和尚</a>。<a href="https://baike.baidu.com/item/%E5%8D%97%E6%9C%9D/7131305" target="_blank" rel="noopener">南朝</a><a href="https://baike.baidu.com/item/%E6%A2%81%E6%AD%A6%E5%B8%9D" target="_blank" rel="noopener">梁武帝</a>赐田并扩建。五代<a href="https://baike.baidu.com/item/%E5%90%B4%E8%B6%8A%E7%8E%8B" target="_blank" rel="noopener">吴越王</a><a href="https://baike.baidu.com/item/%E9%92%B1%E9%95%A0" target="_blank" rel="noopener">钱镠</a>命请永明<a href="https://baike.baidu.com/item/%E5%BB%B6%E5%AF%BF%E5%A4%A7%E5%B8%88" target="_blank" rel="noopener">延寿大师</a>重兴开拓，并赐名灵隐新寺。<a href="https://baike.baidu.com/item/%E5%AE%8B%E5%AE%81%E5%AE%97/1242434" target="_blank" rel="noopener">宋宁宗</a>嘉定年间，灵隐寺被誉为江南禅宗“五山”之一。清顺治年间，禅宗巨匠具德和尚住持灵隐，筹资重建，仅建殿堂时间就前后历十八年之久，其规模之宏伟跃居“东南之冠”  。清康熙二十八年（1689年），<a href="https://baike.baidu.com/item/%E5%BA%B7%E7%86%99%E5%B8%9D/613801" target="_blank" rel="noopener">康熙帝</a>南巡时，赐名 “云林禅寺”。</p>
 <p>灵隐寺主要以天王殿、大雄宝殿、药师殿、法堂、华严殿为中轴线，两边附以五百罗汉堂、济公殿、华严阁、大悲楼、方丈楼等建筑构成。现任方丈是光泉法师。</p>
 <p>浙江灵隐寺为全国重点文物保护单位 。</p>
@@ -5120,7 +5127,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Details of Charges</title>
     <url>/2019/01/31/Details-of-Charges/</url>
-    <content><![CDATA[<img src="http://www.divorcelawyer.com.hk/wp-content/uploads/2017/07/%E7%A6%BB%E5%A9%9A%E5%BE%8B%E5%B8%88%E8%B4%B9%E7%94%A8.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="http://www.divorcelawyer.com.hk/wp-content/uploads/2017/07/%E7%A6%BB%E5%A9%9A%E5%BE%8B%E5%B8%88%E8%B4%B9%E7%94%A8.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -5611,7 +5618,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Travel Strategy of Disney</title>
     <url>/2019/01/31/Travel-Strategy-of-Disney/</url>
-    <content><![CDATA[<img src="https://images.shobserver.com/news/690_390/2017/1/6/bb24dcee-035d-4631-a293-544347aadd3d.jpeg" width="100%"/>
+    <content><![CDATA[<img data-src="https://images.shobserver.com/news/690_390/2017/1/6/bb24dcee-035d-4631-a293-544347aadd3d.jpeg" width="100%"/>
 
 <a id="more"></a>
 
@@ -5625,9 +5632,9 @@ table th:first-of-type {  #first表示表格第一列
 <p><a href="https://www.shanghaidisneyresort.com/" target="_blank" rel="noopener">上海迪士尼度假区官方网站</a></p>
 </blockquote>
 <p>官网预订：可以通过上海迪士尼官网预订一日票或两日联票</p>
-<p><img src="https://wx2.sinaimg.cn/large/005M2pcYgy1fzu5wewz5mj30ey07ujrs.jpg" alt="image"></p>
-<p><img src="https://wx2.sinaimg.cn/large/005M2pcYgy1fzu5xh797zj30g1069t90.jpg" alt="image"></p>
-<p><img src="https://wx3.sinaimg.cn/large/005M2pcYgy1fzu5yad7epj30f705zq38.jpg" alt="image"></p>
+<p><img data-src="https://wx2.sinaimg.cn/large/005M2pcYgy1fzu5wewz5mj30ey07ujrs.jpg" alt="image"></p>
+<p><img data-src="https://wx2.sinaimg.cn/large/005M2pcYgy1fzu5xh797zj30g1069t90.jpg" alt="image"></p>
+<p><img data-src="https://wx3.sinaimg.cn/large/005M2pcYgy1fzu5yad7epj30f705zq38.jpg" alt="image"></p>
 <h3 id="APP"><a href="#APP" class="headerlink" title="APP"></a>APP</h3><p>提前下载“迪士尼度假区”app，在园内一天的活动基本都要使用到这个app。入园时需携带购票者身份证，无需取票，直接刷身份证入园，需所有使用同一个身份证号购票的人一起入园。</p>
 <p>取得纸质票后立即打开app选择“我的门票”扫描纸质票后面的二维码，可以关联多张门票建立游玩组，就可以一个人同时领取多人的快速通行证了。</p>
 <p>1、领取快速通行证（免费）：相当于提前预约指定项目的一个时段游玩，在规定时间前往，无需排队，但数量有限，建议优先领取最想玩最难排队的项目（如飞跃地平线）。每两小时可以领取一次，比如9：30入园领取了一次，下一次在11:30可以领取，可不断领取直到所有项目的快速通行证领完。但如果手中的某个项目的快速通行证还未使用，再次领取时不得领取同一项目，只能领取不同项目。</p>
@@ -5660,7 +5667,7 @@ table th:first-of-type {  #first表示表格第一列
 <p><strong>大概5点就要在城堡下找座位，越近越好，然后耐心等着！一定占好座位！</strong></p>
 <p><strong>否则，你肯定看不爽的，会后悔莫及！</strong></p>
 <p><strong>占位:</strong></p>
-<p><img src="https://pic3.zhimg.com/50/v2-cd669ec856e3dc8378fcc62b2f91926d_b.jpg" alt="img"></p>
+<p><img data-src="https://pic3.zhimg.com/50/v2-cd669ec856e3dc8378fcc62b2f91926d_b.jpg" alt="img"></p>
 <p><strong>大概在我标红圈的位置，视觉极佳，很震撼，别为了坐旋转木马耽误了。</strong></p>
 <p><strong>完全没法比。</strong></p>
 <p>作者：梦尧</p>
@@ -5700,7 +5707,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Spring Tour 2019</title>
     <url>/2019/01/28/Spring-Tour/</url>
-    <content><![CDATA[<img src="http://wx1.sinaimg.cn/large/005M2pcYgy1fzg88oizf2j30b607e0ug.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="http://wx1.sinaimg.cn/large/005M2pcYgy1fzg88oizf2j30b607e0ug.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -5837,7 +5844,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Use Redis in Spring Boot</title>
     <url>/2019/01/18/Use-Redis-in-Spring-Boot/</url>
-    <content><![CDATA[<img src="https://grokonez.com/wp-content/uploads/2017/12/spring-data-springjpa-crud-operation-redis-example-spring-boot-redis-example-feature-image.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://grokonez.com/wp-content/uploads/2017/12/spring-data-springjpa-crud-operation-redis-example-spring-boot-redis-example-feature-image.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -5855,7 +5862,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Prepare for PAT</title>
     <url>/2019/01/11/Prepare-for-PAT/</url>
-    <content><![CDATA[<img src="https://i.loli.net/2019/01/11/5c3813443dce6.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://i.loli.net/2019/01/11/5c3813443dce6.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -5864,7 +5871,7 @@ table th:first-of-type {  #first表示表格第一列
 </blockquote>
 <h2 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h2><h3 id="1-11-2-20"><a href="#1-11-2-20" class="headerlink" title="1/11-2/20"></a>1/11-2/20</h3><p>一共 50h</p>
 <p><a href="https://doc.weiyun.com/bec9710ef6076b30f1154413324b9ef1" target="_blank" rel="noopener">PAT-timeaxis.xlsx</a></p>
-<p><img src="https://i.loli.net/2019/01/11/5c38115365f11.jpg" alt=""></p>
+<p><img data-src="https://i.loli.net/2019/01/11/5c38115365f11.jpg" alt=""></p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><blockquote>
 <p><a href="https://github.com/libo9527/PAT" target="_blank" rel="noopener">PAT</a></p>
 </blockquote>
@@ -5914,7 +5921,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Use of Microsoft Office</title>
     <url>/2019/01/08/Use-of-Microsoft-Office/</url>
-    <content><![CDATA[<img src="https://www.salfordcommunityleisure.co.uk/sites/default/files/styles/page_width_standard/public/uploads/events/Microsoft%20Office%20%281%29%20edited%20for%20web.jpg?itok=SpDJ00oc" width="100%"/>
+    <content><![CDATA[<img data-src="https://www.salfordcommunityleisure.co.uk/sites/default/files/styles/page_width_standard/public/uploads/events/Microsoft%20Office%20%281%29%20edited%20for%20web.jpg?itok=SpDJ00oc" width="100%"/>
 
 <a id="more"></a>
 
@@ -5974,7 +5981,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Use JPA in Spring Boot</title>
     <url>/2019/01/07/Use-JPA-in-Spring-Boot/</url>
-    <content><![CDATA[<img src="https://javadeveloperzone.com/wp-content/uploads/2018/02/Spring-boot-jpa-mysql-example-1024x488.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://javadeveloperzone.com/wp-content/uploads/2018/02/Spring-boot-jpa-mysql-example-1024x488.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -6063,7 +6070,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of JAVA</title>
     <url>/2019/01/07/Study-Notes-of-JAVA/</url>
-    <content><![CDATA[<img src="https://www.imarslan.com/wp-content/uploads/2018/06/cover.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://www.imarslan.com/wp-content/uploads/2018/06/cover.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -6106,7 +6113,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of Algorithm</title>
     <url>/2019/01/05/Study-Notes-of-Algorithm/</url>
-    <content><![CDATA[<img src="https://www.kaleandcaramel.com/wp-content/uploads/2018/06/honest-insta-word-cloud.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://www.kaleandcaramel.com/wp-content/uploads/2018/06/honest-insta-word-cloud.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -6118,7 +6125,7 @@ table th:first-of-type {  #first表示表格第一列
 <p><a href="http://www.ruanyifeng.com/blog/2012/03/ranking_algorithm_wilson_score_interval.html" target="_blank" rel="noopener">基于用户投票的排名算法（五）：威尔逊区间</a></p>
 <p><a href="http://www.ruanyifeng.com/blog/2012/03/ranking_algorithm_bayesian_average.html" target="_blank" rel="noopener">基于用户投票的排名算法（六）：贝叶斯平均</a></p>
 </blockquote>
-<h3 id="Hacker-News"><a href="#Hacker-News" class="headerlink" title="Hacker News"></a>Hacker News</h3><p><img src="https://i.loli.net/2018/12/12/5c10c01fd8f48.png" alt=""></p>
+<h3 id="Hacker-News"><a href="#Hacker-News" class="headerlink" title="Hacker News"></a>Hacker News</h3><p><img data-src="https://i.loli.net/2018/12/12/5c10c01fd8f48.png" alt=""></p>
 <p>P：表示帖子的得票数，减去1是为了忽略发帖人的投票。</p>
 <p>T：表示距离发帖的时间（单位为小时），加上2是为了防止最新的帖子导致分母过小（之所以选择2，可能是因为从原始文章出现在其他网站，到转贴至Hacker News，平均需要两个小时）。</p>
 <p>G：表示”重力因子”（gravityth power），即将帖子排名往下拉的力量，默认值为1.8</p>
@@ -6129,13 +6136,13 @@ table th:first-of-type {  #first表示表格第一列
 <li><strong>重力因子G</strong>数值大小决定了排名随时间下降的速度。G值越大，排名下降得越快。</li>
 </ol>
 <p>缺点：用户只能投赞成票，不允许用户投反对票</p>
-<h3 id="Reddit"><a href="#Reddit" class="headerlink" title="Reddit"></a>Reddit</h3><p><img src="https://i.loli.net/2018/12/12/5c10c8a584474.png" alt=""></p>
+<h3 id="Reddit"><a href="#Reddit" class="headerlink" title="Reddit"></a>Reddit</h3><p><img data-src="https://i.loli.net/2018/12/12/5c10c8a584474.png" alt=""></p>
 <p>t：帖子的新旧程度，<code>t = 发贴时间 - 2005年12月8日7:46:43</code>，单位为秒，用unix时间戳计算。</p>
 <p>x：赞成票与反对票的差，<code>x = 赞成票 - 反对票</code></p>
 <p>y：投票方向，y是一个符号变量，表示对文章的总体看法。如果赞成票居多，y就是+1；如果反对票居多，y就是-1；如果赞成票和反对票相等，y就是0。</p>
-<p><img src="https://i.loli.net/2018/12/12/5c10c965abb44.png" alt=""></p>
+<p><img data-src="https://i.loli.net/2018/12/12/5c10c965abb44.png" alt=""></p>
 <p>z：帖子的受肯定（否定）的程度，z表示赞成票与反对票之间差额的绝对值。如果对某个帖子的评价，越是一边倒，z就越大。如果赞成票等于反对票，z就等于1。</p>
-<p><img src="https://i.loli.net/2018/12/12/5c10c9b792fa4.png" alt=""></p>
+<p><img data-src="https://i.loli.net/2018/12/12/5c10c9b792fa4.png" alt=""></p>
 <p>总结：</p>
 <ol>
 <li>赞成票与反对票的差额z越大，得分越高。</li>
@@ -6144,7 +6151,7 @@ table th:first-of-type {  #first表示表格第一列
 </ol>
 <p>缺点：不利于赞成票和反对票都比较高，但两者非常接近的情况。假定同一时间有两个帖子发表，文章A有1张赞成票（发帖人投的）、0张反对票，文章B有1000张赞成票、1000张反对票，那么A的排名会高于B。</p>
 <p><strong>Reddit的排名，基本上由发帖时间决定，超级受欢迎的文章会排在最前面，一般性受欢迎的文章、有争议的文章都不会很靠前。</strong>这决定了Reddit是一个符合大众口味的社区，不是一个很激进、可以展示少数派想法的地方。</p>
-<h3 id="Stack-Overflow"><a href="#Stack-Overflow" class="headerlink" title="Stack Overflow"></a>Stack Overflow</h3><p><img src="https://i.loli.net/2018/12/12/5c10d5fa90af2.png" alt=""></p>
+<h3 id="Stack-Overflow"><a href="#Stack-Overflow" class="headerlink" title="Stack Overflow"></a>Stack Overflow</h3><p><img data-src="https://i.loli.net/2018/12/12/5c10d5fa90af2.png" alt=""></p>
 <p><strong>Qviews：问题的浏览次数</strong></p>
 <p>问题的浏览次数越多，就代表越受关注，得分也就越高。取对数的用意是当访问量越来越大，它对得分的影响将不断变小。</p>
 <p><strong>Qscore：问题得分</strong></p>
@@ -6166,7 +6173,7 @@ table th:first-of-type {  #first表示表格第一列
 <p><a href="https://blog.csdn.net/yangding_/article/details/52768906" target="_blank" rel="noopener">Twitter Snowflake算法详解</a></p>
 </blockquote>
 <p>把<strong>时间戳</strong>，<strong>工作机器id</strong>，<strong>序列号</strong>组合在一起。</p>
-<p><img src="https://www.lanindex.com/wp-content/uploads/2015/04/snowflake-64bit.jpg" alt=""></p>
+<p><img data-src="https://www.lanindex.com/wp-content/uploads/2015/04/snowflake-64bit.jpg" alt=""></p>
 <p>​    默认情况下 41bit 的时间戳可以支持该算法使用到 2082 年，10bit 的工作机器 id 可以支持1024台机器，序列号持 1 毫秒产生 4096 个自增序列 id。SnowFlake 的优点是，整体上按照时间自增排序，并且整个分布式系统内不会产生 ID 碰撞(由数据中心 ID 和机器 ID 作区分)，并且效率较高，经测试，SnowFlake 每秒能够产生 26 万 ID 左右。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Twitter_Snowflake</span></span><br><span class="line"><span class="comment"> * SnowFlake的结构如下(每部分用-分开):</span></span><br><span class="line"><span class="comment"> * 0 - 0000000000 0000000000 0000000000 0000000000 0 - 00000 - 00000 - 000000000000</span></span><br><span class="line"><span class="comment"> * 1位标识，由于long基本类型在Java中是带符号的，最高位是符号位，正数是0，负数是1，id一般是正数，所以最高位是0</span></span><br><span class="line"><span class="comment"> * 41位时间截(毫秒级)，注意，41位时间截不是存储当前时间的时间截，而是存储时间截的差值（当前时间截 - 开始时间截)得到的值）</span></span><br><span class="line"><span class="comment"> * 这里的的开始时间截，一般是我们的id生成器开始使用的时间，由我们程序来指定的（如下下面程序IdWorker类的startTime属性）。</span></span><br><span class="line"><span class="comment"> * 41位的时间截，可以使用69年： (1L &lt;&lt; 41) / (1000L * 60 * 60 * 24 * 365) = 69</span></span><br><span class="line"><span class="comment"> * 10位的数据机器位，可以部署1024个节点，包括5位datacenterId和5位workerId</span></span><br><span class="line"><span class="comment"> * 12位序列，毫秒内的计数，12位的计数顺序号支持每个节点每毫秒(同一机器，同一时间截)产生4096个ID序号</span></span><br><span class="line"><span class="comment"> * 加起来刚好64位，为一个Long型。</span></span><br><span class="line"><span class="comment"> * SnowFlake的优点是，整体上按照时间自增排序，并且整个分布式系统内不会产生ID碰撞(由数据中心ID和机器ID作区分)，并且效率较高，经测试，SnowFlake每秒能够产生26万ID左右。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SnowflakeIdWorker</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ==============================Fields===========================================</span></span><br><span class="line">    <span class="comment">/** 开始时间截 (2015-01-01) */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> twepoch = <span class="number">1420041600000L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 机器id所占的位数 */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> workerIdBits = <span class="number">5L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 数据标识id所占的位数 */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> datacenterIdBits = <span class="number">5L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 支持的最大机器id，结果是31 (这个移位算法可以很快的计算出几位二进制数所能表示的最大十进制数) */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> maxWorkerId = -<span class="number">1L</span> ^ (-<span class="number">1L</span> &lt;&lt; workerIdBits);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 支持的最大数据标识id，结果是31 */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> maxDatacenterId = -<span class="number">1L</span> ^ (-<span class="number">1L</span> &lt;&lt; datacenterIdBits);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 序列在id中占的位数 */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> sequenceBits = <span class="number">12L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 机器ID向左移12位 */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> workerIdShift = sequenceBits;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 数据标识id向左移17位(12+5) */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> datacenterIdShift = sequenceBits + workerIdBits;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 时间截向左移22位(5+5+12) */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> timestampLeftShift = sequenceBits + workerIdBits + datacenterIdBits;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 生成序列的掩码，这里为4095 (0b111111111111=0xfff=4095) */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> sequenceMask = -<span class="number">1L</span> ^ (-<span class="number">1L</span> &lt;&lt; sequenceBits);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 工作机器ID(0~31) */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> workerId;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 数据中心ID(0~31) */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> datacenterId;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 毫秒内序列(0~4095) */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> sequence = <span class="number">0L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 上次生成ID的时间截 */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> lastTimestamp = -<span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//==============================Constructors=====================================</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 构造函数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> workerId 工作ID (0~31)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> datacenterId 数据中心ID (0~31)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SnowflakeIdWorker</span><span class="params">(<span class="keyword">long</span> workerId, <span class="keyword">long</span> datacenterId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (workerId &gt; maxWorkerId || workerId &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(String.format(<span class="string">"worker Id can't be greater than %d or less than 0"</span>, maxWorkerId));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (datacenterId &gt; maxDatacenterId || datacenterId &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(String.format(<span class="string">"datacenter Id can't be greater than %d or less than 0"</span>, maxDatacenterId));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.workerId = workerId;</span><br><span class="line">        <span class="keyword">this</span>.datacenterId = datacenterId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ==============================Methods==========================================</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获得下一个ID (该方法是线程安全的)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> SnowflakeId</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">long</span> <span class="title">nextId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> timestamp = timeGen();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//如果当前时间小于上一次ID生成的时间戳，说明系统时钟回退过这个时候应当抛出异常</span></span><br><span class="line">        <span class="keyword">if</span> (timestamp &lt; lastTimestamp) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(</span><br><span class="line">                    String.format(<span class="string">"Clock moved backwards.  Refusing to generate id for %d milliseconds"</span>, lastTimestamp - timestamp));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//如果是同一时间生成的，则进行毫秒内序列</span></span><br><span class="line">        <span class="keyword">if</span> (lastTimestamp == timestamp) &#123;</span><br><span class="line">            sequence = (sequence + <span class="number">1</span>) &amp; sequenceMask;</span><br><span class="line">            <span class="comment">//毫秒内序列溢出</span></span><br><span class="line">            <span class="keyword">if</span> (sequence == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">//阻塞到下一个毫秒,获得新的时间戳</span></span><br><span class="line">                timestamp = tilNextMillis(lastTimestamp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//时间戳改变，毫秒内序列重置</span></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            sequence = <span class="number">0L</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//上次生成ID的时间截</span></span><br><span class="line">        lastTimestamp = timestamp;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//移位并通过或运算拼到一起组成64位的ID</span></span><br><span class="line">        <span class="keyword">return</span> ((timestamp - twepoch) &lt;&lt; timestampLeftShift) <span class="comment">//</span></span><br><span class="line">                | (datacenterId &lt;&lt; datacenterIdShift) <span class="comment">//</span></span><br><span class="line">                | (workerId &lt;&lt; workerIdShift) <span class="comment">//</span></span><br><span class="line">                | sequence;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 阻塞到下一个毫秒，直到获得新的时间戳</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> lastTimestamp 上次生成ID的时间截</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 当前时间戳</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">long</span> <span class="title">tilNextMillis</span><span class="params">(<span class="keyword">long</span> lastTimestamp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> timestamp = timeGen();</span><br><span class="line">        <span class="keyword">while</span> (timestamp &lt;= lastTimestamp) &#123;</span><br><span class="line">            timestamp = timeGen();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> timestamp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 返回以毫秒为单位的当前时间</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 当前时间(毫秒)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">long</span> <span class="title">timeGen</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> System.currentTimeMillis();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//==============================Test=============================================</span></span><br><span class="line">    <span class="comment">/** 测试 */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SnowflakeIdWorker idWorker = <span class="keyword">new</span> SnowflakeIdWorker(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">long</span> id = idWorker.nextId();</span><br><span class="line">            System.out.println(Long.toBinaryString(id));</span><br><span class="line">            System.out.println(id);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -6191,8 +6198,8 @@ table th:first-of-type {  #first表示表格第一列
 <p><a href="https://www.cnblogs.com/zibility/p/5404478.html" target="_blank" rel="noopener">RC4加密算法</a></p>
 </blockquote>
 <p><strong>加密原理</strong></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2482101-2c5eb05fcc70d1fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt=""></p>
-<p><img src="https://images2015.cnblogs.com/blog/889809/201604/889809-20160418145446757-1328061961.png" alt=""></p>
+<p><img data-src="http://upload-images.jianshu.io/upload_images/2482101-2c5eb05fcc70d1fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt=""></p>
+<p><img data-src="https://images2015.cnblogs.com/blog/889809/201604/889809-20160418145446757-1328061961.png" alt=""></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RC4</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        RC4 rc4 = <span class="keyword">new</span> RC4();</span><br><span class="line"></span><br><span class="line">        String plaintext = <span class="string">"helloworld"</span>;</span><br><span class="line">        String key = <span class="string">"key"</span>;</span><br><span class="line"></span><br><span class="line">        String ciphertext = rc4.encrypt(plaintext, key);</span><br><span class="line">        String decryptText = rc4.encrypt(ciphertext, key);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"明文为："</span> + plaintext);</span><br><span class="line">        System.out.println(<span class="string">"密钥为："</span> + key);</span><br><span class="line">        System.out.println(<span class="string">"密文为："</span> + ciphertext);</span><br><span class="line">        System.out.println(<span class="string">"解密为："</span> + decryptText);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1 加密</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">encrypt</span><span class="params">(<span class="keyword">final</span> String plaintext, <span class="keyword">final</span> String key)</span> </span>&#123;</span><br><span class="line">        Integer[] S = <span class="keyword">new</span> Integer[<span class="number">256</span>]; <span class="comment">// S盒</span></span><br><span class="line">        Character[] keySchedule = <span class="keyword">new</span> Character[plaintext.length()]; <span class="comment">// 生成的密钥流</span></span><br><span class="line">        StringBuffer ciphertext = <span class="keyword">new</span> StringBuffer();</span><br><span class="line"></span><br><span class="line">        ksa(S, key);</span><br><span class="line">        rpga(S, keySchedule, plaintext.length());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; plaintext.length(); ++i) &#123;</span><br><span class="line">            ciphertext.append((<span class="keyword">char</span>) (plaintext.charAt(i) ^ keySchedule[i]));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ciphertext.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1.1 KSA--密钥调度算法--利用key来对S盒做一个置换，也就是对S盒重新排列</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ksa</span><span class="params">(Integer[] s, String key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">256</span>; ++i) &#123;</span><br><span class="line">            s[i] = i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">256</span>; ++i) &#123;</span><br><span class="line">            j = (j + s[i] + key.charAt(i % key.length())) % <span class="number">256</span>;</span><br><span class="line">            swap(s, i, j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1.2 RPGA--伪随机生成算法--利用上面重新排列的S盒来产生任意长度的密钥流</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">rpga</span><span class="params">(Integer[] s, Character[] keySchedule, <span class="keyword">int</span> plaintextLength)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; plaintextLength; ++k) &#123;</span><br><span class="line">            i = (i + <span class="number">1</span>) % <span class="number">256</span>;</span><br><span class="line">            j = (j + s[i]) % <span class="number">256</span>;</span><br><span class="line">            swap(s, i, j);</span><br><span class="line">            keySchedule[k] = (<span class="keyword">char</span>) (s[(s[i] + s[j]) % <span class="number">256</span>]).intValue();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1.3 置换</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(Integer[] s, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        Integer mTemp = s[i];</span><br><span class="line">        s[i] = s[j];</span><br><span class="line">        s[j] = mTemp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
@@ -6206,7 +6213,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of Docker</title>
     <url>/2019/01/05/Study-Notes-of-Docker/</url>
-    <content><![CDATA[<img src="http://finworks.com/wp-content/uploads/2017/01/Docker_Logo-500x250.png" width="100%"/>
+    <content><![CDATA[<img data-src="http://finworks.com/wp-content/uploads/2017/01/Docker_Logo-500x250.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -6259,7 +6266,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Use of IDEA</title>
     <url>/2019/01/05/Use-of-IDEA/</url>
-    <content><![CDATA[<img src="https://www.paradigmadigital.com/wp-content/uploads/2017/08/intellijVSeclipse.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://www.paradigmadigital.com/wp-content/uploads/2017/08/intellijVSeclipse.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -6272,7 +6279,7 @@ table th:first-of-type {  #first表示表格第一列
 <p>​    IDEA 根据 maven archetype 的本质，其实是执行 <code>mvn archetype:generate</code> 命令，该命令执行时，需要指定一个<code>archetype-catalog.xml</code>文件。</p>
 <p>​    该命令的参数<code>-DarchetypeCatalog</code>，可选值为：remote，internal  ，local等，用来指定archetype-catalog.xml文件从哪里获取。默认为remote，即从 <a href="http://repo1.maven.org/maven2/archetype-catalog.xml" target="_blank" rel="noopener">http://repo1.maven.org/maven2/archetype-catalog.xml</a> 路径下载<code>archetype-catalog.xml</code>文件。<a href="http://repo1.maven.org/maven2/archetype-catalog.xml" target="_blank" rel="noopener">http://repo1.maven.org/maven2/archetype-catalog.xml</a> 文件约为3-4M，下载速度很慢，所以导致创建过程缓慢。</p>
 <p>​    可以在 <code>settings&gt;Building,Exceptiong,Deployment&gt;Maven&gt;Runner</code> 中配置 <code>VM Options</code> 来指定使用本地文件。如下图所示：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/130410-06580ab3367355e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt=""></p>
+<p><img data-src="https://upload-images.jianshu.io/upload_images/130410-06580ab3367355e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt=""></p>
 <h2 id="推荐做法"><a href="#推荐做法" class="headerlink" title="推荐做法"></a>推荐做法</h2><ol>
 <li>项目、模块等命名时，尽量使用下划线（避免用横杠）来连接多个单词。</li>
 </ol>
@@ -6283,7 +6290,7 @@ table th:first-of-type {  #first表示表格第一列
 <h4 id="快速跳转到某行-列"><a href="#快速跳转到某行-列" class="headerlink" title="快速跳转到某行/列"></a>快速跳转到某行/列</h4><p><code>Command + L</code></p>
 <h4 id="添加-MyBatis-的-XML-文件模版"><a href="#添加-MyBatis-的-XML-文件模版" class="headerlink" title="添加 MyBatis 的 XML 文件模版"></a>添加 MyBatis 的 XML 文件模版</h4><ol>
 <li><p>Preference –&gt; Editor –&gt; File and Code Templates</p>
-<p><img src="https://oscimg.oschina.net/oscnet/ea4ccc152ffe4c2ee0800aa8c9feaa61b7a.jpg" alt=""></p>
+<p><img data-src="https://oscimg.oschina.net/oscnet/ea4ccc152ffe4c2ee0800aa8c9feaa61b7a.jpg" alt=""></p>
 <p>模版内容：</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">mapper</span></span></span><br><span class="line"><span class="meta">  <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD Mapper 3.0//EN"</span></span></span><br><span class="line"><span class="meta">  <span class="meta-string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">""</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -6301,7 +6308,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of JQuery</title>
     <url>/2019/01/03/Study-Notes-of-JQuery/</url>
-    <content><![CDATA[<img src="https://blog.teamtreehouse.com/wp-content/uploads/2012/10/jquery.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://blog.teamtreehouse.com/wp-content/uploads/2012/10/jquery.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -6327,7 +6334,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of Bootstrap</title>
     <url>/2019/01/03/Study-Notes-of-Bootstrap/</url>
-    <content><![CDATA[<img src="https://www.tutorialrepublic.com/lib/images/bootstrap-illustration.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://www.tutorialrepublic.com/lib/images/bootstrap-illustration.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -6354,7 +6361,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Encode and Decode</title>
     <url>/2019/01/03/Encode-and-Decode/</url>
-    <content><![CDATA[<img src="http://www.habilelabs.io/wp-content/uploads/2016/08/encode-decode-model-of-communication.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="http://www.habilelabs.io/wp-content/uploads/2016/08/encode-decode-model-of-communication.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -6378,7 +6385,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Comments</title>
     <url>/2019/01/03/Comments/</url>
-    <content><![CDATA[<img src="https://neilpatel.com/wp-content/uploads/2015/03/comments.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://neilpatel.com/wp-content/uploads/2015/03/comments.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -6390,7 +6397,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Internet Download Manager</title>
     <url>/2019/01/03/Internet-Download-Manager/</url>
-    <content><![CDATA[<img src="https://www.hashhackers.com/images/idm-download.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://www.hashhackers.com/images/idm-download.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -6405,12 +6412,12 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Handbook for Managers of XU</title>
     <url>/2018/12/29/Handbook-for-Managers-of-XU/</url>
-    <content><![CDATA[<img src="https://i.loli.net/2018/12/29/5c27440b3f7f7.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://i.loli.net/2018/12/29/5c27440b3f7f7.jpg" width="100%"/>
 
 <a id="more"></a>
 
-<h2 id="补单处理流程"><a href="#补单处理流程" class="headerlink" title="补单处理流程"></a>补单处理流程</h2><p><img src="https://i.loli.net/2018/12/29/5c2740dabe589.jpg" alt=""></p>
-<h2 id="重复单处理流程"><a href="#重复单处理流程" class="headerlink" title="重复单处理流程"></a>重复单处理流程</h2><p><img src="https://i.loli.net/2018/12/29/5c2735a9b633b.jpg" alt=""></p>
+<h2 id="补单处理流程"><a href="#补单处理流程" class="headerlink" title="补单处理流程"></a>补单处理流程</h2><p><img data-src="https://i.loli.net/2018/12/29/5c2740dabe589.jpg" alt=""></p>
+<h2 id="重复单处理流程"><a href="#重复单处理流程" class="headerlink" title="重复单处理流程"></a>重复单处理流程</h2><p><img data-src="https://i.loli.net/2018/12/29/5c2735a9b633b.jpg" alt=""></p>
 <blockquote>
 <p>如有疑问请留言。</p>
 </blockquote>
@@ -6419,7 +6426,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Softs and Tools</title>
     <url>/2018/12/27/Softs-and-Tools/</url>
-    <content><![CDATA[<img src="https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg?cs=srgb&dl=app-applications-apps-147413.jpg&fm=jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg?cs=srgb&dl=app-applications-apps-147413.jpg&fm=jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -6452,7 +6459,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Writing Norms</title>
     <url>/2018/12/26/Writing-Norms/</url>
-    <content><![CDATA[<img src="https://i.loli.net/2018/12/26/5c2340bbf08fb.jpeg" width="100%"/>
+    <content><![CDATA[<img data-src="https://i.loli.net/2018/12/26/5c2340bbf08fb.jpeg" width="100%"/>
 
 <a id="more"></a>
 
@@ -6502,7 +6509,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Site Collection</title>
     <url>/2018/12/26/Site-Collection/</url>
-    <content><![CDATA[<img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" width="100%"/>
+    <content><![CDATA[<img data-src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" width="100%"/>
 
 <a id="more"></a>
 
@@ -6551,7 +6558,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of Guns</title>
     <url>/2018/12/25/Study-Notes-of-Guns/</url>
-    <content><![CDATA[<p><img src="https://i.loli.net/2018/12/26/5c23433372f23.jpg" alt=""></p>
+    <content><![CDATA[<p><img data-src="https://i.loli.net/2018/12/26/5c23433372f23.jpg" alt=""></p>
 <a id="more"></a>
 
 <blockquote>
@@ -6753,7 +6760,7 @@ table th:first-of-type {  #first表示表格第一列
 <p><a href="https://formulahendry.github.io/2016/12/04/hexo-ci/#" target="_blank" rel="noopener">Hexo的版本控制与持续集成</a></p>
 <p><a href="https://github.com/tommy351/tommy351.github.io/blob/source/.travis.yml" target="_blank" rel="noopener">Hexo作者的.travis.yml配置</a></p>
 <p>78ce4df05e1e44bec02266d66758943d3cedf4de</p>
-<p><img src="https://i.loli.net/2018/12/14/5c13287562f08.jpg" alt=""></p>
+<p><img data-src="https://i.loli.net/2018/12/14/5c13287562f08.jpg" alt=""></p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 提交本地hexo分支到远程仓库的hexo分支</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> git push origin hexo:hexo</span></span><br></pre></td></tr></table></figure>
 
 <p><a href="https://www.itfanr.cc/2017/08/09/using-travis-ci-automatic-deploy-hexo-blogs/" target="_blank" rel="noopener">使用Travis CI自动部署Hexo博客</a></p>
@@ -6830,7 +6837,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Wget for windows</title>
     <url>/2018/12/24/Wget-for-windows/</url>
-    <content><![CDATA[<img src="https://i.loli.net/2018/12/29/5c274920e1243.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://i.loli.net/2018/12/29/5c274920e1243.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -6858,11 +6865,11 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Fillder4</title>
     <url>/2018/12/15/Fillder4/</url>
-    <content><![CDATA[<img src="http://www.rahulpnath.com/images/fiddler.png" width="100%"/>
+    <content><![CDATA[<img data-src="http://www.rahulpnath.com/images/fiddler.png" width="100%"/>
 
 <a id="more"></a>
 
-<h1 id="不同请求字体颜色的含义"><a href="#不同请求字体颜色的含义" class="headerlink" title="不同请求字体颜色的含义"></a>不同请求字体颜色的含义</h1><p><img src="https://i.loli.net/2018/12/25/5c21de1b6ae27.png" alt="fillder4"></p>
+<h1 id="不同请求字体颜色的含义"><a href="#不同请求字体颜色的含义" class="headerlink" title="不同请求字体颜色的含义"></a>不同请求字体颜色的含义</h1><p><img data-src="https://i.loli.net/2018/12/25/5c21de1b6ae27.png" alt="fillder4"></p>
 ]]></content>
       <categories>
         <category>Network</category>
@@ -6876,7 +6883,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Goals Offer</title>
     <url>/2018/12/15/Goals-Offer/</url>
-    <content><![CDATA[<p><img src="https://mahatest.com/img/Uploads/special-offer.gif" alt=""></p>
+    <content><![CDATA[<p><img data-src="https://mahatest.com/img/Uploads/special-offer.gif" alt=""></p>
 <a id="more"></a>
 
 <h1 id="数组中重复的数字"><a href="#数组中重复的数字" class="headerlink" title="数组中重复的数字"></a>数组中重复的数字</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，那么对应的输出是第一个重复的数字2。 </p>
@@ -6911,7 +6918,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Use of Chrome</title>
     <url>/2018/12/15/Use-of-Chrome/</url>
-    <content><![CDATA[<p><img src="https://images.pexels.com/photos/67112/pexels-photo-67112.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></p>
+    <content><![CDATA[<p><img data-src="https://images.pexels.com/photos/67112/pexels-photo-67112.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></p>
 <a id="more"></a>
 
 <blockquote>
@@ -7036,7 +7043,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Build Your Blog with GitHub Pages+Hexo+NexT</title>
     <url>/2018/12/15/Build-Your-Blog-with-GitHub-Pages-Hexo-NexT/</url>
-    <content><![CDATA[<p><img src="https://i.loli.net/2018/12/26/5c231d3ac8a4c.jpg" alt="NexT"></p>
+    <content><![CDATA[<p><img data-src="https://i.loli.net/2018/12/26/5c231d3ac8a4c.jpg" alt="NexT"></p>
 <a id="more"></a>
 
 <blockquote>
@@ -7093,17 +7100,17 @@ table th:first-of-type {  #first表示表格第一列
 </ol>
 <h3 id="GitHub生成Access-Token"><a href="#GitHub生成Access-Token" class="headerlink" title="GitHub生成Access Token"></a>GitHub生成Access Token</h3><p>头像&gt;Settings&gt;Developer settings&gt;Personal access tokens</p>
 <p>点击Generate new token生成一个token</p>
-<p><img src="https://i.loli.net/2018/12/15/5c14c217c5fb9.jpg" alt=""></p>
+<p><img data-src="https://i.loli.net/2018/12/15/5c14c217c5fb9.jpg" alt=""></p>
 <p>注意：token生成后只又一次查看的机会，一定要保存好，否则要删掉重新生成</p>
 <h3 id="设置Travis-CI"><a href="#设置Travis-CI" class="headerlink" title="设置Travis-CI"></a>设置Travis-CI</h3><p>使用GitHub账号登录<a href="https://travis-ci.org/" target="_blank" rel="noopener">Travis-CI</a></p>
-<p><img src="https://i.loli.net/2018/12/15/5c14c08f2392e.jpg" alt=""></p>
+<p><img data-src="https://i.loli.net/2018/12/15/5c14c08f2392e.jpg" alt=""></p>
 <p>点击Settings，将GitHub生成的token添加到里面</p>
-<p><img src="https://i.loli.net/2018/12/15/5c14c305516b7.jpg" alt=""></p>
+<p><img data-src="https://i.loli.net/2018/12/15/5c14c305516b7.jpg" alt=""></p>
 <h3 id="hexo源码仓库中添加Travis-CI的配置文件-travis-yml"><a href="#hexo源码仓库中添加Travis-CI的配置文件-travis-yml" class="headerlink" title="hexo源码仓库中添加Travis-CI的配置文件.travis.yml"></a>hexo源码仓库中添加Travis-CI的配置文件<code>.travis.yml</code></h3><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">language:</span> <span class="string">node_js</span>  <span class="comment">#设置语言</span></span><br><span class="line"></span><br><span class="line"><span class="attr">node_js:</span> <span class="string">stable</span>  <span class="comment">#设置相应的版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 开始构建</span></span><br><span class="line"><span class="attr">before_install:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">export</span> <span class="string">TZ='Asia/Shanghai'</span>  <span class="comment">#统一构建环境和博客配置的时区, 防止文章时间错误</span></span><br><span class="line">  </span><br><span class="line"><span class="attr">install:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span>  <span class="comment">#配置Hexo环境</span></span><br><span class="line"></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hexo</span> <span class="string">cl</span>  <span class="comment">#清除</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hexo</span> <span class="string">g</span>  <span class="comment">#生成</span></span><br><span class="line"></span><br><span class="line"><span class="attr">after_script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">clone</span> <span class="string">https://$&#123;GH_REF&#125;</span> <span class="string">.deploy_git</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">cd</span> <span class="string">.deploy_git</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">checkout</span> <span class="string">master</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">cd</span> <span class="string">../</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">mv</span> <span class="string">.deploy_git/.git/</span> <span class="string">./public/</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">cd</span> <span class="string">./public</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">config</span> <span class="string">user.name</span> <span class="string">"username"</span>  <span class="comment">#github用户名</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">config</span> <span class="string">user.email</span> <span class="string">"email@xxx.com"</span>  <span class="comment">#邮箱</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">add</span> <span class="string">.</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">"Travis CI Auto Builder at `date +"</span><span class="string">%Y-%m-%d</span> <span class="string">%H:%M"`"</span>  <span class="comment">#提交时的说明</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">git</span> <span class="string">push</span> <span class="string">--force</span> <span class="string">--quiet</span> <span class="string">"https://$&#123;GH_TOKEN&#125;@$&#123;GH_REF&#125;"</span> <span class="string">master:master</span>  <span class="comment">#GH_TOKEN是在Travis中配置Token的名称</span></span><br><span class="line"><span class="comment">## 结束构建</span></span><br><span class="line"></span><br><span class="line"><span class="attr">branches:</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">hexo</span>  <span class="comment">#只监测master之外新增的hexo分支</span></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line"> <span class="attr">global:</span></span><br><span class="line">   <span class="bullet">-</span> <span class="attr">GH_REF:</span> <span class="string">github.com/username/username.github.io.git</span>  <span class="comment">#设置GH_REF</span></span><br><span class="line"></span><br><span class="line"><span class="attr">cache:</span></span><br><span class="line">  <span class="attr">directories:</span>  <span class="comment">#缓存特定目录, 加快构建速度</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">node_modules</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>原理图</p>
-<p><img src="https://i.loli.net/2018/12/25/5c219ecc93bcd.png" alt=""></p>
+<p><img data-src="https://i.loli.net/2018/12/25/5c219ecc93bcd.png" alt=""></p>
 </blockquote>
 <h2 id="主题优化"><a href="#主题优化" class="headerlink" title="主题优化"></a>主题优化</h2><blockquote>
 <p><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT使用文档</a></p>
@@ -7127,8 +7134,8 @@ table th:first-of-type {  #first表示表格第一列
 <p><a href="https://github.com/gitalk/gitalk/wiki/%E5%9C%A8hexo-next%E4%B8%BB%E9%A2%98%E4%B8%8A%E4%BD%BF%E7%94%A8gitalk" target="_blank" rel="noopener">在hexo next主题上使用gitalk</a></p>
 <p><a href="https://www.bluelzy.com/articles/use_valine_for_your_blog.html" target="_blank" rel="noopener">为你的Hexo加上评论系统-Valine</a></p>
 </blockquote>
-<p><img src="https://i.loli.net/2018/12/17/5c171d0e2a281.jpg" alt=""></p>
-<p><img src="https://i.loli.net/2018/12/17/5c171f261cf6c.jpg" alt=""></p>
+<p><img data-src="https://i.loli.net/2018/12/17/5c171d0e2a281.jpg" alt=""></p>
+<p><img data-src="https://i.loli.net/2018/12/17/5c171f261cf6c.jpg" alt=""></p>
 <p>由于gitment长期未维护,所有最后使用gitalk,之后可以增加其他三方的评论插件更加灵活.</p>
 <p>如需取消某个 页面/文章 的评论，在 md 文件的 <a href="https://hexo.io/docs/front-matter.html" target="_blank" rel="noopener">front-matter </a>中增加 <code>comments: false</code></p>
 <h3 id="自定义内建标签"><a href="#自定义内建标签" class="headerlink" title="自定义内建标签"></a>自定义内建标签</h3><blockquote>
@@ -7142,7 +7149,7 @@ table th:first-of-type {  #first表示表格第一列
 <p><a href="https://reuixiy.github.io/technology/computer/computer-aided-art/2017/06/09/hexo-next-optimization.html#%E4%BC%98%E5%8C%96-%E7%BD%91%E9%A1%B5%E6%A0%B7%E5%BC%8F%E5%B8%83%E5%B1%80" target="_blank" rel="noopener">优化 网页样式布局</a></p>
 </blockquote>
 <h4 id="调整文章元信息区域离文章主体的间距"><a href="#调整文章元信息区域离文章主体的间距" class="headerlink" title="调整文章元信息区域离文章主体的间距"></a>调整文章元信息区域离文章主体的间距</h4><p>一般文章都会添加<code>description</code>和一张图片作为封面，但元信息离正文太远视野上不舒服，故做如下调整。</p>
-<p><img src="https://i.loli.net/2018/12/26/5c23347219069.jpg" alt="Before"></p>
+<p><img data-src="https://i.loli.net/2018/12/26/5c23347219069.jpg" alt="Before"></p>
 <p>修改<code>themes\next\source\css\_common\components\post\post-meta.styl</code>如下：</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line">// before</span><br><span class="line"><span class="selector-class">.posts-expand</span> <span class="selector-class">.post-meta</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">3px</span> <span class="number">0</span> <span class="number">60px</span> <span class="number">0</span>;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// after</span><br><span class="line"><span class="selector-class">.posts-expand</span> <span class="selector-class">.post-meta</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">3px</span> <span class="number">0</span> <span class="number">10px</span> <span class="number">0</span>;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -7315,14 +7322,14 @@ table th:first-of-type {  #first表示表格第一列
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% codeblock lang:java title http:<span class="comment">//www.baidu.com link test %&#125;</span></span><br><span class="line">public <span class="keyword">static</span> <span class="keyword">void</span> main(<span class="built_in">String</span>[] args) &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
 
 <p>样式：</p>
-<p><img src="https://i.loli.net/2019/01/04/5c2ec9c02da97.jpg" alt=""></p>
+<p><img data-src="https://i.loli.net/2019/01/04/5c2ec9c02da97.jpg" alt=""></p>
 </li>
 <li><p>Markdown 格式</p>
 <p>代码：</p>
 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">​<span class="code">```</span> java title http://www.baidu.com link test</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line"><span class="code">	...</span></span><br><span class="line">&#125;</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
 
 <p>样式：</p>
-<p><img src="https://i.loli.net/2019/01/04/5c2ec9c02da97.jpg" alt=""></p>
+<p><img data-src="https://i.loli.net/2019/01/04/5c2ec9c02da97.jpg" alt=""></p>
 </li>
 </ol>
 <h3 id="引用站内文章"><a href="#引用站内文章" class="headerlink" title="引用站内文章"></a>引用站内文章</h3><blockquote>
@@ -7358,7 +7365,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of MySQL</title>
     <url>/2018/06/09/Study-Notes-of-MySQL/</url>
-    <content><![CDATA[<p><img src="https://upload.wikimedia.org/wikipedia/zh/thumb/6/62/MySQL.svg/1200px-MySQL.svg.png" alt=""></p>
+    <content><![CDATA[<p><img data-src="https://upload.wikimedia.org/wikipedia/zh/thumb/6/62/MySQL.svg/1200px-MySQL.svg.png" alt=""></p>
 <a id="more"></a>
 
 <h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>单行注释：–</p>
@@ -8675,7 +8682,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Use of Markdown</title>
     <url>/2018/06/01/Markdown/</url>
-    <content><![CDATA[<img src="https://i.loli.net/2018/12/26/5c23262feb7b6.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://i.loli.net/2018/12/26/5c23262feb7b6.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -8748,7 +8755,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Use of Markdown</title>
     <url>/2018/06/01/Use-of-Markdown/</url>
-    <content><![CDATA[<img src="https://i.loli.net/2018/12/26/5c23262feb7b6.jpg" width="100%"/>
+    <content><![CDATA[<img data-src="https://i.loli.net/2018/12/26/5c23262feb7b6.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -8828,7 +8835,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Study Notes of Spring Boot</title>
     <url>/2018/05/31/Study-Notes-of-Spring-Boot/</url>
-    <content><![CDATA[<img src="https://www.zuojl.com/content/images/2018/11/spring-boot.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://www.zuojl.com/content/images/2018/11/spring-boot.png" width="100%"/>
 
 <a id="more"></a>
 
