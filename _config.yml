@@ -105,3 +105,10 @@ search:
   field: post
   format: html
   limit: 10000
+
+leancloud_counter_security:
+  enable_sync: true
+  app_id: Dkf5QXLDAXop5aEnIVYqtN2Y-gzGzoHsz
+  app_key: wGjvGOUY5eohtITkt1ydIMUF
+  username: libo9527 # Will be asked while deploying if is left blank
+  password: Hardworking.123 # Recommmended to be left blank. Will be asked while deploying if is left blank

@@ -243,3 +243,10 @@ echo `expr index "$string" si`
 #输出：3，因为在 $string 中先出现 si 中的 i，其位置是3
 ```
 
+
+
+
+
+
+
+aaa得分21打断%的
