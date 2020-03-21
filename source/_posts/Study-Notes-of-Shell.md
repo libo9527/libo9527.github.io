@@ -137,6 +137,20 @@ your_name="xxx"
 
 注意，变量名和等号之间**不**能有空格，这可能和你熟悉的所有编程语言都不一样。
 
+##### 声明变量类型
+
+Shell 中的变量是弱类型的，默认是字符串类型，可以使用 `declare` 命令来声明变量类型。
+
+语法：`declare [+/-][选项] 变量名`
+
+- `-`：给变量设定类型属性
+- `+`：取消变量的类型属性
+- `-a`：将变量声明为数组类型
+- `-i`：将变量声明为整型(integer)
+- `-x`：将变量声明为环境变量
+- `-r`：将变量声明为只读变量
+- `-x`：显示指定要声明的变量类型
+
 #### 调用
 
 调用一个定义过的变量，只要在变量名前面加美元符号 `$` 即可，如：
@@ -243,10 +257,181 @@ echo `expr index "$string" si`
 #输出：3，因为在 $string 中先出现 si 中的 i，其位置是3
 ```
 
+### 流程控制
 
+shell 的流程控制内不可为空语句，如：
 
+```java
+if (...) {
+	...
+} else {
+	//do nothing
+}
+```
 
+在 sh/bash 里可不能这么写，如果else分支没有语句执行，就不要写这个else。
 
+#### 条件
 
+##### if
 
-aaa得分21打断%的
+###### 语法
+
+```shell
+if condition
+then
+	command1 
+	command2
+	...
+	commandN 
+fi
+```
+
+写成一行（适用于终端命令提示符）：
+
+```shell
+if `ps -ef | grep ssh`;  then echo hello; fi
+```
+
+##### if else
+
+###### 语法
+
+```shell
+if condition
+then
+	command1 
+	command2
+	...
+	commandN
+else
+	command
+fi
+```
+
+##### if else-if else
+
+###### 语法
+
+```shell
+if condition1
+then
+	command1
+elif condition2
+	command2
+else
+	commandN
+fi
+```
+
+##### case
+
+###### 语法
+
+```shell
+case "${opt}" in
+	"Install-Puppet-Server" )
+		install_master $1
+		exit
+	;;
+
+	"Install-Puppet-Client" )
+		install_client $1
+		exit
+	;;
+
+	"Config-Puppet-Server" )
+		config_puppet_master
+		exit
+	;;
+
+	"Config-Puppet-Client" )
+		config_puppet_client
+		exit
+	;;
+
+	"Exit" )
+		exit
+	;;
+
+	* ) echo "Bad option, please choose again"
+esac
+```
+
+每个 case 分支后面要跟一个右圆括号，用两个分号表示 break。
+
+#### 循环
+
+##### for
+
+###### 语法
+
+```shell
+for var in item1 item2 ... itemN
+do
+	command1
+	command2
+	...
+	commandN
+done
+```
+
+写成一行：
+
+```shell
+for var in item1 item2 ... itemN; do command1; command2… done;
+```
+
+###### C 风格的 for 循环
+
+```shell
+for (( EXP1; EXP2; EXP3 ))
+do
+	command1
+	command2
+	command3
+done
+```
+
+##### while
+
+###### 语法
+
+```shell
+while condition
+do
+	command
+done
+```
+
+###### 死循环
+
+```shell
+while :
+do
+	command
+done
+
+### 或者 ###
+
+while true
+do
+	command
+done
+
+### 或者 ###
+
+for (( ; ; ))
+```
+
+##### until
+
+###### 语法
+
+```shell
+until condition
+do
+	command
+done
+```
+
