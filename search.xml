@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/03/11/Account-Management-in-Git/</url>
+    <url>/2020/03/27/Account-Management-in-Git/</url>
     <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -129,6 +129,77 @@
       </tags>
   </entry>
   <entry>
+    <title>Study Notes of MyBatis</title>
+    <url>/2020/03/26/Study-Notes-of-MyBatis/</url>
+    <content><![CDATA[<img data-src="cover" width="100%"/>
+
+<a id="more"></a>
+
+<p>Mybatis 中，参数是List的时候，如果没有用@param指明变量名，在xml中是识别不到此变量名的，但可以使用“list”来代替。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Study Notes of Sqlite</title>
+    <url>/2020/03/21/Study-Notes-of-Sqlite/</url>
+    <content><![CDATA[<img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/SQLite370.svg/1200px-SQLite370.svg.png" width="100%"/>
+
+<a id="more"></a>
+
+<blockquote>
+<p><a href="https://stackoverflow.com/questions/3732422/select-from-nothing" target="_blank" rel="noopener">SELECT from nothing?</a></p>
+</blockquote>
+<p>It’s not consistent across vendors - Oracle, MySQL, and DB2 support dual:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="string">'Hello world'</span></span><br><span class="line">  <span class="keyword">FROM</span> DUAL</span><br></pre></td></tr></table></figure>
+
+<p>…while SQL Server, PostgreSQL, and SQLite don’t require the <code>FROM DUAL</code>:</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="string">'Hello world'</span></span><br></pre></td></tr></table></figure>
+
+<p>MySQL does support both ways.</p>
+<blockquote>
+<p><a href="https://github.com/mybatis/mybatis-3/issues/864" target="_blank" rel="noopener">mybatis batch insert oracle table ID use sequence return ID NULL</a></p>
+<p><a href="https://blog.csdn.net/top_code/article/details/52404345" target="_blank" rel="noopener">MyBatis 3.3.1 批量插入多行回写自增id</a></p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"batchInsert"</span> <span class="attr">useGeneratedKeys</span>=<span class="string">"true"</span> <span class="attr">keyProperty</span>=<span class="string">"id"</span>&gt;</span></span><br><span class="line">  INSERT INTO tb_user</span><br><span class="line">  (name, password,age, email,gender,register_time)</span><br><span class="line">  VALUES</span><br><span class="line">  <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">item</span>=<span class="string">"user"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">separator</span>=<span class="string">","</span> &gt;</span></span><br><span class="line">    (#&#123;user.name&#125;,#&#123;user.password&#125;,#&#123;user.age&#125;,#&#123;user.email&#125;,</span><br><span class="line">    #&#123;user.gender&#125;,#&#123;user.registerTime&#125;)</span><br><span class="line">  <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>关键：<code>useGeneratedKeys=&quot;true&quot;</code>, <code>keyProperty=&quot;id&quot;</code></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Study Notes of Maven</title>
+    <url>/2020/03/20/Study-Notes-of-Maven/</url>
+    <content><![CDATA[<img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Maven_logo.svg/1280px-Maven_logo.svg.png" width="100%"/>
+
+<a id="more"></a>
+
+<h2 id="资源文件"><a href="#资源文件" class="headerlink" title="资源文件"></a>资源文件</h2><blockquote>
+<p><a href="https://www.cnblogs.com/pixy/p/4798089.html" target="_blank" rel="noopener">maven资源文件的相关配置- XRacoon - 博客园</a></p>
+<p><a href="https://blog.csdn.net/qq_41357211/article/details/99855643" target="_blank" rel="noopener">解决springboot配置文件yml中classpath找不到src/main/java下 …</a></p>
+</blockquote>
+<p>构建Maven项目的时候，如果没有进行特殊的配置，Maven会按照标准的目录结构查找和处理各种类型文件。</p>
+<p>src/main/java和src/test/java </p>
+<p>这两个目录中的所有*.java文件会分别在comile和test-comiple阶段被编译，编译结果分别放到了target/classes和targe/test-classes目录中，但是这两个目录中的其他文件都会被忽略掉。</p>
+<p>src/main/resouces和src/test/resources</p>
+<p>这两个目录中的文件也会分别被复制到target/classes和target/test-classes目录中。</p>
+<p>target/classes</p>
+<p>打包插件默认会把这个目录中的所有内容打入到jar包或者war包中。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Spring Boot And Template Engine</title>
+    <url>/2020/03/17/Spring-Boot-And-Template-Engine/</url>
+    <content><![CDATA[<img data-src="https://image.slidesharecdn.com/comparing-template-engines-jvm-131107023934-phpapp01/95/shootout-template-engines-for-the-jvm-6-638.jpg?cb=1432717139" width="100%"/>
+
+<a id="more"></a>
+
+<blockquote>
+<p><a href="https://spring.io/blog/2012/10/30/spring-mvc-from-jsp-and-tiles-to-thymeleaf" target="_blank" rel="noopener">Spring MVC: from JSP and Tiles to Thymeleaf</a></p>
+</blockquote>
+<h2 id="Thymeleaf"><a href="#Thymeleaf" class="headerlink" title="Thymeleaf"></a>Thymeleaf</h2><blockquote>
+<p><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_thymeleaf.htm" target="_blank" rel="noopener">Spring Boot - Thymeleaf - Tutorialspoint</a></p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
     <title>Study Notes of Shell</title>
     <url>/2020/03/07/Study-Notes-of-Shell/</url>
     <content><![CDATA[<img data-src="https://www.runoob.com/wp-content/uploads/2015/12/post-shell-script.jpg" width="100%"/>
@@ -184,6 +255,17 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">your_name="xxx"</span><br></pre></td></tr></table></figure>
 
 <p>注意，变量名和等号之间<strong>不</strong>能有空格，这可能和你熟悉的所有编程语言都不一样。</p>
+<h5 id="声明变量类型"><a href="#声明变量类型" class="headerlink" title="声明变量类型"></a>声明变量类型</h5><p>Shell 中的变量是弱类型的，默认是字符串类型，可以使用 <code>declare</code> 命令来声明变量类型。</p>
+<p>语法：<code>declare [+/-][选项] 变量名</code></p>
+<ul>
+<li><code>-</code>：给变量设定类型属性</li>
+<li><code>+</code>：取消变量的类型属性</li>
+<li><code>-a</code>：将变量声明为数组类型</li>
+<li><code>-i</code>：将变量声明为整型(integer)</li>
+<li><code>-x</code>：将变量声明为环境变量</li>
+<li><code>-r</code>：将变量声明为只读变量</li>
+<li><code>-x</code>：显示指定要声明的变量类型</li>
+</ul>
 <h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><p>调用一个定义过的变量，只要在变量名前面加美元符号 <code>$</code> 即可，如：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">your_name="xxx"</span><br><span class="line">echo $your_name</span><br><span class="line">echo $&#123;your_name&#125;</span><br></pre></td></tr></table></figure>
 
@@ -229,13 +311,35 @@
 </ol>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">string="alibaba is a great company"</span><br><span class="line">echo `expr index "$string" i`</span><br><span class="line"><span class="meta">#</span><span class="bash">输出：3，这个语句的意思是：找出字母 i 在这句话中的位置，要在linux下运行，mac下会报错</span></span><br><span class="line"></span><br><span class="line">echo `expr index "$string" si`</span><br><span class="line"><span class="meta">#</span><span class="bash">输出：3，因为在 <span class="variable">$string</span> 中先出现 si 中的 i，其位置是3</span></span><br></pre></td></tr></table></figure>
 
+<h3 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h3><p>shell 的流程控制内不可为空语句，如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (...) &#123;</span><br><span class="line">	...</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="comment">//do nothing</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>在 sh/bash 里可不能这么写，如果else分支没有语句执行，就不要写这个else。</p>
+<h4 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h4><h5 id="if"><a href="#if" class="headerlink" title="if"></a>if</h5><h6 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if condition</span><br><span class="line">then</span><br><span class="line">	command1 </span><br><span class="line">	command2</span><br><span class="line">	...</span><br><span class="line">	commandN </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 
+<p>写成一行（适用于终端命令提示符）：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if `ps -ef | grep ssh`;  then echo hello; fi</span><br></pre></td></tr></table></figure>
 
+<h5 id="if-else"><a href="#if-else" class="headerlink" title="if else"></a>if else</h5><h6 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if condition</span><br><span class="line">then</span><br><span class="line">	command1 </span><br><span class="line">	command2</span><br><span class="line">	...</span><br><span class="line">	commandN</span><br><span class="line">else</span><br><span class="line">	command</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 
+<h5 id="if-else-if-else"><a href="#if-else-if-else" class="headerlink" title="if else-if else"></a>if else-if else</h5><h6 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if condition1</span><br><span class="line">then</span><br><span class="line">	command1</span><br><span class="line">elif condition2</span><br><span class="line">	command2</span><br><span class="line">else</span><br><span class="line">	commandN</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 
+<h5 id="case"><a href="#case" class="headerlink" title="case"></a>case</h5><h6 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">case "$&#123;opt&#125;" in</span><br><span class="line">	"Install-Puppet-Server" )</span><br><span class="line">		install_master $1</span><br><span class="line">		exit</span><br><span class="line">	;;</span><br><span class="line"></span><br><span class="line">	"Install-Puppet-Client" )</span><br><span class="line">		install_client $1</span><br><span class="line">		exit</span><br><span class="line">	;;</span><br><span class="line"></span><br><span class="line">	"Config-Puppet-Server" )</span><br><span class="line">		config_puppet_master</span><br><span class="line">		exit</span><br><span class="line">	;;</span><br><span class="line"></span><br><span class="line">	"Config-Puppet-Client" )</span><br><span class="line">		config_puppet_client</span><br><span class="line">		exit</span><br><span class="line">	;;</span><br><span class="line"></span><br><span class="line">	"Exit" )</span><br><span class="line">		exit</span><br><span class="line">	;;</span><br><span class="line"></span><br><span class="line">	* ) echo "Bad option, please choose again"</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
 
-<p>aaa得分21打断%的</p>
+<p>每个 case 分支后面要跟一个右圆括号，用两个分号表示 break。</p>
+<h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><h5 id="for"><a href="#for" class="headerlink" title="for"></a>for</h5><h6 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">for var in item1 item2 ... itemN</span><br><span class="line">do</span><br><span class="line">	command1</span><br><span class="line">	command2</span><br><span class="line">	...</span><br><span class="line">	commandN</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>写成一行：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">for var in item1 item2 ... itemN; do command1; command2… done;</span><br></pre></td></tr></table></figure>
+
+<h6 id="C-风格的-for-循环"><a href="#C-风格的-for-循环" class="headerlink" title="C 风格的 for 循环"></a>C 风格的 for 循环</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">for (( EXP1; EXP2; EXP3 ))</span><br><span class="line">do</span><br><span class="line">	command1</span><br><span class="line">	command2</span><br><span class="line">	command3</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h5 id="while"><a href="#while" class="headerlink" title="while"></a>while</h5><h6 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">while condition</span><br><span class="line">do</span><br><span class="line">	command</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h6 id="死循环"><a href="#死循环" class="headerlink" title="死循环"></a>死循环</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">while :</span><br><span class="line">do</span><br><span class="line">	command</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## 或者 ###</span></span></span><br><span class="line"></span><br><span class="line">while true</span><br><span class="line">do</span><br><span class="line">	command</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## 或者 ###</span></span></span><br><span class="line"></span><br><span class="line">for (( ; ; ))</span><br></pre></td></tr></table></figure>
+
+<h5 id="until"><a href="#until" class="headerlink" title="until"></a>until</h5><h6 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h6><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">until condition</span><br><span class="line">do</span><br><span class="line">	command</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>Study Notes</category>
@@ -322,6 +426,9 @@
 <p><a href="https://developers.google.com/calendar/v3/reference/events/list" target="_blank" rel="noopener">Events: list ｜ Calendar API</a></p>
 </blockquote></div></div></div>
 
+
+
+<p><a href="https://blog.csdn.net/sunnyzyq/article/details/95348788" target="_blank" rel="noopener">Springboot 拦截器 + 自定义注解，实现权限控制</a></p>
 ]]></content>
       <categories>
         <category>Study Notes</category>
