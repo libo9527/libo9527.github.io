@@ -9,8 +9,9 @@ categories:
 tags:
 ---
 
-<img src="cover" width="100%"/>
+<img src="https://i.loli.net/2020/03/27/aW4oqx6NYpOTibH.png" width="100%"/>
 
 <!-- more -->
 
 Mybatis 中，参数是List的时候，如果没有用@param指明变量名，在xml中是识别不到此变量名的，但可以使用“list”来代替。
+

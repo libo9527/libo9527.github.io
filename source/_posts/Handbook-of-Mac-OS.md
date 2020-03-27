@@ -271,3 +271,7 @@ kind:text keyword
 $ mdfind "keyword" -onlyin ~/Document
 ```
 
+### 使用默认浏览器搜索
+
+1. 打开 spotlight，输入要搜索的关键字
+2. Command + b
