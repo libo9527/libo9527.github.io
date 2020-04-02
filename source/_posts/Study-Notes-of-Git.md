@@ -105,3 +105,5 @@ git 配置有 system 级别、global 和 local 三个，优先级依次递增，
 
    pull = fetch + merge
 
+## [账号管理](/2019/06/22/Account-Management-in-Git/)
+
