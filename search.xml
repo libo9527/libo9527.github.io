@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/04/02/Account-Management-in-Git/</url>
+    <url>/2020/04/13/Account-Management-in-Git/</url>
     <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -5696,6 +5696,7 @@ table th:first-of-type {  #first表示表格第一列
 <a id="more"></a>
 
 <h2 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h2><h3 id="Integer-与-int"><a href="#Integer-与-int" class="headerlink" title="Integer 与 int"></a>Integer 与 int</h3><p>Integer 是类，提供了很多方法方便使用，而 int 可以保证没有空指针异常，初始值为 0。</p>
+<h2 id="BigDecimal"><a href="#BigDecimal" class="headerlink" title="BigDecimal"></a>BigDecimal</h2><h3 id="取余运算"><a href="#取余运算" class="headerlink" title="取余运算"></a>取余运算</h3><p><code>public BigDecimal[] divideAndRemainder(BigDecimal divisor)</code></p>
 <h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><blockquote>
 <p><a href="http://www.runoob.com/java/java-generics.html" target="_blank" rel="noopener">Java 泛型| 菜鸟教程</a></p>
 <p><a href="https://blog.csdn.net/qq_27093465/article/details/73229016" target="_blank" rel="noopener">Java泛型详解：和Class的使用。泛型类，泛型方法的详细使用实例</a></p>
