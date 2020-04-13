@@ -18,6 +18,14 @@ categories:
 
 Integer 是类，提供了很多方法方便使用，而 int 可以保证没有空指针异常，初始值为 0。
 
+## BigDecimal
+
+### 取余运算
+
+`public BigDecimal[] divideAndRemainder(BigDecimal divisor)`
+
+
+
 ## 泛型
 
 > [Java 泛型| 菜鸟教程](http://www.runoob.com/java/java-generics.html)
