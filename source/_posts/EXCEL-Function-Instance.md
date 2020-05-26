@@ -94,8 +94,6 @@ SUMIFS(sum_range, criteria_range1, criteria1, [criteria_range2, criteria2], ...)
 
 #### 使用
 
-
-
 <style>
 table th:first-of-type {  #first表示表格第一列
     width: 100px; # 可使用%比例
@@ -105,3 +103,12 @@ table th:first-of-type {  #first表示表格第一列
 | 位置 | 公式                                                         | 说明                                                         | 含义                                          |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | Sheet2 B1 | =SUMIFS(Sheet1!E2:E54,<br />Sheet1!A2:A54, Sheet2!A2,<br />Sheet1!B2:B54,">="&Sheet2!B1, <br />Sheet1!B2:B54,"<"&Sheet2!C1) | Sheet1 A2~A54 中日期等于 Sheet2 B1 的日期，<br />并且 Sheet1 B2 ~ B54 中时间大于等于 Sheet2 B1 <br />的时间小于 C1 的时间的金额总和 | Sheet1 中 2019/10/22 12:00 ~ 13:00 的金额总和 |
+
+## 自定义
+
+### 汉字转拼音
+
+> [**汉字转拼音的完美解决方案**](http://club.excelhome.net/thread-229924-1-1.html)
+>
+> [excel汉字转拼音完美解决方案-百度经验](https://jingyan.baidu.com/article/22a299b5c006aa9e19376a29.html)
+

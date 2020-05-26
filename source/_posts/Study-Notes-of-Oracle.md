@@ -20,6 +20,36 @@ SELECT version FROM v$instance;
 
 ## [函数](https://libo9527.github.io/2019/08/14/SQL-Functions-in-ORACLE/)
 
+## 批量插入
+
+```sql
+INSERT INTO USER ( ID, USERNAME, PASSWORD, CREATE_DATE, DEL_FLAG ) 
+  SELECT SEQ_USER.nextval, t.* 
+  FROM
+    (
+    SELECT 'zhangsan' USERNAME, 'zxode23' PASSWORD, SYSDATE CREATE_DATE, 0 DEL_FLAG FROM dual 
+    UNION ALL
+    SELECT 'lisi' USERNAME, '9fhd2fd' PASSWORD, SYSDATE CREATE_DATE, 0 DEL_FLAG FROM dual 
+    ) t
+```
+
+MyBatis 批量插入，使用序列做自增ID
+
+```xml
+<insert id="insertList">
+  INSERT INTO USER ( ID, USERNAME, PASSWORD, CREATE_DATE, DEL_FLAG )
+  SELECT SEQ_USER.nextval, t.* FROM
+  <foreach collection="list" item="item" open="(" separator="UNION ALL" close=")">
+    SELECT #{item.USERNAME} USERNAME, #{item.PASSWORD} PASSWORD, SYSDATE CREATE_DATE, 0 DEL_FLAG FROM dual
+  </foreach>
+  t
+</insert>
+```
+
+union all：不去重
+
+union：去重
+
 ## GROUP BY
 
 ### 缺省值 NULL
