@@ -300,3 +300,186 @@ public class Singleton implements Serializable {
 }
 ```
 
+# 规范
+
+## 成员变量和接口的返回值类型及命名
+
+布尔类型的成员变量有如下四种定义方式
+
+```java
+boolean success
+boolean isSuccess
+Boolean success
+Boolean isSuccess
+```
+
+### success/isSuccess
+
+在阿里巴巴Java开发手册中关于这一点，有过一个『强制性』规定：
+
+> 8.【强制】POJO类中的任何布尔类型的变量，都不要加is前缀，否则部分框架解析会引起序列化错误。
+>
+> 说明：在本文MySQL规约中的建表约定第一条，表达是与否的值采用is_xxx的命名方式，所以，需要在<resultMap>设置从is_xxx到xxx的映射关系。
+>
+> 反例：定义为基本数据类型Boolean isDeleted的属性，它的方法也是isDeleted()，框架在反向解析的时候，“误以为”对应的属性名称是deleted，导致属性获取不到，进而抛出异常。
+
+#### Java Bean中关于setter/getter的规范
+
+> 8.3.2 Boolean properties
+>
+> In addition, for boolean properties, we allow a getter method to match the pattern:
+>
+> `public boolean is<PropertyName>();`
+>
+> This “is<PropertyName>” method may be provided instead of a “get<PropertyName>” meth-od, or it may be provided in addition to a “get<PropertyName>” method.
+>
+> In either case, if the “is<PropertyName>” method is present for a boolean property then we will use the “is<PropertyName>” method to read the property value.
+>
+> An example boolean property might be:
+>
+> ```java
+> public boolean isMarsupial();
+> public void setMarsupial(boolean m);
+> ```
+
+关于Java Bean中的getter/setter方法的定义其实是有明确的规定的，根据[JavaBeans(TM) Specification](https://download.oracle.com/otndocs/jcp/7224-javabeans-1.01-fr-spec-oth-JSpec/)规定，如果是普通的参数propertyName，要以以下方式定义其setter/getter：
+
+```java
+public <PropertyType> get<PropertyName>();
+public void set<PropertyName>(<PropertyType> a);
+```
+
+但是，布尔类型的变量propertyName则是单独定义的：
+
+```java
+public boolean is<PropertyName>();
+public void set<PropertyName>(boolean m);
+```
+
+#### 序列化带来的影响
+
+比较常用的 fastJson、jackson 和 Gson 之间有何区别：
+
+```java
+public class Test implements Serializable {
+
+    private boolean isSuccess;
+
+    public boolean isSuccess() {
+        return isSuccess;
+    }
+
+    public void setSuccess(boolean success) {
+        isSuccess = success;
+    }
+
+    public String getBoris() {
+        return "Boris";
+    }
+  
+    @Override
+    public String toString() {
+        return "Test{" +
+                "isSuccess=" + isSuccess +
+                '}';
+    }
+}
+```
+
+```java
+public class JsonTest {
+
+    public static void main(String[] args) throws JsonProcessingException {
+        Test test = new Test();
+        test.setSuccess(true);
+
+        System.out.println("Serializable Result With fastjson-1.2.58 :" + JSON.toJSONString(test));
+
+        System.out.println("Serializable Result With Gson-2.8.5 :" + new Gson().toJson(test));
+
+        System.out.println("Serializable Result With jackson-2.10.0 :" + new ObjectMapper().writeValueAsString(test));
+    }
+}
+```
+
+以上代码输出结果：
+
+```
+Serializable Result With fastjson-1.2.58 :{"boris":"Boris","success":true}
+Serializable Result With Gson-2.8.5 :{"isSuccess":true}
+Serializable Result With jackson-2.10.0 :{"success":true,"boris":"Boris"}
+```
+
+在 fastjson 和 jackson 的结果中，原来类中的 isSuccess 字段被序列化成 success，并且其中还包含 boris 值。而 Gson 中只有 isSuccess 字段。
+
+由此可以得出**结论**：
+
+fastjson 和 jackson 在把对象序列化成 json 字符串的时候，是通过反射遍历出该类中的所有 getter 方法，得到 getBoris 和 isSuccess，然后根据 JavaBeans 规范，会认为这是属性 boris 和 success 的值。直接序列化成 `{"hollis":"hollischuang","success":true}`
+
+Gson 是通过反射遍历该类中的所有属性，然后进行序列化操作 `{"isSuccess":true}`
+
+可以看到，由于不同的序列化工具，在进行序列化的时候使用到的策略是不一样的，所以，对于同一个类的同一个对象的序列化结果可能是不同的。
+
+如果使用 fastjson 进行序列化，再使用 Gson 反序列化就会出现与实际相反的结果。
+
+```java
+// 去掉 Test 的 getBoris() 方法运行下面的代码
+System.out.println(gson.fromJson(JSON.toJSONString(test), Test.class));
+
+// Result:
+// Test{isSuccess=false}
+```
+
+生产环境出现这种现象，则是一个致命的问题。
+
+所以，作为开发者，应该避免这种问题的发生，把 isSuccess 改为 success，这样，成员变量是 success，getter 方法是 isSuccess，完全符合 JavaBeans 规范。无论哪种序列化框架，执行结果都一样。
+
+> R 大关于阿里巴巴 Java 开发手册这条规定的评价（https://www.zhihu.com/question/55642203）：
+>
+> ![](http://www.hollischuang.com/wp-content/uploads/2018/12/15449492627754.jpg)
+
+### Boolean/boolean
+
+> 12.关于基本数据类型与包装数据类型的使用标准如下：
+>
+> 1）【强制】所有的POJO类属性必须使用包装数据类型。
+>
+> 2）【强制】RPC方法的返回值和参数必须使用包装数据类型。
+>
+> 3）【推荐】所有的局部变量使用基本数据类型。
+>
+> 说明：POJO类属性没有初值是提醒使用者在需要使用时，必须自己显式地进行赋值，任何NPE问题，或者入库检查，都由使用者来保证。
+>
+> 正例：数据库的查询结果可能是null，因为自动拆箱，用基本数据类型接收有NPE风险。
+>
+> 反例：某业务的交易报表上显示成交总额涨跌情况，即正负x%，x为基本数据类型，调用的RPC服务，调用不成功时，返回的是默认值，页面显示为0%，这是不合理的，应该显示成中划线-。所以包装数据类型的null值，能够表示额外的信息，如：远程调用失败，异常退出。
+
+使用包装类型定义变量的方式，通过异常来阻断程序，进而可以被识别到这种线上问题。如果使用基本数据类型的话，系统可能不会报错，进而认为无异常。
+
+# JVM
+
+Java 中的 native 方法调用的是用 C 语言写的方法，存在系统的 xxx.dll 文件中，相当于 Java 中的 jar 包。
+
+## VisualVM
+
+VisualVM 是一种工具，它提供了可视化界面，用于查看 Java 虚拟机上运行的 Java 应用程序的详细信息。
+
+> [使用jvisualvm监控Java程序（本地和远程） - 掘金](https://juejin.im/post/5a3b92def265da4319567218)
+>
+> [使用 VisualVM 进行性能分析及调优](https://www.ibm.com/developerworks/cn/java/j-lo-visualvm/)
+>
+>[Java程序内存分析Java VisualVM（Visual GC）-点滴积累 ...](https://blog.51cto.com/tianxingzhe/1651384)
+
+### 本地启动
+
+直接在终端敲命令`jvisualvm`就可以运行，然后可以看到运行界面。
+
+### STW(stop the world)
+
+> [(干货篇) JVM stop the world - 掘金](https://juejin.im/post/5dc910586fb9a04a95289f28)
+
+等待所有用户线程进入安全点后并阻塞，做一些全局性操作(例如 GC)的行为。
+
+### JVM 调优
+
+调优的目的/目标：减少 GC 次数，加快 GC 运行速度。
