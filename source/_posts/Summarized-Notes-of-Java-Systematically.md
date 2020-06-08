@@ -300,6 +300,154 @@ public class Singleton implements Serializable {
 }
 ```
 
+## JDK
+
+### JDK 体系结构
+
+![](https://i.stack.imgur.com/CBNux.png)
+
+### Command
+
+#### javac
+
+> [查看JAVA的class二进制文件的方法_u010325193的博客 ...](https://blog.csdn.net/u010325193/article/details/80792695)
+
+将 .java 文件编译成字节码文件 .class
+
+#### javap
+
+将字节码文件反编译成 Java 文件
+
+##### -c
+
+反汇编为字节码指令
+
+> [Java bytecode instruction listings - Wikipedia](https://en.wikipedia.org/wiki/Java_bytecode_instruction_listings)
+>
+> [jvm 指令手册- 掘金](https://juejin.im/post/5d2c453ce51d45775f516b11)
+
+```java
+javap -c Math.class > Math.txt
+```
+
+```java
+Compiled from "Math.java"
+public class Math {
+  public static int initData;
+
+  public static User user;
+
+  public Math();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void main(java.lang.String[]);
+    Code:
+       0: new           #2                  // class Math
+       3: dup
+       4: invokespecial #3                  // Method "<init>":()V
+       7: astore_1
+       8: aload_1
+       9: invokevirtual #4                  // Method compute:()I
+      12: pop
+      13: getstatic     #5                  // Field java/lang/System.out:Ljava/io/PrintStream;
+      16: ldc           #6                  // String test
+      18: invokevirtual #7                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      21: return
+
+  public int compute();
+    Code:
+       0: iconst_1
+       1: istore_1
+       2: iconst_2
+       3: istore_2
+       4: iload_1
+       5: iload_2
+       6: iadd
+       7: bipush        10
+       9: imul
+      10: istore_3
+      11: iload_3
+      12: ireturn
+
+  static {};
+    Code:
+       0: sipush        666
+       3: putstatic     #8                  // Field initData:I
+       6: new           #9                  // class User
+       9: dup
+      10: invokespecial #10                 // Method User."<init>":()V
+      13: putstatic     #11                 // Field user:LUser;
+      16: return
+}
+```
+
+## 本地方法
+
+Java 中的 native 方法调用的是用 C 语言写的方法，存在系统的 xxx.dll 文件中，相当于 Java 中的 jar 包。
+
+## JVM
+
+完整的 JVM 包括类加载子系统、字节码执行引擎、运行时数据区(内存模型)。
+
+### JVM 指令手册
+
+> [Java bytecode instruction listings - Wikipedia](https://en.wikipedia.org/wiki/Java_bytecode_instruction_listings)
+>
+> [jvm 指令手册- 掘金](https://juejin.im/post/5d2c453ce51d45775f516b11)
+
+### 内存模型
+
+![](https://segmentfault.com/img/bVbG2RJ/view)
+
+#### 程序计数器
+
+记录当前线程执行到的代码指令的位置(行号/地址)。
+
+**为什么要设计程序计数器？**
+
+由于线程调度的原因，当当前线程的 CPU 时间片用完的时候，需要记录下当前运行的位置和状态，以便下一次再获得 CPU 时间片时继续执行。
+
+### VisualVM
+
+VisualVM 是一种工具，它提供了可视化界面，用于查看 Java 虚拟机上运行的 Java 应用程序的详细信息。
+
+> [使用jvisualvm监控Java程序（本地和远程） - 掘金](https://juejin.im/post/5a3b92def265da4319567218)
+>
+> [使用 VisualVM 进行性能分析及调优](https://www.ibm.com/developerworks/cn/java/j-lo-visualvm/)
+>
+> [Java程序内存分析Java VisualVM（Visual GC）-点滴积累 ...](https://blog.51cto.com/tianxingzhe/1651384)
+
+#### 本地启动
+
+直接在终端敲命令`jvisualvm`就可以运行，然后可以看到运行界面。
+
+#### STW(stop the world)
+
+> [(干货篇) JVM stop the world - 掘金](https://juejin.im/post/5dc910586fb9a04a95289f28)
+
+等待所有用户线程进入安全点后并阻塞，做一些全局性操作(例如 GC)的行为。
+
+### 垃圾回收算法
+
+大对象直接进入老年代
+
+### JVM 调优
+
+调优的目的/目标：减少 GC 次数，加快 GC 运行速度。
+
+## 线程
+
+### JVM 线程和操作系统线程
+
+Java 的线程和操作系统的线程是一一对应的。使用 Java 线程就是使用一个操作系统本地线程。
+
+在 Java1.1 的时候，Solaris 系统上的 JVM，其线程和操作系统线程并不是一一对应的，称之为  绿色线程 。
+
+所谓绿色线程，即该线程是虚拟机层面上的线程，由虚拟机创建，调度和销毁，操作系统对这种线程一无所知。由于绿色线程实现复杂，并且相当于 OS 的原生线程又有着诸多限制，所以 Java 后续的版本就放弃采用这种方式。
+
 # 规范
 
 ## 成员变量和接口的返回值类型及命名
@@ -456,30 +604,3 @@ System.out.println(gson.fromJson(JSON.toJSONString(test), Test.class));
 
 使用包装类型定义变量的方式，通过异常来阻断程序，进而可以被识别到这种线上问题。如果使用基本数据类型的话，系统可能不会报错，进而认为无异常。
 
-# JVM
-
-Java 中的 native 方法调用的是用 C 语言写的方法，存在系统的 xxx.dll 文件中，相当于 Java 中的 jar 包。
-
-## VisualVM
-
-VisualVM 是一种工具，它提供了可视化界面，用于查看 Java 虚拟机上运行的 Java 应用程序的详细信息。
-
-> [使用jvisualvm监控Java程序（本地和远程） - 掘金](https://juejin.im/post/5a3b92def265da4319567218)
->
-> [使用 VisualVM 进行性能分析及调优](https://www.ibm.com/developerworks/cn/java/j-lo-visualvm/)
->
->[Java程序内存分析Java VisualVM（Visual GC）-点滴积累 ...](https://blog.51cto.com/tianxingzhe/1651384)
-
-### 本地启动
-
-直接在终端敲命令`jvisualvm`就可以运行，然后可以看到运行界面。
-
-### STW(stop the world)
-
-> [(干货篇) JVM stop the world - 掘金](https://juejin.im/post/5dc910586fb9a04a95289f28)
-
-等待所有用户线程进入安全点后并阻塞，做一些全局性操作(例如 GC)的行为。
-
-### JVM 调优
-
-调优的目的/目标：减少 GC 次数，加快 GC 运行速度。
