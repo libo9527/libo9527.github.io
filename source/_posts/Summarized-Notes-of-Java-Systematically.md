@@ -410,6 +410,33 @@ Java 中的 native 方法调用的是用 C 语言写的方法，存在系统的 
 
 由于线程调度的原因，当当前线程的 CPU 时间片用完的时候，需要记录下当前运行的位置和状态，以便下一次再获得 CPU 时间片时继续执行。
 
+### 堆
+
+#### 分代年龄
+
+分代年龄存储于对象头中。年轻代中的对象在每次 `minor gc` 后存活下来的对象的分代年龄会加一，当分代年龄超过阀值(默认为15)时会被存放到老年代中。
+
+有两个参数：
+
+- `-XX:MaxTenuringThreshold`，晋升年龄最大阈值，默认15，新生代中经过数次 YGC 后，对象仍然存活并且达到了晋升年龄阈值，该对象就会晋升到老年代中。
+- `-XX:TargetSurvivorRatio`，设置 Suvivor 区的目标使用率，默认 50，表示 Survivor 区对象目标使用率为 50%。
+
+#### 对象动态年龄判断
+
+Survivor 区的对象年龄从小到大进行累加，当累加到 X 年龄时的总和大于50%**（可以使用-XX:TargetSurvivorRatio=? 来设置保留多少空闲空间，默认值是50）**，那么比X大的都会晋升到老年代。
+
+### 垃圾回收机制
+
+#### 垃圾检测算法
+
+##### 可达性分析算法
+
+以 `GC Roots` 对象为起点，向下搜索引用的对象，将找到的对象都标记为**非垃圾对象**，其余的对象均为**垃圾对象**。
+
+GC Roots：线程栈的本地变量、静态变量、本地方法的变量等等。
+
+#### 垃圾回收算法
+
 ### VisualVM
 
 VisualVM 是一种工具，它提供了可视化界面，用于查看 Java 虚拟机上运行的 Java 应用程序的详细信息。
@@ -603,4 +630,117 @@ System.out.println(gson.fromJson(JSON.toJSONString(test), Test.class));
 > 反例：某业务的交易报表上显示成交总额涨跌情况，即正负x%，x为基本数据类型，调用的RPC服务，调用不成功时，返回的是默认值，页面显示为0%，这是不合理的，应该显示成中划线-。所以包装数据类型的null值，能够表示额外的信息，如：远程调用失败，异常退出。
 
 使用包装类型定义变量的方式，通过异常来阻断程序，进而可以被识别到这种线上问题。如果使用基本数据类型的话，系统可能不会报错，进而认为无异常。
+
+# JMM
+
+Java Memory Model java内存模型
+
+## 多核并发缓存架构
+
+![](https://cqh-i.github.io/2019/08/13/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/pic1.png)
+
+
+
+Java 线程内存模型与 CPU 缓存模型类似，是基于 CPU 缓存模型来建立的，Java 线程内存模型是标准化的，屏蔽掉了底层不同计算机的区别。
+
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9iOHIxS3hnMmNMSWJTZXFYVkpzYmU2UTZsWmVpYUgzaWE4cU1LVG53cUVvZWljdTJRQTU5bVRYVXROU0pLMGliMENOcW9MUmVSTnJhWndjeEw1cURMTnNQT1EvNjQw?x-oss-process=image/format,png)
+
+```java
+public class VolatileVisibilityTest {
+
+    private static boolean initFlag = false;
+
+    public static void main(String[] args) throws InterruptedException {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("waiting data...");
+                while (!initFlag) {
+                }
+                System.out.println("=====================success");
+            }
+        }).start();
+
+        Thread.sleep(2000);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                prepareData();
+            }
+        }).start();
+    }
+
+    public static void prepareData() {
+        System.out.println("preparing data...");
+        initFlag = true;
+        System.out.println("prepare data end...");
+    }
+}
+```
+
+上述代码运行结果：
+
+```
+waiting data...
+preparing data...
+prepare data end...
+
+____________________
+死循环，程序无法正常结束
+```
+
+使用 `volatile` 修饰变量 `initFlag` 后运行结果：
+
+```
+waiting data...
+preparing data...
+prepare data end...
+=====================success
+
+____________________
+正常结束
+```
+
+## 原子操作
+
+1. read（读取）：从主内存读取数据
+2. load（载入）：将主内存读取到的数据写入工作内存
+3. use（使用）：从工作内存读取数据来计算
+4. assign（赋值）：将计算好的值重新赋值到工作内存中
+5. store（存储）：将工作内存数据写入主内存
+6. write（写入）：将store过去的变量赋值给主内存中的变量
+7. lock（锁定）：将主内存变量加锁，标识为线程独占状态
+8. unlock（解锁）：将内存变量解锁，解锁后其他线程可以锁定该变量
+
+## 总线加锁
+
+CPU 从主内存读取数据到高速缓存，会在总线对这个数据加锁，其他 CPU 将无法读取或写入这个数据，直到这个 CPU 使用完数据并释放锁只有，其他 CPU 才能读取。
+
+## MESI 缓存一致性协议
+
+多个 CPU 从主内存读取同一个数据到各自的高速缓存，当其中某个 CPU 修改了缓存里的数据，该数据会马上同步回主内存，其他 CPU 通过**总线嗅探机制**可以感知到数据的变化，从而将自己缓存里的数据失效。
+
+## Volatile 缓存可见性实现原理
+
+底层实现主要是通过汇编 lock 前缀指令，它会锁定这块内存区域的缓存(缓存行锁定)，并回写到主内存。
+
+IA-32 架构软件开发者手册对 lock 指令的解释：
+
+1. 会将当前处理器缓存行的数据立即写回到系统内存。
+2. 这个写回内存的操作会引起其他 CPU 里缓存了该内存地址的数据无效(MESI协议)
+
+## Java 程序汇编代码查看
+
+> [学会一个JVM插件：使用HSDIS反汇编JIT生成的代码- 云+社区 ...](https://cloud.tencent.com/developer/article/1082675)
+
+1. 下载 `hsdis-amd64.dylib` 插件，放到 jdk 的 jre/bin 目录下
+2. IDEA 中配置 VM Options，并修改 jre 为上面包含了 `hsdis-amd64.dylib` 的。
+3. 然后运行程序即可在控制台中看到相应汇编代码。
+
+Edit Configuration > VM Options:
+
+```
+-server -Xcomp -XX:+UnlockDiagnosticVMOptions -XX:+PrintAssembly -XX:CompileCommand=compileonly,*VolatileVisibilityTest.prepareData
+```
 
