@@ -410,6 +410,20 @@ Java 中的 native 方法调用的是用 C 语言写的方法，存在系统的 
 
 由于线程调度的原因，当当前线程的 CPU 时间片用完的时候，需要记录下当前运行的位置和状态，以便下一次再获得 CPU 时间片时继续执行。
 
+### 常量池(元空间)
+
+常量池中主要存放两类常量：字面量(Literal)和符号引用(Symbolic References)
+
+#### Java 程序中发生异常时是如何知道哪行代码发生的异常
+
+通过 `javap -v` 命令反编译 Java 文件可以看到，在常量池中有一个 `LineNumberTable` 其中记录了 jvm 指令与源代码行号的映射关系，当执行到某条指令发生异常时就可以知道是对应源代码的哪行代码。
+
+#### Java 中的 this
+
+从反编译文件中可以看出，在 `LocalVariableTable` 中第一个变量就是 this，所以 this 是编译时编译器隐士传递的局部变量。
+
+注意：`javac` 默认不会生成调试信息(LocalVariableTable就是其中之一)，需要加上 `-g` 参数才可以。参考：[javap -v没有显示LocalVaribleTable](https://blog.csdn.net/weixin_30481087/article/details/97001857)
+
 ### 堆
 
 #### 分代年龄
@@ -730,6 +744,58 @@ IA-32 架构软件开发者手册对 lock 指令的解释：
 1. 会将当前处理器缓存行的数据立即写回到系统内存。
 2. 这个写回内存的操作会引起其他 CPU 里缓存了该内存地址的数据无效(MESI协议)
 
+### 测试案例
+
+#### 案例一
+
+#### 案例二
+
+```java
+public class VolatileVisibilityTest2 {
+
+    private static volatile int num = 0;
+
+    public static void main(String[] args) throws InterruptedException {
+
+        Thread[] threads = new Thread[10];
+        for (int i = 0; i < 10; i++) {
+            threads[i] = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    for (int j = 0; j < 1000; j++) {
+                        increase();
+                    }
+                }
+            });
+        }
+
+        for (Thread thread : threads) {
+            thread.start();
+        }
+
+        for (Thread thread : threads) {
+            thread.join();
+        }
+
+        System.out.println(num);
+    }
+
+    public static void increase() {
+        num++;
+    }
+}
+```
+
+运行结果：多次运行，结果都是小于等于 10000 的一个值。
+
+解释：
+
+当多个线程同时执行 assign，因为加了 volatile 此时这些线程会立即向主内存同步数据，但只会有一个线程成功执行 lock 操作，然后继续执行 store 操作，在进行 store 操作时，由于总线嗅探机制的存在，其他线程就会感知到，进而将其数据的状态置为失效状态，也就丢失了其之前的数据操作。故案例二中的 num 最终的结果是 <= 20000。
+
+![](../images/volatile-visibility.jpg)
+
+
+
 ## Java 程序汇编代码查看
 
 > [学会一个JVM插件：使用HSDIS反汇编JIT生成的代码- 云+社区 ...](https://cloud.tencent.com/developer/article/1082675)
@@ -744,3 +810,6 @@ Edit Configuration > VM Options:
 -server -Xcomp -XX:+UnlockDiagnosticVMOptions -XX:+PrintAssembly -XX:CompileCommand=compileonly,*VolatileVisibilityTest.prepareData
 ```
 
+# 字节码文件
+
+字节码文件中有两个字节表示实现的接口的个数，因此 **Java 类可实现的接口最大个数**为 65535。
