@@ -792,7 +792,7 @@ public class VolatileVisibilityTest2 {
 
 当多个线程同时执行 assign，因为加了 volatile 此时这些线程会立即向主内存同步数据，但只会有一个线程成功执行 lock 操作，然后继续执行 store 操作，在进行 store 操作时，由于总线嗅探机制的存在，其他线程就会感知到，进而将其数据的状态置为失效状态，也就丢失了其之前的数据操作。故案例二中的 num 最终的结果是 <= 20000。
 
-![](../images/volatile-visibility.jpg)
+![](../post_image/volatile-visibility.jpg)
 
 
 
