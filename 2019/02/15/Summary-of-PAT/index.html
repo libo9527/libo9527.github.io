@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_io/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Lobster:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":{"gitalk":{"order":-2},"valine":{"order":-1}}},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="PAT总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Summary of PAT">
+<meta property="og:url" content="http://yoursite.com/2019/02/15/Summary-of-PAT/index.html">
+<meta property="og:site_name" content="Li Bo 9527">
+<meta property="og:description" content="PAT总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2019/01/11/5c3813443dce6.jpg">
+<meta property="article:published_time" content="2019-02-15T03:45:26.000Z">
+<meta property="article:modified_time" content="2020-08-18T02:54:42.649Z">
+<meta property="article:author" content="Li Bo">
+<meta property="article:tag" content="PAT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2019/01/11/5c3813443dce6.jpg">
+
+<link rel="canonical" href="http://yoursite.com/2019/02/15/Summary-of-PAT/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>Summary of PAT | Li Bo 9527</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta custom-logo">
+
+    <div>
+        <a href="/" class="brand" rel="start">
+            <span class="logo-line-before"><i></i></span>
+            <span class="site-title">Li Bo 9527</span>
+            <span class="logo-line-after"><i></i></span>
+        </a>
+    </div>
+
+    <!---->
+    <!---->
+    <!--        <p class="site-subtitle">Work`s Blog</p>-->
+    <!---->
+    <!---->
+      <a>
+        <img class="custom-logo-image" src="/images/logo-via-logohub.png" alt="Li Bo 9527">
+      </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/libo9527" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/15/Summary-of-PAT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-libo9527.jpeg">
+      <meta itemprop="name" content="Li Bo">
+      <meta itemprop="description" content="即便痛苦，也要仰起高昂的头颅">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Li Bo 9527">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Summary of PAT
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-15 11:45:26" itemprop="dateCreated datePublished" datetime="2019-02-15T11:45:26+08:00">2019-02-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-18 10:54:42" itemprop="dateModified" datetime="2020-08-18T10:54:42+08:00">2020-08-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PAT/" itemprop="url" rel="index"><span itemprop="name">PAT</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/02/15/Summary-of-PAT/" class="post-meta-item leancloud_visitors" data-flag-title="Summary of PAT" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  
+            <div class="post-description">PAT总结</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img data-src="https://i.loli.net/2019/01/11/5c3813443dce6.jpg" width="100%"/>
+
+<a id="more"></a>
+
+<h2 id="PAT总结"><a href="#PAT总结" class="headerlink" title="PAT总结"></a>PAT总结</h2><h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><ul>
+<li>输入使用<code>scanf</code>，输出使用<code>printf</code></li>
+<li>题目要求 10^9 以内或者说 32 位整数，使用 int</li>
+<li>题目要求 10^10 以内或者说 64 位整数，使用 double</li>
+<li>浮点型数据使用 double 存储，不要用 float</li>
+<li>小写字母的 ASCLL 码比大写字母的 ASCLL 码值 32</li>
+<li>常量使用 const 方式定义，不要用<strong>宏定义</strong></li>
+<li>无穷大的数 INF 设置为 <code>(1 &lt;&lt; 31) - 1</code></li>
+<li>数组大小大于 10^6，则将其定义在主函数外面</li>
+<li>只用 memset 函数给数组赋 0 或 -1，使用 fill 函数赋其他值</li>
+</ul>
+<h3 id="PAT-OJ-坑"><a href="#PAT-OJ-坑" class="headerlink" title="PAT OJ 坑"></a>PAT OJ 坑</h3><ul>
+<li><p>PTA OJ 使用 <code>get()</code> 函数，C++ 会编译不通过，C 编译可以通过，但注意将头文件修改成 C 语言格式。</p>
+<p>解决方法：</p>
+<ol>
+<li><p>使用 <code>scanf(&quot;%s&quot;, a)</code> 替代</p>
+<p>sacanf() 无法接受带有空格的字符串。</p>
+</li>
+<li><p>使用 <code>fgets(char* a,int maxlens,stdin)</code> 替代</p>
+<p>fgets 函数在<strong>未读取到我们要求的大小时</strong>（例如 maxlens=10，但只输入了3个字符），遇到换行符，那么读取到的数据就是： 已经读到的数据（遇到换行符前的数据）+ 换行符 + NULL，这会导致 strlen() 函数求得的长度比实际值多 1。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="C-C-语法"><a href="#C-C-语法" class="headerlink" title="C / C++ 语法"></a>C / C++ 语法</h3><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><p><strong>四种基本数据类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大致范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int（long int）</td>
+<td>-2 x 10^9 ~ 2 x 10^9</td>
+</tr>
+<tr>
+<td>long long（long long int)</td>
+<td>-9 x 10^18 ~ 9 x 10^18</td>
+</tr>
+<tr>
+<td>float</td>
+<td>实际精度 6 ~ 7 位</td>
+</tr>
+<tr>
+<td>double</td>
+<td>实际精度 15 ~ 16 位</td>
+</tr>
+<tr>
+<td>char</td>
+<td>-128 ~ 127</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>0(false) or 1(true)</td>
+</tr>
+</tbody></table>
+<p>long long 型赋大于 2^31 - 1 的初值时，需要在初值后面加上 LL</p>
+<h4 id="格式符"><a href="#格式符" class="headerlink" title="格式符"></a>格式符</h4><p><strong>scanf 格式符</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>格式符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td>%d</td>
+</tr>
+<tr>
+<td>long long</td>
+<td>%lld</td>
+</tr>
+<tr>
+<td>folat</td>
+<td>%f</td>
+</tr>
+<tr>
+<td>double</td>
+<td>%lf</td>
+</tr>
+<tr>
+<td>char</td>
+<td>%c</td>
+</tr>
+<tr>
+<td>字符串（char 数组）</td>
+<td>%s</td>
+</tr>
+</tbody></table>
+<p>除了 <code>%s</code> 外，scanf 对其他格式符的输入是以空白符（空格、换行）为结束判断标志。</p>
+<p><strong>printf 格式符</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>格式符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td>%d</td>
+</tr>
+<tr>
+<td>long long</td>
+<td>%lld</td>
+</tr>
+<tr>
+<td>folat</td>
+<td>%f</td>
+</tr>
+<tr>
+<td>double</td>
+<td>%f（不是 %lf）</td>
+</tr>
+<tr>
+<td>char</td>
+<td>%c</td>
+</tr>
+<tr>
+<td>字符串（char 数组）</td>
+<td>%s</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>格式符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%md</td>
+<td>使不足 m 位的 int 型变量以 m 位进行右对齐输出，高位用<strong>空格</strong>补齐</td>
+</tr>
+<tr>
+<td>%0md</td>
+<td>类似<code>%md</code>，不过高位用 0 补齐</td>
+</tr>
+<tr>
+<td>%.mf</td>
+<td>浮点数保留 m 位小数，采用<strong>四舍六入五成双</strong>规则</td>
+</tr>
+</tbody></table>
+<p><strong><em>想要输出 <code>%</code>,<code>\</code>需要在前面再加上一个<code>%</code>,<code>\</code></em></strong></p>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p><strong>常用 math 函数</strong></p>
+<p>使用时需要添加 <code>&lt;cmath</code> 头文件。</p>
+<ol>
+<li><p>绝对值：<code>fabs(double x)</code></p>
+</li>
+<li><p>取整：<code>floor(double x)</code>，<code>ceil(double x)</code></p>
+</li>
+<li><p>指数：<code>sqrt(double x)</code></p>
+</li>
+<li><p>对数：<code>log(double x)</code></p>
+</li>
+</ol>
+<p>换底公式：<code>log(a, b) = log(e, b) / log(e, a)</code></p>
+<ol start="5">
+<li><p>三角：<code>sin(double x), cos(double x), tan(double x)</code></p>
+</li>
+<li><p>反三角：<code>asin(double x), acos(double x), atan(double x)</code></p>
+</li>
+<li><p>四舍五入：<code>round(double x)</code></p>
+</li>
+</ol>
+<p><strong>memset</strong></p>
+<p>使用时需要添加 <code>&lt;cstring&gt;</code> 头文件</p>
+<p>对数组每个元素赋相同的值。</p>
+<p><strong>常见 string 函数</strong></p>
+<p>需要添加 <code>&lt;cstring&gt;</code> 头文件</p>
+<ol>
+<li><p>取长：<code>strlen()</code></p>
+<p>strlen() 函数返回的类型是一个无符号整数类型，这就带来了一些需要<strong><em>注意的问题</em></strong>。</p>
+<p>比如<br>1  <code>if( strlen(str1) &gt;= strlen(str2) )......</code><br>2  <code>if( strlen(str1) - strlen(str2) &gt;= 0)......</code></p>
+<p>第一个 if 能够正常工作，但是第二个就不能了，因为 strlen() 的返回值是无符号整型值，所以 &gt;=  左边的整个式子的结果就是一个无符号整型值。也就是说第二个 if 的结果永远都为真（无符号数不可能大于0）。</p>
+</li>
+<li><p>比较：<code>strcmp()</code></p>
+</li>
+<li><p>复制：<code>strcpy()</code></p>
+</li>
+<li><p>拼接：<code>strcat()</code></p>
+</li>
+</ol>
+<p>数组可以作为函数的参数，但<strong>不能作为返回值类型</strong></p>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>数组大小必须是整数常量，不可以是变量</p>
+<p>整型数组部分初始化后其余默认位 0，但如果都没有初始化，则每个元素都是一个随机数。</p>
+<p>字符数组可以直接赋值字符串类初始化，但<strong>仅限于初始化</strong>，其他位置不允许。</p>
+<h4 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h4><ul>
+<li>指针就是变量的地址</li>
+<li>指针是一个 unsigned 类型的整数</li>
+<li><code>*</code> 一般放在变量前，但<strong>星号是类型的一部分</strong></li>
+</ul>
+<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><ul>
+<li>引用不产生副本，而是给原变量<strong>起别名</strong></li>
+<li>引用不是取地址。<code>&amp;</code> 只有在函数的参数列表中出现才叫<strong>引用</strong>，其余地方叫<strong>取址符</strong></li>
+</ul>
+<h4 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h4><ul>
+<li>访问结构体内的元素有两种方法：<code>.</code> 和 <code>-&gt;</code></li>
+</ul>
+<h4 id="浮点数的比较"><a href="#浮点数的比较" class="headerlink" title="浮点数的比较"></a>浮点数的比较</h4><p>精度 eps 一般取 10^-8</p>
+<p><code>const double eps = 1e-8</code></p>
+<ol>
+<li>等于</li>
+</ol>
+<p><code>#define Equ(a, b) ((fabs((a) - (b))) &lt; (eps))</code></p>
+<ol start="2">
+<li>大于</li>
+</ol>
+<p><code>#define More(a, b) (((a) - (b)) &gt; (eps))</code></p>
+<ol start="3">
+<li>小于</li>
+</ol>
+<p><code>#define Less(a, b) (((a) - (b) &lt; (eps)))</code></p>
+<ol start="4">
+<li>大于等于</li>
+</ol>
+<p><code>#define MoreEqu(a, b) (((a) - (b) &gt; (-eps)))</code></p>
+<ol start="5">
+<li>小于等于</li>
+</ol>
+<p><code>#define LessEqu(a, b)(((a) - (b) &lt; (eps)))</code></p>
+<h4 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h4><p><strong>时间复杂度</strong></p>
+<p>O(1) &lt; O(logn) &lt; O(n) &lt; O(n^2)</p>
+<p><strong>空间复杂度</strong></p>
+<p>一般都够用，只要不开好几盒 10^7 以上的数组即可。</p>
+<h3 id="评测结果"><a href="#评测结果" class="headerlink" title="评测结果"></a>评测结果</h3><h4 id="AC（Accepted-答案正确）"><a href="#AC（Accepted-答案正确）" class="headerlink" title="AC（Accepted 答案正确）"></a>AC（Accepted 答案正确）</h4><h4 id="CE（Compile-Eroor-编译错误）"><a href="#CE（Compile-Eroor-编译错误）" class="headerlink" title="CE（Compile Eroor 编译错误）"></a>CE（Compile Eroor 编译错误）</h4><h4 id="WA（Wrong-Answer-答案错误）"><a href="#WA（Wrong-Answer-答案错误）" class="headerlink" title="WA（Wrong Answer 答案错误）"></a>WA（Wrong Answer 答案错误）</h4><h4 id="TLE（Time-Limit-Exceeded-运行超时）"><a href="#TLE（Time-Limit-Exceeded-运行超时）" class="headerlink" title="TLE（Time Limit Exceeded 运行超时）"></a>TLE（Time Limit Exceeded 运行超时）</h4><ul>
+<li>时间复杂度太高</li>
+<li>死循环</li>
+</ul>
+<h4 id="RE（Runtime-Error-运行错误）"><a href="#RE（Runtime-Error-运行错误）" class="headerlink" title="RE（Runtime Error 运行错误）"></a>RE（Runtime Error 运行错误）</h4><ul>
+<li>段错误</li>
+<li>非法访问内存</li>
+<li>数组越界</li>
+<li>指针乱指</li>
+<li>浮点错误</li>
+<li>除数为 0</li>
+<li>模数为 0</li>
+<li>递归爆栈</li>
+<li>递归层数太深</li>
+</ul>
+<h4 id="MLE（Memory-Limit-Exceeded-内存超限）"><a href="#MLE（Memory-Limit-Exceeded-内存超限）" class="headerlink" title="MLE（Memory Limit Exceeded 内存超限）"></a>MLE（Memory Limit Exceeded 内存超限）</h4><ul>
+<li>数组太大</li>
+</ul>
+<h4 id="PE（Presentation-Error-格式错误）"><a href="#PE（Presentation-Error-格式错误）" class="headerlink" title="PE（Presentation Error 格式错误）"></a>PE（Presentation Error 格式错误）</h4><ul>
+<li>空格</li>
+<li>换行</li>
+</ul>
+<h4 id="OLE（Output-Limit-Exceeded-输出超限）"><a href="#OLE（Output-Limit-Exceeded-输出超限）" class="headerlink" title="OLE（Output Limit Exceeded 输出超限）"></a>OLE（Output Limit Exceeded 输出超限）</h4><ul>
+<li>调试信息</li>
+<li>死循环输出</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Li Bo
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/02/15/Summary-of-PAT/" title="Summary of PAT">http://yoursite.com/2019/02/15/Summary-of-PAT/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/PAT/" rel="tag"># PAT</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/02/03/Scenic-Strategy/" rel="prev" title="Scenic Strategy">
+      <i class="fa fa-chevron-left"></i> Scenic Strategy
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/07/31/Use-of-ElementUI/" rel="next" title="Use-of-ElementUI">
+      Use-of-ElementUI <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PAT总结"><span class="nav-number">1.</span> <span class="nav-text">PAT总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最佳实践"><span class="nav-number">1.1.</span> <span class="nav-text">最佳实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PAT-OJ-坑"><span class="nav-number">1.2.</span> <span class="nav-text">PAT OJ 坑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-C-语法"><span class="nav-number">1.3.</span> <span class="nav-text">C &#x2F; C++ 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型"><span class="nav-number">1.3.1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#格式符"><span class="nav-number">1.3.2.</span> <span class="nav-text">格式符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-number">1.3.3.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组"><span class="nav-number">1.3.4.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指针"><span class="nav-number">1.3.5.</span> <span class="nav-text">指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用"><span class="nav-number">1.3.6.</span> <span class="nav-text">引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构体"><span class="nav-number">1.3.7.</span> <span class="nav-text">结构体</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浮点数的比较"><span class="nav-number">1.3.8.</span> <span class="nav-text">浮点数的比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复杂度"><span class="nav-number">1.3.9.</span> <span class="nav-text">复杂度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评测结果"><span class="nav-number">1.4.</span> <span class="nav-text">评测结果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AC（Accepted-答案正确）"><span class="nav-number">1.4.1.</span> <span class="nav-text">AC（Accepted 答案正确）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CE（Compile-Eroor-编译错误）"><span class="nav-number">1.4.2.</span> <span class="nav-text">CE（Compile Eroor 编译错误）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WA（Wrong-Answer-答案错误）"><span class="nav-number">1.4.3.</span> <span class="nav-text">WA（Wrong Answer 答案错误）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TLE（Time-Limit-Exceeded-运行超时）"><span class="nav-number">1.4.4.</span> <span class="nav-text">TLE（Time Limit Exceeded 运行超时）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RE（Runtime-Error-运行错误）"><span class="nav-number">1.4.5.</span> <span class="nav-text">RE（Runtime Error 运行错误）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MLE（Memory-Limit-Exceeded-内存超限）"><span class="nav-number">1.4.6.</span> <span class="nav-text">MLE（Memory Limit Exceeded 内存超限）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PE（Presentation-Error-格式错误）"><span class="nav-number">1.4.7.</span> <span class="nav-text">PE（Presentation Error 格式错误）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OLE（Output-Limit-Exceeded-输出超限）"><span class="nav-number">1.4.8.</span> <span class="nav-text">OLE（Output Limit Exceeded 输出超限）</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Li Bo"
+      src="/images/avatar-libo9527.jpeg">
+  <p class="site-author-name" itemprop="name">Li Bo</p>
+  <div class="site-description" itemprop="description">即便痛苦，也要仰起高昂的头颅</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">91</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">62</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Bo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    url = encodeURI(url);
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.getAttribute('id'));
+      var title = visitors.dataset.flagTitle;
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              })
+          } else {
+              leancloudSelector(url).innerText = 'Counter not initialized! More info at console err msg.';
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.getAttribute('id'));
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=Dkf5QXLDAXop5aEnIVYqtN2Y-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : 'Dkf5QXLDAXop5aEnIVYqtN2Y-gzGzoHsz',
+            'X-LC-Key'    : 'wGjvGOUY5eohtITkt1ydIMUF',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri == 'http://yoursite.com/2019/02/15/Summary-of-PAT/',]
+      });
+      });
+  </script>
+
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Dkf5QXLDAXop5aEnIVYqtN2Y-gzGzoHsz',
+      appKey     : 'wGjvGOUY5eohtITkt1ydIMUF',
+      placeholder: "Have one say one",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300,"mobile":{"show":false},"react":{"opacity":0.7}},"log":false});</script></body>
+</html>

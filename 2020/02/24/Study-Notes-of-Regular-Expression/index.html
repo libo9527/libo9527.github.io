@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_io/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Lobster:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":{"gitalk":{"order":-2},"valine":{"order":-1}}},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="正则表达式学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Study Notes of Regular Expression">
+<meta property="og:url" content="http://yoursite.com/2020/02/24/Study-Notes-of-Regular-Expression/index.html">
+<meta property="og:site_name" content="Li Bo 9527">
+<meta property="og:description" content="正则表达式学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.malwarebytes.com/wp-content/uploads/2018/08/regex_puzzle-900x506.jpg">
+<meta property="article:published_time" content="2020-02-24T02:48:06.000Z">
+<meta property="article:modified_time" content="2020-08-18T02:54:42.649Z">
+<meta property="article:author" content="Li Bo">
+<meta property="article:tag" content="Word">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.malwarebytes.com/wp-content/uploads/2018/08/regex_puzzle-900x506.jpg">
+
+<link rel="canonical" href="http://yoursite.com/2020/02/24/Study-Notes-of-Regular-Expression/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>Study Notes of Regular Expression | Li Bo 9527</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta custom-logo">
+
+    <div>
+        <a href="/" class="brand" rel="start">
+            <span class="logo-line-before"><i></i></span>
+            <span class="site-title">Li Bo 9527</span>
+            <span class="logo-line-after"><i></i></span>
+        </a>
+    </div>
+
+    <!---->
+    <!---->
+    <!--        <p class="site-subtitle">Work`s Blog</p>-->
+    <!---->
+    <!---->
+      <a>
+        <img class="custom-logo-image" src="/images/logo-via-logohub.png" alt="Li Bo 9527">
+      </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/libo9527" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/24/Study-Notes-of-Regular-Expression/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar-libo9527.jpeg">
+      <meta itemprop="name" content="Li Bo">
+      <meta itemprop="description" content="即便痛苦，也要仰起高昂的头颅">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Li Bo 9527">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Study Notes of Regular Expression
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-24 10:48:06" itemprop="dateCreated datePublished" datetime="2020-02-24T10:48:06+08:00">2020-02-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-18 10:54:42" itemprop="dateModified" datetime="2020-08-18T10:54:42+08:00">2020-08-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Study-Notes/" itemprop="url" rel="index"><span itemprop="name">Study Notes</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Study-Notes/Regular-Expression/" itemprop="url" rel="index"><span itemprop="name">Regular Expression</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/02/24/Study-Notes-of-Regular-Expression/" class="post-meta-item leancloud_visitors" data-flag-title="Study Notes of Regular Expression" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/02/24/Study-Notes-of-Regular-Expression/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/24/Study-Notes-of-Regular-Expression/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <div class="post-description">正则表达式学习笔记</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <img data-src="https://blog.malwarebytes.com/wp-content/uploads/2018/08/regex_puzzle-900x506.jpg" width="100%"/>
+
+<a id="more"></a>
+
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><blockquote>
+<p><a href="https://github.com/ziishaned/learn-regex" target="_blank" rel="noopener">learn-regex | GitHub</a></p>
+</blockquote>
+<h2 id="什么是正则表达式？"><a href="#什么是正则表达式？" class="headerlink" title="什么是正则表达式？"></a>什么是正则表达式？</h2><blockquote>
+<span class="label info">正则表达式</span><mark>是</mark>一组由字母和符号组成的<span class="label info">特殊文本</span>，它可以<mark>用来</mark>从文本中找出满足你想要的格式的句子。
+</blockquote>
+<h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h2><blockquote>
+<p>元字符<mark>不</mark>代表他们本身的字面意思，他们都有特殊的含义。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.</td>
+<td>匹配<span class="label info">任意</span><span class="label danger">单个</span>字符<mark>除了</mark>换行符。</td>
+</tr>
+<tr>
+<td>[ ]</td>
+<td>字符集。匹配方括号内的任意字符。</td>
+</tr>
+<tr>
+<td>[^ ]</td>
+<td>否定的字符种类。匹配<mark>除了</mark>方括号里的任意字符</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配 <mark>&gt;=0</mark> 个重复的在 <code>*</code> 号之前的字符。</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配 <mark>&gt;=1</mark> 个重复的 <code>+</code> 号前的字符。</td>
+</tr>
+<tr>
+<td>?</td>
+<td>标记 <code>?</code> 之前的字符为<mark>可选</mark>.</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>匹配 num 个大括号之间的字符 (n &lt;= num &lt;= m).</td>
+</tr>
+<tr>
+<td>(xyz)</td>
+<td>字符集，匹配与 xyz <mark>完全相等</mark>的字符串.</td>
+</tr>
+<tr>
+<td>|</td>
+<td>或元字符，匹配符号<span class="label info">前</span><mark>或</mark><span class="label info">后</span>的字符.</td>
+</tr>
+<tr>
+<td>\</td>
+<td>转义字符，用于匹配一些<mark>保留字符</mark> `[ ] ( ) { } . * + ? ^ $ \</td>
+</tr>
+<tr>
+<td>^</td>
+<td>正则表达式的<mark>开始符号</mark>.</td>
+</tr>
+<tr>
+<td>$</td>
+<td>正则表达式的<mark>结束符号</mark>.</td>
+</tr>
+</tbody></table>
+<h3 id="元字符-1"><a href="#元字符-1" class="headerlink" title="元字符 ."></a>元字符 <code>.</code></h3><h3 id="字符集"><a href="#字符集" class="headerlink" title="字符集 []"></a>字符集 <code>[]</code></h3><p>方括号用来指定一个字符集。</p>
+<ol>
+<li><p>括号中的字符集<mark>不关心顺序</mark>。</p>
+<p>表达式<code>[Tt]he</code> 匹配 <code>the</code> 和 <code>The</code></p>
+</li>
+<li><p>方括号的点号<mark>就</mark>表示点号</p>
+<p>表达式 <code>ar[.]</code> 匹配 <code>ar.</code>字符串</p>
+</li>
+</ol>
+<h4 id="否定字符集"><a href="#否定字符集" class="headerlink" title="否定字符集"></a>否定字符集</h4><p>一般来说 <code>^</code> 表示一个字符串的开头，但当它用在方括号里面的开头时，它表示这个字符集是否定的。 例如，表达式 <a href="https://regex101.com/r/nNNlq3/1" target="_blank" rel="noopener"><code>[^c]ar</code></a> 匹配一个后面跟着 <code>ar</code> 的除了 <code>c</code> 的任意字符。</p>
+<h3 id="重复次数"><a href="#重复次数" class="headerlink" title="重复次数"></a>重复次数</h3><p>后面跟着元字符 <code>+</code>，<code>*</code> or <code>?</code> 的，用来指定匹配子模式的次数。 这些元字符在不同的情况下有着不同的含义。</p>
+<h4 id="元字符-2"><a href="#元字符-2" class="headerlink" title="元字符 *"></a>元字符 <code>*</code></h4><p><code>*</code> 号匹配在 <code>*</code> 之前的字符出现 <mark>&gt;=0</mark> 次。 例如，表达式 <code>a*</code> 匹配 0个或者多个以 a 开头的字符。表达式 <a href="https://regex101.com/r/7m8me5/1" target="_blank" rel="noopener"><code>[a-z]*</code></a> 匹配所有以小写字母开头的字符串。</p>
+<p><code>*</code> 元字符和 <code>.</code> 元字符搭配可以匹配所有的字符(<code>.*</code>)。</p>
+<p><code>*</code> 和空格元字符 <code>\s</code> 连起来用，如表达式 <a href="https://regex101.com/r/gGrwuz/1" target="_blank" rel="noopener"><code>\s*cat\s*</code></a> 匹配以 0个或多个空格开头，中间是 cat，并且以 0个或多个空格结尾的字符串。</p>
+<h4 id="元字符-3"><a href="#元字符-3" class="headerlink" title="元字符 +"></a>元字符 <code>+</code></h4><p><code>+</code> 元字符匹配 <code>+</code> 号之前的字符出现 <mark>&gt;=1</mark> 次。 例如表达式 <a href="https://regex101.com/r/Dzf9Aa/1" target="_blank" rel="noopener"><code>c.+t</code></a> 匹配以字母 <code>c</code> 开头以 <code>t</code> 结尾，中间跟着至少一个字符的字符串。</p>
+<h4 id="元字符-4"><a href="#元字符-4" class="headerlink" title="元字符 ?"></a>元字符 <code>?</code></h4><p>元字符 <code>?</code> 表示前面的字符为<mark>可选字符</mark>，即出现 0 次或 1 次。 例如，表达式 <a href="https://regex101.com/r/kPpO2x/1" target="_blank" rel="noopener"><code>[T]?he</code></a> 匹配字符串 <code>he</code> 和 <code>The</code>。</p>
+<h3 id="元字符-5"><a href="#元字符-5" class="headerlink" title="元字符 {}"></a>元字符 <code>{}</code></h3><p>在正则表达式中 <code>{}</code> 是一个量词，常用来表示一个或一组字符可以重复出现的次数。 例如，表达式 <a href="https://regex101.com/r/juM86s/1" target="_blank" rel="noopener"><code>[0-9]{2,3}</code></a> 匹配最少 2 位最多 3 位 0~9 的数字。</p>
+<p>可以省略第二个参数。 例如，<a href="https://regex101.com/r/Gdy4w5/1" target="_blank" rel="noopener"><code>[0-9]{2,}</code></a> 匹配至少两位 0~9 的数字。</p>
+<p>如果逗号也省略掉，则表示重复固定的次数。 例如，<a href="https://regex101.com/r/Sivu30/1" target="_blank" rel="noopener"><code>[0-9]{3}</code></a> 匹配 3 位 0~9 的数字</p>
+<h3 id="元字符-6"><a href="#元字符-6" class="headerlink" title="元字符 ()"></a>元字符 <code>()</code></h3><p>元字符 <code>()</code> 表示将括号内的子模式绑定为一个组，将这个组作为一个新的子模式进行匹配。</p>
+<p>例如之前说的 <code>{}</code> 是用来表示前面一个字符出现指定次数。但如果在 <code>{}</code> 前用括号将一串字符括起来，则表示整个括号内的字符重复 N 次。例如，表达式 <code>(ab)*</code> 匹配连续出现 0 个或多个 <code>ab</code>。</p>
+<p>还可以在 <code>()</code> 中用 <code>|</code> 表示或。例如，<a href="https://regex101.com/r/tUxrBG/1" target="_blank" rel="noopener"><code>(c|g|p)ar</code></a> 匹配 <code>car</code> 或 <code>gar</code> 或 <code>par</code>.</p>
+<h3 id="元字符-7"><a href="#元字符-7" class="headerlink" title="元字符 |"></a>元字符 <code>|</code></h3><p>元字符 <code>|</code> 表示或，用作判断条件。</p>
+<p>例如 <a href="https://regex101.com/r/fBXyX0/1" target="_blank" rel="noopener"><code>(T|t)he|car</code></a> 匹配 <code>(T|t)he</code> 或 <code>car</code>。</p>
+<h3 id="元字符-8"><a href="#元字符-8" class="headerlink" title="元字符 \"></a>元字符 <code>\</code></h3><p>元字符 <code>\</code> 用于转义紧跟其后的字符。用于转义 <code>{ } [ ] / \ + * . $ ^ | ?</code> 这些特殊字符。如果想要匹配这些特殊字符则要在其前面加上反斜线 <code>\</code>。</p>
+<p>例如 <code>.</code> 是用来匹配除换行符外的所有单个字符的。如果想要匹配句子中的 <code>.</code> 则要写成 <code>\.</code>。</p>
+<p>例如 <a href="https://regex101.com/r/DOc5Nu/1" target="_blank" rel="noopener"><code>(f|c|m)at\.?</code></a> 匹配以 <code>f</code> 或者 <code>c</code> 或者 <code>m</code> 开头，中间是 <code>mt</code>，后面有 0 个或者 1 个 <code>.</code></p>
+<h3 id="锚点"><a href="#锚点" class="headerlink" title="锚点"></a>锚点</h3><p>正则表达式中，想要匹配指定开头或结尾的字符串就要使用到锚点。<code>^</code> 指定开头，<code>$</code> 指定结尾。</p>
+<h3 id="元字符-9"><a href="#元字符-9" class="headerlink" title="元字符 ^"></a>元字符 <code>^</code></h3><p><code>^</code> 用来检查匹配的字符串是否在所匹配字符串的开头。</p>
+<p>例如，在 <code>abc</code> 中使用表达式 <code>^a</code> 会得到结果 <code>a</code>。但如果使用 <code>^b</code> 将匹配不到任何结果。因为在字符串 <code>abc</code> 中并没有以 <code>b</code> 开头的字符串。</p>
+<p>例如，<a href="https://regex101.com/r/jXrKne/1" target="_blank" rel="noopener"><code>^(T|t)he</code></a> 匹配以 <code>The</code> 或 <code>the</code> 开头的字符串。</p>
+<h3 id="元字符-10"><a href="#元字符-10" class="headerlink" title="元字符 $"></a>元字符 <code>$</code></h3><p>与 <code>^</code> 同理，元字符 <code>$</code> 用来检查匹配的字符串是否在所匹配字符串的结尾。</p>
+<p>例如，<a href="https://regex101.com/r/t0AkOd/1" target="_blank" rel="noopener"><code>(at\.)$</code></a> 匹配以 <code>at.</code> 结尾的字符串。</p>
+<h2 id="简写字符集"><a href="#简写字符集" class="headerlink" title="简写字符集"></a>简写字符集</h2><p>正则表达式提供一些常用的字符集简写。如下:</p>
+<table>
+<thead>
+<tr>
+<th>简写</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.</td>
+<td>除<mark>换</mark>行符外的所有单个字符</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配所有<mark>字母数字</mark>，等同于 <code>[a-zA-Z0-9_]</code></td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配所有<mark>非字母数字</mark>，即符号，等同于： <code>[^\w]</code></td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配<mark>数字</mark>： <code>[0-9]</code></td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配<mark>非数字</mark>： <code>[^\d]</code></td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配所有<mark>空格字符</mark>，等同于： <code>[\t\n\f\r\p{Z}]</code></td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配所有<mark>非空格字符</mark>： <code>[^\s]</code></td>
+</tr>
+<tr>
+<td>\f</td>
+<td>匹配一个<mark>换页符</mark></td>
+</tr>
+<tr>
+<td>\n</td>
+<td>匹配一个<mark>换行符</mark></td>
+</tr>
+<tr>
+<td>\r</td>
+<td>匹配一个<mark>回车符</mark></td>
+</tr>
+<tr>
+<td>\t</td>
+<td>匹配一个<mark>制表符</mark></td>
+</tr>
+<tr>
+<td>\v</td>
+<td>匹配一个<mark>垂直制表符</mark></td>
+</tr>
+<tr>
+<td>\p</td>
+<td>匹配 CR/LF（等同于 <code>\r\n</code>），用来匹配 DOS 行<mark>终止符</mark></td>
+</tr>
+</tbody></table>
+<h2 id="零宽度断言"><a href="#零宽度断言" class="headerlink" title="零宽度断言"></a>零宽度断言</h2><p>零宽度断言用来指定一个<mark>位置(零宽度)</mark>，这个位置应该满足一定的<mark>条件(断言)</mark>。断言其实就相当于一个布尔值，只能是 0 或者 1。</p>
+<p>由零宽度断言的定义可以看出来，它必须和和其他的表达式结合起来使用才具有意义，否则单纯的零宽度断言表达式的匹配结果就是个位置，什么字符都没有！</p>
+<p>零宽度断言共四种：</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>?=</td>
+<td>正先行断言</td>
+</tr>
+<tr>
+<td>?!</td>
+<td>负先行断言</td>
+</tr>
+<tr>
+<td>?&lt;=</td>
+<td>正后发断言</td>
+</tr>
+<tr>
+<td>?&lt;!</td>
+<td>负后发断言</td>
+</tr>
+</tbody></table>
+<p>理解：</p>
+<ul>
+<li>正/负：指是否满足条件(即断言)，正(负)表示(不)满足。</li>
+<li>先行/后发：指的是位置(最终的匹配结果)和条件(即断言)的前后关系，先行(后发)指位置在条件前(后)。</li>
+</ul>
+<p>另外，零宽度断言都要用括号扩起来。</p>
+<h3 id="正先行断言"><a href="#正先行断言" class="headerlink" title="正先行断言 ?="></a>正先行断言 <code>?=</code></h3><p>语法：<code>表达式1(?=表达式2)</code></p>
+<p>表示满足表达式1的字符串后面必须跟着满足表达式2的字符串，结果只返回满足匹配表达式1的字符串。</p>
+<p>例如，表达式 <a href="https://regex101.com/r/IDDARt/1" target="_blank" rel="noopener"><code>(T|t)he(?=\sfat)</code></a> 匹配 <code>The</code> 或者 <code>the</code>，而且 <code>The</code> 和 <code>the</code> 后面紧跟着 <code>空格fat</code>。</p>
+<h3 id="负先行断言"><a href="#负先行断言" class="headerlink" title="负先行断言 ?!"></a>负先行断言 <code>?!</code></h3><p>语法：<code>表达式1(?=表达式2)</code></p>
+<p>表示满足表达式1的字符串后面必须<mark>不</mark>能跟着满足表达式2的字符串，结果只返回满足匹配表达式1的字符串。</p>
+<p>例如，表达式 <a href="https://regex101.com/r/V32Npg/1" target="_blank" rel="noopener"><code>(T|t)he(?!\sfat)</code></a> 匹配 <code>The</code> 或者 <code>the</code>，而且 <code>The</code> 和 <code>the</code> 后面<mark>不</mark>跟着 <code>空格fat</code>。</p>
+<h3 id="正后发断言-lt"><a href="#正后发断言-lt" class="headerlink" title="正后发断言 ?&lt;="></a>正后发断言 <code>?&lt;=</code></h3><p>语法：<code>(?&lt;=表达式1)表达式2</code></p>
+<p>表示满足表达式2的字符串<mark>前</mark>面面必须能跟着满足表达式1的字符串，结果只返回满足匹配表达式2的字符串。</p>
+<p>例如，表达式 <a href="https://regex101.com/r/avH165/1" target="_blank" rel="noopener"><code>(?&lt;=(T|t)he\s)(fat|mat)</code></a> 匹配 <code>fat</code> 和 <code>mat</code>，且其前面跟着 <code>The空格</code> 或 <code>the空格</code>。</p>
+<h3 id="负后发断言-lt"><a href="#负后发断言-lt" class="headerlink" title="负后发断言 ?&lt;!"></a>负后发断言 <code>?&lt;!</code></h3><p>语法：<code>(?&lt;!表达式1)表达式2</code></p>
+<p>表示满足表达式2的字符串<mark>前</mark>面面必须<mark>不</mark>能跟着满足表达式1的字符串，结果只返回满足匹配表达式2的字符串。</p>
+<p>例如，表达式 <a href="https://regex101.com/r/8Efx5G/1" target="_blank" rel="noopener"><code>(?&lt;!(T|t)he\s)(cat)</code></a> 匹配 <code>cat</code>，且其前<mark>不</mark>跟着 <code>The</code> 或 <code>the</code>。</p>
+<h2 id="标志"><a href="#标志" class="headerlink" title="标志"></a>标志</h2><p>标志也叫<span class="label info">模式修正符</span>，因为它可以用来修改表达式的搜索结果。 这些标志可以任意的组合使用，它也是整个正则表达式的一部分。</p>
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>i</td>
+<td>忽略大小写。</td>
+</tr>
+<tr>
+<td>g</td>
+<td>全局搜索。</td>
+</tr>
+<tr>
+<td>m</td>
+<td>多行修饰符：锚点元字符 <code>^</code> <code>$</code> 工作范围在每行的起始。</td>
+</tr>
+</tbody></table>
+<h3 id="忽略大小写（Case-Insensitive）"><a href="#忽略大小写（Case-Insensitive）" class="headerlink" title="忽略大小写（Case Insensitive）"></a>忽略大小写（Case Insensitive）</h3><p>修正符 <code>i</code> 用于忽略大小写。 例如，表达式 <a href="https://regex101.com/r/ahfiuh/1" target="_blank" rel="noopener"><code>/The/gi</code></a> 表示在全局搜索 <code>The</code>，在后面的 <code>i</code> 将其条件修改为忽略大小写，则变成搜索 <code>the</code> 和 <code>The</code>，<code>g</code> 表示全局搜索。</p>
+<h3 id="全局搜索（Global-search）"><a href="#全局搜索（Global-search）" class="headerlink" title="全局搜索（Global search）"></a>全局搜索（Global search）</h3><p>修正符 <code>g</code> 常用于执行一个全局搜索匹配，即不仅仅返回第一个匹配的，而是返回全部。 例如，表达式 <a href="https://regex101.com/r/dO1nef/1" target="_blank" rel="noopener"><code>/.(at)/g</code></a> 表示全局搜索 <code>非换行符以外任意单个字符</code> 后面跟着 <code>at</code>。</p>
+<h3 id="多行修正符（Multiline）"><a href="#多行修正符（Multiline）" class="headerlink" title="多行修正符（Multiline）"></a>多行修正符（Multiline）</h3><p>多行修正符 <code>m</code> 用于执行一个多行匹配。</p>
+<p>之前介绍的 <code>^</code> 和 <code>$</code> 用于检查模式是否是在待检测字符串的开头或结尾。但我们如果想要它在<mark>每</mark>行的开头和结尾生效，我们需要用到多行修正符 <code>m</code>。</p>
+<p>例如，表达式 <a href="https://regex101.com/r/E88WE2/1" target="_blank" rel="noopener"><code>/at(.)?$/gm</code></a> 表示小写字符 <code>a</code> 后跟小写字符 <code>t</code> ，末尾再跟上一个除换行符以外的任意字符，再根据 <code>m</code> 修正符，现在表达式匹配每行的结尾。</p>
+<h3 id="贪婪匹配与惰性匹配（Greedy-vs-lazy-matching）"><a href="#贪婪匹配与惰性匹配（Greedy-vs-lazy-matching）" class="headerlink" title="贪婪匹配与惰性匹配（Greedy vs lazy matching）"></a>贪婪匹配与惰性匹配（Greedy vs lazy matching）</h3><p>正则表达式默认采用贪婪匹配模式，在该模式下意味着会匹配尽可能长的子串。我们可以使用 <code>?</code> 将贪婪匹配模式转化为惰性匹配模式。</p>
+<p>例如 <a href="https://regex101.com/r/AyAdgJ/1" target="_blank" rel="noopener"><code>/(.*at)/</code></a> 表示匹配以 <code>at</code> 结尾，前面有任意多个非换行字符的子字符串中长度最<mark>长</mark>的一个。</p>
+<p>而 <a href="https://regex101.com/r/AyAdgJ/2" target="_blank" rel="noopener"><code>/(.*?at)/</code></a> 表示匹配以 <code>at</code> 结尾，前面有任意多个非换行字符的子字符串中长度最短的一个。</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="以某个字符串开始字符串，并且以另一个字符串结尾字符串"><a href="#以某个字符串开始字符串，并且以另一个字符串结尾字符串" class="headerlink" title="以某个字符串开始字符串，并且以另一个字符串结尾字符串"></a>以某个字符串开始字符串，并且以另一个字符串结尾字符串</h3><p>例如要搜索以 <code>https://img.alicdn.com</code> 开始，以 <code>jpg_80x80.jpg</code> 结束的子字符串。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:\&#x2F;\&#x2F;img\.alicdn\.com.*jpg_80x80\.jpg</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Li Bo
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2020/02/24/Study-Notes-of-Regular-Expression/" title="Study Notes of Regular Expression">http://yoursite.com/2020/02/24/Study-Notes-of-Regular-Expression/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/01/08/Free-Image-Hosting/" rel="prev" title="Free Image Hosting">
+      <i class="fa fa-chevron-left"></i> Free Image Hosting
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/02/Study-Notes-of-Google-Calendar-API/" rel="next" title="Study Notes of Google Calendar API">
+      Study Notes of Google Calendar API <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">gitalk</a></li>
+            <li class="tab"><a href="#comment-valine">valine</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments" id="gitalk-container"></div>
+            </div>
+            <div class="tab-pane valine" id="comment-valine">
+              <div class="comments" id="valine-comments"></div>
+            </div>
+        </div>
+      </div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教程"><span class="nav-number">1.</span> <span class="nav-text">教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是正则表达式？"><span class="nav-number">2.</span> <span class="nav-text">什么是正则表达式？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元字符"><span class="nav-number">3.</span> <span class="nav-text">元字符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-1"><span class="nav-number">3.1.</span> <span class="nav-text">元字符 .</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符集"><span class="nav-number">3.2.</span> <span class="nav-text">字符集 []</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#否定字符集"><span class="nav-number">3.2.1.</span> <span class="nav-text">否定字符集</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重复次数"><span class="nav-number">3.3.</span> <span class="nav-text">重复次数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">元字符 *</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符-3"><span class="nav-number">3.3.2.</span> <span class="nav-text">元字符 +</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符-4"><span class="nav-number">3.3.3.</span> <span class="nav-text">元字符 ?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-5"><span class="nav-number">3.4.</span> <span class="nav-text">元字符 {}</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-6"><span class="nav-number">3.5.</span> <span class="nav-text">元字符 ()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-7"><span class="nav-number">3.6.</span> <span class="nav-text">元字符 |</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-8"><span class="nav-number">3.7.</span> <span class="nav-text">元字符 \</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锚点"><span class="nav-number">3.8.</span> <span class="nav-text">锚点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-9"><span class="nav-number">3.9.</span> <span class="nav-text">元字符 ^</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符-10"><span class="nav-number">3.10.</span> <span class="nav-text">元字符 $</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简写字符集"><span class="nav-number">4.</span> <span class="nav-text">简写字符集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#零宽度断言"><span class="nav-number">5.</span> <span class="nav-text">零宽度断言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正先行断言"><span class="nav-number">5.1.</span> <span class="nav-text">正先行断言 ?&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负先行断言"><span class="nav-number">5.2.</span> <span class="nav-text">负先行断言 ?!</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正后发断言-lt"><span class="nav-number">5.3.</span> <span class="nav-text">正后发断言 ?&lt;&#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负后发断言-lt"><span class="nav-number">5.4.</span> <span class="nav-text">负后发断言 ?&lt;!</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标志"><span class="nav-number">6.</span> <span class="nav-text">标志</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#忽略大小写（Case-Insensitive）"><span class="nav-number">6.1.</span> <span class="nav-text">忽略大小写（Case Insensitive）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局搜索（Global-search）"><span class="nav-number">6.2.</span> <span class="nav-text">全局搜索（Global search）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多行修正符（Multiline）"><span class="nav-number">6.3.</span> <span class="nav-text">多行修正符（Multiline）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贪婪匹配与惰性匹配（Greedy-vs-lazy-matching）"><span class="nav-number">6.4.</span> <span class="nav-text">贪婪匹配与惰性匹配（Greedy vs lazy matching）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">7.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#以某个字符串开始字符串，并且以另一个字符串结尾字符串"><span class="nav-number">7.1.</span> <span class="nav-text">以某个字符串开始字符串，并且以另一个字符串结尾字符串</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Li Bo"
+      src="/images/avatar-libo9527.jpeg">
+  <p class="site-author-name" itemprop="name">Li Bo</p>
+  <div class="site-description" itemprop="description">即便痛苦，也要仰起高昂的头颅</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">91</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">62</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Bo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+  <script pjax>
+  function leancloudSelector(url) {
+    url = encodeURI(url);
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.getAttribute('id'));
+      var title = visitors.dataset.flagTitle;
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              })
+          } else {
+              leancloudSelector(url).innerText = 'Counter not initialized! More info at console err msg.';
+              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
+            
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.getAttribute('id'));
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (let item of results) {
+            let { url, time } = item;
+            leancloudSelector(url).innerText = time;
+          }
+          for (let url of entries) {
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=Dkf5QXLDAXop5aEnIVYqtN2Y-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : 'Dkf5QXLDAXop5aEnIVYqtN2Y-gzGzoHsz',
+            'X-LC-Key'    : 'wGjvGOUY5eohtITkt1ydIMUF',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      script.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri == 'http://yoursite.com/2020/02/24/Study-Notes-of-Regular-Expression/',]
+      });
+      });
+  </script>
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'a75f33d0d54ca58ac001',
+      clientSecret: '02675748bae6c8068856bcd57d23a6835a8928a8',
+      repo        : 'gitalk-comments',
+      owner       : 'libo9527',
+      admin       : ['libo9527'],
+      id          : 'cdbfe62b8f2242f11957e7797ba58764',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Dkf5QXLDAXop5aEnIVYqtN2Y-gzGzoHsz',
+      appKey     : 'wGjvGOUY5eohtITkt1ydIMUF',
+      placeholder: "Have one say one",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":150,"height":300,"mobile":{"show":false},"react":{"opacity":0.7}},"log":false});</script></body>
+</html>
