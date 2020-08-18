@@ -11,10 +11,10 @@ branches:
   only:
     - source
 
-cache:
+#cache:
   #  apt: true # 缓存 apt 依赖
-  directories:
-    - node_modules # 缓存 node_modules 目录
+#  directories:
+#    - node_modules # 缓存 node_modules 目录
 
 before_install:
   # Deploy history
