@@ -31,7 +31,7 @@
   </entry>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/08/18/Account-Management-in-Git/</url>
+    <url>/2020/08/21/Account-Management-in-Git/</url>
     <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -202,6 +202,131 @@
 <h2 id="数字范围"><a href="#数字范围" class="headerlink" title="数字范围"></a>数字范围</h2><p><code>num1..num2</code></p>
 <h2 id="单位换算"><a href="#单位换算" class="headerlink" title="单位换算"></a>单位换算</h2><p><code>num unit1 to unit2</code></p>
 <h2 id="直接翻译"><a href="#直接翻译" class="headerlink" title="直接翻译"></a>直接翻译</h2><p><code>key translate to languange</code> / <code>key trans to languange</code></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Big Front-end</title>
+    <url>/2020/08/18/Big-Front-end/</url>
+    <content><![CDATA[<img data-src="cover" width="100%"/>
+
+<a id="more"></a>
+
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="查看Linux内核版本信息"><a href="#查看Linux内核版本信息" class="headerlink" title="查看Linux内核版本信息"></a>查看Linux内核版本信息</h3><ol>
+<li><p>使用<code>lab_reldase -a</code>查看内核版本信息</p>
+<blockquote>
+<p><strong>Linux标准规范</strong>（英语：Linux Standard Base，缩写为 LSB）是一个在<a href="https://zh.wikipedia.org/wiki/Linux基金會" target="_blank" rel="noopener">Linux基金会</a>结构下对<a href="https://zh.wikipedia.org/wiki/Linux發行版" target="_blank" rel="noopener">Linux发行版</a>的联合项目，其目标使<a href="https://zh.wikipedia.org/wiki/Linux" target="_blank" rel="noopener">Linux</a><a href="https://zh.wikipedia.org/wiki/作業系統" target="_blank" rel="noopener">操作系统</a>符合软件系统架构，或文件系统架构标准的规范及标准。</p>
+</blockquote>
+<p>Centos 7下找不到<code>lab_release</code>命令，使用<code>yum install redhat-lsb -y</code>安装，注意Centos下的<code>lib_release</code>命令的安装包的名字是<code>redhat-lsb</code>。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@VM-0-10-centos ~]<span class="comment"># lsb_release</span></span><br><span class="line">LSB Version:	:core-4.1-amd64:core-4.1-noarch:cxx-4.1-amd64:cxx-4.1-noarch:desktop-4.1-amd64:desktop-4.1-noarch:languages-4.1-amd64:languages-4.1-noarch:printing-4.1-amd64:printing-4.1-noarch</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@VM-0-10-centos ~]<span class="comment"># lsb_release -a</span></span><br><span class="line">LSB Version:	:core-4.1-amd64:core-4.1-noarch:cxx-4.1-amd64:cxx-4.1-noarch:desktop-4.1-amd64:desktop-4.1-noarch:languages-4.1-amd64:languages-4.1-noarch:printing-4.1-amd64:printing-4.1-noarch</span><br><span class="line">Distributor ID:	CentOS</span><br><span class="line">Description:	CentOS Linux release 7.5.1804 (Core) </span><br><span class="line">Release:	7.5.1804</span><br><span class="line">Codename:	Core</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>unman -a</code>查看Linux内核版本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@VM-0-10-centos ~]<span class="comment"># uname -a</span></span><br><span class="line">Linux VM-0-10-centos 3.10.0-862.el7.x86_64 <span class="comment">#1 SMP Fri Apr 20 16:44:24 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="查看磁盘占用情况"><a href="#查看磁盘占用情况" class="headerlink" title="查看磁盘占用情况"></a>查看磁盘占用情况</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@VM-0-10-centos ~]<span class="comment"># df -Th</span></span><br><span class="line">文件系统       类型      容量  已用  可用 已用% 挂载点</span><br><span class="line">/dev/vda1      ext4       50G  1.9G   45G    4% /</span><br><span class="line">devtmpfs       devtmpfs  909M     0  909M    0% /dev</span><br><span class="line">tmpfs          tmpfs     920M   24K  920M    1% /dev/shm</span><br><span class="line">tmpfs          tmpfs     920M  500K  919M    1% /run</span><br><span class="line">tmpfs          tmpfs     920M     0  920M    0% /sys/fs/cgroup</span><br><span class="line">tmpfs          tmpfs     184M     0  184M    0% /run/user/0</span><br></pre></td></tr></table></figure>
+
+<p>-T, –print-type   print file system type</p>
+<p>-h, –human-readable print sizes in human readable format (e.g., 1K 234M 2G)</p>
+<h3 id="Linux-目录结构"><a href="#Linux-目录结构" class="headerlink" title="Linux 目录结构"></a>Linux 目录结构</h3><blockquote>
+<p><a href="https://www.runoob.com/linux/linux-system-contents.html" target="_blank" rel="noopener">Linux 系统目录结构| 菜鸟教程</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@VM-0-10-centos /]<span class="comment"># ls -la</span></span><br><span class="line">总用量 80</span><br><span class="line">dr-xr-xr-x. 19 root root  4096 8月  18 12:14 .</span><br><span class="line">dr-xr-xr-x. 19 root root  4096 8月  18 12:14 ..</span><br><span class="line">lrwxrwxrwx.  1 root root     7 8月   8 2018 bin -&gt; usr/bin</span><br><span class="line">drwxr-xr-x  19 root root  2980 8月  17 19:35 dev</span><br><span class="line">drwxr-xr-x. 93 root root 12288 8月  18 12:07 etc</span><br><span class="line">drwxr-xr-x.  2 root root  4096 4月  11 2018 home</span><br><span class="line">lrwxrwxrwx.  1 root root     7 8月   8 2018 lib -&gt; usr/lib</span><br><span class="line">lrwxrwxrwx.  1 root root     8 8月   8 2018 sbin -&gt; usr/sbin</span><br><span class="line">dr-xr-xr-x  13 root root     0 8月  17 19:34 sys</span><br><span class="line">drwxrwxrwt.  8 root root  4096 8月  18 12:07 tmp</span><br><span class="line">drwxr-xr-x. 13 root root  4096 8月   8 2018 usr</span><br><span class="line">drwxr-xr-x. 19 root root  4096 1月  21 2019 var</span><br></pre></td></tr></table></figure>
+
+<p>第一列是文件/目录及权限信息，前面的<code>d</code>代表目录，后面九位是权限信息， <code>r</code>代表读，<code>w</code>代表写，<code>x</code>代表可执行，分为三组，第一组是用户权限，第二组是组权限，第三组是其他用户权限。</p>
+<h4 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h4><p>/home：用户目录</p>
+<p>/etc：配置目录</p>
+<p>/sys：系统目录</p>
+<p>/usr：存放用户应用程序</p>
+<p>/usr/sbin：存放超级用户使用的比较高级的管理程序和系统守护程序</p>
+<p>/var：这个目录中存放着在不断扩充着的东西，习惯将那些经常被修改的目录放在这个目录下，包括各种日志文件</p>
+<h3 id="CPU-内存-进程"><a href="#CPU-内存-进程" class="headerlink" title="CPU/内存/进程"></a>CPU/内存/进程</h3><h4 id="top"><a href="#top" class="headerlink" title="top"></a>top</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@VM-0-10-centos ~]<span class="comment"># top</span></span><br><span class="line"></span><br><span class="line">top - 12:27:26 up 16:52,  2 users,  load average: 0.01, 0.02, 0.05</span><br><span class="line">Tasks:  73 total,   1 running,  72 sleeping,   0 stopped,   0 zombie</span><br><span class="line">%Cpu(s):  0.3 us,  0.3 sy,  0.0 ni, 99.3 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st</span><br><span class="line">KiB Mem :  1882752 total,   724016 free,    99704 used,  1059032 buff/cache</span><br><span class="line">KiB Swap:        0 total,        0 free,        0 used.  1599800 avail Mem </span><br><span class="line"></span><br><span class="line">  PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND     </span><br><span class="line">  538 root      20   0  588564  11116   3240 S  0.3  0.6   1:26.72 YDService   </span><br><span class="line"> 1418 root      20   0  611520  13664   2364 S  0.3  0.7   3:21.65 barad_agent </span><br><span class="line">    1 root      20   0   43424   3712   2536 S  0.0  0.2   0:04.43 systemd</span><br></pre></td></tr></table></figure>
+
+<p><code>Tasks:  73 total,   1 running,  72 sleeping,   0 stopped,   0 zombie</code></p>
+<p>总共73个进程</p>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><h4 id="编辑后不保存"><a href="#编辑后不保存" class="headerlink" title="编辑后不保存"></a>编辑后不保存</h4><p><code>:q!</code></p>
+<h4 id="追加内容"><a href="#追加内容" class="headerlink" title="追加内容"></a>追加内容</h4><p><code>echo &#39;xxxxx&#39; &gt;&gt; filename</code></p>
+<h4 id="覆盖"><a href="#覆盖" class="headerlink" title="覆盖"></a>覆盖</h4><p><code>echo &#39;xxxx&#39; &gt; filename</code></p>
+<h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p><code>wget url</code></p>
+<h4 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h4><p>解压<code>apache-tomcat-8.5.57.tar.gz</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar zxvf apache-tomcat-8.5.57.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>-z, –gzip, –gunzip, –ungzip  通过 gzip 过滤归档（<code>.gz</code>结尾）</p>
+<p>-x, –extract, –get    从归档中解出文件</p>
+<p>-f, –file=ARCHIVE     使用归档文件或 ARCHIVE 设备</p>
+<p>​     –force-local</p>
+<p>-v, –verbose       详细地列出处理的文件</p>
+<p>​     –warning=KEYWORD   警告控制:</p>
+<p>压缩</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar zcvf apache-tomcat-8.5.57</span><br></pre></td></tr></table></figure>
+
+<p>-c, –create        创建一个新归档</p>
+<h4 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h4><p>查看名字中包含<code>docker</code>的进程</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ps -ef | grep docker</span><br></pre></td></tr></table></figure>
+
+<h4 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h4><p>终止进程</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">kill</span> -9 PID</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看服务运行状态"><a href="#查看服务运行状态" class="headerlink" title="查看服务运行状态"></a>查看服务运行状态</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service sshd status</span><br></pre></td></tr></table></figure>
+
+<h3 id="关闭服务"><a href="#关闭服务" class="headerlink" title="关闭服务"></a>关闭服务</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service sshd stop</span><br></pre></td></tr></table></figure>
+
+<h3 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
+
+<h4 id="systemctl"><a href="#systemctl" class="headerlink" title="systemctl"></a>systemctl</h4><p>systemctl 命令是系统服务管理器指令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status firewalld.service</span><br></pre></td></tr></table></figure>
+
+<p>如何改ssh端口？</p>
+<h4 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -anlp | grep sshd</span><br></pre></td></tr></table></figure>
+
+<h4 id="semanage"><a href="#semanage" class="headerlink" title="semanage"></a>semanage</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">semanage port -a -t ssh_port_t -p tcp 10022</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">semanage port -l | grep ssh</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum whatprovides semanage</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y policycoreutils-python</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">docker-client \</span><br><span class="line">docker-client-latest \</span><br><span class="line">docker-common \</span><br><span class="line">docekr-latest \</span><br><span class="line">docker-latest-logrotate \</span><br><span class="line">docker-logrotate \</span><br><span class="line">docker-engine</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install -y yum-utils \</span><br><span class="line">device-mapper-persistent-data \</span><br><span class="line">lvm2</span><br></pre></td></tr></table></figure>
+
+<h3 id="Centos-7-修改-SSH-端口"><a href="#Centos-7-修改-SSH-端口" class="headerlink" title="Centos 7 修改 SSH 端口"></a>Centos 7 修改 SSH 端口</h3><ol>
+<li>修改ssh配置文件</li>
+<li>重启ssh服务</li>
+<li></li>
+</ol>
+<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><blockquote>
+<p><a href="http://www.toimc.com" target="_blank" rel="noopener">www.toimc.com</a></p>
+</blockquote>
+<h4 id="Docker-VS-虚拟机"><a href="#Docker-VS-虚拟机" class="headerlink" title="Docker VS 虚拟机"></a>Docker VS 虚拟机</h4><h4 id="Docker主要特性"><a href="#Docker主要特性" class="headerlink" title="Docker主要特性"></a>Docker主要特性</h4><p>对文件、资源、网络进行隔离</p>
+<p>变更管理、日志记录</p>
+<p>写时复制</p>
+<p>Docker Compose</p>
+<p>Docker hub、Harbor</p>
+<h2 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h2><p>什么是nodejs？</p>
+<ul>
+<li><p>免费、开源、跨平台</p>
+</li>
+<li><p>服务器上的javascript运行环境</p>
+</li>
+<li><p>基于Chrome V8引擎，事件驱动，非阻塞式I/O</p>
+<p>事件驱动：餐厅举手叫服务员(事件)，服务员(函数)响应</p>
+<p>非阻塞式I/O：排队叫号</p>
+</li>
+</ul>
+<h3 id="包管理工具"><a href="#包管理工具" class="headerlink" title="包管理工具"></a>包管理工具</h3><p>npm、cnpm</p>
+<p>yarn</p>
+<h3 id="node版本管理工具"><a href="#node版本管理工具" class="headerlink" title="node版本管理工具"></a>node版本管理工具</h3><p>nvm、nvm-windows</p>
+<p>如何发布一个自己的node模块</p>
+<p><code>npm add user</code></p>
+<p><code>yarn add xxx</code>等同于<code>nom install xxx -S</code></p>
 ]]></content>
   </entry>
   <entry>
