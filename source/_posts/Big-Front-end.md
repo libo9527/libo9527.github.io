@@ -121,6 +121,23 @@ KiB Swap:        0 total,        0 free,        0 used.  1599800 avail Mem
 
 总共73个进程
 
+#### 端口
+
+```bash
+lsof -i:PORT
+```
+
+查看端口占用情况
+
+```bash
+[root@VM-0-10-centos ~]# lsof -i:22
+COMMAND  PID USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME
+sshd    1330 root    3u  IPv4   16009      0t0  TCP *:ssh (LISTEN)
+sshd    3044 root    3u  IPv4 5509477      0t0  TCP VM-0-10-centos:ssh->113.89.97.17:44541 (ESTABLISHED)
+```
+
+
+
 ### 文件
 
 #### 编辑后不保存
@@ -186,7 +203,28 @@ kill -9 PID
 #### 查看服务运行状态
 
 ```bash
-service sshd status
+[root@VM-0-10-centos ssh]# service sshd status
+Redirecting to /bin/systemctl status sshd.service
+● sshd.service - OpenSSH server daemon
+   Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; vendor preset: enabled)
+   Active: active (running) since 一 2020-08-17 19:35:09 CST; 1 weeks 1 days ago
+     Docs: man:sshd(8)
+           man:sshd_config(5)
+ Main PID: 1330 (sshd)
+   CGroup: /system.slice/sshd.service
+           └─1330 /usr/sbin/sshd -D
+
+8月 26 18:20:39 VM-0-10-centos sshd[3137]: Disconnected from 45.84.196.88 p...]
+8月 26 18:20:42 VM-0-10-centos sshd[3143]: Invalid user usuario from 45.84....4
+8月 26 18:20:42 VM-0-10-centos sshd[3143]: input_userauth_request: invalid ...]
+8月 26 18:20:42 VM-0-10-centos sshd[3143]: Received disconnect from 45.84.1...]
+8月 26 18:20:42 VM-0-10-centos sshd[3143]: Disconnected from 45.84.196.88 p...]
+8月 26 18:20:44 VM-0-10-centos sshd[3151]: Invalid user support from 45.84....0
+8月 26 18:20:44 VM-0-10-centos sshd[3151]: input_userauth_request: invalid ...]
+8月 26 18:20:44 VM-0-10-centos sshd[3151]: Received disconnect from 45.84.1...]
+8月 26 18:20:44 VM-0-10-centos sshd[3151]: Disconnected from 45.84.196.88 p...]
+8月 26 18:21:41 VM-0-10-centos sshd[3269]: Connection reset by 40.121.0.183...]
+Hint: Some lines were ellipsized, use -l to show in full.
 ```
 
 ### 关闭服务
@@ -216,6 +254,23 @@ systemctl status firewalld.service
 ```bash
 netstat -anlp | grep sshd
 ```
+
+-a, --all        display all sockets (default: connected)
+
+-n, --numeric      don't resolve names
+
+-l, --listening     display listening server sockets
+
+-p, --programs      display PID/Program name for sockets
+
+```bash
+[root@VM-0-10-centos ssh]# netstat -anlp | grep sshd
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1330/sshd           
+tcp        0     36 172.17.0.10:22          113.89.97.17:44541      ESTABLISHED 3044/sshd: root@pts 
+unix  3      [ ]         STREAM     CONNECTED     16005    1330/sshd            
+unix  2      [ ]         DGRAM                    5509550  3044/sshd: root@pts 
+```
+
 
 #### semanage
 
@@ -261,7 +316,15 @@ lvm2
 ### Centos 7 修改 SSH 端口
 
 1. 修改ssh配置文件
+
+   ```bash
+   vi /etc/ssh/ssh_config
+   ```
+
+   
+
 2. 重启ssh服务
+
 3. 
 
 ## Docker
