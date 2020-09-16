@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/08/10/F6XYRiD7Q29OHrE.png">
 <meta property="og:image" content="https://i.loli.net/2019/08/10/NL9lIHtJnXxmC38.png">
 <meta property="article:published_time" content="2019-08-07T01:38:29.000Z">
-<meta property="article:modified_time" content="2020-08-28T09:59:57.045Z">
+<meta property="article:modified_time" content="2020-09-16T11:59:43.951Z">
 <meta property="article:author" content="Li Bo">
 <meta property="article:tag" content="Oracle">
 <meta name="twitter:card" content="summary">
@@ -232,7 +232,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-28 17:59:57" itemprop="dateModified" datetime="2020-08-28T17:59:57+08:00">2020-08-28</time>
+                <time title="修改时间：2020-09-16 19:59:43" itemprop="dateModified" datetime="2020-09-16T19:59:43+08:00">2020-09-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -281,7 +281,10 @@
 
 <a id="more"></a>
 
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">version</span> <span class="keyword">FROM</span> v$<span class="keyword">instance</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h3><blockquote>
+<p><a href="https://blog.csdn.net/huoyin/article/details/1921148" target="_blank" rel="noopener">查看oracle数据库(database)的版本命令_花果山-CSDN博客</a></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> v$<span class="keyword">version</span>;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">version</span> <span class="keyword">from</span> v$<span class="keyword">instance</span>;</span><br><span class="line"><span class="keyword">Select</span> <span class="keyword">version</span> <span class="keyword">FROM</span> Product_component_version   <span class="keyword">Where</span> <span class="keyword">SUBSTR</span>(PRODUCT,<span class="number">1</span>,<span class="number">6</span>)=<span class="string">'Oracle'</span>;</span><br></pre></td></tr></table></figure>
 
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a><a href="https://libo9527.github.io/2019/08/14/SQL-Functions-in-ORACLE/" target="_blank" rel="noopener">函数</a></h2><h2 id="批量插入"><a href="#批量插入" class="headerlink" title="批量插入"></a>批量插入</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">USER</span> ( <span class="keyword">ID</span>, USERNAME, <span class="keyword">PASSWORD</span>, CREATE_DATE, DEL_FLAG ) </span><br><span class="line">  <span class="keyword">SELECT</span> SEQ_USER.nextval, t.* </span><br><span class="line">  <span class="keyword">FROM</span></span><br><span class="line">    (</span><br><span class="line">    <span class="keyword">SELECT</span> <span class="string">'zhangsan'</span> USERNAME, <span class="string">'zxode23'</span> <span class="keyword">PASSWORD</span>, <span class="keyword">SYSDATE</span> CREATE_DATE, <span class="number">0</span> DEL_FLAG <span class="keyword">FROM</span> dual </span><br><span class="line">    <span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">    <span class="keyword">SELECT</span> <span class="string">'lisi'</span> USERNAME, <span class="string">'9fhd2fd'</span> <span class="keyword">PASSWORD</span>, <span class="keyword">SYSDATE</span> CREATE_DATE, <span class="number">0</span> DEL_FLAG <span class="keyword">FROM</span> dual </span><br><span class="line">    ) t</span><br></pre></td></tr></table></figure>
 
@@ -290,7 +293,7 @@
 
 <p>union all：不去重</p>
 <p>union：去重</p>
-<h2 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h2><h3 id="缺省值-NULL"><a href="#缺省值-NULL" class="headerlink" title="缺省值 NULL"></a>缺省值 NULL</h3><ul>
+<h2 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h2><h3 id="缺省值-NULL"><a href="#缺省值-NULL" class="headerlink" title="缺省值 NULL"></a>缺省值 NULL</h3><ul>
 <li><p>Oracle 在 Order by 时认为 null 是最大值，所以如果是 ASC 升序则排在最后，DESC 降序则排在最前。</p>
 </li>
 <li><p>可以使用 nulls first 或者 nulls last 语法来控制 NULL 的位置。</p>
@@ -298,6 +301,17 @@
 
 </li>
 </ul>
+<h3 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">... ORDER BY 1</span><br></pre></td></tr></table></figure>
+
+<p>ORDER BY 后面跟数字，代表排序字段为查询结果字段中的第几个。</p>
+<p>例如</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">ID</span>, <span class="keyword">NAME</span>, EMAIL, PHONE <span class="keyword">FROM</span> SYS_USER <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>等价于</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">ID</span>, <span class="keyword">NAME</span>, EMAIL, PHONE <span class="keyword">FROM</span> SYS_USER <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ID</span></span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="EXISTS"><a href="#EXISTS" class="headerlink" title="EXISTS"></a>EXISTS</h2><blockquote>
 <p><a href="https://docs.oracle.com/cd/B19306_01/server.102/b14200/conditions012.htm" target="_blank" rel="noopener">EXISTS Condition | Oracle</a></p>
 <p>An <code>EXISTS</code> condition tests for existence of rows in a subquery.</p>
@@ -336,10 +350,41 @@
 <li><p>查询海淀所有的祖先节点</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">ID</span>, PARENT_ID, <span class="keyword">NAME</span> <span class="keyword">FROM</span> GLOBAL_LOCATION <span class="keyword">START</span> <span class="keyword">WITH</span> <span class="keyword">ID</span> = <span class="number">3026</span> <span class="keyword">CONNECT</span> <span class="keyword">BY</span> <span class="keyword">PRIOR</span> PARENT_ID = <span class="keyword">ID</span></span><br></pre></td></tr></table></figure>
 
-
-
 </li>
 </ul>
+<h2 id="执行计划"><a href="#执行计划" class="headerlink" title="执行计划"></a>执行计划</h2><h3 id="查看执行计划的方法"><a href="#查看执行计划的方法" class="headerlink" title="查看执行计划的方法"></a>查看执行计划的方法</h3><ol>
+<li>Explain Plan For SQL<ul>
+<li>不实际执行 SQL 语句，生成的计划未必是真实执行的计划</li>
+<li>必须要有 plan_table 表</li>
+</ul>
+</li>
+<li>SQLPLUS AUTOTRACE<ul>
+<li>除 set autotrace traceably explain 外均实际执行 SQL，但仍未必是真实计划</li>
+<li>必须要有 plan_table</li>
+</ul>
+</li>
+<li>SQL TRACE<ul>
+<li>需要启用 10046 或者 SQL_TRACE</li>
+<li>一般用 tkprof 看的更清楚些，当然 10046 里本身也有执行计划信息</li>
+</ul>
+</li>
+<li>V$SQL 和 V$SQL_PLAN<ul>
+<li>可以查询到多个子游标的计划信息了，但是看起来比较费劲</li>
+</ul>
+</li>
+<li>Enterprise Manager<ul>
+<li>可以图形化显示执行计划，但并非所有环境有 EM 可用</li>
+</ul>
+</li>
+<li>其他第三方工具<ul>
+<li>注意 PL/SQL developer 之类工具 F5 看到的执行计划未必是真实的。</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">lpad</span>(<span class="string">'-'</span>, <span class="number">5</span> * ( <span class="keyword">LEVEL</span> - <span class="number">1</span> )) || operation operation,</span><br><span class="line">	options,</span><br><span class="line">	object_name,</span><br><span class="line">	<span class="keyword">cost</span>,</span><br><span class="line">	<span class="keyword">position</span> </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	plan_table <span class="keyword">START</span> <span class="keyword">WITH</span> <span class="keyword">id</span> = <span class="number">0</span> <span class="keyword">CONNECT</span> <span class="keyword">BY</span> <span class="keyword">PRIOR</span> <span class="keyword">id</span> = parent_id;</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="Comprehensive-examples-in-work"><a href="#Comprehensive-examples-in-work" class="headerlink" title="Comprehensive examples in work"></a>Comprehensive examples in work</h2><h3 id="地址树远程搜索"><a href="#地址树远程搜索" class="headerlink" title="地址树远程搜索"></a>地址树远程搜索</h3><p>需求说明：input 框中输入地址，远程搜索出匹配节点，由于同名地址到存在，要求将完整地址一同显示。</p>
 <p><img data-src="https://i.loli.net/2019/08/10/TCvoScY2A7Vajd8.png" alt="pic"></p>
 <p>表结构：</p>
@@ -368,7 +413,19 @@
 
 <p><img data-src="https://i.loli.net/2019/08/10/F6XYRiD7Q29OHrE.png" alt="pic"></p>
 <p><img data-src="https://i.loli.net/2019/08/10/NL9lIHtJnXxmC38.png" alt="pic"></p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a href="/2019/09/17/Using-Triggers-in-ORACLE/" title="触发器（TRIGGER）">触发器（TRIGGER）</a></h2><h2 id="ERROR"><a href="#ERROR" class="headerlink" title="ERROR"></a>ERROR</h2><h3 id="ORA-03113"><a href="#ORA-03113" class="headerlink" title="ORA-03113"></a>ORA-03113</h3><blockquote>
+<a href="/2019/09/17/Using-Triggers-in-ORACLE/" title="触发器（TRIGGER）">触发器（TRIGGER）</a>
+
+<h3 id="Top-n"><a href="#Top-n" class="headerlink" title="Top n"></a>Top n</h3><blockquote>
+<p><a href="https://oracle-base.com/articles/misc/top-n-queries" target="_blank" rel="noopener">Top-N Queries</a></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">USERS</span> <span class="keyword">WHERE</span> <span class="keyword">ROWNUM</span> &lt; <span class="number">10</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ID</span> <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="分组-Top-n"><a href="#分组-Top-n" class="headerlink" title="分组 Top n"></a>分组 Top n</h3><blockquote>
+<p><a href="https://blog.csdn.net/weixin_30692143/article/details/95742271" target="_blank" rel="noopener">oracle中分组排序取TOP n_weixin_30692143的博客-CSDN …</a></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	* </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	( <span class="keyword">SELECT</span> u.ID, u.NAME, row_number () <span class="keyword">over</span> ( <span class="keyword">partition</span> <span class="keyword">BY</span> <span class="keyword">GROUP_ID</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ID</span> ) rn <span class="keyword">FROM</span> <span class="keyword">USERS</span> u ) </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	rn &lt; <span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="链接查询-vs-子查询"><a href="#链接查询-vs-子查询" class="headerlink" title="链接查询 vs 子查询"></a>链接查询 vs 子查询</h3><h2 id="ERROR"><a href="#ERROR" class="headerlink" title="ERROR"></a>ERROR</h2><h3 id="ORA-03113"><a href="#ORA-03113" class="headerlink" title="ORA-03113"></a>ORA-03113</h3><blockquote>
 <p><a href="https://blog.csdn.net/zwk626542417/article/details/39667999" target="_blank" rel="noopener">Oracle错误——ORA-03113:通信通道的文件结尾 解决办法</a></p>
 </blockquote>
 <h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>Oracle 中使用 <code>COUNT(DISTINCT xxx)</code> 时出现：</p>
@@ -393,6 +450,12 @@
 <h4 id="TABLE-1"><a href="#TABLE-1" class="headerlink" title="TABLE"></a>TABLE</h4><p><a href="/download/GLOBAL_LOCATION_TEST.sql">GLOBAL_LOCATION_TEST.sql</a></p>
 <p><a href="/download/CUSTOMER_RAW_TEST.sql">CUSTOMER_RAW_TEST.sql</a></p>
 <h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>触发操作中的 SQL 语句没有加 <code>;</code></p>
+<h3 id="ORA-00933"><a href="#ORA-00933" class="headerlink" title="ORA-00933"></a>ORA-00933</h3><h4 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h4><p>union/union all 连接的语句中只能有一个 order by （不包含子查询中的）否则会报 <code>SQL command not properly ended</code>。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> p.productId, p.productTitle, p.price, p.productQty, i.imagesId, i.imagesType, i.imagesPath</span><br><span class="line"><span class="keyword">FROM</span> PRODUCTS p</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> PRODUCTIMAGES <span class="keyword">pi</span> <span class="keyword">ON</span> p.PRODUCTID = pi.PRODUCTID</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> IMAGES i <span class="keyword">ON</span> pi.IMAGESID = i.IMAGESID</span><br><span class="line"><span class="keyword">WHERE</span> p.PRODUCTID = <span class="number">123</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> i.imagesType, i.imagesId </span><br><span class="line"><span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line"><span class="keyword">SELECT</span> p.productId, p.productTitle, p.price, p.productQty, i.imagesId, i.imagesTitle, i.imagesType, i.imagesPath</span><br><span class="line"><span class="keyword">FROM</span> PRODUCTS p</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> PRODUCTIMAGES <span class="keyword">pi</span> <span class="keyword">ON</span> p.PRODUCTID = pi.PRODUCTID</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> IMAGES i <span class="keyword">ON</span> pi.IMAGESID = i.IMAGESID</span><br><span class="line"><span class="keyword">WHERE</span> p.PRODUCTID = <span class="number">456</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> i.imagesType, i.imagesId</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>将 order by 放在子查询中</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    p.productId, p.productTitle, p.price, p.productQty, i.imagesId, i.imagesType, i.imagesPath</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    PRODUCTS p</span><br><span class="line">    <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> (</span><br><span class="line">        <span class="keyword">SELECT</span></span><br><span class="line">            pi.PRODUCTID, img.IMAGESID, img.TYPE, img.imagesTitle, img.imagesType, img.imagesPath</span><br><span class="line">        <span class="keyword">FROM</span></span><br><span class="line">            PRODUCTIMAGES <span class="keyword">pi</span></span><br><span class="line">            <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> IMAGES img <span class="keyword">ON</span> pi.IMAGESID = img.IMAGESID</span><br><span class="line">        <span class="keyword">ORDER</span> <span class="keyword">BY</span> img.TYPE, img.IMAGESID</span><br><span class="line">    ) i <span class="keyword">ON</span> p.PRODUCTID = i.PRODUCTID</span><br><span class="line"><span class="keyword">WHERE</span> p.PRODUCTID = <span class="number">123</span> </span><br><span class="line"><span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    p.productId, p.productTitle, p.price, p.productQty, i.imagesId, i.imagesTitle, i.imagesType, i.imagesPath</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    PRODUCTS p</span><br><span class="line">    <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> (</span><br><span class="line">        <span class="keyword">SELECT</span></span><br><span class="line">            pi.PRODUCTID, img.IMAGESID, img.TYPE, img.imagesTitle, img.imagesType, img.imagesPath</span><br><span class="line">        <span class="keyword">FROM</span></span><br><span class="line">            PRODUCTIMAGES <span class="keyword">pi</span></span><br><span class="line">            <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> IMAGES img <span class="keyword">ON</span> pi.IMAGESID = img.IMAGESID</span><br><span class="line">        <span class="keyword">ORDER</span> <span class="keyword">BY</span> img.TYPE, img.IMAGESID</span><br><span class="line">    ) i <span class="keyword">ON</span> p.PRODUCTID = i.PRODUCTID</span><br><span class="line"><span class="keyword">WHERE</span> p.PRODUCTID = <span class="number">456</span></span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -508,7 +571,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命令"><span class="nav-number">1.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看版本"><span class="nav-number">1.1.</span> <span class="nav-text">查看版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">2.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#批量插入"><span class="nav-number">3.</span> <span class="nav-text">批量插入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GROUP-BY"><span class="nav-number">4.</span> <span class="nav-text">GROUP BY</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺省值-NULL"><span class="nav-number">4.1.</span> <span class="nav-text">缺省值 NULL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EXISTS"><span class="nav-number">5.</span> <span class="nav-text">EXISTS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GROUP-BY-VS-PARTITION-BY"><span class="nav-number">6.</span> <span class="nav-text">GROUP BY VS PARTITION BY</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归查询"><span class="nav-number">7.</span> <span class="nav-text">递归查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comprehensive-examples-in-work"><span class="nav-number">8.</span> <span class="nav-text">Comprehensive examples in work</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#地址树远程搜索"><span class="nav-number">8.1.</span> <span class="nav-text">地址树远程搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">9.</span> <span class="nav-text">触发器（TRIGGER）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ERROR"><span class="nav-number">10.</span> <span class="nav-text">ERROR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ORA-03113"><span class="nav-number">10.1.</span> <span class="nav-text">ORA-03113</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述"><span class="nav-number">10.1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL"><span class="nav-number">10.1.2.</span> <span class="nav-text">SQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TABLE"><span class="nav-number">10.1.3.</span> <span class="nav-text">TABLE</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ORA-04098"><span class="nav-number">10.2.</span> <span class="nav-text">ORA-04098</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-1"><span class="nav-number">10.2.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#触发器"><span class="nav-number">10.2.2.</span> <span class="nav-text">触发器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#触发-SQL"><span class="nav-number">10.2.3.</span> <span class="nav-text">触发 SQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TABLE-1"><span class="nav-number">10.2.4.</span> <span class="nav-text">TABLE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原因"><span class="nav-number">10.2.5.</span> <span class="nav-text">原因</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命令"><span class="nav-number">1.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看版本"><span class="nav-number">1.1.</span> <span class="nav-text">查看版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">2.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#批量插入"><span class="nav-number">3.</span> <span class="nav-text">批量插入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ORDER-BY"><span class="nav-number">4.</span> <span class="nav-text">ORDER BY</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺省值-NULL"><span class="nav-number">4.1.</span> <span class="nav-text">缺省值 NULL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字"><span class="nav-number">4.2.</span> <span class="nav-text">数字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EXISTS"><span class="nav-number">5.</span> <span class="nav-text">EXISTS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GROUP-BY-VS-PARTITION-BY"><span class="nav-number">6.</span> <span class="nav-text">GROUP BY VS PARTITION BY</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归查询"><span class="nav-number">7.</span> <span class="nav-text">递归查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行计划"><span class="nav-number">8.</span> <span class="nav-text">执行计划</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看执行计划的方法"><span class="nav-number">8.1.</span> <span class="nav-text">查看执行计划的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comprehensive-examples-in-work"><span class="nav-number">9.</span> <span class="nav-text">Comprehensive examples in work</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#地址树远程搜索"><span class="nav-number">9.1.</span> <span class="nav-text">地址树远程搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Top-n"><span class="nav-number">9.2.</span> <span class="nav-text">Top n</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分组-Top-n"><span class="nav-number">9.3.</span> <span class="nav-text">分组 Top n</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接查询-vs-子查询"><span class="nav-number">9.4.</span> <span class="nav-text">链接查询 vs 子查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ERROR"><span class="nav-number">10.</span> <span class="nav-text">ERROR</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ORA-03113"><span class="nav-number">10.1.</span> <span class="nav-text">ORA-03113</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述"><span class="nav-number">10.1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL"><span class="nav-number">10.1.2.</span> <span class="nav-text">SQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TABLE"><span class="nav-number">10.1.3.</span> <span class="nav-text">TABLE</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ORA-04098"><span class="nav-number">10.2.</span> <span class="nav-text">ORA-04098</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-1"><span class="nav-number">10.2.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#触发器"><span class="nav-number">10.2.2.</span> <span class="nav-text">触发器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#触发-SQL"><span class="nav-number">10.2.3.</span> <span class="nav-text">触发 SQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TABLE-1"><span class="nav-number">10.2.4.</span> <span class="nav-text">TABLE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原因"><span class="nav-number">10.2.5.</span> <span class="nav-text">原因</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ORA-00933"><span class="nav-number">10.3.</span> <span class="nav-text">ORA-00933</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-2"><span class="nav-number">10.3.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方法"><span class="nav-number">10.3.2.</span> <span class="nav-text">解决方法</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -524,7 +587,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">95</span>
+          <span class="site-state-item-count">96</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

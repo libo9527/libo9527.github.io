@@ -78,7 +78,7 @@
   </entry>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/08/28/Account-Management-in-Git/</url>
+    <url>/2020/09/16/Account-Management-in-Git/</url>
     <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -332,6 +332,13 @@
 <h4 id="systemctl"><a href="#systemctl" class="headerlink" title="systemctl"></a>systemctl</h4><p>systemctl 命令是系统服务管理器指令</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status firewalld.service</span><br></pre></td></tr></table></figure>
 
+<h5 id="systemctl-和-service、chkconfig-命令的关系"><a href="#systemctl-和-service、chkconfig-命令的关系" class="headerlink" title="systemctl 和 service、chkconfig 命令的关系"></a>systemctl 和 service、chkconfig 命令的关系</h5><ul>
+<li>systemctl命令：是一个systemd工具，主要负责控制systemd系统和服务管理器。</li>
+<li>service命令：可以启动、停止、重新启动和关闭系统服务，还可以显示所有系统服务的当前状态。</li>
+<li>chkconfig命令：是管理系统服务(service)的命令行工具。所谓系统服务(service)，就是随系统启动而启动，随系统关闭而关闭的程序。</li>
+</ul>
+<p>systemctl命令是系统服务管理器指令，它实际上将 service 和 chkconfig 这两个命令组合到一起。</p>
+<p><strong>所以systemctl命令是service命令和chkconfig命令的集合和代替。</strong></p>
 <p>如何改ssh端口？</p>
 <h4 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -anlp | grep sshd</span><br></pre></td></tr></table></figure>
 
@@ -341,8 +348,12 @@
 <p>-p, –programs      display PID/Program name for sockets</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@VM-0-10-centos ssh]<span class="comment"># netstat -anlp | grep sshd</span></span><br><span class="line">tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1330/sshd           </span><br><span class="line">tcp        0     36 172.17.0.10:22          113.89.97.17:44541      ESTABLISHED 3044/sshd: root@pts </span><br><span class="line">unix  3      [ ]         STREAM     CONNECTED     16005    1330/sshd            </span><br><span class="line">unix  2      [ ]         DGRAM                    5509550  3044/sshd: root@pts</span><br></pre></td></tr></table></figure>
 
-
-<h4 id="semanage"><a href="#semanage" class="headerlink" title="semanage"></a>semanage</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">semanage port -a -t ssh_port_t -p tcp 10022</span><br></pre></td></tr></table></figure>
+<h4 id="semanage"><a href="#semanage" class="headerlink" title="semanage"></a>semanage</h4><blockquote>
+<p>semanage 命令是用来查询与修改 SELinux 默认目录的安全上下文。</p>
+<p>SELinux(Security-Enhanced Linux) 是一个Linux内核的安全模块，其提供了访问控制安全策略机制，包括了强制访问控制。</p>
+</blockquote>
+<p>添加端口</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">semanage port -a -t ssh_port_t -p tcp 10022</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">semanage port -l | grep ssh</span><br></pre></td></tr></table></figure>
 
@@ -360,16 +371,54 @@
 
 <h3 id="Centos-7-修改-SSH-端口"><a href="#Centos-7-修改-SSH-端口" class="headerlink" title="Centos 7 修改 SSH 端口"></a>Centos 7 修改 SSH 端口</h3><ol>
 <li><p>修改ssh配置文件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /etc/ssh/ssh_config</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
 
-
-
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">--- old ---</span><br><span class="line">#Port 22</span><br><span class="line">--- new ---</span><br><span class="line">Port 22</span><br><span class="line">Port 10022</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<ol start="2">
 <li><p>重启ssh服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
+
+<p>查看端口是否生效</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -anlp | grep sshd</span><br></pre></td></tr></table></figure>
 </li>
-<li></li>
+<li><p>如果开启了防火墙，需要将新端口添加进去</p>
+<p>查看防火墙是否开启</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@VM-0-10-centos ssh]<span class="comment"># firewall-cmd --state</span></span><br><span class="line">not running</span><br></pre></td></tr></table></figure>
+
+<p>开启防火墙</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start firewall.service</span><br></pre></td></tr></table></figure>
+
+<p>防火墙添加端口</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=10022/tcp --permanent</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">--permanent          Set an option permanently</span><br><span class="line">                     Usable <span class="keyword">for</span> options marked with [P]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">                     Load zone default settings [P only] [Z]</span><br><span class="line">--zone=&lt;zone&gt;        Use this zone to <span class="built_in">set</span> or query options, <span class="keyword">else</span> default zone</span><br><span class="line">                     Usable <span class="keyword">for</span> options marked with [Z]</span><br></pre></td></tr></table></figure>
+
+<p>重载防火墙</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果开启了SELinux，也需要将新端口添加进去</p>
+<p>查看 SELinux 状态</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@VM-0-10-centos ~]<span class="comment"># sestatus -v | grep SELinux</span></span><br><span class="line">SELinux status:                 disabled</span><br></pre></td></tr></table></figure>
+
+<p>开启 SELinux</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/selinux/config</span><br><span class="line"></span><br><span class="line">SELINUX=enforcing</span><br></pre></td></tr></table></figure>
+
+<p>重启服务器即可生效</p>
+<p>查看 SELinux 允许的 ssh 端口</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">semanage port -l | grep ssh</span><br></pre></td></tr></table></figure>
+
+<p>SELinux 添加端口</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">semanage port -a -t ssh_port_t -p tcp 10022</span><br></pre></td></tr></table></figure>
+
+<p>然后确认一下是否添加进去</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">semanage port -l | grep ssh</span><br></pre></td></tr></table></figure>
+
+<p>如果成功会输出</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh_port_t          tcp  10022, 22</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
 <h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><blockquote>
 <p><a href="http://www.toimc.com" target="_blank" rel="noopener">www.toimc.com</a></p>
@@ -2993,18 +3042,22 @@ table th:first-of-type {  #first表示表格第一列
 <blockquote>
 <p><a href="https://docs.oracle.com/cd/B19306_01/server.102/b14200/functions001.htm" target="_blank" rel="noopener">SQL Functions - Oracle Help Center</a></p>
 </blockquote>
-<h2 id="NVL"><a href="#NVL" class="headerlink" title="NVL"></a>NVL</h2><p>格式：<strong>NVL(expr1,expr2)</strong></p>
+<h2 id="通用函数"><a href="#通用函数" class="headerlink" title="通用函数"></a>通用函数</h2><h3 id="NVL"><a href="#NVL" class="headerlink" title="NVL"></a>NVL</h3><p>格式：<strong>NVL(expr1,expr2)</strong></p>
 <p>功能：如果第一个参数为空那么显示第二个参数的值，如果第一个参数的值不为空，则显示第一个参数本来的值。</p>
 <p>实例：</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> ename,NVL(comm, <span class="number">-1</span>) <span class="keyword">from</span> emp;</span><br><span class="line"><span class="comment">------------------------------------</span></span><br><span class="line"></span><br><span class="line">ENAME NVL(COMM,-1)</span><br><span class="line"><span class="comment">------- ----</span></span><br><span class="line">SMITH -1</span><br><span class="line">ALLEN 300</span><br><span class="line">WARD 500</span><br><span class="line">JONES -1</span><br><span class="line">MARTIN 1400</span><br><span class="line">BLAKE -1</span><br><span class="line">FORD -1</span><br><span class="line">MILLER -1</span><br></pre></td></tr></table></figure>
 
-<h3 id="空值-NULL-和数字相加"><a href="#空值-NULL-和数字相加" class="headerlink" title="空值 NULL 和数字相加"></a>空值 NULL 和数字相加</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> GLOBAL_LOCATION <span class="keyword">SET</span> POPULATION = NVL(POPULATION, <span class="number">0</span>) + <span class="number">1000</span> <span class="keyword">WHERE</span> <span class="keyword">ID</span> = <span class="number">5022</span></span><br></pre></td></tr></table></figure>
+<h4 id="空值-NULL-和数字相加"><a href="#空值-NULL-和数字相加" class="headerlink" title="空值 NULL 和数字相加"></a>空值 NULL 和数字相加</h4><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> GLOBAL_LOCATION <span class="keyword">SET</span> POPULATION = NVL(POPULATION, <span class="number">0</span>) + <span class="number">1000</span> <span class="keyword">WHERE</span> <span class="keyword">ID</span> = <span class="number">5022</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="SUBSTR"><a href="#SUBSTR" class="headerlink" title="SUBSTR"></a>SUBSTR</h2><p>substr(字符串,截取开始位置,截取长度) //返回截取的字符串</p>
+<h3 id="NVL2"><a href="#NVL2" class="headerlink" title="NVL2"></a>NVL2</h3><p>语法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">NVL2(expr1, expr2, expr3)</span><br></pre></td></tr></table></figure>
+
+<p>如果 expr1 为 NULL 返回 expr2，否则返回 expr3。</p>
+<h2 id="字符函数"><a href="#字符函数" class="headerlink" title="字符函数"></a>字符函数</h2><h3 id="SUBSTR"><a href="#SUBSTR" class="headerlink" title="SUBSTR"></a>SUBSTR</h3><p>substr(字符串,截取开始位置,截取长度) //返回截取的字符串</p>
 <p>substr(‘Hello World’,2,4) //返回结果为 ‘ello’</p>
 <p>substr(‘Hello World’,-3,3)//返回结果为 ‘rld’ 负数(-i)表示截取的开始位置为字符串右端向左数第i个字符</p>
-<h2 id="LENGTH"><a href="#LENGTH" class="headerlink" title="LENGTH"></a>LENGTH</h2><p>length(字符串) //返回字符串长度</p>
-<h2 id="REGEXP-SUBSTR"><a href="#REGEXP-SUBSTR" class="headerlink" title="REGEXP_SUBSTR"></a>REGEXP_SUBSTR</h2><blockquote>
+<h3 id="LENGTH"><a href="#LENGTH" class="headerlink" title="LENGTH"></a>LENGTH</h3><p>length(字符串) //返回字符串长度</p>
+<h3 id="REGEXP-SUBSTR"><a href="#REGEXP-SUBSTR" class="headerlink" title="REGEXP_SUBSTR"></a>REGEXP_SUBSTR</h3><blockquote>
 <p><a href="https://blog.csdn.net/sofeien/article/details/80534557" target="_blank" rel="noopener">oracle如何拆分以逗号分隔的字符串为多行</a></p>
 <p><a href="https://blog.csdn.net/wang_yunj/article/details/51040029" target="_blank" rel="noopener">oracle connect by用法篇</a></p>
 </blockquote>
@@ -3018,7 +3071,7 @@ table th:first-of-type {  #first表示表格第一列
 </ul>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> regexp_substr(<span class="string">'1,7,250'</span>,<span class="string">'[^,]+'</span>,<span class="number">1</span>,<span class="number">1</span>) <span class="keyword">result</span> <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">--- rsult: 1</span></span><br><span class="line"><span class="keyword">select</span> regexp_substr(<span class="string">'1,7,250'</span>,<span class="string">'[^,]+'</span>,<span class="number">1</span>,<span class="number">2</span>) <span class="keyword">result</span> <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">--- rsult: 7</span></span><br><span class="line"><span class="keyword">select</span> regexp_substr(<span class="string">'1,7,250'</span>,<span class="string">'[^,]+'</span>,<span class="number">1</span>,<span class="number">3</span>) <span class="keyword">result</span> <span class="keyword">from</span> dual;</span><br><span class="line"><span class="comment">--- rsult: 250</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> regexp_substr(<span class="string">'1,7,250'</span>,<span class="string">'[^,]+'</span>,<span class="number">1</span>,<span class="keyword">rownum</span>) <span class="keyword">result</span> <span class="keyword">from</span> dual <span class="keyword">connect</span> <span class="keyword">by</span> <span class="keyword">rownum</span> &lt;= regexp_count(<span class="string">'1,7,250'</span>, <span class="string">'[^,]+'</span>);</span><br><span class="line"><span class="comment">--- rsult: </span></span><br><span class="line"><span class="comment">--- 1</span></span><br><span class="line"><span class="comment">--- 7</span></span><br><span class="line"><span class="comment">--- 250</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="LISTAGG"><a href="#LISTAGG" class="headerlink" title="LISTAGG"></a>LISTAGG</h2><blockquote>
+<h3 id="LISTAGG"><a href="#LISTAGG" class="headerlink" title="LISTAGG"></a>LISTAGG</h3><blockquote>
 <p><a href="https://docs.oracle.com/cd/E11882_01/server.112/e41084/functions089.htm" target="_blank" rel="noopener">listagg - Oracle Docs</a></p>
 </blockquote>
 <p>LISTAGG(measure_expr [, ‘delimiter’])  WITHIN GROUP (order_by_clause) [OVER query_partition_clause]</p>
@@ -3030,6 +3083,31 @@ table th:first-of-type {  #first表示表格第一列
 </ul>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">LISTAGG</span> ( ENGLISH_NAME, <span class="string">' &gt; '</span> ) <span class="keyword">WITHIN</span> <span class="keyword">GROUP</span> ( <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ID</span> ) address </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	GLOBAL_LOCATION </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	<span class="keyword">ID</span> <span class="keyword">IN</span> ( <span class="number">1</span>, <span class="number">7</span>, <span class="number">250</span> )</span><br><span class="line">  </span><br><span class="line"><span class="comment">--- result: </span></span><br><span class="line"><span class="comment">--- Asia &gt; China &gt; Shanxi</span></span><br></pre></td></tr></table></figure>
 
+<h3 id="LPAD"><a href="#LPAD" class="headerlink" title="LPAD"></a>LPAD</h3><blockquote>
+<p><strong>pad</strong></p>
+<p>( padding, padded, pads )</p>
+<p>英 [pæd]美 [pæd]</p>
+<ul>
+<li>n. 衬垫；护具；便笺簿；填补</li>
+<li>vi. 步行；放轻脚步走</li>
+<li>vt. <strong>填补</strong>；走</li>
+<li>n. (Pad)人名；(英)帕德(男子教名 Patrick 的昵称)</li>
+</ul>
+<p><a href="https://www.techonthenet.com/oracle/functions/lpad.php" target="_blank" rel="noopener">Oracle / PLSQL: LPAD Function - TechOnTheNet</a></p>
+</blockquote>
+<p>LPAD 函数用一组特定的字符填充字符串的左侧。</p>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">LPAD( string1, padded_length [, pad_string] )</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>string1：被填充的字符串，当 string1 为 NULL 或者空字符串时，LPAD 函数失效。</li>
+<li>padded_length：填充后返回的结果字符串的长度，当长度小于原来字符串的长度时进行截取。</li>
+<li>pad_string：要填充的字符串，默认为空格。</li>
+</ul>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>一般在具有层级关系的查询中，根据层级，在某个字段前会拼接相应数量的空格字符，以便更具有可读性。</p>
+<p>比如在查看执行计划时使用如下语句：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">lpad</span>(<span class="string">' '</span>, <span class="number">5</span> * ( <span class="keyword">LEVEL</span> - <span class="number">1</span> )) || operation operation,</span><br><span class="line">	options,</span><br><span class="line">	object_name,</span><br><span class="line">	<span class="keyword">cost</span>,</span><br><span class="line">	<span class="keyword">position</span> </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	plan_table <span class="keyword">START</span> <span class="keyword">WITH</span> <span class="keyword">id</span> = <span class="number">0</span> <span class="keyword">CONNECT</span> <span class="keyword">BY</span> <span class="keyword">PRIOR</span> <span class="keyword">id</span> = parent_id;</span><br></pre></td></tr></table></figure>
+
+<h3 id="RPAD"><a href="#RPAD" class="headerlink" title="RPAD"></a>RPAD</h3><p>对比参考 LPAD，RPAD是在右侧填充。</p>
 <h2 id="日期处理函数"><a href="#日期处理函数" class="headerlink" title="日期处理函数"></a>日期处理函数</h2><h3 id="ADD-MONTHS"><a href="#ADD-MONTHS" class="headerlink" title="ADD_MONTHS"></a>ADD_MONTHS</h3><blockquote>
 <p><a href="https://docs.oracle.com/cd/B28359_01/server.111/b28286/functions004.htm" target="_blank" rel="noopener">ADD_MONTHS | Oracle</a></p>
 <p><code>ADD_MONTHS</code> returns the date <code>date</code> plus <code>integer</code> months. A month is defined by the session parameter <code>NLS_CALENDAR</code>. The date argument can be a datetime value or any value that can be implicitly converted to <code>DATE</code>. The <code>integer</code> argument can be an integer or any value that can be implicitly converted to an integer. The return type is always <code>DATE</code>, regardless of the datatype of <code>date</code>. If <code>date</code> is the last day of the month or if the resulting month has fewer days than the day component of <code>date</code>, then the result is the last day of the resulting month. Otherwise, the result has the same day component as <code>date</code>.</p>
@@ -4944,6 +5022,22 @@ table th:first-of-type {  #first表示表格第一列
       </tags>
   </entry>
   <entry>
+    <title>Study Notes of Json</title>
+    <url>/2020/09/16/Study-Notes-of-Json/</url>
+    <content><![CDATA[<img data-src="https://i.ytimg.com/vi/0IoG-mSvWSo/maxresdefault.jpg" width="100%"/>
+
+<a id="more"></a>
+
+<h2 id="Fastjson"><a href="#Fastjson" class="headerlink" title="Fastjson"></a>Fastjson</h2><h3 id="json-string-gt-List"><a href="#json-string-gt-List" class="headerlink" title="json string &gt; List"></a>json string &gt; List</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;User&gt; userList = JSON.parseArray(userStr, User<span class="class">.<span class="keyword">class</span>)</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="SimplePropertyPreFilter"><a href="#SimplePropertyPreFilter" class="headerlink" title="SimplePropertyPreFilter"></a>SimplePropertyPreFilter</h3><h4 id="剔除某个属性"><a href="#剔除某个属性" class="headerlink" title="剔除某个属性"></a>剔除某个属性</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 去掉 product 中的 productText 字段</span></span><br><span class="line">SimplePropertyPreFilter filter = <span class="keyword">new</span> SimplePropertyPreFilter();</span><br><span class="line">filter.getExcludes().add(<span class="string">"productText"</span>);</span><br><span class="line">JSON.toJSONString(product, filter);</span><br></pre></td></tr></table></figure>
+
+
+
+
+]]></content>
+  </entry>
+  <entry>
     <title>Study Notes of Maven</title>
     <url>/2020/03/20/Study-Notes-of-Maven/</url>
     <content><![CDATA[<img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Maven_logo.svg/1280px-Maven_logo.svg.png" width="100%"/>
@@ -4970,7 +5064,20 @@ table th:first-of-type {  #first表示表格第一列
 
 <a id="more"></a>
 
-<p>Mybatis 中，参数是List的时候，如果没有用@param指明变量名，在xml中是识别不到此变量名的，但可以使用“list”来代替。</p>
+<h2 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h2><p>单参数，参数类型为 List 时，如果没有用 @param 指明变量名，在 xml 中是识别不到此变量名的，但可以使用 “list” 来代替。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">UserDao</span> </span>&#123;</span><br><span class="line">  <span class="function">List&lt;User&gt; <span class="title">selectByIds</span><span class="params">(List&lt;Long&gt; ids)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectByIds"</span> <span class="attr">resultType</span>=<span class="string">"com.gzhennaxia.entity.User"</span>&gt;</span></span><br><span class="line">	select * from users where id in </span><br><span class="line">  <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">item</span>=<span class="string">"id"</span> <span class="attr">open</span>=<span class="string">"("</span> <span class="attr">separator</span>=<span class="string">","</span> <span class="attr">close</span>=<span class="string">")"</span>&gt;</span></span><br><span class="line">  	#&#123;id&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="延迟加载"><a href="#延迟加载" class="headerlink" title="延迟加载"></a>延迟加载</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>mybatis 的延迟加载是使用动态代理来实现的，如果是在 3.3.0版本以下，采用的是 CGLib 动态代理，之后的版本采用的是 JAVASSIST。</p>
+<h3 id="按需加载"><a href="#按需加载" class="headerlink" title="按需加载"></a>按需加载</h3><blockquote>
+<p>背景：项目中配置了全局的懒加载，但某个接口响应速度太慢，想通过添加缓存层提高响应速度时，发现从 Redis 读取缓存后报错。Google 后发现是 Mybatis 的懒加载导致的。</p>
+</blockquote>
+<p>当全局开启了延迟加载后，如果某条 sql 需要即时加载时，可以使用 fetchType 属性来开启即时加载。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectCarrierName"</span> <span class="attr">resultType</span>=<span class="string">"string"</span>&gt;</span></span><br><span class="line">  SELECT DISTINCT dc.CARRIERNAME</span><br><span class="line">  FROM DEVICECARRIER dc</span><br><span class="line">  INNER JOIN DEVICECARRIERASSN dcr ON dc.CARRIERID = dcr.CARRIERID</span><br><span class="line">  INNER JOIN PRODUCTDEVICES pd ON dcr.DEVICEID = pd.DEVICEID</span><br><span class="line">  WHERE pd.PRODUCTID = #&#123;productId&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"productDetailResult"</span> <span class="attr">type</span>=<span class="string">"com.sst.entity.vo.ProductVo"</span> <span class="attr">autoMapping</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">"productId"</span> <span class="attr">column</span>=<span class="string">"PRODUCTID"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">collection</span> <span class="attr">property</span>=<span class="string">"carrierName"</span> <span class="attr">column</span>=<span class="string">"PRODUCTID"</span> <span class="attr">javaType</span>=<span class="string">"java.util.ArrayList"</span> <span class="attr">ofType</span>=<span class="string">"java.lang.String"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">fetchType</span>=<span class="string">"eager"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">select</span>=<span class="string">"selectCarrierName"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"getProductDetail"</span> <span class="attr">resultMap</span>=<span class="string">"productDetailResult"</span>&gt;</span></span><br><span class="line">  SELECT PRODUCTID, PRODUCTNAME, PRODUCTPRICE FROM PRODUCTS WHERE PRODUCTID = #&#123;productId&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><h3 id="ResultMap-联合主键"><a href="#ResultMap-联合主键" class="headerlink" title="ResultMap 联合主键"></a>ResultMap 联合主键</h3><blockquote>
 <p>联合主键和复合主键的区别：</p>
 <p>联合主键是多个主键联合后形成的主键，常见于多对多关系表中。</p>
@@ -5279,7 +5386,10 @@ table th:first-of-type {  #first表示表格第一列
 
 <a id="more"></a>
 
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">version</span> <span class="keyword">FROM</span> v$<span class="keyword">instance</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h3><blockquote>
+<p><a href="https://blog.csdn.net/huoyin/article/details/1921148" target="_blank" rel="noopener">查看oracle数据库(database)的版本命令_花果山-CSDN博客</a></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> v$<span class="keyword">version</span>;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">version</span> <span class="keyword">from</span> v$<span class="keyword">instance</span>;</span><br><span class="line"><span class="keyword">Select</span> <span class="keyword">version</span> <span class="keyword">FROM</span> Product_component_version   <span class="keyword">Where</span> <span class="keyword">SUBSTR</span>(PRODUCT,<span class="number">1</span>,<span class="number">6</span>)=<span class="string">'Oracle'</span>;</span><br></pre></td></tr></table></figure>
 
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a><a href="https://libo9527.github.io/2019/08/14/SQL-Functions-in-ORACLE/" target="_blank" rel="noopener">函数</a></h2><h2 id="批量插入"><a href="#批量插入" class="headerlink" title="批量插入"></a>批量插入</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">USER</span> ( <span class="keyword">ID</span>, USERNAME, <span class="keyword">PASSWORD</span>, CREATE_DATE, DEL_FLAG ) </span><br><span class="line">  <span class="keyword">SELECT</span> SEQ_USER.nextval, t.* </span><br><span class="line">  <span class="keyword">FROM</span></span><br><span class="line">    (</span><br><span class="line">    <span class="keyword">SELECT</span> <span class="string">'zhangsan'</span> USERNAME, <span class="string">'zxode23'</span> <span class="keyword">PASSWORD</span>, <span class="keyword">SYSDATE</span> CREATE_DATE, <span class="number">0</span> DEL_FLAG <span class="keyword">FROM</span> dual </span><br><span class="line">    <span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line">    <span class="keyword">SELECT</span> <span class="string">'lisi'</span> USERNAME, <span class="string">'9fhd2fd'</span> <span class="keyword">PASSWORD</span>, <span class="keyword">SYSDATE</span> CREATE_DATE, <span class="number">0</span> DEL_FLAG <span class="keyword">FROM</span> dual </span><br><span class="line">    ) t</span><br></pre></td></tr></table></figure>
 
@@ -5288,7 +5398,7 @@ table th:first-of-type {  #first表示表格第一列
 
 <p>union all：不去重</p>
 <p>union：去重</p>
-<h2 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h2><h3 id="缺省值-NULL"><a href="#缺省值-NULL" class="headerlink" title="缺省值 NULL"></a>缺省值 NULL</h3><ul>
+<h2 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h2><h3 id="缺省值-NULL"><a href="#缺省值-NULL" class="headerlink" title="缺省值 NULL"></a>缺省值 NULL</h3><ul>
 <li><p>Oracle 在 Order by 时认为 null 是最大值，所以如果是 ASC 升序则排在最后，DESC 降序则排在最前。</p>
 </li>
 <li><p>可以使用 nulls first 或者 nulls last 语法来控制 NULL 的位置。</p>
@@ -5296,6 +5406,17 @@ table th:first-of-type {  #first表示表格第一列
 
 </li>
 </ul>
+<h3 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">... ORDER BY 1</span><br></pre></td></tr></table></figure>
+
+<p>ORDER BY 后面跟数字，代表排序字段为查询结果字段中的第几个。</p>
+<p>例如</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">ID</span>, <span class="keyword">NAME</span>, EMAIL, PHONE <span class="keyword">FROM</span> SYS_USER <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>等价于</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">ID</span>, <span class="keyword">NAME</span>, EMAIL, PHONE <span class="keyword">FROM</span> SYS_USER <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ID</span></span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="EXISTS"><a href="#EXISTS" class="headerlink" title="EXISTS"></a>EXISTS</h2><blockquote>
 <p><a href="https://docs.oracle.com/cd/B19306_01/server.102/b14200/conditions012.htm" target="_blank" rel="noopener">EXISTS Condition | Oracle</a></p>
 <p>An <code>EXISTS</code> condition tests for existence of rows in a subquery.</p>
@@ -5334,10 +5455,41 @@ table th:first-of-type {  #first表示表格第一列
 <li><p>查询海淀所有的祖先节点</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">ID</span>, PARENT_ID, <span class="keyword">NAME</span> <span class="keyword">FROM</span> GLOBAL_LOCATION <span class="keyword">START</span> <span class="keyword">WITH</span> <span class="keyword">ID</span> = <span class="number">3026</span> <span class="keyword">CONNECT</span> <span class="keyword">BY</span> <span class="keyword">PRIOR</span> PARENT_ID = <span class="keyword">ID</span></span><br></pre></td></tr></table></figure>
 
-
-
 </li>
 </ul>
+<h2 id="执行计划"><a href="#执行计划" class="headerlink" title="执行计划"></a>执行计划</h2><h3 id="查看执行计划的方法"><a href="#查看执行计划的方法" class="headerlink" title="查看执行计划的方法"></a>查看执行计划的方法</h3><ol>
+<li>Explain Plan For SQL<ul>
+<li>不实际执行 SQL 语句，生成的计划未必是真实执行的计划</li>
+<li>必须要有 plan_table 表</li>
+</ul>
+</li>
+<li>SQLPLUS AUTOTRACE<ul>
+<li>除 set autotrace traceably explain 外均实际执行 SQL，但仍未必是真实计划</li>
+<li>必须要有 plan_table</li>
+</ul>
+</li>
+<li>SQL TRACE<ul>
+<li>需要启用 10046 或者 SQL_TRACE</li>
+<li>一般用 tkprof 看的更清楚些，当然 10046 里本身也有执行计划信息</li>
+</ul>
+</li>
+<li>V$SQL 和 V$SQL_PLAN<ul>
+<li>可以查询到多个子游标的计划信息了，但是看起来比较费劲</li>
+</ul>
+</li>
+<li>Enterprise Manager<ul>
+<li>可以图形化显示执行计划，但并非所有环境有 EM 可用</li>
+</ul>
+</li>
+<li>其他第三方工具<ul>
+<li>注意 PL/SQL developer 之类工具 F5 看到的执行计划未必是真实的。</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">lpad</span>(<span class="string">'-'</span>, <span class="number">5</span> * ( <span class="keyword">LEVEL</span> - <span class="number">1</span> )) || operation operation,</span><br><span class="line">	options,</span><br><span class="line">	object_name,</span><br><span class="line">	<span class="keyword">cost</span>,</span><br><span class="line">	<span class="keyword">position</span> </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	plan_table <span class="keyword">START</span> <span class="keyword">WITH</span> <span class="keyword">id</span> = <span class="number">0</span> <span class="keyword">CONNECT</span> <span class="keyword">BY</span> <span class="keyword">PRIOR</span> <span class="keyword">id</span> = parent_id;</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="Comprehensive-examples-in-work"><a href="#Comprehensive-examples-in-work" class="headerlink" title="Comprehensive examples in work"></a>Comprehensive examples in work</h2><h3 id="地址树远程搜索"><a href="#地址树远程搜索" class="headerlink" title="地址树远程搜索"></a>地址树远程搜索</h3><p>需求说明：input 框中输入地址，远程搜索出匹配节点，由于同名地址到存在，要求将完整地址一同显示。</p>
 <p><img data-src="https://i.loli.net/2019/08/10/TCvoScY2A7Vajd8.png" alt="pic"></p>
 <p>表结构：</p>
@@ -5366,7 +5518,19 @@ table th:first-of-type {  #first表示表格第一列
 
 <p><img data-src="https://i.loli.net/2019/08/10/F6XYRiD7Q29OHrE.png" alt="pic"></p>
 <p><img data-src="https://i.loli.net/2019/08/10/NL9lIHtJnXxmC38.png" alt="pic"></p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a href="/2019/09/17/Using-Triggers-in-ORACLE/" title="触发器（TRIGGER）">触发器（TRIGGER）</a></h2><h2 id="ERROR"><a href="#ERROR" class="headerlink" title="ERROR"></a>ERROR</h2><h3 id="ORA-03113"><a href="#ORA-03113" class="headerlink" title="ORA-03113"></a>ORA-03113</h3><blockquote>
+<a href="/2019/09/17/Using-Triggers-in-ORACLE/" title="触发器（TRIGGER）">触发器（TRIGGER）</a>
+
+<h3 id="Top-n"><a href="#Top-n" class="headerlink" title="Top n"></a>Top n</h3><blockquote>
+<p><a href="https://oracle-base.com/articles/misc/top-n-queries" target="_blank" rel="noopener">Top-N Queries</a></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">USERS</span> <span class="keyword">WHERE</span> <span class="keyword">ROWNUM</span> &lt; <span class="number">10</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ID</span> <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="分组-Top-n"><a href="#分组-Top-n" class="headerlink" title="分组 Top n"></a>分组 Top n</h3><blockquote>
+<p><a href="https://blog.csdn.net/weixin_30692143/article/details/95742271" target="_blank" rel="noopener">oracle中分组排序取TOP n_weixin_30692143的博客-CSDN …</a></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	* </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	( <span class="keyword">SELECT</span> u.ID, u.NAME, row_number () <span class="keyword">over</span> ( <span class="keyword">partition</span> <span class="keyword">BY</span> <span class="keyword">GROUP_ID</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">ID</span> ) rn <span class="keyword">FROM</span> <span class="keyword">USERS</span> u ) </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	rn &lt; <span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="链接查询-vs-子查询"><a href="#链接查询-vs-子查询" class="headerlink" title="链接查询 vs 子查询"></a>链接查询 vs 子查询</h3><h2 id="ERROR"><a href="#ERROR" class="headerlink" title="ERROR"></a>ERROR</h2><h3 id="ORA-03113"><a href="#ORA-03113" class="headerlink" title="ORA-03113"></a>ORA-03113</h3><blockquote>
 <p><a href="https://blog.csdn.net/zwk626542417/article/details/39667999" target="_blank" rel="noopener">Oracle错误——ORA-03113:通信通道的文件结尾 解决办法</a></p>
 </blockquote>
 <h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>Oracle 中使用 <code>COUNT(DISTINCT xxx)</code> 时出现：</p>
@@ -5391,6 +5555,12 @@ table th:first-of-type {  #first表示表格第一列
 <h4 id="TABLE-1"><a href="#TABLE-1" class="headerlink" title="TABLE"></a>TABLE</h4><p><a href="/download/GLOBAL_LOCATION_TEST.sql">GLOBAL_LOCATION_TEST.sql</a></p>
 <p><a href="/download/CUSTOMER_RAW_TEST.sql">CUSTOMER_RAW_TEST.sql</a></p>
 <h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>触发操作中的 SQL 语句没有加 <code>;</code></p>
+<h3 id="ORA-00933"><a href="#ORA-00933" class="headerlink" title="ORA-00933"></a>ORA-00933</h3><h4 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h4><p>union/union all 连接的语句中只能有一个 order by （不包含子查询中的）否则会报 <code>SQL command not properly ended</code>。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> p.productId, p.productTitle, p.price, p.productQty, i.imagesId, i.imagesType, i.imagesPath</span><br><span class="line"><span class="keyword">FROM</span> PRODUCTS p</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> PRODUCTIMAGES <span class="keyword">pi</span> <span class="keyword">ON</span> p.PRODUCTID = pi.PRODUCTID</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> IMAGES i <span class="keyword">ON</span> pi.IMAGESID = i.IMAGESID</span><br><span class="line"><span class="keyword">WHERE</span> p.PRODUCTID = <span class="number">123</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> i.imagesType, i.imagesId </span><br><span class="line"><span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line"><span class="keyword">SELECT</span> p.productId, p.productTitle, p.price, p.productQty, i.imagesId, i.imagesTitle, i.imagesType, i.imagesPath</span><br><span class="line"><span class="keyword">FROM</span> PRODUCTS p</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> PRODUCTIMAGES <span class="keyword">pi</span> <span class="keyword">ON</span> p.PRODUCTID = pi.PRODUCTID</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> IMAGES i <span class="keyword">ON</span> pi.IMAGESID = i.IMAGESID</span><br><span class="line"><span class="keyword">WHERE</span> p.PRODUCTID = <span class="number">456</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> i.imagesType, i.imagesId</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>将 order by 放在子查询中</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    p.productId, p.productTitle, p.price, p.productQty, i.imagesId, i.imagesType, i.imagesPath</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    PRODUCTS p</span><br><span class="line">    <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> (</span><br><span class="line">        <span class="keyword">SELECT</span></span><br><span class="line">            pi.PRODUCTID, img.IMAGESID, img.TYPE, img.imagesTitle, img.imagesType, img.imagesPath</span><br><span class="line">        <span class="keyword">FROM</span></span><br><span class="line">            PRODUCTIMAGES <span class="keyword">pi</span></span><br><span class="line">            <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> IMAGES img <span class="keyword">ON</span> pi.IMAGESID = img.IMAGESID</span><br><span class="line">        <span class="keyword">ORDER</span> <span class="keyword">BY</span> img.TYPE, img.IMAGESID</span><br><span class="line">    ) i <span class="keyword">ON</span> p.PRODUCTID = i.PRODUCTID</span><br><span class="line"><span class="keyword">WHERE</span> p.PRODUCTID = <span class="number">123</span> </span><br><span class="line"><span class="keyword">UNION</span> <span class="keyword">ALL</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    p.productId, p.productTitle, p.price, p.productQty, i.imagesId, i.imagesTitle, i.imagesType, i.imagesPath</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    PRODUCTS p</span><br><span class="line">    <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> (</span><br><span class="line">        <span class="keyword">SELECT</span></span><br><span class="line">            pi.PRODUCTID, img.IMAGESID, img.TYPE, img.imagesTitle, img.imagesType, img.imagesPath</span><br><span class="line">        <span class="keyword">FROM</span></span><br><span class="line">            PRODUCTIMAGES <span class="keyword">pi</span></span><br><span class="line">            <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> IMAGES img <span class="keyword">ON</span> pi.IMAGESID = img.IMAGESID</span><br><span class="line">        <span class="keyword">ORDER</span> <span class="keyword">BY</span> img.TYPE, img.IMAGESID</span><br><span class="line">    ) i <span class="keyword">ON</span> p.PRODUCTID = i.PRODUCTID</span><br><span class="line"><span class="keyword">WHERE</span> p.PRODUCTID = <span class="number">456</span></span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>Oracle</category>
