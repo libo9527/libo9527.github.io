@@ -16,7 +16,9 @@ tags:
 
 > [SQL Functions - Oracle Help Center](https://docs.oracle.com/cd/B19306_01/server.102/b14200/functions001.htm)
 
-## NVL
+## 通用函数
+
+### NVL
 
 格式：**NVL(expr1,expr2)**
 
@@ -40,13 +42,25 @@ FORD -1
 MILLER -1
 ```
 
-### 空值 NULL 和数字相加
+#### 空值 NULL 和数字相加
 
 ```sql
 UPDATE GLOBAL_LOCATION SET POPULATION = NVL(POPULATION, 0) + 1000 WHERE ID = 5022
 ```
 
-## SUBSTR
+### NVL2
+
+语法
+
+```
+NVL2(expr1, expr2, expr3)
+```
+
+如果 expr1 为 NULL 返回 expr2，否则返回 expr3。
+
+## 字符函数
+
+### SUBSTR
 
 substr(字符串,截取开始位置,截取长度) //返回截取的字符串
 
@@ -54,11 +68,11 @@ substr('Hello World',2,4) //返回结果为 'ello'
 
 substr('Hello World',-3,3)//返回结果为 'rld' 负数(-i)表示截取的开始位置为字符串右端向左数第i个字符
 
-## LENGTH
+### LENGTH
 
 length(字符串) //返回字符串长度
 
-## REGEXP_SUBSTR
+### REGEXP_SUBSTR
 
 > [oracle如何拆分以逗号分隔的字符串为多行](https://blog.csdn.net/sofeien/article/details/80534557)
 >
@@ -87,7 +101,7 @@ select regexp_substr('1,7,250','[^,]+',1,rownum) result from dual connect by row
 --- 250
 ```
 
-## LISTAGG
+### LISTAGG
 
 > [listagg - Oracle Docs](https://docs.oracle.com/cd/E11882_01/server.112/e41084/functions089.htm)
 
@@ -110,6 +124,54 @@ WHERE
 --- result: 
 --- Asia > China > Shanxi
 ```
+
+### LPAD
+
+> **pad**
+>
+> ( padding, padded, pads )
+>
+> 英 [pæd]美 [pæd]
+>
+> - n. 衬垫；护具；便笺簿；填补
+> - vi. 步行；放轻脚步走
+> - vt. **填补**；走
+> - n. (Pad)人名；(英)帕德(男子教名 Patrick 的昵称)
+>
+> [Oracle / PLSQL: LPAD Function - TechOnTheNet](https://www.techonthenet.com/oracle/functions/lpad.php)
+
+LPAD 函数用一组特定的字符填充字符串的左侧。
+
+#### 语法
+
+```
+LPAD( string1, padded_length [, pad_string] )
+```
+
+- string1：被填充的字符串，当 string1 为 NULL 或者空字符串时，LPAD 函数失效。
+- padded_length：填充后返回的结果字符串的长度，当长度小于原来字符串的长度时进行截取。
+- pad_string：要填充的字符串，默认为空格。
+
+#### 使用
+
+一般在具有层级关系的查询中，根据层级，在某个字段前会拼接相应数量的空格字符，以便更具有可读性。
+
+比如在查看执行计划时使用如下语句：
+
+```sql
+SELECT
+	lpad(' ', 5 * ( LEVEL - 1 )) || operation operation,
+	options,
+	object_name,
+	cost,
+	position 
+FROM
+	plan_table START WITH id = 0 CONNECT BY PRIOR id = parent_id;
+```
+
+### RPAD
+
+对比参考 LPAD，RPAD是在右侧填充。
 
 ## 日期处理函数
 

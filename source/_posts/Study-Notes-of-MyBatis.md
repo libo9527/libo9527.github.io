@@ -13,7 +13,58 @@ tags:
 
 <!-- more -->
 
-Mybatis 中，参数是List的时候，如果没有用@param指明变量名，在xml中是识别不到此变量名的，但可以使用“list”来代替。
+## 参数传递
+
+单参数，参数类型为 List 时，如果没有用 @param 指明变量名，在 xml 中是识别不到此变量名的，但可以使用 “list” 来代替。
+
+```java
+interface UserDao {
+  List<User> selectByIds(List<Long> ids);
+}
+```
+
+```xml
+<select id="selectByIds" resultType="com.gzhennaxia.entity.User">
+	select * from users where id in 
+  <foreach collection="list" item="id" open="(" separator="," close=")">
+  	#{id}
+  </foreach>
+</select>
+```
+
+## 延迟加载
+
+### 原理
+
+mybatis 的延迟加载是使用动态代理来实现的，如果是在 3.3.0版本以下，采用的是 CGLib 动态代理，之后的版本采用的是 JAVASSIST。
+
+### 按需加载
+
+> 背景：项目中配置了全局的懒加载，但某个接口响应速度太慢，想通过添加缓存层提高响应速度时，发现从 Redis 读取缓存后报错。Google 后发现是 Mybatis 的懒加载导致的。
+
+当全局开启了延迟加载后，如果某条 sql 需要即时加载时，可以使用 fetchType 属性来开启即时加载。
+
+```xml
+<select id="selectCarrierName" resultType="string">
+  SELECT DISTINCT dc.CARRIERNAME
+  FROM DEVICECARRIER dc
+  INNER JOIN DEVICECARRIERASSN dcr ON dc.CARRIERID = dcr.CARRIERID
+  INNER JOIN PRODUCTDEVICES pd ON dcr.DEVICEID = pd.DEVICEID
+  WHERE pd.PRODUCTID = #{productId}
+</select>
+<resultMap id="productDetailResult" type="com.sst.entity.vo.ProductVo" autoMapping="true">
+  <id property="productId" column="PRODUCTID"/>
+  <collection property="carrierName" column="PRODUCTID" javaType="java.util.ArrayList" ofType="java.lang.String"
+              fetchType="eager"
+              select="selectCarrierName"/>
+</resultMap>
+
+<select id="getProductDetail" resultMap="productDetailResult">
+  SELECT PRODUCTID, PRODUCTNAME, PRODUCTPRICE FROM PRODUCTS WHERE PRODUCTID = #{productId}
+</select>
+```
+
+
 
 ## Others
 

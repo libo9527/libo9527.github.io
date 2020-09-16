@@ -14,8 +14,12 @@ tags: Oracle
 
 ### 查看版本
 
+> [查看oracle数据库(database)的版本命令_花果山-CSDN博客](https://blog.csdn.net/huoyin/article/details/1921148)
+
 ```sql
-SELECT version FROM v$instance;
+select * from v$version;
+select version from v$instance;
+Select version FROM Product_component_version   Where SUBSTR(PRODUCT,1,6)='Oracle';
 ```
 
 ## [函数](https://libo9527.github.io/2019/08/14/SQL-Functions-in-ORACLE/)
@@ -50,7 +54,7 @@ union all：不去重
 
 union：去重
 
-## GROUP BY
+## ORDER BY
 
 ### 缺省值 NULL
 
@@ -64,6 +68,28 @@ union：去重
   ---将 null 始终放在最后
   SELECT * FROM TABLE ORDER BY COLUMN nulls last
   ```
+
+### 数字
+
+```sql
+... ORDER BY 1
+```
+
+ORDER BY 后面跟数字，代表排序字段为查询结果字段中的第几个。
+
+例如
+
+```sql
+SELECT ID, NAME, EMAIL, PHONE FROM SYS_USER ORDER BY 1
+```
+
+等价于
+
+```sql
+SELECT ID, NAME, EMAIL, PHONE FROM SYS_USER ORDER BY ID
+```
+
+
 
 ## EXISTS
 
@@ -180,7 +206,38 @@ eg：
   SELECT ID, PARENT_ID, NAME FROM GLOBAL_LOCATION START WITH ID = 3026 CONNECT BY PRIOR PARENT_ID = ID
   ```
 
-  
+## 执行计划
+
+### 查看执行计划的方法
+
+1. Explain Plan For SQL
+   - 不实际执行 SQL 语句，生成的计划未必是真实执行的计划
+   - 必须要有 plan_table 表
+2. SQLPLUS AUTOTRACE
+   - 除 set autotrace traceably explain 外均实际执行 SQL，但仍未必是真实计划
+   - 必须要有 plan_table
+3. SQL TRACE
+   - 需要启用 10046 或者 SQL_TRACE
+   - 一般用 tkprof 看的更清楚些，当然 10046 里本身也有执行计划信息
+4. V\$SQL 和 V\$SQL_PLAN
+   - 可以查询到多个子游标的计划信息了，但是看起来比较费劲
+5. Enterprise Manager
+   - 可以图形化显示执行计划，但并非所有环境有 EM 可用
+6. 其他第三方工具
+   - 注意 PL/SQL developer 之类工具 F5 看到的执行计划未必是真实的。
+
+```sql
+SELECT
+	lpad('-', 5 * ( LEVEL - 1 )) || operation operation,
+	options,
+	object_name,
+	cost,
+	position 
+FROM
+	plan_table START WITH id = 0 CONNECT BY PRIOR id = parent_id;
+```
+
+
 
 ## Comprehensive examples in work
 
@@ -275,7 +332,30 @@ FROM
 
 ![pic](https://i.loli.net/2019/08/10/NL9lIHtJnXxmC38.png)
 
-## {% post_link Using-Triggers-in-ORACLE 触发器（TRIGGER） %}
+{% post_link Using-Triggers-in-ORACLE 触发器（TRIGGER） %}
+
+### Top n
+
+> [Top-N Queries](https://oracle-base.com/articles/misc/top-n-queries)
+
+```sql
+SELECT * FROM USERS WHERE ROWNUM < 10 ORDER BY ID DESC
+```
+
+### 分组 Top n
+
+> [oracle中分组排序取TOP n_weixin_30692143的博客-CSDN ...](https://blog.csdn.net/weixin_30692143/article/details/95742271)
+
+```sql
+SELECT
+	* 
+FROM
+	( SELECT u.ID, u.NAME, row_number () over ( partition BY GROUP_ID ORDER BY ID ) rn FROM USERS u ) 
+WHERE
+	rn < 5
+```
+
+### 链接查询 vs 子查询
 
 ## ERROR
 
@@ -361,4 +441,60 @@ INSERT INTO "CUSTOMER_RAW_TEST"("ID", "DATA", "SOURCE_TYPE_ID", "STATUS", "CREAT
 #### 原因
 
 触发操作中的 SQL 语句没有加 `;`
+
+### ORA-00933
+
+#### 问题描述
+
+union/union all 连接的语句中只能有一个 order by （不包含子查询中的）否则会报 `SQL command not properly ended`。
+
+```sql
+SELECT p.productId, p.productTitle, p.price, p.productQty, i.imagesId, i.imagesType, i.imagesPath
+FROM PRODUCTS p
+LEFT JOIN PRODUCTIMAGES pi ON p.PRODUCTID = pi.PRODUCTID
+LEFT JOIN IMAGES i ON pi.IMAGESID = i.IMAGESID
+WHERE p.PRODUCTID = 123
+ORDER BY i.imagesType, i.imagesId 
+UNION ALL
+SELECT p.productId, p.productTitle, p.price, p.productQty, i.imagesId, i.imagesTitle, i.imagesType, i.imagesPath
+FROM PRODUCTS p
+LEFT JOIN PRODUCTIMAGES pi ON p.PRODUCTID = pi.PRODUCTID
+LEFT JOIN IMAGES i ON pi.IMAGESID = i.IMAGESID
+WHERE p.PRODUCTID = 456
+ORDER BY i.imagesType, i.imagesId
+```
+
+#### 解决方法
+
+将 order by 放在子查询中
+
+```sql
+SELECT
+    p.productId, p.productTitle, p.price, p.productQty, i.imagesId, i.imagesType, i.imagesPath
+FROM
+    PRODUCTS p
+    LEFT JOIN (
+        SELECT
+            pi.PRODUCTID, img.IMAGESID, img.TYPE, img.imagesTitle, img.imagesType, img.imagesPath
+        FROM
+            PRODUCTIMAGES pi
+            LEFT JOIN IMAGES img ON pi.IMAGESID = img.IMAGESID
+        ORDER BY img.TYPE, img.IMAGESID
+    ) i ON p.PRODUCTID = i.PRODUCTID
+WHERE p.PRODUCTID = 123 
+UNION ALL
+SELECT
+    p.productId, p.productTitle, p.price, p.productQty, i.imagesId, i.imagesTitle, i.imagesType, i.imagesPath
+FROM
+    PRODUCTS p
+    LEFT JOIN (
+        SELECT
+            pi.PRODUCTID, img.IMAGESID, img.TYPE, img.imagesTitle, img.imagesType, img.imagesPath
+        FROM
+            PRODUCTIMAGES pi
+            LEFT JOIN IMAGES img ON pi.IMAGESID = img.IMAGESID
+        ORDER BY img.TYPE, img.IMAGESID
+    ) i ON p.PRODUCTID = i.PRODUCTID
+WHERE p.PRODUCTID = 456
+```
 

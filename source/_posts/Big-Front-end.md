@@ -247,6 +247,16 @@ systemctl 命令是系统服务管理器指令
 systemctl status firewalld.service
 ```
 
+##### systemctl 和 service、chkconfig 命令的关系
+
+- systemctl命令：是一个systemd工具，主要负责控制systemd系统和服务管理器。
+- service命令：可以启动、停止、重新启动和关闭系统服务，还可以显示所有系统服务的当前状态。
+- chkconfig命令：是管理系统服务(service)的命令行工具。所谓系统服务(service)，就是随系统启动而启动，随系统关闭而关闭的程序。
+
+systemctl命令是系统服务管理器指令，它实际上将 service 和 chkconfig 这两个命令组合到一起。
+
+**所以systemctl命令是service命令和chkconfig命令的集合和代替。**
+
 如何改ssh端口？
 
 #### netstat
@@ -271,8 +281,13 @@ unix  3      [ ]         STREAM     CONNECTED     16005    1330/sshd
 unix  2      [ ]         DGRAM                    5509550  3044/sshd: root@pts 
 ```
 
-
 #### semanage
+
+> semanage 命令是用来查询与修改 SELinux 默认目录的安全上下文。
+>
+> SELinux(Security-Enhanced Linux) 是一个Linux内核的安全模块，其提供了访问控制安全策略机制，包括了强制访问控制。
+
+添加端口
 
 ```bash
 semanage port -a -t ssh_port_t -p tcp 10022
@@ -318,14 +333,109 @@ lvm2
 1. 修改ssh配置文件
 
    ```bash
-   vi /etc/ssh/ssh_config
+   vi /etc/ssh/sshd_config
    ```
 
-   
+   ```
+   --- old ---
+   #Port 22
+   --- new ---
+   Port 22
+   Port 10022
+   ```
 
 2. 重启ssh服务
 
-3. 
+   ```bash
+   service sshd restart
+   ```
+
+   查看端口是否生效
+
+   ```bash
+   netstat -anlp | grep sshd
+   ```
+
+3. 如果开启了防火墙，需要将新端口添加进去
+
+   查看防火墙是否开启
+
+   ```bash
+   [root@VM-0-10-centos ssh]# firewall-cmd --state
+   not running
+   ```
+
+   开启防火墙
+
+   ```bash
+   systemctl start firewall.service
+   ```
+
+   防火墙添加端口
+
+   ```bash
+   firewall-cmd --zone=public --add-port=10022/tcp --permanent
+   ```
+
+   ```bash
+     --permanent          Set an option permanently
+                          Usable for options marked with [P]
+   ```
+
+   ```bash
+                          Load zone default settings [P only] [Z]
+     --zone=<zone>        Use this zone to set or query options, else default zone
+                          Usable for options marked with [Z]
+   ```
+
+   重载防火墙
+
+   ```bash
+   firewall-cmd --reload
+   ```
+
+4. 如果开启了SELinux，也需要将新端口添加进去
+
+   查看 SELinux 状态
+
+   ```bash
+   [root@VM-0-10-centos ~]# sestatus -v | grep SELinux
+   SELinux status:                 disabled
+   ```
+
+   开启 SELinux
+
+   ```bash
+   vim /etc/selinux/config
+   
+   SELINUX=enforcing
+   ```
+
+   重启服务器即可生效
+
+   查看 SELinux 允许的 ssh 端口
+
+   ```bash
+   semanage port -l | grep ssh
+   ```
+
+   SELinux 添加端口
+
+   ```bash
+   semanage port -a -t ssh_port_t -p tcp 10022
+   ```
+
+   然后确认一下是否添加进去
+
+   ```bash
+   semanage port -l | grep ssh
+   ```
+
+   如果成功会输出
+
+   ```bash
+   ssh_port_t          tcp  10022, 22
+   ```
 
 ## Docker
 
