@@ -216,6 +216,7 @@ eg：
 2. SQLPLUS AUTOTRACE
    - 除 set autotrace traceably explain 外均实际执行 SQL，但仍未必是真实计划
    - 必须要有 plan_table
+   - 它只是简单的在后台执行 "explain plan" 并且调用 "dbms_xplan.display"；
 3. SQL TRACE
    - 需要启用 10046 或者 SQL_TRACE
    - 一般用 tkprof 看的更清楚些，当然 10046 里本身也有执行计划信息
