@@ -9,7 +9,7 @@ categories:
 tags:
 ---
 
-<img src="cover" width="100%"/>
+<img src="https://reactchina.sxlcdn.com/uploads/default/original/2X/7/781984d9a4005d8e930f3e4d6a662077481ee48b.png" width="100%"/>
 
 <!-- more -->
 

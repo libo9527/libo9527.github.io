@@ -9,7 +9,7 @@ categories:
 tags:
 ---
 
-<img src="cover" width="100%"/>
+<img src="https://i.ytimg.com/vi/gaGEt0oYpBA/maxresdefault.jpg" width="100%"/>
 
 <!-- more -->
 
