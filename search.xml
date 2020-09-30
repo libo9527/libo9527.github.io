@@ -77,134 +77,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Account Management in Git</title>
-    <url>/2020/09/18/Account-Management-in-Git/</url>
-    <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
-
-<a id="more"></a>
-
-<h2 id="Git-中-GitHub-账号的管理"><a href="#Git-中-GitHub-账号的管理" class="headerlink" title="Git 中 GitHub 账号的管理"></a>Git 中 GitHub 账号的管理</h2><p>本文记录关于 Git 中管理账号时可能遇到的一些问题，使用的远程仓库托管平台是 GitHub。</p>
-<h3 id="单账号管理"><a href="#单账号管理" class="headerlink" title="单账号管理"></a>单账号管理</h3><blockquote>
-<p>假设 GitHub 的账号信息如下：</p>
-<p>账号：username</p>
-<p>密码：password</p>
-<p>假设 GitHub 中托管的仓库地址如下：</p>
-<p>HTTPS：<code>https://github.com/username/repository.git</code></p>
-<p>SSH：<code>git@github.com:username/repository.git</code></p>
-</blockquote>
-<p>Git 中链接远程仓库有 HTTPS 和 SSH 两种方式，HTTPS 相对比较简单，而 SSH 则具有更高的安全性。</p>
-<h4 id="HTTPS-方式"><a href="#HTTPS-方式" class="headerlink" title="HTTPS 方式"></a>HTTPS 方式</h4><p>使用 HTTPS 的方式时，会遇到每次提交都要输入 GitHub 的账号密码的问题，可以通过将账号密码缓存到内存或者保存到本地磁盘来解决这个问题。具体详情可查看【<a href="https://git-scm.com/book/zh/v2/Git-工具-凭证存储" target="_blank" rel="noopener">凭证存储 - Git</a>】</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 将账号密码保存到磁盘，默认存储位置是 ~/.git-credentials</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --global credential.helper store</span></span><br></pre></td></tr></table></figure>
-
-<p>但这种方式是明文存储的，查看 <code>~/.git-credentials</code> 可以看到具体的账号信息。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;username:password@github.com</span><br></pre></td></tr></table></figure>
-
-<h4 id="SSH-方式"><a href="#SSH-方式" class="headerlink" title="SSH 方式"></a>SSH 方式</h4><p>通过 SSH 方式链接 GitHub 时需要通过密钥来实现，所以 SSH 具有比较高的安全性。</p>
-<ol>
-<li><p>生成密钥对</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> -t 指定密钥类型，默认是 rsa</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -C 注释</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -f 指定文件名，默认是 ~/.ssh/id_rsa（私钥）和 ~/.ssh/id_rsa.pub（公钥）</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ssh-keygen -t rsa -C <span class="string">"username@email.com"</span></span></span><br></pre></td></tr></table></figure>
-
-<p>生成密钥时会提示让输入密码，此时的密码是以后 Git 提交时需要输入的密码，可以不填直接回车，那在提交的时候就不需要再输入密码了。</p>
-</li>
-<li><p>GitHub 中添加公钥</p>
-<p>登陆 GitHub，在 <code>Personal settings &gt; SSH and GPG keys &gt; New SSH key</code> 将 <code>~/.ssh/id_rsa.pub</code> 文件中公钥添加进去。</p>
-</li>
-<li><p>设置本地仓库中的远程仓库地址为 SSH 格式</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git remote <span class="built_in">set</span>-url origin <span class="string">"git@github.com:username/repository.git"</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config remote.origin.url <span class="string">"git@github.com:username/repository.git"</span></span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h3 id="多账号管理"><a href="#多账号管理" class="headerlink" title="多账号管理"></a>多账号管理</h3><blockquote>
-<p>假设 GitHub 的账号信息如下：</p>
-<p>账号A</p>
-<ul>
-<li>账号：usernameA</li>
-<li>密码：passwordA</li>
-<li>邮箱：<a href="mailto:usernameA@163.com">usernameA@163.com</a></li>
-</ul>
-<p>账号B</p>
-<ul>
-<li>账号：usernameB</li>
-<li>密码：passwordB</li>
-<li>邮箱：<a href="mailto:usernameB@163.com">usernameB@163.com</a></li>
-</ul>
-<p>假设 GitHub 中托管的仓库地址如下：</p>
-<p>仓库A</p>
-<ul>
-<li><p>HTTPS：<code>https://github.com/usernameA/repositoryA.git</code></p>
-</li>
-<li><p>SSH：<code>git@github.com:usernameA/repositoryA.git</code></p>
-</li>
-</ul>
-<p>仓库B</p>
-<ul>
-<li><p>HTTPS：<code>https://github.com/usernameB/repositoryB.git</code></p>
-</li>
-<li><p>SSH：<code>git@github.com:usernameB/repositoryB.git</code></p>
-</li>
-</ul>
-</blockquote>
-<h4 id="账号切换"><a href="#账号切换" class="headerlink" title="账号切换"></a>账号切换</h4><blockquote>
-<p>假设账号A和账号B都有权限管理仓库A，此时想将本地仓库原本的账号A切换到账号B。</p>
-</blockquote>
-<ol>
-<li><p>查看本机是否缓存或保存了账号A的账号信息</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看 <span class="built_in">local</span> 级别的配置中是否有关于 credential.helper 的配置</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> --get credential.helper</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看 global 级别的配置中是否有关于 credential.helper 的配置</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --global --get credential.helper</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看 system 级别的配置中是否有关于 credential.helper 的配置</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --system --get credential.helper</span></span><br></pre></td></tr></table></figure>
-
-<p>如果返回结果为：<code>cache</code> /  <code>store</code> /  <code>osxkeychain</code> /  <code>winstore</code> 则表示本地存在账号A的账号信息</p>
-</li>
-<li><p>如果存在账号A的信息则清除掉其账号信息</p>
-<p>删除 <code>~/.git-credentials</code> 文件中账号A的账号信息</p>
-</li>
-<li><p>切换本地仓库中的 Git 用户名和邮箱</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.name <span class="string">"usernameB"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.email <span class="string">"usernameB@163.com"</span></span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将账号B的账号信息保存到本机</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> credential.helper store</span></span><br></pre></td></tr></table></figure>
-
-<p>下一次提交时会提示让输入用户名和密码，输入账号B的用户名和密码即可。</p>
-</li>
-</ol>
-<p>经过以上 4 步之后就完成了账号的切换工作，之后再提交时使用的就是账号B了。</p>
-<h4 id="多账号共存"><a href="#多账号共存" class="headerlink" title="多账号共存"></a>多账号共存</h4><p>以上情况都是本机中只存在一个 GitHub 账号，如果需要使用不同的账号管理不同的仓库时则需要对每个仓库和账号进行相应的配置以达到理想的匹配作用。</p>
-<h5 id="HTTPS-方式-1"><a href="#HTTPS-方式-1" class="headerlink" title="HTTPS 方式"></a>HTTPS 方式</h5><p>如果想要本机中同时保存账号A和账号B的账号信息，对于本地仓库A，可能随时想要选用账号A或账号B中的一个来提交时。只需要在本地仓库的远程仓库地址中加上相应的用户名，然后再将 Git 用户名和密码切换到相应的用户即可。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 先设置保存密码的配置</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> credential.helper store</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 想要切换到账号A时</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote <span class="built_in">set</span>-url origin <span class="string">"https://usernameA@github.com/usernameA/repositoryA.git"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.name <span class="string">"usernameA"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.email <span class="string">"usernameA@163.com"</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 想要切换到账号B时</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote <span class="built_in">set</span>-url origin <span class="string">"https://usernameB@github.com/usernameA/repositoryA.git"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.name <span class="string">"usernameB"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.email <span class="string">"usernameB@163.com"</span></span></span><br></pre></td></tr></table></figure>
-
-<h5 id="SSH-方式-1"><a href="#SSH-方式-1" class="headerlink" title="SSH 方式"></a>SSH 方式</h5><blockquote>
-<p>假设要通过 SSH 的方式来让账户A和账户B再本地仓库A中自由的切换</p>
-</blockquote>
-<p>使用 SSH 方式时需要对不用的账号生成不同的密钥，并配置账号与 GitHub 域名的匹配信息。</p>
-<ol>
-<li><p>生成各自密钥</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> -t 指定密钥类型，默认是 rsa</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -C 注释</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -f 指定文件名，默认是 ~/.ssh/id_rsa（私钥）和 ~/.ssh/id_rsa.pub（公钥）</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ssh-keygen -t rsa -C <span class="string">"usernameA@email.com"</span> -f <span class="string">"id_rsa_A"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ssh-keygen -t rsa -C <span class="string">"usernameB@email.com"</span> -f <span class="string">"id_rsa_B"</span></span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将密钥全部添加到 SSH Agent 中</p>
-<blockquote>
-<p>部分终端中需要手动开启 ssh-agent</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh-agent bash</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh-add ~/.ssh/id_rsa_A</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ssh-add ~/.ssh/id_rsa_B</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加配置文件 <code>~/.ssh/config</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> usernameA</span></span><br><span class="line">Host hostA #别名，之后配置本地仓库的远程仓库地址时需要使用</span><br><span class="line">  HostName github.com</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa</span><br><span class="line">  User usernameA</span><br><span class="line"><span class="meta">#</span><span class="bash"> usernameB</span></span><br><span class="line">Host hostB</span><br><span class="line">  HostName github.com</span><br><span class="line">  IdentityFile ~/.ssh/id_rea2</span><br><span class="line">  User usernameB</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>远程仓库托管平台中添加对应的公钥</p>
-<p>登陆相应的远程仓库托管平台，将公钥添加上去。</p>
-</li>
-<li><p>修改本地仓库对应的远程仓库地址</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 想要切换到账户A时</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote <span class="built_in">set</span>-url origin <span class="string">"git@hostA:usernameA/repositoryA.git"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.name <span class="string">"usernameA"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.email <span class="string">"usernameA@163.com"</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 想要切换到账号B时</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote <span class="built_in">set</span>-url origin <span class="string">"git@hostB:usernameA/repositoryA.git"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.name <span class="string">"usernameB"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.email <span class="string">"usernameB@163.com"</span></span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Adapting height in Mini-Program of WeChat</title>
     <url>/2019/11/19/Adapting-height-in-Mini-Program-of-WeChat/</url>
     <content><![CDATA[<img data-src="cover" width="100%"/>
@@ -254,7 +126,7 @@
   <entry>
     <title>Big Front-end</title>
     <url>/2020/08/18/Big-Front-end/</url>
-    <content><![CDATA[<img data-src="cover" width="100%"/>
+    <content><![CDATA[<img data-src="https://reactchina.sxlcdn.com/uploads/default/original/2X/7/781984d9a4005d8e930f3e4d6a662077481ee48b.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -923,6 +795,77 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Design Pattern - Template Method</title>
+    <url>/2020/08/26/Design-Pattern-Template-Method/</url>
+    <content><![CDATA[<img data-src="data:image/png;base64,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" width="100%"/>
+
+<a id="more"></a>
+
+<h2 id="模版方法模式"><a href="#模版方法模式" class="headerlink" title="模版方法模式"></a>模版方法模式</h2><blockquote>
+<p>模版方法模式在一个方法中定义一个算法的骨架，而将一些步骤延迟到子类中。模版方法使得子类可以在不改变算法结构的情况下，重新定义算法中的某些步骤。——《Head First 设计模式（中文版）》</p>
+</blockquote>
+<h3 id="简单例子"><a href="#简单例子" class="headerlink" title="简单例子"></a>简单例子</h3><p>冲泡咖啡和茶</p>
+<p>咖啡冲泡步骤：</p>
+<ol>
+<li>把水煮沸</li>
+<li>用沸水冲泡咖啡</li>
+<li>把咖啡倒进杯子</li>
+<li>加糖和牛奶</li>
+</ol>
+<p>茶冲泡步骤：</p>
+<ol>
+<li>把水煮沸</li>
+<li>用沸水浸泡茶叶</li>
+<li>把咖啡倒进杯子</li>
+<li>加柠檬</li>
+</ol>
+<p>把共有的步骤及其顺序抽象为抽象类中的模版方法，可以共享的步骤放在抽象类中作为普通方法，需要子类实现的作为抽象方法。</p>
+<h4 id="抽象类-CaffeineBerverage"><a href="#抽象类-CaffeineBerverage" class="headerlink" title="抽象类 CaffeineBerverage"></a>抽象类 CaffeineBerverage</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">CaffeineBeverage</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">prepareRecipe</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    boilWater();</span><br><span class="line">    brew();</span><br><span class="line">    pourInCup();</span><br><span class="line">    addCondiments();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">brew</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">addCondiments</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">boilWater</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Boiling water"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pourInCup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Pouring into cup"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="咖啡实现类"><a href="#咖啡实现类" class="headerlink" title="咖啡实现类"></a>咖啡实现类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Coffee</span> <span class="keyword">extends</span> <span class="title">CaffeineBeverage</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">brew</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Steeping the coffee"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addCondiments</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Adding Sugar and Milk"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="茶实现类"><a href="#茶实现类" class="headerlink" title="茶实现类"></a>茶实现类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tea</span> <span class="keyword">extends</span> <span class="title">CaffeineBeverage</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">brew</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Steeping the tea"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addCondiments</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Adding Lemon"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="测试类"><a href="#测试类" class="headerlink" title="测试类"></a>测试类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    CaffeineBeverage coffee = <span class="keyword">new</span> Coffee();</span><br><span class="line">    coffee.prepareRecipe();</span><br><span class="line">    System.out.println(<span class="string">"--------------------"</span>);</span><br><span class="line">    CaffeineBeverage tea = <span class="keyword">new</span> Tea();</span><br><span class="line">    tea.prepareRecipe();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Boiling water</span><br><span class="line">Steeping the cffee</span><br><span class="line">Pouring into cup</span><br><span class="line">Adding Sugar and Milk</span><br><span class="line">--------------------</span><br><span class="line">Boiling water</span><br><span class="line">Steeping the tea</span><br><span class="line">Pouring into cup</span><br><span class="line">Adding Lemon</span><br></pre></td></tr></table></figure>
+
+<h3 id="Java-API-中的例子"><a href="#Java-API-中的例子" class="headerlink" title="Java API 中的例子"></a>Java API 中的例子</h3><p><code>java.io.InputStream</code> 的 <code>read()</code> 方法，是抽象方法，需要由子类实现，而这个方法又会被 <code>read(byte b[], int off, int len)</code> 模版方法使用。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> java.io;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">InputStream</span> <span class="keyword">implements</span> <span class="title">Closeable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">(<span class="keyword">byte</span> b[], <span class="keyword">int</span> off, <span class="keyword">int</span> len)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (b == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (off &lt; <span class="number">0</span> || len &lt; <span class="number">0</span> || len &gt; b.length - off) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (len == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> c = read();</span><br><span class="line">    <span class="keyword">if</span> (c == -<span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    b[off] = (<span class="keyword">byte</span>)c;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">for</span> (; i &lt; len ; i++) &#123;</span><br><span class="line">        c = read(); <span class="comment">// 需要子类（例如 FileInputStream/ObjectInputStream）实现的方法！</span></span><br><span class="line">        <span class="keyword">if</span> (c == -<span class="number">1</span>) &#123;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        b[off + i] = (<span class="keyword">byte</span>)c;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException ee) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> java.io;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileInputStream</span> <span class="keyword">extends</span> <span class="title">InputStream</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> read0();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">read0</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> java.io;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectInputStream</span> <span class="keyword">extends</span> <span class="title">InputStream</span> <span class="keyword">implements</span> <span class="title">ObjectInput</span>, <span class="title">ObjectStreamConstants</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> BlockDataInputStream bin;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> bin.read();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">BlockDataInputStream</span> <span class="keyword">extends</span> <span class="title">InputStream</span> <span class="keyword">implements</span> <span class="title">DataInput</span>    </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (blkmode) &#123;</span><br><span class="line">        <span class="keyword">if</span> (pos == end) &#123;</span><br><span class="line">          refill();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (end &gt;= <span class="number">0</span>) ? (buf[pos++] &amp; <span class="number">0xFF</span>) : -<span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> in.read();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Java-EE-API-中的例子"><a href="#Java-EE-API-中的例子" class="headerlink" title="Java EE API 中的例子"></a>Java EE API 中的例子</h3><blockquote>
+<p><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1304265949708322" target="_blank" rel="noopener">Servlet入门- 廖雪峰的官方网站</a></p>
+</blockquote>
+<p>WEB 开发中常用 <code>HttpServlet</code> 里面的 <code>service</code> 方法处理请求，<code>service</code> 方法里面定义了调用流程，根据客户端调用的不同方式调用不同的方法，比如 <code>doGet</code>，<code>doPost</code>，<code>doDelete</code> 等实现 restful 调用，具体的 <code>doGet</code>，<code>doPost</code> 方法实现可以在自定义的 <code>Servlet</code> 中进行重写。 </p>
+<p>但需要注意的是 <code>doGet</code>，<code>doPost</code>，<code>doDelete</code> 等并没有被定义为抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> javax.servlet.http;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpServlet</span> <span class="keyword">extends</span> <span class="title">GenericServlet</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    String method = req.getMethod();</span><br><span class="line">    <span class="keyword">long</span> lastModified;</span><br><span class="line">    <span class="keyword">if</span> (method.equals(<span class="string">"GET"</span>)) &#123;</span><br><span class="line">      lastModified = <span class="keyword">this</span>.getLastModified(req);</span><br><span class="line">      <span class="keyword">if</span> (lastModified == -<span class="number">1L</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.doGet(req, resp);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">long</span> ifModifiedSince = req.getDateHeader(<span class="string">"If-Modified-Since"</span>);</span><br><span class="line">        <span class="keyword">if</span> (ifModifiedSince &lt; lastModified) &#123;</span><br><span class="line">          <span class="keyword">this</span>.maybeSetLastModified(resp, lastModified);</span><br><span class="line">          <span class="keyword">this</span>.doGet(req, resp);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          resp.setStatus(<span class="number">304</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method.equals(<span class="string">"HEAD"</span>)) &#123;</span><br><span class="line">      lastModified = <span class="keyword">this</span>.getLastModified(req);</span><br><span class="line">      <span class="keyword">this</span>.maybeSetLastModified(resp, lastModified);</span><br><span class="line">      <span class="keyword">this</span>.doHead(req, resp);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method.equals(<span class="string">"POST"</span>)) &#123;</span><br><span class="line">      <span class="keyword">this</span>.doPost(req, resp);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method.equals(<span class="string">"PUT"</span>)) &#123;</span><br><span class="line">      <span class="keyword">this</span>.doPut(req, resp);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method.equals(<span class="string">"DELETE"</span>)) &#123;</span><br><span class="line">      <span class="keyword">this</span>.doDelete(req, resp);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method.equals(<span class="string">"OPTIONS"</span>)) &#123;</span><br><span class="line">      <span class="keyword">this</span>.doOptions(req, resp);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method.equals(<span class="string">"TRACE"</span>)) &#123;</span><br><span class="line">      <span class="keyword">this</span>.doTrace(req, resp);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      String errMsg = lStrings.getString(<span class="string">"http.method_not_implemented"</span>);</span><br><span class="line">      Object[] errArgs = <span class="keyword">new</span> Object[]&#123;method&#125;;</span><br><span class="line">      errMsg = MessageFormat.format(errMsg, errArgs);</span><br><span class="line">      resp.sendError(<span class="number">501</span>, errMsg);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Mybatis-中的例子"><a href="#Mybatis-中的例子" class="headerlink" title="Mybatis 中的例子"></a>Mybatis 中的例子</h3><p>Mybatis 框架中的 BaseExecutor 类是一个基础的 SQL 执行类，实现了大部分 SQL 的执行逻辑，然后把几个方法交给子类定制化完成，例如模版方法 <code>queryFromDatabase</code> 中调用的 <code>doQuery</code> 方法就是一个抽象方法，需要子类提供实现。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.apache.ibatis.executor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseExecutor</span> <span class="keyword">implements</span> <span class="title">Executor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">protected</span> <span class="keyword">abstract</span> &lt;E&gt; <span class="function">List&lt;E&gt; <span class="title">doQuery</span><span class="params">(MappedStatement var1, Object var2, RowBounds var3, ResultHandler var4, BoundSql var5)</span> <span class="keyword">throws</span> SQLException</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> &lt;E&gt; <span class="function">List&lt;E&gt; <span class="title">queryFromDatabase</span><span class="params">(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, CacheKey key, BoundSql boundSql)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.localCache.putObject(key, ExecutionPlaceholder.EXECUTION_PLACEHOLDER);</span><br><span class="line"></span><br><span class="line">    List list;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      list = <span class="keyword">this</span>.doQuery(ms, parameter, rowBounds, resultHandler, boundSql); <span class="comment">// 抽象方法需要子类提供实现</span></span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.localCache.removeObject(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.localCache.putObject(key, list);</span><br><span class="line">    <span class="keyword">if</span> (ms.getStatementType() == StatementType.CALLABLE) &#123;</span><br><span class="line">      <span class="keyword">this</span>.localOutputParameterCache.putObject(key, parameter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="http://www.uxys.com/u/cms/www/201912/01193214y9j2.jpg" alt=""></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.apache.ibatis.executor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleExecutor</span> <span class="keyword">extends</span> <span class="title">BaseExecutor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> &lt;E&gt; <span class="function">List&lt;E&gt; <span class="title">doQuery</span><span class="params">(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    Statement stmt = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    List var9;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      Configuration configuration = ms.getConfiguration();</span><br><span class="line">      StatementHandler handler = configuration.newStatementHandler(<span class="keyword">this</span>.wrapper, ms, parameter, rowBounds, resultHandler, boundSql);</span><br><span class="line">      stmt = <span class="keyword">this</span>.prepareStatement(handler, ms.getStatementLog());</span><br><span class="line">      var9 = handler.query(stmt, resultHandler);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.closeStatement(stmt);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> var9;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>将相同处理逻辑的代码放到抽象父类中，把不变的行为写在父类中，去除了子类的重复代码，提供了一个很好的代码复用平台，符合开闭原则。</li>
+<li>将不同的逻辑放到不同的子类中，通过子类的扩展增加新的行为，提高了代码的扩展性。</li>
+<li>通过父类调用子类的操作，通过对子类的扩展增加新的行为，实现了反向控制。</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>每个抽象类都需要至少一个子类来实现，导致了类数量的增加。</li>
+<li>类数量增加间接增加了系统的复杂性。</li>
+<li>因为继承关系的自身缺点，如果父类添加一个新的抽象方法，所有子类都要实现一遍。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Design Pattern</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Daily Note</title>
     <url>/2018/12/25/Daily-Note/</url>
     <content><![CDATA[<h3 id="艾力老师34枚金币时间管理法"><a href="#艾力老师34枚金币时间管理法" class="headerlink" title="艾力老师34枚金币时间管理法"></a><a href="https://www.baidu.com/link?url=5SuFx-9NWub2CCof8stm6CHhcoJ5cePsHcUkAUcd5dlnrxPsLNtsDGKdZmraf1FddnPuCjhghquaa99zBjpW3T8_Vwb4fek_-ADEIilBvyG&wd=&eqid=faf3fc3a00046acc000000065b99be7a" target="_blank" rel="noopener"><em>艾力老师</em>34枚金币<em>时间管理</em>法</a></h3><h1 id="SqlSessionTemplate"><a href="#SqlSessionTemplate" class="headerlink" title="SqlSessionTemplate"></a>SqlSessionTemplate</h1><h1 id="排名算法"><a href="#排名算法" class="headerlink" title="排名算法"></a>排名算法</h1><p><a href="http://www.ruanyifeng.com/blog/2012/02/ranking_algorithm_hacker_news.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2012/02/ranking_algorithm_hacker_news.html</a></p>
@@ -1121,75 +1064,230 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Design Pattern - Template Method</title>
-    <url>/2020/08/26/Design-Pattern-Template-Method/</url>
-    <content><![CDATA[<img data-src="data:image/png;base64,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" width="100%"/>
+    <title>EXCEL Function Instance</title>
+    <url>/2019/11/01/EXCEL-Function-Instance/</url>
+    <content><![CDATA[<img data-src="https://bitcoinist.com/wp-content/uploads/2019/05/shutterstock_1067559386.png" width="100%"/>
 
 <a id="more"></a>
 
-<h2 id="模版方法模式"><a href="#模版方法模式" class="headerlink" title="模版方法模式"></a>模版方法模式</h2><blockquote>
-<p>模版方法模式在一个方法中定义一个算法的骨架，而将一些步骤延迟到子类中。模版方法使得子类可以在不改变算法结构的情况下，重新定义算法中的某些步骤。——《Head First 设计模式（中文版）》</p>
+<h2 id="SUMIF"><a href="#SUMIF" class="headerlink" title="SUMIF"></a>SUMIF</h2><blockquote>
+<p><a href="https://support.office.com/zh-cn/article/sumif-函數-169b8c99-c05c-4483-a712-1697a653039b" target="_blank" rel="noopener">SUMIF 函数- Office 支持 - Office Support - Office 365</a></p>
+<p><strong>单条件求和</strong>函数，可对范围中符合指定条件的值求和。</p>
 </blockquote>
-<h3 id="简单例子"><a href="#简单例子" class="headerlink" title="简单例子"></a>简单例子</h3><p>冲泡咖啡和茶</p>
-<p>咖啡冲泡步骤：</p>
-<ol>
-<li>把水煮沸</li>
-<li>用沸水冲泡咖啡</li>
-<li>把咖啡倒进杯子</li>
-<li>加糖和牛奶</li>
-</ol>
-<p>茶冲泡步骤：</p>
-<ol>
-<li>把水煮沸</li>
-<li>用沸水浸泡茶叶</li>
-<li>把咖啡倒进杯子</li>
-<li>加柠檬</li>
-</ol>
-<p>把共有的步骤及其顺序抽象为抽象类中的模版方法，可以共享的步骤放在抽象类中作为普通方法，需要子类实现的作为抽象方法。</p>
-<h4 id="抽象类-CaffeineBerverage"><a href="#抽象类-CaffeineBerverage" class="headerlink" title="抽象类 CaffeineBerverage"></a>抽象类 CaffeineBerverage</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">CaffeineBeverage</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">prepareRecipe</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    boilWater();</span><br><span class="line">    brew();</span><br><span class="line">    pourInCup();</span><br><span class="line">    addCondiments();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">brew</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">addCondiments</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">boilWater</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Boiling water"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pourInCup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Pouring into cup"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SUMIF(range, criteria, [sum_range])</span><br></pre></td></tr></table></figure>
 
-<h4 id="咖啡实现类"><a href="#咖啡实现类" class="headerlink" title="咖啡实现类"></a>咖啡实现类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Coffee</span> <span class="keyword">extends</span> <span class="title">CaffeineBeverage</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">brew</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Steeping the coffee"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addCondiments</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Adding Sugar and Milk"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="茶实现类"><a href="#茶实现类" class="headerlink" title="茶实现类"></a>茶实现类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tea</span> <span class="keyword">extends</span> <span class="title">CaffeineBeverage</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">brew</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Steeping the tea"</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addCondiments</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Adding Lemon"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="测试类"><a href="#测试类" class="headerlink" title="测试类"></a>测试类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    CaffeineBeverage coffee = <span class="keyword">new</span> Coffee();</span><br><span class="line">    coffee.prepareRecipe();</span><br><span class="line">    System.out.println(<span class="string">"--------------------"</span>);</span><br><span class="line">    CaffeineBeverage tea = <span class="keyword">new</span> Tea();</span><br><span class="line">    tea.prepareRecipe();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Boiling water</span><br><span class="line">Steeping the cffee</span><br><span class="line">Pouring into cup</span><br><span class="line">Adding Sugar and Milk</span><br><span class="line">--------------------</span><br><span class="line">Boiling water</span><br><span class="line">Steeping the tea</span><br><span class="line">Pouring into cup</span><br><span class="line">Adding Lemon</span><br></pre></td></tr></table></figure>
-
-<h3 id="Java-API-中的例子"><a href="#Java-API-中的例子" class="headerlink" title="Java API 中的例子"></a>Java API 中的例子</h3><p><code>java.io.InputStream</code> 的 <code>read()</code> 方法，是抽象方法，需要由子类实现，而这个方法又会被 <code>read(byte b[], int off, int len)</code> 模版方法使用。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> java.io;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">InputStream</span> <span class="keyword">implements</span> <span class="title">Closeable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">(<span class="keyword">byte</span> b[], <span class="keyword">int</span> off, <span class="keyword">int</span> len)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (b == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (off &lt; <span class="number">0</span> || len &lt; <span class="number">0</span> || len &gt; b.length - off) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (len == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> c = read();</span><br><span class="line">    <span class="keyword">if</span> (c == -<span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    b[off] = (<span class="keyword">byte</span>)c;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">for</span> (; i &lt; len ; i++) &#123;</span><br><span class="line">        c = read(); <span class="comment">// 需要子类（例如 FileInputStream/ObjectInputStream）实现的方法！</span></span><br><span class="line">        <span class="keyword">if</span> (c == -<span class="number">1</span>) &#123;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        b[off + i] = (<span class="keyword">byte</span>)c;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException ee) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> java.io;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileInputStream</span> <span class="keyword">extends</span> <span class="title">InputStream</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> read0();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">read0</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> java.io;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectInputStream</span> <span class="keyword">extends</span> <span class="title">InputStream</span> <span class="keyword">implements</span> <span class="title">ObjectInput</span>, <span class="title">ObjectStreamConstants</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> BlockDataInputStream bin;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> bin.read();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">BlockDataInputStream</span> <span class="keyword">extends</span> <span class="title">InputStream</span> <span class="keyword">implements</span> <span class="title">DataInput</span>    </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (blkmode) &#123;</span><br><span class="line">        <span class="keyword">if</span> (pos == end) &#123;</span><br><span class="line">          refill();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (end &gt;= <span class="number">0</span>) ? (buf[pos++] &amp; <span class="number">0xFF</span>) : -<span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> in.read();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Java-EE-API-中的例子"><a href="#Java-EE-API-中的例子" class="headerlink" title="Java EE API 中的例子"></a>Java EE API 中的例子</h3><blockquote>
-<p><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1304265949708322" target="_blank" rel="noopener">Servlet入门- 廖雪峰的官方网站</a></p>
+<ul>
+<li>range：要按条件筛选的单元格区域</li>
+<li>criteria：筛选条件</li>
+<li>sum_range：要求和的实际单元格区域</li>
+</ul>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><h4 id="Sheet1"><a href="#Sheet1" class="headerlink" title="Sheet1"></a>Sheet1</h4><table>
+<thead>
+<tr>
+<th>日期</th>
+<th>时间</th>
+<th>名称</th>
+<th>金额(¥)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2019/10/21</td>
+<td>8:15</td>
+<td>地铁</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2019/10/21</td>
+<td>12:42</td>
+<td>卤肉面+油条</td>
+<td>16</td>
+</tr>
+<tr>
+<td>2019/10/21</td>
+<td>18:46</td>
+<td>哈密瓜</td>
+<td>26.8</td>
+</tr>
+<tr>
+<td>2019/10/21</td>
+<td>18:59</td>
+<td>桂圆</td>
+<td>13.8</td>
+</tr>
+<tr>
+<td>2019/10/21</td>
+<td>20:17</td>
+<td>地铁</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2019/10/21</td>
+<td>22:26</td>
+<td>谷歌助手</td>
+<td>15.99</td>
+</tr>
+<tr>
+<td>2019/10/22</td>
+<td>9:06</td>
+<td>地铁</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2019/10/22</td>
+<td>12:55</td>
+<td>西红柿鸡蛋拌面</td>
+<td>16</td>
+</tr>
+<tr>
+<td>2019/10/22</td>
+<td>17:10</td>
+<td>地铁</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2019/10/23</td>
+<td>8:27</td>
+<td>借给吕江</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>2019/10/23</td>
+<td>8:48</td>
+<td>地铁</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2019/10/23</td>
+<td>12:42</td>
+<td>肉酱拌面+加面</td>
+<td>18.5</td>
+</tr>
+<tr>
+<td>2019/10/23</td>
+<td>17:56</td>
+<td>地铁</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<h4 id="Sheet2"><a href="#Sheet2" class="headerlink" title="Sheet2"></a>Sheet2</h4><table>
+<thead>
+<tr>
+<th>日期</th>
+<th>总计</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2019/10/21</td>
+<td>78.59</td>
+</tr>
+<tr>
+<td>2019/10/22</td>
+<td>22</td>
+</tr>
+<tr>
+<td>2019/10/23</td>
+<td>1024.5</td>
+</tr>
+</tbody></table>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><table>
+<thead>
+<tr>
+<th>位置</th>
+<th>公式</th>
+<th>说明</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sheet2 B2</td>
+<td>=SUMIF(Sheet1!A2:A14,<br />Sheet2!A2,Sheet1!D2:D14)</td>
+<td>Sheet1  A2 ～ A14 中日期等于Sheet2中 A2 日期的金额总和</td>
+<td>Sheet1 中 2019/10/21 的金额总和</td>
+</tr>
+<tr>
+<td>Sheet2 B3</td>
+<td>=SUMIF(Sheet1!A2:A14,<br />Sheet2!A3,Sheet1!D2:D14)</td>
+<td>Sheet1  A2 ～ A14 中日期等于Sheet2中 A3 日期的金额总和</td>
+<td>Sheet1 中 2019/10/22 的金额总和</td>
+</tr>
+<tr>
+<td>Sheet2 B4</td>
+<td>=SUMIF(Sheet1!A2:A14,<br />Sheet2!A4,Sheet1!D2:D14)</td>
+<td>Sheet1  A2 ～ A14 中日期等于Sheet2中 A4 日期的金额总和</td>
+<td>Sheet1 中 2019/10/23 的金额总和</td>
+</tr>
+</tbody></table>
+<h2 id="SUMIFS"><a href="#SUMIFS" class="headerlink" title="SUMIFS"></a>SUMIFS</h2><blockquote>
+<p><a href="https://support.office.com/zh-cn/article/sumifs-函数-c9e748f5-7ea7-455d-9406-611cebce642b" target="_blank" rel="noopener">SUMIFS 函数- Office 支持 - Office Support - Office 365</a></p>
+<p><strong>多条件求和</strong>函数，可对范围中符合指定条件的值求和。</p>
 </blockquote>
-<p>WEB 开发中常用 <code>HttpServlet</code> 里面的 <code>service</code> 方法处理请求，<code>service</code> 方法里面定义了调用流程，根据客户端调用的不同方式调用不同的方法，比如 <code>doGet</code>，<code>doPost</code>，<code>doDelete</code> 等实现 restful 调用，具体的 <code>doGet</code>，<code>doPost</code> 方法实现可以在自定义的 <code>Servlet</code> 中进行重写。 </p>
-<p>但需要注意的是 <code>doGet</code>，<code>doPost</code>，<code>doDelete</code> 等并没有被定义为抽象方法。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> javax.servlet.http;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpServlet</span> <span class="keyword">extends</span> <span class="title">GenericServlet</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    String method = req.getMethod();</span><br><span class="line">    <span class="keyword">long</span> lastModified;</span><br><span class="line">    <span class="keyword">if</span> (method.equals(<span class="string">"GET"</span>)) &#123;</span><br><span class="line">      lastModified = <span class="keyword">this</span>.getLastModified(req);</span><br><span class="line">      <span class="keyword">if</span> (lastModified == -<span class="number">1L</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.doGet(req, resp);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">long</span> ifModifiedSince = req.getDateHeader(<span class="string">"If-Modified-Since"</span>);</span><br><span class="line">        <span class="keyword">if</span> (ifModifiedSince &lt; lastModified) &#123;</span><br><span class="line">          <span class="keyword">this</span>.maybeSetLastModified(resp, lastModified);</span><br><span class="line">          <span class="keyword">this</span>.doGet(req, resp);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          resp.setStatus(<span class="number">304</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method.equals(<span class="string">"HEAD"</span>)) &#123;</span><br><span class="line">      lastModified = <span class="keyword">this</span>.getLastModified(req);</span><br><span class="line">      <span class="keyword">this</span>.maybeSetLastModified(resp, lastModified);</span><br><span class="line">      <span class="keyword">this</span>.doHead(req, resp);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method.equals(<span class="string">"POST"</span>)) &#123;</span><br><span class="line">      <span class="keyword">this</span>.doPost(req, resp);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method.equals(<span class="string">"PUT"</span>)) &#123;</span><br><span class="line">      <span class="keyword">this</span>.doPut(req, resp);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method.equals(<span class="string">"DELETE"</span>)) &#123;</span><br><span class="line">      <span class="keyword">this</span>.doDelete(req, resp);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method.equals(<span class="string">"OPTIONS"</span>)) &#123;</span><br><span class="line">      <span class="keyword">this</span>.doOptions(req, resp);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (method.equals(<span class="string">"TRACE"</span>)) &#123;</span><br><span class="line">      <span class="keyword">this</span>.doTrace(req, resp);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      String errMsg = lStrings.getString(<span class="string">"http.method_not_implemented"</span>);</span><br><span class="line">      Object[] errArgs = <span class="keyword">new</span> Object[]&#123;method&#125;;</span><br><span class="line">      errMsg = MessageFormat.format(errMsg, errArgs);</span><br><span class="line">      resp.sendError(<span class="number">501</span>, errMsg);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SUMIFS(sum_range, criteria_range1, criteria1, [criteria_range2, criteria2], ...)</span><br></pre></td></tr></table></figure>
 
-<h3 id="Mybatis-中的例子"><a href="#Mybatis-中的例子" class="headerlink" title="Mybatis 中的例子"></a>Mybatis 中的例子</h3><p>Mybatis 框架中的 BaseExecutor 类是一个基础的 SQL 执行类，实现了大部分 SQL 的执行逻辑，然后把几个方法交给子类定制化完成，例如模版方法 <code>queryFromDatabase</code> 中调用的 <code>doQuery</code> 方法就是一个抽象方法，需要子类提供实现。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.apache.ibatis.executor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseExecutor</span> <span class="keyword">implements</span> <span class="title">Executor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">protected</span> <span class="keyword">abstract</span> &lt;E&gt; <span class="function">List&lt;E&gt; <span class="title">doQuery</span><span class="params">(MappedStatement var1, Object var2, RowBounds var3, ResultHandler var4, BoundSql var5)</span> <span class="keyword">throws</span> SQLException</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> &lt;E&gt; <span class="function">List&lt;E&gt; <span class="title">queryFromDatabase</span><span class="params">(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, CacheKey key, BoundSql boundSql)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.localCache.putObject(key, ExecutionPlaceholder.EXECUTION_PLACEHOLDER);</span><br><span class="line"></span><br><span class="line">    List list;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      list = <span class="keyword">this</span>.doQuery(ms, parameter, rowBounds, resultHandler, boundSql); <span class="comment">// 抽象方法需要子类提供实现</span></span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.localCache.removeObject(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.localCache.putObject(key, list);</span><br><span class="line">    <span class="keyword">if</span> (ms.getStatementType() == StatementType.CALLABLE) &#123;</span><br><span class="line">      <span class="keyword">this</span>.localOutputParameterCache.putObject(key, parameter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>sum_range：要求和的单元格区域</li>
+<li>criteria_range1：条件 1 的筛选区域</li>
+<li>criteria：条件 1 的筛选条件</li>
+</ul>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><h4 id="Sheet1-1"><a href="#Sheet1-1" class="headerlink" title="Sheet1"></a>Sheet1</h4><blockquote>
+<p>同 SUMIF Sheet1</p>
+</blockquote>
+<h4 id="Sheet2-1"><a href="#Sheet2-1" class="headerlink" title="Sheet2"></a>Sheet2</h4><table>
+<thead>
+<tr>
+<th>日期</th>
+<th>12:00</th>
+<th>13:00</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2019/10/21</td>
+<td>16</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2019/10/22</td>
+<td>16</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2019/10/23</td>
+<td>18.5</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><style>
+table th:first-of-type {  #first表示表格第一列
+    width: 100px; # 可使用%比例
+}
+</style>
 
-<p><img data-src="http://www.uxys.com/u/cms/www/201912/01193214y9j2.jpg" alt=""></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> org.apache.ibatis.executor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleExecutor</span> <span class="keyword">extends</span> <span class="title">BaseExecutor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> &lt;E&gt; <span class="function">List&lt;E&gt; <span class="title">doQuery</span><span class="params">(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    Statement stmt = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    List var9;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      Configuration configuration = ms.getConfiguration();</span><br><span class="line">      StatementHandler handler = configuration.newStatementHandler(<span class="keyword">this</span>.wrapper, ms, parameter, rowBounds, resultHandler, boundSql);</span><br><span class="line">      stmt = <span class="keyword">this</span>.prepareStatement(handler, ms.getStatementLog());</span><br><span class="line">      var9 = handler.query(stmt, resultHandler);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.closeStatement(stmt);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> var9;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
-<li>将相同处理逻辑的代码放到抽象父类中，把不变的行为写在父类中，去除了子类的重复代码，提供了一个很好的代码复用平台，符合开闭原则。</li>
-<li>将不同的逻辑放到不同的子类中，通过子类的扩展增加新的行为，提高了代码的扩展性。</li>
-<li>通过父类调用子类的操作，通过对子类的扩展增加新的行为，实现了反向控制。</li>
-</ol>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
-<li>每个抽象类都需要至少一个子类来实现，导致了类数量的增加。</li>
-<li>类数量增加间接增加了系统的复杂性。</li>
-<li>因为继承关系的自身缺点，如果父类添加一个新的抽象方法，所有子类都要实现一遍。</li>
-</ol>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>公式</th>
+<th>说明</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Sheet2 B1</td>
+<td>=SUMIFS(Sheet1!E2:E54,<br />Sheet1!A2:A54, Sheet2!A2,<br />Sheet1!B2:B54,”&gt;=”&amp;Sheet2!B1, <br />Sheet1!B2:B54,”&lt;”&amp;Sheet2!C1)</td>
+<td>Sheet1 A2~A54 中日期等于 Sheet2 B1 的日期，<br />并且 Sheet1 B2 ~ B54 中时间大于等于 Sheet2 B1 <br />的时间小于 C1 的时间的金额总和</td>
+<td>Sheet1 中 2019/10/22 12:00 ~ 13:00 的金额总和</td>
+</tr>
+</tbody></table>
+<h2 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h2><h3 id="汉字转拼音"><a href="#汉字转拼音" class="headerlink" title="汉字转拼音"></a>汉字转拼音</h3><blockquote>
+<p><a href="http://club.excelhome.net/thread-229924-1-1.html" target="_blank" rel="noopener"><strong>汉字转拼音的完美解决方案</strong></a></p>
+<p><a href="https://jingyan.baidu.com/article/22a299b5c006aa9e19376a29.html" target="_blank" rel="noopener">excel汉字转拼音完美解决方案-百度经验</a></p>
+</blockquote>
 ]]></content>
       <categories>
-        <category>Design Pattern</category>
+        <category>Excel</category>
       </categories>
+      <tags>
+        <tag>Excel</tag>
+      </tags>
   </entry>
   <entry>
     <title>Details of Charges</title>
@@ -1683,278 +1781,6 @@
       </tags>
   </entry>
   <entry>
-    <title>EXCEL Function Instance</title>
-    <url>/2019/11/01/EXCEL-Function-Instance/</url>
-    <content><![CDATA[<img data-src="https://bitcoinist.com/wp-content/uploads/2019/05/shutterstock_1067559386.png" width="100%"/>
-
-<a id="more"></a>
-
-<h2 id="SUMIF"><a href="#SUMIF" class="headerlink" title="SUMIF"></a>SUMIF</h2><blockquote>
-<p><a href="https://support.office.com/zh-cn/article/sumif-函數-169b8c99-c05c-4483-a712-1697a653039b" target="_blank" rel="noopener">SUMIF 函数- Office 支持 - Office Support - Office 365</a></p>
-<p><strong>单条件求和</strong>函数，可对范围中符合指定条件的值求和。</p>
-</blockquote>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SUMIF(range, criteria, [sum_range])</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>range：要按条件筛选的单元格区域</li>
-<li>criteria：筛选条件</li>
-<li>sum_range：要求和的实际单元格区域</li>
-</ul>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><h4 id="Sheet1"><a href="#Sheet1" class="headerlink" title="Sheet1"></a>Sheet1</h4><table>
-<thead>
-<tr>
-<th>日期</th>
-<th>时间</th>
-<th>名称</th>
-<th>金额(¥)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>2019/10/21</td>
-<td>8:15</td>
-<td>地铁</td>
-<td>3</td>
-</tr>
-<tr>
-<td>2019/10/21</td>
-<td>12:42</td>
-<td>卤肉面+油条</td>
-<td>16</td>
-</tr>
-<tr>
-<td>2019/10/21</td>
-<td>18:46</td>
-<td>哈密瓜</td>
-<td>26.8</td>
-</tr>
-<tr>
-<td>2019/10/21</td>
-<td>18:59</td>
-<td>桂圆</td>
-<td>13.8</td>
-</tr>
-<tr>
-<td>2019/10/21</td>
-<td>20:17</td>
-<td>地铁</td>
-<td>3</td>
-</tr>
-<tr>
-<td>2019/10/21</td>
-<td>22:26</td>
-<td>谷歌助手</td>
-<td>15.99</td>
-</tr>
-<tr>
-<td>2019/10/22</td>
-<td>9:06</td>
-<td>地铁</td>
-<td>3</td>
-</tr>
-<tr>
-<td>2019/10/22</td>
-<td>12:55</td>
-<td>西红柿鸡蛋拌面</td>
-<td>16</td>
-</tr>
-<tr>
-<td>2019/10/22</td>
-<td>17:10</td>
-<td>地铁</td>
-<td>3</td>
-</tr>
-<tr>
-<td>2019/10/23</td>
-<td>8:27</td>
-<td>借给吕江</td>
-<td>1000</td>
-</tr>
-<tr>
-<td>2019/10/23</td>
-<td>8:48</td>
-<td>地铁</td>
-<td>3</td>
-</tr>
-<tr>
-<td>2019/10/23</td>
-<td>12:42</td>
-<td>肉酱拌面+加面</td>
-<td>18.5</td>
-</tr>
-<tr>
-<td>2019/10/23</td>
-<td>17:56</td>
-<td>地铁</td>
-<td>3</td>
-</tr>
-</tbody></table>
-<h4 id="Sheet2"><a href="#Sheet2" class="headerlink" title="Sheet2"></a>Sheet2</h4><table>
-<thead>
-<tr>
-<th>日期</th>
-<th>总计</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>2019/10/21</td>
-<td>78.59</td>
-</tr>
-<tr>
-<td>2019/10/22</td>
-<td>22</td>
-</tr>
-<tr>
-<td>2019/10/23</td>
-<td>1024.5</td>
-</tr>
-</tbody></table>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><table>
-<thead>
-<tr>
-<th>位置</th>
-<th>公式</th>
-<th>说明</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Sheet2 B2</td>
-<td>=SUMIF(Sheet1!A2:A14,<br />Sheet2!A2,Sheet1!D2:D14)</td>
-<td>Sheet1  A2 ～ A14 中日期等于Sheet2中 A2 日期的金额总和</td>
-<td>Sheet1 中 2019/10/21 的金额总和</td>
-</tr>
-<tr>
-<td>Sheet2 B3</td>
-<td>=SUMIF(Sheet1!A2:A14,<br />Sheet2!A3,Sheet1!D2:D14)</td>
-<td>Sheet1  A2 ～ A14 中日期等于Sheet2中 A3 日期的金额总和</td>
-<td>Sheet1 中 2019/10/22 的金额总和</td>
-</tr>
-<tr>
-<td>Sheet2 B4</td>
-<td>=SUMIF(Sheet1!A2:A14,<br />Sheet2!A4,Sheet1!D2:D14)</td>
-<td>Sheet1  A2 ～ A14 中日期等于Sheet2中 A4 日期的金额总和</td>
-<td>Sheet1 中 2019/10/23 的金额总和</td>
-</tr>
-</tbody></table>
-<h2 id="SUMIFS"><a href="#SUMIFS" class="headerlink" title="SUMIFS"></a>SUMIFS</h2><blockquote>
-<p><a href="https://support.office.com/zh-cn/article/sumifs-函数-c9e748f5-7ea7-455d-9406-611cebce642b" target="_blank" rel="noopener">SUMIFS 函数- Office 支持 - Office Support - Office 365</a></p>
-<p><strong>多条件求和</strong>函数，可对范围中符合指定条件的值求和。</p>
-</blockquote>
-<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SUMIFS(sum_range, criteria_range1, criteria1, [criteria_range2, criteria2], ...)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>sum_range：要求和的单元格区域</li>
-<li>criteria_range1：条件 1 的筛选区域</li>
-<li>criteria：条件 1 的筛选条件</li>
-</ul>
-<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><h4 id="Sheet1-1"><a href="#Sheet1-1" class="headerlink" title="Sheet1"></a>Sheet1</h4><blockquote>
-<p>同 SUMIF Sheet1</p>
-</blockquote>
-<h4 id="Sheet2-1"><a href="#Sheet2-1" class="headerlink" title="Sheet2"></a>Sheet2</h4><table>
-<thead>
-<tr>
-<th>日期</th>
-<th>12:00</th>
-<th>13:00</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>2019/10/21</td>
-<td>16</td>
-<td>0</td>
-</tr>
-<tr>
-<td>2019/10/22</td>
-<td>16</td>
-<td>0</td>
-</tr>
-<tr>
-<td>2019/10/23</td>
-<td>18.5</td>
-<td>0</td>
-</tr>
-</tbody></table>
-<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><style>
-table th:first-of-type {  #first表示表格第一列
-    width: 100px; # 可使用%比例
-}
-</style>
-
-<table>
-<thead>
-<tr>
-<th>位置</th>
-<th>公式</th>
-<th>说明</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Sheet2 B1</td>
-<td>=SUMIFS(Sheet1!E2:E54,<br />Sheet1!A2:A54, Sheet2!A2,<br />Sheet1!B2:B54,”&gt;=”&amp;Sheet2!B1, <br />Sheet1!B2:B54,”&lt;”&amp;Sheet2!C1)</td>
-<td>Sheet1 A2~A54 中日期等于 Sheet2 B1 的日期，<br />并且 Sheet1 B2 ~ B54 中时间大于等于 Sheet2 B1 <br />的时间小于 C1 的时间的金额总和</td>
-<td>Sheet1 中 2019/10/22 12:00 ~ 13:00 的金额总和</td>
-</tr>
-</tbody></table>
-<h2 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h2><h3 id="汉字转拼音"><a href="#汉字转拼音" class="headerlink" title="汉字转拼音"></a>汉字转拼音</h3><blockquote>
-<p><a href="http://club.excelhome.net/thread-229924-1-1.html" target="_blank" rel="noopener"><strong>汉字转拼音的完美解决方案</strong></a></p>
-<p><a href="https://jingyan.baidu.com/article/22a299b5c006aa9e19376a29.html" target="_blank" rel="noopener">excel汉字转拼音完美解决方案-百度经验</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Excel</category>
-      </categories>
-      <tags>
-        <tag>Excel</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Effective Java</title>
-    <url>/2020/09/18/Effective-Java/</url>
-    <content><![CDATA[<img data-src="cover" width="100%"/>
-
-<a id="more"></a>
-
-<blockquote>
-<p><a href="https://github.com/jbloch/effective-java-3e-source-code" target="_blank" rel="noopener">https://github.com/jbloch/effective-java-3e-source-code</a></p>
-</blockquote>
-<h2 id="服务提供者框架"><a href="#服务提供者框架" class="headerlink" title="服务提供者框架"></a>服务提供者框架</h2><blockquote>
-<p><a href="https://monkeysayhi.github.io/2017/09/21/源码|什么是服务提供者框架？举例？/" target="_blank" rel="noopener">源码|什么是服务提供者框架？举例？ | 程序猿说你好 - 猴子007</a></p>
-</blockquote>
-<p>服务提供者框架是只这样一个系统：多个服务提供者实现一个服务，系统为服务提供者的客户端提供多个实现，并把他们从多个实现中解耦出来。</p>
-<p>服务提供者框架中有四个重要的组件：</p>
-<ul>
-<li>服务接口（Service Interface）：由服务提供者实现，用来抽象服务提供者提供的服务。</li>
-<li>提供者注册API（Provider Registration API）：系统用来注册实现，让客户端访问它们的。</li>
-<li>服务访问API（Service Access API）：客户端用来获取服务的实例。</li>
-<li>服务提供者接口（Service Provider Interface）：可选，由服务提供者实现，用来抽象服务提供者。</li>
-</ul>
-<h3 id="JDBC-中的应用"><a href="#JDBC-中的应用" class="headerlink" title="JDBC 中的应用"></a>JDBC 中的应用</h3><ul>
-<li>服务接口：Connection</li>
-<li>服务提供者接口：Driver</li>
-<li>提供者注册API：DriverManager.registerDriver() 方法</li>
-<li>服务访问API：DriverManager.getConnection() 方法</li>
-</ul>
-<h3 id="服务接口"><a href="#服务接口" class="headerlink" title="服务接口"></a>服务接口</h3><p>Connection 即为数据库连接服务。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Connection</span>  <span class="keyword">extends</span> <span class="title">Wrapper</span>, <span class="title">AutoCloseable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="服务提供者接口"><a href="#服务提供者接口" class="headerlink" title="服务提供者接口"></a>服务提供者接口</h3><p>Driver 提供 Connection 服务实例：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Driver</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function">Connection <span class="title">connect</span><span class="params">(String url, java.util.Properties info)</span> <span class="keyword">throws</span> SQLException</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="提供者注册API"><a href="#提供者注册API" class="headerlink" title="提供者注册API"></a>提供者注册API</h3><p>服务的提供者实现 Driver 接口，通过 DriverManager.registerDriver() 将服务提供者的实例注册到 DriverManager 中：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DriverManager</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">registerDriver</span><span class="params">(java.sql.Driver driver)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    registerDriver(driver, <span class="keyword">null</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">registerDriver</span><span class="params">(java.sql.Driver driver, DriverAction da)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    <span class="comment">/* Register the driver if it has not already been added to our list */</span></span><br><span class="line">    <span class="keyword">if</span>(driver != <span class="keyword">null</span>) &#123;</span><br><span class="line">      registeredDrivers.addIfAbsent(<span class="keyword">new</span> DriverInfo(driver, da));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// This is for compatibility with the original DriverManager</span></span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">    &#125;</span><br><span class="line">    println(<span class="string">"registerDriver: "</span> + driver);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>具体的注册行为由服务提供者发起。以 MySQL 的 Driver 实现 com.mysql.jdbc.Driver 为例：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Driver</span> <span class="keyword">extends</span> <span class="title">NonRegisteringDriver</span> <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">sql</span>.<span class="title">Driver</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      java.sql.DriverManager.registerDriver(<span class="keyword">new</span> Driver());</span><br><span class="line">    &#125; <span class="keyword">catch</span> (SQLException E) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Can't register driver!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Driver</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    <span class="comment">// Required for Class.forName().newInstance()</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可知，在第一次加载 com.mysql.jdbc.Driver 时，com.mysql.jdbc.Driver会利用静态代码块调用提供者注册API <code>DriverManager.registerDriver()</code>。</p>
-<h3 id="服务访问API"><a href="#服务访问API" class="headerlink" title="服务访问API"></a>服务访问API</h3><p>注册服务提供者的实例后，服务提供者就能够通过框架提供服务。具体来说，可通过静态工厂方法 <code>DriverManager.getConnection()</code> 提供Connection 服务，底层是通过 Driver 接口的实现类实现的：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DriverManager</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">(String url)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">      java.util.Properties info = <span class="keyword">new</span> java.util.Properties();</span><br><span class="line">    <span class="keyword">return</span> (getConnection(url, info, Reflection.getCallerClass()));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//  Worker method called by the public getConnection() methods.</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    ...</span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">for</span>(DriverInfo aDriver : registeredDrivers)</span> </span>&#123;</span><br><span class="line">      <span class="comment">// If the caller does not have permission to load the driver then</span></span><br><span class="line">      <span class="comment">// skip it.</span></span><br><span class="line">      <span class="keyword">if</span>(isDriverAllowed(aDriver.driver, callerCL)) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">          println(<span class="string">"    trying "</span> + aDriver.driver.getClass().getName());</span><br><span class="line">          Connection con = aDriver.driver.connect(url, info);</span><br><span class="line">          <span class="keyword">if</span> (con != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// Success!</span></span><br><span class="line">            println(<span class="string">"getConnection returning "</span> + aDriver.driver.getClass().getName());</span><br><span class="line">            <span class="keyword">return</span> (con);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException ex) &#123;</span><br><span class="line">          <span class="keyword">if</span> (reason == <span class="keyword">null</span>) &#123;</span><br><span class="line">            reason = ex;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ...</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        println(<span class="string">"    skipping: "</span> + aDriver.getClass().getName());</span><br><span class="line">      &#125;</span><br><span class="line">      ...</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里的逻辑很简单，遍历所有已注册的Driver实现类，<strong>选择第一个可用的Driver</strong>创建Connection。还记得 <code>Driver#connect()</code> 方法吗？<code>aDriver.driver.connect</code> 一句中，<strong>由底层Driver完成Connection的创建</strong>。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Encode and Decode</title>
     <url>/2019/01/03/Encode-and-Decode/</url>
     <content><![CDATA[<img data-src="http://www.habilelabs.io/wp-content/uploads/2016/08/encode-decode-model-of-communication.jpg" width="100%"/>
@@ -2099,6 +1925,106 @@ table th:first-of-type {  #first表示表格第一列
       </tags>
   </entry>
   <entry>
+    <title>Effective Java</title>
+    <url>/2020/09/18/Effective-Java/</url>
+    <content><![CDATA[<img data-src="https://e5g4c4d6.rocketcdn.me/wp-content/uploads/2018/01/review-effective-java.jpg" width="100%"/>
+
+<a id="more"></a>
+
+<blockquote>
+<p><a href="https://github.com/jbloch/effective-java-3e-source-code" target="_blank" rel="noopener">https://github.com/jbloch/effective-java-3e-source-code</a></p>
+</blockquote>
+<h2 id="服务提供者框架"><a href="#服务提供者框架" class="headerlink" title="服务提供者框架"></a>服务提供者框架</h2><blockquote>
+<p><a href="https://monkeysayhi.github.io/2017/09/21/源码|什么是服务提供者框架？举例？/" target="_blank" rel="noopener">源码|什么是服务提供者框架？举例？ | 程序猿说你好 - 猴子007</a></p>
+</blockquote>
+<p>服务提供者框架是只这样一个系统：多个服务提供者实现一个服务，系统为服务提供者的客户端提供多个实现，并把他们从多个实现中解耦出来。</p>
+<p>服务提供者框架中有四个重要的组件：</p>
+<ul>
+<li>服务接口（Service Interface）：由服务提供者实现，用来抽象服务提供者提供的服务。</li>
+<li>提供者注册API（Provider Registration API）：系统用来注册实现，让客户端访问它们的。</li>
+<li>服务访问API（Service Access API）：客户端用来获取服务的实例。</li>
+<li>服务提供者接口（Service Provider Interface）：可选，由服务提供者实现，用来抽象服务提供者。</li>
+</ul>
+<h3 id="JDBC-中的应用"><a href="#JDBC-中的应用" class="headerlink" title="JDBC 中的应用"></a>JDBC 中的应用</h3><ul>
+<li>服务接口：Connection</li>
+<li>服务提供者接口：Driver</li>
+<li>提供者注册API：DriverManager.registerDriver() 方法</li>
+<li>服务访问API：DriverManager.getConnection() 方法</li>
+</ul>
+<h3 id="服务接口"><a href="#服务接口" class="headerlink" title="服务接口"></a>服务接口</h3><p>Connection 即为数据库连接服务。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Connection</span>  <span class="keyword">extends</span> <span class="title">Wrapper</span>, <span class="title">AutoCloseable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="服务提供者接口"><a href="#服务提供者接口" class="headerlink" title="服务提供者接口"></a>服务提供者接口</h3><p>Driver 提供 Connection 服务实例：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Driver</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function">Connection <span class="title">connect</span><span class="params">(String url, java.util.Properties info)</span> <span class="keyword">throws</span> SQLException</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="提供者注册API"><a href="#提供者注册API" class="headerlink" title="提供者注册API"></a>提供者注册API</h3><p>服务的提供者实现 Driver 接口，通过 DriverManager.registerDriver() 将服务提供者的实例注册到 DriverManager 中：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DriverManager</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">registerDriver</span><span class="params">(java.sql.Driver driver)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    registerDriver(driver, <span class="keyword">null</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">registerDriver</span><span class="params">(java.sql.Driver driver, DriverAction da)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    <span class="comment">/* Register the driver if it has not already been added to our list */</span></span><br><span class="line">    <span class="keyword">if</span>(driver != <span class="keyword">null</span>) &#123;</span><br><span class="line">      registeredDrivers.addIfAbsent(<span class="keyword">new</span> DriverInfo(driver, da));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// This is for compatibility with the original DriverManager</span></span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">    &#125;</span><br><span class="line">    println(<span class="string">"registerDriver: "</span> + driver);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>具体的注册行为由服务提供者发起。以 MySQL 的 Driver 实现 com.mysql.jdbc.Driver 为例：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Driver</span> <span class="keyword">extends</span> <span class="title">NonRegisteringDriver</span> <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">sql</span>.<span class="title">Driver</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      java.sql.DriverManager.registerDriver(<span class="keyword">new</span> Driver());</span><br><span class="line">    &#125; <span class="keyword">catch</span> (SQLException E) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Can't register driver!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Driver</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    <span class="comment">// Required for Class.forName().newInstance()</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可知，在第一次加载 com.mysql.jdbc.Driver 时，com.mysql.jdbc.Driver会利用静态代码块调用提供者注册API <code>DriverManager.registerDriver()</code>。</p>
+<h3 id="服务访问API"><a href="#服务访问API" class="headerlink" title="服务访问API"></a>服务访问API</h3><p>注册服务提供者的实例后，服务提供者就能够通过框架提供服务。具体来说，可通过静态工厂方法 <code>DriverManager.getConnection()</code> 提供Connection 服务，底层是通过 Driver 接口的实现类实现的：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DriverManager</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">(String url)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">      java.util.Properties info = <span class="keyword">new</span> java.util.Properties();</span><br><span class="line">    <span class="keyword">return</span> (getConnection(url, info, Reflection.getCallerClass()));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//  Worker method called by the public getConnection() methods.</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    ...</span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">for</span>(DriverInfo aDriver : registeredDrivers)</span> </span>&#123;</span><br><span class="line">      <span class="comment">// If the caller does not have permission to load the driver then</span></span><br><span class="line">      <span class="comment">// skip it.</span></span><br><span class="line">      <span class="keyword">if</span>(isDriverAllowed(aDriver.driver, callerCL)) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">          println(<span class="string">"    trying "</span> + aDriver.driver.getClass().getName());</span><br><span class="line">          Connection con = aDriver.driver.connect(url, info);</span><br><span class="line">          <span class="keyword">if</span> (con != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// Success!</span></span><br><span class="line">            println(<span class="string">"getConnection returning "</span> + aDriver.driver.getClass().getName());</span><br><span class="line">            <span class="keyword">return</span> (con);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException ex) &#123;</span><br><span class="line">          <span class="keyword">if</span> (reason == <span class="keyword">null</span>) &#123;</span><br><span class="line">            reason = ex;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ...</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        println(<span class="string">"    skipping: "</span> + aDriver.getClass().getName());</span><br><span class="line">      &#125;</span><br><span class="line">      ...</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里的逻辑很简单，遍历所有已注册的Driver实现类，<strong>选择第一个可用的Driver</strong>创建Connection。还记得 <code>Driver#connect()</code> 方法吗？<code>aDriver.driver.connect</code> 一句中，<strong>由底层Driver完成Connection的创建</strong>。</p>
+<h2 id="WeakHashMap"><a href="#WeakHashMap" class="headerlink" title="WeakHashMap"></a>WeakHashMap</h2><blockquote>
+<p><a href="https://juejin.im/entry/6844903510652239879" target="_blank" rel="noopener">Java中的WeakHashMap - 后端- 掘金</a></p>
+<p><a href="https://wangkuiwu.github.io/2012/02/13/collection-13-weakhashmap/" target="_blank" rel="noopener">Java 集合系列13之WeakHashMap详细介绍(源码解析)和使用 …</a></p>
+</blockquote>
+<h3 id="自动回收特性"><a href="#自动回收特性" class="headerlink" title="自动回收特性"></a>自动回收特性</h3><p>在 WeakHashMap 中，key 的类型是 WeakReference。如果对应的 key 被回收，则这个 key 指向的 value 会被从 Map 容器中移除。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">  String key = <span class="keyword">new</span> String(<span class="string">"k1"</span>);</span><br><span class="line">  String key2 = <span class="string">"k2"</span>;</span><br><span class="line">  String value = <span class="string">"v1"</span>;</span><br><span class="line">  String value2 = <span class="string">"v2"</span>;</span><br><span class="line">  WeakHashMap&lt;String, String&gt; map = <span class="keyword">new</span> WeakHashMap&lt;&gt;();</span><br><span class="line">  map.put(key,value);</span><br><span class="line">  map.put(key2,value2);</span><br><span class="line"></span><br><span class="line">  System.out.println(map.size());</span><br><span class="line">  System.out.println(map);</span><br><span class="line"></span><br><span class="line">  key = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">  System.gc();</span><br><span class="line">  Thread.sleep(<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">  System.out.println(map.size());</span><br><span class="line">  System.out.println(map);</span><br><span class="line"></span><br><span class="line">  key2 = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">  System.gc();</span><br><span class="line">  Thread.sleep(<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">  System.out.println(map.size());</span><br><span class="line">  System.out.println(map);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2</span><br><span class="line">&#123;k2&#x3D;v2, k1&#x3D;v1&#125;</span><br><span class="line">1</span><br><span class="line">&#123;k2&#x3D;v2&#125;</span><br><span class="line">1</span><br><span class="line">&#123;k2&#x3D;v2&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Q：当key是以字面量方式赋值时，并不会自动回收"><a href="#Q：当key是以字面量方式赋值时，并不会自动回收" class="headerlink" title="Q：当key是以字面量方式赋值时，并不会自动回收"></a>Q：当key是以字面量方式赋值时，并不会自动回收</h4><p>字面量赋值时是引用的常量池里的对象，GC 不会回收，即不会讲该 key 存入 queue，expungeStaleEntries 自然也不会清除掉对应的 entity。</p>
+<h3 id="利用-WeakHashMap-实现缓存"><a href="#利用-WeakHashMap-实现缓存" class="headerlink" title="利用 WeakHashMap 实现缓存"></a>利用 WeakHashMap 实现缓存</h3><p>WeakHashMap 的特性比较适合实现类似本地、堆内缓存的存储机制——缓存的失效依赖于 GC 收集器的行为。假设一种应用场景：我们需要保存一批大的图片对象，其中 values 是图片的内容，key 是图片的名字，这里我们需要选择一种合适的容器保存这些对象。</p>
+<p>使用普通的 HashMap 并不是好的选择，这些大对象将会占用很多内存，并且还不会被GC回收，除非我们在对应的 key 废弃之前主动 remove 掉这些元素。WeakHashMap 非常适合使用在这种场景下，下面的代码演示了具体的实现：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">WeakHashMap&lt;UniqueImageName, BigImage&gt; map = <span class="keyword">new</span> WeakHashMap&lt;&gt;();</span><br><span class="line">BigImage bigImage = <span class="keyword">new</span> BigImage(<span class="string">"image_id"</span>);</span><br><span class="line">UniqueImageName imageName = <span class="keyword">new</span> UniqueImageName(<span class="string">"name_of_big_image"</span>); <span class="comment">//强引用</span></span><br><span class="line"></span><br><span class="line">map.put(imageName, bigImage);</span><br><span class="line">assertTrue(map.containsKey(imageName));</span><br><span class="line"></span><br><span class="line">imageName = <span class="keyword">null</span>; <span class="comment">//map中的values对象成为弱引用对象</span></span><br><span class="line">System.gc(); <span class="comment">//主动触发一次GC</span></span><br><span class="line"></span><br><span class="line">await().atMost(<span class="number">10</span>, TimeUnit.SECONDS).until(map::isEmpty);</span><br></pre></td></tr></table></figure>
+
+<p>首先，创建一个WeakHashMap对象来存储 BigImage 实例，对应的 key 是UniqueImageName 对象，保存到 WeakHashMap 里的时候，key 是一个弱引用类型。</p>
+<p>然后，我们将 imageName 设置为null，这样就没有其他强引用指向bigImage 对象，按照 WeakHashMap 的规则，在下一次GC周期中会回收bigImage 对象。</p>
+<p>通过 System.gc() 主动触发一次GC过程，然后可以发现 WeakHashMap 成为空的了。</p>
+<h2 id="No-22"><a href="#No-22" class="headerlink" title="No 22"></a>No 22</h2><h3 id="二进制兼容性"><a href="#二进制兼容性" class="headerlink" title="二进制兼容性"></a>二进制兼容性</h3><blockquote>
+<p><a href="https://stackoverflow.com/questions/14973380/what-is-binary-compatibility-in-java" target="_blank" rel="noopener">What is binary compatibility in Java? - Stack Overflow</a></p>
+</blockquote>
+<p>22条提到如果在接口中定义了常量，然后在其他类中需要使用时，实现这个接口，然后就可以用了，但是如果之后不用这些常量了，为了二进制兼容性，还需要实现这个接口。</p>
+<p>这里提到的二进制兼容性，简单理解就是不需要重新编译没有改动的类。</p>
+<p>即你在接口A中定义了常量，然后类B实现了这个接口，类C又继承了类B，在类B，C中都有用到这个常量，之后有一天你的B类不再需要使用这个常量了，但如果你删除了B类中的实现声明，那就会导致C类编译失败！</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">A</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> CONSTANT = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">implements</span> <span class="title">A</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">funB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(CONSTANT);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">B</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">funC</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(CONSTANT);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>B not need A.CONSTANT any more, delete implements.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//public class B implements A &#123;</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">funB</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">//        System.out.println(CONSTANT);</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Then C will cpmpile failed.</p>
+<h2 id="No-24"><a href="#No-24" class="headerlink" title="No 24"></a>No 24</h2><h3 id="嵌套类"><a href="#嵌套类" class="headerlink" title="嵌套类"></a>嵌套类</h3><blockquote>
+<p><a href="https://cloud.tencent.com/developer/article/1482981" target="_blank" rel="noopener">Effective Java-嵌套类(内部类) - 云+社区- 腾讯云</a></p>
+</blockquote>
+<h2 id="No-28"><a href="#No-28" class="headerlink" title="No 28"></a>No 28</h2><h3 id="为什么创建泛型数组是非法的？"><a href="#为什么创建泛型数组是非法的？" class="headerlink" title="为什么创建泛型数组是非法的？"></a>为什么创建泛型数组是非法的？</h3><p>因为泛型数组不是<strong>类型安全</strong>的。如果它合法，那么编译器自动添加的类型转换在运行期间可能会抛出 ClassCastException 异常。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 假设能创建泛型数组</span></span><br><span class="line"><span class="comment">/* (1) */</span> List&lt;String&gt;[] stringLists = <span class="keyword">new</span> List&lt;String&gt;[<span class="number">1</span>];</span><br><span class="line"><span class="comment">/* (2) */</span> List&lt;Integer&gt; intList = List.of(<span class="number">42</span>);</span><br><span class="line"><span class="comment">/* (3) */</span> Object[] objects = stringLists;</span><br><span class="line"><span class="comment">/* (4) */</span> objects[<span class="number">0</span>] = intList;</span><br><span class="line"><span class="comment">/* (5) */</span> String s = stringLists[<span class="number">0</span>].get(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>假设第 1 行是合法的，创建了一个泛型数组。</p>
+<p>第 2 行穿件并初始化了一个包含单个元素的 List&lt;Integer&gt;。</p>
+<p>第 3 行将 List&lt;String&gt; 数组保存到一个 Object 数组变量中，这是合法的，因为数组是<strong>协变</strong>的，即 List&lt;String&gt; 是 Object 的子类，所以 List&lt;String&gt;[] 也是 Object[] 的子类。</p>
+<p>第 4 行将 List&lt;Integer&gt; 保存到 Object 数组中，这是合法的，因为泛型是通过擦除实现的，List&lt;Integer&gt; 在运行时类型只是 List。</p>
+<p>第 5 行在运行时将抛出 ClassCastException 异常。因为编译器会添加上类型转化 <code>String s = (String) stringLists[0].get(0);</code></p>
+<p>我们将第 5 行拆分开来看：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// String s = stringLists[0].get(0);</span></span><br><span class="line">List list = stringLists[<span class="number">0</span>];</span><br><span class="line">Object object = list.get(<span class="number">0</span>);</span><br><span class="line">String s = (String) object;</span><br></pre></td></tr></table></figure>
+
+<p>由于第 4 行将 List&lt;Integer&gt; 实例保存到了原本只包含 List&lt;String&gt; 实例的数组中，所以这里的 object 实际上是 Integer 类型，所以在转化为 String 类型时将抛出异常。</p>
+<h3 id="为什么-Java-将泛型设置为不可变的？"><a href="#为什么-Java-将泛型设置为不可变的？" class="headerlink" title="为什么 Java 将泛型设置为不可变的？"></a>为什么 Java 将泛型设置为不可变的？</h3><p>我们知道 Java 中的数组是可变的，泛型是不可变的，即如果 Sub 是 Super 的子类，那么 Sub[] 就是 Super[] 的子类，但是 List&lt;Sub&gt; 却不是 List&lt;Super&gt; 的子类！</p>
+<p>那么为什么 Java 要将泛型设置为不可变的呢？原因是为了兼容，Java 使用了类型擦除的方式实现泛型，由于存在类型擦除，所以为了类型安全，将泛型设计为不可变。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* (1) */</span> List&lt;String&gt; stringList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line"><span class="comment">/* (2) */</span> List&lt;Object&gt; objectList = stringList;</span><br><span class="line"><span class="comment">/* (3) */</span> objectList.add(<span class="number">12</span>);</span><br><span class="line"><span class="comment">/* (4) */</span> String s = stringList.get(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>假设泛型是可变的，那么第 2 行代码就是合法的，那么第 4 行代码就会在运行时抛出 ClassCastException 异常。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Git Error MERGE_MSG</title>
     <url>/2019/11/01/Git-Error-MERGE-MSG/</url>
     <content><![CDATA[<img data-src="https://raw.githubusercontent.com/DRPrincess/BlogImages/master/qiniu/95e1e0d779e7824420350bfbc96019a1.png" width="100%"/>
@@ -2120,6 +2046,134 @@ table th:first-of-type {  #first表示表格第一列
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm .git/.MERGE_MSG.sw*</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>重新合并</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Account Management in Git</title>
+    <url>/2020/09/30/Account-Management-in-Git/</url>
+    <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
+
+<a id="more"></a>
+
+<h2 id="Git-中-GitHub-账号的管理"><a href="#Git-中-GitHub-账号的管理" class="headerlink" title="Git 中 GitHub 账号的管理"></a>Git 中 GitHub 账号的管理</h2><p>本文记录关于 Git 中管理账号时可能遇到的一些问题，使用的远程仓库托管平台是 GitHub。</p>
+<h3 id="单账号管理"><a href="#单账号管理" class="headerlink" title="单账号管理"></a>单账号管理</h3><blockquote>
+<p>假设 GitHub 的账号信息如下：</p>
+<p>账号：username</p>
+<p>密码：password</p>
+<p>假设 GitHub 中托管的仓库地址如下：</p>
+<p>HTTPS：<code>https://github.com/username/repository.git</code></p>
+<p>SSH：<code>git@github.com:username/repository.git</code></p>
+</blockquote>
+<p>Git 中链接远程仓库有 HTTPS 和 SSH 两种方式，HTTPS 相对比较简单，而 SSH 则具有更高的安全性。</p>
+<h4 id="HTTPS-方式"><a href="#HTTPS-方式" class="headerlink" title="HTTPS 方式"></a>HTTPS 方式</h4><p>使用 HTTPS 的方式时，会遇到每次提交都要输入 GitHub 的账号密码的问题，可以通过将账号密码缓存到内存或者保存到本地磁盘来解决这个问题。具体详情可查看【<a href="https://git-scm.com/book/zh/v2/Git-工具-凭证存储" target="_blank" rel="noopener">凭证存储 - Git</a>】</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 将账号密码保存到磁盘，默认存储位置是 ~/.git-credentials</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --global credential.helper store</span></span><br></pre></td></tr></table></figure>
+
+<p>但这种方式是明文存储的，查看 <code>~/.git-credentials</code> 可以看到具体的账号信息。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;username:password@github.com</span><br></pre></td></tr></table></figure>
+
+<h4 id="SSH-方式"><a href="#SSH-方式" class="headerlink" title="SSH 方式"></a>SSH 方式</h4><p>通过 SSH 方式链接 GitHub 时需要通过密钥来实现，所以 SSH 具有比较高的安全性。</p>
+<ol>
+<li><p>生成密钥对</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> -t 指定密钥类型，默认是 rsa</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -C 注释</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -f 指定文件名，默认是 ~/.ssh/id_rsa（私钥）和 ~/.ssh/id_rsa.pub（公钥）</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ssh-keygen -t rsa -C <span class="string">"username@email.com"</span></span></span><br></pre></td></tr></table></figure>
+
+<p>生成密钥时会提示让输入密码，此时的密码是以后 Git 提交时需要输入的密码，可以不填直接回车，那在提交的时候就不需要再输入密码了。</p>
+</li>
+<li><p>GitHub 中添加公钥</p>
+<p>登陆 GitHub，在 <code>Personal settings &gt; SSH and GPG keys &gt; New SSH key</code> 将 <code>~/.ssh/id_rsa.pub</code> 文件中公钥添加进去。</p>
+</li>
+<li><p>设置本地仓库中的远程仓库地址为 SSH 格式</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git remote <span class="built_in">set</span>-url origin <span class="string">"git@github.com:username/repository.git"</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config remote.origin.url <span class="string">"git@github.com:username/repository.git"</span></span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="多账号管理"><a href="#多账号管理" class="headerlink" title="多账号管理"></a>多账号管理</h3><blockquote>
+<p>假设 GitHub 的账号信息如下：</p>
+<p>账号A</p>
+<ul>
+<li>账号：usernameA</li>
+<li>密码：passwordA</li>
+<li>邮箱：<a href="mailto:usernameA@163.com">usernameA@163.com</a></li>
+</ul>
+<p>账号B</p>
+<ul>
+<li>账号：usernameB</li>
+<li>密码：passwordB</li>
+<li>邮箱：<a href="mailto:usernameB@163.com">usernameB@163.com</a></li>
+</ul>
+<p>假设 GitHub 中托管的仓库地址如下：</p>
+<p>仓库A</p>
+<ul>
+<li><p>HTTPS：<code>https://github.com/usernameA/repositoryA.git</code></p>
+</li>
+<li><p>SSH：<code>git@github.com:usernameA/repositoryA.git</code></p>
+</li>
+</ul>
+<p>仓库B</p>
+<ul>
+<li><p>HTTPS：<code>https://github.com/usernameB/repositoryB.git</code></p>
+</li>
+<li><p>SSH：<code>git@github.com:usernameB/repositoryB.git</code></p>
+</li>
+</ul>
+</blockquote>
+<h4 id="账号切换"><a href="#账号切换" class="headerlink" title="账号切换"></a>账号切换</h4><blockquote>
+<p>假设账号A和账号B都有权限管理仓库A，此时想将本地仓库原本的账号A切换到账号B。</p>
+</blockquote>
+<ol>
+<li><p>查看本机是否缓存或保存了账号A的账号信息</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看 <span class="built_in">local</span> 级别的配置中是否有关于 credential.helper 的配置</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> --get credential.helper</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看 global 级别的配置中是否有关于 credential.helper 的配置</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --global --get credential.helper</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看 system 级别的配置中是否有关于 credential.helper 的配置</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --system --get credential.helper</span></span><br></pre></td></tr></table></figure>
+
+<p>如果返回结果为：<code>cache</code> /  <code>store</code> /  <code>osxkeychain</code> /  <code>winstore</code> 则表示本地存在账号A的账号信息</p>
+</li>
+<li><p>如果存在账号A的信息则清除掉其账号信息</p>
+<p>删除 <code>~/.git-credentials</code> 文件中账号A的账号信息</p>
+</li>
+<li><p>切换本地仓库中的 Git 用户名和邮箱</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.name <span class="string">"usernameB"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.email <span class="string">"usernameB@163.com"</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将账号B的账号信息保存到本机</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> credential.helper store</span></span><br></pre></td></tr></table></figure>
+
+<p>下一次提交时会提示让输入用户名和密码，输入账号B的用户名和密码即可。</p>
+</li>
+</ol>
+<p>经过以上 4 步之后就完成了账号的切换工作，之后再提交时使用的就是账号B了。</p>
+<h4 id="多账号共存"><a href="#多账号共存" class="headerlink" title="多账号共存"></a>多账号共存</h4><p>以上情况都是本机中只存在一个 GitHub 账号，如果需要使用不同的账号管理不同的仓库时则需要对每个仓库和账号进行相应的配置以达到理想的匹配作用。</p>
+<h5 id="HTTPS-方式-1"><a href="#HTTPS-方式-1" class="headerlink" title="HTTPS 方式"></a>HTTPS 方式</h5><p>如果想要本机中同时保存账号A和账号B的账号信息，对于本地仓库A，可能随时想要选用账号A或账号B中的一个来提交时。只需要在本地仓库的远程仓库地址中加上相应的用户名，然后再将 Git 用户名和密码切换到相应的用户即可。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 先设置保存密码的配置</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> credential.helper store</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 想要切换到账号A时</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote <span class="built_in">set</span>-url origin <span class="string">"https://usernameA@github.com/usernameA/repositoryA.git"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.name <span class="string">"usernameA"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.email <span class="string">"usernameA@163.com"</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 想要切换到账号B时</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote <span class="built_in">set</span>-url origin <span class="string">"https://usernameB@github.com/usernameA/repositoryA.git"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.name <span class="string">"usernameB"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.email <span class="string">"usernameB@163.com"</span></span></span><br></pre></td></tr></table></figure>
+
+<h5 id="SSH-方式-1"><a href="#SSH-方式-1" class="headerlink" title="SSH 方式"></a>SSH 方式</h5><blockquote>
+<p>假设要通过 SSH 的方式来让账户A和账户B再本地仓库A中自由的切换</p>
+</blockquote>
+<p>使用 SSH 方式时需要对不用的账号生成不同的密钥，并配置账号与 GitHub 域名的匹配信息。</p>
+<ol>
+<li><p>生成各自密钥</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> -t 指定密钥类型，默认是 rsa</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -C 注释</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -f 指定文件名，默认是 ~/.ssh/id_rsa（私钥）和 ~/.ssh/id_rsa.pub（公钥）</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ssh-keygen -t rsa -C <span class="string">"usernameA@email.com"</span> -f <span class="string">"id_rsa_A"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ssh-keygen -t rsa -C <span class="string">"usernameB@email.com"</span> -f <span class="string">"id_rsa_B"</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将密钥全部添加到 SSH Agent 中</p>
+<blockquote>
+<p>部分终端中需要手动开启 ssh-agent</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh-agent bash</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh-add ~/.ssh/id_rsa_A</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ssh-add ~/.ssh/id_rsa_B</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加配置文件 <code>~/.ssh/config</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> usernameA</span></span><br><span class="line">Host hostA #别名，之后配置本地仓库的远程仓库地址时需要使用</span><br><span class="line">  HostName github.com</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa</span><br><span class="line">  User usernameA</span><br><span class="line"><span class="meta">#</span><span class="bash"> usernameB</span></span><br><span class="line">Host hostB</span><br><span class="line">  HostName github.com</span><br><span class="line">  IdentityFile ~/.ssh/id_rea2</span><br><span class="line">  User usernameB</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>远程仓库托管平台中添加对应的公钥</p>
+<p>登陆相应的远程仓库托管平台，将公钥添加上去。</p>
+</li>
+<li><p>修改本地仓库对应的远程仓库地址</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 想要切换到账户A时</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote <span class="built_in">set</span>-url origin <span class="string">"git@hostA:usernameA/repositoryA.git"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.name <span class="string">"usernameA"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.email <span class="string">"usernameA@163.com"</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 想要切换到账号B时</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git remote <span class="built_in">set</span>-url origin <span class="string">"git@hostB:usernameA/repositoryA.git"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.name <span class="string">"usernameB"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --<span class="built_in">local</span> user.email <span class="string">"usernameB@163.com"</span></span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 ]]></content>
@@ -3477,7 +3531,7 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Size of Object in Java</title>
     <url>/2020/09/17/Size-of-Object-in-Java/</url>
-    <content><![CDATA[<img data-src="cover" width="100%"/>
+    <content><![CDATA[<img data-src="https://i.ytimg.com/vi/gaGEt0oYpBA/maxresdefault.jpg" width="100%"/>
 
 <a id="more"></a>
 
@@ -5203,10 +5257,28 @@ table th:first-of-type {  #first表示表格第一列
 
 <h3 id="SimplePropertyPreFilter"><a href="#SimplePropertyPreFilter" class="headerlink" title="SimplePropertyPreFilter"></a>SimplePropertyPreFilter</h3><h4 id="剔除某个属性"><a href="#剔除某个属性" class="headerlink" title="剔除某个属性"></a>剔除某个属性</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 去掉 product 中的 productText 字段</span></span><br><span class="line">SimplePropertyPreFilter filter = <span class="keyword">new</span> SimplePropertyPreFilter();</span><br><span class="line">filter.getExcludes().add(<span class="string">"productText"</span>);</span><br><span class="line">JSON.toJSONString(product, filter);</span><br></pre></td></tr></table></figure>
 
+<h3 id="自定义序列化与反序列化"><a href="#自定义序列化与反序列化" class="headerlink" title="自定义序列化与反序列化"></a>自定义序列化与反序列化</h3><h4 id="自定义序列化"><a href="#自定义序列化" class="headerlink" title="自定义序列化"></a>自定义序列化</h4><blockquote>
+<p><a href="http://kimmking.github.io/2017/06/06/json-best-practice/" target="_blank" rel="noopener">JSON最佳实践</a></p>
+<p><a href="https://gakkil.gitee.io/2019/12/22/fastjson-de-jin-jie-er/#toc-heading-8" target="_blank" rel="noopener">使用serializeUsing制定属性的序列化类</a></p>
+<p><a href="https://howtodoinjava.com/java/string/unescape-html-to-string/" target="_blank" rel="noopener">Java Unescape HTML to String Example - HowToDoInJava</a></p>
+</blockquote>
+<p>转换 productTitle 字段中包含的 HTML 特殊字符</p>
+<ol>
+<li><p>自定义序列化器</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.commons.text.StringEscapeUtils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringEscapeSerialization</span> <span class="keyword">implements</span> <span class="title">ObjectSerializer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(JSONSerializer serializer, Object object, Object fieldName, Type fieldType, <span class="keyword">int</span> features)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    SerializeWriter out = serializer.out;</span><br><span class="line">    <span class="keyword">if</span> (object == <span class="keyword">null</span>) &#123;</span><br><span class="line">      out.writeNull();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (object <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">      out.writeString(StringEscapeUtils.unescapeHtml4((String) object));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用自定义的序列化器</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Product</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@JSONField</span>(serializeUsing= StringEscapeSerialization<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">  <span class="title">private</span> <span class="title">String</span> <span class="title">productTitle</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  Product product = <span class="keyword">new</span> Product();</span><br><span class="line">  product.setProductTitle(<span class="string">"iPhone X Pro &amp;quot;HK&amp;quot;"</span>);</span><br><span class="line">  String s = JSON.toJSONString(product);</span><br><span class="line">  System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结果</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;&quot;productTitle&quot;:&quot;iPhone X Pro \&quot;HK\&quot;&quot;&#125;</span><br></pre></td></tr></table></figure>
 
-
-
-]]></content>
+</li>
+</ol>
+<h2 id="json-smart"><a href="#json-smart" class="headerlink" title="json-smart"></a>json-smart</h2><h2 id="GSON"><a href="#GSON" class="headerlink" title="GSON"></a>GSON</h2>]]></content>
   </entry>
   <entry>
     <title>Study Notes of Maven</title>
