@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.forknowledge.icu/gallery/thumbnails/javagcs.png">
 <meta property="article:published_time" content="2020-10-10T05:43:51.000Z">
-<meta property="article:modified_time" content="2020-10-10T12:04:12.133Z">
+<meta property="article:modified_time" content="2020-10-12T12:04:34.644Z">
 <meta property="article:author" content="Li Bo">
 <meta property="article:tag" content="Word">
 <meta name="twitter:card" content="summary">
@@ -220,10 +220,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-10-10 13:43:51 / 修改时间：20:04:12" itemprop="dateCreated datePublished" datetime="2020-10-10T13:43:51+08:00">2020-10-10</time>
+              <time title="创建时间：2020-10-10 13:43:51" itemprop="dateCreated datePublished" datetime="2020-10-10T13:43:51+08:00">2020-10-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-12 20:04:34" itemprop="dateModified" datetime="2020-10-12T20:04:34+08:00">2020-10-12</time>
+              </span>
 
           
             <span id="/2020/10/10/Micro-Major-Java-Senior-Architect/" class="post-meta-item leancloud_visitors" data-flag-title="Micro Major-Java Senior Architect" title="阅读次数">
@@ -361,6 +367,94 @@
 
 <p>创建并执行一个周期性任务，过了给定的初始延迟时间，第一次被执行后，后续以给定的周期时间执行，执行过程中发生了异常，那么任务就停止。</p>
 <p>一次任务执行时长超过了周期时间，下一次任务会等到该次任务执行结束的时间基础上，计算<span style="color: #2196F3;">执行延时</span>。</p>
+<h3 id="Executors-工具类"><a href="#Executors-工具类" class="headerlink" title="Executors 工具类"></a>Executors 工具类</h3><ul>
+<li><p><code>public static ExecutorService newFixedThreadPool(int nThreads)</code></p>
+<p>创建一个固定大小、任务队列容量无界的线程池。核心线程数=最大线程数。</p>
+</li>
+<li><p><code>public static ExecutorService newCachedThreadPool()</code></p>
+<p>创建一个大小无界的缓冲线程池。它的任务队列是一个<a href="http://ifeve.com/java-synchronousqueue/" target="_blank" rel="noopener">同步队列</a>。任务加入到池中，如果池中有空闲线程，则用空闲线程执行，如无则创建新线程执行。池中的线程空闲超过 60 秒，将被销毁释放。线程数随任务的多少变化。适用于执行耗时较小的异步任务。池的核心线程数=0，最大线程数=Integer.MAX_VALUE</p>
+</li>
+<li><p><code>public static ScheduledExecutorService newSingleThreadScheduledExecutor()</code></p>
+<p>只有一个线程来执行无界任务队列的单一线程池。该线程池确保任务按加入的顺序一个一个一次执行。当唯一的线程因任务异常中止时，将创建一个新的线程来继续执行后续的任务。与<code>newFixedThreadPool(1)</code>的区别在于，单一线程池的池大小在<code>newSingleThreadExecutor</code>方法中硬编码，不能再改变。</p>
+</li>
+<li><p><code>public static ScheduledExecutorService newScheduledThreadPool(int corePoolSize)</code></p>
+<p>能定时执行任务的线程池。该池的核心线程数由参数指定，最大线程数=Interger.MAX_VALUE</p>
+</li>
+</ul>
+<h3 id="任务执行过程"><a href="#任务执行过程" class="headerlink" title="任务执行过程"></a>任务执行过程</h3><p>ThreadPoolExecutor.execute()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(Runnable command)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (command == <span class="keyword">null</span>)</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * Proceed in 3 steps:</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         * 1. If fewer than corePoolSize threads are running, try to</span></span><br><span class="line"><span class="comment">         * start a new thread with the given command as its first</span></span><br><span class="line"><span class="comment">         * task.  The call to addWorker atomically checks runState and</span></span><br><span class="line"><span class="comment">         * workerCount, and so prevents false alarms that would add</span></span><br><span class="line"><span class="comment">         * threads when it shouldn't, by returning false.</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         * 2. If a task can be successfully queued, then we still need</span></span><br><span class="line"><span class="comment">         * to double-check whether we should have added a thread</span></span><br><span class="line"><span class="comment">         * (because existing ones died since last checking) or that</span></span><br><span class="line"><span class="comment">         * the pool shut down since entry into this method. So we</span></span><br><span class="line"><span class="comment">         * recheck state and if necessary roll back the enqueuing if</span></span><br><span class="line"><span class="comment">         * stopped, or start a new thread if there are none.</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         * 3. If we cannot queue task, then we try to add a new</span></span><br><span class="line"><span class="comment">         * thread.  If it fails, we know we are shut down or saturated</span></span><br><span class="line"><span class="comment">         * and so reject the task.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">  <span class="keyword">int</span> c = ctl.get();</span><br><span class="line">  <span class="keyword">if</span> (workerCountOf(c) &lt; corePoolSize) &#123;</span><br><span class="line">    <span class="keyword">if</span> (addWorker(command, <span class="keyword">true</span>))</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    c = ctl.get();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (isRunning(c) &amp;&amp; workQueue.offer(command)) &#123;</span><br><span class="line">    <span class="keyword">int</span> recheck = ctl.get();</span><br><span class="line">    <span class="keyword">if</span> (! isRunning(recheck) &amp;&amp; remove(command))</span><br><span class="line">      reject(command);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (workerCountOf(recheck) == <span class="number">0</span>)</span><br><span class="line">      addWorker(<span class="keyword">null</span>, <span class="keyword">false</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span> (!addWorker(command, <span class="keyword">false</span>))</span><br><span class="line">    reject(command);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<pre class="mermaid" style="text-align: center;">
+            graph TD
+            
+A[执行] --> B{是否达到核心线程数}
+
+B --> |否|D[创建新线程执行]
+
+B --> |是|C{工作队列是否已满}
+
+C --> |否|E[丢到队列里]
+
+C --> |是|F{是否达到最大线程数量}
+
+F --> |否|G[新建线程执行]
+
+F --> |是|H[执行拒绝策略]
+
+          </pre>
+
+<h3 id="线程数量"><a href="#线程数量" class="headerlink" title="线程数量"></a>线程数量</h3><p><span style="color: #e91e63;">如何确定合适数量的线程？</span></p>
+<ul>
+<li><span style="color: #2196F3;">计算型任务</span>：CPU 数量的 1-2 倍</li>
+<li><span style="color: #2196F3;">IO型任务</span>：相对计算型任务，需要多一些线程，要根据具体的 <span style="color: #2196F3;">IO 阻塞时长</span>进行考量决定。如 tomcat 中默认的最大线程数为 200。</li>
+<li>也可以考虑根据需要在一个<span style="color: #2196F3;">最小数量和最大数量</span>间自动增减线程数。</li>
+</ul>
+<h2 id="CAS-机制"><a href="#CAS-机制" class="headerlink" title="CAS 机制"></a>CAS 机制</h2><p>CAS（Compare and swap 比较和交换）属于硬件同步原语，处理器提供了基本内存操作的原子性保证。</p>
+<p>CAS 操作需要输入两个数值，一个旧值A和一个新值B，在操作期间先比较旧值有没有发生变化，如果没有发生变化，才交换新值，否则不交换。</p>
+<p>Java 中的 sun.misc.Unsafe 类，提供了 compareAndSwapInt() 和 compareAndSwapIong() 等几个方法实现 CAS。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.gzhennaxia.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sun.misc.Unsafe;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> value;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Unsafe unsafe;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">long</span> offset;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      Field field = Unsafe.class.getDeclaredField("theUnsafe");</span><br><span class="line">      field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">      unsafe = (Unsafe) field.get(<span class="keyword">null</span>);</span><br><span class="line">      offset = unsafe.objectFieldOffset(Demo.class.getDeclaredField("value"));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NoSuchFieldException | IllegalAccessException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    value++;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">incCAS</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> current;</span><br><span class="line">    <span class="keyword">do</span> &#123;</span><br><span class="line">      current = unsafe.getIntVolatile(<span class="keyword">this</span>, offset);</span><br><span class="line">    &#125; <span class="keyword">while</span> (!unsafe.compareAndSwapInt(<span class="keyword">this</span>, offset, current, current + <span class="number">1</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    Demo demo10 = <span class="keyword">new</span> Demo();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">10000</span>; j++) &#123;</span><br><span class="line">          <span class="comment">//                    demo10.inc();</span></span><br><span class="line">          demo10.incCAS();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;).start();</span><br><span class="line">    &#125;</span><br><span class="line">    Thread.sleep(<span class="number">2000L</span>);</span><br><span class="line">    System.out.println(demo10.value);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="J-U-C-包内的原子操作封装类"><a href="#J-U-C-包内的原子操作封装类" class="headerlink" title="J.U.C 包内的原子操作封装类"></a>J.U.C 包内的原子操作封装类</h3><ul>
+<li>AtomicBoolean：原子更新布尔类型</li>
+<li>AtomicInteger：原子更新整型</li>
+<li>AtomicLong：原子更新长整型</li>
+</ul>
+<ul>
+<li>AtomicIntegerArray：原子更新整型数组里的元素</li>
+<li>AtomicLongArray：原子更新长整形数组里的元素</li>
+<li>AtomicReferenceArray：原子更新引用类型数组里的元素</li>
+</ul>
+<ul>
+<li>AtomicIntegerFieldUpdater：原子更新整型字段的更新器</li>
+<li>AtomicLongFieldUpdater：原子更新长整形字段的更新器</li>
+<li>AtomicReferenceFieldUpdater：原子更新饮用类型的字段</li>
+</ul>
+<ul>
+<li>AtomicReference：原子更新引用类型</li>
+<li>AtomicStampedReference：原子更新带有版本号的引用类型</li>
+<li>AtomicMarkableReference：原子更新带有标记位的引用类型</li>
+</ul>
+<p>1.8 更新：</p>
+<p>更新器：DoubleAccumulator、LongAccumulator</p>
+<p>计数器：DoubleAdder、LongAdder</p>
+<p>计数器增强版，高并发下性能更好</p>
+<p>频繁更新但不太频繁读取的汇总统计信息时使用</p>
+<p>分成多个操作单元，不同线程更新不同的单元</p>
+<p>只有需要汇总的时候才计算所有单元的操作</p>
+<h3 id="CAS-的三个问题"><a href="#CAS-的三个问题" class="headerlink" title="CAS 的三个问题"></a>CAS 的三个问题</h3><ol>
+<li><p>循环+CAS，自旋的实现让所有线程都处于高频运行，争抢 CPU 执行时间的状态。如果操作长时间不成功，会带来很大的 CPU 资源消耗。</p>
+</li>
+<li><p>仅针对单个变量的操作，不能用于多个变量来实现原子操作。</p>
+</li>
+<li><p><a href="https://www.cnblogs.com/senlinyang/p/7875381.html" target="_blank" rel="noopener">ABA 问题</a></p>
+<p>线程1将A修改为B，线程2将B修改为C，线程3将B修改为A。</p>
+<p>如果执行顺序为线程1 -&gt; 线程3 -&gt; 线程2，则线程2将无法感知到线程1和线程3的修改。</p>
+</li>
+</ol>
+<p>CAS 只能作用在单个变量上，无法针对某段程序</p>
+<ul>
+<li>当线程过多时，CAS失败增多，会导致CPU占用率过高</li>
+</ul>
 
     </div>
 
@@ -397,7 +491,7 @@
       <i class="fa fa-chevron-left"></i> Effective Java
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/10/10/Account-Management-in-Git/" rel="next" title="Account Management in Git">
+    <a href="/2020/10/12/Account-Management-in-Git/" rel="next" title="Account Management in Git">
       Account Management in Git <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -459,7 +553,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程通信"><span class="nav-number">1.</span> <span class="nav-text">线程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK-API"><span class="nav-number">1.1.</span> <span class="nav-text">JDK API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#suspend-resume"><span class="nav-number">1.1.1.</span> <span class="nav-text">suspend &#x2F; resume</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁示例-1：在同步代码中使用"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">死锁示例 1：在同步代码中使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁示例-2：suspend-在-resume-后执行"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">死锁示例 2：suspend 在 resume 后执行</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wait-notify"><span class="nav-number">1.1.2.</span> <span class="nav-text">wait &#x2F; notify</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#永久等待示例"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">永久等待示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#park-unpark"><span class="nav-number">1.1.3.</span> <span class="nav-text">park &#x2F; unpark</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁示例"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">死锁示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪唤醒"><span class="nav-number">1.1.4.</span> <span class="nav-text">伪唤醒</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.1.5.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程封闭"><span class="nav-number">2.</span> <span class="nav-text">线程封闭</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadLocal"><span class="nav-number">2.1.</span> <span class="nav-text">ThreadLocal</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#线程封闭示例"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">线程封闭示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#栈封闭"><span class="nav-number">2.2.</span> <span class="nav-text">栈封闭</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池"><span class="nav-number">3.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">3.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API"><span class="nav-number">3.2.</span> <span class="nav-text">API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接口定义和实现类"><span class="nav-number">3.2.1.</span> <span class="nav-text">接口定义和实现类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ExecutorService"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">ExecutorService</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ScheduledExecutorService"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">ScheduledExecutorService</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程通信"><span class="nav-number">1.</span> <span class="nav-text">线程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK-API"><span class="nav-number">1.1.</span> <span class="nav-text">JDK API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#suspend-resume"><span class="nav-number">1.1.1.</span> <span class="nav-text">suspend &#x2F; resume</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁示例-1：在同步代码中使用"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">死锁示例 1：在同步代码中使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁示例-2：suspend-在-resume-后执行"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">死锁示例 2：suspend 在 resume 后执行</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wait-notify"><span class="nav-number">1.1.2.</span> <span class="nav-text">wait &#x2F; notify</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#永久等待示例"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">永久等待示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#park-unpark"><span class="nav-number">1.1.3.</span> <span class="nav-text">park &#x2F; unpark</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#死锁示例"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">死锁示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪唤醒"><span class="nav-number">1.1.4.</span> <span class="nav-text">伪唤醒</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">1.1.5.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程封闭"><span class="nav-number">2.</span> <span class="nav-text">线程封闭</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadLocal"><span class="nav-number">2.1.</span> <span class="nav-text">ThreadLocal</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#线程封闭示例"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">线程封闭示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#栈封闭"><span class="nav-number">2.2.</span> <span class="nav-text">栈封闭</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池"><span class="nav-number">3.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">3.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API"><span class="nav-number">3.2.</span> <span class="nav-text">API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接口定义和实现类"><span class="nav-number">3.2.1.</span> <span class="nav-text">接口定义和实现类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ExecutorService"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">ExecutorService</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ScheduledExecutorService"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">ScheduledExecutorService</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Executors-工具类"><span class="nav-number">3.3.</span> <span class="nav-text">Executors 工具类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#任务执行过程"><span class="nav-number">3.4.</span> <span class="nav-text">任务执行过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程数量"><span class="nav-number">3.5.</span> <span class="nav-text">线程数量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CAS-机制"><span class="nav-number">4.</span> <span class="nav-text">CAS 机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#J-U-C-包内的原子操作封装类"><span class="nav-number">4.1.</span> <span class="nav-text">J.U.C 包内的原子操作封装类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAS-的三个问题"><span class="nav-number">4.2.</span> <span class="nav-text">CAS 的三个问题</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -734,6 +828,19 @@ window.addEventListener('pjax:success', () => {
 
 
 
+<script pjax>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
     <div id="pjax">
