@@ -329,3 +329,207 @@ public ScheduledFuture<?> scheduleAtFixedRate(Runnable command, long initialDela
 
 一次任务执行时长超过了周期时间，下一次任务会等到该次任务执行结束的时间基础上，计算<span style="color: #2196F3;">执行延时</span>。
 
+### Executors 工具类
+
+- `public static ExecutorService newFixedThreadPool(int nThreads)`
+
+  创建一个固定大小、任务队列容量无界的线程池。核心线程数=最大线程数。
+
+- `public static ExecutorService newCachedThreadPool()`
+
+  创建一个大小无界的缓冲线程池。它的任务队列是一个[同步队列](http://ifeve.com/java-synchronousqueue/)。任务加入到池中，如果池中有空闲线程，则用空闲线程执行，如无则创建新线程执行。池中的线程空闲超过 60 秒，将被销毁释放。线程数随任务的多少变化。适用于执行耗时较小的异步任务。池的核心线程数=0，最大线程数=Integer.MAX_VALUE
+
+- `public static ScheduledExecutorService newSingleThreadScheduledExecutor()`
+
+  只有一个线程来执行无界任务队列的单一线程池。该线程池确保任务按加入的顺序一个一个一次执行。当唯一的线程因任务异常中止时，将创建一个新的线程来继续执行后续的任务。与`newFixedThreadPool(1)`的区别在于，单一线程池的池大小在`newSingleThreadExecutor`方法中硬编码，不能再改变。
+
+- `public static ScheduledExecutorService newScheduledThreadPool(int corePoolSize)`
+
+  能定时执行任务的线程池。该池的核心线程数由参数指定，最大线程数=Interger.MAX_VALUE
+
+### 任务执行过程
+
+ThreadPoolExecutor.execute()
+
+```java
+public void execute(Runnable command) {
+  if (command == null)
+    throw new NullPointerException();
+  /*
+         * Proceed in 3 steps:
+         *
+         * 1. If fewer than corePoolSize threads are running, try to
+         * start a new thread with the given command as its first
+         * task.  The call to addWorker atomically checks runState and
+         * workerCount, and so prevents false alarms that would add
+         * threads when it shouldn't, by returning false.
+         *
+         * 2. If a task can be successfully queued, then we still need
+         * to double-check whether we should have added a thread
+         * (because existing ones died since last checking) or that
+         * the pool shut down since entry into this method. So we
+         * recheck state and if necessary roll back the enqueuing if
+         * stopped, or start a new thread if there are none.
+         *
+         * 3. If we cannot queue task, then we try to add a new
+         * thread.  If it fails, we know we are shut down or saturated
+         * and so reject the task.
+         */
+  int c = ctl.get();
+  if (workerCountOf(c) < corePoolSize) {
+    if (addWorker(command, true))
+      return;
+    c = ctl.get();
+  }
+  if (isRunning(c) && workQueue.offer(command)) {
+    int recheck = ctl.get();
+    if (! isRunning(recheck) && remove(command))
+      reject(command);
+    else if (workerCountOf(recheck) == 0)
+      addWorker(null, false);
+  }
+  else if (!addWorker(command, false))
+    reject(command);
+}
+```
+
+{% mermaid graph TD %}
+
+A[执行] --> B{是否达到核心线程数}
+
+B --> |否|D[创建新线程执行]
+
+B --> |是|C{工作队列是否已满}
+
+C --> |否|E[丢到队列里]
+
+C --> |是|F{是否达到最大线程数量}
+
+F --> |否|G[新建线程执行]
+
+F --> |是|H[执行拒绝策略]
+
+{% endmermaid %}
+
+### 线程数量
+
+<span style="color: #e91e63;">如何确定合适数量的线程？</span>
+
+- <span style="color: #2196F3;">计算型任务</span>：CPU 数量的 1-2 倍
+- <span style="color: #2196F3;">IO型任务</span>：相对计算型任务，需要多一些线程，要根据具体的 <span style="color: #2196F3;">IO 阻塞时长</span>进行考量决定。如 tomcat 中默认的最大线程数为 200。
+- 也可以考虑根据需要在一个<span style="color: #2196F3;">最小数量和最大数量</span>间自动增减线程数。
+
+## CAS 机制
+
+CAS（Compare and swap 比较和交换）属于硬件同步原语，处理器提供了基本内存操作的原子性保证。
+
+CAS 操作需要输入两个数值，一个旧值A和一个新值B，在操作期间先比较旧值有没有发生变化，如果没有发生变化，才交换新值，否则不交换。
+
+Java 中的 sun.misc.Unsafe 类，提供了 compareAndSwapInt() 和 compareAndSwapIong() 等几个方法实现 CAS。
+
+```java
+package com.gzhennaxia.demo;
+
+import sun.misc.Unsafe;
+
+import java.lang.reflect.Field;
+
+public class Demo {
+
+  private volatile int value;
+  private static Unsafe unsafe;
+  private static long offset;
+
+  static {
+    try {
+      Field field = Unsafe.class.getDeclaredField("theUnsafe");
+      field.setAccessible(true);
+      unsafe = (Unsafe) field.get(null);
+      offset = unsafe.objectFieldOffset(Demo.class.getDeclaredField("value"));
+    } catch (NoSuchFieldException | IllegalAccessException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void inc() {
+    value++;
+  }
+
+  public void incCAS() {
+    int current;
+    do {
+      current = unsafe.getIntVolatile(this, offset);
+    } while (!unsafe.compareAndSwapInt(this, offset, current, current + 1));
+  }
+
+  public static void main(String[] args) throws InterruptedException {
+    Demo demo10 = new Demo();
+    for (int i = 0; i < 2; i++) {
+      new Thread(() -> {
+        for (int j = 0; j < 10000; j++) {
+          //                    demo10.inc();
+          demo10.incCAS();
+        }
+      }).start();
+    }
+    Thread.sleep(2000L);
+    System.out.println(demo10.value);
+  }
+}
+```
+
+### J.U.C 包内的原子操作封装类
+
+- AtomicBoolean：原子更新布尔类型
+- AtomicInteger：原子更新整型
+- AtomicLong：原子更新长整型
+
+
+
+- AtomicIntegerArray：原子更新整型数组里的元素
+- AtomicLongArray：原子更新长整形数组里的元素
+- AtomicReferenceArray：原子更新引用类型数组里的元素
+
+
+
+- AtomicIntegerFieldUpdater：原子更新整型字段的更新器
+- AtomicLongFieldUpdater：原子更新长整形字段的更新器
+- AtomicReferenceFieldUpdater：原子更新饮用类型的字段
+
+
+
+- AtomicReference：原子更新引用类型
+- AtomicStampedReference：原子更新带有版本号的引用类型
+- AtomicMarkableReference：原子更新带有标记位的引用类型
+
+
+
+1.8 更新：
+
+更新器：DoubleAccumulator、LongAccumulator
+
+计数器：DoubleAdder、LongAdder
+
+计数器增强版，高并发下性能更好
+
+频繁更新但不太频繁读取的汇总统计信息时使用
+
+分成多个操作单元，不同线程更新不同的单元
+
+只有需要汇总的时候才计算所有单元的操作
+
+### CAS 的三个问题
+
+1. 循环+CAS，自旋的实现让所有线程都处于高频运行，争抢 CPU 执行时间的状态。如果操作长时间不成功，会带来很大的 CPU 资源消耗。
+
+2. 仅针对单个变量的操作，不能用于多个变量来实现原子操作。
+
+3. [ABA 问题](https://www.cnblogs.com/senlinyang/p/7875381.html)
+
+   线程1将A修改为B，线程2将B修改为C，线程3将B修改为A。
+
+   如果执行顺序为线程1 -> 线程3 -> 线程2，则线程2将无法感知到线程1和线程3的修改。
+
+CAS 只能作用在单个变量上，无法针对某段程序
+
+- 当线程过多时，CAS失败增多，会导致CPU占用率过高
