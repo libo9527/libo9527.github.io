@@ -532,6 +532,32 @@ public class Demo {
 
 ## Java 锁
 
+<span style="color: #2196F3;">自旋锁</span>：为了不放弃 CPU 执行事件，循环的使用 CAS 技术对数据进行更新，直至成功。
+
+
+
+<span style="color: #2196F3;">悲观锁</span>：假定会发生并发冲突，同步所有对数据的相关操作，从读数据就开始上锁。
+
+<span style="color: #2196F3;">乐观锁</span>：假定没有冲突，在修改数据时如果发现和之前获取的不一样，则读最新数据，修改后重试修改。
+
+自旋锁就是乐观锁的一种体现。
+
+
+
+<span style="color: #2196F3;">独享锁（写）</span>：给资源加上写锁，线程可以修改资源，其他线程不能再加锁；（单写）
+
+<span style="color: #2196F3;">共享锁（读）</span>：给资源加上读锁后只能读不能改，其他线程也只能加读锁，不能加写锁；（多读）
+
+
+
+<span style="color: #2196F3;">可重入锁、不可重入锁</span>：线程拿到一把锁之后，可以自由进入同一把锁所同步的其他代码。
+
+<span style="color: #2196F3;">公平锁、非公平锁</span>：争抢锁的顺序，如果是按先来后到，则为公平。
+
+
+
+几种重要的锁实现：synchronized、ReentrantLock、ReentrantReadWriteLock
+
 ### 同步关键字 synchronized
 
 synchronized 属于最基本的线程通信机制，基于对象监视器实现。
