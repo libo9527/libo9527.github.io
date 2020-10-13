@@ -530,6 +530,373 @@ public class Demo {
 
    如果执行顺序为线程1 -> 线程3 -> 线程2，则线程2将无法感知到线程1和线程3的修改。
 
-CAS 只能作用在单个变量上，无法针对某段程序
+## Java 锁
 
-- 当线程过多时，CAS失败增多，会导致CPU占用率过高
+### 同步关键字 synchronized
+
+synchronized 属于最基本的线程通信机制，基于对象监视器实现。
+
+Java 中的每个对象都与一个监视器相关联，一个线程可以锁定或解锁。
+
+一次只有一个线程可以锁定监视器，试图锁定该监视器的任何其他线程都会被阻塞，直到它们可以获得该监视器上的锁定为止。
+
+<span style="color: #2196F3;">特性</span>：可重入、独享、悲观锁
+
+<span style="color: #2196F3;">锁的范围</span>：类锁、对象锁、锁消除、锁粗化
+
+提示：同步关键字，不仅是实现同步，根据 JMM 规定，还能保证可见性(读取最新主内存数据，结束后写入主内存)。
+
+#### 示例
+
+##### 可重入
+
+```java
+// 可重入
+public class ObjectSyncDemo2 {
+
+  public synchronized void test1(Object arg) {
+    System.out.println(Thread.currentThread() + " 我开始执行 " + arg);
+    if (arg == null) {
+      test1(new Object());
+    }
+    System.out.println(Thread.currentThread() + " 我执行结束" + arg);
+  }
+
+  public static void main(String[] args) throws InterruptedException {
+    new ObjectSyncDemo2().test1(null);
+  }
+}
+```
+
+##### 锁粗化
+
+```java
+// 锁粗化(运行时 jit 编译优化)
+// jit 编译后的汇编内容, jitwatch可视化工具进行查看
+// just-in-time compilation，缩写为JIT；又译及时编译、实时编译
+public class ObjectSyncDemo3 {
+  int i;
+
+  public void test1(Object arg) {
+    synchronized (this) {
+      i++;
+    }
+    synchronized (this) {
+      i++;
+    }
+  }
+
+  // 优化后只锁定一次
+  //    public void test1(Object arg) {
+  //        synchronized (this) {
+  //            i++;
+  //            i++;
+  //        }
+  //    }
+
+  public static void main(String[] args) throws InterruptedException {
+    for (int i = 0; i < 10000000; i++) {
+      // 热点代码会进行分析后优化
+      new ObjectSyncDemo3().test1("a");
+    }
+  }
+}
+```
+
+##### 锁消除
+
+```java
+// 锁消除(jit)
+public class ObjectSyncDemo4 {
+  public void test3(Object arg) {
+    StringBuilder builder = new StringBuilder();
+    builder.append("a");
+    builder.append(arg);
+    builder.append("c");
+    System.out.println(arg.toString());
+  }
+
+  public void test2(Object arg) {
+    String a = "a";
+    String c = "c";
+    System.out.println(a + arg + c);
+  }
+
+
+  public void test1(Object arg) {
+    // jit 优化, 消除了锁
+    StringBuffer stringBuffer = new StringBuffer();
+    stringBuffer.append("a");
+    stringBuffer.append(arg);
+    stringBuffer.append("c");
+    // System.out.println(stringBuffer.toString());
+  }
+
+  public static void main(String[] args) throws InterruptedException {
+    for (int i = 0; i < 1000000; i++) {
+      new ObjectSyncDemo4().test1("123");
+    }
+  }
+}
+```
+
+#### synchronized 加锁原理
+
+> [死磕Synchronized底层实现--概论 - 掘金](https://juejin.im/post/6844903726545633287)
+>
+> Java中的`synchronized`有偏向锁、轻量级锁、重量级锁三种形式，分别对应了锁只被一个线程持有、不同线程交替持有锁、多线程竞争锁三种情况。当条件不满足时，锁会按偏向锁->轻量级锁->重量级锁的顺序升级。
+>
+> [The **Hotspot** Java Virtual Machine](https://www.cs.princeton.edu/picasso/mats/HotspotOverview.pdf)
+>
+> https://wiki.openjdk.java.net/display/hotspot/synchronization
+
+### Lock 锁接口实现
+
+#### Lock 核心API
+
+| API               | 描述                                           |
+| ----------------- | ---------------------------------------------- |
+| lock              | 获取锁的方法，若锁被其他线程获取，则等待(阻塞) |
+| lockInterruptibly | 在锁的获取过程中可以中断当前线程               |
+| tryLock           | 尝试非阻塞地获取锁，立即返回                   |
+| unlock            | 释放锁                                         |
+
+提示：根据Lock接口的源码注释，Lock接口的实现，具备和同步关键字同样的内存语义。
+
+### ReentrantLock
+
+- 独享锁
+- 支持公平、非公平两种模式
+- 可重入
+
+```java
+// 可响应中断
+public class LockInterruptiblyDemo1 {
+  private Lock lock = new ReentrantLock();
+
+  public static void main(String[] args) throws InterruptedException {
+    LockInterruptiblyDemo1 demo1 = new LockInterruptiblyDemo1();
+    Runnable runnable = new Runnable() {
+      @Override
+      public void run() {
+        try {
+          demo1.test(Thread.currentThread());
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+      }
+    };
+    Thread thread1 = new Thread(runnable);
+    Thread thread2 = new Thread(runnable);
+    thread1.start();
+    Thread.sleep(500); // 等待0.5秒，让thread1先执行
+
+    thread2.start();
+    Thread.sleep(2000); // 两秒后，中断thread2
+
+    thread2.interrupt();
+  }
+
+  public void test(Thread thread) throws InterruptedException {
+    System.out.println(Thread.currentThread().getName() + "， 想获取锁");
+    lock.lockInterruptibly();   //注意，如果需要正确中断等待锁的线程，必须将获取锁放在外面，然后将InterruptedException抛出
+    try {
+      System.out.println(thread.getName() + "得到了锁");
+      Thread.sleep(10000); // 抢到锁，10秒不释放
+    } finally {
+      System.out.println(Thread.currentThread().getName() + "执行finally");
+      lock.unlock();
+      System.out.println(thread.getName() + "释放了锁");
+    }
+  }
+}
+```
+
+#### ReadWriteLock
+
+维护一对关联锁，一个用于只读操作，一个用于写入；读锁可以由多个读线程同时持有，写锁是排他的。
+
+适合读取线程比写入线程多的场景，改进互斥锁的性能，示例场景：缓存组件、集合的并发线程安全性改造。
+
+<span style="color: #2196F3;">锁降级</span>指的是写锁降级为读锁。把持住当前拥有的写锁的同时，再获取到读锁，随后释放写锁的过程。
+
+写锁是线程独占，读锁是共享，所以写->读是降级。(无法实现读->写)
+
+#### Codition
+
+用于替代 wait/notify
+
+Object 中的 wait()，notify()，notifyAll() 方法是和 synchronized 配合使用的，可以唤醒一个或者全部(单个等待集)；
+
+Condition 是需要与 Lock 配合使用的，<span style="color: #2196F3;">提供了多个等待集合，更精确的控制</span>(底层是 park/unpark 机制)；
+
+```java
+// condition 实现队列线程安全。
+public class QueueDemo {
+  final Lock lock = new ReentrantLock();
+  // 指定条件的等待 - 等待有空位
+  final Condition notFull = lock.newCondition();
+  // 指定条件的等待 - 等待不为空
+  final Condition notEmpty = lock.newCondition();
+
+  // 定义数组存储数据
+  final Object[] items = new Object[100];
+  int putptr, takeptr, count;
+
+  // 写入数据的线程,写入进来
+  public void put(Object x) throws InterruptedException {
+    lock.lock();
+    try {
+      while (count == items.length) // 数据写满了
+        notFull.await(); // 写入数据的线程,进入阻塞
+      items[putptr] = x;
+      if (++putptr == items.length) putptr = 0;
+      ++count;
+      notEmpty.signal(); // 唤醒指定的读取线程
+    } finally {
+      lock.unlock();
+    }
+  }
+  // 读取数据的线程,调用take
+  public Object take() throws InterruptedException {
+    lock.lock();
+    try {
+      while (count == 0)
+        notEmpty.await(); // 线程阻塞在这里,等待被唤醒
+      Object x = items[takeptr];
+      if (++takeptr == items.length) takeptr = 0;
+      --count;
+      notFull.signal(); // 通知写入数据的线程,告诉他们取走了数据,继续写入
+      return x;
+    } finally {
+      lock.unlock();
+    }
+  }
+}
+```
+
+## AQS 抽象队列同步器
+
+> 运用到**模版方法设计模式**
+>
+> 即算法的整体骨架已确定，某些具体的步骤由子类去实现。
+
+提供了对资源占用、释放，线程的等待、唤醒等等接口和具体实现。
+
+可以用在各种需要控制资源争用的场景中。(ReentrantLock/CountDownLatch/Semphore)
+
+![image-20201013163241377](/post_image/Jietu20201013-163450.png)
+
+acquire、acquireShared：定义了资源争用的逻辑，如果没拿到，则等待。
+
+<span style="color: #2196F3;">tryAcquire、tryAcquireShared：实际执行占用资源的操作，如何判定由使用者具体去实现。</span>
+
+release、releaseShared：定义释放资源的逻辑，释放之后，通知后续节点进行争抢。
+
+<span style="color: #2196F3;">tryRelease、tryReleaseShared：实际执行资源释放的操作，具体的AQS使用者去实现。</span>
+
+![](/post_image/Jietu20201013-175221.png)
+
+{% mermaid graph TD %}
+
+A[acquire] --> B{tryAcquire}
+
+B --> D[加入队尾]
+
+B --> |抢到资源|C[end]
+
+D --> E[寻找前置]
+
+E --> F{前置节点是否为头节点}
+
+F --> |是|G{tryAcquire}
+
+F --> |否 park|H[等待]
+
+H --> |unpark/interrupt|F
+
+G --> |抢到资源|C
+
+G --> |没抢到资源|E
+
+{% endmermaid %}
+
+### 信号量、栅栏和倒计时器
+
+#### Semaphore
+
+Semaphore 称为“信号量”，控制多个线程争抢许可。
+
+- acquire：获取一个许可，如果没有就等待。
+- release：释放一个许可。
+- availablePermits：获取可用许可数目
+
+典型场景：
+
+- 代码并发处理限流(Hatrix)；
+
+#### CountDownLatch
+
+Java1.5 被引入的一个工具类，常被称为“倒计数器”。
+
+创建对象时，传入指定数值作为线程参与的数量；
+
+<span style="color: #2196F3;">await</span>：该方法等待计数器变为0，在这之前，线程进入等待状态；
+
+<span style="color: #2196F3;">countdown</span>：计数器数值减一，知道为0；
+
+经常用于等待其他线程执行到某一节点，再继续执行当前线程代码。
+
+使用场景示例：
+
+- 统计线程执行的情况；
+- 压力测试中，使用 countDownLatch 实现最大程度的并发处理；
+- 多个线程之间，相互通信，比如线程异步调用接口，结果通知；
+
+```java
+public class CountDownLatchDemo {
+
+  public static void main(String[] args) {
+    CountDownLatch countDownLatch = new CountDownLatch(10);
+    for (int i = 0; i < 10; i++) {
+      int finalI = i;
+      new Thread(new Runnable() {
+        @Override
+        public void run() {
+          try {
+            Thread.sleep(2000);
+          } catch (InterruptedException e) {
+            e.printStackTrace();
+          }
+          System.out.println("线程" + finalI + "执行结束");
+          countDownLatch.countDown();
+        }
+      }).start();
+    }
+    try {
+      countDownLatch.await();
+      System.out.println("主线程等待10个线程执行完后再往下执行");
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+
+  }
+}
+```
+
+#### CyclicBarrier
+
+CyclicBarrier 也是1.5引入的，又称为“线程栅栏”。
+
+创建对象时，指定栅栏线程数量。
+
+<span style="color: #2196F3;">await</span>：等指定数量多线程都处于等待状态时，继续执行后续代码。
+
+<span style="color: #2196F3;">barrierAction</span>：线程数量到了指定量后，自动触发执行指定任务。
+
+和 CountDownLatch 的重要区别在于，CyclicBarrier 对象可以多次触发执行。
+
+典型场景：
+
+- 数据量比较大时，实现批量插入数据到数据库；
+- 数据统计，30个线程统计30天数据，全部统计完毕后，执行汇总；
