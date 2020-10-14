@@ -926,3 +926,77 @@ CyclicBarrier 也是1.5引入的，又称为“线程栅栏”。
 
 - 数据量比较大时，实现批量插入数据到数据库；
 - 数据统计，30个线程统计30天数据，全部统计完毕后，执行汇总；
+
+## 并发容器类
+
+### Map
+
+#### HashMap / ConcurrentHashMap 源码分析
+
+> [探索 ConcurrentHashMap 高并发性的实现机制](https://developer.ibm.com/zh/articles/java-lo-concurrenthashmap/)
+>
+> [HashMap? ConcurrentHashMap? 相信看完这篇没人能难住你！](https://crossoverjie.top/2018/07/23/java-senior/ConcurrentHashMap/)
+>
+> [Java进阶（六）从ConcurrentHashMap的演进看Java多线程核心技术](http://www.jasongj.com/java/concurrenthashmap/)
+
+#### ConcurrentSkipListMap
+
+> [J.U.C 之ConcurrentSkipListMap - 掘金](https://juejin.im/post/6844903958499033095)
+>
+> [Skip list | 维基百科](https://en.wikipedia.org/wiki/Skip_list)
+
+![](https://upload.wikimedia.org/wikipedia/commons/2/2c/Skip_list_add_element-en.gif)
+
+特点：
+
+- 有序链表实现
+- 无锁实现(使用CAS)
+
+- value 不能为空
+- 层级越高，跳跃性越大，数据约少，速度越快
+- 随机决定新节点是否抽出来作为索引
+- 时间复杂度为 O(log n)，空间复杂度为 O(n)
+
+### List
+
+#### CopyOnWriteArrayList
+
+CopyOnWriteArrayList 容器即写时复制容器，和 ArrayList 相比，优点是并发安全，缺点有两个：
+
+1. 多了内存占用：写数据是 copy 一份完整的数据，单独进行操作。
+2. 数据一致性：数据写完之后，其他线程不一定能马上读取到最新内容。
+
+### Set
+
+| 实现                  | 原理                       | 特点                   |
+| --------------------- | -------------------------- | ---------------------- |
+| HashSet               | 基于 HashMap 实现          | 非线程安全             |
+| CopyOnWriteArraySet   | 基于 CopyOnWriteArrayList  | 线程安全               |
+| ConcurrentSkipListSet | 基于 ConcurrentSkipListMap | 线程安全，有序，查询快 |
+
+### Queue
+
+| 方法    | 作用                     | 描述                                             |
+| ------- | ------------------------ | ------------------------------------------------ |
+| add     | 添加元素                 | 如果队列已满，则抛出 IllegalStateException 异常  |
+| remove  | 移除并返回队列头部的元素 | 如果队列为空，则抛出 NoSuchElementException 异常 |
+| element | 返回队列头部的元素       | 如果队列为空，则抛出 NoSuchElementException 异常 |
+| offer   | 添加一个元素并返回 true  | 如果队列已满，则返回 false                       |
+| poll    | 移除并返回队列头部的元素 | 如果队列为空，则返回 null                        |
+| peek    | 返回队列头部的元素       | 如果队列为空，则返回 null                        |
+| put     | 添加一个元素             | 如果队列已满，则阻塞                             |
+| take    | 移除并返回队列头部的元素 | 如果队列为空，则阻塞                             |
+
+## TCP/UDP 协议
+
+### 传输控制协议 TCP
+
+传输控制协议（TCP，Transmission Control Protocol）是一个传输层协议，提供面向连接的、可靠的、有序的、基于字节流的传输层通信协议。应用程序在使用 TCP 之前，必须先建立 TCP 连接。
+
+#### TCP 三次握手
+
+#### TCP 四次挥手
+
+### 用户数据报协议 UDP
+
+用户数据报协议属于传输层协议。提供无连接、不可靠、数据报尽力传输服务。
