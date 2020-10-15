@@ -927,7 +927,7 @@ CyclicBarrier 也是1.5引入的，又称为“线程栅栏”。
 - 数据量比较大时，实现批量插入数据到数据库；
 - 数据统计，30个线程统计30天数据，全部统计完毕后，执行汇总；
 
-## 并发容器类
+## J.U.C 并发容器类
 
 ### Map
 
@@ -987,16 +987,219 @@ CopyOnWriteArrayList 容器即写时复制容器，和 ArrayList 相比，优点
 | put     | 添加一个元素             | 如果队列已满，则阻塞                             |
 | take    | 移除并返回队列头部的元素 | 如果队列为空，则阻塞                             |
 
-## TCP/UDP 协议
+### fork/join 并发处理框架
 
-### 传输控制协议 TCP
+> [使用ForkJoin - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/1252599548343744/1306581226487842)
+>
+> [Java的Fork/Join任务，你写对了吗？ - 廖雪峰的官方网站](https://www.liaoxuefeng.com/article/1146802219354112)
+
+Fork/Join 框架是 Java7 提供了的一个用于并行执行任务的框架， 是一个把大任务分割成若干个小任务，最终汇总每个小任务结果后得到大任务结果的框架。
+
+ForkJoinPool 是 ExecutorService 接口的实现，专为可以递归分解的工作而设计。
+
+分解任务的代码一般使用 ForkJoinTask(带返回结果) 或者其子类 RecursiveAction。
+
+适合数据处理、结果汇总、统计等场景；
+
+Java 8 实例：java.util.Arrays#parallelSort() 方法。
+
+工作窃取带来的性能提升偏理论，API 的复杂性较高，实际研发中可控性来说不如其他 API。
+
+### Future
+
+Future 表示异步计算的结果，提供了用于检查计算是否完成、等待计算完成以及获取结果的方法。
+
+## 网络
+
+### TCP/UDP 协议
+
+#### 传输控制协议 TCP
+
+> https://github.com/jawil/blog/issues/14
+>
+> https://juejin.im/post/6844903958624878606
 
 传输控制协议（TCP，Transmission Control Protocol）是一个传输层协议，提供面向连接的、可靠的、有序的、基于字节流的传输层通信协议。应用程序在使用 TCP 之前，必须先建立 TCP 连接。
 
-#### TCP 三次握手
+##### TCP 三次握手
 
-#### TCP 四次挥手
+##### TCP 四次挥手
 
-### 用户数据报协议 UDP
+###### 为什么需要四次挥手？
+
+四次挥手是为了连接双方能够安全的释放资源（连接双方会存储对方的地址信息）。
+
+少于四次无法实现这个目的，假如客户端率先发起断开连接的请求：
+
+1. 第一次挥手：客户端发送断开连接的请求给服务器
+
+   此时服务器由于还需要发报文给客户端，因此无法释放资源（即删除客户端地址信息）；而客户端还没有收到服务器的确认报文，需要持续监听，因此也无法释放资源（即删除服务器地址信息）。
+
+2. 第二次挥手：服务器发送确认报文给客户端
+
+   此时服务器由于还需要发送数据报文给客户端，因此无法自身释放资源；而客户端还需要继续监听服务端，也无法释放自身资源。
+
+3. 第三次挥手：服务器发送断开连接的请求给客户端
+
+   此时服务器由于还没收到客户端的确认报文，需要继续监听，所以无法释放资源；而客户端需要发送确认报文，也无法释放资源。
+
+
+
+四次挥手是为了连接双方能够断开彼此之间的数据通道。少于四次无法实现这个目的。
+
+假如客户端率先发起断开连接的请求：
+
+1. 第一次挥手：客户端发送断开连接的请求给服务器
+
+   为了实现安全性，需要等待服务器等确认报文。
+
+2. 第二次挥手：服务器发送确认报文给客户端
+
+   由于 TCP 是全双工模式，双通道相互独立，故服务器还可以继续发送数据报文给客户端，此时客户端往服务器端的数据通道关闭，TCP 连接处于半关闭状态。
+
+3. 第三次挥手：服务器发送断开连接的请求给客户端
+
+   为了安全性，需要
+
+#### 用户数据报协议 UDP
 
 用户数据报协议属于传输层协议。提供无连接、不可靠、数据报尽力传输服务。
+
+### Socket 编程
+
+应用最广泛的网络应用编程接口
+
+- 数据报类型套接字 SOCK_DGRAM（面向 UDP 接口）
+- 流式套接字 SOCK_STREAM（面向 TCP 接口）
+- 原始套接字 SOCK_RAW（面向网络层协议接口 IP、ICMP等）
+
+#### Socket API 调用过程
+
+{% mermaid graph TD %}
+
+A[创建套接字] --> B[端点绑定]
+
+B --> C[发送数据]
+
+C --> D[接收数据]
+
+D --> F[释放套接字]
+
+{% endmermaid %}
+
+#### Socket API 函数
+
+listen()、accept() 函数只能用于服务器端；
+
+connect() 函数只能用于客户端；
+
+socket()、bind()、send()、recv()、sendto()、recvfrom()、close()
+
+### BIO
+
+#### 阻塞 IO 的含义
+
+- <span style="color: #2196F3;">阻塞（blocking）IO</span>：资源不可用时，IO 请求一直阻塞，直到反馈结果（有数据或超时）。
+
+- <span style="color: #2196F3;">非阻塞（non-blocking）IO</span>：资源不可用时，IO 请求立即返回，返回数据标识资源不可用。
+
+
+
+- <span style="color: #2196F3;">同步（synchronous）IO</span>：应用阻塞在发送或接收数据的状态，直到数据成功传输或返回失败。
+
+- <span style="color: #2196F3;">异步（asynchronous）IO</span>：应用发送或接收数据后立刻返回，实际处理是异步执行的。
+
+阻塞和非阻塞是获取资源的方式，同步/异步是程序如何处理资源的逻辑设计。
+
+我的理解：阻塞/非阻塞是指单个线程的状态，同步/异步是指多个线程之间的关系。
+
+API：ServerSocket#accept、InputStream#read 都是阻塞的API。操作系统底层 API 中，默认 Socket 操作都是 Blocking 型，send/recv 等接口都是阻塞的。
+
+<span style="color: #2196F3;">BIO 带来的问题：阻塞导致在处理网络 IO 时，一个线程只能处理一个网络连接。</span>
+
+### NIO
+
+NIO 始于 Java 1.4。
+
+NIO 有三个核心组件：
+
+1. Buffer 缓冲区
+2. Channel 通道
+3. Selector 选择器
+
+#### Buffer
+
+使用 Buffer 进行数据读写，需要如下四个步骤：
+
+1. 将数据写入缓冲区
+2. 调用 buffer.flip() 转换为读取模式
+3. 缓冲区读取数据
+4. 调用 buffer.clear() 或 buffer.compact() 清除缓冲区
+
+##### Buffer 原理
+
+三个重要属性：
+
+1. capacity
+2. position：写入模式时代表写数据的位置，读取模式时代表读取数据的位置。
+3. limit：写入模式时等于 capacity，读取模式时代表写入的数据量。
+
+###### ByteBuffer
+
+ByteBuffer 为性能关键型代码提供了直接内存(direct 堆外)和非直接内存(heap 堆)两种实现。
+
+堆外内存获取的方式：`ByteBuffer.allocateDirect(noBytes);`
+
+好处：
+
+1. 进行网络 IO 或者文件 IO 时比 heapBuffer 少一次拷贝（file/socket --- OS memory --- jvm heap）。GC 会移动对象内存，在写 file 或 socket 的过程中，JVM 的实现中，会先把数据复制到堆外，再进行写入。
+2. GC 范围之外，降低 GC 压力，但实现了自动管理。DirectByteBuffer 中有一个 Cleaner 对象(PhantomReference)，Cleaner 被 GC 前会执行 clean 方法，触发 DirectByteBuffer 中定义的 Deallocator
+
+建议：
+
+1. 性能确实可观的时候才去使用；分配给大型、长寿命；（网络传输、文件读写场景）
+2. 通过虚拟机参数 MaxDirectMemorySize 限制大小，防止耗尽整个机器的内存；
+
+#### Channel
+
+##### SocketChannel
+
+SocketChannel 用于建立 TCP 网络连接，类似 java.net.Socket。有两种创建 SocketChannel 的形式：
+
+1. 客户端主动发起和服务器的连接
+2. 服务端获取的新连接
+
+<span style="color: #2196F3;">write</span>：write() 在尚未写入任何内容时就可能返回了。需要在循环中调用 write()。
+
+<span style="color: #2196F3;">read</span>：read() 方法可能直接返回而不读取任何数据，根据返回的 int 值判断读了多少字节。
+
+##### ServerSocketChannel
+
+ServerSocketChannel 可以监听新建的 TCP 连接通道，类似 ServerSocket。
+
+<span style="color: #2196F3;">ServerSocketChannel.accept()</span>：如果该通道出去非阻塞模式，那么如果没有挂起的连接，该方法将立即返回 null。必须检查返回的 SocketChannel 是否为 null。
+
+##### Selector
+
+Selector 实现一个线程处理多个通道：事件驱动机制。
+
+非阻塞的网络通道下，开发者通过 Selector 注册对于通道感兴趣的事件类型，线程通过监听事件来触发相应的代码执行。（拓展：更底层是操作系统的多路复用机制）
+
+#### NIO VS BIO
+
+BIO，阻塞 IO，线程等待时间长，一个线程负责一个连接处理，线程多且利用率低。
+
+NIO，非阻塞 IO，线程利用率更高，一个线程处理多个连接事件，性能更强大。
+
+Tomcat 8 中，已经完全去除 BIO 相关的网络处理代码，默认采用 NIO 进行网络处理。
+
+#### NIO 与多线程结合的改进方案
+
+> [Doug Lea 的著名文章《Scalable IO in Java》](http://gee.cs.oswego.edu/dl/cpjslides/nio.pdf)
+
+#### 小结
+
+NIO 为开发者提供了功能丰富及强大的 IO 处理 API，但是在应用与网络应用开发的过程中，直接使用 JDK 提供的 API，比较繁琐。而且要想将性能进行提升，光有 NIO 还不够，还需要将多线程技术与之结合起来。
+
+因为网络编程本身的复杂性，以及 JDK API 开发的使用难度较高，所以在开源社区中，涌现出很多对 JDK NIO 进行封装、增强后对网络编程框架，例如：Netty、Mina 等。
+
