@@ -1270,11 +1270,146 @@ Netty 中的 Channel 是一个抽象的概念，可以理解为对 JDK NIO Chann
 
 ![](https://user-gold-cdn.xitu.io/2018/10/31/166c90b174855416)
 
+请假请求类：LeaveRequest
+
+```java
+public class LeaveRequest {
+
+  int days;
+
+  public LeaveRequest(int days) {
+    this.days = days;
+  }
+}
+```
+
 处理器抽象类：LeaveRequestHandler
 
+```java
+public abstract class LeaveRequestHandler {
+  int threshold;
 
+  public LeaveRequestHandler(int threshold) {
+    this.threshold = threshold;
+  }
 
+  public abstract Boolean handle(LeaveRequest leaveRequest);
+}
+```
 
+处理器具体类：SupervisorHandler、ManagerHandler、GeneralManagerHandler
 
+```java
+public class SupervisorHandler extends LeaveRequestHandler {
+  public SupervisorHandler(int threshold) {
+    super(threshold);
+  }
 
+  @Override
+  public Boolean handle(LeaveRequest leaveRequest) {
+    if (leaveRequest.days <= threshold){
+      return new Random().nextBoolean();
+    }
+    return null;
+  }
+}
+
+public class ManagerHandler extends LeaveRequestHandler {
+  public ManagerHandler(int threshold) {
+    super(threshold);
+  }
+
+  @Override
+  public Boolean handle(LeaveRequest leaveRequest) {
+    if (leaveRequest.days <= threshold){
+      return new Random().nextBoolean();
+    }
+    return null;
+  }
+}
+
+public class GeneralManagerHandler extends LeaveRequestHandler {
+
+  public GeneralManagerHandler(int threshold) {
+    super(threshold);
+  }
+
+  @Override
+  public Boolean handle(LeaveRequest leaveRequest) {
+    if (leaveRequest.days <= threshold){
+      return new Random().nextBoolean();
+    }
+    return null;
+  }
+}
+```
+
+客户端：Worker
+
+```java
+public class Worker {
+  public static void main(String[] args) {
+    int days = 3;
+    Boolean response = requestLeave(days);
+    System.out.println("申请" + days + "天," + (response ? "申请成功！" : "申请失败！"));
+  }
+
+  private static Boolean requestLeave(int days) {
+    LeaveRequest leaveRequest = new LeaveRequest(days);
+    SupervisorHandler supervisorHandler = new SupervisorHandler(3);
+    ManagerHandler managerHandler = new ManagerHandler(7);
+    GeneralManagerHandler generalManagerHandler = new GeneralManagerHandler(Integer.MAX_VALUE);
+    LeaveRequestHandlerChain chain = new LeaveRequestHandlerChain();
+    chain.addHandler(supervisorHandler);
+    chain.addHandler(managerHandler);
+    chain.addHandler(generalManagerHandler);
+    return chain.process(leaveRequest);
+  }
+}
+```
+
+#### 零拷贝机制
+
+## 类加载机制
+
+一个 Java 程序运行，至少有三个类加载器实例，负责不同类的加载。
+
+1. Bootstrap loader 核心类库加载器
+
+   C/C++实现，无对应 Java 类：null
+
+   加载 JRE_HOME/jre/lib 目录，或用户配置的目录，JDK 核心类库 r t.jar...
+
+2. Extension Class Loader 扩展类库加载器
+
+   ExtClassLoader 的实例：
+
+   加载 JRE_HOME/jre/lib/ext 目录，JDK 扩展包，或用户配置的目录
+
+3. Application Class Loader 用户应用程序加载器
+
+   AppClassLoader 的实例：
+
+   加载 java.class.path 指定的目录，用户应用程序 class-path，或者 Java 命令运行时参数 -cp...
+
+查看类对应加载器的方法：java.lang.Class.getClassLoader()
+
+该方法返回装载类的类加载器，如果这个类是由 BootstrapClassLoader 加载的，那么返回 null。
+
+### 不会重复加载
+
+### 双亲委派模型
+
+## 垃圾回收机制
+
+### 标记算法
+
+- 引用计数
+- 可达性分析算法
+
+##### 引用类型
+
+##### 可达性级别
+
+### 收集算法
 
