@@ -78,7 +78,7 @@
   </entry>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/10/16/Account-Management-in-Git/</url>
+    <url>/2020/10/17/Account-Management-in-Git/</url>
     <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -3658,8 +3658,40 @@ D --> F[释放套接字]
 </ul>
 <h5 id="伪例"><a href="#伪例" class="headerlink" title="伪例"></a>伪例</h5><p>请假流程</p>
 <p><img data-src="https://user-gold-cdn.xitu.io/2018/10/31/166c90b174855416" alt=""></p>
+<p>请假请求类：LeaveRequest</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LeaveRequest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> days;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">LeaveRequest</span><span class="params">(<span class="keyword">int</span> days)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.days = days;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>处理器抽象类：LeaveRequestHandler</p>
-]]></content>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">LeaveRequestHandler</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> threshold;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">LeaveRequestHandler</span><span class="params">(<span class="keyword">int</span> threshold)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.threshold = threshold;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Boolean <span class="title">handle</span><span class="params">(LeaveRequest leaveRequest)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>处理器具体类：SupervisorHandler、ManagerHandler、GeneralManagerHandler</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SupervisorHandler</span> <span class="keyword">extends</span> <span class="title">LeaveRequestHandler</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">SupervisorHandler</span><span class="params">(<span class="keyword">int</span> threshold)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(threshold);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Boolean <span class="title">handle</span><span class="params">(LeaveRequest leaveRequest)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (leaveRequest.days &lt;= threshold)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Random().nextBoolean();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ManagerHandler</span> <span class="keyword">extends</span> <span class="title">LeaveRequestHandler</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ManagerHandler</span><span class="params">(<span class="keyword">int</span> threshold)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(threshold);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Boolean <span class="title">handle</span><span class="params">(LeaveRequest leaveRequest)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (leaveRequest.days &lt;= threshold)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Random().nextBoolean();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GeneralManagerHandler</span> <span class="keyword">extends</span> <span class="title">LeaveRequestHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">GeneralManagerHandler</span><span class="params">(<span class="keyword">int</span> threshold)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(threshold);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Boolean <span class="title">handle</span><span class="params">(LeaveRequest leaveRequest)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (leaveRequest.days &lt;= threshold)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Random().nextBoolean();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>客户端：Worker</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Worker</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> days = <span class="number">3</span>;</span><br><span class="line">    Boolean response = requestLeave(days);</span><br><span class="line">    System.out.println(<span class="string">"申请"</span> + days + <span class="string">"天,"</span> + (response ? <span class="string">"申请成功！"</span> : <span class="string">"申请失败！"</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Boolean <span class="title">requestLeave</span><span class="params">(<span class="keyword">int</span> days)</span> </span>&#123;</span><br><span class="line">    LeaveRequest leaveRequest = <span class="keyword">new</span> LeaveRequest(days);</span><br><span class="line">    SupervisorHandler supervisorHandler = <span class="keyword">new</span> SupervisorHandler(<span class="number">3</span>);</span><br><span class="line">    ManagerHandler managerHandler = <span class="keyword">new</span> ManagerHandler(<span class="number">7</span>);</span><br><span class="line">    GeneralManagerHandler generalManagerHandler = <span class="keyword">new</span> GeneralManagerHandler(Integer.MAX_VALUE);</span><br><span class="line">    LeaveRequestHandlerChain chain = <span class="keyword">new</span> LeaveRequestHandlerChain();</span><br><span class="line">    chain.addHandler(supervisorHandler);</span><br><span class="line">    chain.addHandler(managerHandler);</span><br><span class="line">    chain.addHandler(generalManagerHandler);</span><br><span class="line">    <span class="keyword">return</span> chain.process(leaveRequest);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="零拷贝机制"><a href="#零拷贝机制" class="headerlink" title="零拷贝机制"></a>零拷贝机制</h4><h2 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h2><p>一个 Java 程序运行，至少有三个类加载器实例，负责不同类的加载。</p>
+<ol>
+<li><p>Bootstrap loader 核心类库加载器</p>
+<p>C/C++实现，无对应 Java 类：null</p>
+<p>加载 JRE_HOME/jre/lib 目录，或用户配置的目录，JDK 核心类库 r t.jar…</p>
+</li>
+<li><p>Extension Class Loader 扩展类库加载器</p>
+<p>ExtClassLoader 的实例：</p>
+<p>加载 JRE_HOME/jre/lib/ext 目录，JDK 扩展包，或用户配置的目录</p>
+</li>
+<li><p>Application Class Loader 用户应用程序加载器</p>
+<p>AppClassLoader 的实例：</p>
+<p>加载 java.class.path 指定的目录，用户应用程序 class-path，或者 Java 命令运行时参数 -cp…</p>
+</li>
+</ol>
+<p>查看类对应加载器的方法：java.lang.Class.getClassLoader()</p>
+<p>该方法返回装载类的类加载器，如果这个类是由 BootstrapClassLoader 加载的，那么返回 null。</p>
+<h3 id="不会重复加载"><a href="#不会重复加载" class="headerlink" title="不会重复加载"></a>不会重复加载</h3><h3 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h3><h2 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h2><h3 id="标记算法"><a href="#标记算法" class="headerlink" title="标记算法"></a>标记算法</h3><ul>
+<li>引用计数</li>
+<li>可达性分析算法</li>
+</ul>
+<h5 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h5><h5 id="可达性级别"><a href="#可达性级别" class="headerlink" title="可达性级别"></a>可达性级别</h5><h3 id="收集算法"><a href="#收集算法" class="headerlink" title="收集算法"></a>收集算法</h3>]]></content>
   </entry>
   <entry>
     <title>Permission Control in Git Repository</title>
@@ -4150,164 +4182,6 @@ D --> F[释放套接字]
       </tags>
   </entry>
   <entry>
-    <title>Size of Object in Java</title>
-    <url>/2020/09/17/Size-of-Object-in-Java/</url>
-    <content><![CDATA[<img data-src="https://i.ytimg.com/vi/gaGEt0oYpBA/maxresdefault.jpg" width="100%"/>
-
-<a id="more"></a>
-
-<blockquote>
-<p><a href="https://www.jianshu.com/p/9d729c9c94c4" target="_blank" rel="noopener">如何计算Java对象所占内存的大小</a></p>
-</blockquote>
-<h2 id="Java-对象内存结构"><a href="#Java-对象内存结构" class="headerlink" title="Java 对象内存结构"></a>Java 对象内存结构</h2><p>在HotSpot虚拟机里，对象在堆内存中的存储布局可以划分为三个部分：对象头（Header）、实例数据（Instance Data）和对齐填充（Padding）。</p>
-<h3 id="对象头"><a href="#对象头" class="headerlink" title="对象头"></a>对象头</h3><p>HotSpot 虚拟机对象的对象头部分包括两类信息。第一类是用于存储对象自身的运行时数据，如哈希码（HashCode）、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳等，这部分数据的长度在32位和64位的虚拟机（未开启压缩指针）中分别为 32 个比特和 64 个比特，官方称它 为“Mark Word”。</p>
-<p>对象头的另外一部分是类型指针（kclass），即对象指向它的类型元数据的指针，Java虚拟机通过这个指针来确定该对象是哪个类的实例。如果对象是一个Java数组，那在对象头中还必须有一块用于记录数组长度的数据。同样，这部分数据的长度在 32 位和 64 位的虚拟机（未开启指针压缩）中分别为32个比特和64个比特。</p>
-<h4 id="指针压缩"><a href="#指针压缩" class="headerlink" title="指针压缩"></a>指针压缩</h4><p>从 JDK 1.6 update14 开始，64 bit JVM 正式支持了 <code>-XX:+UseCompressedOops</code> 这个可以压缩指针，起到节约内存占用的新参数。</p>
-<p>所以，当开启指针压缩后，对象头的大小为：</p>
-<p>32位虚拟机对象头大小= Mark Word（4B）+ kclass(4B) = 8B</p>
-<p>64位虚拟机对象头大小= Mark Word（8B）+ kclass(4B) = 12B</p>
-<h3 id="实例数据"><a href="#实例数据" class="headerlink" title="实例数据"></a>实例数据</h3><p>8 种基本类型和 reference 大小在虚拟机上都是固定的,见下表</p>
-<table>
-<thead>
-<tr>
-<th>Primitive Type</th>
-<th>Memory Required(bytes)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>boolean</td>
-<td>1</td>
-</tr>
-<tr>
-<td>byte</td>
-<td>1</td>
-</tr>
-<tr>
-<td>short</td>
-<td>2</td>
-</tr>
-<tr>
-<td>char</td>
-<td>2</td>
-</tr>
-<tr>
-<td>int</td>
-<td>4</td>
-</tr>
-<tr>
-<td>float</td>
-<td>4</td>
-</tr>
-<tr>
-<td>long</td>
-<td>8</td>
-</tr>
-<tr>
-<td>double</td>
-<td>8</td>
-</tr>
-<tr>
-<td>Reference</td>
-<td>4</td>
-</tr>
-</tbody></table>
-<h3 id="对齐填充"><a href="#对齐填充" class="headerlink" title="对齐填充"></a>对齐填充</h3><p>由于 HotSpot 虚拟机的自动内存管理系统要求对象起始地址必须是 8 字节的整数倍，换句话说就是任何对象的大小都必须是8字节的整数倍。对象头部分已经被精心设计成正好是8字节的倍数（1倍或者2倍），因此，如果对象实例数据部分没有对齐的话，就需要通过对齐填充来补全。</p>
-<h2 id="使用-Instrumentation-获取对象大小"><a href="#使用-Instrumentation-获取对象大小" class="headerlink" title="使用 Instrumentation 获取对象大小"></a>使用 Instrumentation 获取对象大小</h2><blockquote>
-<p><a href="https://www.iteye.com/blog/yueyemaitian-2033046" target="_blank" rel="noopener">一个对象占用多少字节？</a></p>
-<p><a href="https://juejin.im/post/6844904022101475342" target="_blank" rel="noopener">https://juejin.im/post/6844904022101475342</a></p>
-</blockquote>
-<p><code>Instrumentation</code> 是 Java SE 5 引入的特性，通过构建一个独立于应用程序的代理程序（Agent），使用 <code>Instrumentation</code> 来监测和协助运行在 JVM 上的程序，甚至能够实现字节码修改。简单的说，<code>Instrumentation</code> 实现了一个虚拟机层面的 AOP 。</p>
-<p>这个类的唯一实现类 InstrumentationImpl 的构造方法是私有的，在创建时，需要依赖一个 nativeAgent，和运行环境所支持的一些预定义类信息，我们在代码中无法直接实例化它，需要在 JVM 启动时，通过指定代理的方式，让 JVM 来实例化它。</p>
-<p>使用 <code>Instrumentation</code> 的 <code>getObjectSize()</code> 方法获取对象大小。</p>
-<p><code>Instrumentation</code> 作为代理程序，使用虚拟机参数 javaagent 来指定。</p>
-<h3 id="Instrumentation-的使用"><a href="#Instrumentation-的使用" class="headerlink" title="Instrumentation 的使用"></a><code>Instrumentation</code> 的使用</h3><ol>
-<li><p>创建代理类</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.instrument.Instrumentation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectShallowSize</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Instrumentation inst;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">premain</span><span class="params">(String agentArgs, Instrumentation instP)</span> </span>&#123;</span><br><span class="line">        inst = instP;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">sizeOf</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> inst.getObjectSize(o);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打包</p>
-<p>在 ObjectShallowSize.java 路径下新建 /META-INF/MANIFEST.MF 指定 Premain-Class 内容为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Manifest-Version: 1.0</span><br><span class="line">Premain-Class: ObjectShallowSize</span><br></pre></td></tr></table></figure>
-
-<p>编译 ObjectShallowSize.java</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">javac ObjectShallowSize.java</span><br></pre></td></tr></table></figure>
-
-<p>打包</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jar cvfm java-agent-sizeof.jar META-INF/MANIFEST.MF .</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>测试</p>
-<p>创建测试类：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectSizeTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(ObjectShallowSize.sizeOf(<span class="keyword">new</span> ObjectSizeTest()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>编译测试类</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">javac ObjectSizeTest.java</span><br></pre></td></tr></table></figure>
-
-<p>运行测试类</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -javaagent:java-agent-sizeof.jar ObjectSizeTest</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p><img data-src="/post_image/image-20200917150706508.png" alt="image-20200917150706508"></p>
-<p>理论值：Mark Word（8B）+ kclass(4B) + Padding(4B) = <code>16B</code></p>
-<p>实际值：<code>16B</code></p>
-<h4 id="添加实例变量"><a href="#添加实例变量" class="headerlink" title="添加实例变量"></a>添加实例变量</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectSizeTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(ObjectShallowSize.sizeOf(<span class="keyword">new</span> ObjectSizeTest()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>理论值：Mark Word（8B）+ kclass(4B) + i(4B) = <code>16B</code></p>
-<p>实际值:<code>16B</code></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectSizeTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> j;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(ObjectShallowSize.sizeOf(<span class="keyword">new</span> ObjectSizeTest()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>理论值：Mark Word（8B）+ kclass(4B) + i(4B) + j(4B)+Padding(4B) = <code>24B</code></p>
-<p>实际值：<code>24B</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class ObjectSizeTest &#123;</span><br><span class="line"></span><br><span class="line">    private int i;</span><br><span class="line">    private int j;</span><br><span class="line">    private String s;</span><br><span class="line">    private boolean aBoolean;</span><br><span class="line">    private char c;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(ObjectShallowSize.sizeOf(new ObjectSizeTest()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>理论值：Mark Word（8B）+ kclass(4B) + i(4B) + j(4B) + aBoolean(1B) + c(2B) + Paddding(1B) + s(4B) + Paddding(4B) = <code>32B</code></p>
-<p>实际值：<code>32B</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class ObjectSizeTest &#123;</span><br><span class="line"></span><br><span class="line">    private String s;</span><br><span class="line">    private int i1;</span><br><span class="line">    private byte b1;</span><br><span class="line">    private byte b2;</span><br><span class="line">    private int i2;</span><br><span class="line">    private Object obj;</span><br><span class="line">    private byte b3;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(ObjectShallowSize.sizeOf(new ObjectSizeTest()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>理论值：Mark Word（8B）+ kclass(4B) + s(4B) + i1(4B) + b1(1B) + b2(1B) +  2(padding) + i2(4B) + obj(4B)+ b3(1B) + Paddding(7B) = <code>40B</code></p>
-<p>实际值：<code>32B</code></p>
-<p>HotSpot虚拟机中，实例字段的存储顺序会受到虚拟机分配策略参数（<code>-XX：FieldsAllocationStyle</code> 参数）和字段在 Java 源码中定义顺序的影响。<br>HotSpot 虚拟机默认的分配顺序为 longs/doubles、ints、shorts/chars、bytes/booleans、oops（Ordinary Object Pointers，OOPs），从以上默认的分配策略中可以看到，相同宽度的字段总是被分配到一起存<br>放，在满足这个前提条件的情况下，在父类中定义的变量会出现在子类之前。如果HotSpot虚拟机的 <code>+XX：CompactFields</code> 参数值为true（默认就为true），那子类之中较窄的变量也允许插入父类变量的空隙之中，以节省出一点点空间。</p>
-<p>因此上述情况下，内存分配情况为：</p>
-<p>理论值：Mark Word（8B）+ kclass(4B) + i1(4B) + i2(4B) + b1(1B) + b2(1B) + b3(1B) + Paddding(1B) + s(4B) + obj(4B) = <code>32B</code></p>
-<p>实际值：<code>32B</code></p>
-<p>对于实例变量为对象的，实际应该通过反射机制取出 Java 对象中实例变量，递归计算累加出实际大小。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectShallowSize</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Instrumentation inst;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> agentArgs 是 premain 函数得到的程序参数，随同 “– javaagent”一起传入。</span></span><br><span class="line"><span class="comment">     *                  与 main 函数不同的是，这个参数是一个字符串而不是一个字符串数组，如果程序参数有多个，程序将自行解析这个字符串。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> instP     是一个 java.lang.instrument.Instrumentation 的实例，由 JVM 自动传入。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> bli@skystartrade.com</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2020-09-17 11:54</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">premain</span><span class="params">(String agentArgs, Instrumentation instP)</span> </span>&#123;</span><br><span class="line">        inst = instP;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 直接计算当前对象占用空间大小，包括</span></span><br><span class="line"><span class="comment">     * 当前类及超类的基本类型实例字段大小、</span></span><br><span class="line"><span class="comment">     * 引用类型实例字段引用大小、</span></span><br><span class="line"><span class="comment">     * 实例基本类型数组总占用空间、</span></span><br><span class="line"><span class="comment">     * 实例引用类型数组引用本身占用空间大小</span></span><br><span class="line"><span class="comment">     * &lt;br&gt;</span></span><br><span class="line"><span class="comment">     * 但是不包括超类继承下来的和当前类声明的实例引用字段的对象本身的大小、</span></span><br><span class="line"><span class="comment">     * 实例引用数组引用的对象本身的大小</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> bli@skystartrade.com</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2020-09-17 17:09</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">sizeOf</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> inst.getObjectSize(o);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 递归计算当前对象占用空间总大小，包括当前类和超类的实例字段大小以及实例字段引用对象大小</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> bli@skystartrade.com</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2020-09-17 17:12</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">fullSizeOf</span><span class="params">(Object objP)</span> <span class="keyword">throws</span> IllegalAccessException </span>&#123;</span><br><span class="line">        Set&lt;Object&gt; visited = <span class="keyword">new</span> HashSet&lt;Object&gt;();</span><br><span class="line">        <span class="comment">// 双端队列（Double Ended Queue）</span></span><br><span class="line">        Deque&lt;Object&gt; toBeQueue = <span class="keyword">new</span> ArrayDeque&lt;Object&gt;();</span><br><span class="line">        toBeQueue.add(objP);</span><br><span class="line">        <span class="keyword">long</span> size = <span class="number">0L</span>;</span><br><span class="line">        <span class="keyword">while</span> (toBeQueue.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            Object obj = toBeQueue.poll();</span><br><span class="line">            <span class="comment">// sizeOf的时候已经计基本类型和引用的长度，包括数组</span></span><br><span class="line">            size += skipObject(visited, obj) ? <span class="number">0L</span> : sizeOf(obj);</span><br><span class="line">            Class&lt;?&gt; tmpObjClass = obj.getClass();</span><br><span class="line">            <span class="keyword">if</span> (tmpObjClass.isArray()) &#123;</span><br><span class="line">                <span class="comment">// 基本类型名字长度是2，例如 int[] -&gt; "[I"</span></span><br><span class="line">                <span class="keyword">if</span> (tmpObjClass.getName().length() &gt; <span class="number">2</span>) &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, len = Array.getLength(obj); i &lt; len; i++) &#123;</span><br><span class="line">                        Object tmp = Array.get(obj, i);</span><br><span class="line">                        <span class="keyword">if</span> (tmp != <span class="keyword">null</span>) &#123;</span><br><span class="line">                            <span class="comment">// 非基本类型需要深度遍历其对象</span></span><br><span class="line">                            toBeQueue.add(Array.get(obj, i));</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">while</span> (tmpObjClass != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    Field[] fields = tmpObjClass.getDeclaredFields();</span><br><span class="line">                    <span class="keyword">for</span> (Field field : fields) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (Modifier.isStatic(field.getModifiers())   <span class="comment">//静态不计</span></span><br><span class="line">                                || field.getType().isPrimitive()) &#123;    <span class="comment">//基本类型不重复计</span></span><br><span class="line">                            <span class="keyword">continue</span>;</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">                        Object fieldValue = field.get(obj);</span><br><span class="line">                        <span class="keyword">if</span> (fieldValue == <span class="keyword">null</span>) &#123;</span><br><span class="line">                            <span class="keyword">continue</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                        toBeQueue.add(fieldValue);</span><br><span class="line">                    &#125;</span><br><span class="line">                    tmpObjClass = tmpObjClass.getSuperclass();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * String.intern的对象不计；</span></span><br><span class="line"><span class="comment">     * 计算过的不计，也避免死循环</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> bli@skystartrade.com</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2020-09-17 17:15</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">skipObject</span><span class="params">(Set&lt;Object&gt; visited, Object obj)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> String &amp;&amp; obj == ((String) obj).intern()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> visited.contains(obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
-    <title>Softs and Tools</title>
-    <url>/2018/12/27/Softs-and-Tools/</url>
-    <content><![CDATA[<img data-src="https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg?cs=srgb&dl=app-applications-apps-147413.jpg&fm=jpg" width="100%"/>
-
-<a id="more"></a>
-
-<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><h3 id="截屏"><a href="#截屏" class="headerlink" title="截屏"></a>截屏</h3><p><strong>FastStone</strong></p>
-<blockquote>
-<p><a href="https://blog.csdn.net/moxiaoya1314/article/details/79952787" target="_blank" rel="noopener">FastStone Capture(FSCapture) 注册码</a></p>
-</blockquote>
-<h2 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h2><h3 id="录屏"><a href="#录屏" class="headerlink" title="录屏"></a>录屏</h3><blockquote>
-<p><a href="https://www.bandicam.cn/" target="_blank" rel="noopener">Bandicam</a></p>
-<p><a href="https://www.52pojie.cn/thread-657951-1-1.html" target="_blank" rel="noopener">Bandicam万能注册机</a></p>
-</blockquote>
-<h3 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h3><blockquote>
-<p><a href="https://www.adobe.com/cn/products/premiere/free-trial-download.html" target="_blank" rel="noopener">Premiere Pro</a></p>
-<p><a href="http://www.carrotchou.blog/7783.html" target="_blank" rel="noopener">Adobe Premiere Pro CC 2018 v12.1.2 特别破解版</a></p>
-</blockquote>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><h3 id="IDM"><a href="#IDM" class="headerlink" title="IDM"></a>IDM</h3><blockquote>
-<p><a href="https://blog.csdn.net/miao_9/article/details/72852903" target="_blank" rel="noopener">配置IDM不限速下载百度云的大文件</a></p>
-<p><a href="https://www.internetdownloadmanager.com/" target="_blank" rel="noopener">下载最新版本IDM</a> </p>
-</blockquote>
-<p>Internet Download Manager（简称IDM）是一个用于Windows系统的下载管理器，它是共享软件，免费试用期为30天，但是每月均有一段时间优惠。</p>
-]]></content>
-      <categories>
-        <category>Software</category>
-      </categories>
-      <tags>
-        <tag>Tool</tag>
-        <tag>Software</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Spring Boot And Template Engine</title>
     <url>/2020/03/17/Spring-Boot-And-Template-Engine/</url>
     <content><![CDATA[<img data-src="https://image.slidesharecdn.com/comparing-template-engines-jvm-131107023934-phpapp01/95/shootout-template-engines-for-the-jvm-6-638.jpg?cb=1432717139" width="100%"/>
@@ -4321,47 +4195,6 @@ D --> F[释放套接字]
 <p><a href="https://www.tutorialspoint.com/spring_boot/spring_boot_thymeleaf.htm" target="_blank" rel="noopener">Spring Boot - Thymeleaf - Tutorialspoint</a></p>
 </blockquote>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Spring Boot Hot Swap with Intellij IDEA</title>
-    <url>/2019/12/04/Spring-Boot-Hot-Swap-with-Intellij-IDEA/</url>
-    <content><![CDATA[<img data-src="https://i.ytimg.com/vi/VWF7vCJSqrA/maxresdefault.jpg" width="100%"/>
-
-<a id="more"></a>
-
-<h2 id="Spring-Boot-热部署"><a href="#Spring-Boot-热部署" class="headerlink" title="Spring Boot 热部署"></a>Spring Boot 热部署</h2><blockquote>
-<p><a href="https://dzone.com/articles/spring-boot-application-live-reload-hot-swap-with" target="_blank" rel="noopener">Spring Boot Application Live Reload (Hot Swap) With Intellij IDEA</a></p>
-<p><a href="https://www.youtube.com/watch?v=VWF7vCJSqrA" target="_blank" rel="noopener">Spring Boot 101 (Part 8) - Live Reload / Hot Swap | YouTube</a></p>
-<p><a href="https://blog.csdn.net/sdaujsj1/article/details/101992877" target="_blank" rel="noopener">springboot idea 热部署配置</a></p>
-</blockquote>
-<ol>
-<li><p>添加 devtool 依赖</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>注意：还需要添加 maven 插件，否则无效</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fork</span>&gt;</span>true<span class="tag">&lt;/<span class="name">fork</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>IDEA 开启自动编译</p>
-<p>Settings –&gt; Build, Execution, Deployment –&gt; Compiler –&gt; Build project automatically</p>
-</li>
-<li><p>IDEA 开启 automake 功能</p>
-<p><code>CTRL + SHIFT + ALT + /</code> –&gt; Registry –&gt; compiler.automake.allow.when.app.running</p>
-<p>注意：调整触发热部署的延迟时间</p>
-<p>compiler.automake.trigger.delay</p>
-<p>compiler.document.save.trigger.delay</p>
-</li>
-<li><p>IDEA 配置更新时触发事件</p>
-<p>Edit Configuration –&gt; On ‘Update’ action –&gt; Update classes and resources</p>
-<p>注意：官方不推荐设置在失焦(On frame deactivation)的时候更新</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Spring-Boot</category>
-      </categories>
-      <tags>
-        <tag>Hot-Swap</tag>
-      </tags>
   </entry>
   <entry>
     <title>Spring-Boot Mutiple Environment Configuration</title>
@@ -5489,6 +5322,205 @@ D --> F[释放套接字]
       <tags>
         <tag>Git</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Spring Boot Hot Swap with Intellij IDEA</title>
+    <url>/2019/12/04/Spring-Boot-Hot-Swap-with-Intellij-IDEA/</url>
+    <content><![CDATA[<img data-src="https://i.ytimg.com/vi/VWF7vCJSqrA/maxresdefault.jpg" width="100%"/>
+
+<a id="more"></a>
+
+<h2 id="Spring-Boot-热部署"><a href="#Spring-Boot-热部署" class="headerlink" title="Spring Boot 热部署"></a>Spring Boot 热部署</h2><blockquote>
+<p><a href="https://dzone.com/articles/spring-boot-application-live-reload-hot-swap-with" target="_blank" rel="noopener">Spring Boot Application Live Reload (Hot Swap) With Intellij IDEA</a></p>
+<p><a href="https://www.youtube.com/watch?v=VWF7vCJSqrA" target="_blank" rel="noopener">Spring Boot 101 (Part 8) - Live Reload / Hot Swap | YouTube</a></p>
+<p><a href="https://blog.csdn.net/sdaujsj1/article/details/101992877" target="_blank" rel="noopener">springboot idea 热部署配置</a></p>
+</blockquote>
+<ol>
+<li><p>添加 devtool 依赖</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：还需要添加 maven 插件，否则无效</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fork</span>&gt;</span>true<span class="tag">&lt;/<span class="name">fork</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>IDEA 开启自动编译</p>
+<p>Settings –&gt; Build, Execution, Deployment –&gt; Compiler –&gt; Build project automatically</p>
+</li>
+<li><p>IDEA 开启 automake 功能</p>
+<p><code>CTRL + SHIFT + ALT + /</code> –&gt; Registry –&gt; compiler.automake.allow.when.app.running</p>
+<p>注意：调整触发热部署的延迟时间</p>
+<p>compiler.automake.trigger.delay</p>
+<p>compiler.document.save.trigger.delay</p>
+</li>
+<li><p>IDEA 配置更新时触发事件</p>
+<p>Edit Configuration –&gt; On ‘Update’ action –&gt; Update classes and resources</p>
+<p>注意：官方不推荐设置在失焦(On frame deactivation)的时候更新</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Spring-Boot</category>
+      </categories>
+      <tags>
+        <tag>Hot-Swap</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Softs and Tools</title>
+    <url>/2018/12/27/Softs-and-Tools/</url>
+    <content><![CDATA[<img data-src="https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg?cs=srgb&dl=app-applications-apps-147413.jpg&fm=jpg" width="100%"/>
+
+<a id="more"></a>
+
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><h3 id="截屏"><a href="#截屏" class="headerlink" title="截屏"></a>截屏</h3><p><strong>FastStone</strong></p>
+<blockquote>
+<p><a href="https://blog.csdn.net/moxiaoya1314/article/details/79952787" target="_blank" rel="noopener">FastStone Capture(FSCapture) 注册码</a></p>
+</blockquote>
+<h2 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h2><h3 id="录屏"><a href="#录屏" class="headerlink" title="录屏"></a>录屏</h3><blockquote>
+<p><a href="https://www.bandicam.cn/" target="_blank" rel="noopener">Bandicam</a></p>
+<p><a href="https://www.52pojie.cn/thread-657951-1-1.html" target="_blank" rel="noopener">Bandicam万能注册机</a></p>
+</blockquote>
+<h3 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h3><blockquote>
+<p><a href="https://www.adobe.com/cn/products/premiere/free-trial-download.html" target="_blank" rel="noopener">Premiere Pro</a></p>
+<p><a href="http://www.carrotchou.blog/7783.html" target="_blank" rel="noopener">Adobe Premiere Pro CC 2018 v12.1.2 特别破解版</a></p>
+</blockquote>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><h3 id="IDM"><a href="#IDM" class="headerlink" title="IDM"></a>IDM</h3><blockquote>
+<p><a href="https://blog.csdn.net/miao_9/article/details/72852903" target="_blank" rel="noopener">配置IDM不限速下载百度云的大文件</a></p>
+<p><a href="https://www.internetdownloadmanager.com/" target="_blank" rel="noopener">下载最新版本IDM</a> </p>
+</blockquote>
+<p>Internet Download Manager（简称IDM）是一个用于Windows系统的下载管理器，它是共享软件，免费试用期为30天，但是每月均有一段时间优惠。</p>
+]]></content>
+      <categories>
+        <category>Software</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+        <tag>Software</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Size of Object in Java</title>
+    <url>/2020/09/17/Size-of-Object-in-Java/</url>
+    <content><![CDATA[<img data-src="https://i.ytimg.com/vi/gaGEt0oYpBA/maxresdefault.jpg" width="100%"/>
+
+<a id="more"></a>
+
+<blockquote>
+<p><a href="https://www.jianshu.com/p/9d729c9c94c4" target="_blank" rel="noopener">如何计算Java对象所占内存的大小</a></p>
+</blockquote>
+<h2 id="Java-对象内存结构"><a href="#Java-对象内存结构" class="headerlink" title="Java 对象内存结构"></a>Java 对象内存结构</h2><p>在HotSpot虚拟机里，对象在堆内存中的存储布局可以划分为三个部分：对象头（Header）、实例数据（Instance Data）和对齐填充（Padding）。</p>
+<h3 id="对象头"><a href="#对象头" class="headerlink" title="对象头"></a>对象头</h3><p>HotSpot 虚拟机对象的对象头部分包括两类信息。第一类是用于存储对象自身的运行时数据，如哈希码（HashCode）、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳等，这部分数据的长度在32位和64位的虚拟机（未开启压缩指针）中分别为 32 个比特和 64 个比特，官方称它 为“Mark Word”。</p>
+<p>对象头的另外一部分是类型指针（kclass），即对象指向它的类型元数据的指针，Java虚拟机通过这个指针来确定该对象是哪个类的实例。如果对象是一个Java数组，那在对象头中还必须有一块用于记录数组长度的数据。同样，这部分数据的长度在 32 位和 64 位的虚拟机（未开启指针压缩）中分别为32个比特和64个比特。</p>
+<h4 id="指针压缩"><a href="#指针压缩" class="headerlink" title="指针压缩"></a>指针压缩</h4><p>从 JDK 1.6 update14 开始，64 bit JVM 正式支持了 <code>-XX:+UseCompressedOops</code> 这个可以压缩指针，起到节约内存占用的新参数。</p>
+<p>所以，当开启指针压缩后，对象头的大小为：</p>
+<p>32位虚拟机对象头大小= Mark Word（4B）+ kclass(4B) = 8B</p>
+<p>64位虚拟机对象头大小= Mark Word（8B）+ kclass(4B) = 12B</p>
+<h3 id="实例数据"><a href="#实例数据" class="headerlink" title="实例数据"></a>实例数据</h3><p>8 种基本类型和 reference 大小在虚拟机上都是固定的,见下表</p>
+<table>
+<thead>
+<tr>
+<th>Primitive Type</th>
+<th>Memory Required(bytes)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean</td>
+<td>1</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>1</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2</td>
+</tr>
+<tr>
+<td>char</td>
+<td>2</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Reference</td>
+<td>4</td>
+</tr>
+</tbody></table>
+<h3 id="对齐填充"><a href="#对齐填充" class="headerlink" title="对齐填充"></a>对齐填充</h3><p>由于 HotSpot 虚拟机的自动内存管理系统要求对象起始地址必须是 8 字节的整数倍，换句话说就是任何对象的大小都必须是8字节的整数倍。对象头部分已经被精心设计成正好是8字节的倍数（1倍或者2倍），因此，如果对象实例数据部分没有对齐的话，就需要通过对齐填充来补全。</p>
+<h2 id="使用-Instrumentation-获取对象大小"><a href="#使用-Instrumentation-获取对象大小" class="headerlink" title="使用 Instrumentation 获取对象大小"></a>使用 Instrumentation 获取对象大小</h2><blockquote>
+<p><a href="https://www.iteye.com/blog/yueyemaitian-2033046" target="_blank" rel="noopener">一个对象占用多少字节？</a></p>
+<p><a href="https://juejin.im/post/6844904022101475342" target="_blank" rel="noopener">https://juejin.im/post/6844904022101475342</a></p>
+</blockquote>
+<p><code>Instrumentation</code> 是 Java SE 5 引入的特性，通过构建一个独立于应用程序的代理程序（Agent），使用 <code>Instrumentation</code> 来监测和协助运行在 JVM 上的程序，甚至能够实现字节码修改。简单的说，<code>Instrumentation</code> 实现了一个虚拟机层面的 AOP 。</p>
+<p>这个类的唯一实现类 InstrumentationImpl 的构造方法是私有的，在创建时，需要依赖一个 nativeAgent，和运行环境所支持的一些预定义类信息，我们在代码中无法直接实例化它，需要在 JVM 启动时，通过指定代理的方式，让 JVM 来实例化它。</p>
+<p>使用 <code>Instrumentation</code> 的 <code>getObjectSize()</code> 方法获取对象大小。</p>
+<p><code>Instrumentation</code> 作为代理程序，使用虚拟机参数 javaagent 来指定。</p>
+<h3 id="Instrumentation-的使用"><a href="#Instrumentation-的使用" class="headerlink" title="Instrumentation 的使用"></a><code>Instrumentation</code> 的使用</h3><ol>
+<li><p>创建代理类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.instrument.Instrumentation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectShallowSize</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Instrumentation inst;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">premain</span><span class="params">(String agentArgs, Instrumentation instP)</span> </span>&#123;</span><br><span class="line">        inst = instP;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">sizeOf</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> inst.getObjectSize(o);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打包</p>
+<p>在 ObjectShallowSize.java 路径下新建 /META-INF/MANIFEST.MF 指定 Premain-Class 内容为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Manifest-Version: 1.0</span><br><span class="line">Premain-Class: ObjectShallowSize</span><br></pre></td></tr></table></figure>
+
+<p>编译 ObjectShallowSize.java</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">javac ObjectShallowSize.java</span><br></pre></td></tr></table></figure>
+
+<p>打包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jar cvfm java-agent-sizeof.jar META-INF/MANIFEST.MF .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试</p>
+<p>创建测试类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectSizeTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(ObjectShallowSize.sizeOf(<span class="keyword">new</span> ObjectSizeTest()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译测试类</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">javac ObjectSizeTest.java</span><br></pre></td></tr></table></figure>
+
+<p>运行测试类</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -javaagent:java-agent-sizeof.jar ObjectSizeTest</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><img data-src="/post_image/image-20200917150706508.png" alt="image-20200917150706508"></p>
+<p>理论值：Mark Word（8B）+ kclass(4B) + Padding(4B) = <code>16B</code></p>
+<p>实际值：<code>16B</code></p>
+<h4 id="添加实例变量"><a href="#添加实例变量" class="headerlink" title="添加实例变量"></a>添加实例变量</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectSizeTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(ObjectShallowSize.sizeOf(<span class="keyword">new</span> ObjectSizeTest()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>理论值：Mark Word（8B）+ kclass(4B) + i(4B) = <code>16B</code></p>
+<p>实际值:<code>16B</code></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectSizeTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> j;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(ObjectShallowSize.sizeOf(<span class="keyword">new</span> ObjectSizeTest()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>理论值：Mark Word（8B）+ kclass(4B) + i(4B) + j(4B)+Padding(4B) = <code>24B</code></p>
+<p>实际值：<code>24B</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class ObjectSizeTest &#123;</span><br><span class="line"></span><br><span class="line">    private int i;</span><br><span class="line">    private int j;</span><br><span class="line">    private String s;</span><br><span class="line">    private boolean aBoolean;</span><br><span class="line">    private char c;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(ObjectShallowSize.sizeOf(new ObjectSizeTest()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>理论值：Mark Word（8B）+ kclass(4B) + i(4B) + j(4B) + aBoolean(1B) + c(2B) + Paddding(1B) + s(4B) + Paddding(4B) = <code>32B</code></p>
+<p>实际值：<code>32B</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class ObjectSizeTest &#123;</span><br><span class="line"></span><br><span class="line">    private String s;</span><br><span class="line">    private int i1;</span><br><span class="line">    private byte b1;</span><br><span class="line">    private byte b2;</span><br><span class="line">    private int i2;</span><br><span class="line">    private Object obj;</span><br><span class="line">    private byte b3;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(ObjectShallowSize.sizeOf(new ObjectSizeTest()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>理论值：Mark Word（8B）+ kclass(4B) + s(4B) + i1(4B) + b1(1B) + b2(1B) +  2(padding) + i2(4B) + obj(4B)+ b3(1B) + Paddding(7B) = <code>40B</code></p>
+<p>实际值：<code>32B</code></p>
+<p>HotSpot虚拟机中，实例字段的存储顺序会受到虚拟机分配策略参数（<code>-XX：FieldsAllocationStyle</code> 参数）和字段在 Java 源码中定义顺序的影响。<br>HotSpot 虚拟机默认的分配顺序为 longs/doubles、ints、shorts/chars、bytes/booleans、oops（Ordinary Object Pointers，OOPs），从以上默认的分配策略中可以看到，相同宽度的字段总是被分配到一起存<br>放，在满足这个前提条件的情况下，在父类中定义的变量会出现在子类之前。如果HotSpot虚拟机的 <code>+XX：CompactFields</code> 参数值为true（默认就为true），那子类之中较窄的变量也允许插入父类变量的空隙之中，以节省出一点点空间。</p>
+<p>因此上述情况下，内存分配情况为：</p>
+<p>理论值：Mark Word（8B）+ kclass(4B) + i1(4B) + i2(4B) + b1(1B) + b2(1B) + b3(1B) + Paddding(1B) + s(4B) + obj(4B) = <code>32B</code></p>
+<p>实际值：<code>32B</code></p>
+<p>对于实例变量为对象的，实际应该通过反射机制取出 Java 对象中实例变量，递归计算累加出实际大小。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectShallowSize</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Instrumentation inst;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> agentArgs 是 premain 函数得到的程序参数，随同 “– javaagent”一起传入。</span></span><br><span class="line"><span class="comment">     *                  与 main 函数不同的是，这个参数是一个字符串而不是一个字符串数组，如果程序参数有多个，程序将自行解析这个字符串。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> instP     是一个 java.lang.instrument.Instrumentation 的实例，由 JVM 自动传入。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> bli@skystartrade.com</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2020-09-17 11:54</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">premain</span><span class="params">(String agentArgs, Instrumentation instP)</span> </span>&#123;</span><br><span class="line">        inst = instP;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 直接计算当前对象占用空间大小，包括</span></span><br><span class="line"><span class="comment">     * 当前类及超类的基本类型实例字段大小、</span></span><br><span class="line"><span class="comment">     * 引用类型实例字段引用大小、</span></span><br><span class="line"><span class="comment">     * 实例基本类型数组总占用空间、</span></span><br><span class="line"><span class="comment">     * 实例引用类型数组引用本身占用空间大小</span></span><br><span class="line"><span class="comment">     * &lt;br&gt;</span></span><br><span class="line"><span class="comment">     * 但是不包括超类继承下来的和当前类声明的实例引用字段的对象本身的大小、</span></span><br><span class="line"><span class="comment">     * 实例引用数组引用的对象本身的大小</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> bli@skystartrade.com</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2020-09-17 17:09</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">sizeOf</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> inst.getObjectSize(o);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 递归计算当前对象占用空间总大小，包括当前类和超类的实例字段大小以及实例字段引用对象大小</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> bli@skystartrade.com</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2020-09-17 17:12</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">fullSizeOf</span><span class="params">(Object objP)</span> <span class="keyword">throws</span> IllegalAccessException </span>&#123;</span><br><span class="line">        Set&lt;Object&gt; visited = <span class="keyword">new</span> HashSet&lt;Object&gt;();</span><br><span class="line">        <span class="comment">// 双端队列（Double Ended Queue）</span></span><br><span class="line">        Deque&lt;Object&gt; toBeQueue = <span class="keyword">new</span> ArrayDeque&lt;Object&gt;();</span><br><span class="line">        toBeQueue.add(objP);</span><br><span class="line">        <span class="keyword">long</span> size = <span class="number">0L</span>;</span><br><span class="line">        <span class="keyword">while</span> (toBeQueue.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            Object obj = toBeQueue.poll();</span><br><span class="line">            <span class="comment">// sizeOf的时候已经计基本类型和引用的长度，包括数组</span></span><br><span class="line">            size += skipObject(visited, obj) ? <span class="number">0L</span> : sizeOf(obj);</span><br><span class="line">            Class&lt;?&gt; tmpObjClass = obj.getClass();</span><br><span class="line">            <span class="keyword">if</span> (tmpObjClass.isArray()) &#123;</span><br><span class="line">                <span class="comment">// 基本类型名字长度是2，例如 int[] -&gt; "[I"</span></span><br><span class="line">                <span class="keyword">if</span> (tmpObjClass.getName().length() &gt; <span class="number">2</span>) &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, len = Array.getLength(obj); i &lt; len; i++) &#123;</span><br><span class="line">                        Object tmp = Array.get(obj, i);</span><br><span class="line">                        <span class="keyword">if</span> (tmp != <span class="keyword">null</span>) &#123;</span><br><span class="line">                            <span class="comment">// 非基本类型需要深度遍历其对象</span></span><br><span class="line">                            toBeQueue.add(Array.get(obj, i));</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">while</span> (tmpObjClass != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    Field[] fields = tmpObjClass.getDeclaredFields();</span><br><span class="line">                    <span class="keyword">for</span> (Field field : fields) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (Modifier.isStatic(field.getModifiers())   <span class="comment">//静态不计</span></span><br><span class="line">                                || field.getType().isPrimitive()) &#123;    <span class="comment">//基本类型不重复计</span></span><br><span class="line">                            <span class="keyword">continue</span>;</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">                        Object fieldValue = field.get(obj);</span><br><span class="line">                        <span class="keyword">if</span> (fieldValue == <span class="keyword">null</span>) &#123;</span><br><span class="line">                            <span class="keyword">continue</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                        toBeQueue.add(fieldValue);</span><br><span class="line">                    &#125;</span><br><span class="line">                    tmpObjClass = tmpObjClass.getSuperclass();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * String.intern的对象不计；</span></span><br><span class="line"><span class="comment">     * 计算过的不计，也避免死循环</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> bli@skystartrade.com</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2020-09-17 17:15</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">skipObject</span><span class="params">(Set&lt;Object&gt; visited, Object obj)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> String &amp;&amp; obj == ((String) obj).intern()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> visited.contains(obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
   </entry>
   <entry>
     <title>Study Notes of Google Calendar API</title>
