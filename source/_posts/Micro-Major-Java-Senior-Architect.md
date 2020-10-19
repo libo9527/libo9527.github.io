@@ -1413,3 +1413,121 @@ public class Worker {
 
 ### 收集算法
 
+### JVM 命令工具
+
+#### javap
+
+#### jps
+
+#### jstat
+
+#### jcmd
+
+#### jinfo
+
+#### jhat
+
+#### jmap
+
+#### jstack
+
+#### jconsole
+
+#### JvisualVM
+
+### JVM 调优
+
+## Tomcat
+
+### Tomcat 网络处理线程模型
+
+#### BIO + 同步 Servlet
+
+Tomcat 7 及以前使用 BIO + 同步 Servlet，一个请求使用一个线程。
+
+#### APR + 异步 Servlet
+
+Apache可移植运行时（*Apache Portable Runtime*，简称APR）是Apache HTTP服务器的支持库，提供了一组映射到下层操作系统的API。
+
+JNI 的形式调用 Apache HTTP 服务器的核心动态链接库来处理文件读取或网络传输操作。
+
+Tomcat 默认监听指定路径，如果有 APR 安装，则自动启动。
+
+#### NIO + 异步 Servlet
+
+Tomcat 8 开始默认使用 NIO
+
+### Tomcat 参数调优
+
+# 中间件
+
+## 消息中间件
+
+### AMQP 协议
+
+> 高级消息队列协议即Advanced Message Queuing Protocol是面向消息中间件提供的开放的应用层协议，其设计目标是对于消息的排序、路由、保持可靠性、保证安全性。 [维基百科](https://zh.wikipedia.org/zh-cn/高级消息队列协议)
+
+### MQTT 协议
+
+> MQTT消息队列遥测传输（Message Queuing Telemetry Transport）是ISO 标准下基于发布 /订阅 范式的消息协议，可视为“资料传递的桥梁”它工作在TCP/IP协议族上，是为硬件性能低下的远程设备以及网络状况糟糕的情况下而设计的发布/订阅型消息协议，为此，它需要一个消息中间件，以解决当前繁重的资料传输协议，如：HTTP。 [维基百科](https://zh.wikipedia.org/zh-cn/MQTT)
+
+### OpenMessaging 协议
+
+> [首个由国内发起的分布式消息领域的国际标准OpenMessaging ...](http://140.205.61.252/2018/11/19/首个由国内发起的/)
+
+### Kafka 协议
+
+> Kafka是由Apache软件基金会开发的一个开源流处理平台，由Scala和Java编写。该项目的目标是为处理实时数据提供一个统一、高吞吐、低延迟的平台。其持久化层本质上是一个“按照分布式事务日志架构的大规模发布/订阅消息队列”，这使它作为企业级基础设施来处理流式数据非常有价值。 [维基百科](https://zh.wikipedia.org/zh-cn/Kafka)
+
+Kafka 协议是居于 TCP 的二机制协议。消息内部是通过长度来分割，由一些基本数据类型组成。
+
+### 消息持久化
+
+|          | ActiveMQ | RabbitMQ | Kafka | RocketMQ |
+| -------- | -------- | -------- | ----- | -------- |
+| 文件系统 | 支持     | 支持     | 支持  | 支持     |
+| 数据库   | 支持     | /        | /     | /        |
+
+###  消息分发策略
+
+
+|          | ActiveMQ | RabbitMQ | Kafka | RocketMQ |
+| -------- | -------- | -------- | ----- | -------- |
+| 文件系统 | 支持     | 支持     | 支持  | 支持     |
+| 轮询分发    | 支持     | 支持      | 支持   | /        |
+| 公平分发 | / | 支持 | 支持 | / |
+| 重发 | 支持 | 支持 | / | 支持 |
+| 消息拉取 | / | 支持 | 支持 | 支持 |
+
+### 集群
+
+#### Master-Slave 主从共享部署方式
+
+#### Master-Slave 主从同步部署方式
+
+#### Broker-Cluster 多主集群同步部署方式
+
+#### Broker-Cluster 多主集群转发部署方式
+
+### ActiveMQ
+
+> Apache ActiveMQ是Apache软件基金会所研发的开放源码消息中间件；由于ActiveMQ是一个纯Java程序，因此只需要操作系统支持Java虚拟机，ActiveMQ便可执行。 [维基百科](https://zh.wikipedia.org/zh-cn/Apache_ActiveMQ)
+
+#### JMS 规范
+
+> Java消息服务应用程序接口是一个Java平台中关于面向消息中间件的API，用于在两个应用程序之间，或分布式系统中发送消息，进行异步通信。Java消息服务是一个与具体平台无关的API，绝大多数MOM提供商都对JMS提供支持。 Java消息服务的规范包括两种消息模式，点对点和发布者／订阅者。 [维基百科](https://zh.wikipedia.org/zh-cn/Java消息服务)
+
+#### JMS 对象模型
+
+#### JMS 消息模型
+
+- 点对点
+
+- 发布订阅
+
+#### JMS 消息结构
+
+- 消息头
+- 消息属性
+- 消息体类型
+
