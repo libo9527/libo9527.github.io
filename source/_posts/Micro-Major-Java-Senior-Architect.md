@@ -1531,3 +1531,169 @@ Kafka 协议是居于 TCP 的二机制协议。消息内部是通过长度来分
 - 消息属性
 - 消息体类型
 
+### ActiveMQ 高可用集群方案
+
+### ActiveMQ 持久化
+
+#### JDBC 方式
+
+性能低
+
+#### AMQ 方式
+
+#### KahaDB 方式
+
+#### LevelDB 方式
+
+已被摒弃
+
+### 事务机制
+
+## Nginx
+
+Nginx 不执行动态语言，只能作为静态资源服务器。
+
+### 负载均衡
+
+1. 轮询
+2. 最少连接
+3. IP hash
+4. 基于权重
+
+### 代理缓存
+
+### 通过 Lua 拓展 Nginx
+
+Lua 使得 Nginx 可以支持动态语言。
+
+#### 协程（Coroutine）
+
+####  Nginx 进程模型
+
+### OpenResty
+
+> OpenResty是基于nginx的Web平台，可以使用其LuaJIT引擎运行Lua脚本。该软件是由Yichun Zhang创建的。它最初是在2011年前由Taobao.com赞助的，在2012年至2016年期间主要由Cloudflare支持。 [维基百科（英文)](https://en.wikipedia.org/wiki/OpenResty)
+
+### 高性能 Nginx 最佳实践
+
+#### 监听端口
+
+#### 虚拟主机
+
+#### 配置 location
+
+#### 常规配置
+
+##### 定义环境变量
+
+##### 嵌入其他配置文件
+
+##### pid文件
+
+##### worker 进程运行的用户和用户组
+
+##### 指定 worker 进程可以打开的最大句柄描述符个数
+
+##### 限制信号队列
+
+#### 高性能配置
+
+##### worker 进程个数
+
+##### 绑定 worker 进程到指定 CPU 内核
+
+##### SSL 硬件加速
+
+##### worker 进程优先级设置
+
+#### 事件配置
+
+##### 是否打开 accept 锁
+
+##### 使用 accept 锁后到真正建立连接之间的延迟时间
+
+##### 批量建立新连接
+
+##### 选择事件模型
+
+##### 每个 worker 的最大连接数
+
+#### Nginx 事件模型
+
+epoll
+
+### LVS 负载均衡软件
+
+> Linux虚拟服务器(Linux Virtual Server)是一个虚拟的服务器集群系统，用于实现负载平衡。项目在1998年5月由章文嵩成立，是中国国内最早出现的自由软件项目之一。 [维基百科](https://zh.wikipedia.org/zh-cn/Linux虚拟服务器)
+
+#### IP 虚拟服务器软件 IPVS
+
+##### Virtual Server via Direct Routing (VS/DR)
+
+##### Virtual Server via Network Address Translation (VS/NAT)
+
+##### Virtual Server via IP Tunneling (VS/TUN)
+
+#### IPVS 调度算法
+
+八种负载调度算法
+
+#### 内核 Layer-7 交换机 KTCPVS
+
+#### LVS 与 Nginx 对比
+
+### 基于 VIP 的 keepalived 高可用架构
+
+### Keepalived
+
+#### 工作原理
+
+#### 应用场景
+
+#### 高可用集群
+
+#### 高可用架构
+
+## 使用 CDN 实现应用的缓存和加速
+
+### CDN
+
+#### 服务模式
+
+#### 工作流程
+
+#### 关键技术
+
+# 缓存
+
+## 谷歌 Guava 缓存
+
+Guava Cache 是 Google Guava 中的一个内存缓存模块，用于将数据缓存到 JVM 内存中。
+
+## Spring Cache
+
+## Redis
+
+### 常用命令
+
+### 数据结构
+
+#### GEO
+
+#### Stream
+
+### 持久化
+
+#### RDB
+
+#### AOF
+
+### 内存管理
+
+#### 内存分配
+
+- String 类型的 value 最大可存储 512M。
+- List 类型，元素个数最多 2^32-1
+- Set 类型，元素个数最多 2^32-1
+- Hash 类型，键值对个数最多 2^32-1
+
