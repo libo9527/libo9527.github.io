@@ -78,7 +78,7 @@
   </entry>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/10/21/Account-Management-in-Git/</url>
+    <url>/2020/10/22/Account-Management-in-Git/</url>
     <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -249,6 +249,23 @@
 <h2 id="数字范围"><a href="#数字范围" class="headerlink" title="数字范围"></a>数字范围</h2><p><code>num1..num2</code></p>
 <h2 id="单位换算"><a href="#单位换算" class="headerlink" title="单位换算"></a>单位换算</h2><p><code>num unit1 to unit2</code></p>
 <h2 id="直接翻译"><a href="#直接翻译" class="headerlink" title="直接翻译"></a>直接翻译</h2><p><code>key translate to languange</code> / <code>key trans to languange</code></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Annotation in Java</title>
+    <url>/2020/10/22/Annotation-in-Java/</url>
+    <content><![CDATA[<img data-src="https://ditchthattextbook.com/wp-content/uploads/2018/03/redefining-annotation-ditch-that-pdf-and-hyper-annotate-1-1.png" width="100%"/>
+
+<a id="more"></a>
+
+<blockquote>
+<p><a href="https://juejin.im/post/6844903636733001741" target="_blank" rel="noopener">JAVA 注解的基本原理 - 掘金</a></p>
+</blockquote>
+<h3 id="注解的本质"><a href="#注解的本质" class="headerlink" title="注解的本质"></a>注解的本质</h3><p>反编译后可以看到注解就是继承自 <code>java.lang.annotation.Annotation</code> 的一个接口。</p>
+<p>注解只不过是一种特殊的注释而已，如果没有解析它的代码，可能连注释都不如。</p>
+<p>而解析一个类或者方法的注解往往有两种形式，一种是编译期直接的扫描，一种是运行期反射。</p>
+<p>反射的事情我们待会说，而编译器的扫描指的是编译器在对 java 代码编译字节码的过程中会检测到某个类或者方法被一些注解修饰，这时它就会对于这些注解进行某些处理。</p>
+<p>典型的就是注解 <code>@Override</code>，一旦编译器检测到某个方法被修饰了 <code>@Override</code> 注解，编译器就会检查当前方法的方法签名是否真正重写了父类的某个方法，也就是比较父类中是否具有一个同样的方法签名。这一种情况只适用于那些编译器已经熟知的注解类，比如 JDK 内置的几个注解，而自定义的注解，编译器是不知道你这个注解的作用的，当然也不知道该如何处理，往往只是会根据该注解的作用范围来选择是否编译进字节码文件，仅此而已。</p>
 ]]></content>
   </entry>
   <entry>
@@ -1118,6 +1135,86 @@
 
 
 <p>mybatis 不能将string类型的时间 插入到数据库。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Design Pattern - Singleton</title>
+    <url>/2020/10/22/Design-Pattern-Singleton/</url>
+    <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSEYmhD44QXA-K_w4fBjzKvdjkiZ2dcl55lbA&usqp=CAU" width="100%"/>
+
+<a id="more"></a>
+
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><h3 id="饿汉模式"><a href="#饿汉模式" class="headerlink" title="饿汉模式"></a>饿汉模式</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton1</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Singleton1 instance = <span class="keyword">new</span> Singleton1();</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Singleton1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton1 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="懒汉模式"><a href="#懒汉模式" class="headerlink" title="懒汉模式"></a>懒汉模式</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Singleton2 instance;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Singleton2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton2 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">      instance = <span class="keyword">new</span> Singleton2();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="线程安全的懒汉模式"><a href="#线程安全的懒汉模式" class="headerlink" title="线程安全的懒汉模式"></a>线程安全的懒汉模式</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton3</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Singleton3 instance;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Singleton3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton3 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">      instance = <span class="keyword">new</span> Singleton3();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="双重校验锁模式（DCL，即-double-checked-locking）"><a href="#双重校验锁模式（DCL，即-double-checked-locking）" class="headerlink" title="双重校验锁模式（DCL，即 double-checked locking）"></a>双重校验锁模式（DCL，即 double-checked locking）</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton4</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton4 instance;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Singleton4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton4 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">synchronized</span> (Singleton4<span class="class">.<span class="keyword">class</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">          instance = <span class="keyword">new</span> Singleton4();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为什么要加 volatile 关键字？</p>
+<p>为什么要两次判空？</p>
+<h3 id="静态内部类单例模式"><a href="#静态内部类单例模式" class="headerlink" title="静态内部类单例模式"></a>静态内部类单例模式</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton5</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">Singleton5</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton5 <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> InnerClass.instance;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton5 instance = <span class="keyword">new</span> Singleton5();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>静态内部类如何保证线程安全的？</p>
+<h3 id="枚举单例模式"><a href="#枚举单例模式" class="headerlink" title="枚举单例模式"></a>枚举单例模式</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton6 &#123;</span><br><span class="line">  INSTANCE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="反射攻击"><a href="#反射攻击" class="headerlink" title="反射攻击"></a>反射攻击</h2><p>私有化构造器并不能阻止反射攻击。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException </span>&#123;</span><br><span class="line">  Singleton1 instance = Singleton1.getInstance();</span><br><span class="line"></span><br><span class="line">  Constructor&lt;Singleton1&gt; declaredConstructor = Singleton1<span class="class">.<span class="keyword">class</span>.<span class="title">getDeclaredConstructor</span>()</span>;</span><br><span class="line">  declaredConstructor.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">  Singleton1 instance1 = declaredConstructor.newInstance();</span><br><span class="line">  System.out.println(instance == instance1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">false</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>饿汉模式</th>
+<th>懒汉模式</th>
+<th>线程安全的懒汉模式</th>
+<th>双重校验锁模式</th>
+<th>静态内部类单例模式</th>
+<th>枚举单例模式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>延迟加载</td>
+<td><span style="color: red"/>否</span></td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>线程安全</td>
+<td>是</td>
+<td><span style="color: red"/>否</span></td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>反射攻击<br />(能否抵御)</td>
+<td><span style="color: red"/>否</span></td>
+<td><span style="color: red"/>否</span></td>
+<td><span style="color: red"/>否</span></td>
+<td><span style="color: red"/>否</span></td>
+<td><span style="color: red"/>否</span></td>
+<td>能</td>
+</tr>
+<tr>
+<td>序列化</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 ]]></content>
   </entry>
   <entry>
@@ -2705,6 +2802,13 @@ table th:first-of-type {  #first表示表格第一列
       <tags>
         <tag>IDM</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Interview</title>
+    <url>/2020/10/21/Interview/</url>
+    <content><![CDATA[<img data-src="cover" width="100%"/>
+
+<a id="more"></a>]]></content>
   </entry>
   <entry>
     <title>JSON Web Token</title>
@@ -7074,7 +7178,7 @@ D --> F[释放套接字]
   <entry>
     <title>Study Notes of Spring Boot</title>
     <url>/2018/05/31/Study-Notes-of-Spring-Boot/</url>
-    <content><![CDATA[<img data-src="https://www.zuojl.com/content/images/2018/11/spring-boot.png" width="100%"/>
+    <content><![CDATA[<img data-src="https://pic3.zhimg.com/v2-8315cb308b890c7087edfc088043f572_720w.jpg?source=172ae18b" width="100%"/>
 
 <a id="more"></a>
 
@@ -7115,6 +7219,33 @@ D --> F[释放套接字]
 <h2 id="Spring-Boot项目中设置Content-Type的方法"><a href="#Spring-Boot项目中设置Content-Type的方法" class="headerlink" title="Spring Boot项目中设置Content-Type的方法"></a>Spring Boot项目中设置Content-Type的方法</h2><p><strong>一种比较简单优雅的方法是在注解@RequestMapping中添加produces参数即可</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/api"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/collection"</span>, produces=<span class="string">"application/json;charset=UTF-8"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">home</span><span class="params">(String op)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="Spring-Boot-的启动流程"><a href="#Spring-Boot-的启动流程" class="headerlink" title="Spring Boot 的启动流程"></a>Spring Boot 的启动流程</h2><ol>
+<li><p>创建 <code>SpringApplication</code> 实例</p>
+<ul>
+<li><p>推断应用类型（SERVLET/REACTIVE/NONE）</p>
+<p>classpath 路径下如果存在 <code>javax.servlet.Servlet</code> 和 <code>org.springframework.web.context.ConfigurableWebApplicationContext</code> 这两个类，那么就认为是 SERVLET 类型。</p>
+</li>
+<li><p>加载<strong>应用上下文初始化器</strong>(ApplicationContextInitializer)</p>
+<p>使用<strong>Spring工厂加载器</strong>(SpringFactoriesLoader) 加载 classpath 下所有的 ApplicationContextInitializer。</p>
+</li>
+<li><p>加载<strong>应用监听器</strong>(ApplicationListener)</p>
+<p>使用<strong>Spring工厂加载器</strong>(SpringFactoriesLoader) 加载 classpath 下所有的 ApplicationListener。</p>
+</li>
+<li><p>推断 main 方法所在类</p>
+<p>从方法调用栈中找出 main 方法所在类。</p>
+</li>
+</ul>
+</li>
+<li><p>调用 <code>SpringApplication</code> 实例的 <code>run()</code> 方法</p>
+<ul>
+<li><p>通过<strong>应用事件广播器</strong>(ApplicationEventMulticaster)广播 starting 事件</p>
+</li>
+<li><p>创建并配置 Environment。</p>
+<p>比如 PropertySource（属性文件源）、profile</p>
+</li>
+</ul>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>Java</category>
