@@ -10,7 +10,7 @@ tags:
 comments: false
 ---
 
-<img src="https://www.zuojl.com/content/images/2018/11/spring-boot.png" width="100%"/>
+<img src="https://pic3.zhimg.com/v2-8315cb308b890c7087edfc088043f572_720w.jpg?source=172ae18b" width="100%"/>
 
 <!-- more -->
 
@@ -88,4 +88,32 @@ public class ApiController {
         
     }
 ```
+
+## Spring Boot 的启动流程
+
+1. 创建 `SpringApplication` 实例
+
+   - 推断应用类型（SERVLET/REACTIVE/NONE）
+
+     classpath 路径下如果存在 `javax.servlet.Servlet` 和 `org.springframework.web.context.ConfigurableWebApplicationContext` 这两个类，那么就认为是 SERVLET 类型。
+
+   - 加载**应用上下文初始化器**(ApplicationContextInitializer)
+
+     使用**Spring工厂加载器**(SpringFactoriesLoader) 加载 classpath 下所有的 ApplicationContextInitializer。
+
+   - 加载**应用监听器**(ApplicationListener)
+
+     使用**Spring工厂加载器**(SpringFactoriesLoader) 加载 classpath 下所有的 ApplicationListener。
+
+   - 推断 main 方法所在类
+
+     从方法调用栈中找出 main 方法所在类。
+
+2. 调用 `SpringApplication` 实例的 `run()` 方法
+
+   - 通过**应用事件广播器**(ApplicationEventMulticaster)广播 starting 事件
+
+   - 创建并配置 Environment。
+
+     比如 PropertySource（属性文件源）、profile
 
