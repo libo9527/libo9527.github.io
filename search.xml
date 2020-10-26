@@ -78,7 +78,7 @@
   </entry>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/10/23/Account-Management-in-Git/</url>
+    <url>/2020/10/26/Account-Management-in-Git/</url>
     <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -1136,6 +1136,15 @@
 
 <p>mybatis 不能将string类型的时间 插入到数据库。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Design Pattern - Proxy</title>
+    <url>/2020/10/26/Design-Pattern-Proxy/</url>
+    <content><![CDATA[<img data-src="https://cdn.journaldev.com/wp-content/uploads/2013/07/proxy-design-pattern.jpg" width="100%"/>
+
+<a id="more"></a>
+
+<h2 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h2><h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2>]]></content>
   </entry>
   <entry>
     <title>Design Pattern - Singleton</title>
@@ -2897,9 +2906,11 @@ table th:first-of-type {  #first表示表格第一列
   <entry>
     <title>Interview</title>
     <url>/2020/10/21/Interview/</url>
-    <content><![CDATA[<img data-src="cover" width="100%"/>
+    <content><![CDATA[<img data-src="https://resources.workable.com/wp-content/uploads/2018/05/prepare-interviews-featured.png" width="100%"/>
 
-<a id="more"></a>]]></content>
+<a id="more"></a>
+
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a><a href="https://libo9527.github.io/2020/10/22/Design-Pattern-Singleton/" target="_blank" rel="noopener">单例模式</a></h3>]]></content>
   </entry>
   <entry>
     <title>JSON Web Token</title>
@@ -2921,6 +2932,51 @@ table th:first-of-type {  #first表示表格第一列
       <tags>
         <tag>JWT</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Java Thread</title>
+    <url>/2020/10/26/Java-Thread/</url>
+    <content><![CDATA[<img data-src="cover" width="100%"/>
+
+<a id="more"></a>
+
+<h2 id="创建线程的方式"><a href="#创建线程的方式" class="headerlink" title="创建线程的方式"></a>创建线程的方式</h2><ol>
+<li><p>实现 Runnable 接口</p>
+<p>继承 Thread 类，覆盖 run 方法，调用 <code>Thread#start</code> 启动</p>
+</li>
+<li><p>继承 Thread 类</p>
+<p>实现 Runnable 接口，创建实例，作为 <code>Thread</code> 构造参数传入，调用 <code>Thread#start</code> 启动</p>
+</li>
+<li><p>实现 Callable 接口</p>
+<p>实现 Callable 接口，创建实例，作为 <code>FutureTask&lt;&gt;</code> 构造参数创建 <code>FutureTask</code> 对象，将 FutureTask 对象作为 <code>Thread</code> 构造参数传入，调用 <code>Thread#start</code> 启动</p>
+</li>
+<li><p>线程池</p>
+<p>使用 ThreadPoolExecutor 创建一个线程池，利用 <code>submit()</code> 方法提交线程，<code>Future&lt;Object&gt;</code> 接收返回</p>
+</li>
+</ol>
+<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><h5 id="继承-Thread-和实现-Runnable、Callable-接口区别"><a href="#继承-Thread-和实现-Runnable、Callable-接口区别" class="headerlink" title="继承 Thread 和实现 Runnable、Callable 接口区别"></a>继承 Thread 和实现 Runnable、Callable 接口区别</h5><p>实现接口不影响继承其他类</p>
+<h5 id="实现-Runnable-和-Callable的区别"><a href="#实现-Runnable-和-Callable的区别" class="headerlink" title="实现 Runnable 和 Callable的区别"></a>实现 Runnable 和 Callable的区别</h5><p>Runnable 无返回，Callable 有返回。</p>
+<h5 id="Thread-启动和线程池启动方式"><a href="#Thread-启动和线程池启动方式" class="headerlink" title="Thread 启动和线程池启动方式"></a>Thread 启动和线程池启动方式</h5><p>线程池能够重复使用线程，节省 CPU 资源。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Java Virtual Machine</title>
+    <url>/2020/10/26/Java-Virtual-Machine/</url>
+    <content><![CDATA[<img data-src="https://static001.infoq.cn/resource/image/5f/5e/5fe5dc2c6950ce2dce8808da91b63c5e.png" width="100%"/>
+
+<a id="more"></a>
+
+<h2 id="笔试题"><a href="#笔试题" class="headerlink" title="笔试题"></a>笔试题</h2><h3 id="Java-内存泄露的排查（思路及过程）"><a href="#Java-内存泄露的排查（思路及过程）" class="headerlink" title="Java 内存泄露的排查（思路及过程）"></a>Java 内存泄露的排查（思路及过程）</h3><blockquote>
+<p><a href="https://blog.csdn.net/fishinhouse/article/details/80781673" target="_blank" rel="noopener">Java内存泄漏的排查总结</a></p>
+<p><a href="https://cloud.tencent.com/developer/article/1144256" target="_blank" rel="noopener">JVM第一篇：一个Java内存泄漏的排查案例</a></p>
+</blockquote>
+<ol>
+<li>使用 jps/ps 命令确定虚拟机进程ID(LVMID，Local Virtual Machine Identifier)</li>
+<li>使用 jstat 命令查看 JVM 的 GC 情况</li>
+<li>使用 jmap 命令生产堆快照 dump 文件</li>
+<li>使用 MAT 工具分析 dump 文件，在 MAT 中查看 Action 窗口下的 Histogram，找到占用内存大的对象，分析引用栈，最后定位到具体代码</li>
+</ol>
+]]></content>
   </entry>
   <entry>
     <title>Java Web Norms</title>
@@ -7310,7 +7366,7 @@ D --> F[释放套接字]
 <h2 id="Spring-Boot项目中设置Content-Type的方法"><a href="#Spring-Boot项目中设置Content-Type的方法" class="headerlink" title="Spring Boot项目中设置Content-Type的方法"></a>Spring Boot项目中设置Content-Type的方法</h2><p><strong>一种比较简单优雅的方法是在注解@RequestMapping中添加produces参数即可</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/api"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/collection"</span>, produces=<span class="string">"application/json;charset=UTF-8"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">home</span><span class="params">(String op)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Spring-Boot-的启动流程"><a href="#Spring-Boot-的启动流程" class="headerlink" title="Spring Boot 的启动流程"></a>Spring Boot 的启动流程</h2><ol>
+<h2 id="面试"><a href="#面试" class="headerlink" title="面试"></a>面试</h2><h3 id="Spring-Boot-的启动流程"><a href="#Spring-Boot-的启动流程" class="headerlink" title="Spring Boot 的启动流程"></a>Spring Boot 的启动流程</h3><ol>
 <li><p>创建 <code>SpringApplication</code> 实例</p>
 <ul>
 <li><p>推断应用类型（SERVLET/REACTIVE/NONE）</p>
@@ -7336,6 +7392,21 @@ D --> F[释放套接字]
 </li>
 </ul>
 </li>
+</ol>
+<h3 id="Spring-Boot-自动配置原理"><a href="#Spring-Boot-自动配置原理" class="headerlink" title="Spring Boot 自动配置原理"></a>Spring Boot 自动配置原理</h3><blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/136469945" target="_blank" rel="noopener">SpringBoot自动配置的原理详解</a></p>
+<p><a href="https://blog.csdn.net/u014745069/article/details/83820511" target="_blank" rel="noopener">Spring Boot面试杀手锏————自动配置原理</a></p>
+</blockquote>
+<p>Spring Boot 项目的启动类上有一个注解，叫 <code>@SpringBootApplication</code>，这个注解是一个组合注解，主要有 <code>@SpringBootConfiguration</code>、<code>@EnableAutoConfiguration</code>、<br><code>@ComponentScan</code> 这三个注解组成。</p>
+<p>其中 <code>@EnableAutoConfiguration</code> 注解启动了 Spring Boot 的自动配置功能，这个注解也是一个派生注解，它通过 <code>@Import</code> 注解将 spring-boot-autoconfigure 模块 <code>META-INF</code> 目录下的 spring.factories 文件中 key 为 EnableAutoConfiguration 的自动配置类全部加载进来。</p>
+<blockquote>
+<p>Spring Boot 的自动配置本质上就是 Spring 中 JavaConfig 方式的容器配置类</p>
+</blockquote>
+<p>这些自动配置类会根据其上的 <code>@Condition</code> 相关注解在一定条件下被注入到容器中。</p>
+<p>自动配置类是通过 <code>@EnableCongfigurationProperties</code> 与相关的配置属性类相关联，而这些配置属性类则是通过 <code>@ConfigurationProperties</code> 注解指定前缀，进而与 Spring Boot 全局配置文件中的配置相关联的。</p>
+<h3 id="Resource-和-Autowired-区别"><a href="#Resource-和-Autowired-区别" class="headerlink" title="@Resource 和 @Autowired 区别"></a>@Resource 和 @Autowired 区别</h3><ol>
+<li>@Autowired 是 spring 提供的注解，@Resource 是 JDK1.6 后支持的注解</li>
+<li>@Autowired 按类型注入(和 @Qualifier 搭配使用指示名称)，@Resource 按名称注入</li>
 </ol>
 ]]></content>
       <categories>
