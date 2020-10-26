@@ -1,6 +1,6 @@
 ---
 title: Interview
-description: 一句话描述这篇文章
+description: 面试
 comments: false
 hidden: false
 top: false
@@ -9,6 +9,11 @@ categories:
 tags:
 ---
 
-<img src="cover" width="100%"/>
+<img src="https://resources.workable.com/wp-content/uploads/2018/05/prepare-interviews-featured.png" width="100%"/>
 
 <!-- more -->
+
+## 设计模式
+
+### [单例模式](https://libo9527.github.io/2020/10/22/Design-Pattern-Singleton/)
+

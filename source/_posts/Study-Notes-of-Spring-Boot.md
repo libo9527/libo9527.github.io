@@ -89,7 +89,9 @@ public class ApiController {
     }
 ```
 
-## Spring Boot 的启动流程
+## 面试
+
+### Spring Boot 的启动流程
 
 1. 创建 `SpringApplication` 实例
 
@@ -116,4 +118,26 @@ public class ApiController {
    - 创建并配置 Environment。
 
      比如 PropertySource（属性文件源）、profile
+
+### Spring Boot 自动配置原理
+
+> [SpringBoot自动配置的原理详解](https://zhuanlan.zhihu.com/p/136469945)
+>
+> [Spring Boot面试杀手锏————自动配置原理](https://blog.csdn.net/u014745069/article/details/83820511)
+
+Spring Boot 项目的启动类上有一个注解，叫 `@SpringBootApplication`，这个注解是一个组合注解，主要有 `@SpringBootConfiguration`、`@EnableAutoConfiguration`、
+`@ComponentScan` 这三个注解组成。
+
+其中 `@EnableAutoConfiguration` 注解启动了 Spring Boot 的自动配置功能，这个注解也是一个派生注解，它通过 `@Import` 注解将 spring-boot-autoconfigure 模块 `META-INF` 目录下的 spring.factories 文件中 key 为 EnableAutoConfiguration 的自动配置类全部加载进来。
+
+> Spring Boot 的自动配置本质上就是 Spring 中 JavaConfig 方式的容器配置类
+
+这些自动配置类会根据其上的 `@Condition` 相关注解在一定条件下被注入到容器中。
+
+自动配置类是通过 `@EnableCongfigurationProperties` 与相关的配置属性类相关联，而这些配置属性类则是通过 `@ConfigurationProperties` 注解指定前缀，进而与 Spring Boot 全局配置文件中的配置相关联的。
+
+### @Resource 和 @Autowired 区别
+
+1. @Autowired 是 spring 提供的注解，@Resource 是 JDK1.6 后支持的注解
+2. @Autowired 按类型注入(和 @Qualifier 搭配使用指示名称)，@Resource 按名称注入
 
