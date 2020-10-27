@@ -78,7 +78,7 @@
   </entry>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/10/26/Account-Management-in-Git/</url>
+    <url>/2020/10/27/Account-Management-in-Git/</url>
     <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -1144,7 +1144,86 @@
 
 <a id="more"></a>
 
-<h2 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h2><h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2>]]></content>
+<h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><blockquote>
+<p><a href="https://blog.csdn.net/shusheng0007/article/details/80864854" target="_blank" rel="noopener">秒懂Java代理与动态代理模式</a></p>
+</blockquote>
+<p>用代理对象<strong>代替</strong>目标对象来实现某个目的（服务/主题/功能）。</p>
+<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><ol>
+<li>隐藏目标对象</li>
+<li>增强目标对象</li>
+</ol>
+<h3 id="代理模式结构"><a href="#代理模式结构" class="headerlink" title="代理模式结构"></a>代理模式结构</h3><blockquote>
+<p><a href="https://refactoringguru.cn/design-patterns/proxy" target="_blank" rel="noopener">代理模式 | <strong>Refactoring.Guru</strong></a></p>
+</blockquote>
+<ol>
+<li><p>服务接口</p>
+<p>声明了服务接口。 代理必须遵循该接口才能伪装成服务对象。</p>
+</li>
+<li><p>服务类</p>
+<p>提供了一些实用的业务逻辑。</p>
+</li>
+<li><p>代理类</p>
+<p>代理类包含一个指向服务对象的引用成员变量。 代理完成其任务 （例如延迟初始化、 记录日志、 访问控制和缓存等） 后会将请求传递给服务对象。 通常情况下， 代理会对其服务对象的整个生命周期进行管理。</p>
+</li>
+<li><p>客户端</p>
+<p>客户端能通过同一接口与服务或代理进行交互，所以你可在一切需要服务对象的代码中使用代理。</p>
+</li>
+</ol>
+<h2 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h2><p>劳动仲裁案例：代理律师代理讨薪员工索要工资。</p>
+<h3 id="服务接口"><a href="#服务接口" class="headerlink" title="服务接口"></a>服务接口</h3><blockquote>
+<p>代理主题：讨薪</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AskAbility</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="服务类"><a href="#服务类" class="headerlink" title="服务类"></a>服务类</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZhangSan</span> <span class="keyword">implements</span> <span class="title">AskAbility</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"还钱！"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="代理类"><a href="#代理类" class="headerlink" title="代理类"></a>代理类</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Lawyer</span> <span class="keyword">implements</span> <span class="title">AskAbility</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> ZhangSan zhangSan;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Lawyer</span><span class="params">(ZhangSan zhangSan)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.zhangSan = zhangSan;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    zhangSan.askForPay();</span><br><span class="line">    System.out.println(<span class="string">"如果不还将承担法律责任！"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ZhangSan zhangSan = <span class="keyword">new</span> ZhangSan();</span><br><span class="line">    AskAbility ask = <span class="keyword">new</span> Lawyer(zhangSan);</span><br><span class="line">    ask.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p>静态代理中代理类在编译期已经存在，一个服务类需要一个代理类与之对应，当服务类增多时，代理类随着增多，导致类数量太多。</p>
+<p>动态代理就是为了减少类数量而产生。</p>
+<p>动态代理有 JDK(基于接口、反射生成) 和 CGLIB(基于继承、字节码生成) 两种实现方式。</p>
+<p>Spring AOP 就是基于动态代理实现的。</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/javazejian/article/details/56267036" target="_blank" rel="noopener">关于 Spring AOP (AspectJ) 你该知晓的一切</a></p>
+<p><a href="https://how2j.cn/k/spring/spring-annotation-ioc-di/1067.html" target="_blank" rel="noopener">Spring系列教材 （三）- 注解方式 IOC/DI</a></p>
+</blockquote>
+<h3 id="JDK-动态代理"><a href="#JDK-动态代理" class="headerlink" title="JDK 动态代理"></a>JDK 动态代理</h3><p>两个重要的元素：</p>
+<ol>
+<li><p>InvocationHandler 接口</p>
+<p><code>public Object invoke(Object proxy, Method method, Object[] args) throws Throwable;</code></p>
+<ul>
+<li>proxy：动态代理对象</li>
+<li>method：正在执行的方法</li>
+<li>args：当前执行方法传入的实参</li>
+</ul>
+</li>
+<li><p>Proxy 类</p>
+<p><code>public static Object newProxyInstance(ClassLoader loader, Class&lt;?&gt;[] interfaces, InvocationHandler h) throws IllegalArgumentException</code></p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AskingHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Object target;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">AskingHandler</span><span class="params">(Object target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.target = target;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    Object invoke = method.invoke(target, args);</span><br><span class="line">    System.out.println(<span class="string">"如果不还将承担法律责任！"</span>);</span><br><span class="line">    <span class="keyword">return</span> invoke;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">    InvocationHandler handler = <span class="keyword">new</span> AskingHandler(employee);</span><br><span class="line">    AskAbility proxy = (AskAbility) Proxy.newProxyInstance(employee.getClass().getClassLoader(), employee.getClass().getInterfaces(), handler);</span><br><span class="line">    proxy.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CGLIB-动态代理"><a href="#CGLIB-动态代理" class="headerlink" title="CGLIB 动态代理"></a>CGLIB 动态代理</h3><p>JDK 只能对实现了接口的类做动态代理，而不能对没有实现接口的类做动态代理，所以出现了 cgLib。</p>
+<p>CGLib（Code Generation Library）是一个强大、高性能的 Code 生成类库，它可以在程序运行期间动态扩展类或接口，它的底层是使用 <strong>java字节码操作框架</strong> ASM 实现。</p>
+<p>CGLIB 两个重要元素：</p>
+<ol>
+<li><p>MethodInterceptor 方法拦截器</p>
+<p><code>Object intercept(Object var1, Method var2, Object[] var3, MethodProxy var4) throws Throwable;</code></p>
+</li>
+<li><p>Enhancer</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">create</span><span class="params">(Class type, Callback callback)</span> </span>&#123;</span><br><span class="line">  Enhancer e = <span class="keyword">new</span> Enhancer();</span><br><span class="line">  e.setSuperclass(type);</span><br><span class="line">  e.setCallback(callback);</span><br><span class="line">  <span class="keyword">return</span> e.create();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="服务类-1"><a href="#服务类-1" class="headerlink" title="服务类"></a>服务类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"还钱！"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法拦截器"><a href="#方法拦截器" class="headerlink" title="方法拦截器"></a>方法拦截器</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AskingMethodInterceptor</span> <span class="keyword">implements</span> <span class="title">MethodInterceptor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Object o, Method method, Object[] objects, MethodProxy methodProxy)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    Object result = methodProxy.invokeSuper(o, objects);</span><br><span class="line">    <span class="keyword">if</span> (method.getName().equals(<span class="string">"askForPay"</span>))</span><br><span class="line">      System.out.println(<span class="string">"如果不还将承担法律责任！"</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="客户端-1"><a href="#客户端-1" class="headerlink" title="客户端"></a>客户端</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">    Employee proxy = (Employee) Enhancer.create(employee.getClass(), <span class="keyword">new</span> AskingMethodInterceptor());</span><br><span class="line"></span><br><span class="line">    proxy.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>Design Pattern - Singleton</title>
@@ -7407,6 +7486,23 @@ D --> F[释放套接字]
 <h3 id="Resource-和-Autowired-区别"><a href="#Resource-和-Autowired-区别" class="headerlink" title="@Resource 和 @Autowired 区别"></a>@Resource 和 @Autowired 区别</h3><ol>
 <li>@Autowired 是 spring 提供的注解，@Resource 是 JDK1.6 后支持的注解</li>
 <li>@Autowired 按类型注入(和 @Qualifier 搭配使用指示名称)，@Resource 按名称注入</li>
+</ol>
+<h3 id="Spring-如何解决循环依赖问题？"><a href="#Spring-如何解决循环依赖问题？" class="headerlink" title="Spring 如何解决循环依赖问题？"></a>Spring 如何解决循环依赖问题？</h3><p>Spring 中通过构造器注入时如果存在循环依赖则会报错，如果通过 Set 方法注入则不会报错。</p>
+<p>三种解决方式：</p>
+<ol>
+<li><p>@Lazy</p>
+<p>在其中一个依赖注入的地方添加 @Lazy 注解即可</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServiceA</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  <span class="meta">@Lazy</span></span><br><span class="line">  <span class="keyword">private</span> ServiceB serviceB;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>setter 注入</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServiceA</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> ServiceB serviceB;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setServiceB</span><span class="params">(ServiceB serviceB)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.serviceB = serviceB;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Spring 的 setter 注入方式是通过<strong>三级缓存</strong>来解决循环引用问题的。</p>
+</li>
+<li><p>@PostConstruct</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServiceA</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> ServiceB serviceB;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@PostConstruct</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.serviceB.setServiceA(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
 ]]></content>
       <categories>
