@@ -141,3 +141,56 @@ Spring Boot 项目的启动类上有一个注解，叫 `@SpringBootApplication`�
 1. @Autowired 是 spring 提供的注解，@Resource 是 JDK1.6 后支持的注解
 2. @Autowired 按类型注入(和 @Qualifier 搭配使用指示名称)，@Resource 按名称注入
 
+### Spring 如何解决循环依赖问题？
+
+Spring 中通过构造器注入时如果存在循环依赖则会报错，如果通过 Set 方法注入则不会报错。
+
+三种解决方式：
+
+1. @Lazy
+
+   在其中一个依赖注入的地方添加 @Lazy 注解即可
+
+   ```java
+   @Service
+   public class ServiceA {
+   
+     @Autowired
+     @Lazy
+     private ServiceB serviceB;
+   }
+   ```
+
+2. setter 注入
+
+   ```java
+   @Service
+   public class ServiceA {
+   
+     private ServiceB serviceB;
+   
+     @Autowired
+     public void setServiceB(ServiceB serviceB) {
+       this.serviceB = serviceB;
+     }
+   }
+   ```
+
+   Spring 的 setter 注入方式是通过**三级缓存**来解决循环引用问题的。
+
+3. @PostConstruct
+
+   ```java
+   @Service
+   public class ServiceA {
+   
+     private ServiceB serviceB;
+   
+     @PostConstruct
+     public void init() {
+       this.serviceB.setServiceA(this);
+     }
+   }
+   ```
+
+   
