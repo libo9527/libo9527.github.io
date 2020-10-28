@@ -193,4 +193,9 @@ Spring 中通过构造器注入时如果存在循环依赖则会报错，如果�
    }
    ```
 
-   
+### @Order VS @DependsOn
+
+@Order 注解并[不能](https://cloud.tencent.com/developer/article/1531861)指定 bean 的加载顺序，它适用于 AOP 的优先级，以及将多个 Bean 注入到集合时，这些 bean 在集合中的顺序。
+
+@DependsOn 注解可以控制 bean 的实例化顺序(但是[不保证](https://cloud.tencent.com/developer/article/1531864)初始化顺序)。实例化就是创建实例，为其分配内存空间，而初始化是在实例化之后为其属性赋初始值。
+

@@ -536,6 +536,16 @@ Java 的线程和操作系统的线程是一一对应的。使用 Java 线程就
 
 所谓绿色线程，即该线程是虚拟机层面上的线程，由虚拟机创建，调度和销毁，操作系统对这种线程一无所知。由于绿色线程实现复杂，并且相当于 OS 的原生线程又有着诸多限制，所以 Java 后续的版本就放弃采用这种方式。
 
+### volatile 关键字
+
+> [voliate工作实际应用场景](https://cloud.tencent.com/developer/article/1699117)
+
+**voliate三特性**
+
+- 可见性；
+- 原子性；
+- 禁止指令重排。
+
 # 规范
 
 ## 成员变量和接口的返回值类型及命名
@@ -944,3 +954,4 @@ JDK 7 中的 subString 方法，使用`Arrays.copyOfRange()`将旧字符串的�
 
 - replaceAll 替换所有匹配的字符，而 replaceFirst 仅替换第一次出现的字符
 
+# 
