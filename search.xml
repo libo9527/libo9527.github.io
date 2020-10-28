@@ -78,7 +78,7 @@
   </entry>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/10/27/Account-Management-in-Git/</url>
+    <url>/2020/10/28/Account-Management-in-Git/</url>
     <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -7504,6 +7504,8 @@ D --> F[释放套接字]
 
 </li>
 </ol>
+<h3 id="Order-VS-DependsOn"><a href="#Order-VS-DependsOn" class="headerlink" title="@Order VS @DependsOn"></a>@Order VS @DependsOn</h3><p>@Order 注解并<a href="https://cloud.tencent.com/developer/article/1531861" target="_blank" rel="noopener">不能</a>指定 bean 的加载顺序，它适用于 AOP 的优先级，以及将多个 Bean 注入到集合时，这些 bean 在集合中的顺序。</p>
+<p>@DependsOn 注解可以控制 bean 的实例化顺序(但是<a href="https://cloud.tencent.com/developer/article/1531864" target="_blank" rel="noopener">不保证</a>初始化顺序)。实例化就是创建实例，为其分配内存空间，而初始化是在实例化之后为其属性赋初始值。</p>
 ]]></content>
       <categories>
         <category>Java</category>
@@ -7883,6 +7885,15 @@ D --> F[释放套接字]
 <h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><h3 id="JVM-线程和操作系统线程"><a href="#JVM-线程和操作系统线程" class="headerlink" title="JVM 线程和操作系统线程"></a>JVM 线程和操作系统线程</h3><p>Java 的线程和操作系统的线程是一一对应的。使用 Java 线程就是使用一个操作系统本地线程。</p>
 <p>在 Java1.1 的时候，Solaris 系统上的 JVM，其线程和操作系统线程并不是一一对应的，称之为  绿色线程 。</p>
 <p>所谓绿色线程，即该线程是虚拟机层面上的线程，由虚拟机创建，调度和销毁，操作系统对这种线程一无所知。由于绿色线程实现复杂，并且相当于 OS 的原生线程又有着诸多限制，所以 Java 后续的版本就放弃采用这种方式。</p>
+<h3 id="volatile-关键字"><a href="#volatile-关键字" class="headerlink" title="volatile 关键字"></a>volatile 关键字</h3><blockquote>
+<p><a href="https://cloud.tencent.com/developer/article/1699117" target="_blank" rel="noopener">voliate工作实际应用场景</a></p>
+</blockquote>
+<p><strong>voliate三特性</strong></p>
+<ul>
+<li>可见性；</li>
+<li>原子性；</li>
+<li>禁止指令重排。</li>
+</ul>
 <h1 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h1><h2 id="成员变量和接口的返回值类型及命名"><a href="#成员变量和接口的返回值类型及命名" class="headerlink" title="成员变量和接口的返回值类型及命名"></a>成员变量和接口的返回值类型及命名</h2><p>布尔类型的成员变量有如下四种定义方式</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">boolean</span> success</span><br><span class="line"><span class="keyword">boolean</span> isSuccess</span><br><span class="line">Boolean success</span><br><span class="line">Boolean isSuccess</span><br></pre></td></tr></table></figure>
 
@@ -8017,7 +8028,7 @@ D --> F[释放套接字]
 <li><p>replaceAll 替换所有匹配的字符，而 replaceFirst 仅替换第一次出现的字符</p>
 </li>
 </ul>
-]]></content>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>]]></content>
       <categories>
         <category>Java</category>
       </categories>
