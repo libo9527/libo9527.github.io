@@ -47,6 +47,20 @@ tags:
 
 在软件业，AOP 为 Aspect Oriented Programming 的缩写，意为：面向切面编程
 
+## 数据结构
+
+### B+ 树
+
+### 红黑树
+
+## 算法
+
+### 排序算法
+
+### 动态规划
+
+### 推荐算法
+
 ## Java 语言
 
 ### 基础
@@ -124,6 +138,52 @@ tags:
 5. 初始化一个类的子类（会首先初始化子类的父类）
 6. JVM 启动时标明的启动类
 
+##### 类加载器
+
+###### 分类
+
+1. 启动类加载器
+
+   负责加载 `JAVA_HOME\lib` 目录中能被虚拟机识别的类，可以通过 `Launcher.getBootstrapClassPath().getURLs()` 查看。
+
+   由 C++ 实现，无法被 Java 程序直接引用。
+
+2. 扩展类加载器
+
+   负责加载 `JAVA_HOME\lib\ext` 目录下的类
+
+3. 应用类加载器
+
+   责加载用户类路径（ClassPath）所指定的类
+
+###### 继承关系
+
+通过组合的方式实现的继承关系。
+
+- 启动类加载器没有父类
+
+- 扩展类加载器的父类为 null
+
+- 应用类加载器继承自扩展类加载器
+- 自定义类加载器继承自引用类加载器
+
+##### 双亲委派模型
+
+当类加载器收到了类加载的请求，它首先把请求委托给父加载器去完成，当父加载器无法加载时，子加载器才会尝试自己去加载该类。
+
+###### 意义
+
+1. 防止重复加载
+2. 保证 Java 基础类的安全性
+
+###### 双亲委派模型的破坏者-线程上下文类加载器
+
+在Java应用中存在着很多服务提供者接口（Service Provider Interface，SPI），这些接口允许第三方为它们提供实现，如常见的 SPI 有 JDBC、JNDI 等，这些 SPI 的接口属于 Java 核心库，一般存在 rt.jar 包中，由 Bootstrap 类加载器加载，而 SPI 的第三方实现代码则是作为Java应用所依赖的 jar 包被存放在 classpath 路径下，由于启动类加载器无法直接加载 SPI 的实现类，同时由于双亲委派模式的存在，Bootstrap 类加载器也无法反向委托AppClassLoader 加载器SPI的实现类。在这种情况下，我们就需要线程上下文类加载器。
+
+线程上下文类加载器（contextClassLoader）可以通过`java.lang.Thread` 类中的`getContextClassLoader()` 和 `setContextClassLoader(ClassLoader cl)` 方法来获取和设置线程的上下文类加载器。如果没有手动设置上下文类加载器，线程将继承其父线程的上下文类加载器，初始线程的上下文类加载器是应用类加载器，在线程中运行的代码可以通过此类加载器来加载类和资源。
+
+![](https://img-blog.csdn.net/20170625143404387?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamF2YXplamlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
 ### 集合框架
 
 ### IO
@@ -146,12 +206,6 @@ tags:
 
 ### 代理模式
 
-## 数据结构
-
-### B+ 树
-
-### 红黑树
-
 ## 网络
 
 ### TCP
@@ -170,13 +224,11 @@ tags:
 
 ## Linux
 
-## 算法
+## 服务器
 
-### 排序算法
+### Tomcat
 
-### 动态规划
-
-### 推荐算法
+### Nginx
 
 ## 缓存
 
@@ -205,3 +257,14 @@ tags:
 ### 分布式
 
 ### 集群
+
+## 前端
+
+### HTML
+
+### CSS
+
+### JS
+
+### Vue
+
