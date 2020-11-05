@@ -133,6 +133,26 @@ Shape: circle	Color: green
 
 #### Java I/O
 
+抽象构件：`java.io.InputStream`
+
+具体构件：
+
+- `java.io.FileInputStream`
+
+- `java.io.ByteArrayInputStream`
+
+- `java.io.PipedInputStream`
+
+抽象装饰类：`java.io.FilterInputStream`
+
+具体装饰类：
+
+- `java.io.BufferedInputStream`
+
+- `java.io.DataInputStream`
+
+- `java.io.PushbackInputStream`
+
 ![](https://user-gold-cdn.xitu.io/2018/9/18/165ecd4e160d8682)
 
 实例化一个具有缓存功能的字节流对象时，只需要在 FileInputStream 对象上再套一层 BufferedInputStream 对象即可。
@@ -141,4 +161,6 @@ Shape: circle	Color: green
 FileInputStream fileInputStream = new FileInputStream(filePath);
 BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
 ```
+
+DataInputStream 装饰者提供了对更多数据类型进行输入的操作，比如 int、double 等基本类型。
 

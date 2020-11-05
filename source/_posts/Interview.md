@@ -186,9 +186,17 @@ tags:
 
 ### 集合框架
 
-#### HashMap
+#### Collection
 
-##### put 流程
+![](https://camo.githubusercontent.com/d1efb1abc3173aa2a607316dda79bea560fe333f/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f696d6167652d32303139313230383232303934383038342e706e67)
+
+#### Map
+
+![](https://camo.githubusercontent.com/bcc4885b038529bc66a48f637c14cc7933ce63da/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f696d6167652d32303230313130313233343333353833372e706e67)
+
+##### HashMap
+
+###### put 流程
 
 ![](https://upload-images.jianshu.io/upload_images/13947009-afee4ea47109f9c3.jpg)
 
@@ -201,7 +209,7 @@ tags:
 7. 插入后链表后，链表长度如果大于 8，而哈希表数组长度小于 64，则扩容后 reHash，数组长度大于 64，则将链表转化为红黑树
 8. 最后 `++modCount`，`++size`，如果size 大与阀值则进行 `resize()`。
 
-##### 哈希表数组长度为什么必须为 2 的幂次方？
+###### 哈希表数组长度为什么必须为 2 的幂次方？
 
 为了通过减法结合按位与操作**代替**取模运算提高性能。
 
@@ -209,13 +217,24 @@ tags:
 
 而只有当 b 是 2 的指数时，等式才成立。
 
-##### 为什么要把 hashcode 与其高位进行抑或运算？
+###### 为什么要把 hashcode 与其高位进行抑或运算？
 
 为了减少哈希碰撞。
 
 ### IO
 
+四大基类：
 
+1. `java.io.InputStream`
+2. `java.io.OutputStream`
+3. `java.io.Reader`
+4. `java.io.Writer`
+
+#### Files 和 Paths
+
+从 Java 7 开始，提供了 Files 和 Paths 这两个工具类，能极大地方便我们读写文件。
+
+虽然 Files 和 Paths 是 java.nio 包里面的类，但他俩封装了很多读写文件的简单方法。
 
 ### 多线程
 
@@ -229,13 +248,276 @@ tags:
 
 ### 包装模式/装饰者模式
 
+> 别称：包装模式、装饰器模式、Wrapper、Decorator
 
+装饰器模式（Decorator Pattern）允许在**不改变其结构**的情况下向一个现有的对象添加新的功能。
+
+#### 结构
+
+1. **抽象构件** （Component）
+2. **具体构件** （Concrete Component）
+3. **抽象装饰类** （Decorator） 
+4. **具体装饰类** （Concrete Decorators）
+
+#### 简单示例
+
+> [装饰器模式| 菜鸟教程](https://www.runoob.com/design-pattern/decorator-pattern.html)
+
+画图形：图形有长方形、圆形；可以画红色的也可以画绿色的。
+
+##### 抽象构件
+
+```java
+public interface Shape {
+  void draw();
+}
+```
+
+##### 具体构件
+
+```java
+public class Rectangle implements Shape {
+  @Override
+  public void draw() {
+    System.out.print("Shape: rectangle\t");
+  }
+}
+```
+
+```java
+public class Circle implements Shape {
+  @Override
+  public void draw() {
+    System.out.print("Shape: circle\t");
+  }
+}
+```
+
+##### 抽象装饰类
+
+```java
+public abstract class ShapeDecorator implements Shape {
+  protected Shape shape;
+
+  public ShapeDecorator(Shape shape) {
+    this.shape = shape;
+  }
+}
+```
+
+##### 具体装饰类
+
+```java
+public class RedShapeDecorator extends ShapeDecorator {
+  public RedShapeDecorator(Shape shape) {
+    super(shape);
+  }
+
+  @Override
+  public void draw() {
+    shape.draw();
+    System.out.println("Color: red");
+  }
+}
+```
+
+```java
+public class GreenShapeDecorator extends ShapeDecorator {
+  public GreenShapeDecorator(Shape shape) {
+    super(shape);
+  }
+
+  @Override
+  public void draw() {
+    shape.draw();
+    System.out.println("Color: green");
+  }
+}
+```
+
+##### 客户端使用
+
+```java
+public static void main(String[] args) {
+  Shape shape = new RedShapeDecorator(new Rectangle());
+  shape.draw();
+
+  shape = new GreenShapeDecorator(new Rectangle());
+  shape.draw();
+
+  shape = new RedShapeDecorator(new Circle());
+  shape.draw();
+
+  shape = new GreenShapeDecorator(new Circle());
+  shape.draw();
+}
+```
+
+```
+Shape: rectangle	Color: red
+Shape: rectangle	Color: green
+Shape: circle	Color: red
+Shape: circle	Color: green
+```
+
+#### 典型应用
+
+> [设计模式| 装饰者模式及典型应用 - 掘金](https://juejin.im/post/6844903681322647566)
+
+##### Java I/O
+
+抽象构件：`java.io.InputStream`
+
+具体构件：
+
+- `java.io.FileInputStream`
+
+- `java.io.ByteArrayInputStream`
+
+- `java.io.PipedInputStream`
+
+抽象装饰类：`java.io.FilterInputStream`
+
+具体装饰类：
+
+- `java.io.BufferedInputStream`
+
+- `java.io.DataInputStream`
+
+- `java.io.PushbackInputStream`
+
+![](https://user-gold-cdn.xitu.io/2018/9/18/165ecd4e160d8682)
+
+实例化一个具有缓存功能的字节流对象时，只需要在 FileInputStream 对象上再套一层 BufferedInputStream 对象即可。
+
+```java
+FileInputStream fileInputStream = new FileInputStream(filePath);
+BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+```
+
+DataInputStream 装饰者提供了对更多数据类型进行输入的操作，比如 int、double 等基本类型。
 
 ### 策略模式
 
 ### 模版方法模式
 
 ### 代理模式
+
+### 迭代器模式
+
+> [Design-Pattern-Iterator | libo9527](http://libo9527.github.io/2020/11/04/Design-Pattern-Iterator/)
+
+#### 目的
+
+在不暴露集合底层表现形式 （列表、 栈和树等） 的情况下遍历集合中所有的元素。
+
+#### 主要思想
+
+将集合的遍历行为抽取为单独的迭代器对象。
+
+#### 结构
+
+1. 抽象迭代器（Iterator）
+2. 具体迭代器（Concrete Iterators）
+3. 抽象集合（Collection）
+4. 具体集合（Concrete Collections）
+
+#### 简单示例
+
+学生报数
+
+##### 抽象迭代器
+
+```java
+public interface StudentIterator {
+  boolean hashNext();
+
+  Student next();
+  
+  int getPosition();
+}
+```
+
+##### 具体迭代器
+
+```java
+public class ConcreteStudentIterator implements StudentIterator {
+
+  private Student[] students;
+  private int position = 0;
+
+  public ConcreteStudentIterator(Student[] students) {
+    this.students = students;
+  }
+
+  @Override
+  public int getPosition() {
+    return position;
+  }
+
+  @Override
+  public boolean hashNext() {
+    return position < students.length;
+  }
+
+  @Override
+  public Student next() {
+    return students[position++];
+  }
+}
+```
+
+##### 抽象集合
+
+```java
+public abstract class StudentCollection {
+
+  abstract StudentIterator createIterator();
+}
+```
+
+##### 具体集合
+
+```java
+public class ConcreteStudentCollection extends StudentCollection {
+  private Student[] students;
+
+  public ConcreteStudentCollection(Student[] students) {
+    this.students = students;
+  }
+
+  @Override
+  StudentIterator createIterator() {
+    return new ConcreteStudentIterator(students);
+  }
+}
+```
+
+##### 客户端使用
+
+```java
+public static void main(String[] args) {
+  StudentCollection studentCollection = new ConcreteStudentCollection(new Student[]{new Student("张三"), new Student("李四")});
+  StudentIterator iterator = studentCollection.createIterator();
+  while (iterator.hashNext()) {
+    Student student = iterator.next();
+    System.out.println("我是" + iterator.getPosition() + "号：" + student.getName());
+  }
+}
+```
+
+```
+我是1号：张三
+我是2号：李四
+
+Process finished with exit code 0
+```
+
+#### 典型应用
+
+##### Java 集合
+
+![](../post_image/image_2020_11_04T11_06_19_787Z.png)
 
 ## 网络
 
@@ -254,6 +536,34 @@ tags:
 ### MongoDB
 
 ## Linux
+
+## 框架
+
+### Spring
+
+#### IoC
+
+#### AOP
+
+### Spring Boot
+
+#### Starter
+
+Spring Boot 的 Starter 有两个作用：
+
+1. 将某个功能/领域所需的依赖集中到一起，可以认为是一个组合依赖。
+
+   例如 `spring-boot-starter-web` 就组合了`spring-web`、`spring-webmvc`、`spring-boot-starter-tomcat` 等依赖。
+
+2. 提供自动配置类给 Spring 完成自动配置
+
+#### 自动配置
+
+Spring Boot 项目启动时会扫描所有所有依赖 jar 包下的 `spring.factories` 文件，将其中的自动配置类注册到 Spring IoC 容器中。
+
+#### 启动流程
+
+
 
 ## 服务器
 
