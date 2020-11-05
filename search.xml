@@ -78,7 +78,7 @@
   </entry>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/11/02/Account-Management-in-Git/</url>
+    <url>/2020/11/05/Account-Management-in-Git/</url>
     <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -1138,92 +1138,106 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Design Pattern - Proxy</title>
-    <url>/2020/10/26/Design-Pattern-Proxy/</url>
-    <content><![CDATA[<img data-src="https://cdn.journaldev.com/wp-content/uploads/2013/07/proxy-design-pattern.jpg" width="100%"/>
+    <title>Design Pattern-Decorator</title>
+    <url>/2020/11/03/Design-Pattern-Decorator/</url>
+    <content><![CDATA[<img data-src="https://addyosmani.com/assets/decorator.jpg" width="100%"/>
 
 <a id="more"></a>
 
-<h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><blockquote>
-<p><a href="https://blog.csdn.net/shusheng0007/article/details/80864854" target="_blank" rel="noopener">秒懂Java代理与动态代理模式</a></p>
+<h2 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h2><blockquote>
+<p>别称：包装模式、装饰器模式、Wrapper、Decorator</p>
 </blockquote>
-<p>用代理对象<strong>代替</strong>目标对象来实现某个目的（服务/主题/功能）。</p>
-<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><ol>
-<li>隐藏目标对象</li>
-<li>增强目标对象</li>
+<p>装饰器模式（Decorator Pattern）允许在<strong>不改变其结构</strong>的情况下向一个现有的对象添加新的功能。</p>
+<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><ol>
+<li><strong>抽象构件</strong> （Component）</li>
+<li><strong>具体构件</strong> （Concrete Component）</li>
+<li><strong>抽象装饰类</strong> （Decorator） </li>
+<li><strong>具体装饰类</strong> （Concrete Decorators）</li>
 </ol>
-<h3 id="代理模式结构"><a href="#代理模式结构" class="headerlink" title="代理模式结构"></a>代理模式结构</h3><blockquote>
-<p><a href="https://refactoringguru.cn/design-patterns/proxy" target="_blank" rel="noopener">代理模式 | <strong>Refactoring.Guru</strong></a></p>
+<h3 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h3><blockquote>
+<p><a href="https://www.runoob.com/design-pattern/decorator-pattern.html" target="_blank" rel="noopener">装饰器模式| 菜鸟教程</a></p>
 </blockquote>
-<ol>
-<li><p>服务接口</p>
-<p>声明了服务接口。 代理必须遵循该接口才能伪装成服务对象。</p>
-</li>
-<li><p>服务类</p>
-<p>提供了一些实用的业务逻辑。</p>
-</li>
-<li><p>代理类</p>
-<p>代理类包含一个指向服务对象的引用成员变量。 代理完成其任务 （例如延迟初始化、 记录日志、 访问控制和缓存等） 后会将请求传递给服务对象。 通常情况下， 代理会对其服务对象的整个生命周期进行管理。</p>
-</li>
-<li><p>客户端</p>
-<p>客户端能通过同一接口与服务或代理进行交互，所以你可在一切需要服务对象的代码中使用代理。</p>
-</li>
-</ol>
-<h2 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h2><p>劳动仲裁案例：代理律师代理讨薪员工索要工资。</p>
-<h3 id="服务接口"><a href="#服务接口" class="headerlink" title="服务接口"></a>服务接口</h3><blockquote>
-<p>代理主题：讨薪</p>
+<p>画图形：图形有长方形、圆形；可以画红色的也可以画绿色的。</p>
+<h4 id="抽象构件"><a href="#抽象构件" class="headerlink" title="抽象构件"></a>抽象构件</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="具体构件"><a href="#具体构件" class="headerlink" title="具体构件"></a>具体构件</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.print(<span class="string">"Shape: rectangle\t"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Circle</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.print(<span class="string">"Shape: circle\t"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="抽象装饰类"><a href="#抽象装饰类" class="headerlink" title="抽象装饰类"></a>抽象装饰类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ShapeDecorator</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="keyword">protected</span> Shape shape;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ShapeDecorator</span><span class="params">(Shape shape)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.shape = shape;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="具体装饰类"><a href="#具体装饰类" class="headerlink" title="具体装饰类"></a>具体装饰类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedShapeDecorator</span> <span class="keyword">extends</span> <span class="title">ShapeDecorator</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">RedShapeDecorator</span><span class="params">(Shape shape)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(shape);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    shape.draw();</span><br><span class="line">    System.out.println(<span class="string">"Color: red"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GreenShapeDecorator</span> <span class="keyword">extends</span> <span class="title">ShapeDecorator</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">GreenShapeDecorator</span><span class="params">(Shape shape)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(shape);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    shape.draw();</span><br><span class="line">    System.out.println(<span class="string">"Color: green"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="客户端使用"><a href="#客户端使用" class="headerlink" title="客户端使用"></a>客户端使用</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  Shape shape = <span class="keyword">new</span> RedShapeDecorator(<span class="keyword">new</span> Rectangle());</span><br><span class="line">  shape.draw();</span><br><span class="line"></span><br><span class="line">  shape = <span class="keyword">new</span> GreenShapeDecorator(<span class="keyword">new</span> Rectangle());</span><br><span class="line">  shape.draw();</span><br><span class="line"></span><br><span class="line">  shape = <span class="keyword">new</span> RedShapeDecorator(<span class="keyword">new</span> Circle());</span><br><span class="line">  shape.draw();</span><br><span class="line"></span><br><span class="line">  shape = <span class="keyword">new</span> GreenShapeDecorator(<span class="keyword">new</span> Circle());</span><br><span class="line">  shape.draw();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Shape: rectangle	Color: red</span><br><span class="line">Shape: rectangle	Color: green</span><br><span class="line">Shape: circle	Color: red</span><br><span class="line">Shape: circle	Color: green</span><br></pre></td></tr></table></figure>
+
+<h3 id="典型应用"><a href="#典型应用" class="headerlink" title="典型应用"></a>典型应用</h3><blockquote>
+<p><a href="https://juejin.im/post/6844903681322647566" target="_blank" rel="noopener">设计模式| 装饰者模式及典型应用 - 掘金</a></p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AskAbility</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="服务类"><a href="#服务类" class="headerlink" title="服务类"></a>服务类</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZhangSan</span> <span class="keyword">implements</span> <span class="title">AskAbility</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"还钱！"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="代理类"><a href="#代理类" class="headerlink" title="代理类"></a>代理类</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Lawyer</span> <span class="keyword">implements</span> <span class="title">AskAbility</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> ZhangSan zhangSan;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Lawyer</span><span class="params">(ZhangSan zhangSan)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.zhangSan = zhangSan;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    zhangSan.askForPay();</span><br><span class="line">    System.out.println(<span class="string">"如果不还将承担法律责任！"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ZhangSan zhangSan = <span class="keyword">new</span> ZhangSan();</span><br><span class="line">    AskAbility ask = <span class="keyword">new</span> Lawyer(zhangSan);</span><br><span class="line">    ask.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p>静态代理中代理类在编译期已经存在，一个服务类需要一个代理类与之对应，当服务类增多时，代理类随着增多，导致类数量太多。</p>
-<p>动态代理就是为了减少类数量而产生。</p>
-<p>动态代理有 JDK(基于接口、反射生成) 和 CGLIB(基于继承、字节码生成) 两种实现方式。</p>
-<p>Spring AOP 就是基于动态代理实现的。</p>
-<blockquote>
-<p><a href="https://blog.csdn.net/javazejian/article/details/56267036" target="_blank" rel="noopener">关于 Spring AOP (AspectJ) 你该知晓的一切</a></p>
-<p><a href="https://how2j.cn/k/spring/spring-annotation-ioc-di/1067.html" target="_blank" rel="noopener">Spring系列教材 （三）- 注解方式 IOC/DI</a></p>
-</blockquote>
-<h3 id="JDK-动态代理"><a href="#JDK-动态代理" class="headerlink" title="JDK 动态代理"></a>JDK 动态代理</h3><p>两个重要的元素：</p>
-<ol>
-<li><p>InvocationHandler 接口</p>
-<p><code>public Object invoke(Object proxy, Method method, Object[] args) throws Throwable;</code></p>
+<h4 id="Java-I-O"><a href="#Java-I-O" class="headerlink" title="Java I/O"></a>Java I/O</h4><p>抽象构件：<code>java.io.InputStream</code></p>
+<p>具体构件：</p>
 <ul>
-<li>proxy：动态代理对象</li>
-<li>method：正在执行的方法</li>
-<li>args：当前执行方法传入的实参</li>
+<li><p><code>java.io.FileInputStream</code></p>
+</li>
+<li><p><code>java.io.ByteArrayInputStream</code></p>
+</li>
+<li><p><code>java.io.PipedInputStream</code></p>
+</li>
 </ul>
+<p>抽象装饰类：<code>java.io.FilterInputStream</code></p>
+<p>具体装饰类：</p>
+<ul>
+<li><p><code>java.io.BufferedInputStream</code></p>
 </li>
-<li><p>Proxy 类</p>
-<p><code>public static Object newProxyInstance(ClassLoader loader, Class&lt;?&gt;[] interfaces, InvocationHandler h) throws IllegalArgumentException</code></p>
+<li><p><code>java.io.DataInputStream</code></p>
 </li>
+<li><p><code>java.io.PushbackInputStream</code></p>
+</li>
+</ul>
+<p><img data-src="https://user-gold-cdn.xitu.io/2018/9/18/165ecd4e160d8682" alt=""></p>
+<p>实例化一个具有缓存功能的字节流对象时，只需要在 FileInputStream 对象上再套一层 BufferedInputStream 对象即可。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">FileInputStream fileInputStream = <span class="keyword">new</span> FileInputStream(filePath);</span><br><span class="line">BufferedInputStream bufferedInputStream = <span class="keyword">new</span> BufferedInputStream(fileInputStream);</span><br></pre></td></tr></table></figure>
+
+<p>DataInputStream 装饰者提供了对更多数据类型进行输入的操作，比如 int、double 等基本类型。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Design Pattern-Iterator</title>
+    <url>/2020/11/04/Design-Pattern-Iterator/</url>
+    <content><![CDATA[<img data-src="https://cdn.journaldev.com/wp-content/uploads/2013/07/iterator-design-pattern.jpg" width="100%"/>
+
+<a id="more"></a>
+
+<h2 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h2><blockquote>
+<p><a href="https://refactoringguru.cn/design-patterns/iterator" target="_blank" rel="noopener">迭代器设计模式 - Refactoring.Guru</a></p>
+<p><a href="https://laijianfeng.org/2018/10/设计模式-迭代器模式及典型应用/" target="_blank" rel="noopener">设计模式| 迭代器模式及典型应用| 小旋锋</a></p>
+</blockquote>
+<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>在不暴露集合底层表现形式 （列表、 栈和树等） 的情况下遍历集合中所有的元素。</p>
+<h3 id="主要思想"><a href="#主要思想" class="headerlink" title="主要思想"></a>主要思想</h3><p>将集合的遍历行为抽取为单独的迭代器对象。</p>
+<h3 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h3><ol>
+<li>抽象迭代器（Iterator）</li>
+<li>具体迭代器（Concrete Iterators）</li>
+<li>抽象集合（Collection）</li>
+<li>具体集合（Concrete Collections）</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AskingHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Object target;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">AskingHandler</span><span class="params">(Object target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.target = target;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    Object invoke = method.invoke(target, args);</span><br><span class="line">    System.out.println(<span class="string">"如果不还将承担法律责任！"</span>);</span><br><span class="line">    <span class="keyword">return</span> invoke;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h3><p>学生报数</p>
+<h4 id="抽象迭代器"><a href="#抽象迭代器" class="headerlink" title="抽象迭代器"></a>抽象迭代器</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StudentIterator</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">hashNext</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function">Student <span class="title">next</span><span class="params">()</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getPosition</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">    InvocationHandler handler = <span class="keyword">new</span> AskingHandler(employee);</span><br><span class="line">    AskAbility proxy = (AskAbility) Proxy.newProxyInstance(employee.getClass().getClassLoader(), employee.getClass().getInterfaces(), handler);</span><br><span class="line">    proxy.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="具体迭代器"><a href="#具体迭代器" class="headerlink" title="具体迭代器"></a>具体迭代器</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteStudentIterator</span> <span class="keyword">implements</span> <span class="title">StudentIterator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Student[] students;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> position = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ConcreteStudentIterator</span><span class="params">(Student[] students)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.students = students;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPosition</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> position;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hashNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> position &lt; students.length;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Student <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> students[position++];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="CGLIB-动态代理"><a href="#CGLIB-动态代理" class="headerlink" title="CGLIB 动态代理"></a>CGLIB 动态代理</h3><p>JDK 只能对实现了接口的类做动态代理，而不能对没有实现接口的类做动态代理，所以出现了 cgLib。</p>
-<p>CGLib（Code Generation Library）是一个强大、高性能的 Code 生成类库，它可以在程序运行期间动态扩展类或接口，它的底层是使用 <strong>java字节码操作框架</strong> ASM 实现。</p>
-<p>CGLIB 两个重要元素：</p>
-<ol>
-<li><p>MethodInterceptor 方法拦截器</p>
-<p><code>Object intercept(Object var1, Method var2, Object[] var3, MethodProxy var4) throws Throwable;</code></p>
-</li>
-<li><p>Enhancer</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">create</span><span class="params">(Class type, Callback callback)</span> </span>&#123;</span><br><span class="line">  Enhancer e = <span class="keyword">new</span> Enhancer();</span><br><span class="line">  e.setSuperclass(type);</span><br><span class="line">  e.setCallback(callback);</span><br><span class="line">  <span class="keyword">return</span> e.create();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="抽象集合"><a href="#抽象集合" class="headerlink" title="抽象集合"></a>抽象集合</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentCollection</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">abstract</span> StudentIterator <span class="title">createIterator</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-<h4 id="服务类-1"><a href="#服务类-1" class="headerlink" title="服务类"></a>服务类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"还钱！"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="具体集合"><a href="#具体集合" class="headerlink" title="具体集合"></a>具体集合</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteStudentCollection</span> <span class="keyword">extends</span> <span class="title">StudentCollection</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> Student[] students;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ConcreteStudentCollection</span><span class="params">(Student[] students)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.students = students;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function">StudentIterator <span class="title">createIterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ConcreteStudentIterator(students);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="方法拦截器"><a href="#方法拦截器" class="headerlink" title="方法拦截器"></a>方法拦截器</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AskingMethodInterceptor</span> <span class="keyword">implements</span> <span class="title">MethodInterceptor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Object o, Method method, Object[] objects, MethodProxy methodProxy)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    Object result = methodProxy.invokeSuper(o, objects);</span><br><span class="line">    <span class="keyword">if</span> (method.getName().equals(<span class="string">"askForPay"</span>))</span><br><span class="line">      System.out.println(<span class="string">"如果不还将承担法律责任！"</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="客户端使用"><a href="#客户端使用" class="headerlink" title="客户端使用"></a>客户端使用</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  StudentCollection studentCollection = <span class="keyword">new</span> ConcreteStudentCollection(<span class="keyword">new</span> Student[]&#123;<span class="keyword">new</span> Student(<span class="string">"张三"</span>), <span class="keyword">new</span> Student(<span class="string">"李四"</span>)&#125;);</span><br><span class="line">  StudentIterator iterator = studentCollection.createIterator();</span><br><span class="line">  <span class="keyword">while</span> (iterator.hashNext()) &#123;</span><br><span class="line">    Student student = iterator.next();</span><br><span class="line">    System.out.println(<span class="string">"我是"</span> + iterator.getPosition() + <span class="string">"号："</span> + student.getName());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="客户端-1"><a href="#客户端-1" class="headerlink" title="客户端"></a>客户端</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">    Employee proxy = (Employee) Enhancer.create(employee.getClass(), <span class="keyword">new</span> AskingMethodInterceptor());</span><br><span class="line"></span><br><span class="line">    proxy.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">我是1号：张三</span><br><span class="line">我是2号：李四</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+
+<h3 id="典型应用"><a href="#典型应用" class="headerlink" title="典型应用"></a>典型应用</h3><h4 id="Java-集合"><a href="#Java-集合" class="headerlink" title="Java 集合"></a>Java 集合</h4><p><img data-src="/post_image/image_2020_11_04T11_06_19_787Z.png" alt=""></p>
+]]></content>
   </entry>
   <entry>
     <title>Design Pattern - Singleton</title>
@@ -3068,7 +3082,125 @@ table th:first-of-type {  #first表示表格第一列
 <h6 id="双亲委派模型的破坏者-线程上下文类加载器"><a href="#双亲委派模型的破坏者-线程上下文类加载器" class="headerlink" title="双亲委派模型的破坏者-线程上下文类加载器"></a>双亲委派模型的破坏者-线程上下文类加载器</h6><p>在Java应用中存在着很多服务提供者接口（Service Provider Interface，SPI），这些接口允许第三方为它们提供实现，如常见的 SPI 有 JDBC、JNDI 等，这些 SPI 的接口属于 Java 核心库，一般存在 rt.jar 包中，由 Bootstrap 类加载器加载，而 SPI 的第三方实现代码则是作为Java应用所依赖的 jar 包被存放在 classpath 路径下，由于启动类加载器无法直接加载 SPI 的实现类，同时由于双亲委派模式的存在，Bootstrap 类加载器也无法反向委托AppClassLoader 加载器SPI的实现类。在这种情况下，我们就需要线程上下文类加载器。</p>
 <p>线程上下文类加载器（contextClassLoader）可以通过<code>java.lang.Thread</code> 类中的<code>getContextClassLoader()</code> 和 <code>setContextClassLoader(ClassLoader cl)</code> 方法来获取和设置线程的上下文类加载器。如果没有手动设置上下文类加载器，线程将继承其父线程的上下文类加载器，初始线程的上下文类加载器是应用类加载器，在线程中运行的代码可以通过此类加载器来加载类和资源。</p>
 <p><img data-src="https://img-blog.csdn.net/20170625143404387?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamF2YXplamlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
-<h3 id="集合框架"><a href="#集合框架" class="headerlink" title="集合框架"></a>集合框架</h3><h3 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h3><h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a><a href="https://libo9527.github.io/2020/10/22/Design-Pattern-Singleton/" target="_blank" rel="noopener">单例模式</a></h3><h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><h3 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h3><h3 id="包装模式"><a href="#包装模式" class="headerlink" title="包装模式"></a>包装模式</h3><h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><h3 id="模版方法模式"><a href="#模版方法模式" class="headerlink" title="模版方法模式"></a>模版方法模式</h3><h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><h3 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h3><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h3><h3 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h3><h3 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h3><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><h2 id="消息中间件"><a href="#消息中间件" class="headerlink" title="消息中间件"></a>消息中间件</h2><h3 id="RebbitMQ"><a href="#RebbitMQ" class="headerlink" title="RebbitMQ"></a>RebbitMQ</h3><h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><h3 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h3><h3 id="SSM"><a href="#SSM" class="headerlink" title="SSM"></a>SSM</h3><h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3>]]></content>
+<h3 id="集合框架"><a href="#集合框架" class="headerlink" title="集合框架"></a>集合框架</h3><h4 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h4><p><img data-src="https://camo.githubusercontent.com/d1efb1abc3173aa2a607316dda79bea560fe333f/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f696d6167652d32303139313230383232303934383038342e706e67" alt=""></p>
+<h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p><img data-src="https://camo.githubusercontent.com/bcc4885b038529bc66a48f637c14cc7933ce63da/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f696d6167652d32303230313130313233343333353833372e706e67" alt=""></p>
+<h5 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h5><h6 id="put-流程"><a href="#put-流程" class="headerlink" title="put 流程"></a>put 流程</h6><p><img data-src="https://upload-images.jianshu.io/upload_images/13947009-afee4ea47109f9c3.jpg" alt=""></p>
+<ol>
+<li>计算 key 的 hash 值(hashcode 高位抑或运算)</li>
+<li>判断哈希表是否为空，如果为空则进行 <code>resize()</code></li>
+<li>根据 hash 值计算数组下标，查看数组对应位置是否有值，没有就直接创建新节点存入</li>
+<li>如果存在值则判断 hash 值是否相等、key 是否 equal，如果相等则覆盖旧值。</li>
+<li>如果不等，则判断是否是红黑树节点，如果是则进入红黑树 put 操作。</li>
+<li>如果不是则表示为链表，循环遍历链表进行插入操作</li>
+<li>插入后链表后，链表长度如果大于 8，而哈希表数组长度小于 64，则扩容后 reHash，数组长度大于 64，则将链表转化为红黑树</li>
+<li>最后 <code>++modCount</code>，<code>++size</code>，如果size 大与阀值则进行 <code>resize()</code>。</li>
+</ol>
+<h6 id="哈希表数组长度为什么必须为-2-的幂次方？"><a href="#哈希表数组长度为什么必须为-2-的幂次方？" class="headerlink" title="哈希表数组长度为什么必须为 2 的幂次方？"></a>哈希表数组长度为什么必须为 2 的幂次方？</h6><p>为了通过减法结合按位与操作<strong>代替</strong>取模运算提高性能。</p>
+<p><code>a % b == (b-1) &amp; a</code></p>
+<p>而只有当 b 是 2 的指数时，等式才成立。</p>
+<h6 id="为什么要把-hashcode-与其高位进行抑或运算？"><a href="#为什么要把-hashcode-与其高位进行抑或运算？" class="headerlink" title="为什么要把 hashcode 与其高位进行抑或运算？"></a>为什么要把 hashcode 与其高位进行抑或运算？</h6><p>为了减少哈希碰撞。</p>
+<h3 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h3><p>四大基类：</p>
+<ol>
+<li><code>java.io.InputStream</code></li>
+<li><code>java.io.OutputStream</code></li>
+<li><code>java.io.Reader</code></li>
+<li><code>java.io.Writer</code></li>
+</ol>
+<h4 id="Files-和-Paths"><a href="#Files-和-Paths" class="headerlink" title="Files 和 Paths"></a>Files 和 Paths</h4><p>从 Java 7 开始，提供了 Files 和 Paths 这两个工具类，能极大地方便我们读写文件。</p>
+<p>虽然 Files 和 Paths 是 java.nio 包里面的类，但他俩封装了很多读写文件的简单方法。</p>
+<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a><a href="https://libo9527.github.io/2020/10/22/Design-Pattern-Singleton/" target="_blank" rel="noopener">单例模式</a></h3><h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><h3 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h3><h3 id="包装模式-装饰者模式"><a href="#包装模式-装饰者模式" class="headerlink" title="包装模式/装饰者模式"></a>包装模式/装饰者模式</h3><blockquote>
+<p>别称：包装模式、装饰器模式、Wrapper、Decorator</p>
+</blockquote>
+<p>装饰器模式（Decorator Pattern）允许在<strong>不改变其结构</strong>的情况下向一个现有的对象添加新的功能。</p>
+<h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><ol>
+<li><strong>抽象构件</strong> （Component）</li>
+<li><strong>具体构件</strong> （Concrete Component）</li>
+<li><strong>抽象装饰类</strong> （Decorator） </li>
+<li><strong>具体装饰类</strong> （Concrete Decorators）</li>
+</ol>
+<h4 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h4><blockquote>
+<p><a href="https://www.runoob.com/design-pattern/decorator-pattern.html" target="_blank" rel="noopener">装饰器模式| 菜鸟教程</a></p>
+</blockquote>
+<p>画图形：图形有长方形、圆形；可以画红色的也可以画绿色的。</p>
+<h5 id="抽象构件"><a href="#抽象构件" class="headerlink" title="抽象构件"></a>抽象构件</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="具体构件"><a href="#具体构件" class="headerlink" title="具体构件"></a>具体构件</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.print(<span class="string">"Shape: rectangle\t"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Circle</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.print(<span class="string">"Shape: circle\t"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="抽象装饰类"><a href="#抽象装饰类" class="headerlink" title="抽象装饰类"></a>抽象装饰类</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ShapeDecorator</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="keyword">protected</span> Shape shape;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ShapeDecorator</span><span class="params">(Shape shape)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.shape = shape;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="具体装饰类"><a href="#具体装饰类" class="headerlink" title="具体装饰类"></a>具体装饰类</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RedShapeDecorator</span> <span class="keyword">extends</span> <span class="title">ShapeDecorator</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">RedShapeDecorator</span><span class="params">(Shape shape)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(shape);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    shape.draw();</span><br><span class="line">    System.out.println(<span class="string">"Color: red"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GreenShapeDecorator</span> <span class="keyword">extends</span> <span class="title">ShapeDecorator</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">GreenShapeDecorator</span><span class="params">(Shape shape)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(shape);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    shape.draw();</span><br><span class="line">    System.out.println(<span class="string">"Color: green"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="客户端使用"><a href="#客户端使用" class="headerlink" title="客户端使用"></a>客户端使用</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  Shape shape = <span class="keyword">new</span> RedShapeDecorator(<span class="keyword">new</span> Rectangle());</span><br><span class="line">  shape.draw();</span><br><span class="line"></span><br><span class="line">  shape = <span class="keyword">new</span> GreenShapeDecorator(<span class="keyword">new</span> Rectangle());</span><br><span class="line">  shape.draw();</span><br><span class="line"></span><br><span class="line">  shape = <span class="keyword">new</span> RedShapeDecorator(<span class="keyword">new</span> Circle());</span><br><span class="line">  shape.draw();</span><br><span class="line"></span><br><span class="line">  shape = <span class="keyword">new</span> GreenShapeDecorator(<span class="keyword">new</span> Circle());</span><br><span class="line">  shape.draw();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Shape: rectangle	Color: red</span><br><span class="line">Shape: rectangle	Color: green</span><br><span class="line">Shape: circle	Color: red</span><br><span class="line">Shape: circle	Color: green</span><br></pre></td></tr></table></figure>
+
+<h4 id="典型应用"><a href="#典型应用" class="headerlink" title="典型应用"></a>典型应用</h4><blockquote>
+<p><a href="https://juejin.im/post/6844903681322647566" target="_blank" rel="noopener">设计模式| 装饰者模式及典型应用 - 掘金</a></p>
+</blockquote>
+<h5 id="Java-I-O"><a href="#Java-I-O" class="headerlink" title="Java I/O"></a>Java I/O</h5><p>抽象构件：<code>java.io.InputStream</code></p>
+<p>具体构件：</p>
+<ul>
+<li><p><code>java.io.FileInputStream</code></p>
+</li>
+<li><p><code>java.io.ByteArrayInputStream</code></p>
+</li>
+<li><p><code>java.io.PipedInputStream</code></p>
+</li>
+</ul>
+<p>抽象装饰类：<code>java.io.FilterInputStream</code></p>
+<p>具体装饰类：</p>
+<ul>
+<li><p><code>java.io.BufferedInputStream</code></p>
+</li>
+<li><p><code>java.io.DataInputStream</code></p>
+</li>
+<li><p><code>java.io.PushbackInputStream</code></p>
+</li>
+</ul>
+<p><img data-src="https://user-gold-cdn.xitu.io/2018/9/18/165ecd4e160d8682" alt=""></p>
+<p>实例化一个具有缓存功能的字节流对象时，只需要在 FileInputStream 对象上再套一层 BufferedInputStream 对象即可。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">FileInputStream fileInputStream = <span class="keyword">new</span> FileInputStream(filePath);</span><br><span class="line">BufferedInputStream bufferedInputStream = <span class="keyword">new</span> BufferedInputStream(fileInputStream);</span><br></pre></td></tr></table></figure>
+
+<p>DataInputStream 装饰者提供了对更多数据类型进行输入的操作，比如 int、double 等基本类型。</p>
+<h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><h3 id="模版方法模式"><a href="#模版方法模式" class="headerlink" title="模版方法模式"></a>模版方法模式</h3><h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><h3 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h3><blockquote>
+<p><a href="http://libo9527.github.io/2020/11/04/Design-Pattern-Iterator/" target="_blank" rel="noopener">Design-Pattern-Iterator | libo9527</a></p>
+</blockquote>
+<h4 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h4><p>在不暴露集合底层表现形式 （列表、 栈和树等） 的情况下遍历集合中所有的元素。</p>
+<h4 id="主要思想"><a href="#主要思想" class="headerlink" title="主要思想"></a>主要思想</h4><p>将集合的遍历行为抽取为单独的迭代器对象。</p>
+<h4 id="结构-1"><a href="#结构-1" class="headerlink" title="结构"></a>结构</h4><ol>
+<li>抽象迭代器（Iterator）</li>
+<li>具体迭代器（Concrete Iterators）</li>
+<li>抽象集合（Collection）</li>
+<li>具体集合（Concrete Collections）</li>
+</ol>
+<h4 id="简单示例-1"><a href="#简单示例-1" class="headerlink" title="简单示例"></a>简单示例</h4><p>学生报数</p>
+<h5 id="抽象迭代器"><a href="#抽象迭代器" class="headerlink" title="抽象迭代器"></a>抽象迭代器</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StudentIterator</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">hashNext</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function">Student <span class="title">next</span><span class="params">()</span></span>;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getPosition</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="具体迭代器"><a href="#具体迭代器" class="headerlink" title="具体迭代器"></a>具体迭代器</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteStudentIterator</span> <span class="keyword">implements</span> <span class="title">StudentIterator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Student[] students;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> position = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ConcreteStudentIterator</span><span class="params">(Student[] students)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.students = students;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPosition</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> position;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hashNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> position &lt; students.length;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Student <span class="title">next</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> students[position++];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="抽象集合"><a href="#抽象集合" class="headerlink" title="抽象集合"></a>抽象集合</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentCollection</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">abstract</span> StudentIterator <span class="title">createIterator</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="具体集合"><a href="#具体集合" class="headerlink" title="具体集合"></a>具体集合</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteStudentCollection</span> <span class="keyword">extends</span> <span class="title">StudentCollection</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> Student[] students;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ConcreteStudentCollection</span><span class="params">(Student[] students)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.students = students;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function">StudentIterator <span class="title">createIterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ConcreteStudentIterator(students);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="客户端使用-1"><a href="#客户端使用-1" class="headerlink" title="客户端使用"></a>客户端使用</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  StudentCollection studentCollection = <span class="keyword">new</span> ConcreteStudentCollection(<span class="keyword">new</span> Student[]&#123;<span class="keyword">new</span> Student(<span class="string">"张三"</span>), <span class="keyword">new</span> Student(<span class="string">"李四"</span>)&#125;);</span><br><span class="line">  StudentIterator iterator = studentCollection.createIterator();</span><br><span class="line">  <span class="keyword">while</span> (iterator.hashNext()) &#123;</span><br><span class="line">    Student student = iterator.next();</span><br><span class="line">    System.out.println(<span class="string">"我是"</span> + iterator.getPosition() + <span class="string">"号："</span> + student.getName());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">我是1号：张三</span><br><span class="line">我是2号：李四</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
+
+<h4 id="典型应用-1"><a href="#典型应用-1" class="headerlink" title="典型应用"></a>典型应用</h4><h5 id="Java-集合"><a href="#Java-集合" class="headerlink" title="Java 集合"></a>Java 集合</h5><p><img data-src="../post_image/image_2020_11_04T11_06_19_787Z.png" alt=""></p>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><h3 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h3><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h3><h3 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h3><h3 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h3><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><h4 id="IoC"><a href="#IoC" class="headerlink" title="IoC"></a>IoC</h4><h4 id="AOP-1"><a href="#AOP-1" class="headerlink" title="AOP"></a>AOP</h4><h3 id="Spring-Boot"><a href="#Spring-Boot" class="headerlink" title="Spring Boot"></a>Spring Boot</h3><h4 id="Starter"><a href="#Starter" class="headerlink" title="Starter"></a>Starter</h4><p>Spring Boot 的 Starter 有两个作用：</p>
+<ol>
+<li><p>将某个功能/领域所需的依赖集中到一起，可以认为是一个组合依赖。</p>
+<p>例如 <code>spring-boot-starter-web</code> 就组合了<code>spring-web</code>、<code>spring-webmvc</code>、<code>spring-boot-starter-tomcat</code> 等依赖。</p>
+</li>
+<li><p>提供自动配置类给 Spring 完成自动配置</p>
+</li>
+</ol>
+<h4 id="自动配置"><a href="#自动配置" class="headerlink" title="自动配置"></a>自动配置</h4><p>Spring Boot 项目启动时会扫描所有所有依赖 jar 包下的 <code>spring.factories</code> 文件，将其中的自动配置类注册到 Spring IoC 容器中。</p>
+<h4 id="启动流程"><a href="#启动流程" class="headerlink" title="启动流程"></a>启动流程</h4><h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><h2 id="消息中间件"><a href="#消息中间件" class="headerlink" title="消息中间件"></a>消息中间件</h2><h3 id="RebbitMQ"><a href="#RebbitMQ" class="headerlink" title="RebbitMQ"></a>RebbitMQ</h3><h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><h3 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h3><h3 id="SSM"><a href="#SSM" class="headerlink" title="SSM"></a>SSM</h3><h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3>]]></content>
   </entry>
   <entry>
     <title>JSON Web Token</title>
@@ -11306,5 +11438,93 @@ D --> F[释放套接字]
       <tags>
         <tag>Tour</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Design Pattern - Proxy</title>
+    <url>/2020/10/26/Design-Pattern-Proxy/</url>
+    <content><![CDATA[<img data-src="https://cdn.journaldev.com/wp-content/uploads/2013/07/proxy-design-pattern.jpg" width="100%"/>
+
+<a id="more"></a>
+
+<h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><blockquote>
+<p><a href="https://blog.csdn.net/shusheng0007/article/details/80864854" target="_blank" rel="noopener">秒懂Java代理与动态代理模式</a></p>
+</blockquote>
+<p>用代理对象<strong>代替</strong>目标对象来实现某个目的（服务/主题/功能）。</p>
+<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><ol>
+<li>隐藏目标对象</li>
+<li>增强目标对象</li>
+</ol>
+<h3 id="代理模式结构"><a href="#代理模式结构" class="headerlink" title="代理模式结构"></a>代理模式结构</h3><blockquote>
+<p><a href="https://refactoringguru.cn/design-patterns/proxy" target="_blank" rel="noopener">代理模式 | <strong>Refactoring.Guru</strong></a></p>
+</blockquote>
+<ol>
+<li><p>服务接口</p>
+<p>声明了服务接口。 代理必须遵循该接口才能伪装成服务对象。</p>
+</li>
+<li><p>服务类</p>
+<p>提供了一些实用的业务逻辑。</p>
+</li>
+<li><p>代理类</p>
+<p>代理类包含一个指向服务对象的引用成员变量。 代理完成其任务 （例如延迟初始化、 记录日志、 访问控制和缓存等） 后会将请求传递给服务对象。 通常情况下， 代理会对其服务对象的整个生命周期进行管理。</p>
+</li>
+<li><p>客户端</p>
+<p>客户端能通过同一接口与服务或代理进行交互，所以你可在一切需要服务对象的代码中使用代理。</p>
+</li>
+</ol>
+<h2 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h2><p>劳动仲裁案例：代理律师代理讨薪员工索要工资。</p>
+<h3 id="服务接口"><a href="#服务接口" class="headerlink" title="服务接口"></a>服务接口</h3><blockquote>
+<p>代理主题：讨薪</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AskAbility</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="服务类"><a href="#服务类" class="headerlink" title="服务类"></a>服务类</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZhangSan</span> <span class="keyword">implements</span> <span class="title">AskAbility</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"还钱！"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="代理类"><a href="#代理类" class="headerlink" title="代理类"></a>代理类</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Lawyer</span> <span class="keyword">implements</span> <span class="title">AskAbility</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> ZhangSan zhangSan;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Lawyer</span><span class="params">(ZhangSan zhangSan)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.zhangSan = zhangSan;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    zhangSan.askForPay();</span><br><span class="line">    System.out.println(<span class="string">"如果不还将承担法律责任！"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ZhangSan zhangSan = <span class="keyword">new</span> ZhangSan();</span><br><span class="line">    AskAbility ask = <span class="keyword">new</span> Lawyer(zhangSan);</span><br><span class="line">    ask.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p>静态代理中代理类在编译期已经存在，一个服务类需要一个代理类与之对应，当服务类增多时，代理类随着增多，导致类数量太多。</p>
+<p>动态代理就是为了减少类数量而产生。</p>
+<p>动态代理有 JDK(基于接口、反射生成) 和 CGLIB(基于继承、字节码生成) 两种实现方式。</p>
+<p>Spring AOP 就是基于动态代理实现的。</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/javazejian/article/details/56267036" target="_blank" rel="noopener">关于 Spring AOP (AspectJ) 你该知晓的一切</a></p>
+<p><a href="https://how2j.cn/k/spring/spring-annotation-ioc-di/1067.html" target="_blank" rel="noopener">Spring系列教材 （三）- 注解方式 IOC/DI</a></p>
+</blockquote>
+<h3 id="JDK-动态代理"><a href="#JDK-动态代理" class="headerlink" title="JDK 动态代理"></a>JDK 动态代理</h3><p>两个重要的元素：</p>
+<ol>
+<li><p>InvocationHandler 接口</p>
+<p><code>public Object invoke(Object proxy, Method method, Object[] args) throws Throwable;</code></p>
+<ul>
+<li>proxy：动态代理对象</li>
+<li>method：正在执行的方法</li>
+<li>args：当前执行方法传入的实参</li>
+</ul>
+</li>
+<li><p>Proxy 类</p>
+<p><code>public static Object newProxyInstance(ClassLoader loader, Class&lt;?&gt;[] interfaces, InvocationHandler h) throws IllegalArgumentException</code></p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AskingHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Object target;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">AskingHandler</span><span class="params">(Object target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.target = target;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    Object invoke = method.invoke(target, args);</span><br><span class="line">    System.out.println(<span class="string">"如果不还将承担法律责任！"</span>);</span><br><span class="line">    <span class="keyword">return</span> invoke;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">    InvocationHandler handler = <span class="keyword">new</span> AskingHandler(employee);</span><br><span class="line">    AskAbility proxy = (AskAbility) Proxy.newProxyInstance(employee.getClass().getClassLoader(), employee.getClass().getInterfaces(), handler);</span><br><span class="line">    proxy.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CGLIB-动态代理"><a href="#CGLIB-动态代理" class="headerlink" title="CGLIB 动态代理"></a>CGLIB 动态代理</h3><p>JDK 只能对实现了接口的类做动态代理，而不能对没有实现接口的类做动态代理，所以出现了 cgLib。</p>
+<p>CGLib（Code Generation Library）是一个强大、高性能的 Code 生成类库，它可以在程序运行期间动态扩展类或接口，它的底层是使用 <strong>java字节码操作框架</strong> ASM 实现。</p>
+<p>CGLIB 两个重要元素：</p>
+<ol>
+<li><p>MethodInterceptor 方法拦截器</p>
+<p><code>Object intercept(Object var1, Method var2, Object[] var3, MethodProxy var4) throws Throwable;</code></p>
+</li>
+<li><p>Enhancer</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">create</span><span class="params">(Class type, Callback callback)</span> </span>&#123;</span><br><span class="line">  Enhancer e = <span class="keyword">new</span> Enhancer();</span><br><span class="line">  e.setSuperclass(type);</span><br><span class="line">  e.setCallback(callback);</span><br><span class="line">  <span class="keyword">return</span> e.create();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="服务类-1"><a href="#服务类-1" class="headerlink" title="服务类"></a>服务类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"还钱！"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法拦截器"><a href="#方法拦截器" class="headerlink" title="方法拦截器"></a>方法拦截器</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AskingMethodInterceptor</span> <span class="keyword">implements</span> <span class="title">MethodInterceptor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Object o, Method method, Object[] objects, MethodProxy methodProxy)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    Object result = methodProxy.invokeSuper(o, objects);</span><br><span class="line">    <span class="keyword">if</span> (method.getName().equals(<span class="string">"askForPay"</span>))</span><br><span class="line">      System.out.println(<span class="string">"如果不还将承担法律责任！"</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="客户端-1"><a href="#客户端-1" class="headerlink" title="客户端"></a>客户端</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">    Employee proxy = (Employee) Enhancer.create(employee.getClass(), <span class="keyword">new</span> AskingMethodInterceptor());</span><br><span class="line"></span><br><span class="line">    proxy.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
 </search>
