@@ -78,7 +78,7 @@
   </entry>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/11/05/Account-Management-in-Git/</url>
+    <url>/2020/11/09/Account-Management-in-Git/</url>
     <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -1238,6 +1238,94 @@
 
 <h3 id="典型应用"><a href="#典型应用" class="headerlink" title="典型应用"></a>典型应用</h3><h4 id="Java-集合"><a href="#Java-集合" class="headerlink" title="Java 集合"></a>Java 集合</h4><p><img data-src="/post_image/image_2020_11_04T11_06_19_787Z.png" alt=""></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Design Pattern - Proxy</title>
+    <url>/2020/10/26/Design-Pattern-Proxy/</url>
+    <content><![CDATA[<img data-src="https://cdn.journaldev.com/wp-content/uploads/2013/07/proxy-design-pattern.jpg" width="100%"/>
+
+<a id="more"></a>
+
+<h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><blockquote>
+<p><a href="https://blog.csdn.net/shusheng0007/article/details/80864854" target="_blank" rel="noopener">秒懂Java代理与动态代理模式</a></p>
+</blockquote>
+<p>用代理对象<strong>代替</strong>目标对象来实现某个目的（服务/主题/功能）。</p>
+<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><ol>
+<li>隐藏目标对象</li>
+<li>增强目标对象</li>
+</ol>
+<h3 id="代理模式结构"><a href="#代理模式结构" class="headerlink" title="代理模式结构"></a>代理模式结构</h3><blockquote>
+<p><a href="https://refactoringguru.cn/design-patterns/proxy" target="_blank" rel="noopener">代理模式 | <strong>Refactoring.Guru</strong></a></p>
+</blockquote>
+<ol>
+<li><p>服务接口</p>
+<p>声明了服务接口。 代理必须遵循该接口才能伪装成服务对象。</p>
+</li>
+<li><p>服务类</p>
+<p>提供了一些实用的业务逻辑。</p>
+</li>
+<li><p>代理类</p>
+<p>代理类包含一个指向服务对象的引用成员变量。 代理完成其任务 （例如延迟初始化、 记录日志、 访问控制和缓存等） 后会将请求传递给服务对象。 通常情况下， 代理会对其服务对象的整个生命周期进行管理。</p>
+</li>
+<li><p>客户端</p>
+<p>客户端能通过同一接口与服务或代理进行交互，所以你可在一切需要服务对象的代码中使用代理。</p>
+</li>
+</ol>
+<h2 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h2><p>劳动仲裁案例：代理律师代理讨薪员工索要工资。</p>
+<h3 id="服务接口"><a href="#服务接口" class="headerlink" title="服务接口"></a>服务接口</h3><blockquote>
+<p>代理主题：讨薪</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AskAbility</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="服务类"><a href="#服务类" class="headerlink" title="服务类"></a>服务类</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZhangSan</span> <span class="keyword">implements</span> <span class="title">AskAbility</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"还钱！"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="代理类"><a href="#代理类" class="headerlink" title="代理类"></a>代理类</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Lawyer</span> <span class="keyword">implements</span> <span class="title">AskAbility</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> ZhangSan zhangSan;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Lawyer</span><span class="params">(ZhangSan zhangSan)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.zhangSan = zhangSan;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    zhangSan.askForPay();</span><br><span class="line">    System.out.println(<span class="string">"如果不还将承担法律责任！"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ZhangSan zhangSan = <span class="keyword">new</span> ZhangSan();</span><br><span class="line">    AskAbility ask = <span class="keyword">new</span> Lawyer(zhangSan);</span><br><span class="line">    ask.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p>静态代理中代理类在编译期已经存在，一个服务类需要一个代理类与之对应，当服务类增多时，代理类随着增多，导致类数量太多。</p>
+<p>动态代理就是为了减少类数量而产生。</p>
+<p>动态代理有 JDK(基于接口、反射生成) 和 CGLIB(基于继承、字节码生成) 两种实现方式。</p>
+<p>Spring AOP 就是基于动态代理实现的。</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/javazejian/article/details/56267036" target="_blank" rel="noopener">关于 Spring AOP (AspectJ) 你该知晓的一切</a></p>
+<p><a href="https://how2j.cn/k/spring/spring-annotation-ioc-di/1067.html" target="_blank" rel="noopener">Spring系列教材 （三）- 注解方式 IOC/DI</a></p>
+</blockquote>
+<h3 id="JDK-动态代理"><a href="#JDK-动态代理" class="headerlink" title="JDK 动态代理"></a>JDK 动态代理</h3><p>两个重要的元素：</p>
+<ol>
+<li><p>InvocationHandler 接口</p>
+<p><code>public Object invoke(Object proxy, Method method, Object[] args) throws Throwable;</code></p>
+<ul>
+<li>proxy：动态代理对象</li>
+<li>method：正在执行的方法</li>
+<li>args：当前执行方法传入的实参</li>
+</ul>
+</li>
+<li><p>Proxy 类</p>
+<p><code>public static Object newProxyInstance(ClassLoader loader, Class&lt;?&gt;[] interfaces, InvocationHandler h) throws IllegalArgumentException</code></p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AskingHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Object target;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">AskingHandler</span><span class="params">(Object target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.target = target;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    Object invoke = method.invoke(target, args);</span><br><span class="line">    System.out.println(<span class="string">"如果不还将承担法律责任！"</span>);</span><br><span class="line">    <span class="keyword">return</span> invoke;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">    InvocationHandler handler = <span class="keyword">new</span> AskingHandler(employee);</span><br><span class="line">    AskAbility proxy = (AskAbility) Proxy.newProxyInstance(employee.getClass().getClassLoader(), employee.getClass().getInterfaces(), handler);</span><br><span class="line">    proxy.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CGLIB-动态代理"><a href="#CGLIB-动态代理" class="headerlink" title="CGLIB 动态代理"></a>CGLIB 动态代理</h3><p>JDK 只能对实现了接口的类做动态代理，而不能对没有实现接口的类做动态代理，所以出现了 cgLib。</p>
+<p>CGLib（Code Generation Library）是一个强大、高性能的 Code 生成类库，它可以在程序运行期间动态扩展类或接口，它的底层是使用 <strong>java字节码操作框架</strong> ASM 实现。</p>
+<p>CGLIB 两个重要元素：</p>
+<ol>
+<li><p>MethodInterceptor 方法拦截器</p>
+<p><code>Object intercept(Object var1, Method var2, Object[] var3, MethodProxy var4) throws Throwable;</code></p>
+</li>
+<li><p>Enhancer</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">create</span><span class="params">(Class type, Callback callback)</span> </span>&#123;</span><br><span class="line">  Enhancer e = <span class="keyword">new</span> Enhancer();</span><br><span class="line">  e.setSuperclass(type);</span><br><span class="line">  e.setCallback(callback);</span><br><span class="line">  <span class="keyword">return</span> e.create();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="服务类-1"><a href="#服务类-1" class="headerlink" title="服务类"></a>服务类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"还钱！"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法拦截器"><a href="#方法拦截器" class="headerlink" title="方法拦截器"></a>方法拦截器</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AskingMethodInterceptor</span> <span class="keyword">implements</span> <span class="title">MethodInterceptor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Object o, Method method, Object[] objects, MethodProxy methodProxy)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    Object result = methodProxy.invokeSuper(o, objects);</span><br><span class="line">    <span class="keyword">if</span> (method.getName().equals(<span class="string">"askForPay"</span>))</span><br><span class="line">      System.out.println(<span class="string">"如果不还将承担法律责任！"</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="客户端-1"><a href="#客户端-1" class="headerlink" title="客户端"></a>客户端</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">    Employee proxy = (Employee) Enhancer.create(employee.getClass(), <span class="keyword">new</span> AskingMethodInterceptor());</span><br><span class="line"></span><br><span class="line">    proxy.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>Design Pattern - Singleton</title>
@@ -3011,7 +3099,7 @@ table th:first-of-type {  #first表示表格第一列
 <h5 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h5><p>把数据以及对数据的操作封装在一个类里。</p>
 <h5 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h5><h5 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h5><p>父类引用指向子类对象。</p>
 <h3 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h3><p>在软件业，AOP 为 Aspect Oriented Programming 的缩写，意为：面向切面编程</p>
-<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="B-树"><a href="#B-树" class="headerlink" title="B+ 树"></a>B+ 树</h3><h3 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h3><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h3 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h3><h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><h3 id="推荐算法"><a href="#推荐算法" class="headerlink" title="推荐算法"></a>推荐算法</h3><h2 id="Java-语言"><a href="#Java-语言" class="headerlink" title="Java 语言"></a>Java 语言</h2><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3><h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><h3 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h3><h4 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h4><h5 id="类的生命周期-类加载过程"><a href="#类的生命周期-类加载过程" class="headerlink" title="类的生命周期/类加载过程"></a>类的生命周期/类加载过程</h5><p>类从被加载到虚拟机内存中开始，到卸载出内存为止，它的整个生命周期包括 <span style="color: red">7 个阶段</span>。其中准备、验证、解析 3 个部分统称为连接（Linking）。</p>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="B-树"><a href="#B-树" class="headerlink" title="B 树"></a>B 树</h3><h3 id="B-树-1"><a href="#B-树-1" class="headerlink" title="B+ 树"></a>B+ 树</h3><h3 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h3><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h3 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h3><h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><h3 id="推荐算法"><a href="#推荐算法" class="headerlink" title="推荐算法"></a>推荐算法</h3><h2 id="Java-语言"><a href="#Java-语言" class="headerlink" title="Java 语言"></a>Java 语言</h2><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3><h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><h3 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h3><h4 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h4><h5 id="类的生命周期-类加载过程"><a href="#类的生命周期-类加载过程" class="headerlink" title="类的生命周期/类加载过程"></a>类的生命周期/类加载过程</h5><p>类从被加载到虚拟机内存中开始，到卸载出内存为止，它的整个生命周期包括 <span style="color: red">7 个阶段</span>。其中准备、验证、解析 3 个部分统称为连接（Linking）。</p>
 <p>加载(loading) –&gt; 验证(Verification) –&gt;准备(Preparation) –&gt; 解析(Resolution) –&gt; 初始化(Initialization) –&gt; 使用(Using) –&gt; 卸载(Unloading)</p>
 <p><img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0f14bd8d34554d94a925fab4bbdc7911~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
 <h6 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h6><p>将 <code>.class</code> 文件加载到 JVM 运行时数据区的<strong>方法区</strong>内，然后在堆中创建一个 java.lang.Class 对象，用来封装类在方法区内的数据结构。</p>
@@ -3082,6 +3170,8 @@ table th:first-of-type {  #first表示表格第一列
 <h6 id="双亲委派模型的破坏者-线程上下文类加载器"><a href="#双亲委派模型的破坏者-线程上下文类加载器" class="headerlink" title="双亲委派模型的破坏者-线程上下文类加载器"></a>双亲委派模型的破坏者-线程上下文类加载器</h6><p>在Java应用中存在着很多服务提供者接口（Service Provider Interface，SPI），这些接口允许第三方为它们提供实现，如常见的 SPI 有 JDBC、JNDI 等，这些 SPI 的接口属于 Java 核心库，一般存在 rt.jar 包中，由 Bootstrap 类加载器加载，而 SPI 的第三方实现代码则是作为Java应用所依赖的 jar 包被存放在 classpath 路径下，由于启动类加载器无法直接加载 SPI 的实现类，同时由于双亲委派模式的存在，Bootstrap 类加载器也无法反向委托AppClassLoader 加载器SPI的实现类。在这种情况下，我们就需要线程上下文类加载器。</p>
 <p>线程上下文类加载器（contextClassLoader）可以通过<code>java.lang.Thread</code> 类中的<code>getContextClassLoader()</code> 和 <code>setContextClassLoader(ClassLoader cl)</code> 方法来获取和设置线程的上下文类加载器。如果没有手动设置上下文类加载器，线程将继承其父线程的上下文类加载器，初始线程的上下文类加载器是应用类加载器，在线程中运行的代码可以通过此类加载器来加载类和资源。</p>
 <p><img data-src="https://img-blog.csdn.net/20170625143404387?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamF2YXplamlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<p>“破坏”是指破坏了父类加载器无法加载子类加载器范围的类这样的规则。</p>
+<p>就是通过在父类加载器中使用 <code>Thread.getContextClassLoader()</code> 获取到子类加载器，然后再调用子类加载器的 <code>findClass()</code> 方法去加载。</p>
 <h3 id="集合框架"><a href="#集合框架" class="headerlink" title="集合框架"></a>集合框架</h3><h4 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h4><p><img data-src="https://camo.githubusercontent.com/d1efb1abc3173aa2a607316dda79bea560fe333f/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f696d6167652d32303139313230383232303934383038342e706e67" alt=""></p>
 <h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p><img data-src="https://camo.githubusercontent.com/bcc4885b038529bc66a48f637c14cc7933ce63da/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f696d6167652d32303230313130313233343333353833372e706e67" alt=""></p>
 <h5 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h5><h6 id="put-流程"><a href="#put-流程" class="headerlink" title="put 流程"></a>put 流程</h6><p><img data-src="https://upload-images.jianshu.io/upload_images/13947009-afee4ea47109f9c3.jpg" alt=""></p>
@@ -3200,7 +3290,40 @@ table th:first-of-type {  #first表示表格第一列
 </li>
 </ol>
 <h4 id="自动配置"><a href="#自动配置" class="headerlink" title="自动配置"></a>自动配置</h4><p>Spring Boot 项目启动时会扫描所有所有依赖 jar 包下的 <code>spring.factories</code> 文件，将其中的自动配置类注册到 Spring IoC 容器中。</p>
-<h4 id="启动流程"><a href="#启动流程" class="headerlink" title="启动流程"></a>启动流程</h4><h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><h2 id="消息中间件"><a href="#消息中间件" class="headerlink" title="消息中间件"></a>消息中间件</h2><h3 id="RebbitMQ"><a href="#RebbitMQ" class="headerlink" title="RebbitMQ"></a>RebbitMQ</h3><h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><h3 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h3><h3 id="SSM"><a href="#SSM" class="headerlink" title="SSM"></a>SSM</h3><h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3>]]></content>
+<h4 id="启动流程"><a href="#启动流程" class="headerlink" title="启动流程"></a>启动流程</h4><h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><h2 id="消息中间件"><a href="#消息中间件" class="headerlink" title="消息中间件"></a>消息中间件</h2><h3 id="RebbitMQ"><a href="#RebbitMQ" class="headerlink" title="RebbitMQ"></a>RebbitMQ</h3><h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><h3 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h3><h3 id="SSM"><a href="#SSM" class="headerlink" title="SSM"></a>SSM</h3><h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><p>Redis 的持久化方式</p>
+<p>Redis 有两种持久化：RDB（快照）和 AOF（追加文件）</p>
+<p>注：4.0之后增加了混合方式，结合了 RDB 和 AOF 的优点。</p>
+<p>区别：</p>
+<ul>
+<li>RDB 是将内存中数据某一时刻的快照写入二进制文件中。</li>
+<li>AOF 是将每条导致数据变动的指令追加到 aof 文件中。</li>
+</ul>
+<p>优缺点：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>RDB</th>
+<th>AOF</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>文件大小</td>
+<td>小</td>
+<td>大</td>
+</tr>
+<tr>
+<td>重启时间</td>
+<td>短</td>
+<td>长</td>
+</tr>
+<tr>
+<td>数据丢失</td>
+<td>多</td>
+<td>少</td>
+</tr>
+</tbody></table>
+]]></content>
   </entry>
   <entry>
     <title>JSON Web Token</title>
@@ -9470,36 +9593,6 @@ D --> F[释放套接字]
       </tags>
   </entry>
   <entry>
-    <title>What System I Wanted</title>
-    <url>/2019/12/21/What-System-I-Wanted/</url>
-    <content><![CDATA[<img data-src="https://www.churchofjesuschrist.org/youth/bc/youth/article/powerful-ways-to-control-your-thoughts/images/control-my-thoughts-700x363-2115883.jpg" width="100%"/>
-
-<a id="more"></a>
-
-<h2 id="记账系统"><a href="#记账系统" class="headerlink" title="记账系统"></a><a href="https://gitee.com/libo9527/ledger/blob/master/README.md" target="_blank" rel="noopener">记账系统</a></h2><h2 id="火车中转攻略"><a href="#火车中转攻略" class="headerlink" title="火车中转攻略"></a>火车中转攻略</h2><ol>
-<li>查看城市 A 到城市 B 的火车中转方案</li>
-<li>用户可自定义中转城市</li>
-<li>用户可自定义中转次数</li>
-<li>多种线路进行打分</li>
-<li>打分依据有价格、转乘次数等</li>
-</ol>
-<h2 id="习惯养成"><a href="#习惯养成" class="headerlink" title="习惯养成"></a>习惯养成</h2><ol>
-<li>制定一个习惯的养成计划</li>
-<li>缴纳一笔金钱进系统，没有按计划进行实施则不可提取。</li>
-<li>想要违规提取只有一个办法，就是注销账号。但注销后将被记入黑名单，不可再次注册。</li>
-<li>缴纳的金额会被存入银行，按一定利息存放。</li>
-<li>阶段性返还金额，达到某个里程碑就返还一定金额</li>
-<li>未能按计划达到标准，则按一定比例推迟金额返还时间。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Thoughts</category>
-      </categories>
-      <tags>
-        <tag>Thoughts</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>What is CORS</title>
     <url>/2019/12/10/What-is-CORS/</url>
     <content><![CDATA[<img data-src="https://geekflare.com/wp-content/uploads/2019/11/cors-1200x385.jpg" width="100%"/>
@@ -10730,6 +10823,36 @@ D --> F[释放套接字]
 ]]></content>
   </entry>
   <entry>
+    <title>What System I Wanted</title>
+    <url>/2019/12/21/What-System-I-Wanted/</url>
+    <content><![CDATA[<img data-src="https://www.churchofjesuschrist.org/youth/bc/youth/article/powerful-ways-to-control-your-thoughts/images/control-my-thoughts-700x363-2115883.jpg" width="100%"/>
+
+<a id="more"></a>
+
+<h2 id="记账系统"><a href="#记账系统" class="headerlink" title="记账系统"></a><a href="https://gitee.com/libo9527/ledger/blob/master/README.md" target="_blank" rel="noopener">记账系统</a></h2><h2 id="火车中转攻略"><a href="#火车中转攻略" class="headerlink" title="火车中转攻略"></a>火车中转攻略</h2><ol>
+<li>查看城市 A 到城市 B 的火车中转方案</li>
+<li>用户可自定义中转城市</li>
+<li>用户可自定义中转次数</li>
+<li>多种线路进行打分</li>
+<li>打分依据有价格、转乘次数等</li>
+</ol>
+<h2 id="习惯养成"><a href="#习惯养成" class="headerlink" title="习惯养成"></a>习惯养成</h2><ol>
+<li>制定一个习惯的养成计划</li>
+<li>缴纳一笔金钱进系统，没有按计划进行实施则不可提取。</li>
+<li>想要违规提取只有一个办法，就是注销账号。但注销后将被记入黑名单，不可再次注册。</li>
+<li>缴纳的金额会被存入银行，按一定利息存放。</li>
+<li>阶段性返还金额，达到某个里程碑就返还一定金额</li>
+<li>未能按计划达到标准，则按一定比例推迟金额返还时间。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Thoughts</category>
+      </categories>
+      <tags>
+        <tag>Thoughts</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Writing Norms</title>
     <url>/2018/12/26/Writing-Norms/</url>
     <content><![CDATA[<img data-src="https://i.loli.net/2018/12/26/5c2340bbf08fb.jpeg" width="100%"/>
@@ -11438,93 +11561,5 @@ D --> F[释放套接字]
       <tags>
         <tag>Tour</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Design Pattern - Proxy</title>
-    <url>/2020/10/26/Design-Pattern-Proxy/</url>
-    <content><![CDATA[<img data-src="https://cdn.journaldev.com/wp-content/uploads/2013/07/proxy-design-pattern.jpg" width="100%"/>
-
-<a id="more"></a>
-
-<h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><blockquote>
-<p><a href="https://blog.csdn.net/shusheng0007/article/details/80864854" target="_blank" rel="noopener">秒懂Java代理与动态代理模式</a></p>
-</blockquote>
-<p>用代理对象<strong>代替</strong>目标对象来实现某个目的（服务/主题/功能）。</p>
-<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><ol>
-<li>隐藏目标对象</li>
-<li>增强目标对象</li>
-</ol>
-<h3 id="代理模式结构"><a href="#代理模式结构" class="headerlink" title="代理模式结构"></a>代理模式结构</h3><blockquote>
-<p><a href="https://refactoringguru.cn/design-patterns/proxy" target="_blank" rel="noopener">代理模式 | <strong>Refactoring.Guru</strong></a></p>
-</blockquote>
-<ol>
-<li><p>服务接口</p>
-<p>声明了服务接口。 代理必须遵循该接口才能伪装成服务对象。</p>
-</li>
-<li><p>服务类</p>
-<p>提供了一些实用的业务逻辑。</p>
-</li>
-<li><p>代理类</p>
-<p>代理类包含一个指向服务对象的引用成员变量。 代理完成其任务 （例如延迟初始化、 记录日志、 访问控制和缓存等） 后会将请求传递给服务对象。 通常情况下， 代理会对其服务对象的整个生命周期进行管理。</p>
-</li>
-<li><p>客户端</p>
-<p>客户端能通过同一接口与服务或代理进行交互，所以你可在一切需要服务对象的代码中使用代理。</p>
-</li>
-</ol>
-<h2 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h2><p>劳动仲裁案例：代理律师代理讨薪员工索要工资。</p>
-<h3 id="服务接口"><a href="#服务接口" class="headerlink" title="服务接口"></a>服务接口</h3><blockquote>
-<p>代理主题：讨薪</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AskAbility</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="服务类"><a href="#服务类" class="headerlink" title="服务类"></a>服务类</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZhangSan</span> <span class="keyword">implements</span> <span class="title">AskAbility</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"还钱！"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="代理类"><a href="#代理类" class="headerlink" title="代理类"></a>代理类</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Lawyer</span> <span class="keyword">implements</span> <span class="title">AskAbility</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> ZhangSan zhangSan;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Lawyer</span><span class="params">(ZhangSan zhangSan)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.zhangSan = zhangSan;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    zhangSan.askForPay();</span><br><span class="line">    System.out.println(<span class="string">"如果不还将承担法律责任！"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ZhangSan zhangSan = <span class="keyword">new</span> ZhangSan();</span><br><span class="line">    AskAbility ask = <span class="keyword">new</span> Lawyer(zhangSan);</span><br><span class="line">    ask.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p>静态代理中代理类在编译期已经存在，一个服务类需要一个代理类与之对应，当服务类增多时，代理类随着增多，导致类数量太多。</p>
-<p>动态代理就是为了减少类数量而产生。</p>
-<p>动态代理有 JDK(基于接口、反射生成) 和 CGLIB(基于继承、字节码生成) 两种实现方式。</p>
-<p>Spring AOP 就是基于动态代理实现的。</p>
-<blockquote>
-<p><a href="https://blog.csdn.net/javazejian/article/details/56267036" target="_blank" rel="noopener">关于 Spring AOP (AspectJ) 你该知晓的一切</a></p>
-<p><a href="https://how2j.cn/k/spring/spring-annotation-ioc-di/1067.html" target="_blank" rel="noopener">Spring系列教材 （三）- 注解方式 IOC/DI</a></p>
-</blockquote>
-<h3 id="JDK-动态代理"><a href="#JDK-动态代理" class="headerlink" title="JDK 动态代理"></a>JDK 动态代理</h3><p>两个重要的元素：</p>
-<ol>
-<li><p>InvocationHandler 接口</p>
-<p><code>public Object invoke(Object proxy, Method method, Object[] args) throws Throwable;</code></p>
-<ul>
-<li>proxy：动态代理对象</li>
-<li>method：正在执行的方法</li>
-<li>args：当前执行方法传入的实参</li>
-</ul>
-</li>
-<li><p>Proxy 类</p>
-<p><code>public static Object newProxyInstance(ClassLoader loader, Class&lt;?&gt;[] interfaces, InvocationHandler h) throws IllegalArgumentException</code></p>
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AskingHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Object target;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">AskingHandler</span><span class="params">(Object target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.target = target;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    Object invoke = method.invoke(target, args);</span><br><span class="line">    System.out.println(<span class="string">"如果不还将承担法律责任！"</span>);</span><br><span class="line">    <span class="keyword">return</span> invoke;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">    InvocationHandler handler = <span class="keyword">new</span> AskingHandler(employee);</span><br><span class="line">    AskAbility proxy = (AskAbility) Proxy.newProxyInstance(employee.getClass().getClassLoader(), employee.getClass().getInterfaces(), handler);</span><br><span class="line">    proxy.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="CGLIB-动态代理"><a href="#CGLIB-动态代理" class="headerlink" title="CGLIB 动态代理"></a>CGLIB 动态代理</h3><p>JDK 只能对实现了接口的类做动态代理，而不能对没有实现接口的类做动态代理，所以出现了 cgLib。</p>
-<p>CGLib（Code Generation Library）是一个强大、高性能的 Code 生成类库，它可以在程序运行期间动态扩展类或接口，它的底层是使用 <strong>java字节码操作框架</strong> ASM 实现。</p>
-<p>CGLIB 两个重要元素：</p>
-<ol>
-<li><p>MethodInterceptor 方法拦截器</p>
-<p><code>Object intercept(Object var1, Method var2, Object[] var3, MethodProxy var4) throws Throwable;</code></p>
-</li>
-<li><p>Enhancer</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">create</span><span class="params">(Class type, Callback callback)</span> </span>&#123;</span><br><span class="line">  Enhancer e = <span class="keyword">new</span> Enhancer();</span><br><span class="line">  e.setSuperclass(type);</span><br><span class="line">  e.setCallback(callback);</span><br><span class="line">  <span class="keyword">return</span> e.create();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h4 id="服务类-1"><a href="#服务类-1" class="headerlink" title="服务类"></a>服务类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"还钱！"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="方法拦截器"><a href="#方法拦截器" class="headerlink" title="方法拦截器"></a>方法拦截器</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AskingMethodInterceptor</span> <span class="keyword">implements</span> <span class="title">MethodInterceptor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Object o, Method method, Object[] objects, MethodProxy methodProxy)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    Object result = methodProxy.invokeSuper(o, objects);</span><br><span class="line">    <span class="keyword">if</span> (method.getName().equals(<span class="string">"askForPay"</span>))</span><br><span class="line">      System.out.println(<span class="string">"如果不还将承担法律责任！"</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="客户端-1"><a href="#客户端-1" class="headerlink" title="客户端"></a>客户端</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">    Employee proxy = (Employee) Enhancer.create(employee.getClass(), <span class="keyword">new</span> AskingMethodInterceptor());</span><br><span class="line"></span><br><span class="line">    proxy.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
 </search>
