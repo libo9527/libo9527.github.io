@@ -49,6 +49,8 @@ tags:
 
 ## 数据结构
 
+### B 树
+
 ### B+ 树
 
 ### 红黑树
@@ -183,6 +185,10 @@ tags:
 线程上下文类加载器（contextClassLoader）可以通过`java.lang.Thread` 类中的`getContextClassLoader()` 和 `setContextClassLoader(ClassLoader cl)` 方法来获取和设置线程的上下文类加载器。如果没有手动设置上下文类加载器，线程将继承其父线程的上下文类加载器，初始线程的上下文类加载器是应用类加载器，在线程中运行的代码可以通过此类加载器来加载类和资源。
 
 ![](https://img-blog.csdn.net/20170625143404387?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvamF2YXplamlhbg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+“破坏”是指破坏了父类加载器无法加载子类加载器范围的类这样的规则。
+
+就是通过在父类加载器中使用 `Thread.getContextClassLoader()` 获取到子类加载器，然后再调用子类加载器的 `findClass()` 方法去加载。
 
 ### 集合框架
 
@@ -533,6 +539,8 @@ Process finished with exit code 0
 
 ### Oracle
 
+
+
 ### MongoDB
 
 ## Linux
@@ -608,4 +616,25 @@ Spring Boot 项目启动时会扫描所有所有依赖 jar 包下的 `spring.fac
 ### JS
 
 ### Vue
+
+
+
+Redis 的持久化方式
+
+Redis 有两种持久化：RDB（快照）和 AOF（追加文件）
+
+注：4.0之后增加了混合方式，结合了 RDB 和 AOF 的优点。
+
+区别：
+
+- RDB 是将内存中数据某一时刻的快照写入二进制文件中。
+- AOF 是将每条导致数据变动的指令追加到 aof 文件中。
+
+优缺点：
+
+|          | RDB  | AOF  |
+| -------- | ---- | ---- |
+| 文件大小 | 小   | 大   |
+| 重启时间 | 短   | 长   |
+| 数据丢失 | 多   | 少   |
 
