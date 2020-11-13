@@ -19,6 +19,8 @@ tags:
 >
 > [《Java 面试进阶指南》](https://xiaozhuanlan.com/javainterview?rel=javaguide) 
 
+[toc]
+
 ## 编程思想
 
 ### OPP
@@ -112,7 +114,7 @@ Redis v4.0 之后有了 Module（模块/插件） 功能，Redis Modules 让 Red
 
 1. **`BF.ADD `**：将元素添加到布隆过滤器中，如果该过滤器尚不存在，则创建该过滤器。格式：`BF.ADD {key} {item}`。
 2. **`BF.MADD `**: 将一个或多个元素添加到“布隆过滤器”中，并创建一个尚不存在的过滤器。该命令的操作方式`BF.ADD`与之相同，只不过它允许多个输入并返回多个值。格式：`BF.MADD {key} {item} [item ...]` 。
-3. **`BF.EXISTS` ** : 确定元素是否在布隆过滤器中存在。格式：`BF.EXISTS {key} {item}`。
+3. ** `BF.EXISTS`  ** : 确定元素是否在布隆过滤器中存在。格式：`BF.EXISTS {key} {item}`。
 4. **`BF.MEXISTS`** ： 确定一个或者多个元素是否在布隆过滤器中存在格式：`BF.MEXISTS {key} {item} [item ...]`。
 
 ###### 使用
@@ -3007,9 +3009,62 @@ oracle 默认的索引是 **B+树**索引
 
 联合索引的任何前缀索引都会使用到索引查询，(col1, col2, col3) 这个联合索引的所有前缀就是(col1), (col1, col2), (col1, col2, col3) 包含这些列的查询都会启用索引查询，除此之外的查询即时包含了联合索引中的多列也不会启用索引查询。即 (col2), (col3), (col2, col3) 都不会启动(col1, col2, col3) 这个联合索引查询。
 
-##### 执行计划
+##### 禁止使用 SELECT * 必须使用 SELECT <字段列表> 查询
+
+**原因：**
+
+- 消耗更多的 CPU 和 IO 以网络带宽资源
+- 无法使用覆盖索引
+- 可减少表结构变更带来的影响
+
+##### 禁止使用不含字段列表的 INSERT 语句
 
 
+
+##### 避免使用子查询，可以把子查询优化为 join 操作
+
+通常子查询在 in 子句中，且子查询中为简单 SQL(不包含 union、group by、order by、limit 从句) 时,才可以把子查询转化为关联查询进行优化。
+
+**子查询性能差的原因：**
+
+子查询的结果集无法使用索引，通常子查询的结果集会被存储到临时表中，不论是内存临时表还是磁盘临时表都不存在索引，所以查询性能会受到一定的影响。特别是对于返回结果集比较大的子查询，其对查询性能的影响也就越大。
+
+由于子查询会产生大量的临时表也没有索引，所以会消耗过多的 CPU 和 IO 资源，产生大量的慢查询。
+
+##### 避免使用 JOIN 关联太多的表
+
+对于 MySQL 来说，是存在关联缓存的，缓存的大小可以由 join_buffer_size 参数进行设置。
+
+在 MySQL 中，对于同一个 SQL 多关联（join）一个表，就会多分配一个关联缓存，如果在一个 SQL 中关联的表越多，所占用的内存也就越大。
+
+如果程序中大量的使用了多表关联的操作，同时 join_buffer_size 设置的也不合理的情况下，就容易造成服务器内存溢出的情况，就会影响到服务器数据库性能的稳定性。
+
+同时对于关联操作来说，会产生临时表操作，影响查询效率，MySQL 最多允许关联 61 个表，建议不超过 5 个。
+
+##### 对应同一列进行 or 判断时，使用 in 代替 or
+
+in 的值不要超过 500 个，in 操作可以更有效的利用索引，or 大多数情况下很少能利用到索引。
+
+##### 禁止使用 order by rand() 进行随机排序
+
+order by rand() 会把表中所有符合条件的数据装载到内存中，然后在内存中对所有数据根据随机生成的值进行排序，并且可能会对每一行都生成一个随机值，如果满足条件的数据集非常大，就会消耗大量的 CPU 和 IO 及内存资源。
+
+推荐在程序中获取一个随机值，然后从数据库中获取数据的方式。
+
+##### 在明显不会有重复值时使用 UNION ALL 而不是 UNION
+
+- UNION 会把两个结果集的所有数据放到临时表中后再进行去重操作
+- UNION ALL 不会再对结果集进行去重操作
+
+#### 执行计划
+
+Mysql 使用 Explain + select...
+
+比较重要的字段有：
+
+- select_type : 查询类型，有简单查询、联合查询、子查询等
+- key : 使用的索引
+- rows : 扫描的行数
 
 ### 分库分表
 
@@ -3017,7 +3072,59 @@ oracle 默认的索引是 **B+树**索引
 
 **推荐使用 `sharding-jdbc`** 。 因为，`sharding-jdbc` 是一款轻量级 `Java` 框架，以 `jar` 包形式提供服务，不要我们做额外的运维工作，并且兼容性也很好。
 
+- **客户端代理：** **分片逻辑在应用端，封装在jar包中，通过修改或者封装JDBC层来实现。** 当当网的 **Sharding-JDBC** 、阿里的TDDL是两种比较常用的实现。
+- **中间件代理：** **在应用和数据中间加了一个代理层。分片逻辑统一维护在中间件服务中。** 我们现在谈的 **Mycat** 、360的Atlas、网易的DDB等等都是这种架构的实现。
+
+#### 分库分表之后,id 主键如何处理？
+
+- **数据库自增 id** : 两台数据库分别设置不同步长，生成不重复ID的策略来实现高可用。这种方式生成的 id 有序，但是需要独立部署数据库实例，成本高，还会有性能瓶颈。
+- **利用 redis 生成 id :** 性能比较好，灵活方便，不依赖于数据库。但是，引入了新的组件造成系统更加复杂，可用性降低，编码更加复杂，增加了系统成本。
+- **Twitter的snowflake算法**
+- **美团的[Leaf](https://tech.meituan.com/2017/04/21/mt-leaf.html)分布式ID生成系统** ：Leaf 是美团开源的分布式ID生成器，能保证全局唯一性、趋势递增、单调递增、信息安全，里面也提到了几种分布式方案的对比，但也需要依赖关系数据库、Zookeeper等中间件。
+
 ### MongoDB
+
+面向集合(`Collection`)和文档(`document`)的存储，以JSON格式的文档保存数据。
+
+#### 与关系型数据库术语类比
+
+| mongodb            | 关系型数据库 |
+| :----------------- | ------------ |
+| Database           | Database     |
+| Collection         | Table        |
+| Document           | Record/Row   |
+| Filed              | Column       |
+| Embedded Documents | Table join   |
+
+#### MongoDB的优势有哪些
+
+- 面向文档的存储：以 BSON 格式的文档保存数据。
+- 任何属性都可以建立索引。
+- 复制以及高可扩展性。
+- 自动分片。
+- 丰富的查询功能。
+- 快速的即时更新。
+- 来自 MongoDB 的专业支持。
+
+#### BSON VS JSON
+
+1. BSON 有更快的遍历速度
+
+   json需要扫字符串，而bson可以直接定位
+
+2. json是像字符串一样存储的，bson是按结构存储的
+
+#### 如何执行事务/加锁?
+
+`mongodb`没有使用传统的锁或者复杂的带回滚的事务,因为它设计的宗旨是轻量,快速以及可预计的高性能
+
+#### 在哪些场景使用`MongoDB`?
+
+**规则：** 如果业务中存在大量复杂的事务逻辑操作，则不要用`MongoDB`数据库；在处理非结构化 / 半结构化的大数据使用`MongoDB`，操作的数据类型为动态时也使用`MongoDB`，比如：
+
+- 内容管理系统，切面数据、日志记录
+- 移动端`Apps`：`O2O`送快递骑手、快递商家的信息（包含位置信息）
+- 数据管理，监控数据
 
 ## Linux
 
@@ -3089,6 +3196,121 @@ Spring Boot 项目的启动注解@SpringBootApplication 由下面三个注解组
 这些自动配置类中会使用 `@Conditional` 注解去加载响应的配置属性类，进而实现自动配置功能！
 
 #### 启动流程
+
+#### 过滤器
+
+过滤器的配置比较简单，直接实现`Filter` 接口即可，也可以通过`@WebFilter`注解实现对特定`URL`拦截，看到`Filter` 接口中定义了三个方法。
+
+- `init()` ：该方法在容器启动初始化过滤器时被调用，它在 `Filter` 的整个生命周期只会被调用一次。**注意**：这个方法必须执行成功，否则过滤器会不起作用。
+- `doFilter()` ：容器中的每一次请求都会调用该方法， `FilterChain` 用来调用下一个过滤器 `Filter`。
+- `destroy()`： 当容器销毁 过滤器实例时调用该方法，一般在方法中销毁或关闭资源，在过滤器 `Filter` 的整个生命周期也只会被调用一次
+
+```js
+@Component
+public class MyFilter implements Filter {
+    
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+
+        System.out.println("Filter 前置");
+    }
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+
+        System.out.println("Filter 处理中");
+        filterChain.doFilter(servletRequest, servletResponse);
+    }
+
+    @Override
+    public void destroy() {
+
+        System.out.println("Filter 后置");
+    }
+}
+```
+
+##### 执行顺序
+
+过滤器用`@Order`注解控制执行顺序，通过`@Order`控制过滤器的级别，值越小级别越高越先执行。
+
+#### 拦截器
+
+拦截器它是链式调用，一个应用中可以同时存在多个拦截器`Interceptor`， 一个请求也可以触发多个拦截器 ，而每个拦截器的调用会依据它的声明顺序依次执行。
+
+首先编写一个简单的拦截器处理类，请求的拦截是通过`HandlerInterceptor` 来实现，看到`HandlerInterceptor` 接口中也定义了三个方法。
+
+- `preHandle()` ：这个方法将在请求处理之前进行调用。**注意**：如果该方法的返回值为`false` ，将视为当前请求结束，不仅自身的拦截器会失效，还会导致其他的拦截器也不再执行。
+- `postHandle()`：只有在 `preHandle()` 方法返回值为`true` 时才会执行。会在Controller 中的方法调用之后，DispatcherServlet 返回渲染视图之前被调用。 **有意思的是**：`postHandle()` 方法被调用的顺序跟 `preHandle()` 是相反的，先声明的拦截器  `preHandle()` 方法先执行，而`postHandle()`方法反而会后执行。
+- `afterCompletion()`：只有在 `preHandle()` 方法返回值为`true` 时才会执行。在整个请求结束之后，  DispatcherServlet 渲染了对应的视图之后执行。
+
+```js
+@Component
+public class MyInterceptor implements HandlerInterceptor {
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
+        System.out.println("Interceptor 前置");
+        return true;
+    }
+
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+
+        System.out.println("Interceptor 处理中");
+    }
+
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+
+        System.out.println("Interceptor 后置");
+    }
+}
+```
+
+将自定义好的拦截器处理类进行注册，并通过`addPathPatterns`、`excludePathPatterns`等属性设置需要拦截或需要排除的 `URL`。
+
+```js
+@Configuration
+public class MyMvcConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**");
+        registry.addInterceptor(new MyInterceptor1()).addPathPatterns("/**");
+    }
+}
+```
+
+##### 执行顺序
+
+拦截器默认的执行顺序，就是它的注册顺序，可以通过`order`属性手动设置控制，值越小越先执行。
+
+```java
+@Override
+public void addInterceptors(InterceptorRegistry registry) {
+  registry.addInterceptor(new MyInterceptor2()).addPathPatterns("/**").order(2);
+  registry.addInterceptor(new MyInterceptor1()).addPathPatterns("/**").order(1);
+  registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**").order(3);
+}
+```
+
+##### 过滤器与拦截器的区别
+
+- Filter是基于函数回调的，而Interceptor则是基于Java反射的。
+- Filter依赖于Servlet容器，因此只能在web环境使用，而Interceptor不依赖于Servlet容器。不仅能应用在`web`程序中，也可以用于`Application`、`Swing`等程序中。
+- Filter对几乎所有的请求起作用，而Interceptor只能对action请求起作用。
+- Interceptor可以访问Action的上下文，值栈里的对象，而Filter不能。
+- 在action的生命周期里，Interceptor可以被多次调用，而Filter只能在容器初始化时调用一次。
+
+##### 过滤器与拦截器的顺序
+
+过滤前-拦截前-action执行-拦截后-过滤后
+
+过滤器`Filter`是在请求进入容器后，但在进入`servlet`之前进行预处理，请求结束是在`servlet`处理完以后。
+
+拦截器 `Interceptor` 是在请求进入`servlet`后，在进入`Controller`之前进行预处理的，`Controller` 中渲染了对应的视图之后请求结束。
 
 ### MyBatis
 
@@ -3353,6 +3575,106 @@ zuul:
 
 ### Nginx
 
+#### 负载均衡的6种策略
+
+1. 轮询（默认）
+
+   ```
+   upstream backserver {
+   	server 192.168.0.14;
+   	server 192.168.0.15;
+   }
+   ```
+
+2. 指定权重
+    指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。
+
+   ```
+   upstream backserver {
+   	server 192.168.0.14 weight=8;
+   	server 192.168.0.15 weight=10;
+   }
+   ```
+
+   权重越高，访问概率越大。
+
+3. ip_hash
+
+   每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session共享问题。
+
+   ```
+   upstream backserver {
+   	ip_hash;
+   	server 192.168.0.14:88;
+   	server 192.168.0.15:80;
+   }
+   ```
+
+4. 最少连接
+
+   ```
+   upstream item { # item名字可以自定义
+   	least_conn;
+   	server 192.168.101.60:81;
+   	server 192.168.101.77:80;
+   }
+   ```
+
+5. fair（第三方）
+   按后端服务器的响应时间来分配请求，响应时间短的优先分配。
+
+   ```
+   upstream backserver {
+   	server server1;
+   	server server2;
+   	fair;
+   }
+   ```
+
+6. url_hash（第三方）
+    按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，后端服务器为缓存时比较有效。
+
+   ```
+   upstream backserver {
+   	server squid1:3128;
+   	server squid2:3128;
+   	hash $request_uri;
+   	hash_method crc32;
+   }
+   ```
+
+最后需要在server.location中指定上面定义的upstream
+
+```
+server{
+	listen: 80
+	location: {
+		proxy_pass http://backserver
+	}
+}
+```
+
+#### 负载均衡参数
+
+```
+下面的参数可同时配置，使用空格分开即可
+'配置方式 server ip:端口 参数'
+
+- 'weight 权重'
+# weight = 数值 (值越高被选中的概率也就越高)
+
+- 'max_fails 失败多少次踢出队列'
+# max_fails = 数值
+
+- 'fail_timeout 踢出队列后重新探测时间'
+# fail_timeout = 60s (s = 秒)
+
+- 'max_conns 最大连接数'
+# max_conns = 800 为防止单机性能过载可以根据实际情况设置
+```
+
+
+
 ## 缓存
 
 ### Redis
@@ -3475,9 +3797,41 @@ Redis 是**不支持 roll back** 的，因而不满足原子性的（而且不�
 
    避免在系统刚启动不久由于还未将大量数据进行缓存而导致缓存雪崩。
 
+### Guava Cache
+
+使用 CacheBuilder 就可以构建一个缓存对象，CacheBuilder使用build链式构建。
+
 ## 消息中间件
 
-### RebbitMQ
+### RabbitMQ
+
+生产者将消息发给交换器的时候，一般会指定一个 **RoutingKey(路由键)**，用来指定这个消息的路由规则，而这个 **RoutingKey 需要与交换器类型和绑定键(BindingKey)联合使用才能最终生效**。
+
+RabbitMQ 中通过 **Binding(绑定)** 将 **Exchange(交换器)** 与 **Queue(消息队列)** 关联起来，在绑定的时候一般会指定一个 **BindingKey(绑定建)** ,这样 RabbitMQ 就知道如何正确将消息路由到队列了。
+
+#### Exchange Types(交换器类型)
+
+RabbitMQ 常用的 Exchange Type 有 **fanout**、**direct**、**topic**、**headers** 这四种。
+
+##### fanout
+
+fanout 类型的Exchange路由规则非常简单，它会把所有发送到该Exchange的消息路由到所有与它绑定的Queue中，不需要做任何判断操作，所以 fanout 类型是所有的交换机类型里面速度最快的。fanout 类型常用来广播消息。
+
+##### direct
+
+direct 类型的Exchange路由规则也很简单，它会把消息路由到那些 Bindingkey 与 RoutingKey 完全匹配的 Queue 中。
+
+##### topic
+
+topic类型的交换器在匹配规则上进行了扩展，它与 direct 类型的交换器相似，也是将消息路由到 BindingKey 和 RoutingKey 相匹配的队列中，但这里的匹配规则有些不同，它约定：
+
+- RoutingKey 为一个点号“．”分隔的字符串;
+- BindingKey 和 RoutingKey 一样也是点号“．”分隔的字符串；
+- BindingKey 中可以存在两种特殊字符串`*`和`#`，用于做模糊匹配，其中`*`用于匹配一个单词，`#`用于匹配多个单词(可以是零个)。
+
+##### headers(不推荐)
+
+headers 类型的交换器不依赖于路由键的匹配规则来路由消息，而是根据发送的消息内容中的 headers 属性进行匹配。
 
 ### Kafka
 
