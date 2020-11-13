@@ -78,7 +78,7 @@
   </entry>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/11/12/Account-Management-in-Git/</url>
+    <url>/2020/11/13/Account-Management-in-Git/</url>
     <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -11335,6 +11335,7 @@ D --> F[释放套接字]
 <p><a href="https://github.com/CyC2018" target="_blank" rel="noopener">CyC2018</a>/<a href="https://github.com/CyC2018/CS-Notes" target="_blank" rel="noopener">CS-Notes</a></p>
 <p><a href="https://xiaozhuanlan.com/javainterview?rel=javaguide" target="_blank">《Java 面试进阶指南》</a> </p>
 </blockquote>
+<p>[toc]</p>
 <h2 id="编程思想"><a href="#编程思想" class="headerlink" title="编程思想"></a>编程思想</h2><h3 id="OPP"><a href="#OPP" class="headerlink" title="OPP"></a>OPP</h3><p>面向过程编程（英语：Procedure-oriented Programming，缩写：OPP）</p>
 <h3 id="OOP"><a href="#OOP" class="headerlink" title="OOP"></a>OOP</h3><p>面向对象编程（英语：Object-oriented programming，缩写：OOP）</p>
 <h4 id="OPP-vs-OOP"><a href="#OPP-vs-OOP" class="headerlink" title="OPP vs OOP"></a>OPP vs OOP</h4><p>面向过程的程序设计<span style="color: red">把</span>计算机程序<span style="color: red">视为</span>一系列的<strong>命令集合</strong>，即一组函数的顺序执行。为了简化程序设计，面向过程把函数继续切分为子函数，即把大块函数通过切割成小块函数来降低系统的复杂度。</p>
@@ -11367,7 +11368,7 @@ D --> F[释放套接字]
 <h6 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h6><ol>
 <li><strong><code>BF.ADD</code></strong>：将元素添加到布隆过滤器中，如果该过滤器尚不存在，则创建该过滤器。格式：<code>BF.ADD {key} {item}</code>。</li>
 <li><strong><code>BF.MADD</code></strong>: 将一个或多个元素添加到“布隆过滤器”中，并创建一个尚不存在的过滤器。该命令的操作方式<code>BF.ADD</code>与之相同，只不过它允许多个输入并返回多个值。格式：<code>BF.MADD {key} {item} [item ...]</code> 。</li>
-<li>*<em><code>BF.EXISTS</code> *</em> : 确定元素是否在布隆过滤器中存在。格式：<code>BF.EXISTS {key} {item}</code>。</li>
+<li>** <code>BF.EXISTS</code>  ** : 确定元素是否在布隆过滤器中存在。格式：<code>BF.EXISTS {key} {item}</code>。</li>
 <li><strong><code>BF.MEXISTS</code></strong> ： 确定一个或者多个元素是否在布隆过滤器中存在格式：<code>BF.MEXISTS {key} {item} [item ...]</code>。</li>
 </ol>
 <h6 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; BF.ADD myFilter java</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; BF.ADD myFilter javaguide</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; BF.EXISTS myFilter java</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; BF.EXISTS myFilter javaguide</span><br><span class="line">(<span class="built_in">integer</span>) 1</span><br><span class="line">127.0.0.1:6379&gt; BF.EXISTS myFilter github</span><br><span class="line">(<span class="built_in">integer</span>) 0</span><br></pre></td></tr></table></figure>
@@ -12518,9 +12519,99 @@ D --> F[释放套接字]
 <p>此外，位图索引适合<strong>静态</strong>数据，而不适合索引频繁更新的列。</p>
 <p>因为位图索引列的修改会将所有该值的行进行加锁。</p>
 <h4 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h4><h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><h5 id="最左前缀原则"><a href="#最左前缀原则" class="headerlink" title="最左前缀原则"></a>最左前缀原则</h5><p>联合索引的任何前缀索引都会使用到索引查询，(col1, col2, col3) 这个联合索引的所有前缀就是(col1), (col1, col2), (col1, col2, col3) 包含这些列的查询都会启用索引查询，除此之外的查询即时包含了联合索引中的多列也不会启用索引查询。即 (col2), (col3), (col2, col3) 都不会启动(col1, col2, col3) 这个联合索引查询。</p>
-<h5 id="执行计划"><a href="#执行计划" class="headerlink" title="执行计划"></a>执行计划</h5><h3 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h3><p><strong>分库分表是为了解决由于库、表数据量过大，而导致数据库性能持续下降的问题。</strong> 常见的分库分表工具有：<code>sharding-jdbc</code>（当当）、<code>TSharding</code>（蘑菇街）、<code>MyCAT</code>（基于 Cobar）、<code>Cobar</code>（阿里巴巴）…。</p>
+<h5 id="禁止使用-SELECT-必须使用-SELECT-lt-字段列表-gt-查询"><a href="#禁止使用-SELECT-必须使用-SELECT-lt-字段列表-gt-查询" class="headerlink" title="禁止使用 SELECT * 必须使用 SELECT &lt;字段列表&gt; 查询"></a>禁止使用 SELECT * 必须使用 SELECT &lt;字段列表&gt; 查询</h5><p><strong>原因：</strong></p>
+<ul>
+<li>消耗更多的 CPU 和 IO 以网络带宽资源</li>
+<li>无法使用覆盖索引</li>
+<li>可减少表结构变更带来的影响</li>
+</ul>
+<h5 id="禁止使用不含字段列表的-INSERT-语句"><a href="#禁止使用不含字段列表的-INSERT-语句" class="headerlink" title="禁止使用不含字段列表的 INSERT 语句"></a>禁止使用不含字段列表的 INSERT 语句</h5><h5 id="避免使用子查询，可以把子查询优化为-join-操作"><a href="#避免使用子查询，可以把子查询优化为-join-操作" class="headerlink" title="避免使用子查询，可以把子查询优化为 join 操作"></a>避免使用子查询，可以把子查询优化为 join 操作</h5><p>通常子查询在 in 子句中，且子查询中为简单 SQL(不包含 union、group by、order by、limit 从句) 时,才可以把子查询转化为关联查询进行优化。</p>
+<p><strong>子查询性能差的原因：</strong></p>
+<p>子查询的结果集无法使用索引，通常子查询的结果集会被存储到临时表中，不论是内存临时表还是磁盘临时表都不存在索引，所以查询性能会受到一定的影响。特别是对于返回结果集比较大的子查询，其对查询性能的影响也就越大。</p>
+<p>由于子查询会产生大量的临时表也没有索引，所以会消耗过多的 CPU 和 IO 资源，产生大量的慢查询。</p>
+<h5 id="避免使用-JOIN-关联太多的表"><a href="#避免使用-JOIN-关联太多的表" class="headerlink" title="避免使用 JOIN 关联太多的表"></a>避免使用 JOIN 关联太多的表</h5><p>对于 MySQL 来说，是存在关联缓存的，缓存的大小可以由 join_buffer_size 参数进行设置。</p>
+<p>在 MySQL 中，对于同一个 SQL 多关联（join）一个表，就会多分配一个关联缓存，如果在一个 SQL 中关联的表越多，所占用的内存也就越大。</p>
+<p>如果程序中大量的使用了多表关联的操作，同时 join_buffer_size 设置的也不合理的情况下，就容易造成服务器内存溢出的情况，就会影响到服务器数据库性能的稳定性。</p>
+<p>同时对于关联操作来说，会产生临时表操作，影响查询效率，MySQL 最多允许关联 61 个表，建议不超过 5 个。</p>
+<h5 id="对应同一列进行-or-判断时，使用-in-代替-or"><a href="#对应同一列进行-or-判断时，使用-in-代替-or" class="headerlink" title="对应同一列进行 or 判断时，使用 in 代替 or"></a>对应同一列进行 or 判断时，使用 in 代替 or</h5><p>in 的值不要超过 500 个，in 操作可以更有效的利用索引，or 大多数情况下很少能利用到索引。</p>
+<h5 id="禁止使用-order-by-rand-进行随机排序"><a href="#禁止使用-order-by-rand-进行随机排序" class="headerlink" title="禁止使用 order by rand() 进行随机排序"></a>禁止使用 order by rand() 进行随机排序</h5><p>order by rand() 会把表中所有符合条件的数据装载到内存中，然后在内存中对所有数据根据随机生成的值进行排序，并且可能会对每一行都生成一个随机值，如果满足条件的数据集非常大，就会消耗大量的 CPU 和 IO 及内存资源。</p>
+<p>推荐在程序中获取一个随机值，然后从数据库中获取数据的方式。</p>
+<h5 id="在明显不会有重复值时使用-UNION-ALL-而不是-UNION"><a href="#在明显不会有重复值时使用-UNION-ALL-而不是-UNION" class="headerlink" title="在明显不会有重复值时使用 UNION ALL 而不是 UNION"></a>在明显不会有重复值时使用 UNION ALL 而不是 UNION</h5><ul>
+<li>UNION 会把两个结果集的所有数据放到临时表中后再进行去重操作</li>
+<li>UNION ALL 不会再对结果集进行去重操作</li>
+</ul>
+<h4 id="执行计划"><a href="#执行计划" class="headerlink" title="执行计划"></a>执行计划</h4><p>Mysql 使用 Explain + select…</p>
+<p>比较重要的字段有：</p>
+<ul>
+<li>select_type : 查询类型，有简单查询、联合查询、子查询等</li>
+<li>key : 使用的索引</li>
+<li>rows : 扫描的行数</li>
+</ul>
+<h3 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h3><p><strong>分库分表是为了解决由于库、表数据量过大，而导致数据库性能持续下降的问题。</strong> 常见的分库分表工具有：<code>sharding-jdbc</code>（当当）、<code>TSharding</code>（蘑菇街）、<code>MyCAT</code>（基于 Cobar）、<code>Cobar</code>（阿里巴巴）…。</p>
 <p><strong>推荐使用 <code>sharding-jdbc</code></strong> 。 因为，<code>sharding-jdbc</code> 是一款轻量级 <code>Java</code> 框架，以 <code>jar</code> 包形式提供服务，不要我们做额外的运维工作，并且兼容性也很好。</p>
-<h3 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h3><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><h4 id="IoC"><a href="#IoC" class="headerlink" title="IoC"></a>IoC</h4><h4 id="AOP-1"><a href="#AOP-1" class="headerlink" title="AOP"></a>AOP</h4><h3 id="Spring-Boot"><a href="#Spring-Boot" class="headerlink" title="Spring Boot"></a>Spring Boot</h3><h4 id="Spring-Boot的主要优点"><a href="#Spring-Boot的主要优点" class="headerlink" title="Spring Boot的主要优点"></a>Spring Boot的主要优点</h4><ol>
+<ul>
+<li><strong>客户端代理：</strong> <strong>分片逻辑在应用端，封装在jar包中，通过修改或者封装JDBC层来实现。</strong> 当当网的 <strong>Sharding-JDBC</strong> 、阿里的TDDL是两种比较常用的实现。</li>
+<li><strong>中间件代理：</strong> <strong>在应用和数据中间加了一个代理层。分片逻辑统一维护在中间件服务中。</strong> 我们现在谈的 <strong>Mycat</strong> 、360的Atlas、网易的DDB等等都是这种架构的实现。</li>
+</ul>
+<h4 id="分库分表之后-id-主键如何处理？"><a href="#分库分表之后-id-主键如何处理？" class="headerlink" title="分库分表之后,id 主键如何处理？"></a>分库分表之后,id 主键如何处理？</h4><ul>
+<li><strong>数据库自增 id</strong> : 两台数据库分别设置不同步长，生成不重复ID的策略来实现高可用。这种方式生成的 id 有序，但是需要独立部署数据库实例，成本高，还会有性能瓶颈。</li>
+<li><strong>利用 redis 生成 id :</strong> 性能比较好，灵活方便，不依赖于数据库。但是，引入了新的组件造成系统更加复杂，可用性降低，编码更加复杂，增加了系统成本。</li>
+<li><strong>Twitter的snowflake算法</strong></li>
+<li><strong>美团的<a href="https://tech.meituan.com/2017/04/21/mt-leaf.html" target="_blank" rel="noopener">Leaf</a>分布式ID生成系统</strong> ：Leaf 是美团开源的分布式ID生成器，能保证全局唯一性、趋势递增、单调递增、信息安全，里面也提到了几种分布式方案的对比，但也需要依赖关系数据库、Zookeeper等中间件。</li>
+</ul>
+<h3 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h3><p>面向集合(<code>Collection</code>)和文档(<code>document</code>)的存储，以JSON格式的文档保存数据。</p>
+<h4 id="与关系型数据库术语类比"><a href="#与关系型数据库术语类比" class="headerlink" title="与关系型数据库术语类比"></a>与关系型数据库术语类比</h4><table>
+<thead>
+<tr>
+<th align="left">mongodb</th>
+<th>关系型数据库</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Database</td>
+<td>Database</td>
+</tr>
+<tr>
+<td align="left">Collection</td>
+<td>Table</td>
+</tr>
+<tr>
+<td align="left">Document</td>
+<td>Record/Row</td>
+</tr>
+<tr>
+<td align="left">Filed</td>
+<td>Column</td>
+</tr>
+<tr>
+<td align="left">Embedded Documents</td>
+<td>Table join</td>
+</tr>
+</tbody></table>
+<h4 id="MongoDB的优势有哪些"><a href="#MongoDB的优势有哪些" class="headerlink" title="MongoDB的优势有哪些"></a>MongoDB的优势有哪些</h4><ul>
+<li>面向文档的存储：以 BSON 格式的文档保存数据。</li>
+<li>任何属性都可以建立索引。</li>
+<li>复制以及高可扩展性。</li>
+<li>自动分片。</li>
+<li>丰富的查询功能。</li>
+<li>快速的即时更新。</li>
+<li>来自 MongoDB 的专业支持。</li>
+</ul>
+<h4 id="BSON-VS-JSON"><a href="#BSON-VS-JSON" class="headerlink" title="BSON VS JSON"></a>BSON VS JSON</h4><ol>
+<li><p>BSON 有更快的遍历速度</p>
+<p>json需要扫字符串，而bson可以直接定位</p>
+</li>
+<li><p>json是像字符串一样存储的，bson是按结构存储的</p>
+</li>
+</ol>
+<h4 id="如何执行事务-加锁"><a href="#如何执行事务-加锁" class="headerlink" title="如何执行事务/加锁?"></a>如何执行事务/加锁?</h4><p><code>mongodb</code>没有使用传统的锁或者复杂的带回滚的事务,因为它设计的宗旨是轻量,快速以及可预计的高性能</p>
+<h4 id="在哪些场景使用MongoDB"><a href="#在哪些场景使用MongoDB" class="headerlink" title="在哪些场景使用MongoDB?"></a>在哪些场景使用<code>MongoDB</code>?</h4><p><strong>规则：</strong> 如果业务中存在大量复杂的事务逻辑操作，则不要用<code>MongoDB</code>数据库；在处理非结构化 / 半结构化的大数据使用<code>MongoDB</code>，操作的数据类型为动态时也使用<code>MongoDB</code>，比如：</p>
+<ul>
+<li>内容管理系统，切面数据、日志记录</li>
+<li>移动端<code>Apps</code>：<code>O2O</code>送快递骑手、快递商家的信息（包含位置信息）</li>
+<li>数据管理，监控数据</li>
+</ul>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><h4 id="IoC"><a href="#IoC" class="headerlink" title="IoC"></a>IoC</h4><h4 id="AOP-1"><a href="#AOP-1" class="headerlink" title="AOP"></a>AOP</h4><h3 id="Spring-Boot"><a href="#Spring-Boot" class="headerlink" title="Spring Boot"></a>Spring Boot</h3><h4 id="Spring-Boot的主要优点"><a href="#Spring-Boot的主要优点" class="headerlink" title="Spring Boot的主要优点"></a>Spring Boot的主要优点</h4><ol>
 <li>开发基于 Spring 的应用程序很容易。</li>
 <li>Spring Boot 项目所需的开发或工程时间明显减少，通常会提高整体生产力。</li>
 <li>Spring Boot不需要编写大量样板代码、XML配置和注释。</li>
@@ -12557,7 +12648,41 @@ D --> F[释放套接字]
 </ul>
 <p>其中 @EnableAutoConfiguration 是实现自动配置的入口，该注解又通过 @Import 注解导入了AutoConfigurationImportSelector，在该类中 <code>getCandidateConfigurations</code> 方法会将所有自动配置类的信息以 List 的形式返回。这些配置信息会被注册到 IOC 容器中。</p>
 <p>这些自动配置类中会使用 <code>@Conditional</code> 注解去加载响应的配置属性类，进而实现自动配置功能！</p>
-<h4 id="启动流程"><a href="#启动流程" class="headerlink" title="启动流程"></a>启动流程</h4><h3 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h3><h4 id="和-的区别是什么？"><a href="#和-的区别是什么？" class="headerlink" title="#{}和${}的区别是什么？"></a>#{}和${}的区别是什么？</h4><p><code>#{value}</code> 会将value添加上双引号，而 <code>${}</code> 则是原封不动的插入 sql，会导致 sql 注入问题。</p>
+<h4 id="启动流程"><a href="#启动流程" class="headerlink" title="启动流程"></a>启动流程</h4><h4 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h4><p>过滤器的配置比较简单，直接实现<code>Filter</code> 接口即可，也可以通过<code>@WebFilter</code>注解实现对特定<code>URL</code>拦截，看到<code>Filter</code> 接口中定义了三个方法。</p>
+<ul>
+<li><code>init()</code> ：该方法在容器启动初始化过滤器时被调用，它在 <code>Filter</code> 的整个生命周期只会被调用一次。<strong>注意</strong>：这个方法必须执行成功，否则过滤器会不起作用。</li>
+<li><code>doFilter()</code> ：容器中的每一次请求都会调用该方法， <code>FilterChain</code> 用来调用下一个过滤器 <code>Filter</code>。</li>
+<li><code>destroy()</code>： 当容器销毁 过滤器实例时调用该方法，一般在方法中销毁或关闭资源，在过滤器 <code>Filter</code> 的整个生命周期也只会被调用一次</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">@Component</span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MyFilter</span> <span class="title">implements</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public <span class="keyword">void</span> init(FilterConfig filterConfig) throws ServletException &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Filter 前置"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public <span class="keyword">void</span> doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Filter 处理中"</span>);</span><br><span class="line">        filterChain.doFilter(servletRequest, servletResponse);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public <span class="keyword">void</span> destroy() &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Filter 后置"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h5><p>过滤器用<code>@Order</code>注解控制执行顺序，通过<code>@Order</code>控制过滤器的级别，值越小级别越高越先执行。</p>
+<h4 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h4><p>拦截器它是链式调用，一个应用中可以同时存在多个拦截器<code>Interceptor</code>， 一个请求也可以触发多个拦截器 ，而每个拦截器的调用会依据它的声明顺序依次执行。</p>
+<p>首先编写一个简单的拦截器处理类，请求的拦截是通过<code>HandlerInterceptor</code> 来实现，看到<code>HandlerInterceptor</code> 接口中也定义了三个方法。</p>
+<ul>
+<li><code>preHandle()</code> ：这个方法将在请求处理之前进行调用。<strong>注意</strong>：如果该方法的返回值为<code>false</code> ，将视为当前请求结束，不仅自身的拦截器会失效，还会导致其他的拦截器也不再执行。</li>
+<li><code>postHandle()</code>：只有在 <code>preHandle()</code> 方法返回值为<code>true</code> 时才会执行。会在Controller 中的方法调用之后，DispatcherServlet 返回渲染视图之前被调用。 <strong>有意思的是</strong>：<code>postHandle()</code> 方法被调用的顺序跟 <code>preHandle()</code> 是相反的，先声明的拦截器  <code>preHandle()</code> 方法先执行，而<code>postHandle()</code>方法反而会后执行。</li>
+<li><code>afterCompletion()</code>：只有在 <code>preHandle()</code> 方法返回值为<code>true</code> 时才会执行。在整个请求结束之后，  DispatcherServlet 渲染了对应的视图之后执行。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">@Component</span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MyInterceptor</span> <span class="title">implements</span> <span class="title">HandlerInterceptor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, <span class="built_in">Object</span> handler) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Interceptor 前置"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public <span class="keyword">void</span> postHandle(HttpServletRequest request, HttpServletResponse response, <span class="built_in">Object</span> handler, ModelAndView modelAndView) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Interceptor 处理中"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public <span class="keyword">void</span> afterCompletion(HttpServletRequest request, HttpServletResponse response, <span class="built_in">Object</span> handler, Exception ex) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"Interceptor 后置"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将自定义好的拦截器处理类进行注册，并通过<code>addPathPatterns</code>、<code>excludePathPatterns</code>等属性设置需要拦截或需要排除的 <code>URL</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MyMvcConfig</span> <span class="title">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public <span class="keyword">void</span> addInterceptors(InterceptorRegistry registry) &#123;</span><br><span class="line">        registry.addInterceptor(<span class="keyword">new</span> MyInterceptor()).addPathPatterns(<span class="string">"/**"</span>);</span><br><span class="line">        registry.addInterceptor(<span class="keyword">new</span> MyInterceptor1()).addPathPatterns(<span class="string">"/**"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="执行顺序-1"><a href="#执行顺序-1" class="headerlink" title="执行顺序"></a>执行顺序</h5><p>拦截器默认的执行顺序，就是它的注册顺序，可以通过<code>order</code>属性手动设置控制，值越小越先执行。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> </span>&#123;</span><br><span class="line">  registry.addInterceptor(<span class="keyword">new</span> MyInterceptor2()).addPathPatterns(<span class="string">"/**"</span>).order(<span class="number">2</span>);</span><br><span class="line">  registry.addInterceptor(<span class="keyword">new</span> MyInterceptor1()).addPathPatterns(<span class="string">"/**"</span>).order(<span class="number">1</span>);</span><br><span class="line">  registry.addInterceptor(<span class="keyword">new</span> MyInterceptor()).addPathPatterns(<span class="string">"/**"</span>).order(<span class="number">3</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="过滤器与拦截器的区别"><a href="#过滤器与拦截器的区别" class="headerlink" title="过滤器与拦截器的区别"></a>过滤器与拦截器的区别</h5><ul>
+<li>Filter是基于函数回调的，而Interceptor则是基于Java反射的。</li>
+<li>Filter依赖于Servlet容器，因此只能在web环境使用，而Interceptor不依赖于Servlet容器。不仅能应用在<code>web</code>程序中，也可以用于<code>Application</code>、<code>Swing</code>等程序中。</li>
+<li>Filter对几乎所有的请求起作用，而Interceptor只能对action请求起作用。</li>
+<li>Interceptor可以访问Action的上下文，值栈里的对象，而Filter不能。</li>
+<li>在action的生命周期里，Interceptor可以被多次调用，而Filter只能在容器初始化时调用一次。</li>
+</ul>
+<h5 id="过滤器与拦截器的顺序"><a href="#过滤器与拦截器的顺序" class="headerlink" title="过滤器与拦截器的顺序"></a>过滤器与拦截器的顺序</h5><p>过滤前-拦截前-action执行-拦截后-过滤后</p>
+<p>过滤器<code>Filter</code>是在请求进入容器后，但在进入<code>servlet</code>之前进行预处理，请求结束是在<code>servlet</code>处理完以后。</p>
+<p>拦截器 <code>Interceptor</code> 是在请求进入<code>servlet</code>后，在进入<code>Controller</code>之前进行预处理的，<code>Controller</code> 中渲染了对应的视图之后请求结束。</p>
+<h3 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h3><h4 id="和-的区别是什么？"><a href="#和-的区别是什么？" class="headerlink" title="#{}和${}的区别是什么？"></a>#{}和${}的区别是什么？</h4><p><code>#{value}</code> 会将value添加上双引号，而 <code>${}</code> 则是原封不动的插入 sql，会导致 sql 注入问题。</p>
 <h4 id="Xml-映射文件中，除了常见的-select-insert-updae-delete-标签之外，还有哪些标签？"><a href="#Xml-映射文件中，除了常见的-select-insert-updae-delete-标签之外，还有哪些标签？" class="headerlink" title="Xml 映射文件中，除了常见的 select|insert|updae|delete 标签之外，还有哪些标签？"></a>Xml 映射文件中，除了常见的 select|insert|updae|delete 标签之外，还有哪些标签？</h4><p><code>&lt;resultMap&gt;</code>、<code>&lt;parameterMap&gt;</code>、<code>&lt;sql&gt;</code>、<code>&lt;include&gt;</code>、<code>&lt;selectKey&gt;</code>，加上动态 sql 的 9 个标签，<code>trim|where|set|foreach|if|choose|when|otherwise|bind</code>等，其中为 sql 片段标签，通过<code>&lt;include&gt;</code>标签引入 sql 片段，<code>&lt;selectKey&gt;</code>为不支持自增的主键生成策略标签。</p>
 <h4 id="MyBatis-是否支持延迟加载？如果支持，它的实现原理是什么？"><a href="#MyBatis-是否支持延迟加载？如果支持，它的实现原理是什么？" class="headerlink" title="MyBatis 是否支持延迟加载？如果支持，它的实现原理是什么？"></a>MyBatis 是否支持延迟加载？如果支持，它的实现原理是什么？</h4><p>MyBatis 仅支持 association 关联对象和 collection 关联集合对象的延迟加载，association 指的就是一对一，collection 指的就是一对多查询。在 MyBatis 配置文件中，可以配置是否启用延迟加载 <code>lazyLoadingEnabled=true|false。</code></p>
 <p>它的原理是，使用<code>CGLIB</code> 创建目标对象的代理对象，当调用目标方法时，进入拦截器方法，比如调用 <code>a.getB().getName()</code>，拦截器 <code>invoke()</code>方法发现 <code>a.getB()</code>是 null 值，那么就会单独发送事先保存好的查询关联 B 对象的 sql，把 B 查询上来，然后调用 a.setB(b)，于是 a 的对象 b 属性就有值了，接着完成 <code>a.getB().getName()</code>方法的调用。这就是延迟加载的基本原理。</p>
@@ -12666,7 +12791,38 @@ D --> F[释放套接字]
 <p><code>Spring Cloud Bus</code> 的作用就是<strong>管理和广播分布式系统中的消息</strong>，也就是消息引擎系统中的广播模式。</p>
 <h3 id="Spring-Cloud-与-Spring-Cloud-Alibaba-的区别"><a href="#Spring-Cloud-与-Spring-Cloud-Alibaba-的区别" class="headerlink" title="Spring Cloud 与 Spring Cloud Alibaba 的区别"></a>Spring Cloud 与 Spring Cloud Alibaba 的区别</h3><p>我们平常说的 Spring Cloud 其实是指 Spring Cloud 其中的一种实现方式，即 Spring Cloud Netflix，而 Spring Cloud Alibaba 则是另一套实现方式。</p>
 <p><img data-src="https://segmentfault.com/img/remote/1460000021497456" alt=""></p>
-<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><blockquote>
+<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><h4 id="负载均衡的6种策略"><a href="#负载均衡的6种策略" class="headerlink" title="负载均衡的6种策略"></a>负载均衡的6种策略</h4><ol>
+<li><p>轮询（默认）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">upstream backserver &#123;</span><br><span class="line">	server 192.168.0.14;</span><br><span class="line">	server 192.168.0.15;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指定权重<br> 指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">upstream backserver &#123;</span><br><span class="line">	server 192.168.0.14 weight&#x3D;8;</span><br><span class="line">	server 192.168.0.15 weight&#x3D;10;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>权重越高，访问概率越大。</p>
+</li>
+<li><p>ip_hash</p>
+<p>每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session共享问题。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">upstream backserver &#123;</span><br><span class="line">	ip_hash;</span><br><span class="line">	server 192.168.0.14:88;</span><br><span class="line">	server 192.168.0.15:80;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最少连接</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">upstream item &#123; # item名字可以自定义</span><br><span class="line">	least_conn;</span><br><span class="line">	server 192.168.101.60:81;</span><br><span class="line">	server 192.168.101.77:80;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fair（第三方）<br>按后端服务器的响应时间来分配请求，响应时间短的优先分配。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">upstream backserver &#123;</span><br><span class="line">	server server1;</span><br><span class="line">	server server2;</span><br><span class="line">	fair;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>url_hash（第三方）<br> 按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，后端服务器为缓存时比较有效。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">upstream backserver &#123;</span><br><span class="line">	server squid1:3128;</span><br><span class="line">	server squid2:3128;</span><br><span class="line">	hash $request_uri;</span><br><span class="line">	hash_method crc32;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>最后需要在server.location中指定上面定义的upstream</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	listen: 80</span><br><span class="line">	location: &#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;backserver</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="负载均衡参数"><a href="#负载均衡参数" class="headerlink" title="负载均衡参数"></a>负载均衡参数</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">下面的参数可同时配置，使用空格分开即可</span><br><span class="line">&#39;配置方式 server ip:端口 参数&#39;</span><br><span class="line"></span><br><span class="line">- &#39;weight 权重&#39;</span><br><span class="line"># weight &#x3D; 数值 (值越高被选中的概率也就越高)</span><br><span class="line"></span><br><span class="line">- &#39;max_fails 失败多少次踢出队列&#39;</span><br><span class="line"># max_fails &#x3D; 数值</span><br><span class="line"></span><br><span class="line">- &#39;fail_timeout 踢出队列后重新探测时间&#39;</span><br><span class="line"># fail_timeout &#x3D; 60s (s &#x3D; 秒)</span><br><span class="line"></span><br><span class="line">- &#39;max_conns 最大连接数&#39;</span><br><span class="line"># max_conns &#x3D; 800 为防止单机性能过载可以根据实际情况设置</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><blockquote>
 <p><a href="https://github.com/Snailclimb/JavaGuide/blob/master/docs/database/Redis/redis-all.md" target="_blank" rel="noopener">Redis | JavaGuide</a></p>
 </blockquote>
 <h4 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a>单线程</h4><p>虽然说 Redis 是单线程模型，但是， 实际上，Redis 在 4.0 之后的版本中就已经加入了对多线程的支持。</p>
@@ -12759,7 +12915,20 @@ D --> F[释放套接字]
 <p>避免在系统刚启动不久由于还未将大量数据进行缓存而导致缓存雪崩。</p>
 </li>
 </ol>
-<h2 id="消息中间件"><a href="#消息中间件" class="headerlink" title="消息中间件"></a>消息中间件</h2><h3 id="RebbitMQ"><a href="#RebbitMQ" class="headerlink" title="RebbitMQ"></a>RebbitMQ</h3><h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><h3 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h3><h3 id="SSM"><a href="#SSM" class="headerlink" title="SSM"></a>SSM</h3><h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><h4 id="服务雪崩"><a href="#服务雪崩" class="headerlink" title="服务雪崩"></a>服务雪崩</h4><p>服务雪崩就是一个服务的不可用导致了整个调用链上的服务集体雪崩。</p>
+<h3 id="Guava-Cache"><a href="#Guava-Cache" class="headerlink" title="Guava Cache"></a>Guava Cache</h3><p>使用 CacheBuilder 就可以构建一个缓存对象，CacheBuilder使用build链式构建。</p>
+<h2 id="消息中间件"><a href="#消息中间件" class="headerlink" title="消息中间件"></a>消息中间件</h2><h3 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h3><p>生产者将消息发给交换器的时候，一般会指定一个 <strong>RoutingKey(路由键)</strong>，用来指定这个消息的路由规则，而这个 <strong>RoutingKey 需要与交换器类型和绑定键(BindingKey)联合使用才能最终生效</strong>。</p>
+<p>RabbitMQ 中通过 <strong>Binding(绑定)</strong> 将 <strong>Exchange(交换器)</strong> 与 <strong>Queue(消息队列)</strong> 关联起来，在绑定的时候一般会指定一个 <strong>BindingKey(绑定建)</strong> ,这样 RabbitMQ 就知道如何正确将消息路由到队列了。</p>
+<h4 id="Exchange-Types-交换器类型"><a href="#Exchange-Types-交换器类型" class="headerlink" title="Exchange Types(交换器类型)"></a>Exchange Types(交换器类型)</h4><p>RabbitMQ 常用的 Exchange Type 有 <strong>fanout</strong>、<strong>direct</strong>、<strong>topic</strong>、<strong>headers</strong> 这四种。</p>
+<h5 id="fanout"><a href="#fanout" class="headerlink" title="fanout"></a>fanout</h5><p>fanout 类型的Exchange路由规则非常简单，它会把所有发送到该Exchange的消息路由到所有与它绑定的Queue中，不需要做任何判断操作，所以 fanout 类型是所有的交换机类型里面速度最快的。fanout 类型常用来广播消息。</p>
+<h5 id="direct"><a href="#direct" class="headerlink" title="direct"></a>direct</h5><p>direct 类型的Exchange路由规则也很简单，它会把消息路由到那些 Bindingkey 与 RoutingKey 完全匹配的 Queue 中。</p>
+<h5 id="topic"><a href="#topic" class="headerlink" title="topic"></a>topic</h5><p>topic类型的交换器在匹配规则上进行了扩展，它与 direct 类型的交换器相似，也是将消息路由到 BindingKey 和 RoutingKey 相匹配的队列中，但这里的匹配规则有些不同，它约定：</p>
+<ul>
+<li>RoutingKey 为一个点号“．”分隔的字符串;</li>
+<li>BindingKey 和 RoutingKey 一样也是点号“．”分隔的字符串；</li>
+<li>BindingKey 中可以存在两种特殊字符串<code>*</code>和<code>#</code>，用于做模糊匹配，其中<code>*</code>用于匹配一个单词，<code>#</code>用于匹配多个单词(可以是零个)。</li>
+</ul>
+<h5 id="headers-不推荐"><a href="#headers-不推荐" class="headerlink" title="headers(不推荐)"></a>headers(不推荐)</h5><p>headers 类型的交换器不依赖于路由键的匹配规则来路由消息，而是根据发送的消息内容中的 headers 属性进行匹配。</p>
+<h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><h3 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h3><h3 id="SSM"><a href="#SSM" class="headerlink" title="SSM"></a>SSM</h3><h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><h4 id="服务雪崩"><a href="#服务雪崩" class="headerlink" title="服务雪崩"></a>服务雪崩</h4><p>服务雪崩就是一个服务的不可用导致了整个调用链上的服务集体雪崩。</p>
 <h4 id="服务熔断-1"><a href="#服务熔断-1" class="headerlink" title="服务熔断"></a>服务熔断</h4><p>所谓 <strong>熔断</strong> 就是服务雪崩的一种有效解决方案。当指定时间窗内的请求失败率达到设定阈值时，系统将通过 <strong>断路器</strong> 直接将此请求链路断开。</p>
 <h4 id="服务降级-1"><a href="#服务降级-1" class="headerlink" title="服务降级"></a>服务降级</h4><h4 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h4><h5 id="RPC-解决了什么问题？"><a href="#RPC-解决了什么问题？" class="headerlink" title="RPC 解决了什么问题？"></a>RPC 解决了什么问题？</h5><p><strong>让分布式或者微服务系统中不同服务之间的调用像本地调用一样简单。</strong></p>
 <h5 id="既有-HTTP-为啥用-RPC-进行服务调用"><a href="#既有-HTTP-为啥用-RPC-进行服务调用" class="headerlink" title="既有 HTTP ,为啥用 RPC 进行服务调用?"></a>既有 HTTP ,为啥用 RPC 进行服务调用?</h5><p>RPC 只是一种概念、一种设计，就是为了解决 <strong>不同服务之间的调用问题</strong>, 它一般会包含有 <strong>传输协议</strong> 和 <strong>序列化协议</strong> 这两个。</p>
