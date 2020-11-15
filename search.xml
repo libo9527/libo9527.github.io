@@ -78,7 +78,7 @@
   </entry>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/11/13/Account-Management-in-Git/</url>
+    <url>/2020/11/15/Account-Management-in-Git/</url>
     <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -12933,7 +12933,7 @@ D --> F[释放套接字]
 <h4 id="服务降级-1"><a href="#服务降级-1" class="headerlink" title="服务降级"></a>服务降级</h4><h4 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h4><h5 id="RPC-解决了什么问题？"><a href="#RPC-解决了什么问题？" class="headerlink" title="RPC 解决了什么问题？"></a>RPC 解决了什么问题？</h5><p><strong>让分布式或者微服务系统中不同服务之间的调用像本地调用一样简单。</strong></p>
 <h5 id="既有-HTTP-为啥用-RPC-进行服务调用"><a href="#既有-HTTP-为啥用-RPC-进行服务调用" class="headerlink" title="既有 HTTP ,为啥用 RPC 进行服务调用?"></a>既有 HTTP ,为啥用 RPC 进行服务调用?</h5><p>RPC 只是一种概念、一种设计，就是为了解决 <strong>不同服务之间的调用问题</strong>, 它一般会包含有 <strong>传输协议</strong> 和 <strong>序列化协议</strong> 这两个。</p>
 <p>但是，HTTP 是一种协议，RPC框架可以使用 HTTP 协议作为传输协议或者直接使用TCP 作为传输协议，使用不同的协议一般也是为了适应不同的场景。</p>
-<h5 id="REST和RPC"><a href="#REST和RPC" class="headerlink" title="REST和RPC"></a>REST和RPC</h5><h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><h2 id="什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢"><a href="#什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢" class="headerlink" title="什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢?"></a>什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢?</h2><p>思考一下在你的虚拟机上部署应用程序需要些什么。</p>
+<h5 id="REST和RPC"><a href="#REST和RPC" class="headerlink" title="REST和RPC"></a>REST和RPC</h5><h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><h4 id="TCC"><a href="#TCC" class="headerlink" title="TCC"></a>TCC</h4><h4 id="两段式（2PC）"><a href="#两段式（2PC）" class="headerlink" title="两段式（2PC）"></a>两段式（2PC）</h4><h4 id="三段式（3PC）"><a href="#三段式（3PC）" class="headerlink" title="三段式（3PC）"></a>三段式（3PC）</h4><h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><h2 id="什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢"><a href="#什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢" class="headerlink" title="什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢?"></a>什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢?</h2><p>思考一下在你的虚拟机上部署应用程序需要些什么。</p>
 <p>第一步：安装 Java</p>
 <p>第二部：安装 Web 或者是应用程序的服务器（Tomat/Wbesphere/Weblogic 等等）</p>
 <p>第三部：部署应用程序 war 包</p>
