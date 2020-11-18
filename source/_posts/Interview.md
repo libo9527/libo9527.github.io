@@ -55,6 +55,8 @@ tags:
 
 在软件业，AOP 为 Aspect Oriented Programming 的缩写，意为：面向切面编程
 
+Spring AOP 的实现原理：动态代理
+
 ## 数据结构
 
 ### 布隆过滤器
@@ -1496,6 +1498,8 @@ ReentrantReadWriteLock有两把锁：ReadLock和WriteLock，读锁是共享锁�
 
 ## 设计模式
 
+![](https://images2017.cnblogs.com/blog/401339/201709/401339-20170928225241215-295252070.png)
+
 ### [单例模式](https://libo9527.github.io/2020/10/22/Design-Pattern-Singleton/)
 
 #### 实现方式
@@ -2625,6 +2629,13 @@ public class Client {
 }
 ```
 
+##### JDK 动态代理与 CGLIB 动态代理的区别
+
+1. JDK 动态代理基于接口，CGLIB 动态代理基于继承
+2. JDK 动态代理通过反射生成代理，CGLIB 通过操作字节码生成动态代理
+3. JDK 生成动态代理比CGLIB快
+4. JDK 动态代理执行代理方法时，需要通过反射机制进行回调，CGLIB 对方法的调用和直接调用普通类的方式一致，所以`CGLib`执行代理方法的效率要高于`JDK`的动态代理
+
 ### 迭代器模式
 
 > [Design-Pattern-Iterator | libo9527](http://libo9527.github.io/2020/11/04/Design-Pattern-Iterator/)
@@ -3013,6 +3024,43 @@ MySQL索引使用的数据结构主要有**BTree索引**和**哈希索引**。
 3. 哈希索引不支持多列联合索引的最左匹配规则
 4. 如果有大量重复键值的情况下，因为哈希碰撞问题，会导致哈希索引的效率大大降低。
 
+##### 联合索引
+
+联合索引（A，B，C），但是查询的时候是反过来查的（C=xxx and B=xxx and A=xxx），这种能走索引吗？
+
+where里面的条件顺序在查询之前会被mysql自动优化，变为A，B，C，然后使用联合索引。
+
+```
+(1)    select * from myTest  where a=3 and b=5 and c=4;   ----  abc顺序
+abc三个索引都在where条件里面用到了，而且都发挥了作用
+
+(2)    select * from myTest  where  c=4 and b=6 and a=3;
+where里面的条件顺序在查询之前会被mysql自动优化，效果跟上一句一样
+
+(3)    select * from myTest  where a=3 and c=7;
+a用到索引，b没有用，所以c是没有用到索引效果的
+
+(4)    select * from myTest  where a=3 and b>7 and c=3;     ---- b范围值，断点，阻塞了c的索引
+a用到了，b也用到了，c没有用到，这个地方b是范围值，也算断点，只不过自身用到了索引
+
+(5)    select * from myTest  where b=3 and c=4;   --- 联合索引必须按照顺序使用，并且需要全部使用
+因为a索引没有使用，所以这里 bc都没有用上索引效果
+
+(6)    select * from myTest  where a>4 and b=7 and c=9;
+a用到了  b没有使用，c没有使用
+
+(7)    select * from myTest  where a=3 order by b;
+a用到了索引，b在结果排序中也用到了索引的效果，a下面任意一段的b是排好序的
+
+(8)    select * from myTest  where a=3 order by c;
+a用到了索引，但是这个地方c没有发挥排序效果，因为中间断点了，使用 explain 可以看到 filesort
+
+(9)    select * from mytable where b=3 order by a;
+b没有用到索引，排序中a也没有发挥索引效果
+```
+
+
+
 #### 事务
 
 **事务是逻辑上的一组操作，要么都执行，要么都不执行。**
@@ -3064,7 +3112,60 @@ mysql> SELECT @@tx_isolation;
 +-----------------+
 ```
 
-这里需要注意的是：与 SQL 标准不同的地方在于 InnoDB 存储引擎在 **REPEATABLE-READ（可重读）** 事务隔离级别下使用的是Next-Key Lock 锁算法，因此可以避免幻读的产生，这与其他数据库系统(如 SQL Server) 是不同的。所以说InnoDB 存储引擎的默认支持的隔离级别是 **REPEATABLE-READ（可重读）** 已经可以完全保证事务的隔离性要求，即达到了 SQL标准的 **SERIALIZABLE(可串行化)** 隔离级别。因为隔离级别越低，事务请求的锁越少，所以大部分数据库系统的隔离级别都是 **READ-COMMITTED(读取提交内容)** ，但是InnoDB 存储引擎默认使用 **REPEAaTABLE-READ（可重读）** 并不会有任何性能损失。
+这里需要注意的是：与 SQL 标准不同的地方在于 InnoDB 存储引擎在 **REPEATABLE-READ（可重读）** 事务隔离级别下使用的是Next-Key Lock 锁（间隙锁）算法，因此可以避免幻读的产生，这与其他数据库系统(如 SQL Server) 是不同的。所以说InnoDB 存储引擎的默认支持的隔离级别是 **REPEATABLE-READ（可重读）** 已经可以完全保证事务的隔离性要求，即达到了 SQL标准的 **SERIALIZABLE(可串行化)** 隔离级别。因为隔离级别越低，事务请求的锁越少，所以大部分数据库系统的隔离级别都是 **READ-COMMITTED(读取提交内容)** ，但是InnoDB 存储引擎默认使用 **REPEAaTABLE-READ（可重读）** 并不会有任何性能损失。
+
+##### Next-Key Lock（间隙锁）
+
+举例来说，假如emp表中只有101条记录，其empid的值分别是 1,2,...,100,101，下面的SQL：
+
+`Select * from  emp where empid > 100 for update;`
+
+是一个范围条件的检索，InnoDB不仅会对符合条件的empid值为101的记录加锁，也会对empid大于101（这些记录并不存在）的“间隙”加锁。
+
+InnoDB使用间隙锁的目的，一方面是为了防止幻读，以满足相关隔离级别的要求，对于上面的例子，要是不使用间隙锁，如果其他事务插入了empid大于100的任何记录，那么本事务如果再次执行上述语句，就会发生幻读；另外一方面，是为了满足其恢复和复制的需要。
+
+#### 锁
+
+**InnoDB的行锁是针对索引加的锁，不是针对记录加的锁。并且该索引不能失效，否则都会从行锁升级为表锁**
+
+InnoDB行锁是通过给索引上的索引项加锁来实现的，这一点MySQL与Oracle不同，后者是通过在数据块中对相应数据行加锁来实现的。InnoDB这种行锁实现特点意味着：只有通过索引条件检索数据，InnoDB才使用行级锁，否则，InnoDB将使用表锁！
+
+由于MySQL的行锁是针对索引加的锁，不是针对记录加的锁，所以虽然是访问不同行的记录，但是如果是使用相同的索引键，是会出现锁冲突的。
+
+如果MySQL认为全表扫描效率更高，比如对一些很小的表，它就不会使用索引，这种情况下InnoDB将使用表锁，而不是行锁。
+
+##### 行锁 VS 表锁
+
+- 表锁： 开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突概率高，并发度低
+- 行锁： 开销大，加锁慢；会出现死锁；锁定粒度小，发生锁冲突的概率低，并发度高
+
+##### InnoDB的行锁模式及加锁方法
+
+InnoDB实现了以下两种类型的行锁。
+
+- 共享锁（S）：允许一个事务去读一行，阻止其他事务获得相同数据集的排他锁。
+- 排他锁（X)：允许获得排他锁的事务更新数据，阻止其他事务取得相同数据集的共享读锁和排他写锁。另外，为了允许行锁和表锁共存，实现多粒度锁机制，InnoDB还有两种内部使用的意向锁（Intention Locks），这两种意向锁都是表锁。
+
+- 意向共享锁（IS）：事务打算给数据行加行共享锁，事务在给一个数据行加共享锁前必须先取得该表的IS锁。
+- 意向排他锁（IX）：事务打算给数据行加行排他锁，事务在给一个数据行加排他锁前必须先取得该表的IX锁。
+
+InnoDB行锁模式兼容性列表
+
+| 请求锁模式<br />是否兼容当前锁模式 | X    | IX   | S    | IS   |
+| ---------------------------------- | ---- | ---- | ---- | ---- |
+| X                                  | 冲突 | 冲突 | 冲突 | 冲突 |
+| IX                                 | 冲突 | 兼容 | 冲突 | 兼容 |
+| S                                  | 冲突 | 冲突 | 兼容 | 兼容 |
+| IS                                 | 冲突 | 兼容 | 兼容 | 兼容 |
+
+#### 连接
+
+1. left join （左连接）：返回包括左表中的所有记录和右表中连接字段相等的记录。
+2. right join （右连接）：返回包括右表中的所有记录和左表中连接字段相等的记录。
+3. inner join （等值连接或者叫内连接）：只返回两个表中连接字段相等的行。
+4. full join （全外连接）：返回左右表中所有的记录和左右表中连接字段相等的记录。**MySQL不支持**
+
+
 
 ### Oracle
 
@@ -3221,6 +3322,94 @@ Mysql 使用 Explain + select...
 
 ## Linux
 
+### 命令
+
+#### lsof
+
+查看端口对应的进程ID
+
+`lsof -i:80`
+
+```bash
+iMacDev110:~ libo$ lsof -i:80
+COMMAND     PID USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+Google      596 libo   66u  IPv4 0x71a3fffb3c30abf9      0t0  TCP 192.168.0.158:58179->sfo07s17-in-f3.1e100.net:http (ESTABLISHED)
+```
+
+
+
+#### ps
+
+查看所有Java进程
+
+`ps -ef | grep java`
+
+```bash
+iMacDev110:~ libo$ ps -ef | grep java
+  504   584   385   0  91120  ??         6:58.10 /Applications/IntelliJ IDEA.app/Contents/jdk/Contents/Home/jre/bin/java
+```
+
+
+
+#### top
+
+**top命令**可以实时动态地查看系统的整体运行情况。
+
+```bash
+Processes: 438 total, 2 running, 436 sleeping, 2376 threads            11:18:31
+Load Avg: 1.90, 1.72, 1.81  CPU usage: 1.44% user, 3.0% sys, 95.55% idle
+SharedLibs: 240M resident, 66M data, 109M linkedit.
+MemRegions: 173647 total, 5152M resident, 101M private, 1590M shared.
+PhysMem: 15G used (2721M wired), 1106M unused.
+VM: 2484G vsize, 1372M framework vsize, 665337(0) swapins, 1212872(0) swapouts.
+Networks: packets: 15111834/11G in, 13503646/5025M out.
+Disks: 5491545/66G read, 6948210/98G written.
+
+PID    COMMAND      %CPU TIME     #TH   #WQ  #PORTS MEM    PURG   CMPRS  PGRP
+99644  MTLCompilerS 0.0  00:00.05 2     2    24     6572K  0B     6556K  99644
+99642  com.apple.We 0.0  00:02.86 4     1    95     4404K  0B     3160K  99642
+99641  com.apple.We 0.0  00:01.17 4     1    117    49M    0B     10M    99641
+99640  IINA         0.0  01:14.36 11    2    426    107M   0B     55M    99640
+99591  PIPAgent     0.0  00:01.52 2     1    68     2664K  0B     1456K  99591
+99558  com.apple.pr 0.0  00:01.86 3     1    317    28M    0B     18M    99558
+99551  System Prefe 0.0  00:01.84 3     1    288    28M    0B     14M    99551
+99520  MTLCompilerS 0.0  00:00.03 2     2    24     4932K  0B     4920K  99520
+99519  IMRemoteURLC 0.0  00:00.19 3     1    71     2864K  0B     1804K  99519
+```
+
+查看某个进程的内存占用情况
+
+`top -p pid`
+
+#### stat
+
+**stat命令**用于显示文件的状态信息。stat命令的输出信息比[ls](http://man.linuxde.net/ls)命令的输出信息要更详细。
+
+#### grep
+
+日志文件中根据关键词搜索，并加上颜色
+
+`grep "orderId" info.log --color=auto`
+
+```bash
+[tomcat8@3f037c3314ba sst-mobile]$ grep "orderId" info.20201117.txt 
+2020-11-17 00:00:00,854 -- com.sst.service.impl.AutoOrderCombinedServiceImpl            [135] -- Auto order combination for user Id:[2],whId:[10],orderId:[217292]
+```
+
+
+
+
+
+#### vim
+
+#### cat
+
+#### tail
+
+#### netstat
+
+**netstat命令**用来打印Linux中网络系统的状态信息，可让你得知整个Linux系统的网络情况。
+
 ## 框架
 
 ### Spring
@@ -3228,6 +3417,43 @@ Mysql 使用 Explain + select...
 #### IoC
 
 #### AOP
+
+##### Spring AOP和AspectJ是什么关系？
+
+其实AOP并不是Spring的专属，AOP最开始是一种编程模型，后来大佬们为了探讨AOP的标准化，统一AOP规范，成立了一个AOP联盟。除了Spring外，AOP的框架有很多，比如AspectJ, AspectWerkz, JBoss-AOP。
+
+最开始，Spring AOP和AspectJ是完全独立的，Spring有自己的实现和使用语法。但是Spring的AOP使用起来太麻烦了，深受大家吐槽。于是Spring支持了广受大家好评的AspectJ语法，通过在配置类上添加`@EnableAspectJAutoProxy`这个注解来开启对AspectJ的语法。
+
+但Spring**仅仅是支持了AspectJ的部分语法（有些语法是不支持的），但底层实现还是自己的一套东西**。而且两个框架的目标不同，AspectJ是一套完整的AOP解决方案，更为健壮，但使用起来比较复杂，还需要使用特殊的语法和编译器。而Spring的目的是想要把AOP和IoC框架结合起来，让Spring管理的Bean能够很方便地使用AOP的功能。
+
+所以Spring AOP和AspectJ没啥关系，只是Spring借鉴了Aspect的声明语法。
+
+#### 循环依赖/三级缓存
+
+三级缓存：
+
+1. singletonFactories ： 进入实例化阶段的单例对象工厂的cache （三级缓存）
+2. earlySingletonObjects ：完成实例化但是尚未初始化的，提前暴光的单例对象的Cache （二级缓存）
+3. singletonObjects：完成初始化的单例对象的cache（一级缓存）
+
+A，B相互依赖的两个类的创建过程：
+
+1. 使用`context.getBean(A.class)`，旨在获取容器内的单例A(若A不存在，就会走A这个Bean的创建流程)，显然初次获取A是不存在的，因此走**A的创建之路~**
+2. `实例化`A（注意此处仅仅是实例化），并将它放进`缓存`（此时A已经实例化完成，已经可以被引用了）
+3. `初始化`A：`@Autowired`依赖注入B（此时需要去容器内获取B）
+4. 为了完成依赖注入B，会通过`getBean(B)`去容器内找B。但此时B在容器内不存在，就走向**B的创建之路~**
+5. `实例化`B，并将其放入缓存。（此时B也能够被引用了）
+6. `初始化`B，`@Autowired`依赖注入A（此时需要去容器内获取A）
+7. `此处重要`：初始化B时会调用`getBean(A)`去容器内找到A，上面我们已经说过了此时候因为A已经实例化完成了并且放进了缓存里，所以这个时候去看缓存里是已经存在A的引用了的，所以`getBean(A)`能够正常返回
+8. **B初始化成功**（此时已经注入A成功了，已成功持有A的引用了），return（注意此处return相当于是返回最上面的`getBean(B)`这句代码，回到了初始化A的流程中~）。
+9. 因为B实例已经成功返回了，因此最终**A也初始化成功**
+10. **到此，B持有的已经是初始化完成的A，A持有的也是初始化完成的B**
+
+##### 为什么需要三级缓存，二级缓存不行吗？
+
+如果没有AOP，其实Spring使用二级缓存就可以解决循环依赖的问题。若使用二级缓存，在AOP情形下，注入到其他Bean的，不是最终的代理对象，而是原始目标对象。
+
+因为Spring对Bean有一个生命周期的定义，而代理对象是在Bean初始化完成后，执行后置处理器的时候生成的。所以不能在二级缓存的时候就直接生成代理对象，放进缓存。
 
 ### Spring Boot
 
@@ -3774,6 +4000,607 @@ server{
 
 > [Redis | JavaGuide](https://github.com/Snailclimb/JavaGuide/blob/master/docs/database/Redis/redis-all.md)
 
+#### 数据结构
+
+> [通俗易懂的Redis数据结构基础教程](https://juejin.im/post/6844903644798664712)
+
+Redis有5个基本数据结构，string、list、hash、set和zset。
+
+##### string
+
+Redis的字符串是动态字符串，是可以修改的字符串，内部结构实现上类似于Java的ArrayList，采用预分配冗余空间的方式来减少内存的频繁分配，内部为当前字符串实际分配的空间capacity一般要高于实际字符串长度len。
+
+当字符串长度小于1M时，扩容都是加倍现有的空间，如果超过1M，扩容时一次只会多扩1M的空间。
+
+字符串最大长度为512M。
+
+###### 初始化字符串
+
+需要提供「变量名称」和「变量的内容」
+
+```
+> set ireader beijing.zhangyue.keji.gufen.youxian.gongsi
+OK
+复制代码
+```
+
+###### 获取字符串的内容
+
+提供「变量名称」
+
+```
+> get ireader
+"beijing.zhangyue.keji.gufen.youxian.gongsi"
+复制代码
+```
+
+###### 获取字符串的长度
+
+提供「变量名称」
+
+```
+> strlen ireader
+(integer) 42
+复制代码
+```
+
+###### 获取子串
+
+提供「变量名称」以及开始和结束位置[start, end]
+
+```
+> getrange ireader 28 34
+"youxian"
+复制代码
+```
+
+###### 覆盖子串
+
+提供「变量名称」以及开始位置和目标子串
+
+```bash
+> setrange ireader 28 wooxian
+(integer) 42  # 返回长度
+> get ireader
+"beijing.zhangyue.keji.gufen.wooxian.gongsi"
+```
+
+###### 追加子串
+
+```bash
+> append ireader .hao
+(integer) 46 # 返回长度
+> get ireader
+"beijing.zhangyue.keji.gufen.wooxian.gongsi.hao"
+```
+
+字符串没有提供子串插入方法和子串删除方法。
+
+###### 计数器
+
+如果字符串的内容是一个整数，那么还可以将字符串当成计数器来使用。
+
+```bash
+> set ireader 42
+OK
+> get ireader
+"42"
+> incrby ireader 100
+(integer) 142
+> get ireader
+"142"
+> decrby ireader 100
+(integer) 42
+> get ireader
+"42"
+> incr ireader  # 等价于incrby ireader 1
+(integer) 43
+> decr ireader  # 等价于decrby ireader 1
+(integer) 42
+```
+
+计数器是有范围的，它不能超过Long.Max，不能低于Long.MIN
+
+```bash
+> set ireader 9223372036854775807
+OK
+> incr ireader
+(error) ERR increment or decrement would overflow
+> set ireader -9223372036854775808
+OK
+> decr ireader
+(error) ERR increment or decrement would overflow
+```
+
+###### 过期和删除
+
+字符串可以使用del指令进行主动删除，可以使用expire指令设置过期时间，到点会自动删除，这属于被动删除。可以使用ttl指令获取字符串的寿命。
+
+```bash
+> expire ireader 60
+(integer) 1  # 1表示设置成功，0表示变量ireader不存在
+> ttl ireader
+(integer) 50  # 还有50秒的寿命，返回-2表示变量不存在，-1表示没有设置过期时间
+> del ireader
+(integer) 1  # 删除成功返回1
+> get ireader
+(nil)  # 变量ireader没有了
+```
+
+##### list
+
+![](https://user-gold-cdn.xitu.io/2018/7/22/164c25d671d13466)
+
+Redis将列表数据结构命名为list而不是array，是因为列表的存储结构用的是链表而不是数组，而且链表还是双向链表。因为它是链表，所以随机定位性能较弱，首尾插入删除性能较优。
+
+###### 负下标
+
+链表元素的位置使用自然数`0,1,2,....n-1`表示，还可以使用负数`-1,-2,...-n`来表示，`-1`表示「倒数第一」，`-2`表示「倒数第二」，那么`-n`就表示第一个元素，对应的下标为`0`。
+
+###### 队列／堆栈
+
+链表可以从表头和表尾追加和移除元素，结合使用 rpush/rpop/lpush/lpop 四条指令，可以将链表作为队列或堆栈使用，左向右向进行都可以。
+
+```bash
+# 右进左出
+> rpush ireader go
+(integer) 1
+> rpush ireader java python
+(integer) 3
+> lpop ireader
+"go"
+> lpop ireader
+"java"
+> lpop ireader
+"python"
+# 左进右出
+> lpush ireader go java python
+(integer) 3
+> rpop ireader
+"go"
+...
+# 右进右出
+> rpush ireader go java python
+(integer) 3
+> rpop ireader 
+"python"
+...
+# 左进左出
+> lpush ireader go java python
+(integer) 3
+> lpop ireader
+"python"
+...
+```
+
+在日常应用中，列表常用来作为异步队列来使用。
+
+###### 长度
+
+使用llen指令获取链表长度
+
+```bash
+> rpush ireader go java python
+(integer) 3
+> llen ireader
+(integer) 3
+```
+
+###### 随机读
+
+可以使用 lindex 指令访问指定位置的元素。
+
+使用 lrange 指令来获取链表子元素列表，提供start和end下标参数
+
+```bash
+> rpush ireader go java python
+(integer) 3
+> lindex ireader 1
+"java"
+> lrange ireader 0 2
+1) "go"
+2) "java"
+3) "python"
+> lrange ireader 0 -1  # -1表示倒数第一
+1) "go"
+2) "java"
+3) "python"
+```
+
+###### 修改元素
+
+使用lset指令修改指定位置的元素。
+
+```bash
+> rpush ireader go java python
+(integer) 3
+> lset ireader 1 javascript
+OK
+> lrange ireader 0 -1
+1) "go"
+2) "javascript"
+3) "python"
+```
+
+###### 插入元素
+
+使用linsert指令在列表的中间位置插入元素，linsert指令里增加了方向参数before/after来显示指示前置和后置插入。
+
+不过linsert指令并不是通过指定位置来插入，而是通过指定具体的值。这是因为在分布式环境下，列表的元素总是频繁变动的，意味着上一时刻计算的元素下标在下一时刻可能就不是你所期望的下标了。
+
+```bash
+> rpush ireader go java python
+(integer) 3
+> linsert ireader before java ruby
+(integer) 4
+> lrange ireader 0 -1
+1) "go"
+2) "ruby"
+3) "java"
+4) "python"
+```
+
+###### 删除元素
+
+列表的删除操作也不是通过指定下标来确定元素的，你需要指定删除的最大个数以及元素的值
+
+```bash
+> rpush ireader go java python
+(integer) 3
+> lrem ireader 1 java
+(integer) 1
+> lrange ireader 0 -1
+1) "go"
+2) "python"
+```
+
+###### 定长列表
+
+在实际应用场景中，我们有时候会遇到「定长列表」的需求。比如要以走马灯的形式实时显示中奖用户名列表，因为中奖用户实在太多，能显示的数量一般不超过100条，那么这里就会使用到定长列表。维持定长列表的指令是ltrim，需要提供两个参数start和end，表示需要保留列表的下标范围，范围之外的所有元素都将被移除。
+
+```bash
+> rpush ireader go java python javascript ruby erlang rust cpp
+(integer) 8
+> ltrim ireader -3 -1
+OK
+> lrange ireader 0 -1
+1) "erlang"
+2) "rust"
+3) "cpp"
+```
+
+如果指定参数的end对应的真实下标小于start，其效果等价于del指令，因为这样的参数表示需要需要保留列表元素的下标范围为空。
+
+###### 快速列表
+
+![img](https://user-gold-cdn.xitu.io/2018/7/27/164d91746fbe0442)
+
+如果再深入一点，你会发现Redis底层存储的还不是一个简单的linkedlist，而是称之为快速链表quicklist的一个结构。首先在列表元素较少的情况下会使用一块连续的内存存储，这个结构是ziplist，也即是压缩列表。它将所有的元素紧挨着一起存储，分配的是一块连续的内存。当数据量比较多的时候才会改成quicklist。因为普通的链表需要的附加指针空间太大，会比较浪费空间。比如这个列表里存的只是int类型的数据，结构上还需要两个额外的指针prev和next。所以Redis将链表和ziplist结合起来组成了quicklist。也就是将多个ziplist使用双向指针串起来使用。这样既满足了快速的插入删除性能，又不会出现太大的冗余空间。
+
+##### hash
+
+![img](https://user-gold-cdn.xitu.io/2018/7/23/164c4eaf9edf608d)
+
+哈希等价于Java语言的HashMap，在实现结构上它使用二维结构，第一维是数组，第二维是链表，hash的内容key和value存放在链表中，数组里存放的是链表的头指针。通过key查找元素时，先计算key的hashcode，然后用hashcode对数组的长度进行取模定位到链表的表头，再对链表进行遍历获取到相应的value值，链表的作用就是用来将产生了「hash碰撞」的元素串起来。Java语言开发者会感到非常熟悉，因为这样的结构和HashMap是没有区别的。哈希的第一维数组的长度也是2^n。
+
+![img](https://user-gold-cdn.xitu.io/2018/7/23/164c4dcd14c00534)
+
+###### 增加元素
+
+可以使用hset一次增加一个键值对，也可以使用hmset一次增加多个键值对
+
+```bash
+> hset ireader go fast
+(integer) 1
+> hmset ireader java fast python slow
+OK
+```
+
+###### 获取元素
+
+可以通过hget定位具体key对应的value，可以通过hmget获取多个key对应的value，可以使用hgetall获取所有的键值对，可以使用hkeys和hvals分别获取所有的key列表和value列表。这些操作和Java语言的Map接口是类似的。
+
+```bash
+> hmset ireader go fast java fast python slow
+OK
+> hget ireader go
+"fast"
+> hmget ireader go python
+1) "fast"
+2) "slow"
+> hgetall ireader
+1) "go"
+2) "fast"
+3) "java"
+4) "fast"
+5) "python"
+6) "slow"
+> hkeys ireader
+1) "go"
+2) "java"
+3) "python"
+> hvals ireader
+1) "fast"
+2) "fast"
+3) "slow"
+```
+
+###### 删除元素
+
+可以使用hdel删除指定key，hdel支持同时删除多个key
+
+```bash
+> hmset ireader go fast java fast python slow
+OK
+> hdel ireader go
+(integer) 1
+> hdel ireader java python
+(integer) 2
+```
+
+###### 判断元素是否存在
+
+通常我们使用hget获得key对应的value是否为空就直到对应的元素是否存在了，不过如果value的字符串长度特别大，通过这种方式来判断元素存在与否就略显浪费，这时可以使用hexists指令。
+
+```bash
+> hmset ireader go fast java fast python slow
+OK
+> hexists ireader go
+(integer) 1
+```
+
+###### 计数器
+
+hash结构还可以当成计数器来使用，对于内部的每一个key都可以作为独立的计数器。如果value值不是整数，调用hincrby指令会出错。
+
+```bash
+> hincrby ireader go 1
+(integer) 1
+> hincrby ireader python 4
+(integer) 4
+> hincrby ireader java 4
+(integer) 4
+> hgetall ireader
+1) "go"
+2) "1"
+3) "python"
+4) "4"
+5) "java"
+6) "4"
+> hset ireader rust good
+(integer) 1
+> hincrby ireader rust 1
+(error) ERR hash value is not an integer
+```
+
+###### 扩容
+
+当hash内部的元素比较拥挤时(hash碰撞比较频繁)，就需要进行扩容。扩容需要申请新的两倍大小的数组，然后将所有的键值对重新分配到新的数组下标对应的链表中(rehash)。
+
+如果hash结构很大，比如有上百万个键值对，那么一次完整rehash的过程就会耗时很长。这对于单线程的Redis里来说有点压力山大。所以Redis采用了渐进式rehash的方案。它会同时保留两个新旧hash结构，在后续的定时任务以及hash结构的读写指令中将旧结构的元素逐渐迁移到新的结构中。这样就可以避免因扩容导致的线程卡顿现象。
+
+###### 缩容
+
+Redis的hash结构不但有扩容还有缩容，从这一点出发，它要比Java的HashMap要厉害一些，Java的HashMap只有扩容。缩容的原理和扩容是一致的，只不过新的数组大小要比旧数组小一倍。
+
+##### set
+
+Java 中 HashSet的内部实现使用的是HashMap，只不过所有的value都指向同一个对象。
+
+Redis的set结构也是一样，它的内部也使用hash结构，所有的value都指向同一个内部值。
+
+###### 增加元素
+
+可以一次增加多个元素
+
+```bash
+> sadd ireader go java python
+(integer) 3
+```
+
+###### 读取元素
+
+使用smembers列出所有元素，
+
+使用scard获取集合长度，
+
+使用srandmember随机获取count个元素，如果不提供count参数，默认为1
+
+```bash
+> sadd ireader go java python
+(integer) 3
+> smembers ireader
+1) "java"
+2) "python"
+3) "go"
+> scard ireader
+(integer) 3
+> srandmember ireader
+"java"
+```
+
+###### 删除元素
+
+使用srem删除一到多个元素，使用spop随机删除一个元素
+
+```bash
+> sadd ireader go java python rust erlang
+(integer) 5
+> srem ireader go java
+(integer) 2
+> spop ireader
+"erlang"
+```
+
+###### 判断元素是否存在
+
+使用sismember指令，只能接收单个元素
+
+```bash
+> sadd ireader go java python rust erlang
+(integer) 5
+> sismember ireader rust
+(integer) 1
+> sismember ireader javascript
+(integer) 0
+```
+
+##### zset
+
+![img](https://user-gold-cdn.xitu.io/2018/7/23/164c4ec77aac6132)
+
+
+
+SortedSet(zset)是Redis提供的一个非常特别的数据结构，一方面它等价于Java的数据结构`Map<String, Double>`，可以给每一个元素value赋予一个权重`score`，另一方面它又类似于`TreeSet`，内部的元素会按照权重score进行排序，可以得到每个元素的名次，还可以通过score的范围来获取元素的列表。
+
+zset底层实现使用了两个数据结构，第一个是hash，第二个是跳跃列表，hash的作用就是关联元素value和权重score，保障元素value的唯一性，可以通过元素value找到相应的score值。跳跃列表的目的在于给元素value排序，根据score的范围获取元素列表。
+
+###### 增加元素
+
+通过zadd指令可以增加一到多个value/score对，score放在前面
+
+```bash
+> zadd ireader 4.0 python
+(integer) 1
+> zadd ireader 4.0 java 1.0 go
+(integer) 2
+```
+
+###### 长度
+
+通过指令zcard可以得到zset的元素个数
+
+```bash
+> zcard ireader
+(integer) 3
+```
+
+###### 删除元素
+
+通过指令zrem可以删除zset中的元素，可以一次删除多个
+
+```bash
+> zrem ireader go python
+(integer) 2
+```
+
+###### 计数器
+
+同hash结构一样，zset也可以作为计数器使用。
+
+```bash
+> zadd ireader 4.0 python 4.0 java 1.0 go
+(integer) 3
+> zincrby ireader 1.0 python
+"5"
+```
+
+###### 获取排名和分数
+
+通过zscore指令获取指定元素的权重，通过zrank指令获取指定元素的正向排名，通过zrevrank指令获取指定元素的反向排名[倒数第一名]。正向是由小到大，负向是由大到小。
+
+```bash
+> zscore ireader python
+"5"
+> zrank ireader go  # 分数低的排名考前，rank值小
+(integer) 0
+> zrank ireader java
+(integer) 1
+> zrank ireader python
+(integer) 2
+> zrevrank ireader python
+(integer) 0
+```
+
+###### 根据排名范围获取元素列表
+
+通过zrange指令指定排名范围参数获取对应的元素列表，携带withscores参数可以一并获取元素的权重。
+
+通过zrevrange指令按负向排名获取元素列表。
+
+```bash
+> zrange ireader 0 -1  # 获取所有元素
+1) "go"
+2) "java"
+3) "python"
+> zrange ireader 0 -1 withscores
+1) "go"
+2) "1"
+3) "java"
+4) "4"
+5) "python"
+6) "5"
+> zrevrange ireader 0 -1 withscores
+1) "python"
+2) "5"
+3) "java"
+4) "4"
+5) "go"
+6) "1"
+```
+
+###### 根据score范围获取列表
+
+通过zrangebyscore指令指定score范围获取对应的元素列表。通过zrevrangebyscore指令获取倒排元素列表。
+
+参数`-inf`表示负无穷，`+inf`表示正无穷。
+
+```bash
+> zrangebyscore ireader 0 5
+1) "go"
+2) "java"
+3) "python"
+> zrangebyscore ireader -inf +inf withscores
+1) "go"
+2) "1"
+3) "java"
+4) "4"
+5) "python"
+6) "5"
+> zrevrangebyscore ireader +inf -inf withscores  # 注意正负反过来了
+1) "python"
+2) "5"
+3) "java"
+4) "4"
+5) "go"
+6) "1"
+```
+
+###### 根据范围移除元素列表
+
+可以通过排名范围，也可以通过score范围来一次性移除多个元素
+
+```bash
+> zremrangebyrank ireader 0 1
+(integer) 2  # 删掉了2个元素
+> zadd ireader 4.0 java 1.0 go
+(integer) 2
+> zremrangebyscore ireader -inf 4
+(integer) 2
+> zrange ireader 0 -1
+1) "python"
+```
+
+###### 跳跃列表
+
+zset内部的排序功能是通过「跳跃列表」数据结构来实现的。
+
+因为zset要支持随机的插入和删除，所以它不好使用数组来表示。我们先看一个普通的链表结构。
+
+![img](https://user-gold-cdn.xitu.io/2018/7/23/164c5a90442cd51a)
+
+我们需要这个链表按照score值进行排序。这意味着当有新元素需要插入时，需要定位到特定位置的插入点，这样才可以继续保证链表是有序的。通常我们会通过二分查找来找到插入点，但是二分查找的对象必须是数组，只有数组才可以支持快速位置定位，链表做不到，那该怎么办？
+
+跳跃列表就是类似于（公司-部门-组长）这种层级制，最下面一层所有的元素都会串起来。然后每隔几个元素挑选出一个代表来，再将这几个代表使用另外一级指针串起来。然后在这些代表里再挑出二级代表，再串起来。最终就形成了金字塔结构。
+
+![img](https://user-gold-cdn.xitu.io/2018/7/23/164c5bb13c6da230)
+
+「跳跃列表」之所以「跳跃」，是因为内部的元素可能「身兼数职」，比如上图中间的这个元素，同时处于L0、L1和L2层，可以快速在不同层次之间进行「跳跃」。
+
+定位插入点时，先在顶层进行定位，然后下潜到下一级定位，一直下潜到最底层找到合适的位置，将新元素插进去。你也许会问那新插入的元素如何才有机会「身兼数职」呢？
+
+跳跃列表采取一个随机策略来决定新元素可以兼职到第几层，首先L0层肯定是100%了，L1层只有50%的概率，L2层只有25%的概率，L3层只有12.5%的概率，一直随机到最顶层L31层。绝大多数元素都过不了几层，只有极少数元素可以深入到顶层。列表中的元素越多，能够深入的层次就越深，能进入到顶层的概率就会越大。
+
 #### 单线程
 
 虽然说 Redis 是单线程模型，但是， 实际上，Redis 在 4.0 之后的版本中就已经加入了对多线程的支持。
@@ -3791,6 +4618,11 @@ Redis6.0 引入多线程主要是为了提高**网络 IO** 读写性能，因为
 Redis 选择使用单线程模型处理客户端的请求主要还是因为 **CPU 不是 Redis 服务器的瓶颈**，所以**使用多线程模型带来的性能提升并不能抵消它带来的开发成本和维护成本**，系统的性能瓶颈也主要在网络 I/O 操作上；
 
 而 Redis 引入多线程操作也是出于性能上的考虑，对于一些大键值对的删除操作，通过多线程非阻塞地释放内存空间也能减少对 Redis 主线程阻塞的时间，提高执行的效率。
+
+##### 单线程的Redis为什么这么快
+
+1. 完全基于内存
+2. 采用单线程，避免了不必要的上下文切换。
 
 #### 内存淘汰机制
 
@@ -3890,6 +4722,26 @@ Redis 是**不支持 roll back** 的，因而不满足原子性的（而且不�
 
    避免在系统刚启动不久由于还未将大量数据进行缓存而导致缓存雪崩。
 
+#### Redis和数据库双写一致性问题
+
+
+
+#### 用 Redis 实现点赞功能
+
+
+
+#### Redis 做消息队列
+
+
+
+#### Redis 做分布式锁
+
+
+
+
+
+
+
 ### Guava Cache
 
 使用 CacheBuilder 就可以构建一个缓存对象，CacheBuilder使用build链式构建。
@@ -3926,11 +4778,25 @@ topic类型的交换器在匹配规则上进行了扩展，它与 direct 类型�
 
 headers 类型的交换器不依赖于路由键的匹配规则来路由消息，而是根据发送的消息内容中的 headers 属性进行匹配。
 
+#### 如何保证消息不丢失？
+
+1. 消费者端通过 confirm 机制，保证消息投递不丢失
+2. rabbitMq端通过持久化保证消息不丢失
+3. 消费者端通过手动ack机制保障消息正常消费
+
 ### Kafka
 
 ## 容器
 
 ### Docker
+
+#### 命令
+
+在 docker 中执行 bash 命令
+
+`docker exec -it set-mobile_qa /bin/bash`
+
+
 
 ## 操作系统
 
