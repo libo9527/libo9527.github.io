@@ -961,6 +961,12 @@ Hotspot遍历所有对象时，按照年龄从小到大对其所占用的大小�
 
 ![](https://camo.githubusercontent.com/4d68bf3180587d6c478ff9af5b768bbac73a483aea41fdcd01d37ee6f3a92678/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323032302d382f62343832323863322d616330302d343636382d613738662d3666323231663835363362352e706e67)
 
+#### 垃圾回收过程
+
+- **那些内存需要回收？**(对象是否可以被回收的两种经典算法: 引用计数法 和 可达性分析算法)
+- **什么时候回收？** （堆的新生代、老年代、永久代的垃圾回收时机，MinorGC 和 FullGC）
+- **如何回收？**(三种经典垃圾回收算法(标记清除算法、复制算法、标记整理算法)及分代收集算法 和 七种垃圾收集器)
+
 #### 监测垃圾对象
 
 ![](https://github.com/Snailclimb/JavaGuide/raw/master/docs/java/jvm/pictures/jvm%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/11034259.png)
@@ -3197,7 +3203,7 @@ oracle 默认的索引是 **B+树**索引
 
 #### 锁
 
-#### 优化
+### 优化
 
 ##### 最左前缀原则
 
@@ -3214,6 +3220,14 @@ oracle 默认的索引是 **B+树**索引
 ##### 禁止使用不含字段列表的 INSERT 语句
 
 
+
+##### 禁止对索引列使用函数
+
+对索引列使用函数会导致索引失效。
+
+##### 禁止使用左模糊和全模糊条件查询
+
+左模糊 `%key` 和全模糊 `%key%` 无法使用索引，只有右模糊 `key%` 才能使用到索引。
 
 ##### 避免使用子查询，可以把子查询优化为 join 操作
 
@@ -3500,6 +3514,79 @@ Spring Boot 的 Starter 有两个作用：
 
 2. 提供自动配置类给 Spring 完成自动配置
 
+##### 自定义 Starter
+
+> [实战|如何自定义SpringBoot Starter？](https://objcoding.com/2018/02/02/Costom-SpringBoot-Starter/)
+
+1. 引入 SpringBoot 自动化配置依赖：
+
+   `spring-boot-autoconfigure`
+
+2. 创建一个 HelloworldService，并定义 sayHello() 方法打印。
+
+   ```java
+   public class HelloworldService {
+   
+     private String words;
+   
+     public String sayHello() {
+       return "hello, " + words;
+     }
+   }
+   ```
+
+3. 创建属性类，指定配置前缀，读取项目配置文件中的属性。
+
+   ```java
+   @ConfigurationProperties(prefix = "helloworld")
+   public class HelloworldProperties {
+     public static final String DEFAULT_WORDS = "world";
+   
+     private String words = DEFAULT_WORDS;
+   }
+   ```
+
+4. 创建自动化配置类
+
+   ```java
+   // 相当于一个普通的 java 配置类
+   @Configuration
+   // 当 HelloworldService 在类路径的条件下
+   @ConditionalOnClass({HelloworldService.class})
+   // 将 application.properties 的相关的属性字段与该类一一对应，并生成 Bean
+   @EnableConfigurationProperties(HelloworldProperties.class)
+   public class HelloworldAutoConfiguration {
+   
+     // 注入属性类
+     @Autowired
+     private HelloworldProperties hellowordProperties;
+   
+     @Bean
+     // 当容器没有这个 Bean 的时候才创建这个 Bean
+     @ConditionalOnMissingBean(HelloworldService.class)
+     public HelloworldService helloworldService() {
+       HelloworldService helloworldService = new HelloworldService();
+       helloworldService.setWords(hellowordProperties.getWords());
+       return helloworldService;
+     }
+   }
+   ```
+
+5. 在 META-INF 目录下创建 spring.factories，指定自动配置类。
+
+   ```properties
+   # Auto Configure
+   org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.objcoding.starters.helloworld.HelloworldAutoConfiguration
+   ```
+
+6. 使用
+
+   引用自定义的 Starter
+
+   在主配置文件中配置响应的配置属性。
+
+   在需要的地方通过 `@Autowired` 注入 HelloworldService，然后调用它的 `sayHello()` 方法。
+
 #### 自动配置
 
 Spring Boot 项目启动时会扫描所有所有依赖 jar 包下的 `spring.factories` 文件，将其中的自动配置类注册到 Spring IoC 容器中。
@@ -3510,9 +3597,9 @@ Spring Boot 项目的启动注解@SpringBootApplication 由下面三个注解组
 - @ComponentScan
 - @EnableAutoConfiguration
 
-其中 @EnableAutoConfiguration 是实现自动配置的入口，该注解又通过 @Import 注解导入了AutoConfigurationImportSelector，在该类中 `getCandidateConfigurations` 方法会将所有自动配置类的信息以 List 的形式返回。这些配置信息会被注册到 IOC 容器中。
+其中 `@EnableAutoConfiguration` 是实现自动配置的入口，该注解又通过 `@Import` 注解导入了`AutoConfigurationImportSelector`，在该类中 `getCandidateConfigurations` 方法会通过 `SpringFactoriesLoader.loadFactoryNames()` 加载所有 `spring.factories` 文件中指定的自动配置类。
 
-这些自动配置类中会使用 `@Conditional` 注解去加载响应的配置属性类，进而实现自动配置功能！
+这些自动配置类中会使用 `@EnableConfigurationProperties` 注解指定相应的配置属性类，配置属性类中通过 `@ConfigurationProperties(prefix = "xxx")` 读取主配置文件中相应前缀的配置选项。通过 Conditional 相关注解指定加载相关的服务类(例如 RedisTemplate，RestTemplate)，并将配置类中的配置设置到服务类中，最终通过 `@Bean` 实例化服务类并注入到容器中。
 
 #### 启动流程
 
@@ -4622,29 +4709,86 @@ Redis 选择使用单线程模型处理客户端的请求主要还是因为 **CP
 ##### 单线程的Redis为什么这么快
 
 1. 完全基于内存
+
 2. 采用单线程，避免了不必要的上下文切换。
 
-#### 内存淘汰机制
+3. 高效的数据结构
+
+4. 使用I/O多路复用模型，非阻塞IO
+
+   I/O多路复用，多路只多个连接，复用指的是复用同一个线程，采用多路 I/O 复用技术可以让单个线程高效的处理多个连接请求。
+
+#### 过期策略
 
 ##### Redis是如何判断数据是否过期？
 
 Redis 通过一个叫做**过期字典**（可以看作是hash表）来保存数据过期的时间。过期字典的键指向Redis数据库中的某个key(键)，过期字典的值是一个long long类型的整数，这个整数保存了key所指向的数据库键的过期时间（毫秒精度的UNIX时间戳）。
 
-##### Redis 内存淘汰机制
+##### Redis的过期策略
+
+过期策略通常有以下三种：
+
+- 定时过期
+
+  每个设置过期时间的key都需要创建一个定时器，到过期时间就会立即清除。该策略可以立即清除过期的数据，对内存很友好；但是会占用大量的CPU资源去处理过期的数据，从而影响缓存的响应时间和吞吐量。
+
+- 惰性过期
+
+  只有当访问一个key时，才会判断该key是否已过期，过期则清除。该策略可以最大化地节省CPU资源，却对内存非常不友好。极端情况可能出现大量的过期key没有再次被访问，从而不会被清除，占用大量内存。
+
+- 定期过期
+
+  每隔一定的时间，会扫描expires字典中一定数量的key，并清除其中已过期的key。该策略是前两者的一个折中方案。通过调整定时扫描的时间间隔和每次扫描的限定耗时，可以在不同情况下使得CPU和内存资源达到最优的平衡效果。
+
+Redis中同时使用了惰性过期和定期过期两种过期策略。
+
+Redis 每隔 100ms 就随机选择一些设置了过期时间的Key，检查它们是否过期，如果过期的话就删除它们。
+
+每秒 10 次：
+
+1. 随机测试 20 个带有过期时间的key
+2. 删除已过期的key
+3. 如果超过 25% 的key已过期，从步骤 1 重新开始
+
+#### 内存淘汰机制
 
 Redis 提供 6 种数据淘汰策略：
 
-1. **volatile-lru（least recently used）**：从已设置过期时间的数据集中挑选最近最少使用的数据淘汰
-2. **volatile-ttl**：从已设置过期时间的数据集中挑选将要过期的数据淘汰
-3. **volatile-random**：从已设置过期时间的数据集中任意选择数据淘汰
-4. **allkeys-lru（least recently used）**：当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的 key（这个是<span style="color: red">最常用</span>的）
-5. **allkeys-random**：从数据集中任意选择数据淘汰
-6. **no-eviction**：禁止驱逐数据，也就是说当内存不足以容纳新写入数据时，新写入操作会报错。这个应该没人使用吧！
+1. **no-eviction**（默认）
+
+   禁止驱逐数据，也就是说当内存不足以容纳新写入数据时，新写入操作会报错。
+
+2. **volatile-lru（least recently used）**
+
+   从已设置过期时间的数据集中挑选最近最少使用的数据淘汰
+
+   Redis使用的是近似LRU算法。近似LRU算法通过随机采样法淘汰数据，每次随机出5（默认）个key，从里面淘汰掉最近最少使用的key。
+
+3. **volatile-ttl**
+
+   从已设置过期时间的数据集中挑选将要过期的数据淘汰
+
+4. **volatile-random**
+
+   从已设置过期时间的数据集中任意选择数据淘汰
+
+5. **allkeys-lru（least recently used）**
+
+   在键空间中，移除最近最少使用的 key（这个是<span style="color: red">最常用</span>的）
+
+6. **allkeys-random**
+
+   从数据集中任意选择数据淘汰
 
 4.0 版本后增加以下两种：
 
-1. **volatile-lfu（least frequently used）**：从已设置过期时间的数据集(server.db[i].expires)中挑选最不经常使用的数据淘汰
-2. **allkeys-lfu（least frequently used）**：当内存不足以容纳新写入数据时，在键空间中，移除最不经常使用的 key
+1. **volatile-lfu（least frequently used）**
+
+   从已设置过期时间的数据集中挑选最不经常使用的数据淘汰
+
+2. **allkeys-lfu（least frequently used）**
+
+   在键空间中，移除最不经常使用的 key
 
 #### 持久化
 
@@ -4724,7 +4868,19 @@ Redis 是**不支持 roll back** 的，因而不满足原子性的（而且不�
 
 #### Redis和数据库双写一致性问题
 
+采用 **Cache Aside Pattern**：
 
+1. 读的时候先读缓存，如果缓存不存在的话就读数据库，取出数据库后更新缓存。
+2. 写的时候，先更新数据库，再删除缓存。
+
+##### 为什么是删除缓存，而不是更新缓存？
+
+1. 有两个更新请求A、B，A先与B更新的数据库，但由于网络震荡，B先与A更新了缓存，此时缓存的数据就是脏数据。
+2. 为了考虑性能。更新了的数据并不一定会立即有新的访问，放在缓存里占内存，还不如直接删除，有新的访问时再放进去就好了，是一种懒加载的思想。
+
+##### 如果删除失败了，导致数据不一致怎么办？
+
+采用延时双删策略，先删除缓存，再更新数据库，更新成功了就延时异步删除缓存。
 
 #### 用 Redis 实现点赞功能
 
@@ -4732,15 +4888,91 @@ Redis 是**不支持 roll back** 的，因而不满足原子性的（而且不�
 
 #### Redis 做消息队列
 
-
+- 基于List的 LPUSH+BRPOP 的实现
+- PUB/SUB，订阅/发布模式
+- 基于Sorted-Set的实现
+- 基于Stream类型的实现
 
 #### Redis 做分布式锁
 
+##### 利用 Redis 的 SETNX 和 EXPIRE 命令
 
+- 加锁命令：`SETNX key value`
 
+  当键不存在时，对键进行设置操作并返回成功，否则返回失败。KEY 是锁的唯一标识，一般按业务来决定命名。
 
+- 解锁命令：`DEL key`
 
+  通过删除键值对释放锁，以便其他线程可以通过 SETNX 命令来获取锁。
 
+- 锁超时：`EXPIRE key timeout`
+
+  设置 key 的超时时间，以保证即使锁没有被显式释放，锁也可以在一定时间后自动释放，避免资源被永远锁住。
+
+###### SETNX 和 EXPIRE 非原子性
+
+如果 SETNX 成功，在设置锁超时时间后，服务器挂掉、重启或网络问题等，导致 EXPIRE 命令没有执行，锁没有设置超时时间变成死锁。
+
+1. 可以通过使用 lua 脚本保证原子性。
+
+2. Redis在 2.6.12 版本开始，为 SET 命令增加一系列选项：
+
+```bash
+SET key value[EX seconds][PX milliseconds][NX|XX]
+```
+
+- EX seconds: 设定过期时间，单位为秒
+- PX milliseconds: 设定过期时间，单位为毫秒
+- NX: 仅当key不存在时设置值
+- XX: 仅当key存在时设置值
+
+set命令的nx选项，就等同于setnx命令
+
+###### 锁误解除
+
+如果线程 A 成功获取到了锁，并且设置了过期时间 30 秒，但线程 A 执行时间超过了 30 秒，锁过期自动释放，此时线程 B 获取到了锁；随后 A 执行完成，线程 A 使用 DEL 命令来释放锁，但此时线程 B 加的锁还没有执行完成，线程 A 实际释放的线程 B 加的锁。
+
+通过在 value 中设置当前线程的标识，在删除之前验证 key 对应的 value 判断锁是否是当前线程持有。可生成一个 UUID 标识当前线程，使用 lua 脚本做验证标识和解锁操作。
+
+###### 超时解锁导致并发
+
+如果线程 A 成功获取锁并设置过期时间 30 秒，但线程 A 执行时间超过了 30 秒，锁过期自动释放，此时线程 B 获取到了锁，线程 A 和线程 B 并发执行。
+
+A、B 两个线程发生并发显然是不被允许的，一般有两种方式解决该问题：
+
+- 将过期时间设置足够长，确保代码逻辑在锁释放之前能够执行完成。
+- 为获取锁的线程增加守护线程，为将要过期但未释放的锁增加有效时间。
+
+###### 不可重入
+
+可通过对锁进行重入计数，加锁时加 1，解锁时减 1，当计数归 0 时释放锁。
+
+在本地记录重入次数，如 Java 中使用 ThreadLocal 进行重入次数统计。
+
+本地记录重入次数虽然高效，但如果考虑到过期时间和本地、Redis 一致性的问题，就会增加代码的复杂性。另一种方式是 Redis hash 数据结构来实现分布式锁，既存锁的标识也对重入次数进行计数。
+
+###### 无法等待锁释放
+
+上述命令执行都是立即返回的，如果客户端可以等待锁释放就无法使用。
+
+- 可以通过客户端轮询的方式解决该问题，当未获取到锁时，等待一段时间重新获取锁，直到成功获取锁或等待超时。这种方式比较消耗服务器资源，当并发量比较大时，会影响服务器的效率。
+- 另一种方式是使用 Redis 的发布订阅功能，当获取锁失败时，订阅锁释放消息，获取锁成功后释放时，发送锁释放消息。
+
+###### 主备切换
+
+为了保证 Redis 的可用性，一般采用主从方式部署。主从数据同步有异步和同步两种方式，Redis 将指令记录在本地内存 buffer 中，然后异步将 buffer 中的指令同步到从节点，从节点一边执行同步的指令流来达到和主节点一致的状态，一边向主节点反馈同步情况。
+
+在包含主从模式的集群部署方式中，当主节点挂掉时，从节点会取而代之，但客户端无明显感知。当客户端 A 成功加锁，指令还未同步，此时主节点挂掉，从节点提升为主节点，新的主节点没有锁的数据，当客户端 B 加锁时就会成功。
+
+###### 集群脑裂
+
+集群脑裂指因为网络问题，导致 Redis master 节点跟 slave 节点和 sentinel 集群处于不同的网络分区，因为 sentinel 集群无法感知到 master 的存在，所以将 slave 节点提升为 master 节点，此时存在两个不同的 master 节点。Redis Cluster 集群部署方式同理。
+
+当不同的客户端连接不同的 master 节点时，两个客户端可以同时拥有同一把锁。
+
+##### Redisson 实现简单分布式锁
+
+对于Java用户而言，我们经常使用Jedis，Jedis是Redis的Java客户端，除了Jedis之外，Redisson也是Java的客户端，Jedis是阻塞式I/O，而Redisson底层使用Netty可以实现非阻塞I/O，该客户端是封装了锁的，继承了J.U.C的Lock接口，所以我们可以像使用ReentrantLock一样使用Redisson。
 
 ### Guava Cache
 
@@ -4785,6 +5017,44 @@ headers 类型的交换器不依赖于路由键的匹配规则来路由消息，
 3. 消费者端通过手动ack机制保障消息正常消费
 
 ### Kafka
+
+
+
+## Elasticsearch
+
+*Elasticsearch* 是一个实时的分布式搜索分析引擎，它能让你以前所未有的速度和规模，去探索你的数据。 它被用作全文检索、结构化搜索、分析以及这三个功能的组合。例如 GitHub 使用 Elasticsearch 对1300亿行代码进行查询。
+
+### 应用场景
+
+- 日志实时分析
+
+  日志分析是 ES 应用最广泛的领域，支持全栈的日志分析
+
+- 搜索服务
+
+  文档的全文检索、电商平台商品的搜索。
+
+- 数据分析
+
+### 为什么 Elasticsearch 那么快？
+
+Elasticsearch 基于 Apache Lucene，Lucene 实现快速搜索的核心就是倒排索引。
+
+#### 倒排索引
+
+将文档中的单词作为索引，将文档ID作为记录的索引结构称为倒排索引。
+
+##### 核心概念
+
+- Term：文档拆分后的单词与文档ID的映射。
+
+- Term Dictionary：所有单词组成的二叉排序树，根据 Term Dictionary 可以快速定位到 Term。
+
+- Term Index：单词前缀的二叉排序树，根据 Term Index 可以快速定位到 Term Dictionary。
+
+Term Index 以FST（finite state transducers）的形式保存在内存中，FST特点是非常节省内存。
+
+Term dictionary在磁盘上是以分快的方式保存的，一个block内部利用公共前缀压缩，比如都是Ab开头的单词就可以把Ab省去。这样term dictionary可以更节约磁盘空间。
 
 ## 容器
 
