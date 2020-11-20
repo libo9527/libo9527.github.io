@@ -78,7 +78,7 @@
   </entry>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/11/19/Account-Management-in-Git/</url>
+    <url>/2020/11/20/Account-Management-in-Git/</url>
     <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -11946,7 +11946,41 @@ D --> F[释放套接字]
 <p>选择器用于使用单个线程处理多个通道。因此，它需要较少的线程来处理这些通道。</p>
 </li>
 </ol>
-<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><h4 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h4><p><strong><code>volatile</code> 关键字除了防止 JVM 的指令重排 ，还有一个重要的作用就是保证变量的可见性。</strong></p>
+<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><h4 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h4><h5 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h5><p><code>java.lang.Thread.State</code>枚举类中定义了六种线程的状态，可以调用线程Thread中的<code>getState()</code>方法<strong>获取当前线程的状态</strong>。</p>
+<table>
+<thead>
+<tr>
+<th align="left">线程状态</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">NEW</td>
+<td align="left">尚未启动的线程状态，即线程创建，<strong>还未调用start方法</strong></td>
+</tr>
+<tr>
+<td align="left">RUNNABLE</td>
+<td align="left"><strong>就绪状态</strong>（调用start，等待调度）+<strong>正在运行</strong></td>
+</tr>
+<tr>
+<td align="left">BLOCKED</td>
+<td align="left"><strong>等待监视器锁</strong>时，陷入阻塞状态</td>
+</tr>
+<tr>
+<td align="left">WAITING</td>
+<td align="left">等待状态的线程正在<strong>等待</strong>另一线程执行特定的操作（如notify）</td>
+</tr>
+<tr>
+<td align="left">TIMED_WAITING</td>
+<td align="left">具有<strong>指定等待时间</strong>的等待状态</td>
+</tr>
+<tr>
+<td align="left">TERMINATED</td>
+<td align="left">线程完成执行，<strong>终止状态</strong></td>
+</tr>
+</tbody></table>
+<p>下图源自《Java并发编程艺术》图4-1<br><a href="https://img2018.cnblogs.com/blog/1771072/202002/1771072-20200209204908012-1070559737.png" target="_blank" rel="noopener"><img data-src="https://img2018.cnblogs.com/blog/1771072/202002/1771072-20200209204908012-1070559737.png" alt="img"></a></p>
+<h4 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h4><p><strong><code>volatile</code> 关键字除了防止 JVM 的指令重排 ，还有一个重要的作用就是保证变量的可见性。</strong></p>
 <h4 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h4><p>在 Java 早期版本中，<code>synchronized</code> 属于 <strong>重量级锁</strong>，效率低下。</p>
 <p>因为监视器锁（monitor）是依赖于底层的操作系统的 <code>Mutex Lock</code> 来实现的，Java 的线程是映射到操作系统的原生线程之上的。如果要挂起或者唤醒一个线程，都需要操作系统帮忙完成，而操作系统实现线程之间的切换时需要从用户态转换到内核态，这个状态之间的转换需要相对比较长的时间，时间成本相对较高。</p>
 <p>庆幸的是在 Java 6 之后 Java 官方对从 JVM 层面对 synchronized 较大优化。JDK1.6 对锁的实现引入了大量的优化，如自旋锁、适应性自旋锁、锁消除、锁粗化、偏向锁、轻量级锁等技术来减少锁操作的开销。</p>
@@ -12004,6 +12038,25 @@ D --> F[释放套接字]
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// setup to use Unsafe.compareAndSwapInt for updates（更新操作时提供“比较并替换”的作用）</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Unsafe unsafe = Unsafe.getUnsafe();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> valueOffset;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    valueOffset = unsafe.objectFieldOffset</span><br><span class="line">      (AtomicInteger.class.getDeclaredField("value"));</span><br><span class="line">  &#125; <span class="keyword">catch</span> (Exception ex) &#123; <span class="keyword">throw</span> <span class="keyword">new</span> Error(ex); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> value;</span><br></pre></td></tr></table></figure>
 
 <p>AtomicInteger 类主要利用 CAS (compare and swap) + volatile 和 native 方法来保证原子操作，从而避免 synchronized 的高开销，执行效率大为提升。</p>
+<h4 id="CAS的缺点"><a href="#CAS的缺点" class="headerlink" title="CAS的缺点"></a>CAS的缺点</h4><ol>
+<li><p>ABA问题</p>
+<p>假设有两个线程——线程1和线程2，两个线程按照顺序进行以下操作：</p>
+<p>(1)线程1读取内存中数据为A；</p>
+<p>(2)线程2将该数据修改为B；</p>
+<p>(3)线程2将该数据修改为A；</p>
+<p>(4)线程1对数据进行CAS操作</p>
+<p>在第(4)步中，由于内存中数据仍然为A，因此CAS操作成功，但实际上该数据已经被线程2修改过了。这就是ABA问题。</p>
+<p>在AtomicInteger的例子中，ABA似乎没有什么危害。但是在某些场景下，ABA却会带来隐患，例如栈顶问题：一个栈的栈顶经过两次(或多次)变化又恢复了原值，但是栈可能已发生了变化。</p>
+<p>对于ABA问题，比较有效的方案是引入版本号，内存中的值每发生一次变化，版本号都+1；在进行CAS操作时，不仅比较内存中的值，也会比较版本号，只有当二者都没有变化时，CAS才能执行成功。Java中的AtomicStampedReference类便是使用版本号来解决ABA问题的。</p>
+</li>
+<li><p>高竞争下的开销问题</p>
+<p>在并发冲突概率大的高竞争环境下，如果CAS一直失败，会一直重试，CPU开销较大。针对这个问题的一个思路是引入退出机制，如重试次数超过一定阈值后失败退出。当然，更重要的是避免在高竞争环境下使用乐观锁。</p>
+</li>
+<li><p>功能限制</p>
+<p>CAS的功能是比较受限的，例如CAS只能保证单个变量（或者说单个内存值）操作的原子性，这意味着：(1)原子性不一定能保证线程安全，例如在Java中需要与volatile配合来保证线程安全；(2)当涉及到多个变量(内存值)时，CAS也无能为力。</p>
+<p>除此之外，CAS的实现需要硬件层面处理器的支持，在Java中普通用户无法直接使用，只能借助atomic包下的原子类使用，灵活性受到限制。</p>
+</li>
+</ol>
 <h4 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h4><p>AQS 的全称为（AbstractQueuedSynchronizer）</p>
 <p>AQS 是一个用来构建锁和同步器的框架，使用 AQS 能简单且高效地构造出应用广泛的大量的同步器，比如我们提到的 ReentrantLock，Semaphore，其他的诸如 ReentrantReadWriteLock，SynchronousQueue，FutureTask 等等皆是基于 AQS 的。当然，我们自己也能利用 AQS 非常轻松容易地构造出符合我们自己需求的同步器。</p>
 <h5 id="AQS-组件总结"><a href="#AQS-组件总结" class="headerlink" title="AQS 组件总结"></a>AQS 组件总结</h5><ul>
@@ -12014,7 +12067,12 @@ D --> F[释放套接字]
 <h5 id="用过-CountDownLatch-么？什么场景下用的？"><a href="#用过-CountDownLatch-么？什么场景下用的？" class="headerlink" title="用过 CountDownLatch 么？什么场景下用的？"></a>用过 CountDownLatch 么？什么场景下用的？</h5><p><code>CountDownLatch</code> 的作用就是 允许 count 个线程阻塞在一个地方，直至所有线程的任务都执行完毕。之前在项目中，有一个使用多线程读取多个文件处理的场景，我用到了 <code>CountDownLatch</code> 。具体场景是下面这样的：</p>
 <p>我们要读取处理 6 个文件，这 6 个任务都是没有执行顺序依赖的任务，但是我们需要返回给用户的时候将这几个文件的处理的结果进行统计整理。</p>
 <p>为此我们定义了一个线程池和 count 为 6 的<code>CountDownLatch</code>对象 。使用线程池处理读取任务，每一个线程处理完之后就将 count-1，调用<code>CountDownLatch</code>对象的 <code>await()</code>方法，直到所有文件读取完之后，才会接着执行后面的逻辑。</p>
-<h4 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h4><h5 id="公平锁-VS-非公平锁"><a href="#公平锁-VS-非公平锁" class="headerlink" title="公平锁 VS 非公平锁"></a>公平锁 VS 非公平锁</h5><h6 id="公平锁"><a href="#公平锁" class="headerlink" title="公平锁"></a>公平锁</h6><p>公平锁是指多个线程按照申请锁的顺序来获取锁，锁被占用时直接进入队列中排队。</p>
+<h4 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h4><h5 id="乐观锁-VS-悲观锁"><a href="#乐观锁-VS-悲观锁" class="headerlink" title="乐观锁 VS 悲观锁"></a>乐观锁 VS 悲观锁</h5><ul>
+<li>乐观锁：乐观锁在操作数据时非常乐观，认为别人不会同时修改数据。因此乐观锁不会上锁，只是在执行更新的时候判断一下在此期间别人是否修改了数据：如果别人修改了数据则放弃操作，否则执行操作。</li>
+<li>悲观锁：悲观锁在操作数据时比较悲观，认为别人会同时修改数据。因此操作数据时直接把数据锁住，直到操作完成后才会释放锁；上锁期间其他人不能修改数据。</li>
+</ul>
+<p>乐观锁的实现方式主要有两种：CAS机制和版本号机制。</p>
+<h5 id="公平锁-VS-非公平锁"><a href="#公平锁-VS-非公平锁" class="headerlink" title="公平锁 VS 非公平锁"></a>公平锁 VS 非公平锁</h5><h6 id="公平锁"><a href="#公平锁" class="headerlink" title="公平锁"></a>公平锁</h6><p>公平锁是指多个线程按照申请锁的顺序来获取锁，锁被占用时直接进入队列中排队。</p>
 <p>公平锁的优点是等待锁的线程不会饿死。缺点是整体吞吐率相对非公平锁要低，CPU唤醒阻塞线程的开销比非公平锁大。</p>
 <h6 id="非公平锁"><a href="#非公平锁" class="headerlink" title="非公平锁"></a>非公平锁</h6><p>非公平锁是多个线程加锁时直接尝试获取锁，获取不到才会到等待队列的队尾等待。但如果此时锁刚好可用，那么这个线程可以无需阻塞直接获取到锁，所以非公平锁有可能出现后申请锁的线程先获取锁的场景。</p>
 <p>非公平锁的优点是可以减少唤起线程的开销，整体的吞吐率高。</p>
@@ -12411,6 +12469,18 @@ D --> F[释放套接字]
 <li>404 Not Found：请求资源不存在，输入了错误的URL</li>
 <li>500 Internal Server Error：服务器发生不可预期错误</li>
 <li>503 Server Unavailable：服务器当前不能处理客户端的请求，一段时间后可能恢复正常</li>
+</ul>
+<h4 id="常见请求头"><a href="#常见请求头" class="headerlink" title="常见请求头"></a>常见请求头</h4><ul>
+<li><strong>Accept: text/html</strong> 浏览器可以接受服务器回发的类型为 text/html。</li>
+<li><strong>Accept: */*</strong>  代表浏览器可以处理所有类型,(一般浏览器发给服务器都是发这个)。</li>
+<li><strong>Connection: keep-alive</strong> 当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，如果客户端再次访问这个服务器上的网页，会继续使用这一条已经建立的连接。</li>
+<li><strong>Connection: close</strong> 代表一个Request完成后，客户端和服务器之间用于传输HTTP数据的TCP连接会关闭， 当客户端再次发送Request，需要重新建立TCP连接。</li>
+<li><strong>User-Agent:Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36</strong> 告诉HTTP服务器， 客户端使用的操作系统和浏览器的名称和版本。</li>
+</ul>
+<h4 id="常见响应头"><a href="#常见响应头" class="headerlink" title="常见响应头"></a>常见响应头</h4><ul>
+<li><strong>Content-Type：text/html;charset=UTF-8</strong> 告诉客户端，资源文件的类型，还有字符编码，客户端通过utf-8对资源进行解码，然后对资源进行html解析。通常我们会看到有些网站是乱码的，往往就是服务器端没有返回正确的编码。</li>
+<li><strong>Connection：keep-alive</strong> 这个字段作为回应客户端的Connection：keep-alive，告诉客户端服务器的tcp连接也是一个长连接，客户端可以继续使用这个tcp连接发送http请求。</li>
+<li><strong>Refresh: 5; url=<a href="http://baidu.com" target="_blank" rel="noopener">http://baidu.com</a></strong> 用于重定向，或者当一个新的资源被创建时。默认会在5秒后刷新重定向。</li>
 </ul>
 <h4 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h4><p>HTTP 协议是无状态的，主要是为了让 HTTP 协议尽可能简单，使得它能够处理大量事务。HTTP/1.1 引入 Cookie 来保存状态信息。</p>
 <p>Cookie 是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器之后向同一服务器再次发起请求时被携带上，用于告知服务端两个请求是否来自同一浏览器。</p>
@@ -13440,7 +13510,25 @@ D --> F[释放套接字]
 <h4 id="服务降级-1"><a href="#服务降级-1" class="headerlink" title="服务降级"></a>服务降级</h4><h4 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h4><h5 id="RPC-解决了什么问题？"><a href="#RPC-解决了什么问题？" class="headerlink" title="RPC 解决了什么问题？"></a>RPC 解决了什么问题？</h5><p><strong>让分布式或者微服务系统中不同服务之间的调用像本地调用一样简单。</strong></p>
 <h5 id="既有-HTTP-为啥用-RPC-进行服务调用"><a href="#既有-HTTP-为啥用-RPC-进行服务调用" class="headerlink" title="既有 HTTP ,为啥用 RPC 进行服务调用?"></a>既有 HTTP ,为啥用 RPC 进行服务调用?</h5><p>RPC 只是一种概念、一种设计，就是为了解决 <strong>不同服务之间的调用问题</strong>, 它一般会包含有 <strong>传输协议</strong> 和 <strong>序列化协议</strong> 这两个。</p>
 <p>但是，HTTP 是一种协议，RPC框架可以使用 HTTP 协议作为传输协议或者直接使用TCP 作为传输协议，使用不同的协议一般也是为了适应不同的场景。</p>
-<h5 id="REST和RPC"><a href="#REST和RPC" class="headerlink" title="REST和RPC"></a>REST和RPC</h5><h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><h4 id="TCC"><a href="#TCC" class="headerlink" title="TCC"></a>TCC</h4><h4 id="两段式（2PC）"><a href="#两段式（2PC）" class="headerlink" title="两段式（2PC）"></a>两段式（2PC）</h4><h4 id="三段式（3PC）"><a href="#三段式（3PC）" class="headerlink" title="三段式（3PC）"></a>三段式（3PC）</h4><h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><h2 id="什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢"><a href="#什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢" class="headerlink" title="什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢?"></a>什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢?</h2><p>思考一下在你的虚拟机上部署应用程序需要些什么。</p>
+<h5 id="REST和RPC"><a href="#REST和RPC" class="headerlink" title="REST和RPC"></a>REST和RPC</h5><h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><h4 id="分布式、集群、微服务、SOA-之间的区别"><a href="#分布式、集群、微服务、SOA-之间的区别" class="headerlink" title="分布式、集群、微服务、SOA 之间的区别"></a>分布式、集群、微服务、SOA 之间的区别</h4><ul>
+<li>分布式<ul>
+<li>不同模块部署在不同服务器上，</li>
+</ul>
+</li>
+<li>集群<ul>
+<li>多台服务器部署相模块构成集群，通过负载均衡对外提供服务。</li>
+</ul>
+</li>
+<li>SOA<ul>
+<li>面向服务的架构（Service Oriented Architecture），把系统按照实际业务，拆分成刚刚好大小的、合适的、独立部署的模块，每个模块之间相互独立。</li>
+</ul>
+</li>
+<li>微服务<ul>
+<li>微服务是SOA架构演进的结果。<strong>是一种比较现代化的细粒度的SOA实现方式。</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="TCC"><a href="#TCC" class="headerlink" title="TCC"></a>TCC</h4><h4 id="两段式（2PC）"><a href="#两段式（2PC）" class="headerlink" title="两段式（2PC）"></a>两段式（2PC）</h4><h4 id="三段式（3PC）"><a href="#三段式（3PC）" class="headerlink" title="三段式（3PC）"></a>三段式（3PC）</h4><h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><h2 id="什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢"><a href="#什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢" class="headerlink" title="什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢?"></a>什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢?</h2><p>思考一下在你的虚拟机上部署应用程序需要些什么。</p>
 <p>第一步：安装 Java</p>
 <p>第二部：安装 Web 或者是应用程序的服务器（Tomat/Wbesphere/Weblogic 等等）</p>
 <p>第三部：部署应用程序 war 包</p>
