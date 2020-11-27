@@ -21,6 +21,20 @@ tags:
 
 [toc]
 
+## 自我介绍
+
+你好，我叫李博，木子李，博士的博。94年的，今年是26。籍贯是陕西。
+
+17年毕业于延安大学，专业是信息与计算科学，是个一本。
+
+毕业后就来了深圳工作，到目前为止是有三年多的工作经验。
+
+平常工作中主要使用的是 Spring Boot、MyBatis 等框架，数据库使用过关系型的 MySQL 和 Oracle，文档型的使用过 MongDB，以及内存型的数据库 Redis。
+
+目前最近的项目是前后端分离开发的项目，后端使用的 Spring Cloud 的微服务架构，前段使用的是 Vue.js 结合 Element-UI 组件库开发的。
+
+大体的情况就是这些。
+
 ## 编程思想
 
 ### OPP
@@ -150,6 +164,18 @@ B树（balance tree）可以认为是 m 叉的多路平衡查找树
 - 因为B+树的叶子结点按顺序链接，可以很方便的进行**范围查找**。
 
 ### 红黑树
+
+#### 5 个特性
+
+1. 每个节点要么是红色，要么是黑色；
+2. 根节点永远是黑色的；
+3. 所有的叶节点都是是黑色的（注意这里说叶子节点其实是上图中的 NIL 节点）；
+4. 每个红色节点的两个子节点一定都是黑色；
+5. 从任一节点到其子树中每个叶子节点的路径都包含相同数量的黑色节点；
+
+HashMap 为什么要使用红黑树？
+
+红黑树是基于二叉查找树的改造，二叉树查找树具有平衡树和有序性的特点，能够支持快速的查找功能，但平衡树的维护成本比较高，红黑树采用的“适度平衡”标准，可以保证每次插入或删除操作后重平衡过程中，全树拓扑结构的更新仅涉及常数个节点。**尽管最坏情况下需对多达logn个节点重染色，但就分摊意义而言仅为O(1)个。**
 
 ## 算法
 
@@ -964,7 +990,7 @@ Hotspot遍历所有对象时，按照年龄从小到大对其所占用的大小�
 #### 垃圾回收过程
 
 - **那些内存需要回收？**(对象是否可以被回收的两种经典算法: 引用计数法 和 可达性分析算法)
-- **什么时候回收？** （堆的新生代、老年代、永久代的垃圾回收时机，MinorGC 和 FullGC）
+- **什么时候回收？**(堆的新生代、老年代、永久代的垃圾回收时机，MinorGC 和 FullGC)
 - **如何回收？**(三种经典垃圾回收算法(标记清除算法、复制算法、标记整理算法)及分代收集算法 和 七种垃圾收集器)
 
 #### 监测垃圾对象
@@ -1230,7 +1256,7 @@ synchronized通过Monitor来实现线程同步，Monitor是依赖于底层操作
 
 ##### 重量级锁
 
-升级为重量级锁时，锁标志的状态值变为“10”，此时Mark Word中存储的是指向重量级锁的指针，此时等待锁的线程都会进入阻塞状态。
+升级为重量级锁时，锁标志的状态值变为“10”，此时Mark Word中存储的是指向重量级锁(monitor)的指针，此时等待锁的线程都会进入阻塞状态。
 
 ##### 总结
 
@@ -1238,11 +1264,54 @@ synchronized通过Monitor来实现线程同步，Monitor是依赖于底层操作
 
 轻量级锁则是通过CAS自旋等待来避免线程的阻塞和唤醒操作，提高在竞争不激烈环境下synchronized的效率。
 
+##### Synchronized和ReentrantLock在唤醒被挂起线程竞争的时候有什么区别？
+
+Synchronized和ReentrantLock他们的开销差距是在释放锁时唤醒线程的数量,Synchronized是唤醒锁池里所有的线程+刚好来访问的线程,而ReentrantLock则是当前线程后进来的第一个线程+刚好来访问的线程.
+
+#### ReentrantLock
+
+ReentrantLock上锁的时候如果只有一个线程进来,是不会有线程挂起的操作的,也就是说只需要在AQS里使用CAS改变一个state的值为1
+
 ### 集合框架
 
 #### Collection
 
 ![](https://camo.githubusercontent.com/d1efb1abc3173aa2a607316dda79bea560fe333f/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f696d6167652d32303139313230383232303934383038342e706e67)
+
+| 线程不安全 | 线程安全                    |
+| ---------- | --------------------------- |
+| Arraylist  | Vector/CopyOnWriteArrayList |
+| LinkedList | ConcurrentLinkedQueue       |
+| HashMap    | ConcurrentHashMap           |
+|            |                             |
+
+#### List
+
+##### ArrayList
+
+###### 扩容机制
+
+> [通过源码一步一步分析 ArrayList 扩容机制](https://snailclimb.gitee.io/javaguide/#/docs/java/collection/ArrayList源码+扩容机制分析)
+
+1. **以无参数构造方法创建 ArrayList 时，实际上初始化赋值的是一个空数组。当真正对数组进行添加元素操作时，才真正分配容量。即向数组中添加第一个元素时，数组容量扩为 10。**
+2. **int newCapacity = oldCapacity + (oldCapacity >> 1),所以 ArrayList 每次扩容之后容量都会变为原来的 1.5 倍左右（oldCapacity 为偶数就是 1.5 倍，否则是 1.5 倍左右）！** 奇偶不同，比如 ：10+10/2 = 15, 33+33/2=49。如果是奇数的话会丢掉小数. 
+
+
+
+##### Arraylist 与 LinkedList 区别?
+
+1. **底层数据结构：**
+   - `Arraylist` 底层使用的是 **`Object` 数组**；
+   - `LinkedList` 底层使用的是 **双向链表** 数据结构（JDK1.6 之前为循环链表，JDK1.7 取消了循环）
+2. **插入和删除是否受元素位置的影响：** ① **`ArrayList` 采用数组存储，所以插入和删除元素的时间复杂度受元素位置的影响。** 比如：执行`add(E e)`方法的时候， `ArrayList` 会默认在将指定的元素追加到此列表的末尾，这种情况时间复杂度就是 O(1)。但是如果要在指定位置 i 插入和删除元素的话（`add(int index, E element)`）时间复杂度就为 O(n-i)。因为在进行上述操作的时候集合中第 i 和第 i 个元素之后的(n-i)个元素都要执行向后位/向前移一位的操作。 ② **`LinkedList` 采用链表存储，所以对于`add(E e)`方法的插入，删除元素时间复杂度不受元素位置的影响，近似 O(1)，如果是要在指定位置`i`插入和删除元素的话（`(add(int index, E element)`） 时间复杂度近似为`o(n))`因为需要先移动到指定位置再插入。**
+3. **是否支持快速随机访问：** `LinkedList` 不支持高效的随机元素访问，而 `ArrayList` 支持。快速随机访问就是通过元素的序号快速获取元素对象(对应于`get(int index)`方法)。
+4. **内存空间占用：** ArrayList 的空间浪费主要体现在在 list 列表的结尾会预留一定的容量空间，而 LinkedList 的空间花费则体现在它的每一个元素都需要消耗比 ArrayList 更多的空间（因为要存放直接后继和直接前驱以及数据）。
+
+#### Set
+
+##### HashSet
+
+HashSet 底层就是基于 HashMap 实现的。set 中的元素作为 key 存储在 hashmap 中，value 对应set中定义的同一个 Object。
 
 #### Map
 
@@ -1274,6 +1343,40 @@ synchronized通过Monitor来实现线程同步，Monitor是依赖于底层操作
 ###### 为什么要把 hashcode 与其高位进行抑或运算？
 
 为了减少哈希碰撞。
+
+###### HashMap 和 Hashtable 的区别
+
+1. **线程是否安全：** HashMap 是非线程安全的，HashTable 是线程安全的,因为 HashTable 内部的方法基本都经过`synchronized` 修饰。
+2. **效率：** 因为线程安全的问题，HashMap 要比 HashTable 效率高一点。另外，HashTable 基本被淘汰，不要在代码中使用它；
+3. **对 Null key 和 Null value 的支持：** HashMap 可以存储 null 的 key 和 value，但 null 作为键只能有一个，null 作为值可以有多个；HashTable 不允许有 null 键和 null 值，否则会抛出 NullPointerException。
+4. **初始容量大小和每次扩充容量大小的不同 ：** ① 创建时如果不指定容量初始值，Hashtable 默认的初始大小为 11，之后每次扩充，容量变为原来的 2n+1。HashMap 默认的初始化大小为 16。之后每次扩充，容量变为原来的 2 倍。② 创建时如果给定了容量初始值，那么 Hashtable 会直接使用你给定的大小，而 HashMap 会将其扩充为 2 的幂次方大小。
+5. **底层数据结构：** JDK1.8 以后的 HashMap 在解决哈希冲突时有了较大的变化，当链表长度大于阈值（默认为 8）（将链表转换成红黑树前会判断，如果当前数组的长度小于 64，那么会选择先进行数组扩容，而不是转换为红黑树）时，将链表转化为红黑树，以减少搜索时间。Hashtable 没有这样的机制。
+
+###### HashMap 和 TreeMap 区别
+
+`TreeMap` 和`HashMap` 都继承自`AbstractMap` ，但是需要注意的是`TreeMap`它还实现了`NavigableMap`接口和`SortedMap` 接口。
+
+实现 `NavigableMap` 接口让 `TreeMap` 有了对集合内元素的搜索的能力。
+
+实现`SortMap`接口让 `TreeMap` 有了对集合中的元素根据键排序的能力。默认是按 key 的升序排序，不过我们也可以指定排序的比较器。
+
+##### ConcurentHashMap
+
+1.8以前的ConcurrentHashMap 的时候, 会初始化一个Segment数组, 容量为16,每个Segment都继承了ReentrantLock类,也就是说每个Segment类本身就是一个锁,之后Segment内部又有一个table数组,而每个table数组里的索引数据又对应着一个HashEntry链表.
+
+###### ConcurrentHashMap1.8为什么用CAS+Synchronized取代Segment+ReentrantLock?
+
+1.8 中的 ConcurrentHashMap，Synchronized是将每一个Node对象作为了一个锁,将锁粒度进一步细化了,也就是说,除非两个线程同时操作一个Node,注意,是一个Node而不是一个Node链表哦,那么才会争抢同一把锁.
+
+如果使用ReentrantLock其实也可以将锁细化成这样的,只要让Node类继承ReentrantLock就行了,这样的话调用f.lock()就能做到和Synchronized(f)同样的效果,但为什么不这样做呢?
+
+请大家试想一下,锁已经被细化到这种程度了,那么出现并发争抢的可能性还高吗?还有就是,哪怕出现争抢了,只要线程可以在30到50次自旋里拿到锁,那么Synchronized就不会升级为重量级锁,而等待的线程也就不用被挂起,我们也就少了挂起和唤醒这个上下文切换的过程开销.
+
+但如果是ReentrantLock呢?它则只有在线程没有抢到锁,然后新建Node节点后再尝试一次而已,不会自旋,而是直接被挂起,这样一来,我们就很容易会多出线程上下文开销的代价.当然,你也可以使用tryLock(),但是这样又出现了一个问题,你怎么知道tryLock的时间呢?在时间范围里还好,假如超过了呢?
+
+所以,在锁被细化到如此程度上,使用Synchronized是最好的选择了.这里再补充一句,Synchronized和ReentrantLock他们的开销差距是在释放锁时唤醒线程的数量,Synchronized是唤醒锁池里所有的线程+刚好来访问的线程,而ReentrantLock则是当前线程后进来的第一个线程+刚好来访问的线程.
+
+如果是线程并发量不大的情况下,那么Synchronized因为自旋锁,偏向锁,轻量级锁的原因,不用将等待线程挂起,偏向锁甚至不用自旋,所以在这种情况下要比ReentrantLock高效
 
 ### IO
 
