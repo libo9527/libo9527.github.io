@@ -78,7 +78,7 @@
   </entry>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/11/20/Account-Management-in-Git/</url>
+    <url>/2020/11/27/Account-Management-in-Git/</url>
     <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -11336,6 +11336,12 @@ D --> F[释放套接字]
 <p><a href="https://xiaozhuanlan.com/javainterview?rel=javaguide" target="_blank">《Java 面试进阶指南》</a> </p>
 </blockquote>
 <p>[toc]</p>
+<h2 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h2><p>你好，我叫李博，木子李，博士的博。94年的，今年是26。籍贯是陕西。</p>
+<p>17年毕业于延安大学，专业是信息与计算科学，是个一本。</p>
+<p>毕业后就来了深圳工作，到目前为止是有三年多的工作经验。</p>
+<p>平常工作中主要使用的是 Spring Boot、MyBatis 等框架，数据库使用过关系型的 MySQL 和 Oracle，文档型的使用过 MongDB，以及内存型的数据库 Redis。</p>
+<p>目前最近的项目是前后端分离开发的项目，后端使用的 Spring Cloud 的微服务架构，前段使用的是 Vue.js 结合 Element-UI 组件库开发的。</p>
+<p>大体的情况就是这些。</p>
 <h2 id="编程思想"><a href="#编程思想" class="headerlink" title="编程思想"></a>编程思想</h2><h3 id="OPP"><a href="#OPP" class="headerlink" title="OPP"></a>OPP</h3><p>面向过程编程（英语：Procedure-oriented Programming，缩写：OPP）</p>
 <h3 id="OOP"><a href="#OOP" class="headerlink" title="OOP"></a>OOP</h3><p>面向对象编程（英语：Object-oriented programming，缩写：OOP）</p>
 <h4 id="OPP-vs-OOP"><a href="#OPP-vs-OOP" class="headerlink" title="OPP vs OOP"></a>OPP vs OOP</h4><p>面向过程的程序设计<span style="color: red">把</span>计算机程序<span style="color: red">视为</span>一系列的<strong>命令集合</strong>，即一组函数的顺序执行。为了简化程序设计，面向过程把函数继续切分为子函数，即把大块函数通过切割成小块函数来降低系统的复杂度。</p>
@@ -11382,7 +11388,16 @@ D --> F[释放套接字]
 <li>B+树的中间节点不保存数据，只在叶子结点中保存数据；而B树数据分布在整颗树中。</li>
 <li>因为B+树的叶子结点按顺序链接，可以很方便的进行<strong>范围查找</strong>。</li>
 </ul>
-<h3 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h3><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h3 id="KMP-算法"><a href="#KMP-算法" class="headerlink" title="KMP 算法"></a>KMP 算法</h3><p>谈到字符串问题，不得不提的就是 KMP 算法，它是用来解决字符串查找的问题，可以在一个字符串（S）中查找一个子串（W）出现的位置。KMP 算法把字符匹配的时间复杂度缩小到 O(m+n) ,而空间复杂度也只有O(m)。因为“暴力搜索”的方法会反复回溯主串，导致效率低下，而KMP算法可以利用已经部分匹配这个有效信息，保持主串上的指针不回溯，通过修改子串的指针，让模式串尽量地移动到有效的位置。</p>
+<h3 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h3><h4 id="5-个特性"><a href="#5-个特性" class="headerlink" title="5 个特性"></a>5 个特性</h4><ol>
+<li>每个节点要么是红色，要么是黑色；</li>
+<li>根节点永远是黑色的；</li>
+<li>所有的叶节点都是是黑色的（注意这里说叶子节点其实是上图中的 NIL 节点）；</li>
+<li>每个红色节点的两个子节点一定都是黑色；</li>
+<li>从任一节点到其子树中每个叶子节点的路径都包含相同数量的黑色节点；</li>
+</ol>
+<p>HashMap 为什么要使用红黑树？</p>
+<p>红黑树是基于二叉查找树的改造，二叉树查找树具有平衡树和有序性的特点，能够支持快速的查找功能，但平衡树的维护成本比较高，红黑树采用的“适度平衡”标准，可以保证每次插入或删除操作后重平衡过程中，全树拓扑结构的更新仅涉及常数个节点。<strong>尽管最坏情况下需对多达logn个节点重染色，但就分摊意义而言仅为O(1)个。</strong></p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h3 id="KMP-算法"><a href="#KMP-算法" class="headerlink" title="KMP 算法"></a>KMP 算法</h3><p>谈到字符串问题，不得不提的就是 KMP 算法，它是用来解决字符串查找的问题，可以在一个字符串（S）中查找一个子串（W）出现的位置。KMP 算法把字符匹配的时间复杂度缩小到 O(m+n) ,而空间复杂度也只有O(m)。因为“暴力搜索”的方法会反复回溯主串，导致效率低下，而KMP算法可以利用已经部分匹配这个有效信息，保持主串上的指针不回溯，通过修改子串的指针，让模式串尽量地移动到有效的位置。</p>
 <h3 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h3><p>排序算法的成本模型是比较和交换的次数。</p>
 <h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><p>从数组中选择最小元素，将它与数组的第一个元素交换位置。再从数组剩下的元素中选择出最小的元素，将它与数组的第二个元素交换位置。不断进行这样的操作，直到将整个数组排序。</p>
 <p>选择排序需要 ~N2/2 次比较和 ~N 次交换，它的运行时间与输入无关，这个特点使得它对一个已经排序的数组也需要这么多的比较和交换操作。</p>
@@ -11758,7 +11773,7 @@ D --> F[释放套接字]
 <p><img data-src="https://camo.githubusercontent.com/4d68bf3180587d6c478ff9af5b768bbac73a483aea41fdcd01d37ee6f3a92678/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323032302d382f62343832323863322d616330302d343636382d613738662d3666323231663835363362352e706e67" alt=""></p>
 <h4 id="垃圾回收过程"><a href="#垃圾回收过程" class="headerlink" title="垃圾回收过程"></a>垃圾回收过程</h4><ul>
 <li><strong>那些内存需要回收？</strong>(对象是否可以被回收的两种经典算法: 引用计数法 和 可达性分析算法)</li>
-<li><strong>什么时候回收？</strong> （堆的新生代、老年代、永久代的垃圾回收时机，MinorGC 和 FullGC）</li>
+<li><strong>什么时候回收？</strong>(堆的新生代、老年代、永久代的垃圾回收时机，MinorGC 和 FullGC)</li>
 <li><strong>如何回收？</strong>(三种经典垃圾回收算法(标记清除算法、复制算法、标记整理算法)及分代收集算法 和 七种垃圾收集器)</li>
 </ul>
 <h4 id="监测垃圾对象"><a href="#监测垃圾对象" class="headerlink" title="监测垃圾对象"></a>监测垃圾对象</h4><p><img data-src="https://github.com/Snailclimb/JavaGuide/raw/master/docs/java/jvm/pictures/jvm%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/11034259.png" alt=""></p>
@@ -11888,10 +11903,54 @@ D --> F[释放套接字]
 <p>在代码进入同步块的时候，如果同步对象锁状态为无锁状态，虚拟机首先将在当前线程的栈帧中建立一个名为锁记录（Lock Record）的空间，用于存储锁对象目前的Mark Word的拷贝，然后拷贝对象头中的Mark Word复制到锁记录中。</p>
 <p>拷贝成功后，虚拟机将使用CAS操作尝试将对象的Mark Word更新为指向Lock Record的指针，并将Lock Record里的owner指针指向对象的Mark Word。</p>
 <p>如果此时有另一个新线程请求锁，虚拟机会检查对象的Mark Word是否指向该线程的栈帧，没有则说明多个线程竞争锁。该线程通过自旋进行等待。但是当自旋超过一定的次数，或者一个线程在持有锁，一个在自旋，又有第三个来访时，轻量级锁升级为重量级锁。</p>
-<h5 id="重量级锁"><a href="#重量级锁" class="headerlink" title="重量级锁"></a>重量级锁</h5><p>升级为重量级锁时，锁标志的状态值变为“10”，此时Mark Word中存储的是指向重量级锁的指针，此时等待锁的线程都会进入阻塞状态。</p>
+<h5 id="重量级锁"><a href="#重量级锁" class="headerlink" title="重量级锁"></a>重量级锁</h5><p>升级为重量级锁时，锁标志的状态值变为“10”，此时Mark Word中存储的是指向重量级锁(monitor)的指针，此时等待锁的线程都会进入阻塞状态。</p>
 <h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>偏向锁通过对象头的Mark Word存储线程ID来减少过多的CAS操作，提高在无竞争环境下的Synchronized效率。</p>
 <p>轻量级锁则是通过CAS自旋等待来避免线程的阻塞和唤醒操作，提高在竞争不激烈环境下synchronized的效率。</p>
+<h5 id="Synchronized和ReentrantLock在唤醒被挂起线程竞争的时候有什么区别？"><a href="#Synchronized和ReentrantLock在唤醒被挂起线程竞争的时候有什么区别？" class="headerlink" title="Synchronized和ReentrantLock在唤醒被挂起线程竞争的时候有什么区别？"></a>Synchronized和ReentrantLock在唤醒被挂起线程竞争的时候有什么区别？</h5><p>Synchronized和ReentrantLock他们的开销差距是在释放锁时唤醒线程的数量,Synchronized是唤醒锁池里所有的线程+刚好来访问的线程,而ReentrantLock则是当前线程后进来的第一个线程+刚好来访问的线程.</p>
+<h4 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h4><p>ReentrantLock上锁的时候如果只有一个线程进来,是不会有线程挂起的操作的,也就是说只需要在AQS里使用CAS改变一个state的值为1</p>
 <h3 id="集合框架"><a href="#集合框架" class="headerlink" title="集合框架"></a>集合框架</h3><h4 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h4><p><img data-src="https://camo.githubusercontent.com/d1efb1abc3173aa2a607316dda79bea560fe333f/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f696d6167652d32303139313230383232303934383038342e706e67" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>线程不安全</th>
+<th>线程安全</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Arraylist</td>
+<td>Vector/CopyOnWriteArrayList</td>
+</tr>
+<tr>
+<td>LinkedList</td>
+<td>ConcurrentLinkedQueue</td>
+</tr>
+<tr>
+<td>HashMap</td>
+<td>ConcurrentHashMap</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><h5 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h5><h6 id="扩容机制"><a href="#扩容机制" class="headerlink" title="扩容机制"></a>扩容机制</h6><blockquote>
+<p><a href="https://snailclimb.gitee.io/javaguide/#/docs/java/collection/ArrayList源码+扩容机制分析" target="_blank" rel="noopener">通过源码一步一步分析 ArrayList 扩容机制</a></p>
+</blockquote>
+<ol>
+<li><strong>以无参数构造方法创建 ArrayList 时，实际上初始化赋值的是一个空数组。当真正对数组进行添加元素操作时，才真正分配容量。即向数组中添加第一个元素时，数组容量扩为 10。</strong></li>
+<li><strong>int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1),所以 ArrayList 每次扩容之后容量都会变为原来的 1.5 倍左右（oldCapacity 为偶数就是 1.5 倍，否则是 1.5 倍左右）！</strong> 奇偶不同，比如 ：10+10/2 = 15, 33+33/2=49。如果是奇数的话会丢掉小数. </li>
+</ol>
+<h5 id="Arraylist-与-LinkedList-区别"><a href="#Arraylist-与-LinkedList-区别" class="headerlink" title="Arraylist 与 LinkedList 区别?"></a>Arraylist 与 LinkedList 区别?</h5><ol>
+<li><strong>底层数据结构：</strong><ul>
+<li><code>Arraylist</code> 底层使用的是 <strong><code>Object</code> 数组</strong>；</li>
+<li><code>LinkedList</code> 底层使用的是 <strong>双向链表</strong> 数据结构（JDK1.6 之前为循环链表，JDK1.7 取消了循环）</li>
+</ul>
+</li>
+<li><strong>插入和删除是否受元素位置的影响：</strong> ① <strong><code>ArrayList</code> 采用数组存储，所以插入和删除元素的时间复杂度受元素位置的影响。</strong> 比如：执行<code>add(E e)</code>方法的时候， <code>ArrayList</code> 会默认在将指定的元素追加到此列表的末尾，这种情况时间复杂度就是 O(1)。但是如果要在指定位置 i 插入和删除元素的话（<code>add(int index, E element)</code>）时间复杂度就为 O(n-i)。因为在进行上述操作的时候集合中第 i 和第 i 个元素之后的(n-i)个元素都要执行向后位/向前移一位的操作。 ② <strong><code>LinkedList</code> 采用链表存储，所以对于<code>add(E e)</code>方法的插入，删除元素时间复杂度不受元素位置的影响，近似 O(1)，如果是要在指定位置<code>i</code>插入和删除元素的话（<code>(add(int index, E element)</code>） 时间复杂度近似为<code>o(n))</code>因为需要先移动到指定位置再插入。</strong></li>
+<li><strong>是否支持快速随机访问：</strong> <code>LinkedList</code> 不支持高效的随机元素访问，而 <code>ArrayList</code> 支持。快速随机访问就是通过元素的序号快速获取元素对象(对应于<code>get(int index)</code>方法)。</li>
+<li><strong>内存空间占用：</strong> ArrayList 的空间浪费主要体现在在 list 列表的结尾会预留一定的容量空间，而 LinkedList 的空间花费则体现在它的每一个元素都需要消耗比 ArrayList 更多的空间（因为要存放直接后继和直接前驱以及数据）。</li>
+</ol>
+<h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h4><h5 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h5><p>HashSet 底层就是基于 HashMap 实现的。set 中的元素作为 key 存储在 hashmap 中，value 对应set中定义的同一个 Object。</p>
 <h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p><img data-src="https://camo.githubusercontent.com/bcc4885b038529bc66a48f637c14cc7933ce63da/68747470733a2f2f63732d6e6f7465732d313235363130393739362e636f732e61702d6775616e677a686f752e6d7971636c6f75642e636f6d2f696d6167652d32303230313130313233343333353833372e706e67" alt=""></p>
 <h5 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h5><h6 id="put-流程"><a href="#put-流程" class="headerlink" title="put 流程"></a>put 流程</h6><p><img data-src="https://upload-images.jianshu.io/upload_images/13947009-afee4ea47109f9c3.jpg" alt=""></p>
 <ol>
@@ -11908,6 +11967,23 @@ D --> F[释放套接字]
 <p><code>a % b == (b-1) &amp; a</code></p>
 <p>而只有当 b 是 2 的指数时，等式才成立。</p>
 <h6 id="为什么要把-hashcode-与其高位进行抑或运算？"><a href="#为什么要把-hashcode-与其高位进行抑或运算？" class="headerlink" title="为什么要把 hashcode 与其高位进行抑或运算？"></a>为什么要把 hashcode 与其高位进行抑或运算？</h6><p>为了减少哈希碰撞。</p>
+<h6 id="HashMap-和-Hashtable-的区别"><a href="#HashMap-和-Hashtable-的区别" class="headerlink" title="HashMap 和 Hashtable 的区别"></a>HashMap 和 Hashtable 的区别</h6><ol>
+<li><strong>线程是否安全：</strong> HashMap 是非线程安全的，HashTable 是线程安全的,因为 HashTable 内部的方法基本都经过<code>synchronized</code> 修饰。</li>
+<li><strong>效率：</strong> 因为线程安全的问题，HashMap 要比 HashTable 效率高一点。另外，HashTable 基本被淘汰，不要在代码中使用它；</li>
+<li><strong>对 Null key 和 Null value 的支持：</strong> HashMap 可以存储 null 的 key 和 value，但 null 作为键只能有一个，null 作为值可以有多个；HashTable 不允许有 null 键和 null 值，否则会抛出 NullPointerException。</li>
+<li><strong>初始容量大小和每次扩充容量大小的不同 ：</strong> ① 创建时如果不指定容量初始值，Hashtable 默认的初始大小为 11，之后每次扩充，容量变为原来的 2n+1。HashMap 默认的初始化大小为 16。之后每次扩充，容量变为原来的 2 倍。② 创建时如果给定了容量初始值，那么 Hashtable 会直接使用你给定的大小，而 HashMap 会将其扩充为 2 的幂次方大小。</li>
+<li><strong>底层数据结构：</strong> JDK1.8 以后的 HashMap 在解决哈希冲突时有了较大的变化，当链表长度大于阈值（默认为 8）（将链表转换成红黑树前会判断，如果当前数组的长度小于 64，那么会选择先进行数组扩容，而不是转换为红黑树）时，将链表转化为红黑树，以减少搜索时间。Hashtable 没有这样的机制。</li>
+</ol>
+<h6 id="HashMap-和-TreeMap-区别"><a href="#HashMap-和-TreeMap-区别" class="headerlink" title="HashMap 和 TreeMap 区别"></a>HashMap 和 TreeMap 区别</h6><p><code>TreeMap</code> 和<code>HashMap</code> 都继承自<code>AbstractMap</code> ，但是需要注意的是<code>TreeMap</code>它还实现了<code>NavigableMap</code>接口和<code>SortedMap</code> 接口。</p>
+<p>实现 <code>NavigableMap</code> 接口让 <code>TreeMap</code> 有了对集合内元素的搜索的能力。</p>
+<p>实现<code>SortMap</code>接口让 <code>TreeMap</code> 有了对集合中的元素根据键排序的能力。默认是按 key 的升序排序，不过我们也可以指定排序的比较器。</p>
+<h5 id="ConcurentHashMap"><a href="#ConcurentHashMap" class="headerlink" title="ConcurentHashMap"></a>ConcurentHashMap</h5><p>1.8以前的ConcurrentHashMap 的时候, 会初始化一个Segment数组, 容量为16,每个Segment都继承了ReentrantLock类,也就是说每个Segment类本身就是一个锁,之后Segment内部又有一个table数组,而每个table数组里的索引数据又对应着一个HashEntry链表.</p>
+<h6 id="ConcurrentHashMap1-8为什么用CAS-Synchronized取代Segment-ReentrantLock"><a href="#ConcurrentHashMap1-8为什么用CAS-Synchronized取代Segment-ReentrantLock" class="headerlink" title="ConcurrentHashMap1.8为什么用CAS+Synchronized取代Segment+ReentrantLock?"></a>ConcurrentHashMap1.8为什么用CAS+Synchronized取代Segment+ReentrantLock?</h6><p>1.8 中的 ConcurrentHashMap，Synchronized是将每一个Node对象作为了一个锁,将锁粒度进一步细化了,也就是说,除非两个线程同时操作一个Node,注意,是一个Node而不是一个Node链表哦,那么才会争抢同一把锁.</p>
+<p>如果使用ReentrantLock其实也可以将锁细化成这样的,只要让Node类继承ReentrantLock就行了,这样的话调用f.lock()就能做到和Synchronized(f)同样的效果,但为什么不这样做呢?</p>
+<p>请大家试想一下,锁已经被细化到这种程度了,那么出现并发争抢的可能性还高吗?还有就是,哪怕出现争抢了,只要线程可以在30到50次自旋里拿到锁,那么Synchronized就不会升级为重量级锁,而等待的线程也就不用被挂起,我们也就少了挂起和唤醒这个上下文切换的过程开销.</p>
+<p>但如果是ReentrantLock呢?它则只有在线程没有抢到锁,然后新建Node节点后再尝试一次而已,不会自旋,而是直接被挂起,这样一来,我们就很容易会多出线程上下文开销的代价.当然,你也可以使用tryLock(),但是这样又出现了一个问题,你怎么知道tryLock的时间呢?在时间范围里还好,假如超过了呢?</p>
+<p>所以,在锁被细化到如此程度上,使用Synchronized是最好的选择了.这里再补充一句,Synchronized和ReentrantLock他们的开销差距是在释放锁时唤醒线程的数量,Synchronized是唤醒锁池里所有的线程+刚好来访问的线程,而ReentrantLock则是当前线程后进来的第一个线程+刚好来访问的线程.</p>
+<p>如果是线程并发量不大的情况下,那么Synchronized因为自旋锁,偏向锁,轻量级锁的原因,不用将等待线程挂起,偏向锁甚至不用自旋,所以在这种情况下要比ReentrantLock高效</p>
 <h3 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h3><h4 id="分类-1"><a href="#分类-1" class="headerlink" title="分类"></a>分类</h4><p>四大基类：</p>
 <ol>
 <li><code>java.io.InputStream</code></li>
