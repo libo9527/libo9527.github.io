@@ -78,7 +78,7 @@
   </entry>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/11/27/Account-Management-in-Git/</url>
+    <url>/2020/12/04/Account-Management-in-Git/</url>
     <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -11562,7 +11562,13 @@ D --> F[释放套接字]
 </tbody></table>
 <p>快速排序是最快的通用排序算法，它的内循环的指令很少，而且它还能利用缓存，因为它总是顺序地访问数据。它的运行时间近似为 ~cNlogN，这里的 c 比其它线性对数级别的排序算法都要小。</p>
 <p>使用三向切分快速排序，实际应用中可能出现的某些分布的输入能够达到线性级别，而其它排序算法仍然需要线性对数时间。</p>
-<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><h3 id="推荐算法"><a href="#推荐算法" class="headerlink" title="推荐算法"></a>推荐算法</h3><h2 id="Java-语言"><a href="#Java-语言" class="headerlink" title="Java 语言"></a>Java 语言</h2><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><h4 id="为什么说-Java-语言“编译与解释并存”？"><a href="#为什么说-Java-语言“编译与解释并存”？" class="headerlink" title="为什么说 Java 语言“编译与解释并存”？"></a>为什么说 Java 语言“编译与解释并存”？</h4><p>高级编程语言按照程序的执行方式分为编译型和解释型两种。简单来说，编译型语言是指编译器针对特定的操作系统将源代码一次性翻译成可被该平台执行的机器码；解释型语言是指解释器对源程序逐行解释成特定平台的机器码并立即执行。</p>
+<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><h3 id="推荐算法"><a href="#推荐算法" class="headerlink" title="推荐算法"></a>推荐算法</h3><h2 id="Java-语言"><a href="#Java-语言" class="headerlink" title="Java 语言"></a>Java 语言</h2><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><h4 id="多态-1"><a href="#多态-1" class="headerlink" title="多态"></a>多态</h4><p>多态的三个条件：</p>
+<ol>
+<li>要有继承关系</li>
+<li>子类要重写父类的方法</li>
+<li>父类引用指向子类对象</li>
+</ol>
+<h4 id="为什么说-Java-语言“编译与解释并存”？"><a href="#为什么说-Java-语言“编译与解释并存”？" class="headerlink" title="为什么说 Java 语言“编译与解释并存”？"></a>为什么说 Java 语言“编译与解释并存”？</h4><p>高级编程语言按照程序的执行方式分为编译型和解释型两种。简单来说，编译型语言是指编译器针对特定的操作系统将源代码一次性翻译成可被该平台执行的机器码；解释型语言是指解释器对源程序逐行解释成特定平台的机器码并立即执行。</p>
 <p>Java 语言既具有编译型语言的特征，也具有解释型语言的特征，因为 Java 程序要经过先编译，后解释两个步骤，由 Java 编写的程序需要先经过编译步骤，生成字节码（*.class 文件），这种字节码必须由 Java 解释器来解释执行。因此，我们可以认为 Java 语言编译与解释并存。</p>
 <h4 id="Java中的几种基本数据类型是什么？对应的包装类型是什么？各自占用多少字节呢？"><a href="#Java中的几种基本数据类型是什么？对应的包装类型是什么？各自占用多少字节呢？" class="headerlink" title="Java中的几种基本数据类型是什么？对应的包装类型是什么？各自占用多少字节呢？"></a>Java中的几种基本数据类型是什么？对应的包装类型是什么？各自占用多少字节呢？</h4><p>Java<strong>中</strong>有8种基本数据类型，分别为：</p>
 <ol>
@@ -11630,6 +11636,13 @@ D --> F[释放套接字]
 </tr>
 </tbody></table>
 <h4 id="为什么-Java-中只有值传递？"><a href="#为什么-Java-中只有值传递？" class="headerlink" title="为什么 Java 中只有值传递？"></a>为什么 Java 中只有值传递？</h4><p>Java 对对象的传递，传递的是对象引用的一份拷贝，虽然会可以通过引用修改对象的状态，但出了方法后原变量的引用并没有改变，即对象引用是按值传递的。</p>
+<h3 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h3><h4 id="哪些地方会自动拆装箱"><a href="#哪些地方会自动拆装箱" class="headerlink" title="哪些地方会自动拆装箱"></a>哪些地方会自动拆装箱</h4><ol>
+<li>将基本数据类型放入集合类</li>
+<li>包装类型和基本类型的大小比较</li>
+<li>包装类型的运算</li>
+<li>函数参数与返回值</li>
+</ol>
+<h4 id="java-是否存在使得语句-i-gt-j-i-lt-j-结果为-false-的-i、j-值？"><a href="#java-是否存在使得语句-i-gt-j-i-lt-j-结果为-false-的-i、j-值？" class="headerlink" title="java 是否存在使得语句 i &gt; j || i &lt;= j 结果为 false 的 i、j 值？"></a>java 是否存在使得语句 <code>i &gt; j || i &lt;= j</code> 结果为 false 的 i、j 值？</h4><p>存在，java 的数值 NaN 代表 not a number，无法用于比较，例如使 <code>i = Double.NaN; j = i;</code> 最后 i == j 的结果依旧为 false。</p>
 <h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3><h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><p>Java 泛型（generics）是 JDK 5 中引入的一个新特性, 泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型。</p>
 <p>泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。</p>
 <h3 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h3><h4 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h4><p><strong>JDK 1.8 之前：</strong></p>
@@ -12298,7 +12311,58 @@ D --> F[释放套接字]
 <td align="left">能</td>
 </tr>
 </tbody></table>
-<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><h3 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h3><h4 id="模式结构"><a href="#模式结构" class="headerlink" title="模式结构"></a>模式结构</h4><p>责任链模式包含如下角色：</p>
+<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><blockquote>
+<p>《大话设计模式》第2章 商场促销——策略模式</p>
+</blockquote>
+<h4 id="现金收费抽象类"><a href="#现金收费抽象类" class="headerlink" title="现金收费抽象类"></a>现金收费抽象类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CashSuper</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">double</span> <span class="title">acceptCash</span><span class="params">(<span class="keyword">double</span> money)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="正常收费子类"><a href="#正常收费子类" class="headerlink" title="正常收费子类"></a>正常收费子类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CashNormal</span> <span class="keyword">implements</span> <span class="title">CashSuper</span></span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">acceptCash</span><span class="params">(<span class="keyword">double</span> money)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> money;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="打折收费子类"><a href="#打折收费子类" class="headerlink" title="打折收费子类"></a>打折收费子类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CashRebate</span> <span class="keyword">implements</span> <span class="title">CashSuper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">double</span> moneyRebate = <span class="number">1</span>d;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">CashRebate</span><span class="params">(<span class="keyword">double</span> moneyRebate)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.moneyRebate = moneyRebate;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">acceptCash</span><span class="params">(<span class="keyword">double</span> money)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> money * moneyRebate;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="返利收费子类"><a href="#返利收费子类" class="headerlink" title="返利收费子类"></a>返利收费子类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CashReturn</span> <span class="keyword">implements</span> <span class="title">CashSuper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">double</span> moneyCondition;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">double</span> moneyReturn;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">CashReturn</span><span class="params">(<span class="keyword">double</span> moneyCondition, <span class="keyword">double</span> moneyReturn)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.moneyCondition = moneyCondition;</span><br><span class="line">    <span class="keyword">this</span>.moneyReturn = moneyReturn;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">acceptCash</span><span class="params">(<span class="keyword">double</span> money)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (money &gt; moneyCondition) &#123;</span><br><span class="line">      money -= (<span class="keyword">int</span>) (money / moneyCondition) * moneyReturn;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> money;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="简单工厂实现"><a href="#简单工厂实现" class="headerlink" title="简单工厂实现"></a>简单工厂实现</h4><h5 id="现金收费工厂类"><a href="#现金收费工厂类" class="headerlink" title="现金收费工厂类"></a>现金收费工厂类</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CashFactory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> CashSuper <span class="title">createCashAccept</span><span class="params">(String type)</span> </span>&#123;</span><br><span class="line">    CashSuper cashSuper = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">"正常收费"</span>:</span><br><span class="line">        cashSuper = <span class="keyword">new</span> CashNormal();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">"满300减100"</span>:</span><br><span class="line">        cashSuper = <span class="keyword">new</span> CashReturn(<span class="number">300</span>, <span class="number">100</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">"打8折"</span>:</span><br><span class="line">        cashSuper = <span class="keyword">new</span> CashRebate(<span class="number">0.8</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cashSuper;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">double</span> MONEY = <span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    CashSuper cashSuper = CashFactory.createCashAccept(<span class="string">"正常收费"</span>);</span><br><span class="line">    System.out.println(<span class="string">"Primary money="</span>+MONEY+<span class="string">", Final money="</span>+cashSuper.acceptCash(MONEY));</span><br><span class="line"></span><br><span class="line">    CashSuper cashSuper2 = CashFactory.createCashAccept(<span class="string">"满300减100"</span>);</span><br><span class="line">    System.out.println(<span class="string">"Primary money="</span>+MONEY+<span class="string">", Final money="</span>+cashSuper2.acceptCash(MONEY));</span><br><span class="line"></span><br><span class="line">    CashSuper cashSuper3 = CashFactory.createCashAccept(<span class="string">"打8折"</span>);</span><br><span class="line">    System.out.println(<span class="string">"Primary money="</span>+MONEY+<span class="string">", Final money="</span>+cashSuper3.acceptCash(MONEY));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="策略与简单工厂结合"><a href="#策略与简单工厂结合" class="headerlink" title="策略与简单工厂结合"></a>策略与简单工厂结合</h4><h5 id="CashContext类"><a href="#CashContext类" class="headerlink" title="CashContext类"></a>CashContext类</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CashContext</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> CashSuper cashSuper;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">CashContext</span><span class="params">(String type)</span> </span>&#123;</span><br><span class="line">    CashSuper cashSuper = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">"正常收费"</span>:</span><br><span class="line">        cashSuper = <span class="keyword">new</span> CashNormal();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">"满300减100"</span>:</span><br><span class="line">        cashSuper = <span class="keyword">new</span> CashReturn(<span class="number">300</span>, <span class="number">100</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">"打8折"</span>:</span><br><span class="line">        cashSuper = <span class="keyword">new</span> CashRebate(<span class="number">0.8</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.cashSuper = cashSuper;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getResult</span><span class="params">(<span class="keyword">double</span> money)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> cashSuper.acceptCash(money);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="如何消除switch语句？"><a href="#如何消除switch语句？" class="headerlink" title="如何消除switch语句？"></a>如何消除switch语句？</h6><p>通过反射</p>
+<h5 id="客户端-1"><a href="#客户端-1" class="headerlink" title="客户端"></a>客户端</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">double</span> MONEY = <span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    CashContext cashContext = <span class="keyword">new</span> CashContext(<span class="string">"正常收费"</span>);</span><br><span class="line">    System.out.println(<span class="string">"Primary money="</span> + MONEY + <span class="string">", Final money="</span> + cashContext.getResult(MONEY));</span><br><span class="line"></span><br><span class="line">    CashContext cashContext2 = <span class="keyword">new</span> CashContext(<span class="string">"满300减100"</span>);</span><br><span class="line">    System.out.println(<span class="string">"Primary money="</span> + MONEY + <span class="string">", Final money="</span> + cashContext2.getResult(MONEY));</span><br><span class="line"></span><br><span class="line">    CashContext cashContext3 = <span class="keyword">new</span> CashContext(<span class="string">"打8折"</span>);</span><br><span class="line">    System.out.println(<span class="string">"Primary money="</span> + MONEY + <span class="string">", Final money="</span> + cashContext3.getResult(MONEY));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="简单工厂模式-VS-策略模式与简单工厂结合"><a href="#简单工厂模式-VS-策略模式与简单工厂结合" class="headerlink" title="简单工厂模式 VS 策略模式与简单工厂结合"></a>简单工厂模式 VS 策略模式与简单工厂结合</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//简单工厂模式的用法</span></span><br><span class="line">CashSuper cashSuper = CashFactory.createCashAccept(type);</span><br><span class="line">cashSuper.acceptCash(MONEY);</span><br><span class="line"></span><br><span class="line"><span class="comment">//策略模式与简单工厂结合的用法</span></span><br><span class="line">CashContext cashContext = <span class="keyword">new</span> CashContext(type);</span><br><span class="line">cashContext.getResult(MONEY);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>简单工厂模式需要让客户端认识两个类，CashSuper和CashFactory，而策略模式与简单工厂结合的用法，客户端就只需要认识一个类CashContext就可以了。耦合更加降低。</li>
+<li>策略模式与简单工厂结合的用法在客户端实例化的是CashContext的对象，调用的是CashContext的方法getResult，这使得具体的收费算法彻底地与客户端分离。连算法的父类CashSuper都不让客户端认识了。</li>
+</ol>
+<h4 id="策略模式的优缺点"><a href="#策略模式的优缺点" class="headerlink" title="策略模式的优缺点"></a>策略模式的优缺点</h4><h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ol>
+<li><p>低耦合</p>
+<p>策略模式是一种定义一系列算法的方法，所有算法完成相同的工作，只是实现不同，它可以以相同的方式调用所有的算法，减少了各种算法类与使用算法类之间的耦合。</p>
+</li>
+<li><p>简化单元测试</p>
+<p>每个算法都有自己的类，可以通过自己的接口单独测试。</p>
+</li>
+</ol>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><ol>
+<li>策略类需要对客户端透明：客户端必须知道所有的策略类，并自行决定哪一个策略类，也就是客户端需要理解这些算法的区别以便选择适当的算法</li>
+<li>策略类数量多：策略模式会造成系统产生很多具体策略类，任何细小的变化都会导致系统增加一个新的具体策略类</li>
+<li>客户端无法使用多个策略类：客户端每次只能使用一个策略类，不支持使用一个策略类完成部分功能后再使用另一个策略类来完成剩下的功能</li>
+</ol>
+<h4 id="典型应用"><a href="#典型应用" class="headerlink" title="典型应用"></a>典型应用</h4><h5 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h5><h6 id="比较器接口-java-util-Comparator"><a href="#比较器接口-java-util-Comparator" class="headerlink" title="比较器接口 java.util.Comparator"></a>比较器接口 <code>java.util.Comparator</code></h6><p>通过 <code>Collections.sort(List,Comparator)</code> 和 <code>Arrays.sort(Object[],Comparator)</code> 对集合和数组进行排序。</p>
+<p><code>Comparator</code> 接口充当了<strong>抽象策略</strong>角色，<code>Collections</code> 和 <code>Arrays</code> 则是<strong>环境</strong>角色。</p>
+<h5 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h5><h6 id="实例化策略接口-org-springframework-beans-factory-support-InstantiationStrategy"><a href="#实例化策略接口-org-springframework-beans-factory-support-InstantiationStrategy" class="headerlink" title="实例化策略接口 org.springframework.beans.factory.support.InstantiationStrategy"></a>实例化策略接口 <code>org.springframework.beans.factory.support.InstantiationStrategy</code></h6><p>Spring 在具体实例化Bean的过程中，先通过 <code>ConstructorResolver</code> 找到对应的实例化方法和参数，再通过实例化策略 <code>InstantiationStrategy</code> 进行实例化。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">InstantiationStrategy</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 默认构造方法/无参构造方法</span></span><br><span class="line">  <span class="function">Object <span class="title">instantiate</span><span class="params">(RootBeanDefinition beanDefinition, String beanName, BeanFactory owner)</span> <span class="keyword">throws</span> BeansException</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 指定构造方法/有参构造方法</span></span><br><span class="line">  <span class="function">Object <span class="title">instantiate</span><span class="params">(RootBeanDefinition beanDefinition, String beanName, BeanFactory owner, Constructor&lt;?&gt; ctor,</span></span></span><br><span class="line"><span class="function"><span class="params">                     Object[] args)</span> <span class="keyword">throws</span> BeansException</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 指定工厂方法</span></span><br><span class="line">  <span class="function">Object <span class="title">instantiate</span><span class="params">(RootBeanDefinition beanDefinition, String beanName, BeanFactory owner, Object factoryBean,</span></span></span><br><span class="line"><span class="function"><span class="params">                     Method factoryMethod, Object[] args)</span> <span class="keyword">throws</span> BeansException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>InstantiationStrategy</code> 扮演<strong>抽象策略</strong>角色，有两种具体策略类，分别为 <code>SimpleInstantiationStrategy</code> 和 <code>CglibSubclassingInstantiationStrategy</code></p>
+<p><img data-src="http://image.laijianfeng.org/20181018_171946.png" alt="Spring 实例化策略类图"></p>
+<p>在 <code>SimpleInstantiationStrategy</code> 中对这三个方法做了简单实现，如果工厂方法实例化直接用反射创建对象，如果是构造方法实例化的则判断是否有 <code>MethodOverrides</code>，如果无 <code>MethodOverrides</code> 也是直接用反射，如果有 <code>MethodOverrides</code> 就需要用 <code>cglib</code> 实例化对象，<code>SimpleInstantiationStrategy</code> 把通过 <code>cglib</code> 实例化的任务交给了它的子类 <code>CglibSubclassingInstantiationStrategy</code>。</p>
+<h5 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h5><h6 id="应用世界：不同策略上下架应用"><a href="#应用世界：不同策略上下架应用" class="headerlink" title="应用世界：不同策略上下架应用"></a>应用世界：不同策略上下架应用</h6><p>应用世界中上下架应用有不同的策略：过期时间、点击量、用户量等策略。</p>
+<p>过期时间策略在应用到达过期时间时自动下架。</p>
+<p>点击量在应用的点击次数到达阀值后自动下架。</p>
+<p>用户量在应用的新用户数达到阀值后自动下架。</p>
+<h3 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h3><h4 id="模式结构"><a href="#模式结构" class="headerlink" title="模式结构"></a>模式结构</h4><p>责任链模式包含如下角色：</p>
 <ul>
 <li>处理器抽象类</li>
 <li>具体处理器</li>
@@ -12319,7 +12383,7 @@ D --> F[释放套接字]
 <p>客户端：Worker</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Worker</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> days = <span class="number">3</span>;</span><br><span class="line">    Boolean response = requestLeave(days);</span><br><span class="line">    System.out.println(<span class="string">"申请"</span> + days + <span class="string">"天,"</span> + (response ? <span class="string">"申请成功！"</span> : <span class="string">"申请失败！"</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Boolean <span class="title">requestLeave</span><span class="params">(<span class="keyword">int</span> days)</span> </span>&#123;</span><br><span class="line">    LeaveRequest leaveRequest = <span class="keyword">new</span> LeaveRequest(days);</span><br><span class="line">    SupervisorHandler supervisorHandler = <span class="keyword">new</span> SupervisorHandler(<span class="number">3</span>);</span><br><span class="line">    ManagerHandler managerHandler = <span class="keyword">new</span> ManagerHandler(<span class="number">7</span>);</span><br><span class="line">    GeneralManagerHandler generalManagerHandler = <span class="keyword">new</span> GeneralManagerHandler(Integer.MAX_VALUE);</span><br><span class="line">    LeaveRequestHandlerChain chain = <span class="keyword">new</span> LeaveRequestHandlerChain();</span><br><span class="line">    chain.addHandler(supervisorHandler);</span><br><span class="line">    chain.addHandler(managerHandler);</span><br><span class="line">    chain.addHandler(generalManagerHandler);</span><br><span class="line">    <span class="keyword">return</span> chain.process(leaveRequest);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="典型应用"><a href="#典型应用" class="headerlink" title="典型应用"></a>典型应用</h4><h5 id="Tomcat-过滤器中的责任链模式"><a href="#Tomcat-过滤器中的责任链模式" class="headerlink" title="Tomcat 过滤器中的责任链模式"></a>Tomcat 过滤器中的责任链模式</h5><p><code>Servlet</code> 过滤器是可用于 <code>Servlet</code> 编程的 Java 类，可以实现以下目的：在客户端的请求访问后端资源之前，拦截这些请求；在服务器的响应发送回客户端之前，处理这些响应。</p>
+<h4 id="典型应用-1"><a href="#典型应用-1" class="headerlink" title="典型应用"></a>典型应用</h4><h5 id="Tomcat-过滤器中的责任链模式"><a href="#Tomcat-过滤器中的责任链模式" class="headerlink" title="Tomcat 过滤器中的责任链模式"></a>Tomcat 过滤器中的责任链模式</h5><p><code>Servlet</code> 过滤器是可用于 <code>Servlet</code> 编程的 Java 类，可以实现以下目的：在客户端的请求访问后端资源之前，拦截这些请求；在服务器的响应发送回客户端之前，处理这些响应。</p>
 <h5 id="Mybatis-中的-Plugin-机制"><a href="#Mybatis-中的-Plugin-机制" class="headerlink" title="Mybatis 中的 Plugin 机制"></a>Mybatis 中的 Plugin 机制</h5><p>Mybatis 中的 Plugin 机制使用了责任链模式，配置各种官方或者自定义的 Plugin，与 Filter 类似，可以在执行 Sql 语句的时候做一些操作。</p>
 <h3 id="包装模式-装饰者模式"><a href="#包装模式-装饰者模式" class="headerlink" title="包装模式/装饰者模式"></a>包装模式/装饰者模式</h3><blockquote>
 <p>别称：包装模式、装饰器模式、Wrapper、Decorator</p>
@@ -12351,7 +12415,7 @@ D --> F[释放套接字]
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Shape: rectangle	Color: red</span><br><span class="line">Shape: rectangle	Color: green</span><br><span class="line">Shape: circle	Color: red</span><br><span class="line">Shape: circle	Color: green</span><br></pre></td></tr></table></figure>
 
-<h4 id="典型应用-1"><a href="#典型应用-1" class="headerlink" title="典型应用"></a>典型应用</h4><blockquote>
+<h4 id="典型应用-2"><a href="#典型应用-2" class="headerlink" title="典型应用"></a>典型应用</h4><blockquote>
 <p><a href="https://juejin.im/post/6844903681322647566" target="_blank" rel="noopener">设计模式| 装饰者模式及典型应用 - 掘金</a></p>
 </blockquote>
 <h5 id="Java-I-O"><a href="#Java-I-O" class="headerlink" title="Java I/O"></a>Java I/O</h5><p>抽象构件：<code>java.io.InputStream</code></p>
@@ -12379,7 +12443,7 @@ D --> F[释放套接字]
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">FileInputStream fileInputStream = <span class="keyword">new</span> FileInputStream(filePath);</span><br><span class="line">BufferedInputStream bufferedInputStream = <span class="keyword">new</span> BufferedInputStream(fileInputStream);</span><br></pre></td></tr></table></figure>
 
 <p>DataInputStream 装饰者提供了对更多数据类型进行输入的操作，比如 int、double 等基本类型。</p>
-<h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><h3 id="模版方法模式"><a href="#模版方法模式" class="headerlink" title="模版方法模式"></a>模版方法模式</h3><h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><blockquote>
+<h3 id="模版方法模式"><a href="#模版方法模式" class="headerlink" title="模版方法模式"></a>模版方法模式</h3><h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><blockquote>
 <p><a href="https://blog.csdn.net/shusheng0007/article/details/80864854" target="_blank" rel="noopener">秒懂Java代理与动态代理模式</a></p>
 </blockquote>
 <p>用代理对象<strong>代替</strong>目标对象来实现某个目的（服务/主题/功能）。</p>
@@ -12414,7 +12478,7 @@ D --> F[释放套接字]
 
 <h5 id="代理类"><a href="#代理类" class="headerlink" title="代理类"></a>代理类</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Lawyer</span> <span class="keyword">implements</span> <span class="title">AskAbility</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> ZhangSan zhangSan;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Lawyer</span><span class="params">(ZhangSan zhangSan)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.zhangSan = zhangSan;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askForPay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    zhangSan.askForPay();</span><br><span class="line">    System.out.println(<span class="string">"如果不还将承担法律责任！"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h5 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ZhangSan zhangSan = <span class="keyword">new</span> ZhangSan();</span><br><span class="line">    AskAbility ask = <span class="keyword">new</span> Lawyer(zhangSan);</span><br><span class="line">    ask.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="客户端-2"><a href="#客户端-2" class="headerlink" title="客户端"></a>客户端</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ZhangSan zhangSan = <span class="keyword">new</span> ZhangSan();</span><br><span class="line">    AskAbility ask = <span class="keyword">new</span> Lawyer(zhangSan);</span><br><span class="line">    ask.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h4><p>静态代理中代理类在编译期已经存在，一个服务类需要一个代理类与之对应，当服务类增多时，代理类随着增多，导致类数量太多。</p>
 <p>动态代理就是为了减少类数量而产生。</p>
@@ -12458,7 +12522,7 @@ D --> F[释放套接字]
 
 <h6 id="方法拦截器"><a href="#方法拦截器" class="headerlink" title="方法拦截器"></a>方法拦截器</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AskingMethodInterceptor</span> <span class="keyword">implements</span> <span class="title">MethodInterceptor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Object o, Method method, Object[] objects, MethodProxy methodProxy)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    Object result = methodProxy.invokeSuper(o, objects);</span><br><span class="line">    <span class="keyword">if</span> (method.getName().equals(<span class="string">"askForPay"</span>))</span><br><span class="line">      System.out.println(<span class="string">"如果不还将承担法律责任！"</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h6 id="客户端-1"><a href="#客户端-1" class="headerlink" title="客户端"></a>客户端</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">    Employee proxy = (Employee) Enhancer.create(employee.getClass(), <span class="keyword">new</span> AskingMethodInterceptor());</span><br><span class="line"></span><br><span class="line">    proxy.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="客户端-3"><a href="#客户端-3" class="headerlink" title="客户端"></a>客户端</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">    Employee proxy = (Employee) Enhancer.create(employee.getClass(), <span class="keyword">new</span> AskingMethodInterceptor());</span><br><span class="line"></span><br><span class="line">    proxy.askForPay();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h5 id="JDK-动态代理与-CGLIB-动态代理的区别"><a href="#JDK-动态代理与-CGLIB-动态代理的区别" class="headerlink" title="JDK 动态代理与 CGLIB 动态代理的区别"></a>JDK 动态代理与 CGLIB 动态代理的区别</h5><ol>
 <li>JDK 动态代理基于接口，CGLIB 动态代理基于继承</li>
@@ -12490,7 +12554,7 @@ D --> F[释放套接字]
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">我是1号：张三</span><br><span class="line">我是2号：李四</span><br><span class="line"></span><br><span class="line">Process finished with exit code 0</span><br></pre></td></tr></table></figure>
 
-<h4 id="典型应用-2"><a href="#典型应用-2" class="headerlink" title="典型应用"></a>典型应用</h4><h5 id="Java-集合"><a href="#Java-集合" class="headerlink" title="Java 集合"></a>Java 集合</h5><p><img data-src="../post_image/image_2020_11_04T11_06_19_787Z.png" alt=""></p>
+<h4 id="典型应用-3"><a href="#典型应用-3" class="headerlink" title="典型应用"></a>典型应用</h4><h5 id="Java-集合"><a href="#Java-集合" class="headerlink" title="Java 集合"></a>Java 集合</h5><p><img data-src="../post_image/image_2020_11_04T11_06_19_787Z.png" alt=""></p>
 <h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h3 id="网络分层"><a href="#网络分层" class="headerlink" title="网络分层"></a>网络分层</h3><p>网络分层有三种：</p>
 <ol>
 <li>OSI 7层协议</li>
@@ -12794,12 +12858,124 @@ D --> F[释放套接字]
 <td>兼容</td>
 </tr>
 </tbody></table>
-<h4 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h4><ol>
+<h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><ol>
 <li>left join （左连接）：返回包括左表中的所有记录和右表中连接字段相等的记录。</li>
 <li>right join （右连接）：返回包括右表中的所有记录和左表中连接字段相等的记录。</li>
 <li>inner join （等值连接或者叫内连接）：只返回两个表中连接字段相等的行。</li>
 <li>full join （全外连接）：返回左右表中所有的记录和左右表中连接字段相等的记录。<strong>MySQL不支持</strong></li>
 </ol>
+<h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><h5 id="查询数据库的运行情况"><a href="#查询数据库的运行情况" class="headerlink" title="查询数据库的运行情况"></a>查询数据库的运行情况</h5><h6 id="显示数据库运行状态"><a href="#显示数据库运行状态" class="headerlink" title="显示数据库运行状态"></a>显示数据库运行状态</h6><p><code>SHOW STATUS</code></p>
+<h6 id="显示数据库运行总时间"><a href="#显示数据库运行总时间" class="headerlink" title="显示数据库运行总时间"></a>显示数据库运行总时间</h6><p><code>SHOW STATUS LIKE &#39;uptime&#39;</code></p>
+<h6 id="显示连接的次数"><a href="#显示连接的次数" class="headerlink" title="显示连接的次数"></a>显示连接的次数</h6><p><code>SHOW STATUS LIKE &#39;connections&#39;</code></p>
+<h6 id="显示执行CRUD的次数"><a href="#显示执行CRUD的次数" class="headerlink" title="显示执行CRUD的次数"></a>显示执行CRUD的次数</h6><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">STATUS</span> <span class="keyword">LIKE</span> <span class="string">'com_select'</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">STATUS</span> <span class="keyword">LIKE</span> <span class="string">'com_insert'</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">STATUS</span> <span class="keyword">LIKE</span> <span class="string">'com_update'</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">STATUS</span> <span class="keyword">LIKE</span> <span class="string">'com_delete'</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="慢查询"><a href="#慢查询" class="headerlink" title="慢查询"></a>慢查询</h5><h6 id="慢查询配置"><a href="#慢查询配置" class="headerlink" title="慢查询配置"></a>慢查询配置</h6><p>Linux下修改my.cnf，Windows下修改my.ini。修改后需要重启mysql才会生效。</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#开启慢查询</span></span><br><span class="line"><span class="meta">slow-query-log</span>=<span class="string">1</span></span><br><span class="line"><span class="comment">#慢查询的文件路径</span></span><br><span class="line"><span class="attr">slow_query_log_file</span>=<span class="string">"D:/Program Files/MySQL/Log/mysql-slow.log"</span></span><br><span class="line"><span class="comment">#慢查询时间。默认为10秒</span></span><br><span class="line"><span class="attr">long_query_time</span>=<span class="string">10</span></span><br><span class="line"><span class="comment">#记录没有使用索引的查询</span></span><br><span class="line"><span class="meta">log-queries-not-using-indexes</span>=<span class="string">1</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="定位慢查询SQL"><a href="#定位慢查询SQL" class="headerlink" title="定位慢查询SQL"></a>定位慢查询SQL</h6><p>如果慢查询日志中记录内容较多，则可以使用Mysql自带的慢查询日志分析工具mysqldumpslow来对慢查询日志进行分类汇总。该工具位于/mysql/bin目录下。mysqldumpslow会自动将文本完全一致但变量不同的SQL语句视为同一个语句进行统计，变量值用N来代替。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysqldumpslow -s r -t 10 &#x2F;data&#x2F;dbdata&#x2F;frem-slow.log</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://img2018.cnblogs.com/blog/424830/201907/424830-20190707081744320-989448386.png" alt="img"></p>
+<h5 id="执行计划"><a href="#执行计划" class="headerlink" title="执行计划"></a>执行计划</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">explain [要分析的sql]</span><br></pre></td></tr></table></figure>
+
+<p>分析结果中有如下几列：</p>
+<ol>
+<li>id：查询序号</li>
+<li>select_type</li>
+<li>table</li>
+<li>type</li>
+<li>possible_keys</li>
+<li>key</li>
+<li>key_len</li>
+<li>ref</li>
+<li>rows</li>
+<li>Extra</li>
+</ol>
+<h6 id="id"><a href="#id" class="headerlink" title="id"></a>id</h6><p>表示 select 查询序列号。<strong>id值越大，越优先执行。\</strong>如果id相同，执行顺序由上至下*<strong>*    **<img data-src="https://img2020.cnblogs.com/blog/424830/202005/424830-20200502220732511-625086303.png" alt="img"></strong></p>
+<h6 id="select-type"><a href="#select-type" class="headerlink" title="select_type"></a>select_type</h6><p>表示查询类型。主要用于区分普通查询、子查询、联合查询等几种查询情况。</p>
+<p>取值：</p>
+<ol>
+<li>simple</li>
+<li>primary</li>
+<li>subquery</li>
+<li>derived</li>
+<li>union</li>
+<li>union result</li>
+</ol>
+<p>①simple：表示简单查询，只有一个select操作，即不使用连接和union。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#只有一个select操作，所以都是简单查询</span><br><span class="line"></span><br><span class="line">select id from emp;</span><br><span class="line"></span><br><span class="line">select id from emp join dept on emp.dept_id&#x3D;dept.id;</span><br></pre></td></tr></table></figure>
+
+<p>②primary：表示主查询。子查询语句中的最外层select，或union操作的第一个select。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#子查询形式：第一个select操作为primary</span><br><span class="line">select * from app_school where id &#x3D; (select id from app_school where id&#x3D;100);</span><br><span class="line"></span><br><span class="line">#union形式：第一个select操作为primary</span><br><span class="line">select * from app_school where id&#x3D;100</span><br><span class="line">union</span><br><span class="line">select * from app_school where id&#x3D;101;</span><br></pre></td></tr></table></figure>
+
+<p>③subquery：表示子查询。子查询语句中的内层select。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#第二个select操作为subquery</span><br><span class="line">select * from app_school where id &#x3D; (select id from app_school where id&#x3D;100);</span><br></pre></td></tr></table></figure>
+
+<p>④derived：表示FROM后跟着的select查询，会被标记为derived(导出表/衍生表)。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#第二个select操作为derived</span><br><span class="line">select * from (select id from app_school) t;</span><br></pre></td></tr></table></figure>
+
+<p>⑤union：表示UNION操作后面的select查询。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#第二个select操作为union</span><br><span class="line">select * from app_school where id&#x3D;100</span><br><span class="line">union</span><br><span class="line">select * from app_school where id&#x3D;101;</span><br></pre></td></tr></table></figure>
+
+<p>⑥union result：表示获取UNION最后结果的查询。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#第一个select操作为primary</span><br><span class="line">#第二个select操作为union</span><br><span class="line">#获取最终结果的操作为union result</span><br><span class="line">select * from app_school where id&#x3D;100</span><br><span class="line">union</span><br><span class="line">select * from app_school where id&#x3D;101;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://img2018.cnblogs.com/blog/424830/201907/424830-20190712003515128-554921784.png" alt="img"></p>
+<h6 id="table"><a href="#table" class="headerlink" title="table"></a>table</h6><p>表示查询用到的表。</p>
+<h6 id="type"><a href="#type" class="headerlink" title="type"></a>type</h6><p>表示找到匹配行用到的访问类型。</p>
+<p>最为常见的类型有:</p>
+<ol>
+<li>NULL</li>
+<li>system</li>
+<li>const</li>
+<li>eq_ref</li>
+<li>ref</li>
+<li>range</li>
+<li>index</li>
+<li>All</li>
+</ol>
+<p>按照性能从高到低顺序如下：NULL–&gt;system–&gt;const–&gt;eq-ref–&gt;ref–&gt;range–&gt;index–&gt;All 。一般来说，要让查询至少达到range级别，最好能达到ref级别。</p>
+<p><strong>①</strong>NULL：不用访问表或索引，就可直接得出结果。<br><img data-src="https://img2018.cnblogs.com/blog/424830/201907/424830-20190706164443539-700840263.png" alt="img"></p>
+<p><strong>②system</strong>：该表是最多仅有一行的系统表(这是const类型的一个特例)。系统表中的数据通常已经加载到了内存中，所以不需要磁盘IO。<br>例子1：查询系统表<br><img data-src="https://img2018.cnblogs.com/blog/424830/201907/424830-20190706164242606-1185621519.png" alt="img"><br>例子2：内层嵌套(const)返回了一个临时表，外层嵌套从临时表中查询，其扫描类型也是system，也不需要磁盘IO。</p>
+<p><img data-src="https://img2020.cnblogs.com/blog/424830/202005/424830-20200502231552124-1649320315.png" alt="img"></p>
+<p><strong>③const</strong>：最多只有一个匹配行，所以该行中的其它列的值可以当作常量来处理。例如，根据主键primary key或唯一索引unique index进行查询。<strong>简单地说const就是直接按主键或唯一键取值。</strong>例如在②中介绍system时的举例中user表的访问类型就是const，其通过主键来取值。</p>
+<p><img data-src="https://img2020.cnblogs.com/blog/424830/202005/424830-20200502231426915-1946155193.png" alt="img"></p>
+<p><strong>④eq_ref</strong>：使用唯一索引，对于每个索引键值，表中只有一条记录匹配。简单说，就是多表连接中使用primary key或unique index作为关联条件。</p>
+<p><strong>注意const和eq_ref的区别：简单地说是<code>const</code>是直接按主键或唯一键读取，<code>eq_ref</code>用于联表查询的情况，按联表的主键或唯一键联合查询。</strong></p>
+<p><img data-src="https://img2020.cnblogs.com/blog/424830/202005/424830-20200503001453929-1612327840.png" alt="img">)<img data-src="https://img2020.cnblogs.com/blog/424830/202005/424830-20200503003027609-823944660.png" alt="img"></p>
+<p><strong>⑤ref</strong>：使用非唯一索引，或唯一索引的前缀扫描，返回匹配某个单独值的所有行(可能匹配多个行)。</p>
+<p><img data-src="https://img2020.cnblogs.com/blog/424830/202005/424830-20200503000159947-653574490.png" alt="img">)<img data-src="https://img2020.cnblogs.com/blog/424830/202005/424830-20200503000923679-747371819.png" alt="img"></p>
+<p>ref还经常出现在join操作中</p>
+<p><img data-src="https://img2020.cnblogs.com/blog/424830/202005/424830-20200503001210640-1962805550.png" alt="img"></p>
+<p><strong>⑥</strong>ref_or_null：与ref类似，区别在于条件中包含对NULL的查询。</p>
+<p><strong>⑦</strong>index_merge：索引合并优化。</p>
+<p><strong>⑧</strong>unique_subquery：in的后面是一个查询主键字段的子查询。</p>
+<p><strong>⑨</strong>index_subquery：与unique subquery类似，区别在于in的后面是查询非唯一索引字段的子查询。</p>
+<p><strong>⑩range</strong>：只检索指定范围的行，使用一个索引来选择行。常见于&lt;，&lt;=，&gt;，&gt;=，between或者IN操作符。<br>key列显示使用了哪个索引。key_len包含所使用索引的最长关键元素。</p>
+<p><img data-src="https://img2020.cnblogs.com/blog/424830/202005/424830-20200503003455696-1174761682.png" alt="img"></p>
+<p><strong>11.index</strong>：索引全扫描。遍历整个索引来查询匹配的行。</p>
+<p><img data-src="https://img2020.cnblogs.com/blog/424830/202005/424830-20200503003823129-1724228939.png" alt="img"></p>
+<p><strong>12.ALL</strong>：全表扫描，性能最差。</p>
+<p><img data-src="https://img2020.cnblogs.com/blog/424830/202005/424830-20200503003936777-1259627189.png" alt="img"></p>
+<h6 id="possible-keys和key"><a href="#possible-keys和key" class="headerlink" title="possible_keys和key"></a>possible_keys和key</h6><p>possible_keys表示查询时可能使用到的索引，而key表示实际使用的索引</p>
+<h6 id="key-len"><a href="#key-len" class="headerlink" title="key_len"></a>key_len</h6><p>表示使用到的索引字段的长度</p>
+<h6 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h6><p>表示该表的索引字段关联了哪张表的哪个字段</p>
+<h6 id="rows"><a href="#rows" class="headerlink" title="rows"></a>rows</h6><p>表示扫描行的数量</p>
+<h6 id="Extra"><a href="#Extra" class="headerlink" title="Extra"></a>Extra</h6><p>表示执行情况的说明和描述。包含不适合在其它列中显示但对执行计划非常重要的额外信息。记录几个重要的：</p>
+<ul>
+<li><p>Using index ：使用覆盖索引的时候就会出现</p>
+</li>
+<li><p>Using where：在查找使用索引的情况下，需要回表去查询所需的数据。表示Mysql将对storage engine提取的结果进行过滤，过滤条件字段无索引；</p>
+</li>
+<li><p>Using index condition：查找使用了索引，但是需要回表查询数据。会先条件过滤索引，过滤完索引后找到所有符合索引条件的数据行，随后用 WHERE 子句中的其他条件去过滤这些数据行；</p>
+</li>
+<li><p>Using index &amp; using where：查找使用了索引，但是需要的数据都在索引列中能找到，所以不需要回表查询数据</p>
+</li>
+<li><p>Using filesort：使用了文件排序。当查询语句包含ORDER BY时，如果无法使用索引来完成排序，则需要进行额外的排序操作。</p>
+</li>
+<li><p>Using temporary：使用临时表来保存中间结果</p>
+</li>
+</ul>
 <h3 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h3><h4 id="索引-1"><a href="#索引-1" class="headerlink" title="索引"></a>索引</h4><p>oracle 默认的索引是 <strong>B+树</strong>索引</p>
 <h5 id="索引结构"><a href="#索引结构" class="headerlink" title="索引结构"></a>索引结构</h5><h6 id="B-树索引"><a href="#B-树索引" class="headerlink" title="B+ 树索引"></a>B+ 树索引</h6><p><img data-src="http://hongyitong.github.io/img/B%E6%A0%91%E7%B4%A2%E5%BC%95.jpg" alt=""></p>
 <h6 id="位图索引"><a href="#位图索引" class="headerlink" title="位图索引"></a>位图索引</h6><blockquote>
@@ -12810,7 +12986,7 @@ D --> F[释放套接字]
 <p>位图可以通过 AND/OR 操作，快速得到查询结果。</p>
 <p>此外，位图索引适合<strong>静态</strong>数据，而不适合索引频繁更新的列。</p>
 <p>因为位图索引列的修改会将所有该值的行进行加锁。</p>
-<h4 id="锁-2"><a href="#锁-2" class="headerlink" title="锁"></a>锁</h4><h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><h5 id="最左前缀原则"><a href="#最左前缀原则" class="headerlink" title="最左前缀原则"></a>最左前缀原则</h5><p>联合索引的任何前缀索引都会使用到索引查询，(col1, col2, col3) 这个联合索引的所有前缀就是(col1), (col1, col2), (col1, col2, col3) 包含这些列的查询都会启用索引查询，除此之外的查询即时包含了联合索引中的多列也不会启用索引查询。即 (col2), (col3), (col2, col3) 都不会启动(col1, col2, col3) 这个联合索引查询。</p>
+<h4 id="锁-2"><a href="#锁-2" class="headerlink" title="锁"></a>锁</h4><h3 id="优化-1"><a href="#优化-1" class="headerlink" title="优化"></a>优化</h3><h5 id="最左前缀原则"><a href="#最左前缀原则" class="headerlink" title="最左前缀原则"></a>最左前缀原则</h5><p>联合索引的任何前缀索引都会使用到索引查询，(col1, col2, col3) 这个联合索引的所有前缀就是(col1), (col1, col2), (col1, col2, col3) 包含这些列的查询都会启用索引查询，除此之外的查询即时包含了联合索引中的多列也不会启用索引查询。即 (col2), (col3), (col2, col3) 都不会启动(col1, col2, col3) 这个联合索引查询。</p>
 <h5 id="禁止使用-SELECT-必须使用-SELECT-lt-字段列表-gt-查询"><a href="#禁止使用-SELECT-必须使用-SELECT-lt-字段列表-gt-查询" class="headerlink" title="禁止使用 SELECT * 必须使用 SELECT &lt;字段列表&gt; 查询"></a>禁止使用 SELECT * 必须使用 SELECT &lt;字段列表&gt; 查询</h5><p><strong>原因：</strong></p>
 <ul>
 <li>消耗更多的 CPU 和 IO 以网络带宽资源</li>
@@ -12835,7 +13011,7 @@ D --> F[释放套接字]
 <li>UNION 会把两个结果集的所有数据放到临时表中后再进行去重操作</li>
 <li>UNION ALL 不会再对结果集进行去重操作</li>
 </ul>
-<h4 id="执行计划"><a href="#执行计划" class="headerlink" title="执行计划"></a>执行计划</h4><p>Mysql 使用 Explain + select…</p>
+<h4 id="执行计划-1"><a href="#执行计划-1" class="headerlink" title="执行计划"></a>执行计划</h4><p>Mysql 使用 Explain + select…</p>
 <p>比较重要的字段有：</p>
 <ul>
 <li>select_type : 查询类型，有简单查询、联合查询、子查询等</li>
@@ -12933,7 +13109,13 @@ D --> F[释放套接字]
 
 
 <h4 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h4><h4 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h4><h4 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h4><h4 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h4><p><strong>netstat命令</strong>用来打印Linux中网络系统的状态信息，可让你得知整个Linux系统的网络情况。</p>
-<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><h4 id="IoC"><a href="#IoC" class="headerlink" title="IoC"></a>IoC</h4><h4 id="AOP-1"><a href="#AOP-1" class="headerlink" title="AOP"></a>AOP</h4><h5 id="Spring-AOP和AspectJ是什么关系？"><a href="#Spring-AOP和AspectJ是什么关系？" class="headerlink" title="Spring AOP和AspectJ是什么关系？"></a>Spring AOP和AspectJ是什么关系？</h5><p>其实AOP并不是Spring的专属，AOP最开始是一种编程模型，后来大佬们为了探讨AOP的标准化，统一AOP规范，成立了一个AOP联盟。除了Spring外，AOP的框架有很多，比如AspectJ, AspectWerkz, JBoss-AOP。</p>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><h3 id="Spring-1"><a href="#Spring-1" class="headerlink" title="Spring"></a>Spring</h3><h4 id="IoC"><a href="#IoC" class="headerlink" title="IoC"></a>IoC</h4><h5 id="Autowaire-和-Resource-有什么区别？"><a href="#Autowaire-和-Resource-有什么区别？" class="headerlink" title="@Autowaire 和 @Resource 有什么区别？"></a>@Autowaire 和 @Resource 有什么区别？</h5><h5 id="Autowaire-放在成员变量上和放在set方法上的区别是什么？"><a href="#Autowaire-放在成员变量上和放在set方法上的区别是什么？" class="headerlink" title="@Autowaire 放在成员变量上和放在set方法上的区别是什么？"></a>@Autowaire 放在成员变量上和放在set方法上的区别是什么？</h5><p>放在 setter 上可以对注入的 Bean 做其他的操作，除此之外并无其他区别。</p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DaoDemo</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> JdbcTemplate jdbcTemplate;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDataSource</span><span class="params">(DataSource dataSource)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.jdbcTemplate = <span class="keyword">new</span> JdbcTemplate(dataSource);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="AOP-1"><a href="#AOP-1" class="headerlink" title="AOP"></a>AOP</h4><h5 id="Spring-AOP和AspectJ是什么关系？"><a href="#Spring-AOP和AspectJ是什么关系？" class="headerlink" title="Spring AOP和AspectJ是什么关系？"></a>Spring AOP和AspectJ是什么关系？</h5><p>其实AOP并不是Spring的专属，AOP最开始是一种编程模型，后来大佬们为了探讨AOP的标准化，统一AOP规范，成立了一个AOP联盟。除了Spring外，AOP的框架有很多，比如AspectJ, AspectWerkz, JBoss-AOP。</p>
 <p>最开始，Spring AOP和AspectJ是完全独立的，Spring有自己的实现和使用语法。但是Spring的AOP使用起来太麻烦了，深受大家吐槽。于是Spring支持了广受大家好评的AspectJ语法，通过在配置类上添加<code>@EnableAspectJAutoProxy</code>这个注解来开启对AspectJ的语法。</p>
 <p>但Spring<strong>仅仅是支持了AspectJ的部分语法（有些语法是不支持的），但底层实现还是自己的一套东西</strong>。而且两个框架的目标不同，AspectJ是一套完整的AOP解决方案，更为健壮，但使用起来比较复杂，还需要使用特殊的语法和编译器。而Spring的目的是想要把AOP和IoC框架结合起来，让Spring管理的Bean能够很方便地使用AOP的功能。</p>
 <p>所以Spring AOP和AspectJ没啥关系，只是Spring借鉴了Aspect的声明语法。</p>
@@ -13191,8 +13373,6 @@ D --> F[释放套接字]
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	listen: 80</span><br><span class="line">	location: &#123;</span><br><span class="line">		proxy_pass http:&#x2F;&#x2F;backserver</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="负载均衡参数"><a href="#负载均衡参数" class="headerlink" title="负载均衡参数"></a>负载均衡参数</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">下面的参数可同时配置，使用空格分开即可</span><br><span class="line">&#39;配置方式 server ip:端口 参数&#39;</span><br><span class="line"></span><br><span class="line">- &#39;weight 权重&#39;</span><br><span class="line"># weight &#x3D; 数值 (值越高被选中的概率也就越高)</span><br><span class="line"></span><br><span class="line">- &#39;max_fails 失败多少次踢出队列&#39;</span><br><span class="line"># max_fails &#x3D; 数值</span><br><span class="line"></span><br><span class="line">- &#39;fail_timeout 踢出队列后重新探测时间&#39;</span><br><span class="line"># fail_timeout &#x3D; 60s (s &#x3D; 秒)</span><br><span class="line"></span><br><span class="line">- &#39;max_conns 最大连接数&#39;</span><br><span class="line"># max_conns &#x3D; 800 为防止单机性能过载可以根据实际情况设置</span><br></pre></td></tr></table></figure>
-
-
 
 <h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><blockquote>
 <p><a href="https://github.com/Snailclimb/JavaGuide/blob/master/docs/database/Redis/redis-all.md" target="_blank" rel="noopener">Redis | JavaGuide</a></p>
@@ -13604,7 +13784,7 @@ D --> F[释放套接字]
 </ul>
 </li>
 </ul>
-<h4 id="TCC"><a href="#TCC" class="headerlink" title="TCC"></a>TCC</h4><h4 id="两段式（2PC）"><a href="#两段式（2PC）" class="headerlink" title="两段式（2PC）"></a>两段式（2PC）</h4><h4 id="三段式（3PC）"><a href="#三段式（3PC）" class="headerlink" title="三段式（3PC）"></a>三段式（3PC）</h4><h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><h2 id="什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢"><a href="#什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢" class="headerlink" title="什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢?"></a>什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢?</h2><p>思考一下在你的虚拟机上部署应用程序需要些什么。</p>
+<h4 id="TCC"><a href="#TCC" class="headerlink" title="TCC"></a>TCC</h4><h4 id="两段式（2PC）"><a href="#两段式（2PC）" class="headerlink" title="两段式（2PC）"></a>两段式（2PC）</h4><h4 id="三段式（3PC）"><a href="#三段式（3PC）" class="headerlink" title="三段式（3PC）"></a>三段式（3PC）</h4><h3 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h3><h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><h3 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h3><h4 id="nextTick"><a href="#nextTick" class="headerlink" title="$nextTick"></a>$nextTick</h4><h2 id="什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢"><a href="#什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢" class="headerlink" title="什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢?"></a>什么是嵌入式服务器？我们为什么要使用嵌入式服务器呢?</h2><p>思考一下在你的虚拟机上部署应用程序需要些什么。</p>
 <p>第一步：安装 Java</p>
 <p>第二部：安装 Web 或者是应用程序的服务器（Tomat/Wbesphere/Weblogic 等等）</p>
 <p>第三部：部署应用程序 war 包</p>
