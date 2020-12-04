@@ -743,6 +743,14 @@ public class HeapSort<T extends Comparable<T>> extends Sort<T> {
 
 ### 基础
 
+#### 多态
+
+多态的三个条件：
+
+1. 要有继承关系
+2. 子类要重写父类的方法
+3. 父类引用指向子类对象
+
 #### 为什么说 Java 语言“编译与解释并存”？
 
 高级编程语言按照程序的执行方式分为编译型和解释型两种。简单来说，编译型语言是指编译器针对特定的操作系统将源代码一次性翻译成可被该平台执行的机器码；解释型语言是指解释器对源程序逐行解释成特定平台的机器码并立即执行。
@@ -775,6 +783,19 @@ Java**中**有8种基本数据类型，分别为：
 #### 为什么 Java 中只有值传递？
 
 Java 对对象的传递，传递的是对象引用的一份拷贝，虽然会可以通过引用修改对象的状态，但出了方法后原变量的引用并没有改变，即对象引用是按值传递的。
+
+### 包装类
+
+#### 哪些地方会自动拆装箱
+
+1. 将基本数据类型放入集合类
+2. 包装类型和基本类型的大小比较
+3. 包装类型的运算
+4. 函数参数与返回值
+
+#### java 是否存在使得语句 `i > j || i <= j` 结果为 false 的 i、j 值？
+
+存在，java 的数值 NaN 代表 not a number，无法用于比较，例如使 `i = Double.NaN; j = i;` 最后 i == j 的结果依旧为 false。
 
 ### 反射
 
@@ -2306,6 +2327,256 @@ public static <T extends Enum<T>> T valueOf(Class<T> enumType,
 
 ### 工厂模式
 
+### 策略模式
+
+> 《大话设计模式》第2章 商场促销——策略模式
+
+#### 现金收费抽象类
+
+```java
+public interface CashSuper {
+  double acceptCash(double money);
+}
+```
+
+#### 正常收费子类
+
+```java
+public class CashNormal implements CashSuper{
+  @Override
+  public double acceptCash(double money) {
+    return money;
+  }
+}
+```
+
+#### 打折收费子类
+
+```java
+public class CashRebate implements CashSuper {
+
+  private double moneyRebate = 1d;
+
+  public CashRebate(double moneyRebate) {
+    this.moneyRebate = moneyRebate;
+  }
+
+  @Override
+  public double acceptCash(double money) {
+    return money * moneyRebate;
+  }
+}
+```
+
+#### 返利收费子类
+
+```java
+public class CashReturn implements CashSuper {
+
+  private double moneyCondition;
+
+  private double moneyReturn;
+
+  public CashReturn(double moneyCondition, double moneyReturn) {
+    this.moneyCondition = moneyCondition;
+    this.moneyReturn = moneyReturn;
+  }
+
+  @Override
+  public double acceptCash(double money) {
+    if (money > moneyCondition) {
+      money -= (int) (money / moneyCondition) * moneyReturn;
+    }
+    return money;
+  }
+}
+```
+
+#### 简单工厂实现
+
+##### 现金收费工厂类
+
+```java
+public class CashFactory {
+
+  public static CashSuper createCashAccept(String type) {
+    CashSuper cashSuper = null;
+    switch (type) {
+      case "正常收费":
+        cashSuper = new CashNormal();
+        break;
+      case "满300减100":
+        cashSuper = new CashReturn(300, 100);
+        break;
+      case "打8折":
+        cashSuper = new CashRebate(0.8);
+        break;
+      default:
+        break;
+    }
+    return cashSuper;
+  }
+}
+```
+
+##### 客户端
+
+```java
+public class Client {
+
+  private final static double MONEY = 1000;
+
+  public static void main(String[] args) {
+    CashSuper cashSuper = CashFactory.createCashAccept("正常收费");
+    System.out.println("Primary money="+MONEY+", Final money="+cashSuper.acceptCash(MONEY));
+
+    CashSuper cashSuper2 = CashFactory.createCashAccept("满300减100");
+    System.out.println("Primary money="+MONEY+", Final money="+cashSuper2.acceptCash(MONEY));
+
+    CashSuper cashSuper3 = CashFactory.createCashAccept("打8折");
+    System.out.println("Primary money="+MONEY+", Final money="+cashSuper3.acceptCash(MONEY));
+  }
+}
+```
+
+#### 策略与简单工厂结合
+
+##### CashContext类
+
+```java
+public class CashContext {
+
+  private CashSuper cashSuper;
+
+  public CashContext(String type) {
+    CashSuper cashSuper = null;
+    switch (type) {
+      case "正常收费":
+        cashSuper = new CashNormal();
+        break;
+      case "满300减100":
+        cashSuper = new CashReturn(300, 100);
+        break;
+      case "打8折":
+        cashSuper = new CashRebate(0.8);
+        break;
+      default:
+        break;
+    }
+    this.cashSuper = cashSuper;
+  }
+
+  public double getResult(double money) {
+    return cashSuper.acceptCash(money);
+  }
+}
+```
+
+###### 如何消除switch语句？
+
+通过反射
+
+##### 客户端
+
+```java
+public class Client {
+  private final static double MONEY = 1000;
+
+  public static void main(String[] args) {
+    CashContext cashContext = new CashContext("正常收费");
+    System.out.println("Primary money=" + MONEY + ", Final money=" + cashContext.getResult(MONEY));
+
+    CashContext cashContext2 = new CashContext("满300减100");
+    System.out.println("Primary money=" + MONEY + ", Final money=" + cashContext2.getResult(MONEY));
+
+    CashContext cashContext3 = new CashContext("打8折");
+    System.out.println("Primary money=" + MONEY + ", Final money=" + cashContext3.getResult(MONEY));
+  }
+}
+```
+
+#### 简单工厂模式 VS 策略模式与简单工厂结合
+
+```java
+//简单工厂模式的用法
+CashSuper cashSuper = CashFactory.createCashAccept(type);
+cashSuper.acceptCash(MONEY);
+
+//策略模式与简单工厂结合的用法
+CashContext cashContext = new CashContext(type);
+cashContext.getResult(MONEY);
+```
+
+1. 简单工厂模式需要让客户端认识两个类，CashSuper和CashFactory，而策略模式与简单工厂结合的用法，客户端就只需要认识一个类CashContext就可以了。耦合更加降低。
+2. 策略模式与简单工厂结合的用法在客户端实例化的是CashContext的对象，调用的是CashContext的方法getResult，这使得具体的收费算法彻底地与客户端分离。连算法的父类CashSuper都不让客户端认识了。
+
+#### 策略模式的优缺点
+
+##### 优点
+
+1. 低耦合
+
+   策略模式是一种定义一系列算法的方法，所有算法完成相同的工作，只是实现不同，它可以以相同的方式调用所有的算法，减少了各种算法类与使用算法类之间的耦合。
+
+2. 简化单元测试
+
+   每个算法都有自己的类，可以通过自己的接口单独测试。
+
+##### 缺点
+
+1. 策略类需要对客户端透明：客户端必须知道所有的策略类，并自行决定哪一个策略类，也就是客户端需要理解这些算法的区别以便选择适当的算法
+2. 策略类数量多：策略模式会造成系统产生很多具体策略类，任何细小的变化都会导致系统增加一个新的具体策略类
+3. 客户端无法使用多个策略类：客户端每次只能使用一个策略类，不支持使用一个策略类完成部分功能后再使用另一个策略类来完成剩下的功能
+
+#### 典型应用
+
+##### JDK
+
+###### 比较器接口 `java.util.Comparator`
+
+通过 `Collections.sort(List,Comparator)` 和 `Arrays.sort(Object[],Comparator)` 对集合和数组进行排序。
+
+`Comparator` 接口充当了**抽象策略**角色，`Collections` 和 `Arrays` 则是**环境**角色。
+
+##### Spring
+
+###### 实例化策略接口 `org.springframework.beans.factory.support.InstantiationStrategy`
+
+Spring 在具体实例化Bean的过程中，先通过 `ConstructorResolver` 找到对应的实例化方法和参数，再通过实例化策略 `InstantiationStrategy` 进行实例化。
+
+```java
+public interface InstantiationStrategy {
+  // 默认构造方法/无参构造方法
+  Object instantiate(RootBeanDefinition beanDefinition, String beanName, BeanFactory owner) throws BeansException;
+
+  // 指定构造方法/有参构造方法
+  Object instantiate(RootBeanDefinition beanDefinition, String beanName, BeanFactory owner, Constructor<?> ctor,
+                     Object[] args) throws BeansException;
+
+  // 指定工厂方法
+  Object instantiate(RootBeanDefinition beanDefinition, String beanName, BeanFactory owner, Object factoryBean,
+                     Method factoryMethod, Object[] args) throws BeansException;
+}
+```
+
+`InstantiationStrategy` 扮演**抽象策略**角色，有两种具体策略类，分别为 `SimpleInstantiationStrategy` 和 `CglibSubclassingInstantiationStrategy`
+
+![Spring 实例化策略类图](http://image.laijianfeng.org/20181018_171946.png)
+
+在 `SimpleInstantiationStrategy` 中对这三个方法做了简单实现，如果工厂方法实例化直接用反射创建对象，如果是构造方法实例化的则判断是否有 `MethodOverrides`，如果无 `MethodOverrides` 也是直接用反射，如果有 `MethodOverrides` 就需要用 `cglib` 实例化对象，`SimpleInstantiationStrategy` 把通过 `cglib` 实例化的任务交给了它的子类 `CglibSubclassingInstantiationStrategy`。
+
+##### 项目
+
+###### 应用世界：不同策略上下架应用
+
+应用世界中上下架应用有不同的策略：过期时间、点击量、用户量等策略。
+
+过期时间策略在应用到达过期时间时自动下架。
+
+点击量在应用的点击次数到达阀值后自动下架。
+
+用户量在应用的新用户数达到阀值后自动下架。
+
 ### 责任链模式
 
 #### 模式结构
@@ -2581,8 +2852,6 @@ BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStrea
 ```
 
 DataInputStream 装饰者提供了对更多数据类型进行输入的操作，比如 int、double 等基本类型。
-
-### 策略模式
 
 ### 模版方法模式
 
@@ -3340,14 +3609,260 @@ InnoDB行锁模式兼容性列表
 | S                                  | 冲突 | 冲突 | 兼容 | 兼容 |
 | IS                                 | 冲突 | 兼容 | 兼容 | 兼容 |
 
-#### 连接
+#### 连接查询
 
 1. left join （左连接）：返回包括左表中的所有记录和右表中连接字段相等的记录。
 2. right join （右连接）：返回包括右表中的所有记录和左表中连接字段相等的记录。
 3. inner join （等值连接或者叫内连接）：只返回两个表中连接字段相等的行。
 4. full join （全外连接）：返回左右表中所有的记录和左右表中连接字段相等的记录。**MySQL不支持**
 
+#### 优化
 
+##### 查询数据库的运行情况
+
+###### 显示数据库运行状态
+
+`SHOW STATUS`
+
+###### 显示数据库运行总时间
+
+`SHOW STATUS LIKE 'uptime'`
+
+###### 显示连接的次数
+
+`SHOW STATUS LIKE 'connections'`
+
+###### 显示执行CRUD的次数
+
+```sql
+SHOW STATUS LIKE 'com_select'
+SHOW STATUS LIKE 'com_insert'
+SHOW STATUS LIKE 'com_update'
+SHOW STATUS LIKE 'com_delete'
+```
+
+##### 慢查询
+
+###### 慢查询配置
+
+Linux下修改my.cnf，Windows下修改my.ini。修改后需要重启mysql才会生效。
+
+```properties
+#开启慢查询
+slow-query-log=1
+#慢查询的文件路径
+slow_query_log_file="D:/Program Files/MySQL/Log/mysql-slow.log"
+#慢查询时间。默认为10秒
+long_query_time=10
+#记录没有使用索引的查询
+log-queries-not-using-indexes=1
+```
+
+###### 定位慢查询SQL
+
+如果慢查询日志中记录内容较多，则可以使用Mysql自带的慢查询日志分析工具mysqldumpslow来对慢查询日志进行分类汇总。该工具位于/mysql/bin目录下。mysqldumpslow会自动将文本完全一致但变量不同的SQL语句视为同一个语句进行统计，变量值用N来代替。
+
+```mysql
+mysqldumpslow -s r -t 10 /data/dbdata/frem-slow.log
+```
+
+![img](https://img2018.cnblogs.com/blog/424830/201907/424830-20190707081744320-989448386.png)
+
+##### 执行计划
+
+```mysql
+explain [要分析的sql]
+```
+
+分析结果中有如下几列：
+
+1. id：查询序号
+2. select_type
+3. table
+4. type
+5. possible_keys
+6. key
+7. key_len
+8. ref
+9. rows
+10. Extra
+
+###### id
+
+表示 select 查询序列号。**id值越大，越优先执行。\**如果id相同，执行顺序由上至下\****    **![img](https://img2020.cnblogs.com/blog/424830/202005/424830-20200502220732511-625086303.png)**
+
+###### select_type
+
+表示查询类型。主要用于区分普通查询、子查询、联合查询等几种查询情况。
+
+取值：
+
+1. simple
+2. primary
+3. subquery
+4. derived
+5. union
+6. union result
+
+①simple：表示简单查询，只有一个select操作，即不使用连接和union。
+
+```mysql
+#只有一个select操作，所以都是简单查询
+
+select id from emp;
+
+select id from emp join dept on emp.dept_id=dept.id;
+```
+
+②primary：表示主查询。子查询语句中的最外层select，或union操作的第一个select。
+
+```mysql
+#子查询形式：第一个select操作为primary
+select * from app_school where id = (select id from app_school where id=100);
+
+#union形式：第一个select操作为primary
+select * from app_school where id=100
+union
+select * from app_school where id=101;
+```
+
+③subquery：表示子查询。子查询语句中的内层select。
+
+```mysql
+#第二个select操作为subquery
+select * from app_school where id = (select id from app_school where id=100);
+```
+
+④derived：表示FROM后跟着的select查询，会被标记为derived(导出表/衍生表)。
+
+```mysql
+#第二个select操作为derived
+select * from (select id from app_school) t;
+```
+
+⑤union：表示UNION操作后面的select查询。
+
+```mysql
+#第二个select操作为union
+select * from app_school where id=100
+union
+select * from app_school where id=101;
+```
+
+⑥union result：表示获取UNION最后结果的查询。
+
+```mysql
+#第一个select操作为primary
+#第二个select操作为union
+#获取最终结果的操作为union result
+select * from app_school where id=100
+union
+select * from app_school where id=101;
+```
+
+![img](https://img2018.cnblogs.com/blog/424830/201907/424830-20190712003515128-554921784.png)
+
+###### table
+
+表示查询用到的表。
+
+###### type
+
+表示找到匹配行用到的访问类型。
+
+最为常见的类型有:
+
+1. NULL
+2. system
+3. const
+4. eq_ref
+5. ref
+6. range
+7. index
+8. All
+
+按照性能从高到低顺序如下：NULL-->system-->const-->eq-ref-->ref-->range-->index-->All 。一般来说，要让查询至少达到range级别，最好能达到ref级别。
+
+**①**NULL：不用访问表或索引，就可直接得出结果。
+![img](https://img2018.cnblogs.com/blog/424830/201907/424830-20190706164443539-700840263.png)
+
+**②system**：该表是最多仅有一行的系统表(这是const类型的一个特例)。系统表中的数据通常已经加载到了内存中，所以不需要磁盘IO。
+例子1：查询系统表
+![img](https://img2018.cnblogs.com/blog/424830/201907/424830-20190706164242606-1185621519.png)
+例子2：内层嵌套(const)返回了一个临时表，外层嵌套从临时表中查询，其扫描类型也是system，也不需要磁盘IO。
+
+![img](https://img2020.cnblogs.com/blog/424830/202005/424830-20200502231552124-1649320315.png)
+
+**③const**：最多只有一个匹配行，所以该行中的其它列的值可以当作常量来处理。例如，根据主键primary key或唯一索引unique index进行查询。**简单地说const就是直接按主键或唯一键取值。**例如在②中介绍system时的举例中user表的访问类型就是const，其通过主键来取值。
+
+![img](https://img2020.cnblogs.com/blog/424830/202005/424830-20200502231426915-1946155193.png)
+
+**④eq_ref**：使用唯一索引，对于每个索引键值，表中只有一条记录匹配。简单说，就是多表连接中使用primary key或unique index作为关联条件。
+
+**注意const和eq_ref的区别：简单地说是`const`是直接按主键或唯一键读取，`eq_ref`用于联表查询的情况，按联表的主键或唯一键联合查询。**
+
+![img](https://img2020.cnblogs.com/blog/424830/202005/424830-20200503001453929-1612327840.png)![img](https://img2020.cnblogs.com/blog/424830/202005/424830-20200503003027609-823944660.png)
+
+**⑤ref**：使用非唯一索引，或唯一索引的前缀扫描，返回匹配某个单独值的所有行(可能匹配多个行)。
+
+![img](https://img2020.cnblogs.com/blog/424830/202005/424830-20200503000159947-653574490.png)![img](https://img2020.cnblogs.com/blog/424830/202005/424830-20200503000923679-747371819.png)
+
+ref还经常出现在join操作中
+
+![img](https://img2020.cnblogs.com/blog/424830/202005/424830-20200503001210640-1962805550.png)
+
+**⑥**ref_or_null：与ref类似，区别在于条件中包含对NULL的查询。
+
+**⑦**index_merge：索引合并优化。
+
+**⑧**unique_subquery：in的后面是一个查询主键字段的子查询。
+
+**⑨**index_subquery：与unique subquery类似，区别在于in的后面是查询非唯一索引字段的子查询。
+
+**⑩range**：只检索指定范围的行，使用一个索引来选择行。常见于<，<=，>，>=，between或者IN操作符。
+key列显示使用了哪个索引。key_len包含所使用索引的最长关键元素。
+
+![img](https://img2020.cnblogs.com/blog/424830/202005/424830-20200503003455696-1174761682.png)
+
+**11.index**：索引全扫描。遍历整个索引来查询匹配的行。
+
+![img](https://img2020.cnblogs.com/blog/424830/202005/424830-20200503003823129-1724228939.png)
+
+**12.ALL**：全表扫描，性能最差。
+
+![img](https://img2020.cnblogs.com/blog/424830/202005/424830-20200503003936777-1259627189.png)
+
+###### possible_keys和key
+
+possible_keys表示查询时可能使用到的索引，而key表示实际使用的索引
+
+###### key_len
+
+表示使用到的索引字段的长度
+
+###### ref
+
+表示该表的索引字段关联了哪张表的哪个字段
+
+###### rows
+
+表示扫描行的数量
+
+###### Extra
+
+表示执行情况的说明和描述。包含不适合在其它列中显示但对执行计划非常重要的额外信息。记录几个重要的：
+
+- Using index ：使用覆盖索引的时候就会出现
+
+- Using where：在查找使用索引的情况下，需要回表去查询所需的数据。表示Mysql将对storage engine提取的结果进行过滤，过滤条件字段无索引；
+
+- Using index condition：查找使用了索引，但是需要回表查询数据。会先条件过滤索引，过滤完索引后找到所有符合索引条件的数据行，随后用 WHERE 子句中的其他条件去过滤这些数据行；
+
+- Using index & using where：查找使用了索引，但是需要的数据都在索引列中能找到，所以不需要回表查询数据
+
+- Using filesort：使用了文件排序。当查询语句包含ORDER BY时，如果无法使用索引来完成排序，则需要进行额外的排序操作。
+
+- Using temporary：使用临时表来保存中间结果
 
 ### Oracle
 
@@ -3609,6 +4124,30 @@ PID    COMMAND      %CPU TIME     #TH   #WQ  #PORTS MEM    PURG   CMPRS  PGRP
 ### Spring
 
 #### IoC
+
+##### @Autowaire 和 @Resource 有什么区别？
+
+
+
+##### @Autowaire 放在成员变量上和放在set方法上的区别是什么？
+
+放在 setter 上可以对注入的 Bean 做其他的操作，除此之外并无其他区别。
+
+例如：
+
+```java
+class DaoDemo{
+
+  private JdbcTemplate jdbcTemplate;
+
+  @Autowired
+  public void setDataSource(DataSource dataSource){
+    this.jdbcTemplate = new JdbcTemplate(dataSource);
+  }
+}
+```
+
+
 
 #### AOP
 
@@ -4153,8 +4692,6 @@ zuul:
 
 ![](https://segmentfault.com/img/remote/1460000021497456)
 
-
-
 ## 服务器
 
 ### Tomcat
@@ -4258,8 +4795,6 @@ server{
 - 'max_conns 最大连接数'
 # max_conns = 800 为防止单机性能过载可以根据实际情况设置
 ```
-
-
 
 ## 缓存
 
@@ -5198,8 +5733,6 @@ headers 类型的交换器不依赖于路由键的匹配规则来路由消息，
 
 ### Kafka
 
-
-
 ## Elasticsearch
 
 *Elasticsearch* 是一个实时的分布式搜索分析引擎，它能让你以前所未有的速度和规模，去探索你的数据。 它被用作全文检索、结构化搜索、分析以及这三个功能的组合。例如 GitHub 使用 Elasticsearch 对1300亿行代码进行查询。
@@ -5245,8 +5778,6 @@ Term dictionary在磁盘上是以分快的方式保存的，一个block内部利
 在 docker 中执行 bash 命令
 
 `docker exec -it set-mobile_qa /bin/bash`
-
-
 
 ## 操作系统
 
@@ -5314,6 +5845,8 @@ RPC 只是一种概念、一种设计，就是为了解决 **不同服务之间�
 ### JS
 
 ### Vue
+
+#### $nextTick
 
 
 
