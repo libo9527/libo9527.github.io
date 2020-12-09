@@ -78,7 +78,7 @@
   </entry>
   <entry>
     <title>Account Management in Git</title>
-    <url>/2020/12/04/Account-Management-in-Git/</url>
+    <url>/2020/12/09/Account-Management-in-Git/</url>
     <content><![CDATA[<img data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR47zQflbjfccDWmMhgzZ6Na_e2jNfmWLhWHYSmZbjcySYzqnVTbw" width="100%"/>
 
 <a id="more"></a>
@@ -11325,8 +11325,10 @@ D --> F[释放套接字]
   </entry>
   <entry>
     <title>Interview</title>
-    <url>/2020/10/21/Interview/</url>
-    <content><![CDATA[<img data-src="https://resources.workable.com/wp-content/uploads/2018/05/prepare-interviews-featured.png" width="100%"/>
+    <url>/2020/12/09/Interview/</url>
+    <content><![CDATA[<hr>
+<p>title: Interview<br>description: 面试<br>comments: false<br>hidden: false<br>top: false<br>date: 2020-10-21 20:00:51<br>categories:<br>tags:<br>—计算元素值的哈希值。根据哈希值，在位数组中把对应下标的值置为 1。</p>
+<img data-src="https://resources.workable.com/wp-content/uploads/2018/05/prepare-interviews-featured.png" width="100%"/>
 
 <a id="more"></a>
 
@@ -13634,7 +13636,6 @@ D --> F[释放套接字]
 </li>
 <li><p>布隆过滤器</p>
 <p>把所有可能存在的请求的值都存放在布隆过滤器中，当用户请求过来，先判断用户发来的请求的值是否存在于布隆过滤器中。不存在的话，直接返回请求参数错误信息给客户端，存在的话才会继续走下面的流程。</p>
-<p>计算元素值的哈希值。根据哈希值，在位数组中把对应下标的值置为 1。</p>
 </li>
 </ol>
 <h4 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h4><h5 id="什么是缓存雪崩？"><a href="#什么是缓存雪崩？" class="headerlink" title="什么是缓存雪崩？"></a>什么是缓存雪崩？</h5><p>缓存在同一时间大面积的失效，后面的请求都直接落到了数据库上，造成数据库短时间内承受大量请求。</p>
