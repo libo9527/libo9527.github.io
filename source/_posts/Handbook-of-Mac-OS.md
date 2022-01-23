@@ -275,3 +275,30 @@ $ mdfind "keyword" -onlyin ~/Document
 
 1. 打开 spotlight，输入要搜索的关键字
 2. Command + b
+
+## Automator
+
+使用 automator 执行 shell 脚本
+
+```bash
+open -n "/Applications/Google Chrome.app" --args --disable-web-security  --user-data-dir=/Users/$USER/chromeDevUserData/
+```
+
+在 Mac 中，可以将脚本保存在后缀名为 `.command` 的文件中，文件首行指定运行环境 `#!/bin/bash`。然后就可以双击文件执行了。但执行完脚本后终端窗口不会自动关闭。可以在脚本文件最后加上以下命令
+
+```bash
+osascript -e 'tell application "Terminal" to close (every window whose name contains ".command")' &
+exit
+```
+
+但上述命令会关闭所有以 `.command` 方式打开的终端窗口。
+
+可以使用 Mac 的自动操作（Automator）来执行 shell 脚本。
+
+> https://support.apple.com/zh-cn/guide/automator/autbbd4cc11c/mac
+
+首先打开自动操作，然后新建，文件类型选择“应用程序”，搜索“shell”，选择“运行shell脚本”，拖拽到工作流程区域，然后输入shell命令，选择好执行环境，然后保存。
+
+之后就可以直接打开这个应用程序，就自动执行里面的命令了。也可以使用启动台搜索应用名称快捷启动。
+
+![image-20220123183112387](/post_image/image-20220123183112387.png)
