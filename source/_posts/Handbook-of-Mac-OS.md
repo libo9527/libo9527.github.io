@@ -302,3 +302,14 @@ exit
 之后就可以直接打开这个应用程序，就自动执行里面的命令了。也可以使用启动台搜索应用名称快捷启动。
 
 ![image-20220123183112387](/post_image/image-20220123183112387.png)
+
+## Mysql 表结构生成markdown文件
+
+> https://github.com/alicfeng/mysql_markdown
+
+```bash
+$ mysql_markdown_mac -h scm-myql-master-dev.belle.net.cn -u user_petrel -p scm_petrel -d db_oms -t bl_express_abnormal -o /Users/gzhennaxia/Downloads/bl_express_abnormal.md
+```
+
+
+
